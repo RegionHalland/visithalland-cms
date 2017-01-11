@@ -511,13 +511,17 @@ function get_feed($data) {
 			$postArray[$i]->ID = get_the_id();
 			$postArray[$i]->title = get_the_title();			
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
+
+			foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
+				$value->meta_fields = get_field_objects($value->ID);
+			}
 			
 			$i++;
 		}
 		/* Restore original Post Data */
 		wp_reset_postdata();
 
-		return rest_ensure_response($the_query);
+		return rest_ensure_response($postArray);
 	} else {
 		// no posts found
 		return rest_ensure_response([
@@ -566,7 +570,6 @@ function get_single_post($data) {
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
 			foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
-				# code...
 				$value->meta_fields = get_field_objects($value->ID);
 			}
 			
