@@ -512,8 +512,10 @@ function get_feed($data) {
 			$postArray[$i]->title = get_the_title();			
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
-			foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
-				$value->meta_fields = get_field_objects($value->ID);
+			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
+				foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
+					$value->meta_fields = get_field_objects($value->ID);
+				}
 			}
 			
 			$i++;
@@ -569,8 +571,10 @@ function get_single_post($data) {
 			$postArray[$i]->content = get_the_content();
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
-			foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
-				$value->meta_fields = get_field_objects($value->ID);
+			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
+				foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
+					$value->meta_fields = get_field_objects($value->ID);
+				}
 			}
 			
 			$i++;
