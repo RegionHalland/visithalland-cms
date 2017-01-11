@@ -125,7 +125,7 @@ add_action( 'init', 'custom_post_type_meet', 0 );
 
 
 // Register Custom Post Type
-function custom_post_type_editor_tip() {
+function custom_post_type_editortip() {
 
 	$labels = array(
 		'name'                  => _x( 'Redaktionen tipsar', 'Post Type General Name', 'visithalland' ),
@@ -153,10 +153,10 @@ function custom_post_type_editor_tip() {
 		'menu_icon'				=> 'dashicons-groups',
 		'show_in_rest'               => true
 	);
-	register_post_type( 'post_type_editor_tip', $args );
+	register_post_type( 'post_type_editortip', $args );
 
 }
-add_action( 'init', 'custom_post_type_editor_tip', 0 );
+add_action( 'init', 'custom_post_type_editortip', 0 );
 
 
 
@@ -341,7 +341,7 @@ function custom_taxonomy_segment() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_segment', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editor_tip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_segment', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_segment', 0 );
@@ -373,7 +373,7 @@ function custom_taxonomy_season() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_season', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editor_tip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_season', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
 
 }
 
@@ -398,7 +398,7 @@ function custom_taxonomy_category() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_category', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editor_tip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_category', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
 
 }
 
@@ -486,7 +486,7 @@ function get_feed($data) {
 	// WP_Query arguments
 	$args = array(
 		'post_type'	=> array( 
-			'post_type_editor_tip',
+			'post_type_editortip',
 			'post_type_adventure',
 			'post_type_event',
 			'post_type_meet',
@@ -509,7 +509,8 @@ function get_feed($data) {
 
 			$postArray[$i] = new stdClass(); 
 			$postArray[$i]->ID = get_the_id();
-			$postArray[$i]->title = get_the_title();			
+			$postArray[$i]->title = get_the_title();
+			$postArray[$i]->component_type = explode('_', get_post_type())[2];
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
 			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
