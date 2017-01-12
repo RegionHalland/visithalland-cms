@@ -511,7 +511,7 @@ function get_feed($data) {
 			$postArray[$i] = new stdClass(); 
 			$postArray[$i]->ID = get_the_id();
 			$postArray[$i]->title = get_the_title();
-			$postArray[$i]->component_type = explode('_', get_post_type())[2];
+			$postArray[$i]->component_type = get_post_type();
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
 			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
