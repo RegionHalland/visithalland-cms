@@ -453,7 +453,7 @@ add_filter( 'algolia_searchable_post_shared_attributes', 'my_post_attributes', 1
  */
 function my_post_attributes( array $attributes, WP_Post $post ) {
 
-    if ( 'post_type_attraction' !== $post->post_type ) {
+    if ( 'attraction' !== $post->post_type ) {
         // We only want to add an attribute for the 'speaker' post type.
         // Here the post isn't a 'speaker', so we return the attributes unaltered.
         return $attributes;
@@ -461,12 +461,11 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
 
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
-    $attributes['cover_image'] = get_field( 'cover_image', $post->ID );
+    $attributes['cover_image'] = get_field('cover_image', $post->ID)["sizes"]["medium_large"];
 
     // Always return the value we are filtering.
     return $attributes;
 }
-
 
 
 
@@ -527,16 +526,10 @@ function get_feed($data) {
 		return rest_ensure_response($postArray);
 	} else {
 		// no posts found
-		return rest_ensure_response([
-			'success' => false,
-			'msg'	  => "No posts found"
- 		]);
+		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
 	}
-
-	return rest_ensure_response([
-			'success' => false,
-			'msg'	  => "Unknown error"
- 	]);
+	//Unknown error
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
 
@@ -585,16 +578,10 @@ function get_single_post($data) {
 		return rest_ensure_response($postArray);
 	} else {
 		// no posts found
-		return rest_ensure_response([
-			'success' => false,
-			'msg'	  => "No posts found"
- 		]);
+		return new WP_Error( 'no-post-found', __( 'No post with that ID found.', 'visithalland'), array( 'status' => 500 ) );
 	}
-
-	return rest_ensure_response([
-			'success' => false,
-			'msg'	  => "Unknown error"
- 	]);
+	//Unknown error
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
  
 /**
