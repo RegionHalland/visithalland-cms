@@ -545,21 +545,24 @@ function get_feed($data) {
  */
 function get_single_post($data) {
     // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
-    //$queryParams = $data->get_query_params(); //returns a string of the body
-
 	$postID = $data->get_query_params()["id"];
-    //wp_die();
-
 	$postArray = array();
 
-	// WP_Query arguments
-	$args = array(
-		'p' => $postID,
-		'post_type' => 'any'
-	);
+	// Check for transient. If none, then execute WP_Query
+	if ( false === ( $the_query = get_transient( 'feed_transient' ) ) ) {
+		//wp_die();
+		// WP_Query arguments
+		$args = array(
+			'p' => $postID,
+			'post_type' => 'any'
+		);
 
-	$the_query = new WP_Query( $args );
-	//return rest_ensure_response( 'Hello World, this is the WordPress REST API' );
+		$the_query = new WP_Query( $args );
+
+		// Put the results in a transient. Expire after 12 hours.
+		set_transient( 'feed_transient', $the_query, 20 );
+	}
+
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$i = 0;
