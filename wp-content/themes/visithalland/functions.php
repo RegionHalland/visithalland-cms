@@ -462,6 +462,8 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
     $attributes['cover_image'] = get_field('cover_image', $post->ID)["sizes"]["medium_large"];
+    $attributes['description'] = get_field('description', $post->ID);
+    $attributes['location'] = get_field('location', $post->ID);
 
     // Always return the value we are filtering.
     return $attributes;
@@ -575,7 +577,7 @@ function get_single_post($data) {
 		/* Restore original Post Data */
 		wp_reset_postdata();
 
-		return rest_ensure_response($postArray);
+		return rest_ensure_response(get_field('location', $postArray[0]->ID));
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No post with that ID found.', 'visithalland'), array( 'status' => 500 ) );
