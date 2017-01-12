@@ -512,7 +512,7 @@ function get_feed($data) {
 			$postArray[$i]->ID = get_the_id();
 			$postArray[$i]->title = get_the_title();
 			$postArray[$i]->component_type = get_post_type();
-			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
+			$postArray[$i]->meta_fields = get_fields(get_the_id());
 
 			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
 				foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
@@ -540,8 +540,38 @@ function get_feed($data) {
  */
 function get_single_post($data) {
     // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
+    wp_reset_postdata();
 	$postID = $data->get_query_params()["id"];
-	$postArray = array();
+	$post = get_post($postID);
+	$post->meta_fields = get_fields($postID);
+
+
+	if (is_array($post->meta_fields)) {
+		if (array_key_exists('places', $post->meta_fields)) {
+			foreach ($post->meta_fields['places'] as $key => $value) {
+				//wp_die('asd');
+				$value->meta_fields = get_fields($value->ID);
+			}
+		}
+	}
+
+	return rest_ensure_response($post);
+
+	/*$posts = get_fields('places', $postID);
+
+	if( $posts ):
+		return rest_ensure_response(the_title());
+	    	foreach( $posts as $post): // variable must be called $post (IMPORTANT)
+	        setup_postdata($post);
+	           //wp_die(the_title());
+	           return rest_ensure_response(the_title());
+	     	endforeach;
+	    	wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
+	endif;*/
+
+
+
+	/*$postArray = array();
 
 	// WP_Query arguments
 	$args = array(
@@ -560,28 +590,42 @@ function get_single_post($data) {
 			$postArray[$i] = new stdClass(); 
 			$postArray[$i]->ID = get_the_id();
 			$postArray[$i]->title = get_the_title();
-			$postArray[$i]->content = get_the_content();
-			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
+			$postArray[$i]->meta_fields = get_fields();
+
+			$post_objects = get_field('places');
+
+			if( $post_objects ):
+				wp_die($post_object->ID);
+			    foreach( $post_objects as $post_object):
+			            wp_die($post_object->ID);
+			    endforeach;
+			endif;*/
+
+			//wp_die( var_dump(get_field('places', get_the_id())));
+
+			/*$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
 			if (is_array($postArray[$i]->meta_fields)) {
-				if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
-					foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
+				/*if (array_key_exists('places', $postArray[$i]->meta_fields)) {
+					//return wp_die(json_encode($postArray[$i]->meta_fields));
+
+					foreach ($postArray[$i]->meta_fields['places']['value'] as $key => $value) {
 						$value->meta_fields = get_field_objects($value->ID);
 					}
 				}
 			}
 			
 			$i++;
-		}
+		}*/
 
 		/* Restore original Post Data */
-		wp_reset_postdata();
+		//wp_reset_postdata();
 
-		return rest_ensure_response(get_field('location', $postArray[0]->ID));
-	} else {
+		
+	/*} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No post with that ID found.', 'visithalland'), array( 'status' => 500 ) );
-	}
+	}*/
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
