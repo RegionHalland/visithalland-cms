@@ -514,9 +514,9 @@ function get_feed($data) {
 			$postArray[$i]->component_type = get_post_type();
 			$postArray[$i]->meta_fields = get_fields(get_the_id());
 
-			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
-				foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
-					$value->meta_fields = get_field_objects($value->ID);
+			if (array_key_exists('places', $postArray[$i]->meta_fields)) {
+				foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
+					$value->meta_fields = get_fields($value->ID);
 				}
 			}
 			
