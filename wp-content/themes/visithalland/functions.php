@@ -38,7 +38,7 @@ function custom_post_type_adventure() {
 		'show_in_rest'       => true,
 		'menu_icon'           => 'dashicons-location-alt'
 	);
-	register_post_type( 'post_type_adventure', $args );
+	register_post_type( 'adventure', $args );
 
 }
 add_action( 'init', 'custom_post_type_adventure', 0 );
@@ -80,7 +80,7 @@ function custom_post_type_event() {
 		'show_in_rest'       => true,
 		'menu_icon'           => 'dashicons-calendar-alt'
 	);
-	register_post_type( 'post_type_event', $args );
+	register_post_type( 'event', $args );
 
 }
 add_action( 'init', 'custom_post_type_event', 0 );
@@ -114,7 +114,7 @@ function custom_post_type_meet() {
 		'capability_type'       => 'page',
 		'show_in_rest'       => true
 	);
-	register_post_type( 'post_type_meet', $args );
+	register_post_type( 'meet', $args );
 
 }
 add_action( 'init', 'custom_post_type_meet', 0 );
@@ -153,7 +153,7 @@ function custom_post_type_editortip() {
 		'menu_icon'				=> 'dashicons-groups',
 		'show_in_rest'               => true
 	);
-	register_post_type( 'post_type_editortip', $args );
+	register_post_type( 'editortip', $args );
 
 }
 add_action( 'init', 'custom_post_type_editortip', 0 );
@@ -192,7 +192,7 @@ function custom_post_type_list() {
 		'show_in_rest'       	=> true,
 		'menu_icon'				=> 'dashicons-list-view'
 	);
-	register_post_type( 'post_type_list', $args );
+	register_post_type( 'list', $args );
 
 }
 add_action( 'init', 'custom_post_type_list', 0 );
@@ -220,7 +220,7 @@ function custom_post_type_attraction() {
 		'label'                 => __( 'Sevärdhet', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
-		'supports'              => array( ),
+		'supports'              => array('title', 'author', 'revisions'),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -236,7 +236,7 @@ function custom_post_type_attraction() {
 		'show_in_rest'       	=> true,
 		'menu_icon'				=> 'dashicons-palmtree'
 	);
-	register_post_type( 'post_type_attraction', $args );
+	register_post_type( 'attraction', $args );
 
 }
 add_action( 'init', 'custom_post_type_attraction', 0 );
@@ -275,7 +275,7 @@ function custom_post_type_company() {
 		'show_in_rest'       	=> true,
 		'menu_icon'				=> 'dashicons-store'
 	);
-	register_post_type( 'post_type_company', $args );
+	register_post_type( 'company', $args );
 
 }
 add_action( 'init', 'custom_post_type_company', 0 );
@@ -312,7 +312,7 @@ function custom_post_type_activity() {
 		'show_in_rest'       	=> true,
 		'menu_icon'				=> 'dashicons-tickets-alt'
 	);
-	register_post_type( 'post_type_activity', $args );
+	register_post_type( 'activity', $args );
 
 }
 add_action( 'init', 'custom_post_type_activity', 0 );
@@ -341,7 +341,7 @@ function custom_taxonomy_segment() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_segment', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_segment', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_segment', 0 );
@@ -373,7 +373,7 @@ function custom_taxonomy_season() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_season', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_season', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
 
 }
 
@@ -398,7 +398,7 @@ function custom_taxonomy_category() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_category', array('post_type_company', 'post_type_adventure', 'post_type_event', 'post_type_list', 'post_type_meet', 'post_type_attraction', 'post_type_editortip', 'post_type_activity'), $args );
+	register_taxonomy( 'taxonomy_category', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
 
 }
 
@@ -433,6 +433,10 @@ add_action( 'admin_menu', 'remove_menus' );
 
 
 
+
+
+
+
 /**
  * Modfy search for algolia
  *
@@ -449,7 +453,7 @@ add_filter( 'algolia_searchable_post_shared_attributes', 'my_post_attributes', 1
  */
 function my_post_attributes( array $attributes, WP_Post $post ) {
 
-    if ( 'speaker' !== $post->post_type ) {
+    if ( 'post_type_attraction' !== $post->post_type ) {
         // We only want to add an attribute for the 'speaker' post type.
         // Here the post isn't a 'speaker', so we return the attributes unaltered.
         return $attributes;
@@ -457,7 +461,7 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
 
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
-    $attributes['bio'] = get_field( 'bio', $post->ID );
+    $attributes['cover_image'] = get_field( 'cover_image', $post->ID );
 
     // Always return the value we are filtering.
     return $attributes;
@@ -482,11 +486,11 @@ function get_feed($data) {
 	// WP_Query arguments
 	$args = array(
 		'post_type'	=> array( 
-			'post_type_editortip',
-			'post_type_adventure',
-			'post_type_event',
-			'post_type_meet',
-			'post_type_list' 
+			'editortip',
+			'adventure',
+			'event',
+			'meet',
+			'list' 
 		),
 		'posts_per_page' => -1,
 		'paged' => $paged,
@@ -541,7 +545,6 @@ function get_feed($data) {
  */
 function get_single_post($data) {
     // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
-    //$queryParams = $data->get_query_params(); //returns a string of the body
 	$postID = $data->get_query_params()["id"];
 	$postArray = array();
 
@@ -552,7 +555,7 @@ function get_single_post($data) {
 	);
 
 	$the_query = new WP_Query( $args );
-	
+
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$i = 0;
@@ -565,9 +568,11 @@ function get_single_post($data) {
 			$postArray[$i]->content = get_the_content();
 			$postArray[$i]->meta_fields = get_field_objects(get_the_id());
 
-			if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
-				foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
-					$value->meta_fields = get_field_objects($value->ID);
+			if (is_array($postArray[$i]->meta_fields)) {
+				if (array_key_exists('platser', $postArray[$i]->meta_fields) && array_key_exists('value', $postArray[$i]->meta_fields)) {
+					foreach ($postArray[$i]->meta_fields['platser']['value'] as $key => $value) {
+						$value->meta_fields = get_field_objects($value->ID);
+					}
 				}
 			}
 			
