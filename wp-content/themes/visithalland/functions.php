@@ -498,7 +498,7 @@ function get_feed($data) {
 			'meet',
 			'list'
 		),
-		'posts_per_page' => -1,
+		'posts_per_page' => 6,
 		'paged' => $paged,
 		//'taxonomy_segment' => $taxonomy_category,
 		//TODO: Fix multi lang
