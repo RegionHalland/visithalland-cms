@@ -331,7 +331,7 @@ function custom_taxonomy_segment() {
 		'name'                       => _x( 'Marknadskoncept', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Marknadskoncept', 'Taxonomy Singular Name', 'text_domain' ),
 		'menu_name'                  => __( 'Marknadskoncept', 'text_domain' ),
-	);
+	);	
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => true,
@@ -349,7 +349,11 @@ add_action( 'init', 'custom_taxonomy_segment', 0 );
 
 
 
-
+/*function sb_add_tax_to_api() {
+    $mytax = get_taxonomy( 'taxonomy_segment' );
+    $mytax->show_in_rest = true;
+}
+add_action( 'init', 'sb_add_tax_to_api', 30 );*/
 
 
 
@@ -492,7 +496,7 @@ function get_feed($data) {
 			'adventure',
 			'event',
 			'meet',
-			'list' 
+			'list'
 		),
 		'posts_per_page' => -1,
 		'paged' => $paged,
@@ -528,8 +532,9 @@ function get_feed($data) {
 		}
 		/* Restore original Post Data */
 		wp_reset_postdata();
+		$taxonomy_segment = get_terms( 'taxonomy_segment', array('hide_empty' => false));
 
-		return rest_ensure_response($postArray);
+		return rest_ensure_response(["taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
