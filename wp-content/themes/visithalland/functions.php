@@ -531,10 +531,12 @@ function get_feed($data) {
 			$i++;
 		}
 		/* Restore original Post Data */
+		$pageCount = $the_query->max_num_pages;
+		
 		wp_reset_postdata();
 		$taxonomy_segment = get_terms( 'taxonomy_segment', array('hide_empty' => false));
 
-		return rest_ensure_response(["taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
+		return rest_ensure_response(["page_count" => $pageCount, "taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
