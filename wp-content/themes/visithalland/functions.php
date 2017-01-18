@@ -247,16 +247,15 @@ add_action( 'init', 'custom_post_type_list', 0 );
 
 
 // Register Custom Post Type
-function custom_post_type_attraction() {
-
+function custom_post_type_places() {
 	$labels = array(
-		'name'                  => _x( 'Sevärdheter', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Sevärdhet', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Sevärdheter', 'visithalland' ),
-		'name_admin_bar'        => __( 'Sevärdheter', 'visithalland' ),
+		'name'                  => _x( 'Se & göra', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Se & göra', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Se & göra', 'visithalland' ),
+		'name_admin_bar'        => __( 'Se & göra', 'visithalland' ),
 	);
 	$args = array(
-		'label'                 => __( 'Sevärdhet', 'visithalland' ),
+		'label'                 => __( 'Se & Göra', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
 		'supports'              => array('title', 'author', 'revisions'),
@@ -273,12 +272,12 @@ function custom_post_type_attraction() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'       	=> true,
-		'menu_icon'				=> 'dashicons-palmtree'
+		'menu_icon'				=> 'dashicons-smiley'
 	);
-	register_post_type( 'attraction', $args );
+	register_post_type( 'places', $args );
 
 }
-add_action( 'init', 'custom_post_type_attraction', 0 );
+add_action( 'init', 'custom_post_type_places', 0 );
 
 
 
@@ -286,7 +285,7 @@ add_action( 'init', 'custom_post_type_attraction', 0 );
 
 
 // Register Custom Post Type
-function custom_post_type_company() {
+/*function custom_post_type_company() {
 
 	$labels = array(
 		'name'                  => _x( 'Näringslivsaktörer', 'Post Type General Name', 'visithalland' ),
@@ -355,7 +354,7 @@ function custom_post_type_activity() {
 
 }
 add_action( 'init', 'custom_post_type_activity', 0 );
-
+*/
 
 
 
@@ -469,6 +468,8 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 /* Remove menus not needed */
 function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit-comments.php' );
+  remove_menu_page( 'edit.php?post_type=page' );
   
 }
 add_action( 'admin_menu', 'remove_menus' );
@@ -577,10 +578,10 @@ function get_feed($data) {
 						$value->meta_fields = get_fields($value->ID);
 					}
 				}
-			}
-			
+			}			
 			$i++;
 		}
+
 		/* Restore original Post Data */
 		wp_reset_postdata();
 
