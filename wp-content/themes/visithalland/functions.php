@@ -517,8 +517,6 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
 
 
 
-
-
 /**
  * This is our callback function that embeds our phrase in a WP_REST_Response
  */
@@ -592,7 +590,7 @@ function get_feed($data) {
 		$pageCount = $the_query->max_num_pages;
 
 		//Get available marknadssegment
-		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
+		$taxonomy_segment = get_terms('taxonomy_segment', array('hide_empty' => false));
 
 		return rest_ensure_response([
 			"page_count" => $pageCount,
