@@ -9,7 +9,45 @@ if ( function_exists( 'add_theme_support' ) ) {
     add_image_size( 'category-thumb', 300, 9999 ); //300 pixels wide (and unlimited height)
 }
 
-// Register Custom Post Type
+
+// Register Custom Post Type Aktuellt
+function custom_post_type_featured() {
+
+	$labels = array(
+		'name'                  => _x( 'Aktuellt', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Aktuellt', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Aktuellt', 'visithalland' ),
+		'name_admin_bar'        => __( 'Aktuellt', 'visithalland' ),
+	);
+	$args = array(
+		'label'                 => __( 'Aktuellt', 'visithalland' ),
+		'description'           => __( 'Post Type Description', 'visithalland' ),
+		'labels'                => $labels,
+		'supports'              => array('title', 'author', 'revisions'),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+		'show_in_rest'       => true,
+		'menu_icon'           => 'dashicons-megaphone'
+	);
+	register_post_type( 'featured', $args );
+
+}
+add_action( 'init', 'custom_post_type_featured', 0 );
+
+
+
+ 
+// Register Custom Post Type Äventyr
 function custom_post_type_adventure() {
 
 	$labels = array(
@@ -534,9 +572,12 @@ function get_feed($data) {
 		$pageCount = $the_query->max_num_pages;
 		
 		wp_reset_postdata();
-		$taxonomy_segment = get_terms( 'taxonomy_segment', array('hide_empty' => false));
+		
+		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
+		$featured_posts		= get_post(18581);
+		$featured_posts->meta_fields = get_fields(18581);
 
-		return rest_ensure_response(["page_count" => $pageCount, "taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
+		return rest_ensure_response(["page_count" => $pageCount, "featured_posts" => $featured_posts, "taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
