@@ -593,7 +593,7 @@ function get_feed($data) {
 		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
 
 		//Get first post in featured posts
-		$featured		= get_post(18581);
+		/*$featured		= get_post(18581);
 		$featured_posts = get_fields($featured->ID);
 		if (array_key_exists('featured', $featured_posts)) {
 			if (is_array($featured_posts['featured'])) {
@@ -601,11 +601,11 @@ function get_feed($data) {
 					 $value->meta_fields = get_fields($value->ID);
 				}
 			}
-		}
+		}*/
 
 		return rest_ensure_response([
 			"page_count" => $pageCount,
-			"featured_posts" => $featured_posts,
+			//"featured_posts" => $featured_posts,
 			"taxonomy_segment" => $taxonomy_segment,
 			"posts" => $postArray
 		]);		
