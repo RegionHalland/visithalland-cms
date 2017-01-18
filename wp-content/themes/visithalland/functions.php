@@ -558,8 +558,7 @@ function get_feed($data) {
 			$postArray[$i]->meta_fields = get_fields(get_the_id());
 
 			if (array_key_exists('places', $postArray[$i]->meta_fields)) {
-				if (is_array($postArray[$i]->meta_fields['places'])) {
-					
+				if (is_array($postArray[$i]->meta_fields['places'])) {					
 					foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
 						$value->meta_fields = get_fields($value->ID);
 					}
@@ -574,8 +573,24 @@ function get_feed($data) {
 		wp_reset_postdata();
 		
 		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
-		$featured_posts		= get_post(18581);
-		$featured_posts->meta_fields = get_fields(18581);
+		$featured		= get_post(18581);
+		$featured_posts = get_fields($featured->ID);
+
+		if (array_key_exists('featured', $featured_posts)) {
+			if (is_array($featured_posts['featured'])) {
+				foreach ($featured_posts['featured'] as $key => $value) {
+					# code...
+					 $value->meta_fields = get_fields($value->ID);
+				}
+			}
+		}
+		/*foreach ($featured_posts->meta_fields as $key => $value) {
+			//Get meta values on every featured post
+			$featured_posts->meta_fields[$key] = new stdClass(); 
+			$featured_posts->meta_fields[$key]->meta_fields = get_fields($value->ID);
+		}*/
+
+		//return rest_ensure_response($featured_posts);
 
 		return rest_ensure_response(["page_count" => $pageCount, "featured_posts" => $featured_posts, "taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
 	} else {
