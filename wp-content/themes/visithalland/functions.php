@@ -578,8 +578,21 @@ function get_feed($data) {
 			$postArray[$i]->meta_fields->local_story = get_field('local_story', get_the_id());
 
 			//Fetch places relationships
-			$postArray[$i]->meta_fields->places = get_field('places', get_the_id());
+			$places = get_field('places', get_the_id());
+			$postArray[$i]->meta_fields->places = $places;
+			foreach ($places as $key => $value) {
+ 				$value->meta_fields = get_fields($value->ID);
+ 			}
+
+			/*if (array_key_exists('places', $postArray[$i]->meta_fields)) {
+ 				if (is_array($postArray[$i]->meta_fields['places'])) {					
+ 					foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
+ 						$value->meta_fields = get_fields($value->ID);
+ 					}
+ 				}
+ 			}*/
 	
+
 			$i++;
 		}
 
