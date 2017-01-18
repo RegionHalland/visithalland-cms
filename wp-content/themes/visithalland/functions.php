@@ -379,7 +379,7 @@ function custom_taxonomy_segment() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_segment', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
+	register_taxonomy( 'taxonomy_segment', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_segment', 0 );
@@ -398,12 +398,12 @@ add_action( 'init', 'sb_add_tax_to_api', 30 );*/
 
 
 // Register Custom Taxonomy
-function custom_taxonomy_season() {
+function custom_taxonomy_tag() {
 
 	$labels = array(
-		'name'                       => _x( 'Säsonger', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'Säsong', 'Taxonomy Singular Name', 'text_domain' ),
-		'menu_name'                  => __( 'Säsonger', 'text_domain' ),
+		'name'                       => _x( 'Taggar', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Tagg', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Taggar', 'text_domain' ),
 	);
 	$args = array(
 		'labels'                     => $labels,
@@ -415,16 +415,17 @@ function custom_taxonomy_season() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_season', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
+	register_taxonomy( 'taxonomy_tag', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
 
 }
 
-add_action( 'init', 'custom_taxonomy_season', 0 );
+add_action( 'init', 'custom_taxonomy_tag', 0 );
+
+
 
 
 // Register Custom Taxonomy
 function custom_taxonomy_category() {
-
 	$labels = array(
 		'name'                       => _x( 'Kategorier', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Kategori', 'Taxonomy Singular Name', 'text_domain' ),
@@ -432,7 +433,7 @@ function custom_taxonomy_category() {
 	);
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => false,
+		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
@@ -440,7 +441,7 @@ function custom_taxonomy_category() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_category', array('company', 'adventure', 'event', 'list', 'meet', 'attraction', 'editortip', 'activity'), $args );
+	register_taxonomy( 'taxonomy_category', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
 
 }
 
@@ -497,7 +498,7 @@ add_filter( 'algolia_searchable_post_shared_attributes', 'my_post_attributes', 1
  */
 function my_post_attributes( array $attributes, WP_Post $post ) {
 
-    if ( 'attraction' !== $post->post_type ) {
+    if ( 'places' !== $post->post_type ) {
         // We only want to add an attribute for the 'speaker' post type.
         // Here the post isn't a 'speaker', so we return the attributes unaltered.
         return $attributes;
