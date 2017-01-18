@@ -11,7 +11,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 
 
 // Register Custom Post Type Aktuellt
-function custom_post_type_featured() {
+/*function custom_post_type_featured() {
 
 	$labels = array(
 		'name'                  => _x( 'Aktuellt', 'Post Type General Name', 'visithalland' ),
@@ -43,7 +43,7 @@ function custom_post_type_featured() {
 
 }
 add_action( 'init', 'custom_post_type_featured', 0 );
-
+*/
 
 
  
