@@ -397,32 +397,6 @@ add_action( 'init', 'sb_add_tax_to_api', 30 );*/
 
 
 
-// Register Custom Taxonomy
-function custom_taxonomy_tag() {
-
-	$labels = array(
-		'name'                       => _x( 'Taggar', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'Tagg', 'Taxonomy Singular Name', 'text_domain' ),
-		'menu_name'                  => __( 'Taggar', 'text_domain' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => false,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'show_in_rest'               => true,
-	);
-	register_taxonomy( 'taxonomy_tag', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
-
-}
-
-add_action( 'init', 'custom_taxonomy_tag', 0 );
-
-
-
 
 // Register Custom Taxonomy
 function custom_taxonomy_category() {
@@ -447,6 +421,32 @@ function custom_taxonomy_category() {
 
 add_action( 'init', 'custom_taxonomy_category', 0 );
 
+
+
+
+// Register Custom Taxonomy
+function custom_taxonomy_tag() {
+
+	$labels = array(
+		'name'                       => _x( 'Taggar', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Tagg', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Taggar', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'taxonomy_tag', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
+
+}
+
+add_action( 'init', 'custom_taxonomy_tag', 0 );
 
 
 /**
@@ -571,15 +571,17 @@ function get_feed($data) {
 			$postArray[$i]->ID = get_the_id();
 			$postArray[$i]->title = get_the_title();
 			$postArray[$i]->component_type = get_post_type();
-			$postArray[$i]->meta_fields = get_fields(get_the_id());
+			
+			//Fetch meta fields
+			$postArray[$i]->meta_fields = new stdClass(); 
+			$postArray[$i]->meta_fields->name = get_field('name', get_the_id());
+			$postArray[$i]->meta_fields->workrole = get_field('workrole', get_the_id());
+			$postArray[$i]->meta_fields->bio = get_field('bio', get_the_id());
+			$postArray[$i]->meta_fields->local_story = get_field('local_story', get_the_id());
 
-			if (array_key_exists('places', $postArray[$i]->meta_fields)) {
-				if (is_array($postArray[$i]->meta_fields['places'])) {					
-					foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
-						$value->meta_fields = get_fields($value->ID);
-					}
-				}
-			}			
+			//Fetch places relationships
+			$postArray[$i]->meta_fields->places = get_field('places', get_the_id());
+	
 			$i++;
 		}
 
@@ -592,20 +594,8 @@ function get_feed($data) {
 		//Get available marknadssegment
 		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
 
-		//Get first post in featured posts
-		/*$featured		= get_post(18581);
-		$featured_posts = get_fields($featured->ID);
-		if (array_key_exists('featured', $featured_posts)) {
-			if (is_array($featured_posts['featured'])) {
-				foreach ($featured_posts['featured'] as $key => $value) {
-					 $value->meta_fields = get_fields($value->ID);
-				}
-			}
-		}*/
-
 		return rest_ensure_response([
 			"page_count" => $pageCount,
-			//"featured_posts" => $featured_posts,
 			"taxonomy_segment" => $taxonomy_segment,
 			"posts" => $postArray
 		]);		
