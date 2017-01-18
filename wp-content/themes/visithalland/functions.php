@@ -582,24 +582,31 @@ function get_feed($data) {
 			$i++;
 		}
 		/* Restore original Post Data */
-		$pageCount = $the_query->max_num_pages;
-		
 		wp_reset_postdata();
-		
+
+		//Get number of pages, used for paging
+		$pageCount = $the_query->max_num_pages;
+
+		//Get available marknadssegment
 		$taxonomy_segment 	= get_terms('taxonomy_segment', array('hide_empty' => false));
+
+		//Get first post in featured posts
 		$featured		= get_post(18581);
 		$featured_posts = get_fields($featured->ID);
-
 		if (array_key_exists('featured', $featured_posts)) {
 			if (is_array($featured_posts['featured'])) {
 				foreach ($featured_posts['featured'] as $key => $value) {
-					# code...
 					 $value->meta_fields = get_fields($value->ID);
 				}
 			}
 		}
 
-		return rest_ensure_response(["page_count" => $pageCount, "featured_posts" => $featured_posts, "taxonomy_segment" => $taxonomy_segment, "posts" => $postArray]);
+		return rest_ensure_response([
+			"page_count" => $pageCount,
+			"featured_posts" => $featured_posts,
+			"taxonomy_segment" => $taxonomy_segment,
+			"posts" => $postArray
+		]);		
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
@@ -622,7 +629,6 @@ function get_single_post($data) {
 	if (is_array($post->meta_fields)) {
 		if (array_key_exists('places', $post->meta_fields)) {
 			foreach ($post->meta_fields['places'] as $key => $value) {
-				//wp_die('asd');
 				$value->meta_fields = get_fields($value->ID);
 			}
 		}
