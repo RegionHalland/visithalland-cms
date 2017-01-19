@@ -26,6 +26,7 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     $attributes['cover_image'] = get_field('cover_image', $post->ID)["sizes"]["medium_large"];
     $attributes['description'] = get_field('description', $post->ID);
     $attributes['location'] = get_field('location', $post->ID);
+    $attributes['post_name'] = $post->post_name;
 
     // Always return the value we are filtering.
     return $attributes;
