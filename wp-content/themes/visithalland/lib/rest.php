@@ -96,20 +96,36 @@ function get_feed($data) {
  */
 function get_single_post($data) {
     // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
-    wp_reset_postdata();
-	$postID = $data->get_query_params()["id"];
-	$post = get_post($postID);
-	$post->meta_fields = get_fields($postID);
+	$postSlug = $data->get_query_params()["slug"];
 
-	if (is_array($post->meta_fields)) {
-		if (array_key_exists('places', $post->meta_fields)) {
-			foreach ($post->meta_fields['places'] as $key => $value) {
-				$value->meta_fields = get_fields($value->ID);
+    // WP_Query arguments
+	$args = array(
+		'post_type'	=> array(
+			'editortip',
+			'adventure',
+			'event',
+			'meet',
+			'list',
+			'places'
+		),
+		'name' => $postSlug,
+	);
+
+	$the_query = new WP_Query( $args );
+	if ($the_query->query['name'] == $postSlug && isset($postSlug)) {
+		$post = $the_query->post;
+		$post->meta_fields = get_fields($the_query->post->ID);
+
+		if (is_array($post->meta_fields)) {
+			if (array_key_exists('places', $post->meta_fields)) {
+				foreach ($post->meta_fields['places'] as $key => $value) {
+					$value->meta_fields = get_fields($value->ID);
+				}
 			}
 		}
-	}
 
-	return rest_ensure_response($post);
+		return rest_ensure_response($post);
+	}
 
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
