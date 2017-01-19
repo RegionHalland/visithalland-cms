@@ -1,5 +1,7 @@
 <?php
 
+include_once('lib/register_acf_fields.php');
+
 if ( function_exists( 'add_theme_support' ) ) { 
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
@@ -9,41 +11,6 @@ if ( function_exists( 'add_theme_support' ) ) {
     add_image_size( 'category-thumb', 300, 9999 ); //300 pixels wide (and unlimited height)
 }
 
-
-// Register Custom Post Type Aktuellt
-/*function custom_post_type_featured() {
-
-	$labels = array(
-		'name'                  => _x( 'Aktuellt', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Aktuellt', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Aktuellt', 'visithalland' ),
-		'name_admin_bar'        => __( 'Aktuellt', 'visithalland' ),
-	);
-	$args = array(
-		'label'                 => __( 'Aktuellt', 'visithalland' ),
-		'description'           => __( 'Post Type Description', 'visithalland' ),
-		'labels'                => $labels,
-		'supports'              => array('title', 'author', 'revisions'),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,		
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-megaphone'
-	);
-	register_post_type( 'featured', $args );
-
-}
-add_action( 'init', 'custom_post_type_featured', 0 );
-*/
 
 
  
@@ -284,83 +251,6 @@ add_action( 'init', 'custom_post_type_places', 0 );
 
 
 
-// Register Custom Post Type
-/*function custom_post_type_company() {
-
-	$labels = array(
-		'name'                  => _x( 'Näringslivsaktörer', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Näringslivsaktör', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Näringslivsaktörer', 'visithalland' ),
-		'name_admin_bar'        => __( 'Näringslivsaktörer', 'visithalland' ),
-	);
-	$args = array(
-		'label'                 => __( 'Näringslivsaktör', 'visithalland' ),
-		'description'           => __( 'Post Type Description', 'visithalland' ),
-		'labels'                => $labels,
-		'supports'              => array('title', 'author', 'revisions'),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,		
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-		'show_in_rest'       	=> true,
-		'menu_icon'				=> 'dashicons-store'
-	);
-	register_post_type( 'company', $args );
-
-}
-add_action( 'init', 'custom_post_type_company', 0 );
-
-
-
-
-// Register Custom Post Type
-function custom_post_type_activity() {
-
-	$labels = array(
-		'name'                  => _x( 'Aktiviteter', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Aktivitet', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Aktiviteter', 'visithalland' ),
-		'name_admin_bar'        => __( 'Aktiviteter', 'visithalland' ),
-	);
-	$args = array(
-		'label'                 => __( 'Aktivitet', 'visithalland' ),
-		'description'           => __( 'Post Type Description', 'visithalland' ),
-		'labels'                => $labels,
-		'supports'              => array('title', 'author', 'revisions'),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,		
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-		'show_in_rest'       	=> true,
-		'menu_icon'				=> 'dashicons-tickets-alt'
-	);
-	register_post_type( 'activity', $args );
-
-}
-add_action( 'init', 'custom_post_type_activity', 0 );
-*/
-
-
-
-
-
-
 // Register Custom Taxonomy
 function custom_taxonomy_segment() {
 
@@ -384,13 +274,6 @@ function custom_taxonomy_segment() {
 }
 add_action( 'init', 'custom_taxonomy_segment', 0 );
 
-
-
-/*function sb_add_tax_to_api() {
-    $mytax = get_taxonomy( 'taxonomy_segment' );
-    $mytax->show_in_rest = true;
-}
-add_action( 'init', 'sb_add_tax_to_api', 30 );*/
 
 
 
