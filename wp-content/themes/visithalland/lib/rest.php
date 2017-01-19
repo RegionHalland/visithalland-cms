@@ -54,18 +54,16 @@ function get_feed($data) {
 			$postArray[$i]->component_type = get_post_type();
 			
 			//Fetch meta fields
-			$postArray[$i]->meta_fields = new stdClass(); 
-			$postArray[$i]->meta_fields->name = get_field('name', get_the_id());
-			$postArray[$i]->meta_fields->workrole = get_field('workrole', get_the_id());
-			$postArray[$i]->meta_fields->bio = get_field('bio', get_the_id());
-			$postArray[$i]->meta_fields->local_story = get_field('local_story', get_the_id());
+			$postArray[$i]->meta_fields = get_fields(get_the_id());
 
 			//Fetch places relationships and place meta_fields
-			$places = get_field('places', get_the_id());
-			$postArray[$i]->meta_fields->places = $places;
-			foreach ($places as $key => $value) {
- 				$value->meta_fields = get_fields($value->ID);
- 			}	
+			if (is_array($postArray[$i]->meta_fields)) {
+				if (array_key_exists('places', $postArray[$i]->meta_fields)) {
+					foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
+						$value->meta_fields = get_fields($value->ID);
+					}
+				}
+			}
 
 			$i++;
 		}
@@ -83,7 +81,7 @@ function get_feed($data) {
 			"page_count" => $pageCount,
 			"taxonomy_segment" => $taxonomy_segment,
 			"posts" => $postArray
-		]);		
+		]);
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
