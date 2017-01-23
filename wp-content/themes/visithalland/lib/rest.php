@@ -5,8 +5,8 @@
  */
 function get_feed($data) {
 	// 1: Fetch all featured articles (WP-query)
-	// 2: Fetch 5 latest articles from every taxonomy_segment (WP-query)
-	// 3: Fetch 5 latest events (WP-query)
+	// 2: Fetch 5 latest events (WP-query)
+	// 3: Fetch 5 latest articles from every taxonomy_segment (WP-query)
 	// 4: Merge into assoc array
 	// 5: Return assoc array
 	// 6: Success
@@ -19,31 +19,8 @@ function get_feed($data) {
 	$featuredPost->component_type = $post->post_type;
 	$featuredPost->meta_fields = get_fields(18581);
 
-	// 2: Fetch 5 latest articles from every taxonomy_segment (WP-query)
-	// WP_Query arguments
-	$editortip_args = array(
-		'post_type'	=> array(
-			'editortip',
-		),
-		'posts_per_page' => 6,
-	);
 
-	$editortip_query = new WP_Query( $editortip_args );
-
-	// The Loop
-	if ( $editortip_query->have_posts() ) {
-		$i = 0;
-		while ( $editortip_query->have_posts() ) {
-			$editortip_query->the_post();
-
-			$i++;
-		}
-	}
-	wp_reset_postdata();
-
-
-
-
+	// 2: Fetch 5 latest events (WP-query)
 	// WP_Query arguments
 	$event_args = array(
 		'post_type'	=> array(
@@ -51,14 +28,18 @@ function get_feed($data) {
 		),
 		'posts_per_page' => 6,
 	);
-
 	$event_query = new WP_Query( $event_args );
-
 	// The Loop
 	if ( $event_query->have_posts() ) {
 		$i = 0;
 		while ( $event_query->have_posts() ) {
 			$event_query->the_post();
+
+			$events = new stdClass();
+			$events->ID = get_the_id();
+			$events->title = get_the_title();
+			$events->component_type = get_post_type();
+			$events->meta_fields = get_fields(get_the_id());
 
 			$i++;
 		}
@@ -67,32 +48,19 @@ function get_feed($data) {
 
 
 
-
-	// WP_Query arguments
-	$meet_args = array(
-		'post_type'	=> array(
-			'meet',
-		),
-		'posts_per_page' => 6,
-	);
-
-	$meet_query = new WP_Query( $meet_args );
-
-	// The Loop
-	if ( $meet_query->have_posts() ) {
-		$i = 0;
-		while ( $meet_query->have_posts() ) {
-			$meet_query->the_post();
-
-			$i++;
-		}
+	// 3: Fetch 5 latest articles from every taxonomy_segment (WP-query)
+	$taxonomies = ['surf', 'camping', 'outdoor'];
+	$postsByTaxonomy = [];
+	foreach ($taxonomies as $key => $value) {
+		$postsByTaxonomy[$value] = get_posts_by_taxonomy($value);
 	}
+
+	//return rest_ensure_response($postsByTaxonomy);
 
 	return rest_ensure_response([
 			'featured_posts' => $featuredPost->meta_fields['featured'],
-			'editor_tip' => $editortip_query->posts,
-			'event' => $event_query->posts,
-			'meet' => $meet_query->posts
+			'events' => $events,
+			'posts_by_taxonomy' => $postsByTaxonomy
 		]);
 
 
@@ -192,6 +160,40 @@ function get_feed($data) {
 	}*/
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+}
+
+function get_posts_by_taxonomy($taxonomy) {
+	// WP_Query arguments
+	$args = array(
+		'post_type'	=> array(
+			'editortip',
+			'meet',
+			'event'
+		),
+		"taxonomy_segment" => $taxonomy,
+		'posts_per_page' => 6
+	);
+
+	$query = new WP_Query( $args );
+
+	// The Loop
+	if ( $query->have_posts() ) {
+		$i = 0;
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$posts[$i] = new stdClass();
+			$posts[$i]->ID = get_the_id();
+			$posts[$i]->title = get_the_title();
+			$posts[$i]->component_type = get_post_type();
+			$posts[$i]->meta_fields = get_fields(get_the_id());
+			$i++;
+		}
+	}
+
+	wp_reset_postdata();
+
+	return $posts;
 }
 
 
