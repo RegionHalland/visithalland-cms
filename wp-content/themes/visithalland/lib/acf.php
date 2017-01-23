@@ -1,83 +1,51 @@
 <?php
+
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
-		'id' => 'acf_aventyr',
-		'title' => 'Äventyr',
-		'fields' => array (
-			array (
-				'key' => 'field_58776d4b11fe2',
-				'label' => 'Beskrivning av äventyr',
-				'name' => 'description',
-				'type' => 'wysiwyg',
-				'default_value' => '',
-				'toolbar' => 'full',
-				'media_upload' => 'yes',
+	'key' => 'acf_featured',
+	'title' => 'Featured',
+	'fields' => array (
+		array (
+			'key' => 'field_1',
+			'label' => 'Utvalda',
+			'name' => 'featured',
+			'type' => 'relationship',
+			'return_format' => 'object',
+			'post_type' => array (
+				0 => 'event',
+				1 => 'meet',
+				2 => 'editortip',
+				3 => 'places',
 			),
-			array (
-				'key' => 'field_5873b277426c3',
-				'label' => 'Estimerad tid (dagar)',
-				'name' => 'estimated_duration',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
+			'taxonomy' => array (
+				0 => 'all',
 			),
-			array (
-				'key' => 'field_5873b285426c4',
-				'label' => 'Omslagsbild',
-				'name' => 'cover_image',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
+			'filters' => array (
+				0 => 'search',
 			),
+			'result_elements' => array (
+				0 => 'post_type',
+				1 => 'post_title',
+			),
+			'max' => '',
+		),
+	),
+	'location' => array (
+		array (
 			array (
-				'key' => 'field_587622d435d79',
-				'label' => 'Se & Göra',
-				'name' => 'places',
-				'type' => 'relationship',
-				'return_format' => 'object',
-				'post_type' => array (
-					0 => 'places',
-				),
-				'taxonomy' => array (
-					0 => 'all',
-				),
-				'filters' => array (
-					0 => 'search',
-				),
-				'result_elements' => array (
-					0 => 'post_type',
-					1 => 'post_title',
-				),
-				'max' => '',
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'featured',
 			),
 		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'adventure',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'normal',
-			'layout' => 'no_box',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
 	));
 	register_field_group(array (
 		'id' => 'acf_event',

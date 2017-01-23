@@ -1,16 +1,16 @@
 <?php
 
-// Register Custom Post Type Äventyr
-function custom_post_type_adventure() {
+// Register Featured
+function custom_post_type_featured() {
 
 	$labels = array(
-		'name'                  => _x( 'Äventyr', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Äventyr', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Äventyr', 'visithalland' ),
-		'name_admin_bar'        => __( 'Äventyr', 'visithalland' ),
+		'name'                  => _x( 'Utvalda', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Utvalda', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Utvalda', 'visithalland' ),
+		'name_admin_bar'        => __( 'Utvalda', 'visithalland' ),
 	);
 	$args = array(
-		'label'                 => __( 'Äventyr', 'visithalland' ),
+		'label'                 => __( 'Utvalda', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
 		'supports'              => array('title', 'author', 'revisions'),
@@ -27,12 +27,12 @@ function custom_post_type_adventure() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-location-alt'
+		'menu_icon'           => 'dashicons-announcment'
 	);
-	register_post_type( 'adventure', $args );
+	register_post_type( 'featured', $args );
 
 }
-add_action( 'init', 'custom_post_type_adventure', 0 );
+add_action( 'init', 'custom_post_type_featured', 0 );
 
 
 
@@ -77,7 +77,7 @@ function custom_post_type_event() {
 add_action( 'init', 'custom_post_type_event', 0 );
 
 
-// Register Custom Post Type
+// Register Meet a local
 function custom_post_type_meet() {
 
 	$labels = array(
@@ -116,7 +116,7 @@ add_action( 'init', 'custom_post_type_meet', 0 );
 
 
 
-// Register Custom Post Type
+// Register Editor Tip
 function custom_post_type_editortip() {
 
 	$labels = array(
@@ -155,51 +155,9 @@ add_action( 'init', 'custom_post_type_editortip', 0 );
 
 
 
-// Register Custom Post Type
-function custom_post_type_list() {
-
-	$labels = array(
-		'name'                  => _x( 'Listor', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Listor', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Listor', 'visithalland' ),
-		'name_admin_bar'        => __( 'Listor', 'visithalland' ),
-	);
-	$args = array(
-		'label'                 => __( 'Listor', 'visithalland' ),
-		'description'           => __( 'Post Type Description', 'visithalland' ),
-		'labels'                => $labels,
-		'supports'              => array('title', 'author', 'revisions'),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,		
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-		'show_in_rest'       	=> true,
-		'menu_icon'				=> 'dashicons-list-view'
-	);
-	register_post_type( 'list', $args );
-
-}
-add_action( 'init', 'custom_post_type_list', 0 );
 
 
-
-
-
-
-
-
-
-
-
-// Register Custom Post Type
+// Register Custom Post Type Places
 function custom_post_type_places() {
 	$labels = array(
 		'name'                  => _x( 'Se & göra', 'Post Type General Name', 'visithalland' ),

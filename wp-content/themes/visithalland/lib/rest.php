@@ -4,8 +4,112 @@
  * This is our callback function that embeds our phrase in a WP_REST_Response
  */
 function get_feed($data) {
-    // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
-    $paged = $data->get_query_params()["page"];
+	// 1: Fetch all featured articles (WP-query)
+	// 2: Fetch 5 latest articles from every taxonomy_segment (WP-query)
+	// 3: Fetch 5 latest events (WP-query)
+	// 4: Merge into assoc array
+	// 5: Return assoc array
+	// 6: Success
+
+	// 1: Fetch all featured articles (WP-query)
+	$post = get_post(18581);
+	$featuredPost = new stdClass();
+	$featuredPost->ID = $post->ID;
+	$featuredPost->title = $post->post_title;
+	$featuredPost->component_type = $post->post_type;
+	$featuredPost->meta_fields = get_fields(18581);
+
+	// 2: Fetch 5 latest articles from every taxonomy_segment (WP-query)
+	// WP_Query arguments
+	$editortip_args = array(
+		'post_type'	=> array(
+			'editortip',
+		),
+		'posts_per_page' => 6,
+	);
+
+	$editortip_query = new WP_Query( $editortip_args );
+
+	// The Loop
+	if ( $editortip_query->have_posts() ) {
+		$i = 0;
+		while ( $editortip_query->have_posts() ) {
+			$editortip_query->the_post();
+
+			$i++;
+		}
+	}
+	wp_reset_postdata();
+
+
+	
+
+	// WP_Query arguments
+	$event_args = array(
+		'post_type'	=> array(
+			'event',
+		),
+		'posts_per_page' => 6,
+	);
+
+	$event_query = new WP_Query( $event_args );
+
+	// The Loop
+	if ( $event_query->have_posts() ) {
+		$i = 0;
+		while ( $event_query->have_posts() ) {
+			$event_query->the_post();
+
+			$i++;
+		}
+	}
+	wp_reset_postdata();
+
+
+
+
+	// WP_Query arguments
+	$meet_args = array(
+		'post_type'	=> array(
+			'meet',
+		),
+		'posts_per_page' => 6,
+	);
+
+	$meet_query = new WP_Query( $meet_args );
+
+	// The Loop
+	if ( $meet_query->have_posts() ) {
+		$i = 0;
+		while ( $meet_query->have_posts() ) {
+			$meet_query->the_post();
+
+			$i++;
+		}
+	}
+
+	return rest_ensure_response([
+			'featured_posts' => $featuredPost->meta_fields['featured'],
+			'editor_tip' => $editor_tip->posts,
+			'event_query' => $event_query->posts,
+			'meet_query' => $meet_query->posts
+		]);
+
+
+
+
+	//Get available marknadssegment
+	//$taxonomy_segment = get_terms('taxonomy_segment', array('hide_empty' => false));
+
+	/*return rest_ensure_response([
+		"page_count" => $pageCount,
+		"taxonomy_segment" => $taxonomy_segment,
+		"posts" => $postArray
+	]);*/
+
+
+
+    /*$paged = $data->get_query_params()["page"];
     $taxonomies_query = $data->get_query_params()['taxonomies'];
     $taxonomies = explode(',', $taxonomies_query);
     if ($taxonomies[0] != "") {
@@ -68,7 +172,7 @@ function get_feed($data) {
 			$i++;
 		}
 
-		/* Restore original Post Data */
+		/* Restore original Post Data 
 		wp_reset_postdata();
 
 		//Get number of pages, used for paging
@@ -85,7 +189,7 @@ function get_feed($data) {
 	} else {
 		// no posts found
 		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
-	}
+	}*/
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
