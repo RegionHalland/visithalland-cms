@@ -11,9 +11,6 @@ function get_feed($data) {
 	// 5: Return assoc array
 	// 6: Success
 
-	$myfile = fopen("/home/forge/cms.destinationhalland.com/wp-content/themes/visithalland/lib/feed.json", "r") or die("Unable to open file!");
-	return rest_ensure_response(json_decode(fgets($myfile)));
-
 	// 1: Fetch all featured articles (WP-query)
 	$post = get_post(18581);
 	$featuredPost = new stdClass();
