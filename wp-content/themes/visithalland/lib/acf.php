@@ -59,6 +59,7 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'toolbar' => 'full',
 				'media_upload' => 'yes',
+				'required' => 1,
 			),
 			array (
 				'key' => 'field_5873ad7947612',
@@ -71,6 +72,7 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
+				'required' => 1,
 			),
 			array (
 				'key' => 'field_5873adc947615',
@@ -80,6 +82,7 @@ if(function_exists("register_field_group"))
 				'date_format' => 'yymmdd',
 				'display_format' => 'dd/mm/yy',
 				'first_day' => 1,
+				'required' => 1
 			),
 			array (
 				'key' => 'field_5873addb47616',
@@ -89,6 +92,7 @@ if(function_exists("register_field_group"))
 				'date_format' => 'yymmdd',
 				'display_format' => 'dd/mm/yy',
 				'first_day' => 1,
+				'required' => 1
 			),
 			array (
 				'key' => 'field_5873ada947613',
@@ -98,6 +102,7 @@ if(function_exists("register_field_group"))
 				'save_format' => 'object',
 				'preview_size' => 'thumbnail',
 				'library' => 'all',
+				'required' => 1
 			),
 			array (
 				'key' => 'field_5873adb747614',
@@ -110,7 +115,7 @@ if(function_exists("register_field_group"))
 				'prepend' => '',
 				'append' => '',
 				'formatting' => 'none',
-				'maxlength' => '',
+				'maxlength' => ''
 			),
 		),
 		'location' => array (
@@ -445,6 +450,27 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_2',
+				'label' => 'Relaterat innehåll',
+				'name' => 'related',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'places',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
 			),
 		),
 		'location' => array (

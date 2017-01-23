@@ -1,8 +1,38 @@
 <?php
+function get_segment_detail($data) {
+	$postSlug = $data->get_query_params()["slug"];
 
-/**
- * This is our callback function that embeds our phrase in a WP_REST_Response
- */
+    // 1: Fetch all featured articles with slug provided (WP-query)
+	// WP_Query arguments
+	$args = array(
+		'post_type'	=> array(
+			'featured',
+		),
+		'name' => $postSlug,
+	);
+
+	$the_query = new WP_Query( $args );
+	if ($the_query->query['name'] == $postSlug && isset($postSlug)) {
+		$post = $the_query->post;
+		$post->meta_fields = get_fields($the_query->post->ID);
+
+		if (is_array($post->meta_fields)) {
+			if (array_key_exists('places', $post->meta_fields)) {
+				foreach ($post->meta_fields['places'] as $key => $value) {
+					$value->meta_fields = get_fields($value->ID);
+				}
+			}
+		}
+	}
+
+	return rest_ensure_response([
+		'featured_posts' => $post->meta_fields['featured'],
+		'posts' => get_posts_by_taxonomy('outdoor'),
+		'events' => get_posts_type_taxonomy('event', $postSlug)
+	]);
+}
+
+
 function get_feed($data) {
 	// 1: Fetch all featured articles (WP-query)
 	// 2: Fetch 5 latest events (WP-query)
@@ -20,46 +50,18 @@ function get_feed($data) {
 	$featuredPost->meta_fields = get_fields(18581);
 
 
-	// 2: Fetch 5 latest events (WP-query)
-	// WP_Query arguments
-	$event_args = array(
-		'post_type'	=> array(
-			'event',
-		),
-		'posts_per_page' => 6,
-	);
-	$event_query = new WP_Query( $event_args );
-	// The Loop
-	if ( $event_query->have_posts() ) {
-		$i = 0;
-		while ( $event_query->have_posts() ) {
-			$event_query->the_post();
-
-			$events = new stdClass();
-			$events->ID = get_the_id();
-			$events->title = get_the_title();
-			$events->component_type = get_post_type();
-			$events->meta_fields = get_fields(get_the_id());
-
-			$i++;
-		}
-	}
-	wp_reset_postdata();
-
-
-
 	// 3: Fetch 5 latest articles from every taxonomy_segment (WP-query)
 	$taxonomies = ['surf', 'camping', 'outdoor'];
 	$postsByTaxonomy = [];
+
 	foreach ($taxonomies as $key => $value) {
 		$postsByTaxonomy[$value] = get_posts_by_taxonomy($value);
 	}
 
-	//return rest_ensure_response($postsByTaxonomy);
 
 	return rest_ensure_response([
 			'featured_posts' => $featuredPost->meta_fields['featured'],
-			'events' => $events,
+			'events' => get_posts_by_type('event'),
 			'posts_by_taxonomy' => $postsByTaxonomy
 		]);
 
@@ -162,6 +164,64 @@ function get_feed($data) {
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
+function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
+	$args = array(
+		'post_type'	=> array(
+			$type,
+		),
+		"taxonomy_segment" => $taxonomy,
+		'posts_per_page' => $posts_per_page,
+	);
+	$query = new WP_Query( $args );
+	// The Loop
+	if ( $query->have_posts() ) {
+		$i = 0;
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$posts[$i] = new stdClass();
+			$posts[$i]->ID = get_the_id();
+			$posts[$i]->title = get_the_title();
+			$posts[$i]->component_type = get_post_type();
+			$posts[$i]->meta_fields = get_fields(get_the_id());
+
+			$i++;
+		}
+	}
+	wp_reset_postdata();
+
+	return $posts;
+}
+
+
+function get_posts_by_type($type, $posts_per_page = 6) {
+	$args = array(
+		'post_type'	=> array(
+			$type,
+		),
+		'posts_per_page' => $posts_per_page,
+	);
+	$query = new WP_Query( $args );
+	// The Loop
+	if ( $query->have_posts() ) {
+		$i = 0;
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$posts[$i] = new stdClass();
+			$posts[$i]->ID = get_the_id();
+			$posts[$i]->title = get_the_title();
+			$posts[$i]->component_type = get_post_type();
+			$posts[$i]->meta_fields = get_fields(get_the_id());
+
+			$i++;
+		}
+	}
+	wp_reset_postdata();
+
+	return $posts;
+}
+
 function get_posts_by_taxonomy($taxonomy) {
 	// WP_Query arguments
 	$args = array(
@@ -245,6 +305,12 @@ function prefix_register_example_routes() {
     register_rest_route( 'halland/v1', 'feed', array(
 		'methods' => 'GET',
 		'callback' => 'get_feed',
+	) );
+
+	// register_rest_route() handles more arguments but we are going to stick to the basics for now.
+    register_rest_route( 'halland/v1', 'segment', array(
+		'methods' => 'GET',
+		'callback' => 'get_segment_detail',
 	) );
 
 	// register_rest_route() handles more arguments but we are going to stick to the basics for now.
