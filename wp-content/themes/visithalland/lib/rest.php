@@ -42,7 +42,7 @@ function get_feed($data) {
 	wp_reset_postdata();
 
 
-	
+
 
 	// WP_Query arguments
 	$event_args = array(
@@ -90,9 +90,9 @@ function get_feed($data) {
 
 	return rest_ensure_response([
 			'featured_posts' => $featuredPost->meta_fields['featured'],
-			'editor_tip' => $editor_tip->posts,
-			'event_query' => $event_query->posts,
-			'meet_query' => $meet_query->posts
+			'editor_tip' => $editortip_query->posts,
+			'event' => $event_query->posts,
+			'meet' => $meet_query->posts
 		]);
 
 
