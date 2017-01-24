@@ -44,11 +44,21 @@ function get_feed($data) {
 	// 1: Fetch all featured articles (WP-query)
 	$post = get_post(18581);
 	$featuredPost = new stdClass();
-	$featuredPost->ID = $post->ID;
-	$featuredPost->title = $post->post_title;
-	$featuredPost->component_type = $post->post_type;
 	$featuredPost->meta_fields = get_fields(18581);
+	foreach ($featuredPost->meta_fields['featured'] as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
 
+		$value->taxonomies = array();
+		$taxonomies = wp_get_post_terms( $value->ID, 'taxonomy_segment', array( '' ) );
+
+		foreach ($taxonomies as $k => $val) {
+			array_push($value->taxonomies, array(
+					'name' => $val->name,
+					'slug' => $val->slug
+				)
+			);
+		}
+	}
 
 	// 3: Fetch 5 latest articles from every taxonomy_segment (WP-query)
 	$taxonomies = ['surf', 'camping', 'outdoor'];
@@ -181,7 +191,7 @@ function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
 
 			$posts[$i] = new stdClass();
 			$posts[$i]->ID = get_the_id();
-			$posts[$i]->title = get_the_title();
+			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
@@ -210,7 +220,7 @@ function get_posts_by_type($type, $posts_per_page = 6) {
 
 			$posts[$i] = new stdClass();
 			$posts[$i]->ID = get_the_id();
-			$posts[$i]->title = get_the_title();
+			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
@@ -244,9 +254,20 @@ function get_posts_by_taxonomy($taxonomy) {
 
 			$posts[$i] = new stdClass();
 			$posts[$i]->ID = get_the_id();
-			$posts[$i]->title = get_the_title();
+			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
+
+			$posts[$i]->taxonomies = array();
+			$taxonomies = wp_get_post_terms( $posts[$i]->ID, 'taxonomy_segment', array( '' ) );
+
+			foreach ($taxonomies as $k => $val) {
+				array_push($posts[$i]->taxonomies, array(
+						'name' => $val->name,
+						'slug' => $val->slug
+					)
+				);
+			}
 			$i++;
 		}
 	}
