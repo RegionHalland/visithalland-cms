@@ -17,17 +17,35 @@ function get_segment_detail($data) {
 		$post->meta_fields = get_fields($the_query->post->ID);
 
 		if (is_array($post->meta_fields)) {
-			if (array_key_exists('places', $post->meta_fields)) {
-				foreach ($post->meta_fields['places'] as $key => $value) {
+			if (array_key_exists('featured', $post->meta_fields)) {
+				foreach ($post->meta_fields['featured'] as $key => $value) {
+					$taxonomiesArray = wp_get_post_terms($value->ID, 'taxonomy_segment', array( '' ) );
 					$value->meta_fields = get_fields($value->ID);
+
+					foreach ($taxonomiesArray as $k => $val) {
+						$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+						$value->taxonomies = array(
+							'name' => $val->name,
+							'slug' => $val->slug,
+							'cover_image' => $cover_image
+						);
+						$taxnomyObject = array(
+							'name' => $val->name,
+							'slug' => $val->slug,
+							'cover_image' => $cover_image
+						);
+					}
 				}
 			}
 		}
 	}
 
 	return rest_ensure_response([
-		'featured_posts' => $post->meta_fields['featured'],
-		'posts' => get_posts_by_taxonomy('outdoor'),
+		'featured_posts' => [
+				"taxonomy" => $taxnomyObject,
+				"posts" => $post->meta_fields['featured']
+			],
+		'posts' => get_posts_by_taxonomy($postSlug),
 		'events' => get_posts_type_taxonomy('event', $postSlug)
 	]);
 }
@@ -61,11 +79,12 @@ function get_feed($data) {
 	}
 
 	// 3: Fetch 5 latest articles from every taxonomy_segment (WP-query)
-	$taxonomies = ['surf', 'camping', 'outdoor'];
+	$taxonomiesObject = get_terms('taxonomy_segment', array('hide_empty' => false));
+	$taxonomies = $taxonomiesObject;
 	$postsByTaxonomy = [];
 
-	foreach ($taxonomies as $key => $value) {
-		$postsByTaxonomy[$value] = get_posts_by_taxonomy($value);
+	foreach ($taxonomiesObject as $key => $value) {
+		$postsByTaxonomy[$value->slug] = get_posts_by_taxonomy($value->slug);
 	}
 
 
@@ -75,104 +94,27 @@ function get_feed($data) {
 			'posts_by_taxonomy' => $postsByTaxonomy
 		]);
 
-
-
-
-	//Get available marknadssegment
-	//$taxonomy_segment = get_terms('taxonomy_segment', array('hide_empty' => false));
-
-	/*return rest_ensure_response([
-		"page_count" => $pageCount,
-		"taxonomy_segment" => $taxonomy_segment,
-		"posts" => $postArray
-	]);*/
-
-
-
-    /*$paged = $data->get_query_params()["page"];
-    $taxonomies_query = $data->get_query_params()['taxonomies'];
-    $taxonomies = explode(',', $taxonomies_query);
-    if ($taxonomies[0] != "") {
-    	$tax_query = array(
-			array(
-				'taxonomy' => 'taxonomy_segment',
-				'field' => 'slug',
-				'terms' => $taxonomies
-			)
-		);
-    } else {
-		$tax_query = '';
-    }
-
-    $langCode = $data->get_query_params()["lang"];
-	$postArray = array();
-
-	// WP_Query arguments
-	$args = array(
-		'post_type'	=> array(
-			'editortip',
-			'adventure',
-			'event',
-			'meet',
-			'list'
-		),
-		'posts_per_page' => 6,
-		'paged' => $paged,
-		'tax_query' => $tax_query
-		//'taxonomy_segment' => ,
-		//TODO: Fix multi lang
-		//'lang' => $langCode
-	);
-
-	$the_query = new WP_Query( $args );
-
-	// The Loop
-	if ( $the_query->have_posts() ) {
-		$i = 0;
-		while ( $the_query->have_posts() ) {
-			$the_query->the_post();
-
-			$postArray[$i] = new stdClass(); 
-			$postArray[$i]->ID = get_the_id();
-			$postArray[$i]->title = get_the_title();
-			$postArray[$i]->component_type = get_post_type();
-			
-			//Fetch meta fields
-			$postArray[$i]->meta_fields = get_fields(get_the_id());
-
-			//Fetch places relationships and place meta_fields
-			if (is_array($postArray[$i]->meta_fields)) {
-				if (array_key_exists('places', $postArray[$i]->meta_fields)) {
-					foreach ($postArray[$i]->meta_fields['places'] as $key => $value) {
-						$value->meta_fields = get_fields($value->ID);
-					}
-				}
-			}
-
-			$i++;
-		}
-
-		/* Restore original Post Data 
-		wp_reset_postdata();
-
-		//Get number of pages, used for paging
-		$pageCount = $the_query->max_num_pages;
-
-		//Get available marknadssegment
-		$taxonomy_segment = get_terms('taxonomy_segment', array('hide_empty' => false));
-
-		return rest_ensure_response([
-			"page_count" => $pageCount,
-			"taxonomy_segment" => $taxonomy_segment,
-			"posts" => $postArray
-		]);
-	} else {
-		// no posts found
-		return new WP_Error( 'no-post-found', __( 'No posts found.', 'visithalland'), array( 'status' => 500 ) );
-	}*/
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
+
+/*function get_taxonomy_by_slug($post_id, $taxonomy_slug) {
+	$taxonomiesArray = [];
+	$taxonomies = wp_get_post_terms( $post_id, $taxonomy_slug, array( '' ) );
+
+	/*foreach ($taxonomies as $k => $val) {
+		$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+		$taxonomiesArray
+
+		/*$taxonomiesArray[$i]->taxonomies = array(
+				'name' => $val->name,
+				'slug' => $val->slug,
+				'cover_image' => $cover_image
+			);
+	}
+
+	return $taxonomiesArray;
+}*/
 
 function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
 	$args = array(
@@ -258,15 +200,16 @@ function get_posts_by_taxonomy($taxonomy) {
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
-			$posts[$i]->taxonomies = array();
+			//$posts[$i]->taxonomies = array();
 			$taxonomies = wp_get_post_terms( $posts[$i]->ID, 'taxonomy_segment', array( '' ) );
 
 			foreach ($taxonomies as $k => $val) {
-				array_push($posts[$i]->taxonomies, array(
+				$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+				$posts[$i]->taxonomies = array(
 						'name' => $val->name,
-						'slug' => $val->slug
-					)
-				);
+						'slug' => $val->slug,
+						'cover_image' => $cover_image
+					);
 			}
 			$i++;
 		}
@@ -282,7 +225,6 @@ function get_posts_by_taxonomy($taxonomy) {
  * GET single post
  */
 function get_single_post($data) {
-    // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
 	$postSlug = $data->get_query_params()["slug"];
 
     // WP_Query arguments

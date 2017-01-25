@@ -3,49 +3,251 @@
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
-	'key' => 'acf_featured',
-	'title' => 'Featured',
-	'fields' => array (
-		array (
-			'key' => 'field_1',
-			'label' => 'Utvalda',
-			'name' => 'featured',
-			'type' => 'relationship',
-			'return_format' => 'object',
-			'post_type' => array (
-				0 => 'event',
-				1 => 'meet',
-				2 => 'editortip',
-				3 => 'places',
-			),
-			'taxonomy' => array (
-				0 => 'all',
-			),
-			'filters' => array (
-				0 => 'search',
-			),
-			'result_elements' => array (
-				0 => 'post_type',
-				1 => 'post_title',
-			),
-			'max' => '',
-		),
-	),
-	'location' => array (
-		array (
+		'id' => 'acf_utvalda_camping',
+		'title' => 'Utvalda',
+		'fields' => array (
 			array (
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'featured',
+				'key' => 'field_featured_camping',
+				'label' => 'Utvalda',
+				'name' => 'featured',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'event',
+					1 => 'meet',
+					2 => 'editortip',
+					3 => 'places',
+				),
+				'taxonomy' => array (
+					0 => 'taxonomy_segment:5',
+					1 => 'taxonomy_segment:5',
+					2 => 'taxonomy_segment:5',
+					3 => 'taxonomy_segment:5',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
 			),
 		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
+		'location' => array (
+			array (
+				array (
+					'param' => 'post',
+					'operator' => '==',
+					'value' => '20248',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_utvalda_golf',
+		'title' => 'Utvalda',
+		'fields' => array (
+			array (
+				'key' => 'field_featured_golf',
+				'label' => 'Utvalda',
+				'name' => 'featured',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'event',
+					1 => 'meet',
+					2 => 'editortip',
+					3 => 'places',
+				),
+				'taxonomy' => array (
+					0 => 'taxonomy_segment:37',
+					1 => 'taxonomy_segment:37',
+					2 => 'taxonomy_segment:37',
+					3 => 'taxonomy_segment:37',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post',
+					'operator' => '==',
+					'value' => '20250',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_utvalda_surf',
+		'title' => 'Utvalda',
+		'fields' => array (
+			array (
+				'key' => 'field_5888b0f78c9ec',
+				'label' => 'Utvalda',
+				'name' => 'featured',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'event',
+					1 => 'meet',
+					2 => 'editortip',
+					3 => 'places',
+				),
+				'taxonomy' => array (
+					0 => 'taxonomy_segment:36',
+					1 => 'taxonomy_segment:36',
+					2 => 'taxonomy_segment:36',
+					3 => 'taxonomy_segment:36',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post',
+					'operator' => '==',
+					'value' => '20089',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_utvalda',
+		'title' => 'Utvalda',
+		'fields' => array (
+			array (
+				'key' => 'field_featured_all',
+				'label' => 'Utvalda',
+				'name' => 'featured',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'event',
+					1 => 'meet',
+					2 => 'editortip',
+					3 => 'places',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post',
+					'operator' => '==',
+					'value' => '18581',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_marknadskoncept',
+		'title' => 'Marknadskoncept',
+		'fields' => array (
+			array (
+				'key' => 'field_58886d959b591',
+				'label' => 'Omslagsbild',
+				'name' => 'cover_image',
+				'type' => 'image',
+				'save_format' => 'object',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_58886ddf9b592',
+				'label' => 'Omslagsfilm',
+				'name' => 'cover_video',
+				'type' => 'text',
+				'instructions' => 'Länk till Vimeo.',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'ef_taxonomy',
+					'operator' => '==',
+					'value' => 'taxonomy_segment',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
 	));
 	register_field_group(array (
 		'id' => 'acf_event',
