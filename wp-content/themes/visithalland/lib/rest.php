@@ -82,10 +82,34 @@ function get_feed($data) {
 	$taxonomiesObject = get_terms('taxonomy_segment', array('hide_empty' => false));
 	$taxonomies = $taxonomiesObject;
 	$postsByTaxonomy = [];
-
-	foreach ($taxonomiesObject as $key => $value) {
+	
+	foreach ($taxonomiesObject as $key => $value) {		
+		$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+		/*$postsByTaxonomy[$value->slug] = new stdClass();
 		$postsByTaxonomy[$value->slug] = get_posts_by_taxonomy($value->slug);
+		$postsByTaxonomy[$value->slug]->tax = "test";
+		$postsByTaxonomy[$key] = get_posts_by_taxonomy($value->slug);
+		*/
+		$postsByTaxonomy["taxonomies"][$key] = array(
+				'name' => $value->name,
+				'slug' => $value->slug
+				//'cover_image' => $cover_image
+			);
 	}
+
+	/*$taxonomies = wp_get_post_terms( $posts[$i]->ID, 'taxonomy_segment', array( '' ) );
+	foreach ($taxonomies as $k => $val) {
+		//$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+		$postsByTaxonomy["taxonomies"]->taxonomies = array(
+				'name' => $val->name,
+				'slug' => $val->slug,
+				'cover_image' => $cover_image
+			);
+	}*/
+
+	
+
+
 
 
 	return rest_ensure_response([
