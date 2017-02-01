@@ -12,7 +12,7 @@ function get_segment_detail($data) {
 	);
 
 	$the_query = new WP_Query( $args );
-	if ($the_query->query['name'] == $postSlug && isset($postSlug)) {
+	if ($the_query->post !== null) {
 		$post = $the_query->post;
 		$post->meta_fields = get_fields($the_query->post->ID);
 
@@ -38,16 +38,32 @@ function get_segment_detail($data) {
 				}
 			}
 		}
+
+		// We also need to fetch the menu items and articles inside those items
+		$taxonomiesObject = get_terms('taxonomy_segment', array('hide_empty' => false));
+		$taxonomies = $taxonomiesObject;
+		$postsByTaxonomy = [];
+		
+		foreach ($taxonomiesObject as $key => $value) {		
+			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+			$postsByTaxonomy["taxonomies"][$key] = array(
+					'name' => $value->name,
+					'slug' => $value->slug
+				);
+		}
+		
+		return rest_ensure_response([
+			'featured_posts' => [
+					"taxonomy" => $taxnomyObject,
+					"posts" => $post->meta_fields['featured']
+				],
+			'posts' => get_posts_by_taxonomy($postSlug),
+			'events' => get_posts_type_taxonomy('event', $postSlug),
+			'menu' => $postsByTaxonomy
+		]);
 	}
 
-	return rest_ensure_response([
-		'featured_posts' => [
-				"taxonomy" => $taxnomyObject,
-				"posts" => $post->meta_fields['featured']
-			],
-		'posts' => get_posts_by_taxonomy($postSlug),
-		'events' => get_posts_type_taxonomy('event', $postSlug)
-	]);
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
 
@@ -278,9 +294,30 @@ function get_single_post($data) {
 					$value->meta_fields = get_fields($value->ID);
 				}
 			}
+			if (array_key_exists('related', $post->meta_fields)) {
+				foreach ($post->meta_fields['related'] as $key => $value) {
+					$value->meta_fields = get_fields($value->ID);
+				}
+			}
+		}
+		
+		// We also need to fetch the menu items and articles inside those items
+		$taxonomiesObject = get_terms('taxonomy_segment', array('hide_empty' => false));
+		$taxonomies = $taxonomiesObject;
+		$postsByTaxonomy = [];
+		
+		foreach ($taxonomiesObject as $key => $value) {		
+			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+			$postsByTaxonomy["taxonomies"][$key] = array(
+					'name' => $value->name,
+					'slug' => $value->slug
+				);
 		}
 
-		return rest_ensure_response($post);
+		return rest_ensure_response([
+			"post" => $post,
+			'menu' => $postsByTaxonomy
+		]);
 	}
 
 	//Unknown error
