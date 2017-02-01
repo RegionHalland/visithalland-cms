@@ -631,6 +631,7 @@ if(function_exists("register_field_group"))
 				'center_lng' => '',
 				'zoom' => '',
 				'height' => '',
+				'required' => 1,
 			),
 			array (
 				'key' => 'field_587f898bb16f4',
@@ -640,6 +641,7 @@ if(function_exists("register_field_group"))
 				'save_format' => 'object',
 				'preview_size' => 'thumbnail',
 				'library' => 'all',
+				'required' => 1,
 			),
 			array (
 				'key' => 'field_587fa13b51930',
