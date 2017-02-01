@@ -268,8 +268,8 @@ function get_single_post($data) {
 	);
 
 	$the_query = new WP_Query( $args );
-	if ($the_query->query['name'] == $postSlug && isset($postSlug)) {
-		$post = $the_query->post;
+	if ($the_query->post !== null) {
+		$post = $the_query->post;		
 		$post->meta_fields = get_fields($the_query->post->ID);
 
 		if (is_array($post->meta_fields)) {
