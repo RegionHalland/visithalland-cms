@@ -289,12 +289,14 @@ function get_single_post($data) {
 		$post->meta_fields = get_fields($the_query->post->ID);
 
 		if (is_array($post->meta_fields)) {
-			if (array_key_exists('places', $post->meta_fields)) {
+			if (is_array($post->meta_fields["places"])) {
 				foreach ($post->meta_fields['places'] as $key => $value) {
 					$value->meta_fields = get_fields($value->ID);
 				}
 			}
-			if (array_key_exists('related', $post->meta_fields)) {
+
+			//wp_die(json_encode($post->meta_fields["related"]));
+			if (is_array($post->meta_fields["related"])) {
 				foreach ($post->meta_fields['related'] as $key => $value) {
 					$value->meta_fields = get_fields($value->ID);
 				}
