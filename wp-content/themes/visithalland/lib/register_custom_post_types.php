@@ -27,7 +27,7 @@ function custom_post_type_featured() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-announcment'
+		'menu_icon'           => 'dashicons-megaphone'
 	);
 	register_post_type( 'featured', $args );
 
