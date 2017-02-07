@@ -259,7 +259,6 @@ function get_posts_by_taxonomy($taxonomy) {
 	}
 
 	wp_reset_postdata();
-
 	return $posts;
 }
 
