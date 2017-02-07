@@ -295,7 +295,6 @@ function get_single_post($data) {
 				}
 			}
 
-			//wp_die(json_encode($post->meta_fields["related"]));
 			if (is_array($post->meta_fields["related"])) {
 				foreach ($post->meta_fields['related'] as $key => $value) {
 					$value->meta_fields = get_fields($value->ID);
