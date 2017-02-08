@@ -24,6 +24,7 @@ function get_segment_detail($data) {
 
 					foreach ($taxonomiesArray as $k => $val) {
 						$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+						$title = get_field('title', $val->taxonomy . '_' . $val->term_id);
 						$value->taxonomies = array(
 							'name' => $val->name,
 							'slug' => $val->slug,
@@ -31,8 +32,10 @@ function get_segment_detail($data) {
 						);
 						$taxnomyObject = array(
 							'name' => $val->name,
+							'title' => $title,
+							'description' => $val->description,
 							'slug' => $val->slug,
-							'cover_image' => $cover_image
+							'cover_image' => $cover_image["sizes"]["large"]
 						);
 					}
 				}
