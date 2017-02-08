@@ -35,7 +35,7 @@ function get_segment_detail($data) {
 							'title' => $title,
 							'description' => $val->description,
 							'slug' => $val->slug,
-							'cover_image' => $cover_image["sizes"]["large"]
+							'cover_image' => $cover_image
 						);
 					}
 				}
