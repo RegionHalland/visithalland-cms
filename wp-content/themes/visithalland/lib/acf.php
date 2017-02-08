@@ -208,6 +208,19 @@ if(function_exists("register_field_group"))
 		'title' => 'Marknadskoncept',
 		'fields' => array (
 			array (
+				'key' => 'field_5873ad79476122',
+				'label' => 'Rubrik (visas på konceptsidan)',
+				'name' => 'title',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+				'required' => 1,
+			),
+			array (
 				'key' => 'field_58886d959b591',
 				'label' => 'Omslagsbild',
 				'name' => 'cover_image',
