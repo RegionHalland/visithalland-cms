@@ -47,19 +47,22 @@ function get_segment_detail($data) {
 		$taxonomies = $taxonomiesObject;
 		$postsByTaxonomy = [];
 		
-		foreach ($taxonomiesObject as $key => $value) {		
-			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
-			$postsByTaxonomy["taxonomies"][$key] = array(
+		foreach ($taxonomiesObject as $key => $value) {
+			//if (count(get_posts_by_taxonomy($value->slug)) > 0) {
+				$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+				$postsByTaxonomy["taxonomies"][$key] = array(
 					'name' => $value->name,
 					'slug' => $value->slug
 				);
+			//}
+			//wp_die(count(get_posts_by_taxonomy($value->slug)));
 		}
 		
 		return rest_ensure_response([
 			'featured_posts' => [
 					"taxonomy" => $taxnomyObject,
 					"posts" => $post->meta_fields['featured']
-				],
+			],
 			'posts' => get_posts_by_taxonomy($postSlug),
 			'events' => get_posts_type_taxonomy('event', $postSlug),
 			'menu' => $postsByTaxonomy

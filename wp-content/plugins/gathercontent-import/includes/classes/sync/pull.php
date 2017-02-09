@@ -222,7 +222,8 @@ class Pull extends Base {
 			$post_data[ $key ] = $this->mapping->data( $key );
 		}
 
-		if ( $status = $this->mapping->get_wp_status_for_item( $this->item ) ) {
+		$status = $this->mapping->get_wp_status_for_item( $this->item );
+		if ( $status && 'nochange' !== $status ) {
 			$post_data['post_status'] = $status;
 		}
 
