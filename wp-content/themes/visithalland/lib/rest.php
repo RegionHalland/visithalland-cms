@@ -181,6 +181,7 @@ function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
 			$posts[$i]->ID = get_the_id();
 			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->post_name = $query->post->post_name;
+			$posts[$i]->post_type = $query->post->post_type;
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
@@ -211,6 +212,7 @@ function get_posts_by_type($type, $posts_per_page = 6) {
 			$posts[$i]->ID = get_the_id();
 			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->post_name = $query->post->post_name;
+			$posts[$i]->post_type = $query->post->post_type;
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
@@ -246,6 +248,7 @@ function get_posts_by_taxonomy($taxonomy) {
 			$posts[$i]->ID = get_the_id();
 			$posts[$i]->post_title = get_the_title();
 			$posts[$i]->post_name = $query->post->post_name;
+			$posts[$i]->post_type = $query->post->post_type;
 			$posts[$i]->component_type = get_post_type();
 			$posts[$i]->meta_fields = get_fields(get_the_id());
 
