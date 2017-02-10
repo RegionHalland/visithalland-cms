@@ -1,4 +1,4 @@
-<?php
+f<?php
 
 if(function_exists("register_field_group"))
 {
@@ -119,12 +119,6 @@ if(function_exists("register_field_group"))
 					1 => 'meet',
 					2 => 'editortip',
 					3 => 'places',
-				),
-				'taxonomy' => array (
-					0 => 'taxonomy_segment:36',
-					1 => 'taxonomy_segment:36',
-					2 => 'taxonomy_segment:36',
-					3 => 'taxonomy_segment:36',
 				),
 				'filters' => array (
 					0 => 'search',
