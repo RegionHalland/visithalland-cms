@@ -48,14 +48,15 @@ function get_segment_detail($data) {
 		$postsByTaxonomy = [];
 		
 		foreach ($taxonomiesObject as $key => $value) {
-			//if (count(get_posts_by_taxonomy($value->slug)) > 0) {
-				$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
-				$postsByTaxonomy["taxonomies"][$key] = array(
-					'name' => $value->name,
-					'slug' => $value->slug
-				);
-			//}
-			//wp_die(count(get_posts_by_taxonomy($value->slug)));
+			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
+			$title = get_field('title', $val->taxonomy . '_' . $val->term_id);
+			$postsByTaxonomy["taxonomies"][$key] = array(
+				'name' => $value->name,
+				'slug' => $value->slug,
+				'title' => $title,
+				'description' => $val->description,
+				'cover_image' => $cover_image
+			);
 		}
 		
 		return rest_ensure_response([
