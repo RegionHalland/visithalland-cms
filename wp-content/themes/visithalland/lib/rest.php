@@ -107,32 +107,17 @@ function get_feed($data) {
 	
 	foreach ($taxonomiesObject as $key => $value) {		
 		$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
-		/*$postsByTaxonomy[$value->slug] = new stdClass();
-		$postsByTaxonomy[$value->slug] = get_posts_by_taxonomy($value->slug);
-		$postsByTaxonomy[$value->slug]->tax = "test";
-		$postsByTaxonomy[$key] = get_posts_by_taxonomy($value->slug);
-		*/
+		$cover_image = get_field('cover_image', $value->taxonomy . '_' . $value->term_id);
+		$title = get_field('title', $value->taxonomy . '_' . $value->term_id);
+		
 		$postsByTaxonomy["taxonomies"][$key] = array(
 				'name' => $value->name,
-				'slug' => $value->slug
-				//'cover_image' => $cover_image
-			);
-	}
-
-	/*$taxonomies = wp_get_post_terms( $posts[$i]->ID, 'taxonomy_segment', array( '' ) );
-	foreach ($taxonomies as $k => $val) {
-		//$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
-		$postsByTaxonomy["taxonomies"]->taxonomies = array(
-				'name' => $val->name,
-				'slug' => $val->slug,
+				'slug' => $value->slug,
+				'title' => $title,
+				'description' => $value->description,
 				'cover_image' => $cover_image
 			);
-	}*/
-
-	
-
-
-
+	}
 
 	return rest_ensure_response([
 			'featured_posts' => $featuredPost->meta_fields['featured'],
@@ -141,7 +126,7 @@ function get_feed($data) {
 		]);
 
 	//Unknown error
-	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+	//return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
 /*function get_taxonomy_by_slug($post_id, $taxonomy_slug) {
