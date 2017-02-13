@@ -49,7 +49,7 @@ function get_segment_detail($data) {
 		
 		foreach ($taxonomiesObject as $key => $value) {
 			//if (count(get_posts_by_taxonomy($value->slug)) > 0) {
-				$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+				$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
 				$postsByTaxonomy["taxonomies"][$key] = array(
 					'name' => $value->name,
 					'slug' => $value->slug
@@ -302,7 +302,7 @@ function get_single_post($data) {
 		$postsByTaxonomy = [];
 		
 		foreach ($taxonomiesObject as $key => $value) {		
-			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
 			$postsByTaxonomy["taxonomies"][$key] = array(
 					'name' => $value->name,
 					'slug' => $value->slug
