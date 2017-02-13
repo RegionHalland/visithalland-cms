@@ -106,7 +106,7 @@ function get_feed($data) {
 	$postsByTaxonomy = [];
 	
 	foreach ($taxonomiesObject as $key => $value) {		
-		$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
+		$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
 		$cover_image = get_field('cover_image', $value->taxonomy . '_' . $value->term_id);
 		$title = get_field('title', $value->taxonomy . '_' . $value->term_id);
 
