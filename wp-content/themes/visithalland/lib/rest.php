@@ -109,7 +109,7 @@ function get_feed($data) {
 		$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug);
 		$cover_image = get_field('cover_image', $value->taxonomy . '_' . $value->term_id);
 		$title = get_field('title', $value->taxonomy . '_' . $value->term_id);
-		
+
 		$postsByTaxonomy["taxonomies"][$key] = array(
 				'name' => $value->name,
 				'slug' => $value->slug,
@@ -215,10 +215,11 @@ function get_posts_by_taxonomy($taxonomy) {
 		'post_type'	=> array(
 			'editortip',
 			'meet',
-			'event'
+			'event',
+			'places'
 		),
 		"taxonomy_segment" => $taxonomy,
-		'posts_per_page' => 6
+		'posts_per_page' => 40
 	);
 
 	$query = new WP_Query( $args );
