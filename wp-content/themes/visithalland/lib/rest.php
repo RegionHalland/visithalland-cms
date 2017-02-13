@@ -63,7 +63,7 @@ function get_segment_detail($data) {
 					"taxonomy" => $taxnomyObject,
 					"posts" => $post->meta_fields['featured']
 			],
-			'posts' => get_posts_by_taxonomy($postSlug),
+			'posts' => get_posts_by_taxonomy($postSlug, 30),
 			'events' => get_posts_type_taxonomy('event', $postSlug),
 			'menu' => $postsByTaxonomy
 		]);
@@ -209,7 +209,7 @@ function get_posts_by_type($type, $posts_per_page = 6) {
 	return $posts;
 }
 
-function get_posts_by_taxonomy($taxonomy) {
+function get_posts_by_taxonomy($taxonomy, $posts_per_page = 6) {
 	// WP_Query arguments
 	$args = array(
 		'post_type'	=> array(
@@ -219,7 +219,7 @@ function get_posts_by_taxonomy($taxonomy) {
 			'places'
 		),
 		"taxonomy_segment" => $taxonomy,
-		'posts_per_page' => 40
+		'posts_per_page' => $posts_per_page
 	);
 
 	$query = new WP_Query( $args );
