@@ -244,10 +244,13 @@ function get_posts_by_taxonomy($taxonomy, $posts_per_page = 6) {
 
 			foreach ($taxonomies as $k => $val) {
 				$cover_image = get_field('cover_image', $val->taxonomy . '_' . $val->term_id);
+				$title = get_field('title', $value->taxonomy . '_' . $value->term_id);
 				$posts[$i]->taxonomies = array(
 						'name' => $val->name,
 						'slug' => $val->slug,
-						'cover_image' => $cover_image
+						'cover_image' => $cover_image,
+						'title' => $title,
+						'description' => $value->description,
 					);
 			}
 			$i++;
@@ -304,10 +307,15 @@ function get_single_post($data) {
 		
 		foreach ($taxonomiesObject as $key => $value) {		
 			$postsByTaxonomy["posts"][$value->slug] = get_posts_by_taxonomy($value->slug, 3);
+			$cover_image = get_field('cover_image', $value->taxonomy . '_' . $value->term_id);
+			$title = get_field('title', $value->taxonomy . '_' . $value->term_id);
 			$postsByTaxonomy["taxonomies"][$key] = array(
-					'name' => $value->name,
-					'slug' => $value->slug
-				);
+				'name' => $value->name,
+				'slug' => $value->slug,
+				'title' => $title,
+				'description' => $value->description,
+				'cover_image' => $cover_image
+			);
 		}
 
 		return rest_ensure_response([
