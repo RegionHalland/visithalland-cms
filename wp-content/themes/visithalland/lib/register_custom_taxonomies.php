@@ -17,7 +17,7 @@ function custom_taxonomy_segment() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_segment', array('adventure', 'event', 'list', 'meet', 'editortip', 'places'), $args );
+	register_taxonomy( 'taxonomy_segment', array('adventure', 'event', 'list', 'meet', 'editortip', 'places', 'featured'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_segment', 0 );
