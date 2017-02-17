@@ -1,6 +1,57 @@
 <?php
+
+// Register Best of
+function custom_taxonomy_concept() {
+
+	$labels = array(
+		'name'                       => _x( 'Koncept', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Koncept', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Koncept', 'text_domain' ),
+	);	
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'taxonomy_concept', array('meet', 'trip', 'happening'), $args );
+
+}
+add_action( 'init', 'custom_taxonomy_concept', 0 );
+
+
+
+
+function custom_taxonomy_category() {
+	$labels = array(
+		'name'                       => _x( 'Kategorier', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Kategori', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Kategorier', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'taxonomy_category', array('meet', 'trip', 'happening'), $args );
+
+}
+
+add_action( 'init', 'custom_taxonomy_category', 0 );
+
+
+
 // Register Custom Taxonomy
-function custom_taxonomy_segment() {
+/*function custom_taxonomy_segment() {
 
 	$labels = array(
 		'name'                       => _x( 'Marknadskoncept', 'Taxonomy General Name', 'text_domain' ),
@@ -78,4 +129,4 @@ function custom_taxonomy_tag() {
 }
 
 add_action( 'init', 'custom_taxonomy_tag', 0 );
-?>
+?>*/

@@ -1,5 +1,42 @@
 <?php
-function get_segment_detail($data) {
+
+function best_of_callback($data) {
+	$getPage = get_post($data["id"]);
+	$page["ID"] = $getPage->ID;
+	$page["title"] = $getPage->post_title;
+	$page["name"] = $getPage->post_name;
+	$page["cover_video"] = get_field("cover_video", $getPage->ID);
+
+	return rest_ensure_response([
+		"page" => $page,
+		"taxonomies" => get_term_children( "coastal-living", "taxonomy_concept" ),
+		"menu" => get_menu()
+	]);
+
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+}
+
+function get_menu() {
+	$menu = wp_get_nav_menu_items( "Huvudmeny", array() );
+	$menuArray = array();
+	foreach ($menu as $key => $value) {
+		$slugArray = explode("/", $value->url);
+		if (count($slugArray) > 2) {
+			$slug = $slugArray[3];
+			array_push($menuArray, array(
+					"id" => $value->ID,
+					"name" => $value->title,
+					"slug" => $slug
+				)
+			);
+		}
+	}
+
+	return $menuArray;
+}
+
+
+/*function get_segment_detail($data) {
 	$postSlug = $data->get_query_params()["slug"];
 
     // 1: Fetch all featured articles with slug provided (WP-query)
@@ -148,7 +185,7 @@ function get_feed($data) {
 	return $taxonomiesArray;
 }*/
 
-function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
+/*function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
 	$args = array(
 		'post_type'	=> array(
 			$type,
@@ -177,10 +214,10 @@ function get_posts_type_taxonomy($type, $taxonomy, $posts_per_page = 6) {
 	wp_reset_postdata();
 
 	return $posts;
-}
+}*/
 
 
-function get_posts_by_type($type, $posts_per_page = 6) {
+/*function get_posts_by_type($type, $posts_per_page = 6) {
 	$args = array(
 		'post_type'	=> array(
 			$type,
@@ -208,9 +245,9 @@ function get_posts_by_type($type, $posts_per_page = 6) {
 	wp_reset_postdata();
 
 	return $posts;
-}
+}*/
 
-function get_posts_by_taxonomy($taxonomy, $posts_per_page = 6) {
+/*function get_posts_by_taxonomy($taxonomy, $posts_per_page = 6) {
 	// WP_Query arguments
 	$args = array(
 		'post_type'	=> array(
@@ -259,12 +296,13 @@ function get_posts_by_taxonomy($taxonomy, $posts_per_page = 6) {
 
 	wp_reset_postdata();
 	return $posts;
-}
+}*/
 
 
 /**
  * GET single post
  */
+/*
 function get_single_post($data) {
 	$postSlug = $data->get_query_params()["slug"];
 
@@ -326,30 +364,36 @@ function get_single_post($data) {
 
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
-}
+}*/
  
 /**
- * This function is where we register our routes for our example endpoint.
+ * Register our rest routes
  */
-function prefix_register_example_routes() {
-    // register_rest_route() handles more arguments but we are going to stick to the basics for now.
-    register_rest_route( 'halland/v1', 'feed', array(
+function visithalland_register_routes() {
+	// Register route
+    register_rest_route( 'visit/v1', 'bestof', array(
+		'methods' => 'GET',
+		'callback' => 'best_of_callback',
+	) );
+
+    // Register route
+    /*register_rest_route( '/v1', 'feed', array(
 		'methods' => 'GET',
 		'callback' => 'get_feed',
 	) );
 
-	// register_rest_route() handles more arguments but we are going to stick to the basics for now.
-    register_rest_route( 'halland/v1', 'segment', array(
+	// Register route
+    register_rest_route( '/v1', 'segment', array(
 		'methods' => 'GET',
 		'callback' => 'get_segment_detail',
 	) );
 
-	// register_rest_route() handles more arguments but we are going to stick to the basics for now.
-    register_rest_route( 'halland/v1', 'post/', array(
+	// Register route
+    register_rest_route( '/v1', 'post/', array(
 		'methods' => 'GET',
 		'callback' => 'get_single_post',
-	) );
+	) );*/
 }
  
-add_action( 'rest_api_init', 'prefix_register_example_routes' );
+add_action( 'rest_api_init', 'visithalland_register_routes' );
 ?>
