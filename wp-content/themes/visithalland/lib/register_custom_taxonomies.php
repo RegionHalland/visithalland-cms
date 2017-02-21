@@ -2,7 +2,6 @@
 
 // Register Best of
 function custom_taxonomy_concept() {
-
 	$labels = array(
 		'name'                       => _x( 'Koncept', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Koncept', 'Taxonomy Singular Name', 'text_domain' ),
