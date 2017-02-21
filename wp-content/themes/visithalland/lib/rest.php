@@ -3,9 +3,10 @@
 function best_of_callback($data) {
 	$getPage = get_post($data["id"]);
 	$page["ID"] = $getPage->ID;
-	$page["title"] = $getPage->post_title;
-	$page["name"] = $getPage->post_name;
+	$page["post_title"] = $getPage->post_title;
+	$page["post_name"] = $getPage->post_name;
 	$page["cover_video"] = get_field("cover_video", $getPage->ID);
+	$page["excerpt"] = get_field("excerpt", $getPage->ID);
 
 	return rest_ensure_response([
 		"page" => $page,
@@ -39,8 +40,8 @@ function posts_by_type_callback($data) {
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
 			$posts[$i]["ID"] = get_the_id();
-			$posts[$i]["title"] = get_the_title();
-			$posts[$i]["slug"] = $the_query->posts[$i]->post_name;
+			$posts[$i]["post_title"] = get_the_title();
+			$posts[$i]["post_name"] = $the_query->posts[$i]->post_name;
 			$posts[$i]["meta_fields"] = get_fields($the_query->get_the_id());
 			$i++;
 		}
@@ -84,9 +85,9 @@ function get_menu($menu_name) {
 		if (count($slugArray) > 2) {
 			$slug = $slugArray[3];
 			array_push($menuArray, array(
-					"id" => $value->ID,
-					"name" => $value->title,
-					"slug" => $slug,
+					"ID" => $value->ID,
+					"post_title" => $value->title,
+					"post_name" => $slug,
 					"cover_image" => get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
 				)
 			);
