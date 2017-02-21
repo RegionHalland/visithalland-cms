@@ -18,7 +18,7 @@ function custom_taxonomy_concept() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_concept', array('meet', 'trip', 'happening'), $args );
+	register_taxonomy( 'taxonomy_concept', array('local_story', 'trip', 'happening', 'places'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_concept', 0 );
@@ -42,7 +42,7 @@ function custom_taxonomy_category() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_category', array('meet', 'trip', 'happening'), $args );
+	register_taxonomy( 'taxonomy_concept', array('local_story', 'trip', 'happening', 'places'), $args );
 
 }
 
