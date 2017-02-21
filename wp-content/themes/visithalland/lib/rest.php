@@ -87,7 +87,7 @@ function get_menu($menu_name) {
 			array_push($menuArray, array(
 					"ID" 			=> $value->ID,
 					"post_title" 	=> $value->title,
-					"post_name" 	=> $slug,
+					"post_name" 	=> get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name,
 					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
 					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
 				)
