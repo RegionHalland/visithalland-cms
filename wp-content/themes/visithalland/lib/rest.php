@@ -85,10 +85,11 @@ function get_menu($menu_name) {
 		if (count($slugArray) > 2) {
 			$slug = $slugArray[3];
 			array_push($menuArray, array(
-					"ID" => $value->ID,
-					"post_title" => $value->title,
-					"post_name" => $slug,
-					"cover_image" => get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
+					"ID" 			=> $value->ID,
+					"post_title" 	=> $value->title,
+					"post_name" 	=> $slug,
+					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
+					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
 				)
 			);
 		}
