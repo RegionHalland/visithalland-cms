@@ -60,7 +60,7 @@ function posts_by_type_callback($data) {
 
 function page_callback($data) {
 	$page_slug = $data["page_slug"];
-	$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/beach-coast' ) );
+	$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living' . $page_slug ) );
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
