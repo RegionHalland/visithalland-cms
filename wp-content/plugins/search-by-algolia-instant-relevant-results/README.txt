@@ -1,8 +1,8 @@
 === Search by Algolia – Instant & Relevant results ===
 Contributors: algolia, rayrutjes
 Tags: Search, Algolia, Autocomplete, instant-search, relevant search, search highlight, faceted search, find-as-you-type search, suggest, search by category, ajax search, better search, custom search
-Requires at least: 3.7.1
-Tested up to: 4.6.1
+Requires at least: 4.4
+Tested up to: 4.7
 Stable tag: trunk
 License: MIT License, GNU General Public License v2.0
 
@@ -100,6 +100,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 6. Instant-search results page example.
 
 == Changelog ==
+
+= 1.7.0 =
+
+To upgrade from 1.6.0, follow the [Upgrade instructions](https://community.algolia.com/wordpress/upgrade.html#from-1-6-0-to-1-7-0).
+
+* Fix the condition to remove the powered by
+* Use autocomplete.js in noConflict mode
+* Also append Cookies to wp_remote_post test calls on indexing screen
+* Update WordPress tested up to 4.7
+* Ensure wp-util is always loaded before instantsearch.js or autocomplete.js
+* Enable Yoast frontend hooks when indexing records
+* Check if the API is reachable before executing CLI commands
 
 = 1.6.0 =
 

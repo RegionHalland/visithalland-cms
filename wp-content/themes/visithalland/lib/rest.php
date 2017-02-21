@@ -9,15 +9,75 @@ function best_of_callback($data) {
 
 	return rest_ensure_response([
 		"page" => $page,
-		"taxonomies" => get_term_children( "coastal-living", "taxonomy_concept" ),
-		"menu" => get_menu()
+		"best_of" => get_menu("Best of Coastal Living"),
+		"menu" => get_menu("Huvudmeny")
 	]);
-
-	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
-function get_menu() {
-	$menu = wp_get_nav_menu_items( "Huvudmeny", array() );
+function posts_by_type_callback($data) {
+	$post_type = $data["post_type"];
+	$page_number = $data["page_number"];
+	$paged = ( $page_number ) ? $page_number : 1;
+
+    // Fetch 10 posts by post_type (WP-query)
+	$args = array(
+		'post_type'	=> array(
+			$post_type,
+		),
+		'posts_per_page' => 10,
+		'paged' => $paged
+	);
+
+    // The Query
+	$the_query = new WP_Query( $args );
+	// Create array to hold posts
+	$posts = [];
+
+	// The Loop
+	if ( $the_query->have_posts() ) {
+		$i = 0;
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			$posts[$i]["ID"] = get_the_id();
+			$posts[$i]["title"] = get_the_title();
+			$posts[$i]["slug"] = $the_query->posts[$i]->post_name;
+			$posts[$i]["meta_fields"] = get_fields($the_query->get_the_id());
+			$i++;
+		}
+		// Restore original Post Data
+		wp_reset_postdata();
+
+		return rest_ensure_response([
+			"posts" => $posts,
+			"menu" => get_menu("Huvudmeny")
+		]);
+	} else {
+		// No posts found
+		return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+	}	
+}
+
+function page_callback($data) {
+	$page_slug = $data["page_slug"];
+	$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/beach-coast' ) );
+
+	// The Loop
+	if ( $the_query->have_posts() ) {
+		$the_query->post->meta_fields = get_fields($the_query->post->ID);
+		return rest_ensure_response([
+			"page" => $the_query->post,
+			"menu" => get_menu("Huvudmeny")
+		]);
+
+		wp_reset_postdata();
+	} else {
+		// no posts found
+		return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+	}
+}
+
+function get_menu($menu_name) {
+	$menu = wp_get_nav_menu_items( $menu_name, array() );
 	$menuArray = array();
 	foreach ($menu as $key => $value) {
 		$slugArray = explode("/", $value->url);
@@ -26,12 +86,12 @@ function get_menu() {
 			array_push($menuArray, array(
 					"id" => $value->ID,
 					"name" => $value->title,
-					"slug" => $slug
+					"slug" => $slug,
+					"cover_image" => get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
 				)
 			);
 		}
 	}
-
 	return $menuArray;
 }
 
@@ -374,6 +434,16 @@ function visithalland_register_routes() {
     register_rest_route( 'visit/v1', 'bestof', array(
 		'methods' => 'GET',
 		'callback' => 'best_of_callback',
+	) );
+
+	register_rest_route( 'visit/v1', 'posts', array(
+		'methods' => 'GET',
+		'callback' => 'posts_by_type_callback',
+	) );
+
+	register_rest_route( 'visit/v1', 'page', array(
+		'methods' => 'GET',
+		'callback' => 'page_callback',
 	) );
 
     // Register route
