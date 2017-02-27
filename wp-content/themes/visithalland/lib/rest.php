@@ -14,7 +14,7 @@ function best_of_callback($data) {
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
 		"seo"	=> array(
 			"title" 		=> $getPage->post_title,
-			"description"	=> WPSEO_Meta::get_value('metadesc', $getPage->ID),
+			"description"	=> get_field("excerpt", $getPage->ID),
 			"keywords"		=> WPSEO_Meta::get_value('focuskw', $getPage->ID)
 		)
 	]);
@@ -60,7 +60,7 @@ function posts_by_type_callback($data) {
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array(
 				"title" 		=> vh_get_page_by_path($post_type)->post_title,
-				"description"	=> WPSEO_Meta::get_value('metadesc', vh_get_page_by_path($post_type)->ID),
+				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', vh_get_page_by_path($post_type)->ID)
 			)
 		]);
@@ -82,7 +82,7 @@ function page_callback($data) {
 			"menu" => vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array(
 				"title" 		=> $the_query->post->post_title,
-				"description"	=> WPSEO_Meta::get_value('metadesc', $the_query->post->ID),
+				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
 			)
 		]);
