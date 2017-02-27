@@ -10,8 +10,13 @@ function best_of_callback($data) {
 
 	return rest_ensure_response([
 		"page" => $page,
-		"best_of" => get_menu("Best of Coastal Living"),
-		"menu" => get_menu("Huvudmeny")
+		"best_of" => vh_get_menu_by_name("Best of Coastal Living"),
+		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"seo"	=> array(
+			"title" 		=> $getPage->post_title,
+			"description"	=> WPSEO_Meta::get_value('metadesc', $getPage->ID),
+			"keywords"		=> WPSEO_Meta::get_value('focuskw', $getPage->ID)
+		)
 	]);
 }
 
@@ -43,14 +48,21 @@ function posts_by_type_callback($data) {
 			$posts[$i]["post_title"] = get_the_title();
 			$posts[$i]["post_name"] = $the_query->posts[$i]->post_name;
 			$posts[$i]["meta_fields"] = get_fields($the_query->get_the_id());
+
 			$i++;
 		}
+
 		// Restore original Post Data
 		wp_reset_postdata();
 
 		return rest_ensure_response([
 			"posts" => $posts,
-			"menu" => get_menu("Huvudmeny")
+			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
+			"seo"	=> array(
+				"title" 		=> vh_get_page_by_path($post_type)->post_title,
+				"description"	=> WPSEO_Meta::get_value('metadesc', vh_get_page_by_path($post_type)->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', vh_get_page_by_path($post_type)->ID)
+			)
 		]);
 	} else {
 		// No posts found
@@ -67,7 +79,12 @@ function page_callback($data) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
 		return rest_ensure_response([
 			"page" => $the_query->post,
-			"menu" => get_menu("Huvudmeny")
+			"menu" => vh_get_menu_by_name("Huvudmeny"),
+			"seo"	=> array(
+				"title" 		=> $the_query->post->post_title,
+				"description"	=> WPSEO_Meta::get_value('metadesc', $the_query->post->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
+			)
 		]);
 
 		wp_reset_postdata();
@@ -77,7 +94,11 @@ function page_callback($data) {
 	}
 }
 
-function get_menu($menu_name) {
+function vh_get_page_by_path($page_path) {
+	return get_page_by_path( $page_path, OBJECT, 'page' );
+}
+
+function vh_get_menu_by_name($menu_name) {
 	$menu = wp_get_nav_menu_items( $menu_name, array() );
 	$menuArray = array();
 	foreach ($menu as $key => $value) {
