@@ -108,8 +108,11 @@ function vh_post_callback($data) {
 	$post_type = explode("/", $post_path)[0];
 	$post_slug = explode("/", $post_path)[1];
 
+	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
+	$post->meta_fields = get_fields($post->ID);
+
 	return rest_ensure_response([
-		"post" => get_page_by_path( $post_slug, OBJECT, $post_type),
+		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
 		"seo"	=> array(
 			"title" 		=> $the_query->post->post_title,
