@@ -1,6 +1,6 @@
 <?php
 
-function best_of_callback($data) {
+function vh_best_of_callback($data) {
 	$getPage = get_post($data["id"]);
 	$page["ID"] = $getPage->ID;
 	$page["post_title"] = $getPage->post_title;
@@ -20,7 +20,7 @@ function best_of_callback($data) {
 	]);
 }
 
-function posts_by_type_callback($data) {
+function vh_posts_by_type_callback($data) {
 	$post_type = $data["post_type"];
 	$page_number = $data["page_number"];
 	$paged = ( $page_number ) ? $page_number : 1;
@@ -47,6 +47,7 @@ function posts_by_type_callback($data) {
 			$posts[$i]["ID"] = get_the_id();
 			$posts[$i]["post_title"] = get_the_title();
 			$posts[$i]["post_name"] = $the_query->posts[$i]->post_name;
+			$posts[$i]["post_type"] = $the_query->posts[$i]->post_type;
 			$posts[$i]["meta_fields"] = get_fields($the_query->get_the_id());
 
 			$i++;
@@ -70,7 +71,7 @@ function posts_by_type_callback($data) {
 	}	
 }
 
-function page_callback($data) {
+function vh_page_callback($data) {
 	$page_slug = $data["page_slug"];
 	$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
 
@@ -93,6 +94,34 @@ function page_callback($data) {
 		return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 	}
 }
+
+/**
+ * Get post by path
+ *
+ * @param     string $data    Path to post, ex: happening/hallifornia
+ *
+ * @return    object
+ */
+function vh_post_callback($data) {
+	$post_path = $data["post_path"];
+	$post_type = explode("/", $post_path)[0];
+	$post_slug = explode("/", $post_path)[1];
+
+	return rest_ensure_response([
+		"page" => get_page_by_path( $post_slug, OBJECT, $post_type),
+		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"seo"	=> array(
+			"title" 		=> $the_query->post->post_title,
+			"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
+			"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
+		)
+	]);
+}
+
+
+
+
+/* Generic methods */
 
 function vh_get_page_by_path($page_path) {
 	return get_page_by_path( $page_path, OBJECT, 'page' );
@@ -118,7 +147,56 @@ function vh_get_menu_by_name($menu_name) {
 	return $menuArray;
 }
 
+/**
+ * Register our rest routes
+ */
+function visithalland_register_routes() {
+	// Register route
+    register_rest_route( 'visit/v1', 'bestof', array(
+		'methods' => 'GET',
+		'callback' => 'vh_best_of_callback',
+	) );
 
+	register_rest_route( 'visit/v1', 'posts', array(
+		'methods' => 'GET',
+		'callback' => 'vh_posts_by_type_callback',
+	) );
+
+	register_rest_route( 'visit/v1', 'page', array(
+		'methods' => 'GET',
+		'callback' => 'vh_page_callback',
+	) );
+
+	register_rest_route( 'visit/v1', 'post', array(
+		'methods' => 'GET',
+		'callback' => 'vh_post_callback',
+	) );
+
+    // Register route
+    /*register_rest_route( '/v1', 'feed', array(
+		'methods' => 'GET',
+		'callback' => 'get_feed',
+	) );
+
+	// Register route
+    register_rest_route( '/v1', 'segment', array(
+		'methods' => 'GET',
+		'callback' => 'get_segment_detail',
+	) );
+
+	// Register route
+    register_rest_route( '/v1', 'post/', array(
+		'methods' => 'GET',
+		'callback' => 'get_single_post',
+	) );*/
+}
+ 
+add_action( 'rest_api_init', 'visithalland_register_routes' );
+?>
+
+
+
+<?php
 /*function get_segment_detail($data) {
 	$postSlug = $data->get_query_params()["slug"];
 
@@ -448,45 +526,4 @@ function get_single_post($data) {
 	//Unknown error
 	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }*/
- 
-/**
- * Register our rest routes
- */
-function visithalland_register_routes() {
-	// Register route
-    register_rest_route( 'visit/v1', 'bestof', array(
-		'methods' => 'GET',
-		'callback' => 'best_of_callback',
-	) );
-
-	register_rest_route( 'visit/v1', 'posts', array(
-		'methods' => 'GET',
-		'callback' => 'posts_by_type_callback',
-	) );
-
-	register_rest_route( 'visit/v1', 'page', array(
-		'methods' => 'GET',
-		'callback' => 'page_callback',
-	) );
-
-    // Register route
-    /*register_rest_route( '/v1', 'feed', array(
-		'methods' => 'GET',
-		'callback' => 'get_feed',
-	) );
-
-	// Register route
-    register_rest_route( '/v1', 'segment', array(
-		'methods' => 'GET',
-		'callback' => 'get_segment_detail',
-	) );
-
-	// Register route
-    register_rest_route( '/v1', 'post/', array(
-		'methods' => 'GET',
-		'callback' => 'get_single_post',
-	) );*/
-}
- 
-add_action( 'rest_api_init', 'visithalland_register_routes' );
 ?>
