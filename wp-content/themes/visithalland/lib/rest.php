@@ -109,7 +109,7 @@ function vh_post_callback($data) {
 	$post_slug = explode("/", $post_path)[1];
 
 	return rest_ensure_response([
-		"page" => get_page_by_path( $post_slug, OBJECT, $post_type),
+		"post" => get_page_by_path( $post_slug, OBJECT, $post_type),
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
 		"seo"	=> array(
 			"title" 		=> $the_query->post->post_title,
