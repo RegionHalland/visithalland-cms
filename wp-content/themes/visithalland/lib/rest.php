@@ -115,9 +115,9 @@ function vh_post_callback($data) {
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
 		"seo"	=> array(
-			"title" 		=> $the_query->post->post_title,
-			"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
-			"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
+			"title" 		=> $post->post_title,
+			"description"	=> get_field("excerpt", $post->ID),
+			"keywords"		=> WPSEO_Meta::get_value('focuskw', $post->ID)
 		)
 	]);
 }
