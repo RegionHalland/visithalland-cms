@@ -5,6 +5,7 @@ function vh_best_of_callback($data) {
 	$page["ID"] = $getPage->ID;
 	$page["post_title"] = $getPage->post_title;
 	$page["post_name"] = $getPage->post_name;
+	$page["post_type"] = $getPage->post_type;
 	$page["cover_video"] = get_field("cover_video", $getPage->ID);
 	$page["excerpt"] = get_field("excerpt", $getPage->ID);
 
