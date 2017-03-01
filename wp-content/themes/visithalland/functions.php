@@ -23,3 +23,10 @@ include_once('lib/images.php');
 
 //Register menus
 include_once('lib/menu.php');
+
+function my_myme_types($mime_types){
+    $mime_types['svg'] = 'image/svg+xml'; //Adding svg extension
+    $mime_types['vtt'] = 'vtt'
+    return $mime_types;
+}
+add_filter('upload_mimes', 'my_myme_types', 1, 1);
