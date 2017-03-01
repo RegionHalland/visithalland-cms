@@ -30,3 +30,8 @@ function my_myme_types($mime_types){
     return $mime_types;
 }
 add_filter('upload_mimes', 'my_myme_types', 1, 1);
+
+function my_theme_output_upload_mimes() {
+    var_dump( wp_get_mime_types() );
+}
+add_action( 'template_redirect', 'my_theme_output_upload_mimes' );
