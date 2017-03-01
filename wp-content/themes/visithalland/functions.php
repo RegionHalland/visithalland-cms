@@ -27,6 +27,7 @@ include_once('lib/menu.php');
 function my_myme_types($mime_types){
     $mime_types['svg'] = 'image/svg+xml'; //Adding svg extension
     $mime_types['vtt'] = 'text/vtt';
+    $mime_types['ocet'] = 'application/octet-stream';
     return $mime_types;
 }
 add_filter('upload_mimes', 'my_myme_types', 1, 1);
