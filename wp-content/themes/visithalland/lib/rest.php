@@ -80,13 +80,14 @@ function vh_page_callback($data) {
 	if ( $the_query->have_posts() ) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
 		return rest_ensure_response([
-			"page" => $the_query->post,
-			"menu" => vh_get_menu_by_name("Huvudmeny"),
-			"seo"	=> array(
+			"page" 	=> $the_query->post,
+			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
+			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
 				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
-			)
+			),
+			"breadcrumbs" => get_breadcrumb($the_query->post)
 		]);
 
 		wp_reset_postdata();
@@ -149,6 +150,33 @@ function vh_get_menu_by_name($menu_name) {
 		}
 	}
 	return $menuArray;
+}
+
+/* Get breadcrumbs for the page/post */
+function get_breadcrumb($post) {
+	 $breadcrumbs = array();
+     $page_title = get_the_title($post->ID);
+
+     if($post->post_parent) {
+     $parent_id = $post->post_parent;
+     
+     while ($parent_id) {
+         $page = get_page($parent_id);
+         array_push($breadcrumbs, array(
+         		"title" => get_the_title($page->ID),
+         		"slug" 	=> $page->post_name
+         	)
+         );
+         $parent_id = $page->post_parent;
+     }
+ 	
+ 	array_push($breadcrumbs, array(
+     		"title" => $page_title,
+     		"slug" 	=> $post->post_name
+     	));
+     }
+     
+     return $breadcrumbs; 
 }
 
 /**
