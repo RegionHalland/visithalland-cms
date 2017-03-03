@@ -57,7 +57,11 @@ function vh_posts_by_type_callback($data) {
 		// Restore original Post Data
 		wp_reset_postdata();
 
+		$page = vh_get_page_by_path($post_type);
+		$page->meta_fields = get_fields($page->ID);
+
 		return rest_ensure_response([
+			"page" 	=> $page,
 			"posts" => $posts,
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array(
