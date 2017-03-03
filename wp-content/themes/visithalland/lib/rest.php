@@ -79,6 +79,10 @@ function vh_page_callback($data) {
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
+		foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
+			$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
+		}
+
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
