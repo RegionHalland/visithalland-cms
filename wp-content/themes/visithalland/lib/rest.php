@@ -128,6 +128,13 @@ function vh_post_callback($data) {
 	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
 	$post->meta_fields = get_fields($post->ID);
 
+	//Get stops meta fields if we have a trip
+	if (is_array($post->meta_fields["stops"])) {
+		foreach ($post->meta_fields["stops"] as $key => $value) {
+			$value->meta_fields = get_fields($value->ID);
+		}
+	}
+
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
