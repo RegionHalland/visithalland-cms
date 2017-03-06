@@ -22,15 +22,23 @@ function vh_best_of_callback($data) {
 }
 
 function vh_posts_by_type_callback($data) {
-	$post_type = $data["post_type"];
+	$post_type = array();
+
+	if($data["post_type"] == "local_story") {
+		$post_type = array(
+			"meet_local",
+			"editor_tip"
+		);
+		$data["post_type"] = "local_story";
+	} else {
+		$post_type = array($data["post_type"]);
+	}
 	$page_number = $data["page_number"];
 	$paged = ( $page_number ) ? $page_number : 1;
 
     // Fetch 10 posts by post_type (WP-query)
 	$args = array(
-		'post_type'	=> array(
-			$post_type,
-		),
+		'post_type'	=> $post_type,
 		'posts_per_page' => 10,
 		'paged' => $paged
 	);
@@ -57,7 +65,7 @@ function vh_posts_by_type_callback($data) {
 		// Restore original Post Data
 		wp_reset_postdata();
 
-		$page = vh_get_page_by_path($post_type);
+		$page = vh_get_page_by_path($data["post_type"]);
 		$page->meta_fields = get_fields($page->ID);
 
 		return rest_ensure_response([
@@ -65,9 +73,9 @@ function vh_posts_by_type_callback($data) {
 			"posts" => $posts,
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array(
-				"title" 		=> vh_get_page_by_path($post_type)->post_title,
-				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
-				"keywords"		=> WPSEO_Meta::get_value('focuskw', vh_get_page_by_path($post_type)->ID)
+				"title" 		=> vh_get_page_by_path($data["post_type"])->post_title,
+				"description"	=> get_field("excerpt", vh_get_page_by_path($data["post_type"])->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', vh_get_page_by_path($data["post_type"])->ID)
 			)
 		]);
 	} else {
