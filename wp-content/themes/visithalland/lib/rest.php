@@ -142,6 +142,16 @@ function vh_post_callback($data) {
 			"title" 		=> $post->post_title,
 			"description"	=> get_field("excerpt", $post->ID),
 			"keywords"		=> WPSEO_Meta::get_value('focuskw', $post->ID)
+		),
+		"breadcrumbs" => array(
+			array(
+				"title" => get_post_type_object($post->post_type)->labels->menu_name,
+				"slug"	=> $post->post_type,
+			),
+			array(
+				"title" => $post->post_title,
+				"slug"	=> $post->post_name,
+			)
 		)
 	]);
 }
