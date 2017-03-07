@@ -155,6 +155,10 @@ function vh_post_callback($data) {
 	  )
 	));
 
+	foreach ($further_reading as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+	}
+
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
