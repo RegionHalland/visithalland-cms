@@ -143,7 +143,7 @@ function vh_post_callback($data) {
 			"trip",
 			"happening"
 		),
-	  'numberposts' => -1,
+	  'numberposts' => 3,
 	  'exclude' => array($post->ID),
 	  'tax_query' => array(
 	    array(
