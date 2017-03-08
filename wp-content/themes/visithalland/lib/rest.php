@@ -58,11 +58,7 @@ function vh_posts_by_type_callback($data) {
 			$posts[$i]["post_name"] = $the_query->posts[$i]->post_name;
 			$posts[$i]["post_type"] = $the_query->posts[$i]->post_type;
 			$posts[$i]["meta_fields"] = get_fields($the_query->get_the_id());
-			$posts[$i]["meta_fields"]["author"] = array(
-					"name" => get_the_author(),
-					"ID" => get_the_author_meta('ID'),
-					"profile_image" => get_field('profile_image', 'user_'.get_the_author_meta('ID'))
-				);
+			$posts[$i]["meta_fields"]["author"] = vh_get_author(get_the_author_meta('ID'));
 
 			$i++;
 		}
@@ -98,11 +94,7 @@ function vh_page_callback($data) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
 		foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
 			$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
-			$value->meta_fields["author"] = array(
-				"name" => get_user_by( "id", $value->post_author)->data->display_name,
-				"ID" => $value->post_author,
-				"profile_image" => get_field('profile_image', 'user_'.$value->post_author)
-			);
+			$value->meta_fields["author"] = vh_get_author($value->post_author);
 		}
 
 		return rest_ensure_response([
@@ -167,11 +159,7 @@ function vh_post_callback($data) {
 
 	foreach ($further_reading as $key => $value) {
 		$value->meta_fields = get_fields($value->ID);
-		$value->meta_fields["author"] = array(
-			"name" => get_user_by( "id", $value->post_author)->data->display_name,
-			"ID" => $value->post_author,
-			"profile_image" => get_field('profile_image', 'user_'.$value->post_author)
-		);
+		$value->meta_fields["author"] = vh_get_author($value->post_author);
 	}
 
 	return rest_ensure_response([
@@ -223,6 +211,16 @@ function vh_get_menu_by_name($menu_name) {
 		}
 	}
 	return $menuArray;
+}
+
+/* GET AUTHOR */
+function vh_get_author($author_id) {
+	return array(
+		"ID" => $author_id,
+		"name" => get_user_by( "id", $author_id)->data->display_name,
+		"role" => get_field('role', 'user_'.$author_id),
+		"profile_image" => get_field('profile_image', 'user_'.$author_id)
+	);
 }
 
 /* Get breadcrumbs for the page/post */
