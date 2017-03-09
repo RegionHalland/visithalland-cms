@@ -82,7 +82,7 @@ function vh_posts_by_type_callback($data) {
 	} else {
 		// No posts found
 		return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
-	}	
+	}
 }
 
 function vh_page_callback($data) {
@@ -99,6 +99,7 @@ function vh_page_callback($data) {
 
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
+			"posts" => vh_get_posts_by_taxonomy_concept($the_query->post->ID, -1),
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
@@ -137,35 +138,10 @@ function vh_post_callback($data) {
 		}
 	}
 
-	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
-	$further_reading = get_posts(array(
-	  'post_type' => array(
-	  		"meet_local",
-			"editor_tip",
-			"trip",
-			"happening"
-		),
-	  'numberposts' => 3,
-	  'exclude' => array($post->ID),
-	  'tax_query' => array(
-	    array(
-	      'taxonomy' => 'taxonomy_concept',
-	      'field' => 'id',
-	      'terms' => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-	      'include_children' => false
-	    )
-	  )
-	));
-
-	foreach ($further_reading as $key => $value) {
-		$value->meta_fields = get_fields($value->ID);
-		$value->meta_fields["author"] = vh_get_author($value->post_author);
-	}
-
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"further_reading" 	=> $further_reading,
+		"further_reading" 	=> vh_get_posts_by_taxonomy_concept($post->ID),
 		"seo"	=> array(
 			"title" 		=> $post->post_title,
 			"description"	=> get_field("excerpt", $post->ID),
@@ -191,6 +167,34 @@ function vh_post_callback($data) {
 
 function vh_get_page_by_path($page_path) {
 	return get_page_by_path( $page_path, OBJECT, 'page' );
+}
+
+function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
+	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$posts = get_posts(array(
+	  'post_type' => array(
+	  		"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+	  ),
+	  'numberposts'  => $numberposts,
+	  'exclude' 	 => array($post_id),
+	  'tax_query' 	 => array(
+	  array(
+	      'taxonomy' => 'taxonomy_concept',
+	      'field' 	 => 'id',
+	      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+	      'include_children' => false
+	    )
+	  )
+	));
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->meta_fields["author"] = vh_get_author($value->post_author);
+	}
+	return $posts;
 }
 
 function vh_get_menu_by_name($menu_name) {
