@@ -25,7 +25,7 @@ add_action( 'init', 'custom_taxonomy_concept', 0 );
 
 
 
-function custom_taxonomy_category() {
+/*function custom_taxonomy_category() {
 	$labels = array(
 		'name'                       => _x( 'Kategorier', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Kategori', 'Taxonomy Singular Name', 'text_domain' ),
@@ -45,7 +45,7 @@ function custom_taxonomy_category() {
 
 }
 
-add_action( 'init', 'custom_taxonomy_category', 0 );
+add_action( 'init', 'custom_taxonomy_category', 0 );*/
 
 
 
