@@ -34,6 +34,11 @@ function vh_best_of_callback($data) {
 		"page" => $page,
 		"posts" => $posts,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"breadcrumbs" =>
+			array(
+				"title" => $getPage->post_title,
+				"slug"	=> $getPage->post_name,
+			),
 		"seo"	=> array(
 			"title" 		=> $getPage->post_title,
 			"description"	=> get_field("excerpt", $getPage->ID),
