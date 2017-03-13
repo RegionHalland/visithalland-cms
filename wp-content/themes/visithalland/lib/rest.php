@@ -170,8 +170,8 @@ function vh_post_callback($data) {
 		),
 		"breadcrumbs" => array(
 			array(
-				"title" => get_post_type_object($post->post_type)->labels->menu_name,
-				"slug"	=> $post->post_type,
+				"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+				"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
 			),
 			array(
 				"title" => $post->post_title,
