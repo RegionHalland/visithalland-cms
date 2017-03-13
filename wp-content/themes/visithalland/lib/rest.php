@@ -263,7 +263,7 @@ function get_breadcrumb($post) {
      if($post->post_parent) {
      $parent_id = $post->post_parent;
      
-     while ($parent_id) {
+     /*while ($parent_id) {
          $page = get_page($parent_id);
          array_push($breadcrumbs, array(
          		"title" => get_the_title($page->ID),
@@ -271,7 +271,7 @@ function get_breadcrumb($post) {
          	)
          );
          $parent_id = $page->post_parent;
-     }
+     }*/
  	
  	array_push($breadcrumbs, array(
      		"title" => $page_title,
