@@ -8,15 +8,31 @@ function vh_best_of_callback($data) {
 	$page["post_type"] = $getPage->post_type;
 	$page["cover_video"] = get_field("cover_video", $getPage->ID);
 	$page["excerpt"] = get_field("excerpt", $getPage->ID);
-	$best_of = vh_get_menu_by_name("Best of Coastal Living");
+	//$best_of = vh_get_menu_by_name("Best of Coastal Living");
 
-	foreach ($best_of as $key => $value) {
-		$best_of[$key]["featured"] = get_field("featured", vh_get_page_by_path("best-of-coastal-living/" . $value["post_name"])->ID);
+	$posts = get_posts(array(
+		  'post_type' => array(
+		  		"meet_local",
+				"editor_tip",
+				"trip",
+				"happening"
+		  ),
+	  	'numberposts'  => -1,
+	  )
+	);
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->meta_fields["author"] = vh_get_author($value->post_author);
 	}
+
+	/*foreach ($best_of as $key => $value) {
+		$best_of[$key]["featured"] = get_field("featured", vh_get_page_by_path("best-of-coastal-living/" . $value["post_name"])->ID);
+	}*/
 
 	return rest_ensure_response([
 		"page" => $page,
-		"best_of" => $best_of,
+		"posts" => $posts,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
 		"seo"	=> array(
 			"title" 		=> $getPage->post_title,
