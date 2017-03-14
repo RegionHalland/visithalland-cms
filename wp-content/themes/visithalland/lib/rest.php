@@ -176,6 +176,13 @@ function vh_post_callback($data) {
 		}
 	}
 
+	//Get stops meta fields if we have a trip
+	if (is_array($post->meta_fields["mentioned"])) {
+		foreach ($post->meta_fields["mentioned"] as $key => $value) {
+			$value->meta_fields = get_fields($value->ID);
+		}
+	}
+
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
