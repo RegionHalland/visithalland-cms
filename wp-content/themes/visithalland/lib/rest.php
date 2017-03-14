@@ -115,14 +115,21 @@ function vh_posts_by_type_callback($data) {
 
 function vh_page_callback($data) {
 	$page_slug = $data["page_slug"];
-	$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
+	if ($page_slug == "best-of-coastal-living") {
+		$the_query = new WP_Query( array( 'pagename' => $page_slug) );	
+	} else {
+		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );	
+	}
+	
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
-		foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
-			$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
-			$value->meta_fields["author"] = vh_get_author($value->post_author);
+		if (is_array($the_query->post->meta_fields["best_of"])) {
+			foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
+				$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
+				$value->meta_fields["author"] = vh_get_author($value->post_author);
+			}
 		}
 
 		return rest_ensure_response([
@@ -199,6 +206,19 @@ function vh_get_page_by_path($page_path) {
 
 function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$tax_query = array();
+
+	//If coastal living
+	if ($post_id != 12) {
+		$tax_query = array(
+	  		array(
+		      'taxonomy' => 'taxonomy_concept',
+		      'field' 	 => 'id',
+		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+		      'include_children' => false
+		    )
+	  	);
+	}
 	$posts = get_posts(array(
 	  'post_type' => array(
 	  		"meet_local",
@@ -208,14 +228,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	  ),
 	  'numberposts'  => $numberposts,
 	  'exclude' 	 => array($post_id),
-	  'tax_query' 	 => array(
-	  array(
-	      'taxonomy' => 'taxonomy_concept',
-	      'field' 	 => 'id',
-	      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-	      'include_children' => false
-	    )
-	  )
+	  'tax_query' 	 => $tax_query
 	));
 
 	foreach ($posts as $key => $value) {
