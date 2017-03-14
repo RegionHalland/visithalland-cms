@@ -115,10 +115,13 @@ function vh_posts_by_type_callback($data) {
 
 function vh_page_callback($data) {
 	$page_slug = $data["page_slug"];
+	$breadcrumbs = array();
 	if ($page_slug == "best-of-coastal-living") {
 		$the_query = new WP_Query( array( 'pagename' => $page_slug) );	
+		$breadcrumbs = array(array("title" => $the_query->post->post_title, "slug" => "best-of-coastal-living"));
 	} else {
-		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );	
+		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
+		$breadcrumbs = get_breadcrumb($the_query->post);
 	}
 	
 
@@ -141,7 +144,7 @@ function vh_page_callback($data) {
 				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
 			),
-			"breadcrumbs" => get_breadcrumb($the_query->post)
+			"breadcrumbs" => $breadcrumbs
 		]);
 
 		wp_reset_postdata();
