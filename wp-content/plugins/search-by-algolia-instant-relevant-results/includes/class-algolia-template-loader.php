@@ -24,10 +24,10 @@ class Algolia_Template_Loader {
 		// Load autocomplete.js search experience if its enabled.
 		if ( $this->should_load_autocomplete() ) {
 			add_filter( 'wp_enqueue_scripts', array( $this, 'enqueue_autocomplete_scripts' ) );
-			add_filter( 'wp_footer', array( $this, 'load_autocomplete_template' ) );
+			add_filter( 'wp_footer', array( $this, 'load_autocomplete_template' ), PHP_INT_MAX );
 		}
 	}
-	
+
 	public function load_algolia_config() {
 		$settings = $this->plugin->get_settings();
 		$autocomplete_config = $this->plugin->get_autocomplete_config();
@@ -57,7 +57,7 @@ class Algolia_Template_Loader {
 
 		echo '<script type="text/javascript">var algolia = ' . $json_config . '</script>';
 	}
-	
+
 	private function should_load_autocomplete() {
 		$settings = $this->plugin->get_settings();
 		$autocomplete = $this->plugin->get_autocomplete_config();
@@ -88,9 +88,7 @@ class Algolia_Template_Loader {
 
 		// Enqueue the autocomplete.js library.
 		wp_enqueue_script( 'algolia-autocomplete' );
-
-		// WordPress utility useful for using underscore templating.
-		wp_enqueue_script( 'wp-util' );
+		wp_enqueue_script( 'algolia-autocomplete-noconflict' );
 
 		// Lib useful for positioning the autocomplete.js dropdown.
 		wp_enqueue_script( 'tether' );
@@ -135,9 +133,6 @@ class Algolia_Template_Loader {
 			// Enqueue the instantsearch.js library.
 			wp_enqueue_script( 'algolia-instantsearch' );
 
-			// WordPress utility useful for using underscore templating.
-			wp_enqueue_script( 'wp-util' );
-
 			// Allow users to easily enqueue custom styles and scripts.
 			do_action( 'algolia_instantsearch_scripts' );
 		} );
@@ -164,13 +159,13 @@ class Algolia_Template_Loader {
 		if ( 'algolia/' !== $templates_path ) {
 			$locations[] = 'algolia/' . $file;
 		}
-		
+
 		$locations[] = $templates_path . $file;
 
 		$locations = (array) apply_filters( 'algolia_template_locations', $locations, $file );
 
 		$template = locate_template( array_unique( $locations ) );
-		
+
 		$default_template = (string) apply_filters( 'algolia_default_template', $this->plugin->get_path() . '/templates/' . $file, $file );
 
 		return $template ? $template : $default_template;
