@@ -1,5 +1,4 @@
 <?php
-
 //Modification of acf plugin
 include_once('lib/acf.php');
 
