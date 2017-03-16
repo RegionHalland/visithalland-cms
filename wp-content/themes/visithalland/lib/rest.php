@@ -191,6 +191,10 @@ function vh_post_callback($data) {
 		}
 	}
 
+	//Add post author
+	$post->meta_fields["author"] = vh_get_author($post->post_author);
+	
+
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
