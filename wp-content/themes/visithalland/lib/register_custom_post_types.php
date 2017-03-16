@@ -2,7 +2,6 @@
 
 // Register Meet a local
 function custom_post_type_meet_local() {
-
 	$labels = array(
 		'name'                  => _x( 'Meet our locals', 'Post Type General Name', 'visithalland' ),
 		'singular_name'         => _x( 'Meet our locals', 'Post Type Singular Name', 'visithalland' ),
@@ -73,7 +72,6 @@ add_action( 'init', 'custom_post_type_editor_tip', 0 );
 
 // Register Trip ideas
 function custom_post_type_trips() {
-
 	$labels = array(
 		'name'                  => _x( 'Trips', 'Post Type General Name', 'visithalland' ),
 		'singular_name'         => _x( 'Trips', 'Post Type Singular Name', 'visithalland' ),
@@ -109,7 +107,6 @@ add_action( 'init', 'custom_post_type_trips', 0 );
 
 // Register Happenings
 function custom_post_type_happenings() {
-
 	$labels = array(
 		'name'                  => _x( 'Happenings', 'Post Type General Name', 'visithalland' ),
 		'singular_name'         => _x( 'Happening', 'Post Type Singular Name', 'visithalland' ),
@@ -142,17 +139,16 @@ function custom_post_type_happenings() {
 add_action( 'init', 'custom_post_type_happenings', 0 );
 
 
-// Register Place
+// Register Places
 function custom_post_type_places() {
-
 	$labels = array(
-		'name'                  => _x( 'See & do', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'See & do', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'See & do', 'visithalland' ),
-		'name_admin_bar'        => __( 'See & do', 'visithalland' ),
+		'name'                  => _x( 'Platser', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Platser', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Platser', 'visithalland' ),
+		'name_admin_bar'        => __( 'Platser', 'visithalland' ),
 	);
 	$args = array(
-		'label'                 => __( 'See & do', 'visithalland' ),
+		'label'                 => __( 'Platser', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
 		'supports'              => array('title', 'author', 'revisions'),
@@ -169,9 +165,42 @@ function custom_post_type_places() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-smiley'
+		'menu_icon'           => 'dashicons-location-alt'
 	);
 	register_post_type( 'places', $args );
 
 }
 add_action( 'init', 'custom_post_type_places', 0 );
+
+// Register companies
+function custom_post_type_companies() {
+	$labels = array(
+		'name'                  => _x( 'Näringslivsaktörer', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Näringslivsaktörer', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Näringslivsaktörer', 'visithalland' ),
+		'name_admin_bar'        => __( 'Näringslivsaktörer', 'visithalland' ),
+	);
+	$args = array(
+		'label'                 => __( 'Näringslivsaktörer', 'visithalland' ),
+		'description'           => __( 'Post Type Description', 'visithalland' ),
+		'labels'                => $labels,
+		'supports'              => array('title', 'author', 'revisions'),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+		'show_in_rest'       => true,
+		'menu_icon'           => 'dashicons-store'
+	);
+	register_post_type( 'companies', $args );
+
+}
+add_action( 'init', 'custom_post_type_companies', 0 );

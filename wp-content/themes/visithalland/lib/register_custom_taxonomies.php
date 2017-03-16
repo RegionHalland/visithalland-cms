@@ -17,7 +17,7 @@ function custom_taxonomy_concept() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_concept', array('meet_local', 'trip', 'happening', 'places', 'editor_tip', 'page'), $args );
+	register_taxonomy( 'taxonomy_concept', array('meet_local', 'trip', 'happening', 'places', 'editor_tip', 'page', 'companies'), $args );
 
 }
 add_action( 'init', 'custom_taxonomy_concept', 0 );
