@@ -176,10 +176,18 @@ function vh_post_callback($data) {
 		}
 	}
 
-	//Get stops meta fields if we have a trip
+	//Get mentioned meta fields
 	if (is_array($post->meta_fields["mentioned"])) {
 		foreach ($post->meta_fields["mentioned"] as $key => $value) {
 			$value->meta_fields = get_fields($value->ID);
+		}
+	}
+
+	//Get tips meta fields if we have a meet a local
+	if (is_array($post->meta_fields["tips"])) {
+		foreach ($post->meta_fields["tips"] as $key => $value) {
+			//$value->meta_fields = get_fields($value["tip"]->ID);
+			$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
 		}
 	}
 
