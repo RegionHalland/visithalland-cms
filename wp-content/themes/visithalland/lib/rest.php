@@ -122,8 +122,7 @@ function vh_page_callback($data) {
 	} else {
 		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
 		$breadcrumbs = get_breadcrumb($the_query->post);
-	}
-	
+	}	
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
@@ -132,6 +131,12 @@ function vh_page_callback($data) {
 			foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
 				$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
 				$value->meta_fields["author"] = vh_get_author($value->post_author);
+			}
+		}
+
+		if (is_array($the_query->post->meta_fields["featured"])) {
+			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
+				$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
 			}
 		}
 
