@@ -198,7 +198,7 @@ function vh_post_callback($data) {
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"further_reading" 	=> vh_get_posts_by_taxonomy_concept($post->ID),
+		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post->ID),
 		"seo"	=> array(
 			"title" 		=> $post->post_title,
 			"description"	=> get_field("excerpt", $post->ID),
@@ -258,6 +258,42 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 		$value->meta_fields["author"] = vh_get_author($value->post_author);
 	}
 	return $posts;
+}
+
+function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 10) {
+	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$tax_query = array();
+
+	//If coastal living
+	if ($post_id != 12) {
+		$tax_query = array(
+	  		array(
+		      'taxonomy' => 'taxonomy_concept',
+		      'field' 	 => 'id',
+		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+		      'include_children' => false
+		    )
+	  	);
+	}
+	$posts = get_posts(array(
+	  'post_type' => array(
+	  		"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+	  ),
+	  'numberposts'  => $numberposts,
+	  'exclude' 	 => array($post_id),
+	  'tax_query' 	 => $tax_query
+	));
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->meta_fields["author"] = vh_get_author($value->post_author);
+	}
+	shuffle($posts);
+
+	return array_slice($posts, 0, 3);
 }
 
 function vh_get_menu_by_name($menu_name) {
