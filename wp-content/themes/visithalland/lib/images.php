@@ -15,5 +15,5 @@ add_filter( 'image_send_to_editor', 'title_caption_image', 10, 9 );
 
 
 //Add image size for hero images
-add_image_size( 'hero', 1920, 550 ); // 1920 pixels wide by 550 pixels tall, soft proportional crop mode
+add_image_size( 'hero', 1920, 1200 ); // 1920 pixels wide by 550 pixels tall, soft proportional crop mode
 ?>
