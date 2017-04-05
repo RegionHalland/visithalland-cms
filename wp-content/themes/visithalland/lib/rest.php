@@ -54,7 +54,7 @@ function vh_landing_callback($data) {
 	//return rest_ensure_response("hello");
 	$post = get_post($data["id"]);
 	$post->meta_fields = get_fields($post->ID);
-	$menu = vh_get_menu_by_name("Best of Coastal Living");
+	$menu = vh_get_menu_by_name("Huvudmeny");
 
 	return rest_ensure_response([
 			"page" 	=> $post,
