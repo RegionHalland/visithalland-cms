@@ -1,6 +1,6 @@
 <?php
 
-function vh_best_of_callback($data) {
+/*function vh_best_of_callback($data) {
 	$getPage = get_post($data["id"]);
 	$page["ID"] = $getPage->ID;
 	$page["post_title"] = $getPage->post_title;
@@ -28,7 +28,7 @@ function vh_best_of_callback($data) {
 
 	/*foreach ($best_of as $key => $value) {
 		$best_of[$key]["featured"] = get_field("featured", vh_get_page_by_path("best-of-coastal-living/" . $value["post_name"])->ID);
-	}*/
+	}
 
 	return rest_ensure_response([
 		"page" => $page,
@@ -47,6 +47,64 @@ function vh_best_of_callback($data) {
 			"keywords"		=> WPSEO_Meta::get_value('focuskw', $getPage->ID)
 		)
 	]);
+}*/
+
+function vh_landing_callback($data) {
+	$data["id"] = 12;
+	//return rest_ensure_response("hello");
+	$best_of = vh_get_menu_by_name("Best of Coastal Living");
+
+	return rest_ensure_response([
+			"page" 	=> get_post($data["id"]),
+			"menu" 		=> $best_of
+		]
+	);
+
+	/*$page["ID"] = $getPage->ID;
+	$page["post_title"] = $getPage->post_title;
+	$page["post_name"] = $getPage->post_name;
+	$page["post_type"] = $getPage->post_type;
+	$page["cover_video"] = get_field("cover_video", $getPage->ID);
+	$page["excerpt"] = get_field("excerpt", $getPage->ID);
+	//$best_of = vh_get_menu_by_name("Best of Coastal Living");
+
+	$posts = get_posts(array(
+		  'post_type' => array(
+		  		"meet_local",
+				"editor_tip",
+				"trip",
+				"happening"
+		  ),
+	  	'numberposts'  => -1,
+	  )
+	);
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->meta_fields["author"] = vh_get_author($value->post_author);
+	}
+
+	/*foreach ($best_of as $key => $value) {
+		$best_of[$key]["featured"] = get_field("featured", vh_get_page_by_path("best-of-coastal-living/" . $value["post_name"])->ID);
+	}
+
+	return rest_ensure_response([
+		"page" => $page,
+		"posts" => $posts,
+		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"breadcrumbs" =>
+			array(
+				array(
+					"title" => $getPage->post_title,
+					"slug"	=> $getPage->post_name,
+				)
+			),
+		"seo"	=> array(
+			"title" 		=> $getPage->post_title,
+			"description"	=> get_field("excerpt", $getPage->ID),
+			"keywords"		=> WPSEO_Meta::get_value('focuskw', $getPage->ID)
+		)
+	])*/
 }
 
 function vh_posts_by_type_callback($data) {
@@ -122,7 +180,7 @@ function vh_page_callback($data) {
 	} else {
 		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
 		$breadcrumbs = get_breadcrumb($the_query->post);
-	}	
+	}
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
@@ -313,7 +371,9 @@ function vh_get_menu_by_name($menu_name) {
 					"post_title" 	=> $value->title,
 					"post_name" 	=> get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name,
 					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
-					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
+					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
+					"cover_video" 	=> get_field("cover_video", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
+					"cover_video_safari" 	=> get_field("cover_video_safari", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
 				)
 			);
 		}
@@ -363,9 +423,9 @@ function get_breadcrumb($post) {
  */
 function visithalland_register_routes() {
 	// Register route
-    register_rest_route( 'visit/v1', 'bestof', array(
+    register_rest_route( 'visit/v1', 'landing', array(
 		'methods' => 'GET',
-		'callback' => 'vh_best_of_callback',
+		'callback' => 'vh_landing_callback',
 	) );
 
 	register_rest_route( 'visit/v1', 'posts', array(
