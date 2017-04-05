@@ -52,11 +52,13 @@
 function vh_landing_callback($data) {
 	$data["id"] = 12;
 	//return rest_ensure_response("hello");
-	$best_of = vh_get_menu_by_name("Best of Coastal Living");
+	$post = get_post($data["id"]);
+	$post->meta_fields = get_fields($post->ID);
+	$menu = vh_get_menu_by_name("Best of Coastal Living");
 
 	return rest_ensure_response([
-			"page" 	=> get_post($data["id"]),
-			"menu" 		=> $best_of
+			"page" 	=> $post,
+			"menu" 	=> $menu
 		]
 	);
 
