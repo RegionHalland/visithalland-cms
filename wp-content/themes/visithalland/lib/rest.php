@@ -55,12 +55,10 @@ function vh_landing_callback($data) {
 	$page->meta_fields = get_fields($page->ID);
 	$menu = vh_get_menu_by_name("Huvudmeny");
 
-	$concepts = [];
-
 	return rest_ensure_response([
 			"page" 	=> $page,
 			"menu" 	=> $menu,
-			"concepts" => $concepts,
+			"featured" => $featured,
 			"seo"	=> array(
 				"title" 		=> $page->post_title,
 				"description"	=> get_field("excerpt", $page->ID),
@@ -373,6 +371,7 @@ function vh_get_menu_by_name($menu_name) {
 					"post_title" 	=> $value->title,
 					"post_name" 	=> get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name,
 					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
+					"featured" 	=> get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video" 	=> get_field("cover_video", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video_safari" 	=> get_field("cover_video_safari", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
