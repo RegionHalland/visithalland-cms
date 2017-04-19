@@ -366,12 +366,20 @@ function vh_get_menu_by_name($menu_name) {
 		$slugArray = explode("/", $value->url);
 		if (count($slugArray) > 2) {
 			$slug = $slugArray[3];
+			$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))), 0, 2);
+			$featured = [];
+
+			foreach ($featuredTemp as $key => $value) {
+				$featured[$key] = $value;
+				$featured[$key]->meta_fields = get_fields($value->ID);
+			}
+
 			array_push($menuArray, array(
 					"ID" 			=> $value->ID,
 					"post_title" 	=> $value->title,
 					"post_name" 	=> get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name,
 					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
-					"featured" 		=> array_slice(get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))), 0, 2),
+					"featured" 		=> $featured,
 					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video" 	=> get_field("cover_video", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video_safari" 	=> get_field("cover_video_safari", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
