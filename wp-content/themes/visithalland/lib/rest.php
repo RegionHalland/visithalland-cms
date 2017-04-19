@@ -371,7 +371,7 @@ function vh_get_menu_by_name($menu_name) {
 					"post_title" 	=> $value->title,
 					"post_name" 	=> get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name,
 					"excerpt" 		=> get_field( 'excerpt', get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )) ),
-					"featured" 	=> get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
+					"featured" 		=> array_slice(get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))), 0, 2),
 					"cover_image" 	=> get_field("cover_image", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video" 	=> get_field("cover_video", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))),
 					"cover_video_safari" 	=> get_field("cover_video_safari", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true )))
