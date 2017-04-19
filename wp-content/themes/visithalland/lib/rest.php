@@ -370,6 +370,7 @@ function vh_get_menu_by_name($menu_name) {
 
 			foreach ($featuredTemp as $k => $val) {
 				$featured[$k] = $val;
+				$featured[$k]->author = vh_get_author($val->post_author);
 				$featured[$k]->meta_fields = get_fields($val->ID);
 			}
 
