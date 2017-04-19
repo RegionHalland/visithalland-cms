@@ -58,7 +58,6 @@ function vh_landing_callback($data) {
 	return rest_ensure_response([
 			"page" 	=> $page,
 			"menu" 	=> $menu,
-			"featured" => $featured,
 			"seo"	=> array(
 				"title" 		=> $page->post_title,
 				"description"	=> get_field("excerpt", $page->ID),
