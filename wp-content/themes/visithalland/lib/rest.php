@@ -158,8 +158,19 @@ function vh_page_callback($data) {
 			}
 		}
 
+		//$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true ))), 0, 3);
+		//$featuredTemp = get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true )));
+		/*$featured = [];
+
+		foreach ($featuredTemp as $k => $val) {
+			$featured[$k] = $val;
+			$featured[$k]->author = vh_get_author($val->post_author);
+			$featured[$k]->meta_fields = get_fields($val->ID);
+		}*/
+
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
+			"featured" => $featuredTemp,
 			"posts" => vh_get_posts_by_taxonomy_concept_sort_by_featured($the_query->post->ID, -1),
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
@@ -237,6 +248,18 @@ function vh_post_callback($data) {
 				"slug"	=> $post->post_name,
 			)
 		)
+	]);
+}
+
+
+function vh_post_in_concept_callback($data) {
+	$post_path = $data["post_path"];
+	$post_type = explode("/", $post_path)[0];
+	$post_slug = explode("/", $post_path)[1];
+	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
+
+	return rest_ensure_response([
+		"post" 	=> vh_post_callback(array("post_path" => vh_get_further_reading_by_taxonomy_concept($post->ID, 1)[0]->post_type . "/" .vh_get_further_reading_by_taxonomy_concept($post->ID, 1)[0]->post_name))
 	]);
 }
 
@@ -451,6 +474,11 @@ function visithalland_register_routes() {
 		'methods' => 'GET',
 		'callback' => 'vh_post_callback',
 	) );
+
+	register_rest_route( 'visit/v1', 'post_in_concept', array(
+		'methods' => 'GET',
+		'callback' => 'vh_post_in_concept_callback',
+	) );	
 
     // Register route
     /*register_rest_route( '/v1', 'feed', array(
