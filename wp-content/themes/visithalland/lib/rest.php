@@ -166,11 +166,12 @@ function vh_page_callback($data) {
 			}
 		}*/
 
-		/*if (is_array($the_query->post->meta_fields["featured"])) {
+		if (is_array($the_query->post->meta_fields["featured"])) {
 			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
 				$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
+				$the_query->post->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
 			}
-		}*/
+		}
 
 		//$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true ))), 0, 3);
 		//$featuredTemp = get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true )));
