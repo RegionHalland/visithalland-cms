@@ -288,7 +288,16 @@ function vh_post_in_concept_callback($data) {
 	  'tax_query' 	 => $tax_query
 	));
 
-	return rest_ensure_response($posts[0]);
+	return rest_ensure_response([
+		"post" => $posts[0],
+		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
+		"seo"	=> array(
+			"title" 		=> $posts[0]->post_title,
+			"description"	=> get_field("excerpt", $posts[0]->ID),
+			"keywords"		=> WPSEO_Meta::get_value('focuskw', $posts[0]->ID)
+		)]
+		);
 }
 
 
