@@ -145,18 +145,32 @@ function vh_page_callback($data) {
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
-		if (is_array($the_query->post->meta_fields["best_of"])) {
+		$the_query->post->author = vh_get_author($the_query->post->post_author);
+		
+		/*if (is_array($the_query->post->meta_fields["featured"])) {
+			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
+				//$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
+				//$value->meta_fields["featured"] = vh_get_author($value->post_author);
+				//$value["meta_fields"] = "asd";				
+				//array_push($value->author, array("author" => "asd"));
+				//$value->meta_fields->test = new stdClass();
+				//$the_query->post->meta_fields["featured"][$key]->meta_fields["test"] = "dlas";
+				//$value->meta_fields = "adsasdash";
+			}
+		}*/
+
+		/*if (is_array($the_query->post->meta_fields["best_of"])) {
 			foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
 				$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
 				$value->meta_fields["author"] = vh_get_author($value->post_author);
 			}
-		}
+		}*/
 
-		if (is_array($the_query->post->meta_fields["featured"])) {
+		/*if (is_array($the_query->post->meta_fields["featured"])) {
 			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
 				$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
 			}
-		}
+		}*/
 
 		//$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true ))), 0, 3);
 		//$featuredTemp = get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true )));
@@ -170,8 +184,8 @@ function vh_page_callback($data) {
 
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
-			"featured" => $featuredTemp,
-			"posts" => vh_get_posts_by_taxonomy_concept_sort_by_featured($the_query->post->ID, -1),
+			//"featured" => $featuredTemp,
+			"posts" => vh_get_posts_by_taxonomy_concept($the_query->post->ID, -1),
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
@@ -256,11 +270,25 @@ function vh_post_in_concept_callback($data) {
 	$post_path = $data["post_path"];
 	$post_type = explode("/", $post_path)[0];
 	$post_slug = explode("/", $post_path)[1];
+	$paged = ( $data["page"] ) ? $data["page"] : 1;
 	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
 
-	return rest_ensure_response([
-		"post" 	=> vh_post_callback(array("post_path" => vh_get_further_reading_by_taxonomy_concept($post->ID, 1)[0]->post_type . "/" .vh_get_further_reading_by_taxonomy_concept($post->ID, 1)[0]->post_name))
-	]);
+	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$tax_query = array();
+	$posts = get_posts(array(
+	  'post_type' => array(
+	  		"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+	  ),
+	  'numberposts'  => 1,
+	  'paged'        => $paged,
+	  'exclude' 	 => array($post_id),
+	  'tax_query' 	 => $tax_query
+	));
+
+	return rest_ensure_response($posts[0]);
 }
 
 
@@ -301,7 +329,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 
 	foreach ($posts as $key => $value) {
 		$value->meta_fields = get_fields($value->ID);
-		$value->meta_fields["author"] = vh_get_author($value->post_author);
+		$value->author = vh_get_author($value->post_author);
 	}
 	return $posts;
 }
@@ -345,7 +373,7 @@ function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberpost
 	return $posts;
 }
 
-function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 10) {
+function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 20) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
 
