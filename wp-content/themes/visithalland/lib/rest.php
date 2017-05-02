@@ -240,6 +240,15 @@ function vh_post_callback($data) {
 		}
 	}
 
+	//Remove drafts from the stops object
+	if (is_array($post->meta_fields["stops"])) {
+		foreach ($post->meta_fields["stops"] as $key => $value) {
+			if ($value->post_status == "draft") {
+					unset($post->meta_fields["stops"][$key]);
+			}
+		}
+	}
+
 	//Add post author
 	$post->meta_fields["author"] = vh_get_author($post->post_author);
 	
