@@ -247,6 +247,7 @@ function vh_post_callback($data) {
 					unset($post->meta_fields["stops"][$key]);
 			}
 		}
+		$post->meta_fields["stops"] = array_values($post->meta_fields["stops"]);
 	}
 
 	//Add post author
