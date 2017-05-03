@@ -73,13 +73,13 @@ add_action( 'init', 'custom_post_type_editor_tip', 0 );
 // Register Trip ideas
 function custom_post_type_trips() {
 	$labels = array(
-		'name'                  => _x( 'Trips', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Trips', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Trip Ideas', 'visithalland' ),
-		'name_admin_bar'        => __( 'Trips Ideas', 'visithalland' ),
+		'name'                  => _x( 'Äventyr', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Äventyr', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Äventyr', 'visithalland' ),
+		'name_admin_bar'        => __( 'Äventyr', 'visithalland' ),
 	);
 	$args = array(
-		'label'                 => __( 'Trips', 'visithalland' ),
+		'label'                 => __( 'Äventyr', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
 		'supports'              => array('title', 'author', 'revisions'),
