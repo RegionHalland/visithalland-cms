@@ -1,54 +1,5 @@
 <?php
 
-/*function vh_best_of_callback($data) {
-	$getPage = get_post($data["id"]);
-	$page["ID"] = $getPage->ID;
-	$page["post_title"] = $getPage->post_title;
-	$page["post_name"] = $getPage->post_name;
-	$page["post_type"] = $getPage->post_type;
-	$page["cover_video"] = get_field("cover_video", $getPage->ID);
-	$page["excerpt"] = get_field("excerpt", $getPage->ID);
-	//$best_of = vh_get_menu_by_name("Best of Coastal Living");
-
-	$posts = get_posts(array(
-		  'post_type' => array(
-		  		"meet_local",
-				"editor_tip",
-				"trip",
-				"happening"
-		  ),
-	  	'numberposts'  => -1,
-	  )
-	);
-
-	foreach ($posts as $key => $value) {
-		$value->meta_fields = get_fields($value->ID);
-		$value->meta_fields["author"] = vh_get_author($value->post_author);
-	}
-
-	/*foreach ($best_of as $key => $value) {
-		$best_of[$key]["featured"] = get_field("featured", vh_get_page_by_path("best-of-coastal-living/" . $value["post_name"])->ID);
-	}
-
-	return rest_ensure_response([
-		"page" => $page,
-		"posts" => $posts,
-		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"breadcrumbs" =>
-			array(
-				array(
-					"title" => $getPage->post_title,
-					"slug"	=> $getPage->post_name,
-				)
-			),
-		"seo"	=> array(
-			"title" 		=> $getPage->post_title,
-			"description"	=> get_field("excerpt", $getPage->ID),
-			"keywords"		=> WPSEO_Meta::get_value('focuskw', $getPage->ID)
-		)
-	]);
-}*/
-
 function vh_landing_callback($data) {
 	$data["id"] = 12;
 	$page = get_post($data["id"]);
@@ -146,25 +97,6 @@ function vh_page_callback($data) {
 	if ( $the_query->have_posts() ) {
 		$the_query->post->meta_fields = get_fields($the_query->post->ID);
 		$the_query->post->author = vh_get_author($the_query->post->post_author);
-		
-		/*if (is_array($the_query->post->meta_fields["featured"])) {
-			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
-				//$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
-				//$value->meta_fields["featured"] = vh_get_author($value->post_author);
-				//$value["meta_fields"] = "asd";				
-				//array_push($value->author, array("author" => "asd"));
-				//$value->meta_fields->test = new stdClass();
-				//$the_query->post->meta_fields["featured"][$key]->meta_fields["test"] = "dlas";
-				//$value->meta_fields = "adsasdash";
-			}
-		}*/
-
-		/*if (is_array($the_query->post->meta_fields["best_of"])) {
-			foreach ($the_query->post->meta_fields["best_of"] as $key => $value) {
-				$the_query->post->meta_fields["best_of"][$key]->meta_fields = get_fields($value->ID);
-				$value->meta_fields["author"] = vh_get_author($value->post_author);
-			}
-		}*/
 
 		if (is_array($the_query->post->meta_fields["featured"])) {
 			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
@@ -172,16 +104,6 @@ function vh_page_callback($data) {
 				$the_query->post->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
 			}
 		}
-
-		//$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true ))), 0, 3);
-		//$featuredTemp = get_field("featured", get_post(get_post_meta( $the_query->post->ID, '_menu_item_object_id', true )));
-		/*$featured = [];
-
-		foreach ($featuredTemp as $k => $val) {
-			$featured[$k] = $val;
-			$featured[$k]->author = vh_get_author($val->post_author);
-			$featured[$k]->meta_fields = get_fields($val->ID);
-		}*/
 
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
@@ -253,6 +175,10 @@ function vh_post_callback($data) {
 	//Add post author
 	$post->meta_fields["author"] = vh_get_author($post->post_author);
 	
+	$post->taxonomy = array(
+					"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
 
 	return rest_ensure_response([
 		"post" => $post,
@@ -350,11 +276,15 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	foreach ($posts as $key => $value) {
 		$value->meta_fields = get_fields($value->ID);
 		$value->author = vh_get_author($value->post_author);
+		$value->taxonomy = array(
+					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
 	}
 	return $posts;
 }
 
-function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberposts = 3) {
+/*function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberposts = 3) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
 
@@ -382,7 +312,7 @@ function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberpost
 		'tax_query'		=> $tax_query,
 		//This might be a solution, for sorting by featured
 		/*'meta_key' 	=> 'featured',
-		'orderby' 	=> 'meta_value_num'*/
+		'orderby' 	=> 'meta_value_num'
 	));
 
 	foreach ($posts as $key => $value) {
@@ -391,7 +321,7 @@ function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberpost
 	}
 
 	return $posts;
-}
+}*/
 
 function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 20) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
@@ -423,6 +353,11 @@ function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 20)
 	foreach ($posts as $key => $value) {
 		$value->meta_fields = get_fields($value->ID);
 		$value->meta_fields["author"] = vh_get_author($value->post_author);
+		$value->taxonomy = array(
+					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
+
 	}
 	shuffle($posts);
 
@@ -443,6 +378,10 @@ function vh_get_menu_by_name($menu_name) {
 				$featured[$k] = $val;
 				$featured[$k]->author = vh_get_author($val->post_author);
 				$featured[$k]->meta_fields = get_fields($val->ID);
+				$featured[$k]->taxonomy = array(
+					"name" 	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+					);
 			}
 
 			array_push($menuArray, array(
