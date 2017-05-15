@@ -238,9 +238,45 @@ function vh_post_in_concept_callback($data) {
 }
 
 
-
+function vh_remove_old_happenings_callback() {
+	// get posts
+	return remove_old_happenings();
+	
+}
 
 /* Generic methods */
+
+function remove_old_happenings() {
+	// get posts
+	$posts = get_posts(array(
+	    'post_type'     => 'happening',
+	    'posts_per_page'    => -1,
+	));
+
+	$oldHappenings = array();
+
+	if( $posts ) {
+		foreach ($posts as $key => $value) {
+			# code...
+			$value->meta_fields = get_fields($value->ID);
+			//return rest_ensure_response($value->meta_fields["start_date"]);
+			if(strtotime($value->meta_fields["start_date"]) < time()) {
+				//unset($posts[$key]);
+				array_push($oldHappenings, $value->post_name);
+				$value->post_status = "draft";
+    			wp_update_post($value);
+				//return rest_ensure_response($value->post_title);
+			}
+		}
+	    return rest_ensure_response(array(
+	    		'Removed happenings' => $oldHappenings
+	    	)
+	    );
+	}
+
+	// No posts found
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+}
 
 function vh_get_page_by_path($page_path) {
 	return get_page_by_path( $page_path, OBJECT, 'page' );
@@ -465,6 +501,11 @@ function visithalland_register_routes() {
 	register_rest_route( 'visit/v1', 'post_in_concept', array(
 		'methods' => 'GET',
 		'callback' => 'vh_post_in_concept_callback',
+	) );
+
+	register_rest_route( 'visit/v1', 'remove_old_happenings', array(
+		'methods' => 'GET',
+		'callback' => 'vh_remove_old_happenings_callback',
 	) );	
 
     // Register route
