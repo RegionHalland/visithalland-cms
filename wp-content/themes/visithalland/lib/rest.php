@@ -240,8 +240,7 @@ function vh_post_in_concept_callback($data) {
 
 function vh_remove_old_happenings_callback() {
 	// get posts
-	return remove_old_happenings();
-	
+	return remove_old_happenings();	
 }
 
 /* Generic methods */
