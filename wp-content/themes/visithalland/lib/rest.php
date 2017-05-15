@@ -259,13 +259,10 @@ function remove_old_happenings() {
 		foreach ($posts as $key => $value) {
 			# code...
 			$value->meta_fields = get_fields($value->ID);
-			//return rest_ensure_response($value->meta_fields["start_date"]);
-			if(strtotime($value->meta_fields["start_date"]) < time()) {
-				//unset($posts[$key]);
+			if(strtotime($value->meta_fields["end_date"]) < time()) {
 				array_push($oldHappenings, $value->post_name);
 				$value->post_status = "draft";
     			wp_update_post($value);
-				//return rest_ensure_response($value->post_title);
 			}
 		}
 	    return rest_ensure_response(array(
