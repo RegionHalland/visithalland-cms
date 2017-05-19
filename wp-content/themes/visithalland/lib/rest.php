@@ -212,10 +212,10 @@ function vh_post_in_concept_callback($data) {
 
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
-	$posts = get_posts(array(
+	$post = get_posts(array(
 	  'post_type' => array(
-	  		"meet_local",
-			"editor_tip",
+	  		/*"meet_local",
+			"editor_tip",*/
 			"trip",
 			"happening"
 	  ),
@@ -225,16 +225,33 @@ function vh_post_in_concept_callback($data) {
 	  'tax_query' 	 => $tax_query
 	));
 
-	return rest_ensure_response([
-		"post" => $posts[0],
-		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
-		"seo"	=> array(
-			"title" 		=> $posts[0]->post_title,
-			"description"	=> get_field("excerpt", $posts[0]->ID),
-			"keywords"		=> WPSEO_Meta::get_value('focuskw', $posts[0]->ID)
-		)]
-		);
+	if (count($post) === 1) {
+		//We have one post
+		$post[0]->meta_fields = get_fields($post[0]->ID);
+		return rest_ensure_response([
+				"post" => $post[0],
+				"menu" => vh_get_menu_by_name("Huvudmeny"),
+				"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post[0]->ID),
+				"seo"	=> array(
+					"title" 		=> $post[0]->post_title,
+					"description"	=> get_field("excerpt", $post[0]->ID),
+					"keywords"		=> WPSEO_Meta::get_value('focuskw', $post[0]->ID)
+				),
+				"breadcrumbs" => array(
+					array(
+						"title" => wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+						"slug"	=> wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
+					),
+					array(
+						"title" => $post[0]->post_title,
+						"slug"	=> $post[0]->post_name,
+					)
+				)
+			]);
+		}
+
+	// No posts found
+	return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
 }
 
 
