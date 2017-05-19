@@ -228,6 +228,9 @@ function vh_post_in_concept_callback($data) {
 	if (count($post) === 1) {
 		//We have one post
 		$post[0]->meta_fields = get_fields($post[0]->ID);
+		//Add post author
+		$post[0]->meta_fields["author"] = vh_get_author($post[0]->post_author);
+
 		return rest_ensure_response([
 				"post" => $post[0],
 				"menu" => vh_get_menu_by_name("Huvudmeny"),
