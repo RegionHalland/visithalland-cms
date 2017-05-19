@@ -230,6 +230,10 @@ function vh_post_in_concept_callback($data) {
 		$post[0]->meta_fields = get_fields($post[0]->ID);
 		//Add post author
 		$post[0]->meta_fields["author"] = vh_get_author($post[0]->post_author);
+		$post[0]->taxonomy = array(
+			"title" => wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		);
 
 		return rest_ensure_response([
 				"post" => $post[0],
