@@ -233,8 +233,6 @@ function vh_post_in_concept_callback($data) {
 		'tax_query' 	=> $tax_query
 	));
 
-	return $posts;
-
 	if (count($posts) === 1) {
 		//We have one post
 		$posts[0]->meta_fields = get_fields($posts[0]->ID);
