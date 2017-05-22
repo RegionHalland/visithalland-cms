@@ -210,9 +210,17 @@ function vh_post_in_concept_callback($data) {
 	$paged = ( $data["page"] ) ? $data["page"] : 1;
 	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
 
-	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
-	$tax_query = array();
-	$post = get_posts(array(
+	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
+
+	$posts = get_posts(array(
 		'post_type' => array(
 			/*"meet_local",
 			"editor_tip",*/
@@ -221,69 +229,71 @@ function vh_post_in_concept_callback($data) {
 		),
 		'numberposts'  	=> 1,
 		'paged'        	=> $paged,
-		'exclude' 	 	=> array($post_id),
+		'exclude' 	 	=> array($post->ID),
 		'tax_query' 	=> $tax_query
 	));
 
-	if (count($post) === 1) {
+	return $posts;
+
+	if (count($posts) === 1) {
 		//We have one post
-		$post[0]->meta_fields = get_fields($post[0]->ID);
+		$posts[0]->meta_fields = get_fields($posts[0]->ID);
 		//Add post author
-		$post[0]->meta_fields["author"] = vh_get_author($post[0]->post_author);
-		$post[0]->taxonomy = array(
-			"title" => wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-			"slug"	=> wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		$posts[0]->meta_fields["author"] = vh_get_author($posts[0]->post_author);
+		$posts[0]->taxonomy = array(
+			"title" => wp_get_post_terms($posts[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($posts[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug
 		);
 
 		//Get stops meta fields if we have a trip
-		if (is_array($post[0]->meta_fields["stops"])) {
-			foreach ($post[0]->meta_fields["stops"] as $key => $value) {
+		if (is_array($posts[0]->meta_fields["stops"])) {
+			foreach ($posts[0]->meta_fields["stops"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 			}
 		}
 
 		//Get mentioned meta fields
-		if (is_array($post[0]->meta_fields["mentioned"])) {
-			foreach ($post[0]->meta_fields["mentioned"] as $key => $value) {
+		if (is_array($posts[0]->meta_fields["mentioned"])) {
+			foreach ($posts[0]->meta_fields["mentioned"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 			}
 		}
 
 		//Get tips meta fields if we have a meet a local
-		if (is_array($post[0]->meta_fields["tips"])) {
-			foreach ($post[0]->meta_fields["tips"] as $key => $value) {
+		if (is_array($posts[0]->meta_fields["tips"])) {
+			foreach ($posts[0]->meta_fields["tips"] as $key => $value) {
 				//$value->meta_fields = get_fields($value["tip"]->ID);
 				$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
 			}
 		}
 
 		//Remove drafts from the stops object
-		if (is_array($post[0]->meta_fields["stops"])) {
-			foreach ($post[0]->meta_fields["stops"] as $key => $value) {
+		if (is_array($posts[0]->meta_fields["stops"])) {
+			foreach ($posts[0]->meta_fields["stops"] as $key => $value) {
 				if ($value->post_status == "draft") {
-					unset($post[0]->meta_fields["stops"][$key]);
+					unset($posts[0]->meta_fields["stops"][$key]);
 				}
 			}
-			$post[0]->meta_fields["stops"] = array_values($post[0]->meta_fields["stops"]);
+			$posts[0]->meta_fields["stops"] = array_values($posts[0]->meta_fields["stops"]);
 		}
 
 		return rest_ensure_response([
-				"post" => $post[0],
+				"post" => $posts[0],
 				"menu" => vh_get_menu_by_name("Huvudmeny"),
-				"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post[0]->ID),
+				"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
 				"seo"	=> array(
-					"title" 		=> $post[0]->post_title,
-					"description"	=> get_field("excerpt", $post[0]->ID),
-					"keywords"		=> WPSEO_Meta::get_value('focuskw', $post[0]->ID)
+					"title" 		=> $posts[0]->post_title,
+					"description"	=> get_field("excerpt", $posts[0]->ID),
+					"keywords"		=> WPSEO_Meta::get_value('focuskw', $posts[0]->ID)
 				),
 				"breadcrumbs" => array(
 					array(
-						"title" => wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-						"slug"	=> wp_get_post_terms($post[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
+						"title" => wp_get_post_terms($posts[0]->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+						"slug"	=> wp_get_post_terms($posts[0]->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
 					),
 					array(
-						"title" => $post[0]->post_title,
-						"slug"	=> $post[0]->post_name,
+						"title" => $posts[0]->post_title,
+						"slug"	=> $posts[0]->post_name,
 					)
 				)
 			]);
