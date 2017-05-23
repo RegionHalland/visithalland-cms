@@ -223,8 +223,8 @@ function vh_post_in_concept_callback($data) {
 
 	$posts = get_posts(array(
 		'post_type' => array(
-			/*"meet_local",
-			"editor_tip",*/
+			//"meet_local",
+			"editor_tip",
 			"trip",
 			"happening"
 		),
