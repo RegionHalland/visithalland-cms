@@ -21,10 +21,11 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
         return $attributes;
     }
 
+    $attributes['post_name'] = "TEST";
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
     
-    $post_name = $post->post_name;
+    /*$post_name = $post->post_name;
     $cover_image = get_field('cover_image', $post->ID);
     $description = get_field('description', $post->ID);    
     //$taxonomy = get_field('location', $post->ID);
