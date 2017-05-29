@@ -26,10 +26,13 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     $attributes['cover_image'] = get_field('cover_image', $post->ID)["sizes"]["medium_large"];
     $attributes['description'] = get_field('description', $post->ID);
     $attributes['post_name'] = $post->post_name;
-    $attributes['taxonomy'] = array(
-            "title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-            "slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-    );
+    
+    if(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' )) > 0) {
+        $attributes['taxonomy'] = array(
+                "title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+                "slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+        );
+    }
 
     //Place specific
     $location = get_field('location', $post->ID);    
