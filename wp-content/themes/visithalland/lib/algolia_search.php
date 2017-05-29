@@ -27,12 +27,12 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     $attributes['description'] = get_field('description', $post->ID);
     $attributes['post_name'] = $post->post_name;
     
-    if(count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0) {
+    /*if(count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0) {
         $attributes['taxonomy'] = array(
                 "title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
                 "slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
         );
-    }
+    }*/
 
     //Place specific
     $location = get_field('location', $post->ID);    
