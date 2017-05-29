@@ -28,7 +28,8 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     $attributes['post_name'] = $post->post_name;
 
     //Place specific
-    $location = get_field('location', $post->ID)
+    $location = get_field('location', $post->ID);
+    
     if($location) {
         $attributes['location'] = get_field('location', $post->ID);
     }
