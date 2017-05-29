@@ -15,13 +15,13 @@ add_filter( 'algolia_searchable_post_shared_attributes', 'my_post_attributes', 1
  */
 function my_post_attributes( array $attributes, WP_Post $post ) {
 
-    if ( 'places' !== $post->post_type ) {
+    if ( $post->post_type !== 'places' && $post->post_type !== 'companies' && $post->post_type !== 'meet_local' && $post->post_type !== 'editor_tip' && $post->post_type !== 'trip' && $post->post_type !== 'happening') {
         // We only want to add an attribute for the 'speaker' post type.
         // Here the post isn't a 'speaker', so we return the attributes unaltered.
         return $attributes;
     }
 
-    $attributes['post_name'] = "TEST";
+    //$attributes['post_name'] = "TEST";
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
     
