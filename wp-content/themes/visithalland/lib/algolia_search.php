@@ -25,16 +25,16 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
     
-    /*$post_name = $post->post_name;
+    $post_name = $post->post_name;
     $cover_image = get_field('cover_image', $post->ID);
     $description = get_field('description', $post->ID);    
-    //$taxonomy = get_field('location', $post->ID);
+    $taxonomy = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ));
     $location = get_field('location', $post->ID);
 
     if($post_name) {
         $attributes['post_name'] = $post_name;
     }
-    /*if($cover_image) {
+    if($cover_image) {
         $attributes['cover_image'] = $cover_image["sizes"]["medium_large"];
     }
     if($description) {
@@ -42,7 +42,13 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     }
     if($location) {
         $attributes['location'] = $location;
-    }*/
+    }
+    if(count($taxonomy) > 0) {
+        $attributes['taxonomy'] = array(
+            "title" => $taxonomy[0]->name,
+            "slug"  => $taxonomy[0]->slug
+        );
+    }
     
     /*if(count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0) {
         $attributes['taxonomy'] = array(
