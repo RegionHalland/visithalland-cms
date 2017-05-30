@@ -180,38 +180,13 @@ function vh_post_callback($data) {
 					"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
 					"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
 				);
-	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
-	$tax_query = array(
-		array(
-			'taxonomy' => 'taxonomy_concept',
-			'field' 	 => 'id',
-			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-			'include_children' => false
-		)
-	);
-	$posts = get_posts(array(
-		'post_type' => array(
-			//"meet_local",
-			"editor_tip",
-			"trip",
-			"happening"
-		),
-		'numberposts'  	=> 1,
-		'paged'        	=> 1,
-		'exclude' 	 	=> array($post->ID),
-		'tax_query' 	=> $tax_query
-	));
-	$next_article = "";
-	if (count($posts) === 1) {
-		$next_article = $posts[0]->post_title;
-	}
 
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"next_article" => $next_article,
+		"next_article" => vh_get_next_article($post),
 		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post->ID),
-		"seo"	=> array(
+		"seo" => array(
 			"title" 		=> $post->post_title,
 			"description"	=> get_field("excerpt", $post->ID),
 			"keywords"		=> WPSEO_Meta::get_value('focuskw', $post->ID)
@@ -305,7 +280,8 @@ function vh_post_in_concept_callback($data) {
 		return rest_ensure_response([
 				"post" => $posts[0],
 				"menu" => vh_get_menu_by_name("Huvudmeny"),
-				"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
+				"further_reading" => vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
+				'next_article' => vh_get_next_article($posts[0], $paged),
 				"seo"	=> array(
 					"title" 		=> $posts[0]->post_title,
 					"description"	=> get_field("excerpt", $posts[0]->ID),
@@ -335,6 +311,36 @@ function vh_remove_old_happenings_callback() {
 }
 
 /* Generic methods */
+
+function vh_get_next_article($post, $paged = 1){
+	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
+	$posts = get_posts(array(
+		'post_type' => array(
+			//"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+		),
+		'numberposts'  	=> 1,
+		'paged'        	=> $paged,
+		'exclude' 	 	=> array($post->ID),
+		'tax_query' 	=> $tax_query
+	));
+	$next_article = "";
+	if (count($posts) === 1) {
+		return $next_article = $posts[0]->post_title;
+	}
+
+	return null;
+}
 
 function remove_old_happenings() {
 	// get posts
