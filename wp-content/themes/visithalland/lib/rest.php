@@ -180,10 +180,36 @@ function vh_post_callback($data) {
 					"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
 					"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
 				);
+	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
+	$posts = get_posts(array(
+		'post_type' => array(
+			//"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+		),
+		'numberposts'  	=> 1,
+		'paged'        	=> 1,
+		'exclude' 	 	=> array($post->ID),
+		'tax_query' 	=> $tax_query
+	));
+	$next_article = "";
+	if (count($posts) === 1) {
+		$next_article = $posts[0]->post_title;
+	}
 
 	return rest_ensure_response([
 		"post" => $post,
 		"menu" => vh_get_menu_by_name("Huvudmeny"),
+		"next_article" => $next_article,
 		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post->ID),
 		"seo"	=> array(
 			"title" 		=> $post->post_title,
