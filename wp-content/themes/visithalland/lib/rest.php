@@ -336,7 +336,10 @@ function vh_get_next_article($post, $paged = 1){
 	));
 	$next_article = "";
 	if (count($posts) === 1) {
-		return $next_article = $posts[0]->post_title;
+		return array(
+			'post_title' 	=> $posts[0]->post_title,
+			'cover_image' 	=> get_field("cover_image", $posts[0]->ID)["sizes"]["thumbnail"]
+		);
 	}
 
 	return null;
