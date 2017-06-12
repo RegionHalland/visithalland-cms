@@ -286,7 +286,7 @@ function vh_post_in_concept_callback($data) {
 				"post" => $posts[0],
 				"menu" => vh_get_menu_by_name("Huvudmeny"),
 				"further_reading" => vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
-				'next_article' => vh_get_next_article($post, $paged),
+				'next_article' => vh_get_next_article($post, $paged+1),
 				"seo" => array(
 					"title" 		=> $posts[0]->post_title,
 					"description"	=> get_field("excerpt", $posts[0]->ID),
@@ -359,7 +359,7 @@ function vh_get_next_article($post, $paged = 1){
 			"happening"
 		),
 		'numberposts'  	=> 1,
-		'paged'        	=> $paged = $paged + 1,
+		'paged'        	=> $paged,
 		'exclude' 	 	=> $post->ID,
 		'tax_query' 	=> $tax_query
 	));
