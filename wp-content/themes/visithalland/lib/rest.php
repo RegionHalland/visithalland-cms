@@ -139,69 +139,74 @@ function vh_post_callback($data) {
 	$post_slug = explode("/", $post_path)[1];
 
 	$post = get_page_by_path( $post_slug, OBJECT, $post_type);
-	$post->meta_fields = get_fields($post->ID);
+	if($post) {
+		$post->meta_fields = get_fields($post->ID);
 
-	//Get stops meta fields if we have a trip
-	if (is_array($post->meta_fields["stops"])) {
-		foreach ($post->meta_fields["stops"] as $key => $value) {
-			$value->meta_fields = get_fields($value->ID);
-		}
-	}
-
-	//Get mentioned meta fields
-	if (is_array($post->meta_fields["mentioned"])) {
-		foreach ($post->meta_fields["mentioned"] as $key => $value) {
-			$value->meta_fields = get_fields($value->ID);
-		}
-	}
-
-	//Get tips meta fields if we have a meet a local
-	if (is_array($post->meta_fields["tips"])) {
-		foreach ($post->meta_fields["tips"] as $key => $value) {
-			//$value->meta_fields = get_fields($value["tip"]->ID);
-			$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
-		}
-	}
-
-	//Remove drafts from the stops object
-	if (is_array($post->meta_fields["stops"])) {
-		foreach ($post->meta_fields["stops"] as $key => $value) {
-			if ($value->post_status == "draft") {
-					unset($post->meta_fields["stops"][$key]);
+		//Get stops meta fields if we have a trip
+		if (is_array($post->meta_fields["stops"])) {
+			foreach ($post->meta_fields["stops"] as $key => $value) {
+				$value->meta_fields = get_fields($value->ID);
 			}
 		}
-		$post->meta_fields["stops"] = array_values($post->meta_fields["stops"]);
+
+		//Get mentioned meta fields
+		if (is_array($post->meta_fields["mentioned"])) {
+			foreach ($post->meta_fields["mentioned"] as $key => $value) {
+				$value->meta_fields = get_fields($value->ID);
+			}
+		}
+
+		//Get tips meta fields if we have a meet a local
+		if (is_array($post->meta_fields["tips"])) {
+			foreach ($post->meta_fields["tips"] as $key => $value) {
+				//$value->meta_fields = get_fields($value["tip"]->ID);
+				$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
+			}
+		}
+
+		//Remove drafts from the stops object
+		if (is_array($post->meta_fields["stops"])) {
+			foreach ($post->meta_fields["stops"] as $key => $value) {
+				if ($value->post_status == "draft") {
+						unset($post->meta_fields["stops"][$key]);
+				}
+			}
+			$post->meta_fields["stops"] = array_values($post->meta_fields["stops"]);
+		}
+
+		//Add post author
+		$post->meta_fields["author"] = vh_get_author($post->post_author);
+		
+		$post->taxonomy = array(
+						"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+						"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+					);
+
+		return rest_ensure_response([
+			"post" => $post,
+			"menu" => vh_get_menu_by_name("Huvudmeny"),
+			"next_article" => vh_get_next_article($post),
+			"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post->ID),
+			"seo" => array(
+				"title" 		=> $post->post_title,
+				"description"	=> get_field("excerpt", $post->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', $post->ID)
+			),
+			"breadcrumbs" => array(
+				array(
+					"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
+				),
+				array(
+					"title" => $post->post_title,
+					"slug"	=> $post->post_name,
+				)
+			)
+		]);
 	}
 
-	//Add post author
-	$post->meta_fields["author"] = vh_get_author($post->post_author);
-	
-	$post->taxonomy = array(
-					"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-					"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-				);
-
-	return rest_ensure_response([
-		"post" => $post,
-		"menu" => vh_get_menu_by_name("Huvudmeny"),
-		"next_article" => vh_get_next_article($post),
-		"further_reading" 	=> vh_get_further_reading_by_taxonomy_concept($post->ID),
-		"seo" => array(
-			"title" 		=> $post->post_title,
-			"description"	=> get_field("excerpt", $post->ID),
-			"keywords"		=> WPSEO_Meta::get_value('focuskw', $post->ID)
-		),
-		"breadcrumbs" => array(
-			array(
-				"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-				"slug"	=> wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug,
-			),
-			array(
-				"title" => $post->post_title,
-				"slug"	=> $post->post_name,
-			)
-		)
-	]);
+	//No posts found
+	return new WP_Error( 'post-not-found', __( 'No post found.', 'visithalland'), array( 'status' => 404 ) );
 }
 
 
