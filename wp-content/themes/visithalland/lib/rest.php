@@ -229,7 +229,7 @@ function vh_post_in_concept_callback($data) {
 
 	$posts = get_posts(array(
 		'post_type' => array(
-			//"meet_local",
+			"meet_local",
 			"editor_tip",
 			"trip",
 			"happening"
@@ -286,8 +286,8 @@ function vh_post_in_concept_callback($data) {
 				"post" => $posts[0],
 				"menu" => vh_get_menu_by_name("Huvudmeny"),
 				"further_reading" => vh_get_further_reading_by_taxonomy_concept($posts[0]->ID),
-				'next_article' => vh_get_next_article($posts[0], $paged),
-				"seo"	=> array(
+				'next_article' => vh_get_next_article($post, $paged),
+				"seo" => array(
 					"title" 		=> $posts[0]->post_title,
 					"description"	=> get_field("excerpt", $posts[0]->ID),
 					"keywords"		=> WPSEO_Meta::get_value('focuskw', $posts[0]->ID)
@@ -318,7 +318,7 @@ function vh_remove_old_happenings_callback() {
 /* Generic methods */
 
 function vh_get_next_article($post, $paged = 1){
-	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
+	/*$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
 	$tax_query = array(
 		array(
 			'taxonomy' => 'taxonomy_concept',
@@ -329,7 +329,7 @@ function vh_get_next_article($post, $paged = 1){
 	);
 	$posts = get_posts(array(
 		'post_type' => array(
-			//"meet_local",
+			"meet_local",
 			"editor_tip",
 			"trip",
 			"happening"
@@ -339,7 +339,33 @@ function vh_get_next_article($post, $paged = 1){
 		'exclude' 	 	=> array($post->ID),
 		'tax_query' 	=> $tax_query
 	));
-	$next_article = "";
+	$next_article = "";*/
+
+	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
+
+	$posts = get_posts(array(
+		'post_type' => array(
+			"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+		),
+		'numberposts'  	=> 1,
+		'paged'        	=> $paged = $paged + 1,
+		'exclude' 	 	=> $post->ID,
+		'tax_query' 	=> $tax_query
+	));
+
+	//return $posts;
+
 	if (count($posts) === 1) {
 		return array(
 			'post_title' 	=> $posts[0]->post_title,
