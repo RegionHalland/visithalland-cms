@@ -33,7 +33,7 @@ add_image_size( 'vh_medium@2x', 1120, 630, array( 'center', 'center' ) );
 add_image_size( 'vh_large', 960, 720, array( 'center', 'center' ) );
 add_image_size( 'vh_large@2x', 1920, 1440, array( 'center', 'center' ) );
 
-add_image_size( 'vh_hero_wide', 1440, 810, array( 'center', 'center' ) );
+add_image_size( 'vh_hero_wide', 1920, 1080, array( 'center', 'center' ) );
 add_image_size( 'vh_hero_wide@2x', 2880, 1620, array( 'center', 'center' ) );
 
 add_image_size( 'vh_hero_tall', 400, 500, array( 'center', 'center' ) );
