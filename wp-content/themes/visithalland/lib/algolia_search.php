@@ -35,7 +35,8 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
         $attributes['post_name'] = $post_name;
     }
     if($cover_image) {
-        $attributes['cover_image'] = $cover_image["sizes"]["medium_large"];
+        $attributes['cover_image'] = $cover_image["sizes"]["vh_thumbnail"];
+        $attributes['cover_image_2x'] = $cover_image["sizes"]["vh_thumbnail@2x"];
     }
     if($description) {
         $attributes['description'] = $description;
