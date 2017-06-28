@@ -1,6 +1,6 @@
 <?php
 
-//add_action( 'rest_pre_serve_request', function () {
+//Remove CORS support / Enable it on NGINX instead for microcaching support
 add_action( 'rest_api_init', function() {    
 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
 }, 15 );
