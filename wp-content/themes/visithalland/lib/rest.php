@@ -1,5 +1,10 @@
 <?php
 
+//add_action( 'rest_pre_serve_request', function () {
+add_action( 'rest_api_init', function() {    
+	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+}, 15 );
+
 function vh_landing_callback($data) {
 	$data["id"] = 12;
 	$page = get_post($data["id"]);
