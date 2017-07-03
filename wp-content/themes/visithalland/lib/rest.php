@@ -320,32 +320,83 @@ function vh_remove_old_happenings_callback() {
 	return remove_old_happenings();	
 }
 
+
+
+/* V2 callback functions */
+function vh_landing_v2_callback(){
+	$page = get_post(12);
+	$page->meta_fields = get_fields($page->ID);
+	$menu = vh_get_menu_by_name("Huvudmeny");
+	$featured = array();
+
+	foreach ($menu as $key => $value) {
+		//$featured[$key] = $val;
+		/*foreach ($value["featured"] as $k => $val) {
+			$featured = $val;
+		}*/
+		$featured[$key] = $value["featured"][0];
+		/*$featured[$k]->author = vh_get_author($val->post_author);
+		$featured[$k]->meta_fields = get_fields($val->ID);
+		$featured[$k]->taxonomy = array(
+			"name" 	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+			);*/
+	}
+
+	// get all happenings
+	$happenings = get_posts(array(
+	    'post_type'     => 'happening',
+	    'posts_per_page'    => -1,
+	));
+
+	/*foreach ($happenings as $key => $value) {
+		$mostRecent = 0;
+		foreach(get_field("start_date", $value->ID) as $date){
+		  $curDate = strtotime($date);
+		  if ($curDate > $mostRecent) {
+		     $mostRecent = $curDate;
+		  }
+		}
+		//return rest_ensure_response(get_field("start_date", $value->ID));
+	}*/
+	/*$tempppp = array();
+	foreach ($happenings as $key => $value) {
+		# code...
+		array_push($tempppp, strtotime(get_field("start_date", $value->ID)));
+		$curDate = strtotime(get_field("start_date", $value->ID));
+		if ($curDate > $mostRecent) {
+			$mostRecent = $curDate;
+		}
+	}*/
+
+	usort($happenings, function($a, $b)
+	{
+		return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
+	});
+
+
+	return rest_ensure_response(array_slice($happenings, 0, 6));
+
+
+	return rest_ensure_response([
+			"featured" => $featured,
+			"page" 	=> $page,
+			"happenings" => $happenings,
+			"concepts" => $menu,
+			"menu" 	=> $menu,
+			"seo"	=> array(
+				"title" 		=> $page->post_title,
+				"description"	=> get_field("excerpt", $page->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', $page->ID)
+			)
+		]
+	);
+}
+
+
 /* Generic methods */
 
 function vh_get_next_article($post, $paged = 1){
-	/*$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
-	$tax_query = array(
-		array(
-			'taxonomy' => 'taxonomy_concept',
-			'field' 	 => 'id',
-			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-			'include_children' => false
-		)
-	);
-	$posts = get_posts(array(
-		'post_type' => array(
-			"meet_local",
-			"editor_tip",
-			"trip",
-			"happening"
-		),
-		'numberposts'  	=> 1,
-		'paged'        	=> $paged,
-		'exclude' 	 	=> array($post->ID),
-		'tax_query' 	=> $tax_query
-	));
-	$next_article = "";*/
-
 	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
 	$tax_query = array(
 		array(
@@ -487,44 +538,6 @@ function vh_get_meet_local_by_taxonomy_concept($post_id, $numberposts = 1) {
 	return $posts;
 }
 
-/*function vh_get_posts_by_taxonomy_concept_sort_by_featured($post_id, $numberposts = 3) {
-	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
-	$tax_query = array();
-
-	//If coastal living
-	if ($post_id != 12) {
-		$tax_query = array(
-	  		array(
-		      'taxonomy' => 'taxonomy_concept',
-		      'field' 	 => 'id',
-		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-		      'include_children' => false
-		    )
-	  	);
-	}
-
-	$posts = get_posts(array(
-		'post_type' => array(
-			"meet_local",
-			"editor_tip",
-			"trip",
-			"happening"
-		),
-		'numberposts'  	=> $numberposts,
-		'exclude'		=> array($post_id),
-		'tax_query'		=> $tax_query,
-		//This might be a solution, for sorting by featured
-		/*'meta_key' 	=> 'featured',
-		'orderby' 	=> 'meta_value_num'
-	));
-
-	foreach ($posts as $key => $value) {
-		$value->meta_fields = get_fields($value->ID);
-		$value->meta_fields["author"] = vh_get_author($value->post_author);
-	}
-
-	return $posts;
-}*/
 
 function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 20) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
@@ -644,7 +657,8 @@ function get_breadcrumb($post) {
  * Register our rest routes
  */
 function visithalland_register_routes() {
-	// Register route
+	// Register routes
+	/* V1 */
     register_rest_route( 'visit/v1', 'landing', array(
 		'methods' => 'GET',
 		'callback' => 'vh_landing_callback',
@@ -673,7 +687,13 @@ function visithalland_register_routes() {
 	register_rest_route( 'visit/v1', 'remove_old_happenings', array(
 		'methods' => 'GET',
 		'callback' => 'vh_remove_old_happenings_callback',
-	) );	
+	) );
+
+	/* V2 */
+	register_rest_route( 'visit/v2', 'landing', array(
+		'methods' => 'GET',
+		'callback' => 'vh_landing_v2_callback',
+	) );
 
     // Register route
     /*register_rest_route( '/v1', 'feed', array(
