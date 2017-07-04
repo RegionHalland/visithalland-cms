@@ -323,24 +323,14 @@ function vh_remove_old_happenings_callback() {
 
 
 /* V2 callback functions */
-function vh_landing_v2_callback(){
+function vh_v2_landing_callback(){
 	$page = get_post(12);
 	$page->meta_fields = get_fields($page->ID);
 	$menu = vh_get_menu_by_name("Huvudmeny");
 	$featured = array();
 
 	foreach ($menu as $key => $value) {
-		//$featured[$key] = $val;
-		/*foreach ($value["featured"] as $k => $val) {
-			$featured = $val;
-		}*/
 		$featured[$key] = $value["featured"][0];
-		/*$featured[$k]->author = vh_get_author($val->post_author);
-		$featured[$k]->meta_fields = get_fields($val->ID);
-		$featured[$k]->taxonomy = array(
-			"name" 	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-			"slug"	=> wp_get_post_terms($val->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-			);*/
 	}
 
 	// get all happenings
@@ -349,39 +339,21 @@ function vh_landing_v2_callback(){
 	    'posts_per_page'    => -1,
 	));
 
-	/*foreach ($happenings as $key => $value) {
-		$mostRecent = 0;
-		foreach(get_field("start_date", $value->ID) as $date){
-		  $curDate = strtotime($date);
-		  if ($curDate > $mostRecent) {
-		     $mostRecent = $curDate;
-		  }
-		}
-		//return rest_ensure_response(get_field("start_date", $value->ID));
-	}*/
-	/*$tempppp = array();
 	foreach ($happenings as $key => $value) {
-		# code...
-		array_push($tempppp, strtotime(get_field("start_date", $value->ID)));
-		$curDate = strtotime(get_field("start_date", $value->ID));
-		if ($curDate > $mostRecent) {
-			$mostRecent = $curDate;
-		}
-	}*/
+		$value->meta_fields = get_fields($value->ID);
+	}
 
+	//Sort happenings by start date
 	usort($happenings, function($a, $b)
 	{
 		return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
 	});
 
 
-	return rest_ensure_response(array_slice($happenings, 0, 6));
-
-
 	return rest_ensure_response([
 			"featured" => $featured,
 			"page" 	=> $page,
-			"happenings" => $happenings,
+			"happenings" => array_slice($happenings, 0, 6),
 			"concepts" => $menu,
 			"menu" 	=> $menu,
 			"seo"	=> array(
@@ -391,6 +363,67 @@ function vh_landing_v2_callback(){
 			)
 		]
 	);
+}
+
+function vh_v2_page_callback($data) {
+	$page_slug = $data["page_slug"];
+	$breadcrumbs = array();
+
+	if ($page_slug == "best-of-coastal-living") {
+		$the_query = new WP_Query( array( 'pagename' => $page_slug) );	
+		$breadcrumbs = array(array("title" => $the_query->post->post_title, "slug" => "best-of-coastal-living"));
+	} else {
+		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
+		$breadcrumbs = get_breadcrumb($the_query->post);
+	}
+
+	// The Loop
+	if ( $the_query->have_posts() ) {
+		$the_query->post->meta_fields = get_fields($the_query->post->ID);
+		$the_query->post->author = vh_get_author($the_query->post->post_author);
+
+		if (is_array($the_query->post->meta_fields["featured"])) {
+			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
+				$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
+				$the_query->post->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
+			}
+		}
+
+		// get all happenings
+		$happenings = get_posts(array(
+		    'post_type'     => 'happening',
+		    'posts_per_page'    => -1,
+		));
+
+		foreach ($happenings as $key => $value) {
+			$value->meta_fields = get_fields($value->ID);
+		}
+
+		//Sort happenings by start date
+		usort($happenings, function($a, $b)
+		{
+			return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
+		});
+
+		return rest_ensure_response([
+			"page" 	=> $the_query->post,
+			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),
+			"meet_local" => vh_get_meet_local_by_taxonomy_concept($the_query->post->ID, 2),
+			"happenings" => $happenings,
+			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
+			"seo"	=> array (
+				"title" 		=> $the_query->post->post_title,
+				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
+			),
+			"breadcrumbs" => $breadcrumbs
+		]);
+
+		wp_reset_postdata();
+	} else {
+		// no posts found
+		return new WP_Error( 'unknown-error', __( 'Unknown error.', 'visithalland'), array( 'status' => 500 ) );
+	}
 }
 
 
@@ -486,6 +519,44 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 			"editor_tip",
 			"trip",
 			"happening"
+	  ),
+	  'numberposts'  => $numberposts,
+	  'exclude' 	 => array($post_id),
+	  'tax_query' 	 => $tax_query
+	));
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->author = vh_get_author($value->post_author);
+		$value->taxonomy = array(
+					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
+	}
+	return $posts;
+}
+
+function vh_get_posts_without_happenings_by_taxonomy_concept($post_id, $numberposts = 3) {
+	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$tax_query = array();
+
+	//If coastal living
+	if ($post_id != 12) {
+		$tax_query = array(
+	  		array(
+		      'taxonomy' => 'taxonomy_concept',
+		      'field' 	 => 'id',
+		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+		      'include_children' => false
+		    )
+	  	);
+	}
+	$posts = get_posts(array(
+		'post_type' => array(
+	  		//"meet_local",
+			"editor_tip",
+			"trip",
+			//"happening"
 	  ),
 	  'numberposts'  => $numberposts,
 	  'exclude' 	 => array($post_id),
@@ -692,7 +763,14 @@ function visithalland_register_routes() {
 	/* V2 */
 	register_rest_route( 'visit/v2', 'landing', array(
 		'methods' => 'GET',
-		'callback' => 'vh_landing_v2_callback',
+		'callback' => 'vh_v2_landing_callback',
+	) );
+
+
+	/* V2 */
+	register_rest_route( 'visit/v2', 'page', array(
+		'methods' => 'GET',
+		'callback' => 'vh_v2_page_callback',
 	) );
 
     // Register route
