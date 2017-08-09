@@ -658,7 +658,7 @@ function vh_get_menu_by_name($menu_name) {
 		$slugArray = explode("/", $value->url);
 		if (count($slugArray) > 2) {
 			$slug = $slugArray[3];
-			$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))), 0, 2);
+			$featuredTemp = array_slice(get_field("featured", get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))), 0, 3);
 			$featured = [];
 
 			foreach ($featuredTemp as $k => $val) {
