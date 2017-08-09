@@ -327,8 +327,16 @@ function vh_v2_landing_callback(){
 	$page = get_post(12);
 	$page->meta_fields = get_fields($page->ID);
 	$menu = vh_get_menu_by_name("Huvudmeny");
-	$featured = array();
+	//Get the three latest Meet A locals
+	$meet_locals = get_posts(array(
+	    'post_type'     => 'meet_local',
+	    'posts_per_page'    => 3,
+	));
+	foreach ($meet_locals as $key => $meet_local) {
+		$meet_local->meta_fields = get_fields($meet_local->ID);
+	}
 
+	$featured = array();
 	foreach ($menu as $key => $value) {
 		$featured[$key] = $value["featured"][0];
 	}
@@ -339,8 +347,8 @@ function vh_v2_landing_callback(){
 	    'posts_per_page'    => -1,
 	));
 
-	foreach ($happenings as $key => $value) {
-		$value->meta_fields = get_fields($value->ID);
+	foreach ($happenings as $key => $happening) {
+		$happening->meta_fields = get_fields($happening->ID);
 	}
 
 	//Sort happenings by start date
@@ -355,6 +363,7 @@ function vh_v2_landing_callback(){
 			"page" 	=> $page,
 			"happenings" => array_slice($happenings, 0, 6),
 			"concepts" => $menu,
+			"meet_locals" => $meet_locals,
 			"menu" 	=> $menu,
 			"seo"	=> array(
 				"title" 		=> $page->post_title,
