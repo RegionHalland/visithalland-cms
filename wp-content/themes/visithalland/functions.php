@@ -11,9 +11,6 @@ include_once('lib/register_custom_taxonomies.php');
 //Wordpress admin menu changes
 include_once('lib/admin_menu.php');
 
-//Add custom REST routes and methods
-include_once('lib/rest.php');
-
 //Modification for Algolia Search
 include_once('lib/algolia_search.php');
 
@@ -22,3 +19,35 @@ include_once('lib/images.php');
 
 //Register menus
 include_once('lib/menu.php');
+
+
+/* 
+
+***	REST related files
+
+*/
+
+/* 
+	v1 API
+*/
+
+//Add custom v1 REST routes
+include_once('lib/rest/v1/routes.php');
+
+//Add custom v1 REST callbacs
+include_once('lib/rest/v1/callbacks.php');
+
+
+/* 
+	v2 API
+*/
+
+//Add custom v2 REST routes
+include_once('lib/rest/v2/routes.php');
+
+//Add custom v2 REST callbacks
+include_once('lib/rest/v2/callbacks.php');
+
+
+//Add helpers used in callbacks.php for generic methods
+include_once('lib/rest/helpers.php');
