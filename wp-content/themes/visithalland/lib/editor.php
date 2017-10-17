@@ -17,14 +17,14 @@ add_filter( 'mce_external_plugins', 'my_theme_mce_external_plugins' );
 
 //Remove and only use pararaphs, h2 and h3
 function vh_modify_block_formats( $init ) {
-    $init['block_formats'] = 'Paragraph=p;Rubrik 1=h2;Rubrik 2=h2;';
+    $init['block_formats'] = 'Paragraph=p;Rubrik 1=h2;Rubrik 2=h3;Rubrik 3=h4;';
 
     return $init;
 }
 add_filter( 'tiny_mce_before_init', 'vh_modify_block_formats');
 
 function vh_remove_mce_buttons( $buttons ) {
-    $remove = array('blockquote', 'wp_more', 'alignleft', 'aligncenter', 'alignright');
+    $remove = array('wp_more', 'alignleft', 'aligncenter', 'alignright');
 
     return array_diff( $buttons, $remove );
 }
