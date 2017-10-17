@@ -2,11 +2,16 @@
 
 //Modify inserted images to be enclosed by a figure tag
 function title_caption_image($html, $id, $caption, $title, $align, $url, $size, $alt) {
+    $attachment = get_post( $id );
+    $image_description = "";
+    if (isset($attachment)) {
+        $image_description = $attachment->post_content;
+    }
     $src  = wp_get_attachment_image_src( $id, $size, false );
     $html5 = "<figure class='align$align'>";
     $html5 .= "<img src='$src[0]' alt='$alt' />";
     if ( $caption && $alt ) {
-        $html5 .= "<figcaption><p class='image-description'><span>$alt: </span>$caption</p></figcaption>";
+        $html5 .= "<figcaption><span class='image-description'>" . $caption . "</span><span class='image-credit'>" . $image_description . "</span></figcaption>";
     }
     $html5 .= "</figure>";
     return $html5;
