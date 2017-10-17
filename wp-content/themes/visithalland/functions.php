@@ -8,7 +8,7 @@ include_once('lib/register_custom_post_types.php');
 //Register custom taxonomies
 include_once('lib/register_custom_taxonomies.php');
 
-//Wordpress admin menu changes
+//Wordpress admin menu modifications
 include_once('lib/admin_menu.php');
 
 //Modification for Algolia Search
@@ -19,6 +19,9 @@ include_once('lib/images.php');
 
 //Register menus
 include_once('lib/menu.php');
+
+//Editor modifications
+include_once('lib/editor.php');
 
 
 /* 
