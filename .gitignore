@@ -13,3 +13,4 @@ wp-content/uploads/*
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
+.DS_Store

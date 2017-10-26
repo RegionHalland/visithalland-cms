@@ -13,6 +13,10 @@ function vh_v2_landing_callback(){
 	));
 	foreach ($meet_locals as $key => $meet_local) {
 		$meet_local->meta_fields = get_fields($meet_local->ID);
+		$meet_local->taxonomy = array(
+			"title" => wp_get_post_terms($meet_local->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($meet_local->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		);
 	}
 
 	$featured = array();
