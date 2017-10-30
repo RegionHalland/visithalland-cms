@@ -81,12 +81,6 @@ function vh_v2_page_callback($data) {
 			}
 		}
 
-		//Sort happenings by start date
-		/*usort($happenings, function($a, $b)
-		{
-			return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
-		});*/
-
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
 			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),

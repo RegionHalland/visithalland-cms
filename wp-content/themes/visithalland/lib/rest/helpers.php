@@ -178,7 +178,13 @@ function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
 					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
 				);
 	}
-	
+
+	//Sort happenings by start date
+	usort($posts, function($a, $b)
+	{
+		return strcmp(strtotime($a->meta_fields->start_date), strtotime($b->meta_fields->start_date));
+	});
+
 	return $posts;
 }
 
