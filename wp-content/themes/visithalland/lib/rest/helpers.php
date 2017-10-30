@@ -179,15 +179,10 @@ function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
 				);
 	}
 
-	foreach ($posts as $key => $value) {
-		$value->meta_fields["start_date_unix"] = strtotime($value->meta_fields["start_date"]);
-		$value->meta_fields["end_date_unix"] = strtotime($value->meta_fields["end_date"]);
-	}
-
 	//Sort happenings by start date
 	usort($posts, function($a, $b)
 	{
-		return strcmp($a->meta_fields["start_date_unix"], $b->meta_fields["start_date_unix"]);
+		return strcmp(strtotime($a->meta_fields["start_date"]), strtotime($b->meta_fields["start_date"]));
 	});
 
 	return $posts;
