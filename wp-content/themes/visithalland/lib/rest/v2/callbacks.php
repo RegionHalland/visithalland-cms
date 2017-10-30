@@ -81,27 +81,17 @@ function vh_v2_page_callback($data) {
 			}
 		}
 
-		// get all happenings
-		$happenings = get_posts(array(
-		    'post_type'     => 'happening',
-		    'posts_per_page'    => -1,
-		));
-
-		foreach ($happenings as $key => $value) {
-			$value->meta_fields = get_fields($value->ID);
-		}
-
 		//Sort happenings by start date
-		usort($happenings, function($a, $b)
+		/*usort($happenings, function($a, $b)
 		{
 			return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
-		});
+		});*/
 
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
 			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),
 			"meet_local" => vh_get_meet_local_by_taxonomy_concept($the_query->post->ID, 2),
-			"happenings" => $happenings,
+			"happenings" => vh_get_happenings_by_taxonomy_concept($the_query->post->ID, -1),
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
