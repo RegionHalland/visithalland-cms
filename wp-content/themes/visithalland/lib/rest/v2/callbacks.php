@@ -85,7 +85,7 @@ function vh_v2_page_callback($data) {
 			"page" 	=> $the_query->post,
 			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),
 			"meet_local" => vh_get_meet_local_by_taxonomy_concept($the_query->post->ID, 2),
-			"happenings" => vh_get_happenings_by_taxonomy_concept($the_query->post->ID, -1),
+			"happenings" => vh_get_happenings_by_taxonomy_concept($the_query->post->ID, 6),
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
