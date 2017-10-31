@@ -32,12 +32,17 @@ function vh_v2_landing_callback(){
 
 	foreach ($happenings as $key => $happening) {
 		$happening->meta_fields = get_fields($happening->ID);
+		$happening->author = vh_get_author($happening->post_author);
+		$happening->taxonomy = array(
+			"name" 	=> wp_get_post_terms($happening->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($happening->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
 	}
 
 	//Sort happenings by start date
 	usort($happenings, function($a, $b)
 	{
-		return strcmp(strtotime(get_field("start_date", $a->ID)), strtotime(get_field("start_date", $b->ID)));
+		return strcmp(strtotime($a->meta_fields->start_date), strtotime($b->meta_fields->start_date));
 	});
 
 
