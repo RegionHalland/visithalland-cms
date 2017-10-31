@@ -42,8 +42,10 @@ function vh_v2_landing_callback(){
 	//Sort happenings by start date
 	usort($happenings, function($a, $b)
 	{
-		return strcmp(strtotime($a->meta_fields->start_date), strtotime($b->meta_fields->start_date));
+		return strcmp(strtotime($a->meta_fields["start_date"]), strtotime($b->meta_fields["start_date"]));
 	});
+
+	return [$happenings];
 
 
 	return rest_ensure_response([
