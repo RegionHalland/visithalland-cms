@@ -45,9 +45,6 @@ function vh_v2_landing_callback(){
 		return strcmp(strtotime($a->meta_fields["start_date"]), strtotime($b->meta_fields["start_date"]));
 	});
 
-	return [$happenings];
-
-
 	return rest_ensure_response([
 			"featured" => $featured,
 			"page" 	=> $page,
