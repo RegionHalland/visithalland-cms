@@ -144,6 +144,10 @@ function vh_post_callback($data) {
 		if (is_array($post->meta_fields["stops"])) {
 			foreach ($post->meta_fields["stops"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
+				$value->taxonomy = array(
+					"title" => wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
 			}
 		}
 
