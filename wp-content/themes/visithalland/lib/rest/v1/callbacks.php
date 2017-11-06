@@ -111,7 +111,7 @@ function vh_page_callback($data) {
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
-				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
+				"description"	=> get_field("excerpt", vh_get_page_by_path("best-of-coastal-living/" . $the_query->post->post_name)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
 			),
 			"breadcrumbs" => $breadcrumbs
@@ -141,7 +141,8 @@ function vh_post_callback($data) {
 		$post->meta_fields = get_fields($post->ID);
 
 		//Get stops meta fields if we have a trip
-		if (is_array($post->meta_fields["stops"])) {
+		
+		if (isset($post->meta_fields["stops"]) && is_array($post->meta_fields["stops"])) {
 			foreach ($post->meta_fields["stops"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 				$value->taxonomy = array(
@@ -152,14 +153,14 @@ function vh_post_callback($data) {
 		}
 
 		//Get mentioned meta fields
-		if (is_array($post->meta_fields["mentioned"])) {
+		if (isset($post->meta_fields["stops"]) && is_array($post->meta_fields["mentioned"])) {
 			foreach ($post->meta_fields["mentioned"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 			}
 		}
 
 		//Get tips meta fields if we have a meet a local
-		if (is_array($post->meta_fields["tips"])) {
+		if (isset($post->meta_fields["stops"]) && is_array($post->meta_fields["tips"])) {
 			foreach ($post->meta_fields["tips"] as $key => $value) {
 				//$value->meta_fields = get_fields($value["tip"]->ID);
 				$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
@@ -167,7 +168,7 @@ function vh_post_callback($data) {
 		}
 
 		//Remove drafts from the stops object
-		if (is_array($post->meta_fields["stops"])) {
+		if (isset($post->meta_fields["stops"]) && is_array($post->meta_fields["stops"])) {
 			foreach ($post->meta_fields["stops"] as $key => $value) {
 				if ($value->post_status == "draft") {
 						unset($post->meta_fields["stops"][$key]);
@@ -253,7 +254,7 @@ function vh_post_in_concept_callback($data) {
 		);
 
 		//Get stops meta fields if we have a trip
-		if (is_array($posts[0]->meta_fields["stops"])) {
+		if (isset($posts[0]->meta_fields["stops"]) && is_array($posts[0]->meta_fields["stops"])) {
 			foreach ($posts[0]->meta_fields["stops"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 				$value->taxonomy = array(
@@ -264,14 +265,14 @@ function vh_post_in_concept_callback($data) {
 		}
 
 		//Get mentioned meta fields
-		if (is_array($posts[0]->meta_fields["mentioned"])) {
+		if (isset($posts[0]->meta_fields["mentioned"]) && is_array($posts[0]->meta_fields["mentioned"])) {
 			foreach ($posts[0]->meta_fields["mentioned"] as $key => $value) {
 				$value->meta_fields = get_fields($value->ID);
 			}
 		}
 
 		//Get tips meta fields if we have a meet a local
-		if (is_array($posts[0]->meta_fields["tips"])) {
+		if (isset($posts[0]->meta_fields["tips"]) && is_array($posts[0]->meta_fields["tips"])) {
 			foreach ($posts[0]->meta_fields["tips"] as $key => $value) {
 				//$value->meta_fields = get_fields($value["tip"]->ID);
 				$value["tip"][0]->meta_fields = get_fields($value["tip"][0]->ID);
@@ -279,7 +280,7 @@ function vh_post_in_concept_callback($data) {
 		}
 
 		//Remove drafts from the stops object
-		if (is_array($posts[0]->meta_fields["stops"])) {
+		if (isset($posts[0]->meta_fields["stops"]) && is_array($posts[0]->meta_fields["stops"])) {
 			foreach ($posts[0]->meta_fields["stops"] as $key => $value) {
 				if ($value->post_status == "draft") {
 					unset($posts[0]->meta_fields["stops"][$key]);

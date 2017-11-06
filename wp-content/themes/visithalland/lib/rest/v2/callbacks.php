@@ -9,7 +9,7 @@ function vh_v2_landing_callback(){
 	//Get the three latest Meet A locals
 	$meet_locals = get_posts(array(
 	    'post_type'     => 'meet_local',
-	    'posts_per_page'    => 3,
+	    'posts_per_page'    => 3
 	));
 	foreach ($meet_locals as $key => $meet_local) {
 		$meet_local->meta_fields = get_fields($meet_local->ID);
@@ -84,7 +84,7 @@ function vh_v2_page_callback($data) {
 				$the_query->post->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
 			}
 		}
-
+		
 		return rest_ensure_response([
 			"page" 	=> $the_query->post,
 			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),
@@ -93,7 +93,7 @@ function vh_v2_page_callback($data) {
 			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
 			"seo"	=> array (
 				"title" 		=> $the_query->post->post_title,
-				"description"	=> get_field("excerpt", vh_get_page_by_path($post_type)->ID),
+				"description"	=> get_field("excerpt", vh_get_page_by_path('best-of-coastal-living/' . $the_query->post->post_name)->ID),
 				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
 			),
 			"breadcrumbs" => $breadcrumbs
