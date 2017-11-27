@@ -265,8 +265,26 @@ function vh_get_further_reading_by_taxonomy_concept($post_id, $numberposts = 20)
 	return array_slice($posts, 0, 3);
 }
 
-function vh_get_menu_by_name($menu_name, $featuredAmount = 2) {
-	$menu = wp_get_nav_menu_items( $menu_name, array() );
+function vh_get_menu($lang, $featuredAmount = 2) {
+	//Get the menu id based on language
+	switch ($lang) {
+		case '':
+			# Default lang se
+			$menu_id = 6;
+			break;
+
+		case 'en':
+			# Default lang se
+			$menu_id = 44;
+			break;
+		
+		default:
+			# Default lang se
+			$menu_id = 6;
+			break;
+	}
+
+	$menu = wp_get_nav_menu_items( $menu_id, array('lang' => $lang) );
 	$menuArray = array();
 	foreach ($menu as $key => $value) {
 		$slugArray = explode("/", $value->url);

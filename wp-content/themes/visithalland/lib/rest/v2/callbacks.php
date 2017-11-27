@@ -2,15 +2,19 @@
 
 /* V2 callback functions */
 function vh_v2_landing_callback(){
-	$page = get_post(12);
-	$page->meta_fields = get_fields($page->ID);
-	$menu = vh_get_menu_by_name("Huvudmeny", 3);
+	//Get language attribute
 	$lang = isset($_GET["lang"]) ? $_GET["lang"] : '';
+	
+	//Get Coastal Living page depending on lang attribute
+	$page = get_post(pll_get_post(12, $lang));
+	$page->meta_fields = get_fields($page->ID);
+	//Get primary menu
+	$menu = vh_get_menu($lang, 3);
 	
 	//Get the three latest Meet A locals
 	$meet_locals = get_posts(array(
-	    'post_type'     => 'meet_local',
-	    'posts_per_page'    => 3,
+	    'post_type'      => 'meet_local',
+	    'posts_per_page' => 3,
 	    'lang' => $lang
 	));
 	foreach ($meet_locals as $key => $meet_local) {
@@ -65,40 +69,39 @@ function vh_v2_landing_callback(){
 }
 
 function vh_v2_page_callback($data) {
+	$lang = isset($_GET["lang"]) ? $_GET["lang"] : '';
 	$page_slug = $data["page_slug"];
 	$breadcrumbs = array();
-	$lang = isset($_GET["lang"]) ? $_GET["lang"] : '';
 
-	if ($page_slug == "best-of-coastal-living") {
-		$the_query = new WP_Query( array( 'pagename' => $page_slug, 'lang' => $lang) );	
-		$breadcrumbs = array(array("title" => $the_query->post->post_title, "slug" => "best-of-coastal-living"));
-	} else {
-		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug, 'lang' => $lang) );
-		$breadcrumbs = get_breadcrumb($the_query->post);
-	}
+	$the_query = new WP_Query( array(
+		'pagename' => 'best-of-coastal-living/' . $page_slug
+	));
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
-		$the_query->post->meta_fields = get_fields($the_query->post->ID);
-		$the_query->post->author = vh_get_author($the_query->post->post_author);
+		$page = get_post(pll_get_post($the_query->post->ID, $lang));
+	 	$breadcrumbs = get_breadcrumb($page);
 
-		if (is_array($the_query->post->meta_fields["featured"])) {
-			foreach ($the_query->post->meta_fields["featured"] as $key => $value) {
-				$the_query->post->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
-				$the_query->post->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
+		$page->meta_fields = get_fields($page->ID);
+		$page->author = vh_get_author($page->post_author);
+
+		if (is_array($page->meta_fields["featured"])) {
+			foreach ($page->meta_fields["featured"] as $key => $value) {
+				$page->meta_fields["featured"][$key]->meta_fields = get_fields($value->ID);
+				$page->meta_fields["featured"][$key]->author = vh_get_author($value->post_author);
 			}
 		}
 		
 		return rest_ensure_response([
-			"page" 	=> $the_query->post,
-			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($the_query->post->ID, -1),
-			"meet_local" => vh_get_meet_local_by_taxonomy_concept($the_query->post->ID, 2),
-			"happenings" => vh_get_happenings_by_taxonomy_concept($the_query->post->ID, 6),
-			"menu" 	=> vh_get_menu_by_name("Huvudmeny"),
+			"page" 	=> $page,
+			"posts" => vh_get_posts_without_happenings_by_taxonomy_concept($page->ID, -1),
+			"meet_local" => vh_get_meet_local_by_taxonomy_concept($page->ID, 2),
+			"happenings" => vh_get_happenings_by_taxonomy_concept($page->ID, 6),
+			"menu" 	=> vh_get_menu($lang, 3),
 			"seo"	=> array (
-				"title" 		=> $the_query->post->post_title,
-				"description"	=> get_field("excerpt", vh_get_page_by_path('best-of-coastal-living/' . $the_query->post->post_name)->ID),
-				"keywords"		=> WPSEO_Meta::get_value('focuskw', $the_query->post->ID)
+				"title" 		=> $page->post_title,
+				"description"	=> get_field("excerpt", vh_get_page_by_path('best-of-coastal-living/' . $page->post_name)->ID),
+				"keywords"		=> WPSEO_Meta::get_value('focuskw', $page->ID)
 			),
 			"breadcrumbs" => $breadcrumbs
 		]);
