@@ -44,9 +44,20 @@ final class NGINX_FastCGI_cache_purge {
      * @param int $post_id WP_Post ID.
      */
     public function purge_cache() {
+        //Clear api cache
         array_map('unlink', glob("/var/run/nginx-cache/cms/*/*/*"));
         array_map('rmdir', glob("/var/run/nginx-cache/cms/*/*"));
         array_map('rmdir', glob("/var/run/nginx-cache/cms/*"));
+
+        //Clear live cache
+        array_map('unlink', glob("/var/run/nginx-cache/live/*/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/live/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/live/*"));
+        
+        //Clear stage cache
+        array_map('unlink', glob("/var/run/nginx-cache/stage/*/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/stage/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/stage/*"));
     }
 
 }
