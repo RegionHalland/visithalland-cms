@@ -5,11 +5,13 @@ function vh_v2_landing_callback(){
 	$page = get_post(12);
 	$page->meta_fields = get_fields($page->ID);
 	$menu = vh_get_menu_by_name("Huvudmeny", 3);
+	$lang = isset($_GET["lang"]) ? $_GET["lang"] : '';
 	
 	//Get the three latest Meet A locals
 	$meet_locals = get_posts(array(
 	    'post_type'     => 'meet_local',
-	    'posts_per_page'    => 3
+	    'posts_per_page'    => 3,
+	    'lang' => $lang
 	));
 	foreach ($meet_locals as $key => $meet_local) {
 		$meet_local->meta_fields = get_fields($meet_local->ID);
@@ -28,6 +30,7 @@ function vh_v2_landing_callback(){
 	$happenings = get_posts(array(
 	    'post_type'     => 'happening',
 	    'posts_per_page'    => -1,
+	    'lang' => $lang
 	));
 
 	foreach ($happenings as $key => $happening) {
@@ -64,12 +67,13 @@ function vh_v2_landing_callback(){
 function vh_v2_page_callback($data) {
 	$page_slug = $data["page_slug"];
 	$breadcrumbs = array();
+	$lang = isset($_GET["lang"]) ? $_GET["lang"] : '';
 
 	if ($page_slug == "best-of-coastal-living") {
-		$the_query = new WP_Query( array( 'pagename' => $page_slug) );	
+		$the_query = new WP_Query( array( 'pagename' => $page_slug, 'lang' => $lang) );	
 		$breadcrumbs = array(array("title" => $the_query->post->post_title, "slug" => "best-of-coastal-living"));
 	} else {
-		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug ) );
+		$the_query = new WP_Query( array( 'pagename' => 'best-of-coastal-living/' . $page_slug, 'lang' => $lang) );
 		$breadcrumbs = get_breadcrumb($the_query->post);
 	}
 
