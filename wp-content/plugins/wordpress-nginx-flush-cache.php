@@ -12,7 +12,7 @@
  */
 
 if ( ! defined( 'NGINX_CACHE_PATH' ) ) {
-    define( 'NGINX_CACHE_PATH', '/var/run/nginx-cache/' );
+    define( 'NGINX_CACHE_PATH', '/var/run/nginx-cache/cms' );
 }
 
 final class NGINX_FastCGI_cache_purge {
@@ -44,9 +44,9 @@ final class NGINX_FastCGI_cache_purge {
      * @param int $post_id WP_Post ID.
      */
     public function purge_cache() {
-        array_map('unlink', glob("/var/run/nginx-cache/*/*/*"));
-        array_map('rmdir', glob("/var/run/nginx-cache/*/*"));
-        array_map('rmdir', glob("/var/run/nginx-cache/*"));
+        array_map('unlink', glob("/var/run/nginx-cache/cms/*/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/cms/*/*"));
+        array_map('rmdir', glob("/var/run/nginx-cache/cms/*"));
     }
 
 }
