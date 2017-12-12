@@ -274,8 +274,8 @@ function vh_get_menu($lang, $featuredAmount = 2) {
 			break;
 
 		case 'en':
-			# Default lang se
-			$menu_id = 44;
+			# Lang en
+			$menu_id = 49;
 			break;
 		
 		default:
