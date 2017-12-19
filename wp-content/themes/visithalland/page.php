@@ -137,8 +137,46 @@
 		</div>
 	</div>
 
+	<?php //wp_die(print_r(vh_get_meet_local_by_taxonomy_concept()[0]->post_title)); ?>
 
 	<?php /* START - ArticleFull */ ?>
+	<article class="article-full relative my5">
+		<div class="article-full__img-container topographic-pattern">
+		    <picture>
+				<source media="(min-width: 768px)"
+					srcSet="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+				<source
+					srcSet="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+				<img class="concept-header__img" src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
+		    </picture>
+		</div>
+		<div class="article-full__scrim absolute left-0 right-0 bottom-0"></div>
+		<div class="article-full__inner absolute bottom-0 left-0 right-0 clearfix">
+		<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo vh_get_pretty_post_type_name(get_field("featured")[2]->post_type) ?>">
+
+			<div class="article-tag mt3 mb2">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+				<span class="article-tag__type">
+				<?php echo vh_get_pretty_post_type_name(vh_get_meet_local_by_taxonomy_concept()[0]->post_type) ?>
+				</span>
+			</div>
+		    
+		    <a class="link-reset article-full__link link light">
+		        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
+		        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
+		        <div class="article-link inline-block mt0">
+		            <hr class="article-link__divider block mb3"/>
+		            <span class="article-link__text">Läs hela artikeln</span>
+		            <span class="article-link__icon-wrapper">
+		                <i class="material-icons article-link__icon">arrow_forward</i>
+		            </span>
+		        </div>
+		    </a>
+		</div>    
+		</div>
+	</article>
 		
 	<?php /* START - ArticleFull */ ?>
 </main>

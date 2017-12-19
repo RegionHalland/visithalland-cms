@@ -217,7 +217,9 @@ function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
 	return $posts;
 }
 
-function vh_get_meet_local_by_taxonomy_concept($post_id, $numberposts = 1) {
+function vh_get_meet_local_by_taxonomy_concept($post_id = null, $numberposts = 1) {
+	global $post;
+	if (!isset($post_id)) $post_id = $post->ID;
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
 
