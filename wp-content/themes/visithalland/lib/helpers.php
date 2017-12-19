@@ -1,6 +1,35 @@
 <?php
 /* Helper methods */
 
+function vh_get_pretty_post_type_name(String $post_type) {
+	$export = array(
+		'happening' => "Happening",
+		'places' => "Places",
+		'place' => "Places",
+		'company' => "Business",
+		'companies' => "Business",
+		'meet_local' => "Meet a Local",
+		'editor_tip' => "Editorial",
+		'trip' => "Spotlight",
+		'point_of_interest' =>  "Point of interest"
+	);
+
+	if (isset($export[$post_type])) {
+		return $export[$post_type];
+	}
+
+	return null;
+}
+
+function vh_get_post_taxonomy() {
+	global $post;
+        
+	return array(
+		"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+		"slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+	);
+}
+
 function vh_get_next_article($post, $paged = 1){
 	$terms = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) );
 	$tax_query = array(

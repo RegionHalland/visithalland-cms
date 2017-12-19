@@ -1,4 +1,5 @@
 <?php
+
 //Modification of acf plugin
 include_once('lib/acf.php');
 
@@ -53,4 +54,12 @@ include_once('lib/rest/v2/callbacks.php');
 
 
 //Add helpers used in callbacks.php for generic methods
-include_once('lib/rest/helpers.php');
+//include_once('lib/helpers.php');
+
+
+function include_files(){
+    // Here we load from our includes directory
+    // This considers parent and child themes as well    
+    locate_template( array( 'lib/helpers.php' ), true, true );
+}
+add_action( 'after_setup_theme', 'include_files' );
