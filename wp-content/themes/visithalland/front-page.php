@@ -57,10 +57,10 @@
 		                            <div class="article-medium__img-container topographic-pattern">
 										<picture>
 										    <source media="(min-width: 40em)"
-										        srcSet="<?php echo get_field("cover_image", $featured_id)["url"] ?>" />
+										        srcSet="<?php echo get_field("cover_image", get_field("featured", $post_id)[0]->ID)["url"] ?>" />
 										    <source
-										        srcSet="<?php echo get_field("cover_image", $featured_id)["url"] ?>" />
-										    <img class="concept-thumbnail-large__img" src="<?php echo get_field("cover_image", $featured_id)["url"] ?>" />
+										        srcSet="<?php echo get_field("cover_image", get_field("featured", $post_id)[0]->ID)["url"] ?>" />
+										    <img class="concept-thumbnail-large__img" src="<?php echo get_field("cover_image", get_field("featured", $post_id)[0]->ID)["url"] ?>" />
 										</picture>
 		                            </div>
 		                            <div class="article-medium__content">
@@ -72,8 +72,8 @@
 		                                            <?php echo vh_get_pretty_post_type_name(get_post($featured_id)->post_type) ?>
 		                                        </span>
 		                                    </div>
-		                                <h3 class="mb1 mt1 pt0"><?php echo get_post($featured_id)->post_title ?></h3>
-		                                <p class="mt2"><?php echo get_field("excerpt", $featured_id) ?></p>
+		                                <h3 class="mb1 mt1 pt0"><?php echo get_field("featured", $post_id)[0]->post_title ?></h3>
+		                                <p class="mt2"><?php echo get_field("excerpt", get_field("featured", $post_id)[0]->ID) ?></p>
 		                            </div>
 		                        </a>
 		                </article>

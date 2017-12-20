@@ -256,8 +256,6 @@
 			<?php /* END - POST grid */ ?>
 				
 
-
-
 			<?php /* START - CONCEPT SIDEBAR */ ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
 		        <div class="concept-happenings clearfix">
