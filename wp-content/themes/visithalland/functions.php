@@ -1,4 +1,35 @@
 <?php
+function wpa_show_permalinks( $post_link, $post ){
+    if ( is_object( $post ) && $post->post_type == 'editor_tip' || $post->post_type == 'meet_local' || $post->post_type == 'trip' || $post->post_type == 'happening' || $post->post_type == 'places' || $post->post_type == 'companies' ){
+        $terms = wp_get_object_terms( $post->ID, 'taxonomy_concept' );
+        if( $terms ){
+            return str_replace( '%taxonomy_concept%' , $terms[0]->slug , $post_link );
+        }
+    }
+    return $post_link;
+}
+add_filter( 'post_type_link', 'wpa_show_permalinks', 1, 2 );
+
+add_filter( 'wp_get_nav_menu_items', 'prefix_nav_menu_classes', 10, 3 );
+
+function prefix_nav_menu_classes($items, $menu, $args) {
+    _wp_menu_item_classes_by_context($items);
+
+    $taxonomy = 'custom_taxonomy_concept';
+    $tax_terms = get_terms($taxonomy);
+	$terms = vh_get_post_taxonomy();
+
+    foreach ($items as $key => $value) {
+    	if($value->current) {
+    		array_push($value->classes, "active");
+    	}
+    	if(get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name == $terms["slug"]) {
+    		array_push($value->classes, "active");
+    	}
+    }
+    return $items;
+}
+
 
 //Modification of acf plugin
 include_once('lib/acf.php');
