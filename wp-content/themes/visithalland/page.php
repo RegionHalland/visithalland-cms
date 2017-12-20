@@ -163,7 +163,7 @@
 				</span>
 			</div>
 		    
-		    <a class="link-reset article-full__link link light">
+		    <a href="<?php echo vh_get_meet_local_by_taxonomy_concept()[0]->guid ?>" class="link-reset article-full__link link light">
 		        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
 		        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
 		        <div class="article-link inline-block mt0">
