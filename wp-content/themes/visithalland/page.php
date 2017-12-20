@@ -7,13 +7,13 @@
 	<?php /* START - ConceptHeader */ ?>
 	<section class="concept-header relative overflow-hidden <?php echo $post->post_name ?>" role="heading">
 	    <div class="concept-header__img-container topographic-pattern">
-	            <picture>
-	                <source media="(min-width: 60em)"
-	                    srcSet="<?php echo get_field("cover_image")['url']; ?>"/>
-	                <source
-	                    srcSet="<?php echo get_field("cover_image")['url']; ?>"/>
-	                <img class="concept-header__img" src="<?php echo get_field("cover_image")['url']; ?>" alt="TODO" />
-	            </picture>
+			<picture>
+			    <source media="(min-width: 60em)"
+			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+			    <source
+			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+			    <img className="concept-header__img" src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
+			</picture>
 	    </div>
 	    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
 	        <div class="col col-12 sm-col-7 md-col-10 lg-col-5">
@@ -182,7 +182,7 @@
 	<?php /* END - ArticleFull */ ?>
 
 
-	<?php /* START - ArticleFull */ ?>
+	<?php /* START - POST grid */ ?>
 		<div class="clearfix concept-content mt2">
 		    <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
 		        <div class="clearfix mxn2">
@@ -201,7 +201,7 @@
 											<img class="concept-header__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 										</picture>
 									</div>
-									<a class="link-reset">
+									<a href="<?php echo $value->guid ?>" class="link-reset">
 										<div class="article-image__content absolute left-0 bottom-0">
 											<div class="article-tag--light mt3 mb2">
 												<div class="article-tag__icon-wrapper">
@@ -224,94 +224,113 @@
 								</article>
 		        				</div>
 		        			<?php else: ?>
-		        				<div style="outline:blue solid thick;" class="concept-grid__item col col-12 sm-col-6">
-		        					<h1><?php echo $value->post_title ?></h1>
+		        				<div class="concept-grid__item col col-12 sm-col-6">
+									<article class="article-image relative <?php echo vh_get_post_taxonomy()["slug"] ?>">
+										<a href="<?php echo $value->guid ?>" class="link-reset">
+											<div class="article-medium__img-container topographic-pattern">
+												<picture>
+													<source
+												    	srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+													<img class="article-medium__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+												</picture>
+											</div>
+											<div class="article-medium__content">
+												<div class="article-tag mt3 mb2">
+													<div class="article-tag__icon-wrapper">
+														<div class="article-tag__icon"></div>
+													</div>
+													<span class="article-tag__type">
+														<?php echo vh_get_pretty_post_type_name($value->post_type) ?>
+													</span>
+												</div>
+											    <h3 class="mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
+											    <p class="mt2"><?php the_field("excerpt", $value->ID) ?></p>
+											</div>
+										</a>
+									</article>
 		        				</div>
 		        			<?php endif ?>
 		       			<?php endforeach ?>
-
-
-		            this.props.posts.map(function(el, index) {
-		                //Every third article should be ArticleLargeGridItem
-		                if ((index + 1) % 3 === 0) {
-		                    return <div key={el.ID.toString()} class="concept-grid__item col col-12">
-		                                <ArticleImage
-		                                    post_title={_.get(el, 'post_title', '')}
-		                                    post_type={_.get(el, 'post_type', '')}
-		                                    post_name={_.get(el, 'post_name', '')}
-		                                    post_concept={_.get(el, 'taxonomy.name', '')}
-		                                    excerpt={_.get(el, 'meta_fields.excerpt', '')}
-		                                    taxonomy_slug={_.get(el, 'taxonomy.slug', '')}
-		                                    cover_image_large_2x={_.get(el, 'meta_fields.cover_image.sizes.vh_large@2x', '')}
-		                                    cover_image_large={_.get(el, 'meta_fields.cover_image.sizes.vh_large', '')}
-		                                    cover_image_tall_2x={_.get(el, 'meta_fields.cover_image.sizes.vh_hero_tall@2x', '')}
-		                                    cover_image_tall={_.get(el, 'meta_fields.cover_image.sizes.vh_hero_tall', '')}
-		                                    cover_image_alt={_.get(el, 'meta_fields.cover_image.alt', '')}
-		                                />
-		                            </div>
-		                }
-		                return <div key={el.ID.toString()} class="concept-grid__item col col-12 sm-col-6">
-		                            <ArticleMedium
-		                                    post_title={_.get(el, 'post_title', '')}
-		                                    post_type={_.get(el, 'post_type', '')}
-		                                    post_name={_.get(el, 'post_name', '')}
-		                                    excerpt={_.get(el, 'meta_fields.excerpt', '')}
-		                                    taxonomy_slug={_.get(el, 'taxonomy.slug', '')}
-		                                    cover_image_small={_.get(el, 'meta_fields.cover_image.sizes.vh_small', '')}
-		                                    cover_image_small_2x={_.get(el, 'meta_fields.cover_image.sizes.vh_small@2x', '')}
-		                                    cover_image_medium={_.get(el, 'meta_fields.cover_image.sizes.vh_medium', '')}
-		                                    cover_image_medium_2x={_.get(el, 'meta_fields.cover_image.sizes.vh_medium@2x', '')}
-		                                    cover_image_alt={_.get(el, 'meta_fields.cover_image.alt', '')}
-		                            />
-		                        </div>
-		            })
-		        }
-		        
-		        </div>
+				</div>
 		    </div>
+			<?php /* END - POST grid */ ?>
+				
+
+
+
+			<?php /* START - CONCEPT SIDEBAR */ ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
 		        <div class="concept-happenings clearfix">
-		            {   
-		                this.props.happenings.map(function(el, index) {
-		                    return <div key={el.ID.toString()} class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
-		                                <HappeningListItem 
-		                                    post_title={_.get(el, 'post_title')} 
-		                                    post_name={_.get(el, 'post_name')}
-		                                    post_type={_.get(el, 'post_type')}
-		                                    excerpt={_.get(el, 'meta_fields.excerpt')}
-		                                    taxonomy_slug={_.get(el, 'taxonomy.slug', '')}
-		                                    start_date={_.get(el, 'meta_fields.start_date')}
-		                                    cover_image_thumbnail={_.get(el, 'meta_fields.cover_image.sizes.vh_thumbnail')}
-		                                    cover_image_alt={_.get(el, 'meta_fields.cover_image.alt')} 
-		                                />
-		                            </div>
-		                })
-		            }
+		            <?php 
+					$happenings = vh_get_happenings_by_taxonomy_concept($post->ID, 3);
+		            foreach ($happenings as $index => $value) : ?>
+		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
+						    <article class="happening-list-item <?php echo vh_get_post_taxonomy()["slug"] ?>">
+				                <a href="<?php echo $value->guid ?>" class="link-reset">
+				                    <div class="clearfix">
+				                        <div class="col col-5 sm-col-4 ">
+				                            <div class="happening-list-item__img-container topographic-pattern relative">
+				                            	<img class="happening-list-item__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+				                            </div>
+				                        </div>
+				                        <div class="happening-list-item__date">
+											<div class="date-badge">
+											    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
+											    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
+											</div>
+				                        </div>
+				                        <div class="happening-list-item__content col col-7 sm-col-8">
+				                            <h4 class=""><?php echo $value->post_title ?></h4>
+				                            <div class="article-link inline-block mt0">
+				                                <hr class="article-link__divider block"/>
+				                                <span class="article-link__text">Läs mer</span>
+				                                <span class="article-link__icon-wrapper">
+				                                    <i class="material-icons article-link__icon">arrow_forward</i>
+				                                </span>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </a>
+				            </article>
+		            	</div>
+		        	<?php endforeach ?>
 		        </div>
+
 		        <div class="concept-thumbnails clearfix">
-		            {   
-		                this.props.menuItems.map(function(el, index) {
-		                    return <div key={el.ID.toString()} class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
-		                                <ConceptThumbnailSmall
-		                                    post_name={_.get(el, 'post_name', '')}
-		                                    post_title={_.get(el, 'post_title', '')}
-		                                    excerpt={_.get(el, 'excerpt', '')} 
-		                                    cover_image_tall={_.get(el, 'cover_image.sizes.vh_hero_tall', '')}
-		                                    cover_image_tall_2x={_.get(el, 'cover_image.sizes.vh_hero_tall@2x', '')}  
-		                                    cover_image_large={_.get(el, 'cover_image.sizes.vh_large', '')}
-		                                    cover_image_large_2x={_.get(el, 'cover_image.sizes.vh_large@2x', '')}
-		                                    featured={_.get(el, 'featured', [])}
-		                                />
+					<?php
+					$menuItems = wp_get_nav_menu_items("huvudmeny");
+					foreach ($menuItems as $key => $value): ?>
+					<?php
+						$post_id = get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->ID;
+						$featured_id = get_field("featured", get_post(get_post_meta( $post_id, '_menu_item_object_id', true )))[0]->ID;
+					?>
+					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
+						<div class="concept-thumbnail-small <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
+		                       <a href="<?php echo $value->url ?>" class="link-reset">
+		                            <div class="concept-thumbnail-small__img-container">
+	                                    <picture>
+	                                        <source media="(min-width: 40em)"
+	                                            srcSet="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+	                                        <source
+	                                            srcSet="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 2x" ?>" />
+	                                        <img class="concept-thumbnail-small__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_tall"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+	                                    </picture>
+		                                <div class="concept-thumbnail-small__inner center">
+		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
+		                                    <h2 class="concept-thumbnail-small__title"><?php echo $value->title ?></h2>
+		                                </div>
 		                            </div>
-		                })
-		            }
+		                        </a>
+		                </div>
+	            	</div>
+					<?php endforeach ?>
 		        </div>
+
+
+
 		    </div>
 		</div>
-	<?php /* END - ArticleFull */ ?>
-
-		
-	
+		<?php /* END - CONCEPT SIDEBAR  */ ?>
 </main>
 
 <?php get_footer(); ?>

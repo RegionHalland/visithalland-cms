@@ -24,10 +24,7 @@
         	$post_id = get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->ID;
         	$featured_id = get_field("featured", get_post(get_post_meta( $post_id, '_menu_item_object_id', true )))[0]->ID;
    		?>
-    <?php if($key === 0) : ?>
-    	<?php 
-    	//wp_die(vh_get_pretty_post_type_name(get_post()) 
-    	?>
+    	<?php if($key === 0) : ?>
         <div className="col col-12 landing-concepts__item">
 	        <div class="concept-thumbnail-large <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
 		        <a href="<?php echo $value->url ?>">
@@ -81,10 +78,6 @@
 		                        </a>
 		                </article>
 		        	</div>
-
-
-
-
 		        </div>
 	        </div>
     </div>
