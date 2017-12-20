@@ -26,7 +26,8 @@ function custom_post_type_meet_local() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-admin-users'
+		'menu_icon'           => 'dashicons-admin-users',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/meet-a-local', 'with_front' => false )
 	);
 	register_post_type( 'meet_local', $args );
 
@@ -61,7 +62,8 @@ function custom_post_type_editor_tip() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-admin-users'
+		'menu_icon'           => 'dashicons-admin-users',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/editor_tip', 'with_front' => false )
 	);
 	register_post_type( 'editor_tip', $args );
 
@@ -96,7 +98,8 @@ function custom_post_type_trips() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-location-alt'
+		'menu_icon'           => 'dashicons-location-alt',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/trip', 'with_front' => false )
 	);
 	register_post_type( 'trip', $args );
 
@@ -131,7 +134,8 @@ function custom_post_type_happenings() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-calendar-alt'
+		'menu_icon'           => 'dashicons-calendar-alt',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/happening', 'with_front' => false )
 	);
 	register_post_type( 'happening', $args );
 
@@ -165,7 +169,8 @@ function custom_post_type_places() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-location-alt'
+		'menu_icon'           => 'dashicons-location-alt',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/place', 'with_front' => false )
 	);
 	register_post_type( 'places', $args );
 
@@ -198,7 +203,8 @@ function custom_post_type_companies() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
-		'menu_icon'           => 'dashicons-store'
+		'menu_icon'           => 'dashicons-store',
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/business', 'with_front' => false )
 	);
 	register_post_type( 'companies', $args );
 

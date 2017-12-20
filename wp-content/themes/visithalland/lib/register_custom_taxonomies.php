@@ -8,6 +8,7 @@ function custom_taxonomy_concept() {
 		'menu_name'                  => __( 'Koncept', 'text_domain' ),
 	);	
 	$args = array(
+		'rewrite' 					=> array( 'slug' => 'koncept', 'with_front' => false ),
 		'labels'                     => $labels,
 		'hierarchical'               => true,
 		'public'                     => true,
@@ -17,7 +18,10 @@ function custom_taxonomy_concept() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'taxonomy_concept', array('meet_local', 'trip', 'happening', 'places', 'editor_tip', 'page', 'companies'), $args );
+	register_taxonomy( 
+		'taxonomy_concept', 
+		array('meet_local', 'trip', 'happening', 'places', 'editor_tip', 'page', 'companies')
+	);
 
 }
 add_action( 'init', 'custom_taxonomy_concept', 0 );
