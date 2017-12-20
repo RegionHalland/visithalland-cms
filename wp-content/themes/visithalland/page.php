@@ -153,9 +153,9 @@
 			</div>
 			<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
 			<div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
-				<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo vh_get_pretty_post_type_name(get_field("featured")[2]->post_type) ?>">
+				<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo $post->post_name ?>">
 
-					<div class="article-tag mt3 mb2">
+					<div class="article-tag--light mt3 mb2">
 						<div class="article-tag__icon-wrapper">
 							<div class="article-tag__icon"></div>
 						</div>
