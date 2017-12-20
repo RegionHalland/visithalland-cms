@@ -39,7 +39,7 @@
 	<div class="featured-articles relative z4 clearfix">
 		<div class="featured-articles__primary col col-12 lg-col-8 relative">
 			<article class="article-large <?php echo vh_get_post_taxonomy()["slug"] ?>">
-                    <a class="link-reset">
+                    <a href="<?php echo get_field("featured")[0]->guid ?>" class="link-reset">
                         <div class="article-large__img-container topographic-pattern">
 							<picture>
 								<source media="(min-width: 40em)"
@@ -76,7 +76,7 @@
 		        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
 		        	<?php /* START - ArticleMedium */ ?>
 					<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-						<a class="link-reset">
+						<a href="<?php echo get_field("featured")[1]->guid ?>" class="link-reset">
 						    <div class="article-medium__img-container topographic-pattern">
 								<picture>
 									<source media="(min-width: 40em)"
@@ -106,7 +106,7 @@
 		        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
 		        	<?php /* START - ArticleMedium */ ?>
 						<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-							<a class="link-reset">
+							<a href="<?php echo get_field("featured")[2]->guid ?>" class="link-reset">
 							    <div class="article-medium__img-container topographic-pattern">
 									<picture>
 										<source media="(min-width: 40em)"
@@ -150,8 +150,8 @@
 				<img class="concept-header__img" src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
 		    </picture>
 		</div>
-		<div class="article-full__scrim absolute left-0 right-0 bottom-0"></div>
-		<div class="article-full__inner absolute bottom-0 left-0 right-0 clearfix">
+		<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
+		<div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
 		<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo vh_get_pretty_post_type_name(get_field("featured")[2]->post_type) ?>">
 
 			<div class="article-tag mt3 mb2">
