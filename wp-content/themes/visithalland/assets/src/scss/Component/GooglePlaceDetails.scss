@@ -6,7 +6,7 @@
 	border-bottom:solid;
 	border-top:solid;
 	margin-top:$space-4;
-	border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+	border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	&__section {
 		padding:$space-2 $space-3;
 	}
@@ -61,6 +61,6 @@
 		border-style:none;
 		border-top:solid;
 		padding:$space-2 0;
-		border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	}
 }

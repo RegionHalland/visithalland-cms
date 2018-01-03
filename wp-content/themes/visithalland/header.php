@@ -4,7 +4,7 @@
 	<title></title>
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/dist/css/main.min.css" />
     <link rel="stylesheet" href="https://use.typekit.net/vzi2bvt.css" />
-            
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 <body>

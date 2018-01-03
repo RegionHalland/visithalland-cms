@@ -13,7 +13,7 @@
 	color:$white;
 	z-index:999;
 	padding:$space-3 $space-3;
-	background-image: url('../../Assets/graphics/topographic-pattern.png');
+	background-image: url('../../src/graphics/topographic-pattern.png');
 	background-repeat:repeat;
 	background-size:25%;
 	@media (min-width:$breakpoint-lg) {

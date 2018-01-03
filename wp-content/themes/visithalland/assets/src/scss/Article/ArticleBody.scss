@@ -49,11 +49,11 @@
 		margin:$space-4 auto;
 		border-top:solid;
 		padding:$space-3 0;
-		border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	}
 
 	ul {
-		list-style: square url('../../Assets/graphics/list-arrow.png');
+		list-style: square url('../../src/graphics/list-arrow.png');
 		padding-left:$space-3;
 
 	}

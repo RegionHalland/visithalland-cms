@@ -10,16 +10,12 @@
     top:57.5px;
     width:100%;
     @media(min-width:$breakpoint-sm) {
+        position: relative;
+        transform:translateY(0%);
+        top:0;
         border-radius: 0px 0px $border-radius $border-radius;
         text-align:center;
-        transform:translateY(0%);
 
-    }
-    @media(min-width:$breakpoint-md) {
-        top:55px;
-    }
-    @media(min-width:$breakpoint-lg) {
-        top:70px;
     }
     &.active {
         transform:translateY(0%);

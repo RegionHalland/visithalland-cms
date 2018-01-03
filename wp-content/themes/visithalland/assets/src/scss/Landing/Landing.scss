@@ -42,20 +42,11 @@
 .landing-concepts {
 	z-index:$z4;
 	position:relative;
-	padding:0 $space-3;
-	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-5;
-	}
-	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
-	}
-
-	margin-left: -$space-3;
-	margin-right: -$space-3;
 	margin-top: -$space-5;
-
 	&__item {
-		padding:0 $space-3;
+		@media (min-width:$breakpoint-sm) {
+
+		}
 		&--small {
 			margin-top:$space-4;
 		}
