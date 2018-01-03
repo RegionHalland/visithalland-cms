@@ -12,7 +12,7 @@
 			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 			    <source
 			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-			    <img className="concept-header__img" src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
+			    <img class="concept-header__img" src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
 			</picture>
 	    </div>
 	    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
