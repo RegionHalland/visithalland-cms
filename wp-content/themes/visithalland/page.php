@@ -160,7 +160,14 @@
 	<?php /* START - ArticleFull */ ?>
 	<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
 		<article class="article-full relative my5">
-			<div class="article-full__img-container" style="background-image:url('<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["thumbnail"] ?>'); background-size:cover; filter: blur(20px);')">
+			<div class="article-full__img-container topographic-pattern">
+				<?php
+					/*$image = new Imagick('test.jpg');
+					$image->resizeImage(250, 250, Imagick::FILTER_GAUSSIAN, 1);
+					$image->quantizeImage(1, Imagick::COLORSPACE_RGB, 0, false, false);
+					$image->setFormat('RGB');
+					echo substr(bin2hex($image), 0, 6);*/
+				?>
 			    <picture>
 					<source media="(min-width: 768px)"
 						data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />

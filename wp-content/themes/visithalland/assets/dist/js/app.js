@@ -12,11 +12,12 @@ jQuery(function() {
 	window.addEventListener('LazyLoad::Initialized', function (e) {
     // Get the instance and puts it in the lazyLoadInstance variable
     	lazyLoadInstance = e.detail.instance;
-    	setTimeout(function() {
+
+    	/*setTimeout(function() {
     		console.log(jQuery('.loaded').closest('div'))
     		jQuery('.loaded').closest('div').css('background-image', 'none');
     		jQuery('.loaded').closest('div').css('filter', 'none');
-    	}, 2000);
+    	}, 2000);*/
     	
 	}, false);
 
