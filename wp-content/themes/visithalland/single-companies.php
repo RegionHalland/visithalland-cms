@@ -46,7 +46,8 @@
                     </section>
                     <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a href="http://maps.google.com/?q=Prostens Pizza, Falkenberg, Sverige" class="details__phone block"><i class="details__icon material-icons mr2">business</i><!-- react-text: 826 -->Visa på karta<!-- /react-text --></a></section>
                     <section
-                        class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a href="http://www.prostenspizza.se/" class="btn btn--primary inline-block">Besök webbplats</a></section>
+                        class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span>
+                        <a href="<?php get_field('external_link')?>" class="btn btn--primary inline-block">Besök webbplats</a></section>
                     </div>
                 </div>
             </div>

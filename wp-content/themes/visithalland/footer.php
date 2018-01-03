@@ -27,7 +27,7 @@
                     <span class="footer__column-header">Om webbplatsen</span>
                     <ul class="footer__list">
                         <li class="footer__list-item mt1 light">
-                            <a href="/cookies" class="footer__link link-reset">Om cookies</a>
+                            <a href="<?php echo get_permalink($id = 3331)?>" class="footer__link link-reset">Om cookies</a>
                         </li>
                     </ul>
                 </div>
