@@ -3,13 +3,13 @@
 	border-width:2px;
 	border-style:none;
 	border-bottom:solid;
-	border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+	border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	&__header {
 		padding:$space-3 0;
 		border-width:2px;
 		border-style:none;
 		border-bottom:solid;
-		border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	}
 }
 

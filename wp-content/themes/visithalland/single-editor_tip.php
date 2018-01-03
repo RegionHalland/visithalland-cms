@@ -59,39 +59,41 @@
                         $mentions = get_field("mentioned");
                         // Needs images //
                         foreach ($mentions as $key => $value): ?>
-                			<article class="article-mention col col-12 sm-col-6 mt3">
-                                    <div class="clearfix">
-                                        <div class="col col-5 sm-col-4 ">
-                                            <div class="article-mention__img-container relative">
-                                            	<img 
-                                                    class="article-mention__img" 
-                                                    src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
-                                                    alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
-                                                />
+                            <a href="<?php echo $value->guid ?>" class="link-reset">
+                    			<article class="article-mention col col-12 sm-col-6 mt3">
+                                        <div class="clearfix">
+                                            <div class="col col-5 sm-col-4 ">
+                                                <div class="article-mention__img-container relative">
+                                                	<img 
+                                                        class="article-mention__img" 
+                                                        src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
+                                                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
+                                                    />
+                                                </div>
                                             </div>
+                    							<div class="article-mention__content col col-7 sm-col-8">
+                    	                            <h5 class="article-mention__label"><?php echo $value->post_title ?></h5>
+                    	                            <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
+                    	                            <div class="article-link inline-block mt2">
+                    	                                <span class="article-link__text">Läs mer</span>
+                    	                                <span class="article-link__icon-wrapper">
+                    	                                    <i class="material-icons article-link__icon">arrow_forward</i>
+                    	                                </span>
+                    	                            </div>
+                    	                        </div>
                                         </div>
-                							<div class="article-mention__content col col-7 sm-col-8">
-                	                            <h5 class="article-mention__label"><?php echo $value->post_title ?></h5>
-                	                            <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
-                	                            <div class="article-link inline-block mt2">
-                	                                <span class="article-link__text">Läs mer</span>
-                	                                <span class="article-link__icon-wrapper">
-                	                                    <i class="material-icons article-link__icon">arrow_forward</i>
-                	                                </span>
-                	                            </div>
-                	                        </div>
-                                    </div>
-                            </article>
+                                </article>
+                            </a>
                     <?php endforeach ?>
             </div>
         </div>
     </div>
-    <div class="featured-articles col-12 md-col-10 lg-col-12 mx-auto">  
+    <div class="featured-articles mxn2 mt6 col-12 md-col-10 lg-col-12">  
                 <div class="clearfix">  
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                         foreach ($featuredArticles as $key => $value): ?>
-                            <article class="article-medium col col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                            <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
                                 <a href="<?php echo $value->guid ?>" class="link-reset">
                                     <div class="article-medium__img-container topographic-pattern">
                                         <picture>
