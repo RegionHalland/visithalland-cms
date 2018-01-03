@@ -6,7 +6,7 @@
     
 ?>
 	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
-	    <section class="spotlight-header hiking-biking">
+	    <section class="spotlight-header">
 	        <div class="spotlight-header__img-container">
 	            <picture>
 	                <source media="(min-width: 40em)"
@@ -32,7 +32,7 @@
 	            </div>
 	        </div>
 	    </section>
-	    <div class="spotlight-content hiking-biking">
+	    <div class="spotlight-content">
 	        <div class="clearfix spotlight-grid">
 	            <div class="spotlight-grid-item col col-12">
 	        	 	<?php
@@ -44,7 +44,16 @@
 		            			<div class="spotlight-grid-item col col-12">
 					                <div class="spotlight-large clearfix">
 					                    <div class="spotlight-large__img-container topographic-pattern">
-												
+											<picture>
+								                <source media="(min-width: 40em)"
+								                    srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+								                <source
+								                    srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+								                <img class="meet-a-local-header__img" 
+								                        src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" 
+								                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
+								                />
+								            </picture>
 					                    </div>
 					                    <div class="spotlight-large__content col-12 lg-col-8 relative">
 					                        <h2 class="spotlight-large__title mt2 p0 mb0"><?php echo $value->post_title ?></h2>
@@ -64,7 +73,16 @@
 					        	<div class="spotlight-grid-item col col-12  sm-col-6">
 					                <div class="spotlight-small">
 					                    <div class="spotlight-small__img-container topographic-pattern">
-												
+											<picture>
+								                <source media="(min-width: 40em)"
+								                    srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+								                <source
+								                    srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+								                <img class="meet-a-local-header__img" 
+								                        src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" 
+								                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
+								                />
+								            </picture>
 					                    </div>
 					                    <div class="spotlight-small__content col-12 lg-col-12 relative">
 					                        <h3 class="spotlight-small__title mb2 mt3 p0 mb0"><?php echo $value->post_title ?></h3>
@@ -83,7 +101,8 @@
 	                <?php endforeach ?>
 	            </div>
 	        </div>
-	        <div className="featured-articles col-12 md-col-10 lg-col-8 mx-auto">   
+	    </div>
+	    <div class="featured-articles col-12 md-col-10 lg-col-12 mx-auto">  
 		        <div class="clearfix">  
 		            <?php
 		                $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
@@ -117,7 +136,6 @@
 		            <?php endforeach ?>
 		        </div>
 		    </div>
-	    </div>
 	</article>
 <?php endwhile; ?>
 

@@ -65,8 +65,8 @@
                                             <div class="article-mention__img-container relative">
                                             	<img 
                                                     class="article-mention__img" 
-                                                    src="<?php echo get_field("cover_image")["sizes"]["vh_thumbnail"] ?>" 
-                                                    alt="<?php echo get_field("cover_image")["alt"] ?>" 
+                                                    src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
+                                                    alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
                                                 />
                                             </div>
                                         </div>
@@ -85,8 +85,8 @@
                     <?php endforeach ?>
             </div>
         </div>
-
-         <div className="featured-articles col-12 md-col-10 lg-col-8 mx-auto">   
+    </div>
+    <div class="featured-articles col-12 md-col-10 lg-col-12 mx-auto">  
                 <div class="clearfix">  
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
@@ -120,7 +120,6 @@
                     <?php endforeach ?>
                 </div>
             </div>
-    </div>
 
 <?php endwhile; ?>
 </article>
