@@ -29,30 +29,29 @@
 	</section>
 	<?php /* END - ConceptHeader */ ?>
 
-		<?php /* START - NavigationCarousel */ ?>
-		<div class="concept-carousel relative z4">
-			<?php
-			$spotlights = vh_get_posts_without_happenings_by_taxonomy_concept($post->ID, -1);
-			$spotlights = array_filter($spotlights, function($post) {
-    			return $post->post_type === 'trip';
-    		});
-			 foreach ($spotlights as $key => $value) : ?>
-				<div class="page-thumbnail col-12 sm-col-12 lg-col-12 center hiking-biking">
-	                <a href="<?php echo get_permalink($value->ID) ?>">
-	                    <div class="page-thumbnail__img-container topographic-pattern">
-	                        <div class="page-thumbnail__concept-badge"></div>
-	                            <picture>
-	                                <img class="page-thumbnail__img" src={_.get(el, 'meta_fields.cover_image.sizes.vh_medium')} alt={_.get(el, 'meta_fields.cover_image.alt')} />
-	                            </picture>
-	                    </div>
-	                    <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
-	                    <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
-	                </a>
-	            </div>
-        	<?php endforeach ?>
-		</div>
-
-		<?php /* END - NavigationCarousel */ ?>
+	<?php /* START - NavigationCarousel */ ?>
+	<div class="concept-carousel relative z4">
+		<?php
+		$spotlights = vh_get_posts_without_happenings_by_taxonomy_concept($post->ID, -1);
+		$spotlights = array_filter($spotlights, function($post) {
+			return $post->post_type === 'trip';
+		});
+		 foreach ($spotlights as $key => $value) : ?>
+			<div class="page-thumbnail col-12 sm-col-12 lg-col-12 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
+	            <a href="<?php echo get_permalink($value->ID) ?>">
+	                <div class="page-thumbnail__img-container topographic-pattern">
+	                    <div class="page-thumbnail__concept-badge"></div>
+	                        <picture>
+	                            <img class="page-thumbnail__img" src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
+	                        </picture>
+	                </div>
+	                <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
+	                <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
+	            </a>
+	        </div>
+		<?php endforeach ?>
+	</div>
+	<?php /* END - NavigationCarousel */ ?>
 
 
 	<div class="featured-articles relative z4 clearfix">
