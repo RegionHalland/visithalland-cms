@@ -34,12 +34,12 @@
                 <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
                     <span class="footer__column-header">Språk</span>
                     <ul class="footer__list">
-                        <li class="footer__list-item mt1 light">
-                            <a class="footer__link link-reset">English</a>
-                        </li>
-                        <li class="footer__list-item mt1 light">
-                            <a class="footer__link link-reset">Svenska</a>
-                        </li>
+                        <?php $langs =  pll_the_languages(array('raw' => true)); ?>
+                        <?php foreach ($langs as $key => $value) : ?>
+                            <li class="footer__list-item mt1 light">
+                                <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="footer__link link-reset"><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
+                            </li>
+                        <?php endforeach ?>
                     </ul>
                 </div>
                 <div class="footer__column col col-12 sm-col-4 md-col-12 mt2">
