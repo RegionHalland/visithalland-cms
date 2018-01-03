@@ -29,17 +29,35 @@
 	</section>
 	<?php /* END - ConceptHeader */ ?>
 
+	<?php /* START - NavigationCarousel */ ?>
 	<div class="concept-carousel relative z4">
-		<?php /* START - NavigationCarousel */ ?>
-
-		<?php /* END - NavigationCarousel */ ?>
+		<?php
+		$spotlights = vh_get_posts_without_happenings_by_taxonomy_concept($post->ID, -1);
+		$spotlights = array_filter($spotlights, function($post) {
+			return $post->post_type === 'trip';
+		});
+		 foreach ($spotlights as $key => $value) : ?>
+			<div class="page-thumbnail col-12 sm-col-12 lg-col-12 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
+	            <a href="<?php echo get_permalink($value->ID) ?>">
+	                <div class="page-thumbnail__img-container topographic-pattern">
+	                    <div class="page-thumbnail__concept-badge"></div>
+	                        <picture>
+	                            <img class="page-thumbnail__img" src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
+	                        </picture>
+	                </div>
+	                <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
+	                <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
+	            </a>
+	        </div>
+		<?php endforeach ?>
 	</div>
+	<?php /* END - NavigationCarousel */ ?>
 
 
 	<div class="featured-articles relative z4 clearfix">
 		<div class="featured-articles__primary col col-12 lg-col-8 relative">
 			<article class="article-large <?php echo vh_get_post_taxonomy()["slug"] ?>">
-                    <a href="<?php echo get_field("featured")[0]->guid ?>" class="link-reset">
+                    <a href="<?php echo get_permalink(get_field("featured")[0]->ID) ?>" class="link-reset">
                         <div class="article-large__img-container topographic-pattern">
 							<picture>
 								<source media="(min-width: 40em)"
@@ -76,7 +94,7 @@
 		        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
 		        	<?php /* START - ArticleMedium */ ?>
 					<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-						<a href="<?php echo get_field("featured")[1]->guid ?>" class="link-reset">
+						<a href="<?php echo get_permalink(get_field("featured")[1]->ID) ?>" class="link-reset">
 						    <div class="article-medium__img-container topographic-pattern">
 								<picture>
 									<source media="(min-width: 40em)"
@@ -106,7 +124,7 @@
 		        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
 		        	<?php /* START - ArticleMedium */ ?>
 						<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-							<a href="<?php echo get_field("featured")[2]->guid ?>" class="link-reset">
+							<a href="<?php echo get_permalink(get_field("featured")[2]->ID) ?>" class="link-reset">
 							    <div class="article-medium__img-container topographic-pattern">
 									<picture>
 										<source media="(min-width: 40em)"
@@ -164,7 +182,7 @@
 						</span>
 					</div>
 				    
-				    <a href="<?php echo vh_get_meet_local_by_taxonomy_concept()[0]->guid ?>" class="link-reset article-full__link link light">
+				    <a href="<?php echo get_permalink(vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?>" class="link-reset article-full__link link light">
 				        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
 				        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
 				        <div class="article-link inline-block mt0">
@@ -201,7 +219,7 @@
 											<img class="concept-header__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 										</picture>
 									</div>
-									<a href="<?php echo $value->guid ?>" class="link-reset">
+									<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 										<div class="article-image__content absolute left-0 bottom-0">
 											<div class="article-tag--light mt3 mb2">
 												<div class="article-tag__icon-wrapper">
@@ -226,7 +244,7 @@
 		        			<?php else: ?>
 		        				<div class="concept-grid__item col col-12 sm-col-6">
 									<article class="article-image relative <?php echo vh_get_post_taxonomy()["slug"] ?>">
-										<a href="<?php echo $value->guid ?>" class="link-reset">
+										<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 											<div class="article-medium__img-container topographic-pattern">
 												<picture>
 													<source
@@ -264,7 +282,7 @@
 		            foreach ($happenings as $index => $value) : ?>
 		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
 						    <article class="happening-list-item <?php echo vh_get_post_taxonomy()["slug"] ?>">
-				                <a href="<?php echo $value->guid ?>" class="link-reset">
+				                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 				                    <div class="clearfix">
 				                        <div class="col col-5 sm-col-4 ">
 				                            <div class="happening-list-item__img-container topographic-pattern relative">

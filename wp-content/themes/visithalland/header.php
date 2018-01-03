@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/vzi2bvt.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <?php wp_head(); ?>
 </head>
 <body>
 
@@ -61,8 +60,7 @@
             <nav class="nav topographic-pattern active" id="global-nav" tabIndex="-1" aria-labelledby="Navigation" aria-describedby="Navigation för webbplatsen" aria-hidden="true">
                 <?php
                 $menuItems = wp_get_nav_menu_items("huvudmeny");
-                foreach ($menuItems as $key => $value): ?>
-                <?php //var_dump($value) ?>
+                foreach ($menuItems as $key => $value) : ?>
                     <div class="nav__item <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
                         <a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="nav__icon-wrapper">

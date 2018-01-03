@@ -55,6 +55,9 @@ include_once('lib/menu.php');
 //Editor modifications
 include_once('lib/editor.php');
 
+//Enqueues of styles and scripts
+include_once('lib/enqueue.php');
+
 
 /* 
 
