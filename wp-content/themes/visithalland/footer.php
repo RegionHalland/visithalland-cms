@@ -1,7 +1,7 @@
 <footer class="footer topographic-pattern pt6">
     <div class="footer__content clearfix">
         <div class="footer__column col sm-col-6 col-12 md-col-5">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
             <p class="footer__intro mt1">En reseguide som hjälper dig att hitta till det bästa i Halland. Visithalland.com utvecklas och drivs av Region Halland.</p>
         </div>
         <div class="footer__column col sm-col-7 col-12 md-col-3 mt2">
@@ -47,7 +47,7 @@
                     <ul class="footer__list">
                         <li class="footer__list-item mt1 light">
                             <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/tripadvisor-logo.svg" />
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/tripadvisor-logo.svg" />
                             </a>
                         </li>
                     </ul>
@@ -58,7 +58,7 @@
             <div class="clearfix">
                 <div class="col col-5 sm-col-3 md-col-2 footer__left mt2">
                     <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/eu-logo.svg" />
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/eu-logo.svg" />
                     </a>
                 </div>
                 <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
