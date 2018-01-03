@@ -37,7 +37,7 @@
 			return $post->post_type === 'trip';
 		});
 		 foreach ($spotlights as $key => $value) : ?>
-			<div class="page-thumbnail col-12 sm-col-12 lg-col-12 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
+			<div class="page-thumbnail col-6 sm-col-6 lg-col-3 pl3 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
 	            <a href="<?php echo get_permalink($value->ID) ?>">
 	                <div class="page-thumbnail__img-container topographic-pattern">
 	                    <div class="page-thumbnail__concept-badge"></div>
