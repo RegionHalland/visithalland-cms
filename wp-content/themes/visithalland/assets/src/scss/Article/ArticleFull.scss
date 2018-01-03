@@ -36,6 +36,7 @@
 	}
 	&__img-container {
 		overflow:hidden;
+		transition: filter .6s linear;
 		position:relative;
 		background-color:palette(black, base);
 		padding-bottom:125%;

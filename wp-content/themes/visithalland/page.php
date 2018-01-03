@@ -9,10 +9,10 @@
 	    <div class="concept-header__img-container topographic-pattern">
 			<picture>
 			    <source media="(min-width: 60em)"
-			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+			        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 			    <source
-			        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-			    <img class="concept-header__img" src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
+			        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+			    <img class="concept-header__img" data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
 			</picture>
 	    </div>
 	    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
@@ -42,7 +42,7 @@
 	                <div class="page-thumbnail__img-container topographic-pattern">
 	                    <div class="page-thumbnail__concept-badge"></div>
 	                        <picture>
-	                            <img class="page-thumbnail__img" src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
+	                            <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
 	                        </picture>
 	                </div>
 	                <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
@@ -61,10 +61,10 @@
                         <div class="article-large__img-container topographic-pattern">
 							<picture>
 								<source media="(min-width: 40em)"
-									srcSet="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+									data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 								<source
-									srcSet="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-								<img class="concept-header__img" src="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["alt"] ?>" />
+									data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+								<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["alt"] ?>" />
 							</picture>
                         </div>
                         <div class="article-large__content clearfix">
@@ -98,10 +98,10 @@
 						    <div class="article-medium__img-container topographic-pattern">
 								<picture>
 									<source media="(min-width: 40em)"
-										srcSet="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+										data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 									<source
-										srcSet="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-									<img class="concept-header__img" src="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["alt"] ?>" />
+										data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+									<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["alt"] ?>" />
 								</picture>
 						    </div>
 						    <div class="article-medium__content">
@@ -128,10 +128,10 @@
 							    <div class="article-medium__img-container topographic-pattern">
 									<picture>
 										<source media="(min-width: 40em)"
-											srcSet="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+											data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 										<source
-											srcSet="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-										<img class="concept-header__img" src="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["alt"] ?>" />
+											data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+										<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["alt"] ?>" />
 									</picture>
 							    </div>
 							    <div class="article-medium__content">
@@ -160,13 +160,13 @@
 	<?php /* START - ArticleFull */ ?>
 	<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
 		<article class="article-full relative my5">
-			<div class="article-full__img-container topographic-pattern">
+			<div class="article-full__img-container" style="background-image:url('<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["thumbnail"] ?>'); background-size:cover; filter: blur(20px);')">
 			    <picture>
 					<source media="(min-width: 768px)"
-						srcSet="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+						data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 					<source
-						srcSet="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-					<img class="concept-header__img" src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
+						data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+					<img class="concept-header__img" data-src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
 			    </picture>
 			</div>
 			<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
@@ -213,10 +213,10 @@
 									<div class="article-image__img-container topographic-pattern">
 										<picture>
 											<source media="(min-width: 700px)"
-												srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 											<source
-												srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-											<img class="concept-header__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+											<img class="concept-header__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 										</picture>
 									</div>
 									<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
@@ -248,8 +248,8 @@
 											<div class="article-medium__img-container topographic-pattern">
 												<picture>
 													<source
-												    	srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-													<img class="article-medium__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+												    	data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+													<img class="article-medium__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 												</picture>
 											</div>
 											<div class="article-medium__content">
@@ -286,7 +286,7 @@
 				                    <div class="clearfix">
 				                        <div class="col col-5 sm-col-4 ">
 				                            <div class="happening-list-item__img-container topographic-pattern relative">
-				                            	<img class="happening-list-item__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+				                            	<img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
 				                            </div>
 				                        </div>
 				                        <div class="happening-list-item__date">
@@ -326,10 +326,10 @@
 		                            <div class="concept-thumbnail-small__img-container">
 	                                    <picture>
 	                                        <source media="(min-width: 40em)"
-	                                            srcSet="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 	                                        <source
-	                                            srcSet="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 2x" ?>" />
-	                                        <img class="concept-thumbnail-small__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_tall"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 2x" ?>" />
+	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_tall"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 	                                    </picture>
 		                                <div class="concept-thumbnail-small__inner center">
 		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
