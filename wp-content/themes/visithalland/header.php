@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles.css" />
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/dist/css/main.min.css" />
     <link rel="stylesheet" href="https://use.typekit.net/vzi2bvt.css" />
             
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="masthead__logo-wrapper center">
-                    <a href="/" class="link-reset"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg" /></a>
+                    <a href="/" class="link-reset"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" /></a>
                 </div>
 
                 <div class="masthead__right flex justify-end">

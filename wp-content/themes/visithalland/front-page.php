@@ -4,7 +4,7 @@
 	<div class="landing-header">
     	<div class="landing-header__img-container">
     		<span>
-    			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/landing-logo.svg">
+    			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/landing-logo.svg">
     		</span>
 			<picture>
 				<source media="(min-width: 60em)"
