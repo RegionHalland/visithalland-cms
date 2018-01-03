@@ -1,0 +1,18 @@
+.article-infinite {
+	position:relative;
+	&::after {
+		content:'';
+		background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='37'%3E%3Cpath fill='%23FFF' d='M1440 26.573c-213.803-7.342-470.91-6.059-771.324 3.848C368.262 40.33 145.37 39.046 0 26.573V0h1440v26.573z'/%3E%3C/svg%3E");
+		background-size:contain;
+		background-position:top center;
+		vertical-align: bottom;
+		height:100px;
+		width:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		z-index: $z2;
+		background-repeat:no-repeat;
+	}
+}

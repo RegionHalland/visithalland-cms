@@ -1,0 +1,50 @@
+.tip {
+	margin-right:$space-3;
+
+	&__img-container {
+		overflow: hidden;
+		position:relative;
+		border-radius:$border-radius;
+		padding-bottom:56.25%;
+		background-color:palette(black, base);
+		@media(min-width:$breakpoint-sm) {
+			padding-bottom:66.66%;
+		}
+	}
+
+	&__img {
+		width:100%;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+
+	&__content {
+
+	}
+	&__links {
+		border-width:2px;
+		border-style:none;
+		border-top:solid;
+		padding:$space-3 0;
+		border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+	}
+
+	&__btn {
+		&:nth-child(1) {
+			margin:0;
+		}
+		display: inline-block;
+		margin:$space-2 0 0 0;
+		@media(min-width:$breakpoint-sm) {
+			&:nth-child(1) {
+				margin:0;
+			}
+			margin:0 0 0 $space-2;
+		}
+	}
+
+	&__quote {
+		font-style:italic;
+	}
+}

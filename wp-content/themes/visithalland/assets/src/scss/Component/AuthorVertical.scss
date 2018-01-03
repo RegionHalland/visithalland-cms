@@ -1,0 +1,32 @@
+.author-vertical {
+	&__img-container {
+		width:40px;
+		height:40px;
+		@media (min-width:$breakpoint-sm) {
+			width:50px;
+			height:50px;
+		}
+		background:palette(grey, light);
+		position:relative;
+		overflow: hidden;
+		border-radius:50%;
+	}
+	&__img {
+		width:100%;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	&__title, &__name {
+		font-size:14px;
+		margin-top:$space-1;
+	}
+	&__title {
+		font-style:italic;
+		color:palette(grey, x-dark);
+	}
+	&__name {
+		font-weight:bold;
+		color:palette(black, light);
+	}
+}

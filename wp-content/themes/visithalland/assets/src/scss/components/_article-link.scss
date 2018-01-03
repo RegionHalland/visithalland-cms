@@ -1,0 +1,46 @@
+
+.article-link {
+
+}
+
+.article-link__icon-wrapper {
+	height:20px;
+	width:50px;
+	margin-left:$space-2;
+	border-radius:10px;
+	vertical-align:middle;
+	display:inline-flex;
+	justify-content:flex-end;
+	padding:0 $space-1;
+	align-items:center;
+	@include themify {
+		background-color:$color-primary;
+	}
+}
+
+.article-link__icon {
+	color:$white;
+	font-size:0.9em !important;
+}
+
+.article-link__divider {
+	margin-top:$space-1;
+	width:100%;
+	background:none;
+	border-width:2px;
+	border-style:solid;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-image: url('../../Assets/graphics/divider.png') 20 round;
+}
+
+
+.article-link__text {
+	display:inline-block;
+	font-family:$shelby-font-family;
+	font-weight:bold;
+	color:palette(grey, dark);
+	font-size:1.5em;
+	vertical-align:middle;
+}
