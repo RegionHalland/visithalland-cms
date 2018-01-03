@@ -1,0 +1,27 @@
+.header {
+	position:fixed;
+	max-width:$container-max-width;
+	width:100%;
+	margin:0 auto;
+	left:0;
+	right:0;
+	z-index:999;
+	padding:0;
+	@media(min-width:$breakpoint-sm) {
+		padding:0 $space-4;
+	}
+	@media(min-width:$breakpoint-lg) {
+		padding:0 $space-6;
+	}
+
+	&__inner {
+		@media(min-width:$breakpoint-sm) {
+			border-radius: 0px 0px $border-radius $border-radius;
+		}
+		box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 2px 10px rgba(0,0,0,0.22);
+	}
+}
+
+
+
+

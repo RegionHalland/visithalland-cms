@@ -14,3 +14,4 @@ wp-content/uploads/*
 /sitemap.xml
 /sitemap.xml.gz
 .DS_Store
+/wp-content/themes/visithalland/node_modules

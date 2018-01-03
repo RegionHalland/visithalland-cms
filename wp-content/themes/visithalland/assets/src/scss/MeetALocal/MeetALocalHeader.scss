@@ -1,0 +1,68 @@
+.meet-a-local-header {
+	&__img {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+	}
+	&__img-container{
+		overflow:hidden;
+		position:relative;
+		background-color:palette(black, base);
+		padding-bottom:125%;
+		background-color:palette(black, base);
+		@media(min-width:$breakpoint-md) {
+			padding-bottom:56.25%;
+		}
+		&::after {
+			content:'';
+			background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='37'%3E%3Cpath fill='%23FFF' d='M0 10.427c213.803 7.342 470.91 6.059 771.324-3.848C1071.738-3.33 1294.63-2.046 1440 10.427V37H0V10.427z'/%3E%3C/svg%3E");
+			background-size:contain;
+			background-position:bottom center;
+			vertical-align: bottom;
+			height:100px;
+			width:100%;
+			position:absolute;
+			bottom:-5px;
+			left:0;
+			right:0;
+			background-repeat:no-repeat;
+		}
+	}
+	&__inner {
+		padding:0 $space-3;
+		@media(min-width:$breakpoint-sm) {
+			padding:0 $space-5;
+		}
+		@media(min-width:$breakpoint-lg) {
+			padding:0 $space-6;
+		}
+		z-index:$z4;
+	}
+
+	&__preamble {
+		font-size:1.1em;
+	    font-weight:400;
+	    line-height: 1.5;
+	    font-style:italic;
+	    color:palette(black,dark);
+	    border-width:2px;
+		border-style:none;
+		border-bottom:solid;
+		border-top:solid;
+		padding:$space-3 0;
+		border-image: url('../../Assets/graphics/border-top-dark.png') 3 round;
+	}
+
+	&__content {
+		padding:$space-2 0;
+		margin-top:$space-2;
+		@media(min-width:$breakpoint-sm) {
+			padding:$space-2 $space-4;
+			margin-top:$space-3;
+		}
+		@media(min-width:$breakpoint-lg) {
+			padding:$space-2 $space-5;
+		}
+	}
+}

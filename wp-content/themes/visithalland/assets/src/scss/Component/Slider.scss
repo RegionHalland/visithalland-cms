@@ -1,0 +1,45 @@
+.slider-slide {
+	animation: fadeInLeft 0.4s;
+	animation-fill-mode:forwards;
+	opacity:0;
+	@for $i from 1 to 10 {
+	  &:nth-child(#{$i}) { animation-delay: $i * 0.25s; }
+	}
+	&:nth-child(1){
+		margin-left:0;
+	}
+}
+
+.slider-frame {
+	overflow:visible !important;
+}
+
+.slider-button-container {
+	padding:$space-2 0;
+}
+
+.slider-button {
+	border: none;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	border-radius:$border-radius;
+	background: $darken-3;
+	cursor: pointer;
+	transition:background 0.25s;
+	margin-left:$space-2;
+	&:first-of-type {
+		margin-left:0;
+	}
+	&:hover {
+		background:$black;
+		cursor:pointer;
+	}
+	i {
+		font-size:0.8em;
+		color:$white;
+	}	
+}

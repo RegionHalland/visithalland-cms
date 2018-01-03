@@ -1,0 +1,77 @@
+.spotlight-large {
+	position: relative;
+	&__img-container {
+		position:relative;
+		overflow:hidden;
+		border-radius:$border-radius;
+		padding-bottom:125%;
+		overflow: hidden;
+		background-color:palette(black, base);
+		@media (min-width:$breakpoint-sm) {
+			padding-bottom:56.25%;
+		}
+		&::after {
+	 		content:'';
+	 		bottom:0;
+	 		z-index:1;
+	 		left:0;
+	 		right:0;
+	 		height:100%;
+	 		width:100%;
+	 		position:absolute;
+	 		@include scrimGradient(palette(black, dark), 'to top');
+	 	}
+	}
+	&__img {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+	}
+	&__content {
+		position:absolute;
+		z-index: $z3;
+		padding:$space-4 $space-3;
+		@media(min-width:$breakpoint-sm) {
+			padding:$space-4;
+		}
+		bottom:0;
+		left:0;
+	}
+	&__links {
+		transition: transform 0.35s;
+		margin-top:$space-3;
+	}
+	&__title {
+		color:$white;
+		margin-bottom:$space-2;
+	}
+	&__btn {
+		&:nth-child(1) {
+			margin:0;
+		}
+		display: inline-block;
+		margin:$space-2 0 0 0;
+		@media(min-width:$breakpoint-sm) {
+			&:nth-child(1) {
+				margin:0;
+			}
+			margin:0 0 0 $space-2;
+		}
+	}
+	&__excerpt {
+		position:relative;
+		display:none;
+		color:palette(grey, x-light);
+		max-height:100px;
+		overflow: hidden;
+		border-width:2px;
+		border-style:solid;
+		border-top:none;
+		border-bottom:solid;
+		border-image: url('../../Assets/graphics/divider.png') 20 round;
+		@media(min-width:$breakpoint-md) {
+			display:block;
+		}
+	}
+}

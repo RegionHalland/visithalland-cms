@@ -1,0 +1,131 @@
+.concept {
+
+}
+
+.concept-carousel {
+	padding:0 $space-3;
+	margin-top:-5.5rem;
+	@media(min-width:$breakpoint-sm) {
+		padding:0 $space-5;
+		margin-top:-$space-5;
+	}
+	@media(min-width:$breakpoint-lg) {
+		padding:0 $space-6;
+		margin-top:-$space-6;
+	}
+}
+
+.concept-content {
+	padding:0 $space-3;
+	@media(min-width:$breakpoint-sm) {
+		padding:0 $space-5;
+	}
+	@media(min-width:$breakpoint-lg) {
+		padding:0 $space-6;
+	}
+}
+
+.concept-thumbnails {
+	margin-top:$space-4;
+	@media (min-width:$breakpoint-sm) and (max-width:$breakpoint-lg) {
+		margin-left:-$space-2;
+		margin-right:-$space-2;
+	}
+	@media(min-width:$breakpoint-lg) {
+		margin:0; 
+		padding:$space-2 $space-3;
+		padding-left:$space-4;
+		border-width:2px;
+		border-style:none;
+		border-bottom:none;
+		border-left:solid;
+		border-right:none;
+		border-image: url('../../Assets/graphics/border-dark.png') 20 round;
+	}
+	&__item {
+		margin:0 0 $space-3 0;
+		@media (min-width:$breakpoint-sm) and (max-width:$breakpoint-lg) {
+			padding:0 $space-2;
+		}
+		&:last-of-type {
+			margin:0;
+		}
+	}
+}
+
+.concept-happenings {
+	margin-top:$space-4;
+	@media(min-width:$breakpoint-lg) {
+		margin:0; 
+		padding:$space-2 $space-3;
+		padding-left:$space-4;
+		border-width:2px;
+		border-style:none;
+		border-bottom:none;
+		border-left:solid;
+		border-right:none;
+		border-image: url('../../Assets/graphics/border-dark.png') 20 round;
+	}
+	&__item {
+		margin:0 0 $space-3 0;
+		&:last-of-type {
+			margin:0;
+		}
+	}
+}
+
+.concept-grid {
+	@media(min-width:$breakpoint-lg) { 
+		padding-right:$space-4;
+	}
+	&__item {
+		padding:0 $space-2;
+		margin:$space-2 0;
+	}
+}
+
+.concept-sidebar {
+
+}
+
+.featured-article {
+	&__left {
+		@media(min-width:$breakpoint-sm) {
+			padding-right:$space-2;
+		}
+		@media(min-width:$breakpoint-lg) {
+			padding:0;
+		}
+	}
+	&__right {
+		@media(min-width:$breakpoint-sm) {
+			padding-left:$space-2;
+		}
+		@media(min-width:$breakpoint-lg) {
+			padding:0;
+		}
+	}
+}
+
+.featured-articles {
+	padding:$space-2 $space-3;
+	@media(min-width:$breakpoint-sm) {
+		padding:$space-2 $space-5;
+		margin-top:$space-3;
+	}
+	@media(min-width:$breakpoint-lg) {
+		padding:$space-2 $space-6;
+	}
+	&__primary {
+		padding:0;
+		@media(min-width:$breakpoint-md) {
+			padding:0 $space-3 0 0;
+		}
+	}
+	&__secondary {
+		padding:0;
+		@media(min-width:$breakpoint-md) {
+			padding:0 0 0 $space-3;
+		}
+	}
+}

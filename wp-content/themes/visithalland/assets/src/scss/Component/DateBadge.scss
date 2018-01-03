@@ -1,0 +1,23 @@
+.date-badge {
+	padding:0.5em 0.55em;
+	border-radius:$border-radius;
+	color:$white;
+	@include themify {
+		background:$color-primary;
+	}
+	&__day {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		display:block;
+		text-align:center;
+		font-size:1.3em;
+		line-height: 1;
+	}
+	&__month {
+		font-weight:bold;
+		font-size:0.9em;
+		font-family: $rift-font-family;
+		display:block;
+		text-align:center;
+	}
+}
