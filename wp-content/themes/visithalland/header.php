@@ -26,34 +26,7 @@
                 </div>
 
                 <div class="masthead__right flex justify-end">
-                    <button class="icon-button search-button button-reset active" aria-expanded="true" onClick="TODO" aria-controls="global-search">
-                        <span>
-                            <i class="material-icons">TODO {(this.props.showSearch ? "close" : "search")}</i>
-                        </span>
-                    </button>
                     <?php //TODO search ?>
-
-                    
-                    <div class="search-result list-style-none clearfix + (taxonomy_slug ? taxonomy_slug  : "finns ej")}">
-                        <div class="col col-4">
-                            <div class="search-result__img-container">
-                                <picture>
-                                    <source
-                                      srcSet={suggestion.cover_image + " 1x," + suggestion.cover_image_2x + " 2x"} />
-                                    <img class="search-result__img" src={suggestion.cover_image_2x} alt={suggestion.cover_image_alt} />
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="search-result__content col col-8">
-                            <ArticleTag 
-                                articleType={suggestion.post_type ? suggestion.post_type : ""}
-                                classes={'inline-block'}
-                            />
-                            <h4 class="search-result__title" dangerouslySetInnerHTML={{__html: suggestion._highlightResult.post_title.value ? suggestion._highlightResult.post_title.value : ""}}></h4>
-                        </div>
-                    </div>
-
-
                 </div>
             </section>
 
