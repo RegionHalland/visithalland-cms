@@ -42,3 +42,6 @@ jQuery(function() {
 	  jQuery('.navigation-carousel').flickity('previous');
 	});
 });
+jQuery(function() {
+	console.log("place", php_vars);
+});

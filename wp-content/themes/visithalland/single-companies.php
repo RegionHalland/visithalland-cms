@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 
-<?php while ( have_posts() ) : the_post(); 
+    <?php while ( have_posts() ) : the_post(); 
+        $author_id = get_the_author_meta('ID');
+    ?>
 
-    $author_id = get_the_author_meta('ID');
-    
-?>
+    <script>
+        var data = <?php echo the_title ?>;
+    </script>
+
     <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
     <section class="business-header relative clearfix" role="heading" id="page-content">
     <div class="business-header__backdrop topographic-pattern"></div>
@@ -88,5 +91,8 @@
         </div>
     </article>
 <?php endwhile; ?>
-
 <?php get_footer(); ?>
+
+<?php
+
+?>

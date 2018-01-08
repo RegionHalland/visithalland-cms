@@ -15,7 +15,7 @@
                         srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
                     <source
                         srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
-                    <img class="editorial-header__img" 
+                    <img class="editorial-header__img"
                             src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
                             alt="<?php echo get_field("cover_image")["alt"] ?>"  
                     />
@@ -51,41 +51,43 @@
         	<article class="article-body">
         			<?php the_field("body") ?>
             </article>
-            <div class="article-mentions mt2 clearfix">
-    	        <div class="article-mentions__header">
-    	            <h3>Restips från artikeln</h3>
-    	        </div>
-                    <?php
-                        $mentions = get_field("mentioned");
-                        // Needs images //
-                        foreach ($mentions as $key => $value): ?>
-                            <a href="<?php echo $value->guid ?>" class="link-reset">
-                    			<article class="article-mention col col-12 sm-col-6 mt3">
-                                        <div class="clearfix">
-                                            <div class="col col-5 sm-col-4 ">
-                                                <div class="article-mention__img-container relative">
-                                                	<img 
-                                                        class="article-mention__img" 
-                                                        src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
-                                                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
-                                                    />
+            <?php
+                $mentions = get_field("mentioned");
+                // TODO Needs images //
+                if (isset($mentions) && $mentions !== '') : ?>
+                <div class="article-mentions mt2 clearfix">
+                    <div class="article-mentions__header">
+                        <h3>Restips från artikeln</h3>
+                    </div>
+                    <?php foreach ($mentions as $key => $value): ?>
+                        <a href="<?php echo $value->guid ?>" class="link-reset">
+                    		<article class="article-mention col col-12 sm-col-6 mt3">
+                                    <div class="clearfix">
+                                        <div class="col col-5 sm-col-4 ">
+                                            <div class="article-mention__img-container relative">
+                                            	<img 
+                                                    class="article-mention__img" 
+                                                    src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
+                                                    alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
+                                                />
+                                            </div>
+                                        </div>
+                    						<div class="article-mention__content col col-7 sm-col-8">
+                                                <h5 class="article-mention__label"><?php echo $value->post_title ?></h5>
+                                                <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
+                                                <div class="article-link inline-block mt2">
+                                                    <span class="article-link__text">Läs mer</span>
+                                                    <span class="article-link__icon-wrapper">
+                                                        <i class="material-icons article-link__icon">arrow_forward</i>
+                                                    </span>
                                                 </div>
                                             </div>
-                    							<div class="article-mention__content col col-7 sm-col-8">
-                    	                            <h5 class="article-mention__label"><?php echo $value->post_title ?></h5>
-                    	                            <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
-                    	                            <div class="article-link inline-block mt2">
-                    	                                <span class="article-link__text">Läs mer</span>
-                    	                                <span class="article-link__icon-wrapper">
-                    	                                    <i class="material-icons article-link__icon">arrow_forward</i>
-                    	                                </span>
-                    	                            </div>
-                    	                        </div>
-                                        </div>
-                                </article>
-                            </a>
+                                    </div>
+                            </article>
+                        </a>
                     <?php endforeach ?>
-            </div>
+                </div>
+            <?php endif ?>
         </div>
     </div>
     <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
