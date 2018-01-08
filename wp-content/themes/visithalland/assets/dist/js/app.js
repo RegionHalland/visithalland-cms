@@ -32,3 +32,6 @@ jQuery(function() {
   		contain: true
 	});
 });
+jQuery(function() {
+	console.log("place", php_vars);
+});
