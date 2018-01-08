@@ -1,17 +1,13 @@
 .header {
 	position:fixed;
 	max-width:$container-max-width;
-	width:100%;
-	margin:0 auto;
 	left:0;
 	right:0;
 	z-index:999;
 	padding:0;
-	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-4;
-	}
-	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
+
+	&:focus {
+		outline:0;
 	}
 
 	&__inner {

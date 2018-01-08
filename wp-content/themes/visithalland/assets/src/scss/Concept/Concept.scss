@@ -3,26 +3,17 @@
 }
 
 .concept-carousel {
-	padding:0 $space-3;
 	margin-top:-5.5rem;
 	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-5;
 		margin-top:-$space-5;
 	}
 	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
 		margin-top:-$space-6;
 	}
 }
 
 .concept-content {
-	padding:0 $space-3;
-	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-5;
-	}
-	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
-	}
+
 }
 
 .concept-thumbnails {
@@ -33,7 +24,7 @@
 	}
 	@media(min-width:$breakpoint-lg) {
 		margin:0; 
-		padding:$space-2 $space-3;
+		padding:$space-2 0 $space-2 $space-3;
 		padding-left:$space-4;
 		border-width:2px;
 		border-style:none;
@@ -108,13 +99,13 @@
 }
 
 .featured-articles {
-	padding:$space-2 $space-3;
+	padding:$space-2 0;
 	@media(min-width:$breakpoint-sm) {
-		padding:$space-2 $space-5;
+		padding:$space-2 0;
 		margin-top:$space-3;
 	}
 	@media(min-width:$breakpoint-lg) {
-		padding:$space-2 $space-6;
+		padding:$space-2 0;
 	}
 	&__primary {
 		padding:0;

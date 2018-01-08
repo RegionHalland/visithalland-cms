@@ -1,15 +1,14 @@
-.navigation-carousel {
-	z-index:$z2;
-	padding:0 $space-3;
-	@media (min-width:$breakpoint-sm) {
-        padding:0 $space-5;
-	}
-    @media (min-width:$breakpoint-lg) {
-        padding:0 $space-6;
-    }
-}
-
 .page-thumbnail {
+	animation: fadeInLeft 0.4s;
+	animation-fill-mode:forwards;
+	opacity:0;
+	&:first-of-type {
+		margin-left:0;
+	}
+	margin-left:$space-3;
+	@for $i from 1 to 10 {
+	  &:nth-child(#{$i}) { animation-delay: $i * 0.25s; }
+	}
 	&:hover {
 		.page-thumbnail__img {
 			transform:scale(1.05);

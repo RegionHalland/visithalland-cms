@@ -5,210 +5,215 @@
 <main role="main" class="container" id="main-content">
 
 	<?php /* START - ConceptHeader */ ?>
-	<section class="concept-header relative overflow-hidden <?php echo $post->post_name ?>" role="heading">
-	    <div class="concept-header__img-container topographic-pattern">
-			<picture>
-			    <source media="(min-width: 60em)"
-			        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-			    <source
-			        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-			    <img class="concept-header__img" data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
-			</picture>
-	    </div>
-	    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
-	        <div class="col col-12 sm-col-7 md-col-10 lg-col-5">
-	            <h1 class="concept-header__title mt0 mb2 light">
-	                <div class="concept-header__icon mr3 inline-block"></div>
-	                <span><?php the_title(); ?></span>
-	            </h1>
-	        </div>
-	        <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
-	            <p class="concept-header__intro light"><?php the_field("excerpt"); ?></p>
-	        </div>
-	    </div>
-	</section>
-	<?php /* END - ConceptHeader */ ?>
-
-	<?php /* START - NavigationCarousel */ ?>
-	<div class="concept-carousel relative z4">
-		<?php
-		$spotlights = vh_get_posts_without_happenings_by_taxonomy_concept($post->ID, -1);
-		$spotlights = array_filter($spotlights, function($post) {
-			return $post->post_type === 'trip';
-		});
-		 foreach ($spotlights as $key => $value) : ?>
-			<div class="page-thumbnail col-6 sm-col-6 lg-col-3 pl3 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
-	            <a href="<?php echo get_permalink($value->ID) ?>">
-	                <div class="page-thumbnail__img-container topographic-pattern">
-	                    <div class="page-thumbnail__concept-badge"></div>
-	                        <picture>
-	                            <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
-	                        </picture>
-	                </div>
-	                <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
-	                <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
-	            </a>
-	        </div>
-		<?php endforeach ?>
-	</div>
-	<?php /* END - NavigationCarousel */ ?>
-
-
-	<div class="featured-articles relative z4 clearfix">
-		<div class="featured-articles__primary col col-12 lg-col-8 relative">
-			<article class="article-large <?php echo vh_get_post_taxonomy()["slug"] ?>">
-                    <a href="<?php echo get_permalink(get_field("featured")[0]->ID) ?>" class="link-reset">
-                        <div class="article-large__img-container topographic-pattern">
-							<picture>
-								<source media="(min-width: 40em)"
-									data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-								<source
-									data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-								<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["alt"] ?>" />
-							</picture>
-                        </div>
-                        <div class="article-large__content clearfix">
-							<div class="article-tag mt3 mb2">
-								<div class="article-tag__icon-wrapper">
-									<div class="article-tag__icon"></div>
-								</div>
-								<span class="article-tag__type">
-									<?php echo vh_get_pretty_post_type_name(get_field("featured")[0]->post_type) ?>
-								</span>
-							</div>
-
-                            <div class="col col-12 sm-col-5">
-                                <h2 class="article-large__title pt0"><?php echo get_field("featured")[0]->post_title ?></h2>
-                            </div>
-                            <div class="col col-12 sm-col-7">
-                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured")[0]->ID) ?></p>
-                            </div>
-                        </div>
-                    </a>
-            </article>
-		</div>
-
-
-		<div class="featured-articles__secondary col col-12 lg-col-4 p0">
-		    <div class="clearfix">
-		        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
-		        	<?php /* START - ArticleMedium */ ?>
-					<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-						<a href="<?php echo get_permalink(get_field("featured")[1]->ID) ?>" class="link-reset">
-						    <div class="article-medium__img-container topographic-pattern">
-								<picture>
-									<source media="(min-width: 40em)"
-										data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-									<source
-										data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-									<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["alt"] ?>" />
-								</picture>
-						    </div>
-						    <div class="article-medium__content">
-								<div class="article-tag mt3 mb2">
-									<div class="article-tag__icon-wrapper">
-										<div class="article-tag__icon"></div>
-									</div>
-									<span class="article-tag__type">
-										<?php echo vh_get_pretty_post_type_name(get_field("featured")[1]->post_type) ?>
-									</span>
-								</div>
-
-								<h3 class="mb1 mt1 pt0"><?php echo get_field("featured")[1]->post_title ?></h3>
-								<p class="mt2"><?php echo get_field("excerpt", get_field("featured")[1]->ID) ?></p>
-						    </div>
-						</a>
-					</article>
-					<?php /* END - ArticleMedium */ ?>
+		<section class="concept-header relative overflow-hidden <?php echo $post->post_name ?>" role="heading">
+		    <div class="concept-header__img-container topographic-pattern">
+				<picture>
+				    <source media="(min-width: 60em)"
+				        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+				    <source
+				        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image")["alt"] ?>" />
+				</picture>
+		    </div>
+		    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
+		        <div class="col col-12 sm-col-7 md-col-10 lg-col-5">
+		            <h1 class="concept-header__title mt0 mb2 light">
+		                <div class="concept-header__icon mr3 inline-block"></div>
+		                <span><?php the_title(); ?></span>
+		            </h1>
 		        </div>
-		        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
-		        	<?php /* START - ArticleMedium */ ?>
-						<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
-							<a href="<?php echo get_permalink(get_field("featured")[2]->ID) ?>" class="link-reset">
-							    <div class="article-medium__img-container topographic-pattern">
+		        <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
+		            <p class="concept-header__intro light"><?php the_field("excerpt"); ?></p>
+		        </div>
+		    </div>
+		</section>
+	<?php /* END - ConceptHeader */ ?>
+	
+		<?php /* START - NavigationCarousel */ ?>
+			<div class="concept-carousel clearfix">
+				<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
+					<button class="slider-button navigation-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
+					<button class="slider-button navigation-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
+				</div>
+				<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
+					<?php
+					$spotlights = vh_get_posts_without_happenings_by_taxonomy_concept($post->ID, -1);
+					$spotlights = array_filter($spotlights, function($post) {
+						return $post->post_type === 'trip';
+					});
+					 foreach ($spotlights as $key => $value) : ?>
+						<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
+				            <a href="<?php echo get_permalink($value->ID) ?>">
+				                <div class="page-thumbnail__img-container topographic-pattern">
+				                    <div class="page-thumbnail__concept-badge"></div>
+				                        <picture>
+				                            <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
+				                        </picture>
+				                </div>
+				                <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
+				                <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
+				            </a>
+				        </div>
+					<?php endforeach ?>
+				</div>
+			</div>
+		<?php /* END - NavigationCarousel */ ?>
+
+		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto">
+			<div class="clearfix">
+				<div class="featured-articles__primary col col-12 lg-col-8 relative">
+					<article class="article-large <?php echo vh_get_post_taxonomy()["slug"] ?>">
+		                    <a href="<?php echo get_permalink(get_field("featured")[0]->ID) ?>" class="link-reset">
+		                        <div class="article-large__img-container topographic-pattern">
 									<picture>
 										<source media="(min-width: 40em)"
-											data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+											data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 										<source
-											data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-										<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["alt"] ?>" />
+											data-srcset="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+										<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[0]->ID)["alt"] ?>" />
 									</picture>
-							    </div>
-							    <div class="article-medium__content">
+		                        </div>
+		                        <div class="article-large__content clearfix">
 									<div class="article-tag mt3 mb2">
 										<div class="article-tag__icon-wrapper">
 											<div class="article-tag__icon"></div>
 										</div>
 										<span class="article-tag__type">
-											<?php echo vh_get_pretty_post_type_name(get_field("featured")[2]->post_type) ?>
+											<?php echo vh_get_pretty_post_type_name(get_field("featured")[0]->post_type) ?>
 										</span>
 									</div>
-									
-									<h3 class="mb1 mt1 pt0"><?php echo get_field("featured")[2]->post_title ?></h3>
-									<p class="mt2"><?php echo get_field("excerpt", get_field("featured")[2]->ID) ?></p>
-							    </div>
-							</a>
-						</article>
-					<?php /* END - ArticleMedium */ ?>
-		        </div>
-		    </div>
+
+		                            <div class="col col-12 sm-col-5">
+		                                <h2 class="article-large__title pt0"><?php echo get_field("featured")[0]->post_title ?></h2>
+		                            </div>
+		                            <div class="col col-12 sm-col-7">
+		                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured")[0]->ID) ?></p>
+		                            </div>
+		                        </div>
+		                    </a>
+		            </article>
+				</div>
+				<div class="featured-articles__secondary col col-12 lg-col-4 p0">
+				    <div class="clearfix">
+				        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
+				        	<?php /* START - ArticleMedium */ ?>
+							<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
+								<a href="<?php echo get_permalink(get_field("featured")[1]->ID) ?>" class="link-reset">
+								    <div class="article-medium__img-container topographic-pattern">
+										<picture>
+											<source media="(min-width: 40em)"
+												data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+											<source
+												data-srcset="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+											<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[1]->ID)["alt"] ?>" />
+										</picture>
+								    </div>
+								    <div class="article-medium__content">
+										<div class="article-tag mt3 mb2">
+											<div class="article-tag__icon-wrapper">
+												<div class="article-tag__icon"></div>
+											</div>
+											<span class="article-tag__type">
+												<?php echo vh_get_pretty_post_type_name(get_field("featured")[1]->post_type) ?>
+											</span>
+										</div>
+
+										<h3 class="mb1 mt1 pt0"><?php echo get_field("featured")[1]->post_title ?></h3>
+										<p class="mt2"><?php echo get_field("excerpt", get_field("featured")[1]->ID) ?></p>
+								    </div>
+								</a>
+							</article>
+							<?php /* END - ArticleMedium */ ?>
+				        </div>
+				        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
+				        	<?php /* START - ArticleMedium */ ?>
+								<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
+									<a href="<?php echo get_permalink(get_field("featured")[2]->ID) ?>" class="link-reset">
+									    <div class="article-medium__img-container topographic-pattern">
+											<picture>
+												<source media="(min-width: 40em)"
+													data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+												<source
+													data-srcset="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+												<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured")[2]->ID)["alt"] ?>" />
+											</picture>
+									    </div>
+									    <div class="article-medium__content">
+											<div class="article-tag mt3 mb2">
+												<div class="article-tag__icon-wrapper">
+													<div class="article-tag__icon"></div>
+												</div>
+												<span class="article-tag__type">
+													<?php echo vh_get_pretty_post_type_name(get_field("featured")[2]->post_type) ?>
+												</span>
+											</div>
+											
+											<h3 class="mb1 mt1 pt0"><?php echo get_field("featured")[2]->post_title ?></h3>
+											<p class="mt2"><?php echo get_field("excerpt", get_field("featured")[2]->ID) ?></p>
+									    </div>
+									</a>
+								</article>
+							<?php /* END - ArticleMedium */ ?>
+				        </div>
+				    </div>
+				</div>
+			</div>
 		</div>
-	</div>
 
 	<?php //wp_die(print_r(vh_get_meet_local_by_taxonomy_concept()[0]->post_title)); ?>
 
 	<?php /* START - ArticleFull */ ?>
-	<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
-		<article class="article-full relative my5">
-			<div class="article-full__img-container topographic-pattern">
-				<?php
-					/*$image = new Imagick('test.jpg');
-					$image->resizeImage(250, 250, Imagick::FILTER_GAUSSIAN, 1);
-					$image->quantizeImage(1, Imagick::COLORSPACE_RGB, 0, false, false);
-					$image->setFormat('RGB');
-					echo substr(bin2hex($image), 0, 6);*/
-				?>
-			    <picture>
-					<source media="(min-width: 768px)"
-						data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-					<source
-						data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-					<img class="concept-header__img" data-src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
-			    </picture>
-			</div>
-			<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
-			<div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
-				<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo $post->post_name ?>">
+		<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
+			<article class="article-full relative my5">
+				<div class="article-full__img-container topographic-pattern">
+					<?php
+						/*$image = new Imagick('test.jpg');
+						$image->resizeImage(250, 250, Imagick::FILTER_GAUSSIAN, 1);
+						$image->quantizeImage(1, Imagick::COLORSPACE_RGB, 0, false, false);
+						$image->setFormat('RGB');
+						echo substr(bin2hex($image), 0, 6);*/
+					?>
+				    <picture>
+						<source media="(min-width: 768px)"
+							data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+						<source
+							data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+						<img class="concept-header__img" data-src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
+				    </picture>
+				</div>
+				<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
+				<div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
+					<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo $post->post_name ?>">
 
-					<div class="article-tag--light mt3 mb2">
-						<div class="article-tag__icon-wrapper">
-							<div class="article-tag__icon"></div>
+						<div class="article-tag--light mt3 mb2">
+							<div class="article-tag__icon-wrapper">
+								<div class="article-tag__icon"></div>
+							</div>
+							<span class="article-tag__type">
+							<?php echo vh_get_pretty_post_type_name(vh_get_meet_local_by_taxonomy_concept()[0]->post_type) ?>
+							</span>
 						</div>
-						<span class="article-tag__type">
-						<?php echo vh_get_pretty_post_type_name(vh_get_meet_local_by_taxonomy_concept()[0]->post_type) ?>
-						</span>
-					</div>
-				    
-				    <a href="<?php echo get_permalink(vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?>" class="link-reset article-full__link link light">
-				        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
-				        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
-				        <div class="article-link inline-block mt0">
-				            <hr class="article-link__divider block mb3"/>
-				            <span class="article-link__text">Läs hela artikeln</span>
-				            <span class="article-link__icon-wrapper">
-				                <i class="material-icons article-link__icon">arrow_forward</i>
-				            </span>
-				        </div>
-				    </a>
-				</div>    
-			</div>
-		</article>
-	<?php endif; ?>
+					    
+					    <a href="<?php echo get_permalink(vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?>" class="link-reset article-full__link link light">
+					        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
+					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
+					        <div class="article-link inline-block mt0">
+					            <hr class="article-link__divider block mb3"/>
+					            <span class="article-link__text">Läs hela artikeln</span>
+					            <span class="article-link__icon-wrapper">
+					                <i class="material-icons article-link__icon">arrow_forward</i>
+					            </span>
+					        </div>
+					    </a>
+					</div>    
+				</div>
+			</article>
+		<?php endif; ?>
 	<?php /* END - ArticleFull */ ?>
 
 
 	<?php /* START - POST grid */ ?>
-		<div class="clearfix concept-content mt2">
+		<div class="concept-content relative mt2 col-11 md-col-10 lg-col-10 mx-auto">
 		    <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
 		        <div class="clearfix mxn2">
 		        	<?php 

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <header role="banner" class="header open">
+    <header role="banner" class="header col-12 sm-col-11 lg-col-10 mx-auto open">
         <div class="header__inner relative">
             <section class="masthead topographic-pattern flex items-center justify-center">
                 <div class="masthead__left">

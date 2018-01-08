@@ -26,9 +26,19 @@ jQuery(function() {
 	//console.log(.closest( 'div' ))
 
   	//Init Flickity
-	jQuery('.concept-carousel').flickity({
+	jQuery('.navigation-carousel').flickity({
   		// options
   		cellAlign: 'left',
-  		contain: true
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	jQuery('.concept-carousel--next').on( 'click', function() {
+	  jQuery('.navigation-carousel').flickity('next');
+	});
+	// next wrapped
+	jQuery('.navigation-carousel--previous').on( 'click', function() {
+	  jQuery('.navigation-carousel').flickity('previous');
 	});
 });

@@ -1,5 +1,6 @@
 <footer class="footer topographic-pattern pt6">
-    <div class="footer__content clearfix">
+    <div class="footer__content relative col-11 md-col-10 lg-col-10 mx-auto">
+        <div class="clearfix">
         <div class="footer__column col sm-col-6 col-12 md-col-5">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
             <p class="footer__intro mt1">En reseguide som hjälper dig att hitta till det bästa i Halland. Visithalland.com utvecklas och drivs av Region Halland.</p>
@@ -65,6 +66,7 @@
                     <p class="light footer__eu-paragraph mt0">VisitHalland.com är del av EU-projektet Destination Halland 2020. Projektet finansieras via Europeiska regionala utvecklingsfonden.</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </footer>

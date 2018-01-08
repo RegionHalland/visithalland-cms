@@ -64,27 +64,9 @@
 	color:$white;
 }
 
-.footer__content {
-	@media (min-width:$breakpoint-sm) {
-		//margin:0 -$space-4;
-	}
-	@media (min-width:$breakpoint-md) {
-		margin:0;
-	}
-}
 
 .footer__eu {
 	border-radius:$border-radius;
 	padding:$space-4 0;
 	margin-top:$space-5;
-}
-
-.footer__content {
-	padding:0 $space-3;
-	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-4;
-	}
-	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
-	}
 }

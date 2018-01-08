@@ -102,7 +102,7 @@
 	            </div>
 	        </div>
 	    </div>
-	    <div class="featured-articles mxn2 mt6 col-12 md-col-10 lg-col-12 mx-auto">  
+	    <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
 		        <div class="clearfix">  
 		            <?php
 		                $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
