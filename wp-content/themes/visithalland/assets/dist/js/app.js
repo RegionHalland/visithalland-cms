@@ -57,6 +57,16 @@ jQuery(function() {
 	jQuery('.tip-carousel--previous').on( 'click', function() {
 	  jQuery('.tip-carousel').flickity('previous');
 	});
+
+
+
+
+
+	//Toggle menu on mobile 
+
+	jQuery('.nav-button').on('click', function(){
+		jQuery('.nav').toggleClass('active');
+	});
 });
 jQuery(function() {
 	console.log("place", php_vars);
