@@ -60,7 +60,7 @@
                         <h3>Restips från artikeln</h3>
                     </div>
                     <?php foreach ($mentions as $key => $value): ?>
-                        <a href="<?php echo $value->guid ?>" class="link-reset">
+                        <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                     		<article class="article-mention col col-12 sm-col-6 mt3">
                                     <div class="clearfix">
                                         <div class="col col-5 sm-col-4 ">
@@ -120,7 +120,7 @@
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                         foreach ($featuredArticles as $key => $value): ?>
                             <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
-                                <a href="<?php echo $value->guid ?>" class="link-reset">
+                                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                     <div class="article-medium__img-container topographic-pattern">
                                         <picture>
                                             <source media="(min-width: 40em)"

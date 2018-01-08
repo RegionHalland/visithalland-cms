@@ -60,7 +60,7 @@
 
 					                        </div>
 					                        <div class="spotlight-large__links">
-					                            <a class="spotlight-large__btn btn btn--primary link-reset" href="<?php echo $value->guid ?>">
+					                            <a class="spotlight-large__btn btn btn--primary link-reset" href="<?php echo get_permalink($value->ID) ?>">
 														Se <?php echo $value->post_title ?>
 					                            </a>
 					                        </div>
@@ -88,7 +88,7 @@
 					                            <?php the_field("body", $value->ID); ?>
 					                        </div>
 					                        <div class="spotlight-small__links mt3">
-					                            <a class="spotlight-small__btn btn btn--primary link-reset" href="<?php echo $value->guid ?>">
+					                            <a class="spotlight-small__btn btn btn--primary link-reset" href="<?php echo get_permalink($value->ID) ?>">
 					                              Se <?php echo $value->post_title ?>
 					                            </a>
 					                        </div>
@@ -129,7 +129,7 @@
 		                $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
 		                foreach ($featuredArticles as $key => $value): ?>
 		                    <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
-		                        <a href="<?php echo $value->guid ?>" class="link-reset">
+		                        <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                            <div class="article-medium__img-container topographic-pattern">
 		                                <picture>
 		                                    <source media="(min-width: 40em)"
