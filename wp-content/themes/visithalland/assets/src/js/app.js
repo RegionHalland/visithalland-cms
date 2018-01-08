@@ -34,7 +34,15 @@ jQuery(function() {
   		pageDots: false,
 	});
 
-	jQuery('.meet-a-local-tips').flickity({
+	jQuery('.navigation-carousel--next').on( 'click', function() {
+	  jQuery('.navigation-carousel').flickity('next');
+	});
+	// next wrapped
+	jQuery('.navigation-carousel--previous').on( 'click', function() {
+	  jQuery('.navigation-carousel').flickity('previous');
+	});
+
+	jQuery('.tip-carousel').flickity({
   		// options
   		cellAlign: 'left',
   		contain: true,
@@ -42,11 +50,11 @@ jQuery(function() {
   		pageDots: false,
 	});
 
-	jQuery('.navigation-carousel--next').on( 'click', function() {
-	  jQuery('.navigation-carousel').flickity('next');
+	jQuery('.tip-carousel--next').on( 'click', function() {
+	  jQuery('.tip-carousel').flickity('next');
 	});
 	// next wrapped
-	jQuery('.navigation-carousel--previous').on( 'click', function() {
-	  jQuery('.navigation-carousel').flickity('previous');
+	jQuery('.tip-carousel--previous').on( 'click', function() {
+	  jQuery('.tip-carousel').flickity('previous');
 	});
 });

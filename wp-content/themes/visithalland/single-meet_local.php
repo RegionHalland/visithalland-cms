@@ -48,13 +48,11 @@
 	            </article>
 	        </div>
     	</div>
-    	<div class="slider-button-container relative my4 z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
-			<button class="slider-button navigation-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
-			<button class="slider-button navigation-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
+    	<div class="slider-button-container relative mt4 z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
+			<button class="slider-button tip-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
+			<button class="slider-button tip-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
 		</div>
-	    <section class="col-11 md-col-10 lg-col-10 mx-auto mx-auto clearfix">
-	    		<div class="meet-a-local-tips">
-
+	    <section class="tip-carousel col-11 md-col-10 lg-col-10 mx-auto mx-auto clearfix">
     			<?php 
 
 					if( have_rows('tips') ):
@@ -93,7 +91,6 @@
 
 					endif;
 					?>
- 			</div>
         </section>
 	    </div>
 	    <?php /* Start - Featured Articles */ ?>     
