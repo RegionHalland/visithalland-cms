@@ -25,18 +25,16 @@
 	                        <div class="spotlight-header__icon mx-auto"></div>
 	                        <h1 class="spotlight-header__title center light"><?php the_title(); ?></h1>
 	                        <div class="spotlight-header__paragraph light mt2">
-	                            <p><?php echo get_field("excerpt"); ?></p>
+	                            <p><?php the_excerpt(); ?></p>
 	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </section>
-	    <div class="spotlight-content">
-	        <div class="clearfix spotlight-grid">
-	            <div class="spotlight-grid-item col col-12">
+	    <div class="spotlight-content col-11 md-col-10 lg-col-10 mx-auto">
+	        <div class="clearfix spotlight-grid mxn3">
 	        	 	<?php
-
 	                    $spotlights = get_field("stops");
 	                    // Needs images //
 	                    foreach ($spotlights as $index => $value): ?>
@@ -99,15 +97,14 @@
 					            </div>
 				            <?php endif ?>
 	                <?php endforeach ?>
-	            </div>
 	        </div>
 	    </div>
-	    <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-		        <div class="clearfix">  
+	    <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
+		        <div class="clearfix mxn2">  
 		            <?php
 		                $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
 		                foreach ($featuredArticles as $key => $value): ?>
-		                    <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+		                    <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
 		                        <a href="<?php echo $value->guid ?>" class="link-reset">
 		                            <div class="article-medium__img-container topographic-pattern">
 		                                <picture>

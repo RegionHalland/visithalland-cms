@@ -6,51 +6,59 @@
     
 ?>
     <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
-    <section class="place-header relative clearfix" role="heading" id="page-content">
-    <div class="place-header__backdrop topographic-pattern"></div>
-    <div class="place-header__inner col-12 md-col-10 lg-col-10 mx-auto">
-        <div class="place-header__img-container topographic-pattern">
-                <picture>
-                    <source media="(min-width: 40em)"
-                        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-                    <source
-                        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
-                    <img class="happening-header__img" 
-                            src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
-                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
-                    />
-                </picture>
-        </div>
-        <div class="place-header__content center">
-            <div class="article-tag">
-                <div class="article-tag__icon-wrapper">
-                    <div class="article-tag__icon"></div>
+
+        <?php /* START - Place Header */ ?>
+        <section class="place-header relative clearfix" role="heading" id="page-content">
+            <div class="place-header__backdrop topographic-pattern"></div>
+            <div class="place-header__inner col-12 md-col-10 lg-col-8 mx-auto">
+                <div class="place-header__img-container topographic-pattern">
+                        <picture>
+                            <source media="(min-width: 40em)"
+                                srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+                            <source
+                                srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+                            <img class="happening-header__img" 
+                                    src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
+                                    alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                            />
+                        </picture>
                 </div>
-                <span class="article-tag__type">
-                    <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
-                </span>
-            </div>
-            <h1 class="place-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
-            <div class="place-header__details">
-                <?php the_field('body', $value->ID); ?>
-            </div>
-            <div class="details clearfix left-align">
-                    <section class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0"><span class="details__section-label block">Visit us</span>
-                        <li class="details__open-hour">måndag: Stängt</li>
-                        <li class="details__open-hour">tisdag: Stängt</li>
-                        <li class="details__open-hour">onsdag: 18:00–00:00</li>
-                        <li class="details__open-hour">torsdag: 18:00–00:00</li>
-                        <li class="details__open-hour">fredag: 18:00–00:00</li>
-                        <li class="details__open-hour">lördag: 18:00–00:00</li>
-                        <li class="details__open-hour">söndag: Stängt</li>
-                    </section>
-                    <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a href="http://maps.google.com/?q=Prostens Pizza, Falkenberg, Sverige" class="details__phone block"><i class="details__icon material-icons mr2">place</i><!-- react-text: 826 -->Visa på karta<!-- /react-text --></a></section>
-                    <section
-                        class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a href="http://www.prostenspizza.se/" class="btn btn--primary inline-block">Besök webbplats</a></section>
+                <div class="place-header__content center">
+                    <div class="article-tag">
+                        <div class="article-tag__icon-wrapper">
+                            <div class="article-tag__icon"></div>
+                        </div>
+                        <span class="article-tag__type">
+                            <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
+                        </span>
+                    </div>
+                    <h1 class="place-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
+                    <div class="place-header__details">
+                        <?php the_field('body', $value->ID); ?>
                     </div>
                 </div>
             </div>
-        </section>      
+        </section>
+        <?php /* End - Place Header */ ?>
+
+        <?php /* START - Google Place Details */ ?>
+        <section class="details clearfix left-align col-12 md-col-10 lg-col-8 mx-auto">
+            <section class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0"><span class="details__section-label block">Visit us</span>
+                <li class="details__open-hour">måndag: Stängt</li>
+                <li class="details__open-hour">tisdag: Stängt</li>
+                <li class="details__open-hour">onsdag: 18:00–00:00</li>
+                <li class="details__open-hour">torsdag: 18:00–00:00</li>
+                <li class="details__open-hour">fredag: 18:00–00:00</li>
+                <li class="details__open-hour">lördag: 18:00–00:00</li>
+                <li class="details__open-hour">söndag: Stängt</li>
+            </section>
+            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a href="http://maps.google.com/?q=Prostens Pizza, Falkenberg, Sverige" class="details__phone block"><i class="details__icon material-icons mr2">place</i>Visa på karta</a></section>
+            <section
+                class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a href="http://www.prostenspizza.se/" class="btn btn--primary inline-block">Besök webbplats</a></section>
+        </section>
+        <?php /* End - Google Place Details */ ?>
+
+        <?php /* Start - Featured Articles */ ?>     
         <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
             <div class="clearfix">  
                 <?php
@@ -85,6 +93,9 @@
                 <?php endforeach ?>
             </div>
         </div>
+        <?php /* Start - Featured Articles */ ?>   
+
+        
     </article>
 <?php endwhile; ?>
 

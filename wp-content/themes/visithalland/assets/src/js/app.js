@@ -34,7 +34,15 @@ jQuery(function() {
   		pageDots: false,
 	});
 
-	jQuery('.concept-carousel--next').on( 'click', function() {
+	jQuery('.meet-a-local-tips').flickity({
+  		// options
+  		cellAlign: 'left',
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	jQuery('.navigation-carousel--next').on( 'click', function() {
 	  jQuery('.navigation-carousel').flickity('next');
 	});
 	// next wrapped

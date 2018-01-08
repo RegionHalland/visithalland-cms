@@ -8,7 +8,7 @@
 	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
 	    <section class="happening-header relative clearfix">
                 <div class="happening-header__backdrop topographic-pattern"></div>
-                <div class="happening-header__inner col-12 md-col-10 lg-col-10 mx-auto relative">
+                <div class="happening-header__inner col-12 md-col-10 lg-col-8 mx-auto relative">
                     <div class="happening-header__img-container topographic-pattern">
                         <div class="happening-header__date">
 	                         <div class="date-badge">
@@ -64,8 +64,8 @@
                     </div>
                 </div>
             </section>
-            <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-                <div class="clearfix">  
+            <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
+                <div class="clearfix mxn2">  
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                         foreach ($featuredArticles as $key => $value): ?>

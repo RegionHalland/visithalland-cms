@@ -8,7 +8,7 @@
 <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
     <section class={"editorial-header relative clearfix " + this.props.concept_slug} role="heading" id="page-content">
         <div class="editorial-header__backdrop topographic-pattern"></div>
-        <div class="editorial-header__inner col-12 md-col-10 lg-col-10 mx-auto">
+        <div class="editorial-header__inner col-12 md-col-10 lg-col-8 mx-auto">
             <div class="editorial-header__img-container topographic-pattern">
                 <picture>
                     <source media="(min-width: 40em)"
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-                <div class="clearfix">  
+                <div class="clearfix mxn2">  
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                         foreach ($featuredArticles as $key => $value): ?>

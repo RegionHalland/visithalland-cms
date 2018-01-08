@@ -2,15 +2,11 @@
 		&:first-of-type:first-letter {
 		    font-family: $rift-font-family;
 			float: left;
-			//font-style: italic;
 			font-weight:bold;
 			color:palette(black, dark);
 			font-size: 4.7em;
-			//background: red;
 			line-height: 0.90;
 			vertical-align: top;
-			/* padding-top: 4px; */
 			padding-right: 12px;
-			/* padding-left: 3px; */
 		}
 }

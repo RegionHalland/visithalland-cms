@@ -24,12 +24,9 @@
 	}
 
 	&__inner {
-		padding:0 $space-3;
 		@media(min-width:$breakpoint-sm) {
-			padding:0 $space-5;
 		}
 		@media(min-width:$breakpoint-lg) {
-			padding:0 $space-6;
 			margin-top:-150px;
 		}
 		margin-top:-100px;

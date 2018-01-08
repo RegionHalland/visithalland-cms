@@ -1,20 +1,17 @@
 .spotlight-content {
-	padding:0 $space-3;
 	z-index:$z3;
 	position:relative;
 	margin-top:-$space-4;
 	@media(min-width:$breakpoint-sm) {
-		padding:0 $space-5;
 		margin-top:-$space-5;
 	}
 	@media(min-width:$breakpoint-lg) {
-		padding:0 $space-6;
 	}
 }
 
 .spotlight-grid {
 	@media (min-width:$breakpoint-sm) {
-		margin:0 -$space-3;
+
 	}
 }
 
@@ -23,6 +20,5 @@
 	margin:$space-3 0;
 	@media (min-width:$breakpoint-sm) {
 		padding:0 $space-3;
-		margin:$space-3 0;
 	}
 }
