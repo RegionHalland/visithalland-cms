@@ -4,10 +4,6 @@
         $author_id = get_the_author_meta('ID');
     ?>
 
-    <script>
-        var data = <?php echo the_title ?>;
-    </script>
-
     <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
 
         <?php /* START - business Header */ ?>
@@ -37,7 +33,7 @@
                     </div>
                     <h1 class="business-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
                     <div class="business-header__details">
-                        <?php the_field('body', $value->ID); ?>
+                        <?php the_field('body', $post->ID); ?>
                     </div>
                 </div>
             </div>
@@ -46,18 +42,14 @@
 
         <?php /* START - Google business Details */ ?>
         <section class="details clearfix left-align col-11 md-col-10 lg-col-8 mx-auto">
-            <section class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0"><span class="details__section-label block">Visit us</span>
-                <li class="details__open-hour">måndag: Stängt</li>
-                <li class="details__open-hour">tisdag: Stängt</li>
-                <li class="details__open-hour">onsdag: 18:00–00:00</li>
-                <li class="details__open-hour">torsdag: 18:00–00:00</li>
-                <li class="details__open-hour">fredag: 18:00–00:00</li>
-                <li class="details__open-hour">lördag: 18:00–00:00</li>
-                <li class="details__open-hour">söndag: Stängt</li>
+            <div id="map"></div>
+            <section id="opening-hours" class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0">
+                <span class="details__section-label block">Visit us</span>
+
             </section>
-            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a href="http://maps.google.com/?q=Prostens Pizza, Falkenberg, Sverige" class="details__phone block"><i class="details__icon material-icons mr2">business</i>Visa på karta</a></section>
+            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a id="details-show-on-map" href="" class="details__phone block"><i class="details__icon material-icons mr2">business</i>Visa på karta</a></section>
             <section
-                class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a href="http://www.prostenspizza.se/" class="btn btn--primary inline-block">Besök webbplats</a></section>
+                class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a id="details-visit-website" href="#" class="btn btn--primary inline-block">Besök webbplats</a></section>
         </section>
         <?php /* End - Google business Details */ ?>
 

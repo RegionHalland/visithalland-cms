@@ -52,7 +52,7 @@
 
 			        	<div class="concept-thumbnail-large__article col col-12 sm-col-5 mtn5">
 			                <article class="article-medium <?php echo get_field("featured", $post_id)[0]->post_name ?>">
-			                        <a href="<?php echo get_field("featured", $post_id)[0]->guid ?>">
+			                        <a href="<?php echo get_permalink(get_field("featured", $post_id)[0]->ID) ?>">
 			                            <div class="article-medium__img-container topographic-pattern">
 											<picture>
 											    <source media="(min-width: 40em)"
