@@ -18,8 +18,8 @@
 	                        alt="<?php echo get_field("cover_image")["alt"] ?>"  
 	                />
 	            </picture>
-	            <div class="spotlight-header__scrim absolute left-0 bottom-0 right-0"></div>
-	            <div class="spotlight-header__content center">
+	            <div class="spotlight-header__scrim absolute z1 left-0 bottom-0 right-0"></div>
+	            <div class="spotlight-header__content z2 relative center">
 	                <div class="clearfix">
 	                    <div class="col-12 sm-col-10 md-col-8 lg-col-6 mx-auto">
 	                        <div class="spotlight-header__icon mx-auto"></div>
@@ -33,7 +33,7 @@
 	        </div>
 	    </section>
 	    <div class="spotlight-content col-11 md-col-10 lg-col-10 mx-auto">
-	        <div class="clearfix spotlight-grid mxn3">
+	        <div class="clearfix spotlight-grid">
 	        	 	<?php
 	                    $spotlights = get_field("stops");
 	                    // Needs images //

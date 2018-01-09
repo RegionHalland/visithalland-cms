@@ -10,7 +10,7 @@
         <?php /* START - Place Header */ ?>
         <section class="place-header relative clearfix" role="heading" id="page-content">
             <div class="place-header__backdrop topographic-pattern"></div>
-            <div class="place-header__inner col-12 md-col-10 lg-col-8 mx-auto">
+            <div class="place-header__inner col-11 md-col-10 lg-col-8 mx-auto">
                 <div class="place-header__img-container topographic-pattern">
                         <picture>
                             <source media="(min-width: 40em)"
@@ -42,7 +42,7 @@
         <?php /* End - Place Header */ ?>
 
         <?php /* START - Google Place Details */ ?>
-        <section class="details clearfix left-align col-12 md-col-10 lg-col-8 mx-auto">
+        <section class="details clearfix left-align col-11 md-col-10 lg-col-8 mx-auto">
             <section class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0"><span class="details__section-label block">Visit us</span>
                 <li class="details__open-hour">måndag: Stängt</li>
                 <li class="details__open-hour">tisdag: Stängt</li>
@@ -89,7 +89,7 @@
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <picture>

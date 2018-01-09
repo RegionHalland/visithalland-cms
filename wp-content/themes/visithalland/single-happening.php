@@ -8,7 +8,7 @@
 	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
 	    <section class="happening-header relative clearfix">
                 <div class="happening-header__backdrop topographic-pattern"></div>
-                <div class="happening-header__inner col-12 md-col-10 lg-col-8 mx-auto relative">
+                <div class="happening-header__inner col-11 md-col-10 lg-col-8 mx-auto relative">
                     <div class="happening-header__img-container topographic-pattern">
                         <div class="happening-header__date">
 	                         <div class="date-badge">
@@ -28,7 +28,7 @@
 		                </picture>
                     </div>
                     <div class="clearfix">
-                        <div class="happening-header__content col col-12 sm-col-6 ">
+                        <div class="happening-header__content col col-11 sm-col-6 ">
                             <div class="article-tag">
 			                    <div class="article-tag__icon-wrapper">
 			                        <div class="article-tag__icon"></div>
@@ -42,7 +42,7 @@
                                 <?php the_field('body'); ?>
                             </p>
                         </div>
-                        <aside class="happening-info relative  z3 col col-12 sm-col-6" role="complementary">
+                        <aside class="happening-info relative  z3 col col-11 sm-col-6" role="complementary">
                             <div class="happening-info__inner topographic-pattern">
                                 <section class="happening-info__section">
                                     <h3 class="happening-info__section-label">Datum</h3>

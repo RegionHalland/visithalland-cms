@@ -11,7 +11,7 @@
 		background-color:palette(black, base);
 		padding-bottom:125%;
 		background-color:palette(black, base);
-		@media(min-width:$breakpoint-md) {
+		@media(min-width:$breakpoint-sm) {
 			padding-bottom:56.25%;
 		}
 		&::after {
