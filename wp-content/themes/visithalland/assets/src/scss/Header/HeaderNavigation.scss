@@ -9,6 +9,9 @@
     position:absolute;
     top:52px;
     width:100%;
+    &:focus {
+        outline:none;
+    }
     @media(min-width:$breakpoint-sm) {
         position: relative;
         transform:translateY(0%);
