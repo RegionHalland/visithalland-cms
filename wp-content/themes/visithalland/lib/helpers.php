@@ -144,7 +144,7 @@ function vh_get_posts_without_happenings_by_taxonomy_concept($post_id, $numberpo
 	$tax_query = array();
 
 	//If coastal living
-	if ($post_id != 12) {
+	if ($post_id != 12 && $terms) {
 		$tax_query = array(
 	  		array(
 		      'taxonomy' => 'taxonomy_concept',
@@ -167,12 +167,16 @@ function vh_get_posts_without_happenings_by_taxonomy_concept($post_id, $numberpo
 	));
 
 	foreach ($posts as $key => $value) {
+		$post_terms = wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0];
+
 		$value->meta_fields = get_fields($value->ID);
 		$value->author = vh_get_author($value->post_author);
-		$value->taxonomy = array(
-					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-				);
+		if($post_terms) {
+			$value->taxonomy = array(
+				"name" 	=> $post_terms->name,
+				"slug"	=> $post_terms->slug
+			);
+		}
 	}
 	return $posts;
 }

@@ -68,7 +68,7 @@ jQuery(function() {
 		jQuery('.nav').toggleClass('active');
 	});
 });
- jQuery(function() {
+jQuery(function() {
     var map;
     var service;
 

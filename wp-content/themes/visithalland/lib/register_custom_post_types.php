@@ -21,7 +21,7 @@ function custom_post_type_meet_local() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -32,7 +32,7 @@ function custom_post_type_meet_local() {
 	register_post_type( 'meet_local', $args );
 
 }
-add_action( 'init', 'custom_post_type_meet_local', 0 );
+add_action( 'init', 'custom_post_type_meet_local', 1 );
 
 
 
@@ -57,7 +57,7 @@ function custom_post_type_editor_tip() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -68,7 +68,7 @@ function custom_post_type_editor_tip() {
 	register_post_type( 'editor_tip', $args );
 
 }
-add_action( 'init', 'custom_post_type_editor_tip', 0 );
+add_action( 'init', 'custom_post_type_editor_tip', 200 );
 
 
 
@@ -93,7 +93,7 @@ function custom_post_type_trips() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -104,7 +104,7 @@ function custom_post_type_trips() {
 	register_post_type( 'trip', $args );
 
 }
-add_action( 'init', 'custom_post_type_trips', 0 );
+add_action( 'init', 'custom_post_type_trips', 1 );
 
 
 
@@ -129,7 +129,7 @@ function custom_post_type_happenings() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -140,7 +140,7 @@ function custom_post_type_happenings() {
 	register_post_type( 'happening', $args );
 
 }
-add_action( 'init', 'custom_post_type_happenings', 0 );
+add_action( 'init', 'custom_post_type_happenings', 1 );
 
 
 // Register Places
@@ -164,7 +164,7 @@ function custom_post_type_places() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -175,7 +175,7 @@ function custom_post_type_places() {
 	register_post_type( 'places', $args );
 
 }
-add_action( 'init', 'custom_post_type_places', 0 );
+add_action( 'init', 'custom_post_type_places', 1 );
 
 // Register companies
 function custom_post_type_companies() {
@@ -198,7 +198,7 @@ function custom_post_type_companies() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -209,4 +209,4 @@ function custom_post_type_companies() {
 	register_post_type( 'companies', $args );
 
 }
-add_action( 'init', 'custom_post_type_companies', 0 );
+add_action( 'init', 'custom_post_type_companies', 1 );
