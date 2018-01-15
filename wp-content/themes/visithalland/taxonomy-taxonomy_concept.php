@@ -12,9 +12,9 @@ $term = get_queried_object(); ?>
 		    <div class="concept-header__img-container topographic-pattern">
 				<picture>
 				    <source media="(min-width: 60em)"
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 				    <source
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
@@ -336,22 +336,31 @@ $term = get_queried_object(); ?>
 		        <div class="concept-thumbnails clearfix">
 					<?php
 					$menuItems = wp_get_nav_menu_items("huvudmeny");
+
 					foreach ($menuItems as $key => $value): ?>
 					<?php
-						$post_id = get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->ID;
-						$featured_id = get_field("featured", get_post(get_post_meta( $post_id, '_menu_item_object_id', true )))[0]->ID;
+						var_dump($menuItems);
+
+						
+						//$post_id = get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->ID;
+						/*$cover_image = get_field("cover_image", get_post(get_post_meta($value->ID, '_menu_item_object_id', true ))[0]);
+						if (count($cover_image) > 0){
+							$cover_image = $cover_image;
+						}
+
+						print_r(get_field("cover_image", get_post(get_post_meta($value->ID, '_menu_item_object_id', true ))[0])["alt"]);*/
+						//$featured_id = get_field("featured", get_post(get_post_meta( $post_id, '_menu_item_object_id', true )))[0]->ID;
+						//var_dump(get_field("cover_image", $value));
+
+
+						print_r(get_field("cover_image", $value));
+
 					?>
 					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
-						<div class="concept-thumbnail-small <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
-		                       <a href="<?php echo $value->url ?>" class="link-reset">
+						<div class="concept-thumbnail-small <?php echo $value->title ?>">
+		                       <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
-	                                    <picture>
-	                                        <source media="(min-width: 40em)"
-	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-	                                        <source
-	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 2x" ?>" />
-	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_tall"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-	                                    </picture>
+	                                   
 		                                <div class="concept-thumbnail-small__inner center">
 		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
 		                                    <h2 class="concept-thumbnail-small__title"><?php echo $value->title ?></h2>
