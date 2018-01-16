@@ -8,6 +8,9 @@
 	padding:0;
 	&__top-section {
 		padding:$space-2;
+		@media (min-width:$breakpoint-sm) {
+			padding:$space-2 $space-3;
+		}
 		background-color: palette(black, base);
 	}
 
@@ -51,6 +54,7 @@
 .mobile-search {
 	padding:$space-5 $space-2 $space-2 $space-2;
 	height:100vh;
+	overflow:scroll;
 	width:100%;
 	position:absolute;
 	top:0;
@@ -62,9 +66,13 @@
 	display:none;
 
 	&__header {
+    	color:$white;
+    	font-family: $rift-font-family;
     	opacity:0.75;
     	font-size:0.9em;
-    	margin-bottom:$space-3;
+    	margin:$space-2 0;
+    	padding:$space-2 0;
+    	border-bottom:1px solid palette(black, x-light);
     }
 
 	&__suggestions {
@@ -73,6 +81,7 @@
 	}
 
 	&__suggestions-list {
+		margin-top:$space-3;
 
 	}
 
@@ -98,9 +107,17 @@
 	}
 }
 
+
+.mobile-navigation, .menu-button, .mobile-search{
+	@media (min-width:$breakpoint-sm) {
+		display:none;
+	}
+}
+
 .mobile-navigation {
 	padding:$space-5 $space-2 $space-2 $space-2;
 	min-height:100vh;
+	overflow:scroll;
 	width:100%;
 	position:absolute;
 	top:0;
@@ -109,14 +126,16 @@
 	bottom:0;
 	background-color: palette(black, light);
 	z-index:1;
-	display:none; 
-
+	display:none;
 	&__item {
         display:block;
 		padding:$space-2 0;
-		transform:translateY(50px);
     }
     &__link {
+    	&.active {
+			opacity:1;
+		}
+		opacity:0.65;
         color: $white;
         font-size: 1.2em;
         font-family: $rift-font-family;
@@ -152,16 +171,12 @@
 
     &__header {
     	color:$white;
-    	font-size:1em;
-    	display: block;
     	font-family: $rift-font-family;
-
-    }
-
-    &__header {
     	opacity:0.75;
     	font-size:0.9em;
-    	margin:$space-3 0;
+    	margin:$space-2 0;
+    	padding:$space-2 0;
+    	border-bottom:1px solid palette(black, x-light);
     }
 
     &__support-link {
@@ -172,9 +187,7 @@
     }
 
 	&.active {
-		.mobile-navigation__item {
-			transform:translateY(0px);
-		}
+		transform:translateY(0%);
 	}
 }
 

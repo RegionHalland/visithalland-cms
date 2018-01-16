@@ -64,10 +64,18 @@ jQuery(function() {
 
 	//Toggle menu on mobile 
 	jQuery('.menu-button').on('click', function(){
+
 		jQuery('.mobile-navigation').fadeToggle(400);
 		jQuery('.mobile-navigation').toggleClass('active');
 		jQuery('body').toggleClass('overflow-hidden');
 		jQuery('#main-content').toggleClass('menu-open');
+
+		if(jQuery('.mobile-search').hasClass('active')) {
+			jQuery('.mobile-search').fadeToggle(400);
+			jQuery('body').toggleClass('overflow-hidden');
+			jQuery('.mobile-search').toggleClass('active');
+			jQuery('#main-content').toggleClass('menu-open');
+		}
 	});
 
 	jQuery('.search-button').on('click', function(){
@@ -75,6 +83,13 @@ jQuery(function() {
 		jQuery('.mobile-search').toggleClass('active');
 		jQuery('body').toggleClass('overflow-hidden');
 		jQuery('#main-content').toggleClass('menu-open');
+
+		if(jQuery('.mobile-navigation').hasClass('active')) {
+			jQuery('.mobile-navigation').fadeToggle(400);
+			jQuery('body').toggleClass('overflow-hidden');
+			jQuery('.mobile-navigation').toggleClass('active');
+			jQuery('#main-content').toggleClass('menu-open');
+		}
 	});
 
 	jQuery('.happenings__dropdown-button').on('click', function(){
