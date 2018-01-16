@@ -69,8 +69,8 @@
                 <?php
                     $menuItems = wp_get_nav_menu_items("huvudmeny");
                     foreach ($menuItems as $key => $value) : ?>
-                        <div class="mobile-navigation__item <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
-                            <a href="<?php echo $value->url ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                        <div class="mobile-navigation__item <?php echo $value->post_name ?>">
+                            <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                 <div class="mobile-navigation__icon-wrapper">
                                     <div class="mobile-navigation__icon"></div>
                                 </div>

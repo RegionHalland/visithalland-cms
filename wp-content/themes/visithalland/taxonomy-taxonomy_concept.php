@@ -331,7 +331,6 @@ $term = get_queried_object(); ?>
 						$term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
 						$current_term = get_term($term_id);
 						$current_term_cover_image = get_field("cover_image", $current_term);
-
 					?>
 					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
 						<div class="concept-thumbnail-small <?php echo $value->title ?>">
