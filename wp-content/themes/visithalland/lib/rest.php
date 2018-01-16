@@ -507,7 +507,7 @@ function vh_get_page_by_path($page_path) {
 	return get_page_by_path( $page_path, OBJECT, 'page' );
 }
 
-function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
+/*function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
 
@@ -529,7 +529,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 			"trip",
 			"happening"
 	  ),
-	  'numberposts'  => $numberposts,
+	  'numberposts'  => 1,
 	  'exclude' 	 => array($post_id),
 	  'tax_query' 	 => $tax_query
 	));
@@ -543,7 +543,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 				);
 	}
 	return $posts;
-}
+}*/
 
 function vh_get_posts_without_happenings_by_taxonomy_concept($post_id, $numberposts = 3) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );

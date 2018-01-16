@@ -118,6 +118,7 @@
                 <div class="clearfix mxn2">  
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
+                        var_dump(count($featuredArticles));
                         foreach ($featuredArticles as $key => $value): ?>
                             <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
                                 <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">

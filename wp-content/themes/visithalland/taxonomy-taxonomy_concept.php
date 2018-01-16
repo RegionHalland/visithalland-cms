@@ -39,12 +39,7 @@ $term = get_queried_object(); ?>
 				</div>
 				<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 					<?php
-					$spotlights = $posts;
-					
-					$spotlights = array_filter($spotlights, function($post) {
-						return $post->post_type == 'trip';
-					});
-
+					$spotlights = vh_get_spotlights_by_taxonomy_concept($posts[0]->ID, 3);
 					foreach ($spotlights as $key => $value) : ?>
 					<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo $term->slug ?>">
 					    <a href="<?php echo get_permalink($value->ID) ?>">
@@ -211,11 +206,8 @@ $term = get_queried_object(); ?>
 		<div class="concept-content relative mt2 col-11 md-col-10 lg-col-10 mx-auto">
 		    <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
 		        <div class="clearfix mxn2">
-		        	<?php 
-		        		$posts_without_place_happening_business = array_filter($posts, function($post) {
-							return $post->post_type !== 'companies' && $post->post_type !== 'places';
-						});
-
+		        	<?php
+		        		$posts_without_place_happening_business = vh_get_posts_by_taxonomy_concept($post->ID, -1);
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
 		        			<?php if(($index + 1) % 4 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">

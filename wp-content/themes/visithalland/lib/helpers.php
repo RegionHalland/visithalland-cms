@@ -103,25 +103,51 @@ function vh_get_page_by_path($page_path) {
 
 function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
-	$tax_query = array();
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+  	);
 
-	//If coastal living
-	if ($post_id != 12) {
-		$tax_query = array(
-	  		array(
-		      'taxonomy' => 'taxonomy_concept',
-		      'field' 	 => 'id',
-		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-		      'include_children' => false
-		    )
-	  	);
-	}
 	$posts = get_posts(array(
 	  'post_type' => array(
-	  		//"meet_local",
 			"editor_tip",
 			"trip",
 			"happening"
+	  ),
+	  'numberposts'  => $numberposts,
+	  'exclude' 	 => array($post_id),
+	  'tax_query' 	 => $tax_query
+	));
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->author = vh_get_author($value->post_author);
+		$value->taxonomy = array(
+					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+				);
+	}
+	return $posts;
+}
+
+function vh_get_spotlights_by_taxonomy_concept($post_id, $numberposts = 3) {
+	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+  	);
+  	
+	$posts = get_posts(array(
+	  'post_type' => array(
+			"trip",
 	  ),
 	  'numberposts'  => $numberposts,
 	  'exclude' 	 => array($post_id),
