@@ -12,9 +12,9 @@ $term = get_queried_object(); ?>
 		    <div class="concept-header__img-container topographic-pattern">
 				<picture>
 				    <source media="(min-width: 60em)"
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 				    <source
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
@@ -43,7 +43,6 @@ $term = get_queried_object(); ?>
 					$spotlights = $posts;
 					
 					$spotlights = array_filter($spotlights, function($post) {
-						echo $post->post_type;
 						return $post->post_type == 'trip';
 					});
 
@@ -166,19 +165,10 @@ $term = get_queried_object(); ?>
 			</div>
 		</div>
 
-	<?php //wp_die(print_r(vh_get_meet_local_by_taxonomy_concept()[0]->post_title)); ?>
-
 	<?php /* START - ArticleFull */ ?>
 		<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
 			<article class="article-full relative my5">
 				<div class="article-full__img-container topographic-pattern">
-					<?php
-						/*$image = new Imagick('test.jpg');
-						$image->resizeImage(250, 250, Imagick::FILTER_GAUSSIAN, 1);
-						$image->quantizeImage(1, Imagick::COLORSPACE_RGB, 0, false, false);
-						$image->setFormat('RGB');
-						echo substr(bin2hex($image), 0, 6);*/
-					?>
 				    <picture>
 						<source media="(min-width: 40em)"
 							data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
@@ -228,7 +218,7 @@ $term = get_queried_object(); ?>
 						});
 
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
-		        			<?php if(($index + 1) % 3 === 0) : ?>
+		        			<?php if(($index + 1) % 4 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">
 								<article class="article-image relative <?php echo vh_get_post_taxonomy()["slug"] ?>">
 									<div class="article-image__img-container topographic-pattern">
@@ -336,21 +326,26 @@ $term = get_queried_object(); ?>
 		        <div class="concept-thumbnails clearfix">
 					<?php
 					$menuItems = wp_get_nav_menu_items("huvudmeny");
+					
+					//var_dump(get_field('cover_image', get_post(3455)));
+
 					foreach ($menuItems as $key => $value): ?>
 					<?php
-						$post_id = get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->ID;
-						$featured_id = get_field("featured", get_post(get_post_meta( $post_id, '_menu_item_object_id', true )))[0]->ID;
+						$term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
+						$current_term = get_term($term_id);
+						$current_term_cover_image = get_field("cover_image", $current_term);
+
 					?>
 					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
-						<div class="concept-thumbnail-small <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
-		                       <a href="<?php echo $value->url ?>" class="link-reset">
+						<div class="concept-thumbnail-small <?php echo $value->title ?>">
+		                       <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
 	                                    <picture>
 	                                        <source media="(min-width: 40em)"
-	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] . " 1x," . $current_term_cover_image["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 	                                        <source
-	                                            data-srcset="<?php echo get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $post_id)["sizes"]["vh_large"] . " 2x" ?>" />
-	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_tall"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_large"] . " 1x," . $current_term_cover_image["sizes"]["vh_large"] . " 2x" ?>" />
+	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
 	                                    </picture>
 		                                <div class="concept-thumbnail-small__inner center">
 		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
@@ -366,25 +361,4 @@ $term = get_queried_object(); ?>
 		</div>
 		<?php /* END - CONCEPT SIDEBAR  */ ?>
 </main>
-
-
-
-
-<?php if (have_posts()) : ?>
-<?php echo count($posts) ?>
-        <ul> 
-
-        <?php while (have_posts()) : the_post(); ?>
-            <li>
-                <?php the_title(); ?>
-            </li>
-        <?php endwhile; ?>
-
-        </ul>
-        <?php else : ?>
-
-        <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-
-<?php endif; ?>
-
 <?php get_footer(); ?>

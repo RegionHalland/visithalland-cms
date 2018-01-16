@@ -65,7 +65,6 @@ include_once('lib/rest/v2/callbacks.php');
 //Add helpers used in callbacks.php for generic methods
 //include_once('lib/helpers.php');
 
-
 function wpa_show_permalinks( $post_link, $post ){
     if ( is_object( $post ) && $post->post_type == 'editor_tip' || $post->post_type == 'meet_local' || $post->post_type == 'trip' || $post->post_type == 'happening' || $post->post_type == 'places' || $post->post_type == 'companies' ){
         $terms = wp_get_object_terms( $post->ID, 'taxonomy_concept' );
@@ -77,20 +76,17 @@ function wpa_show_permalinks( $post_link, $post ){
 }
 add_filter( 'post_type_link', 'wpa_show_permalinks', 1, 2 );
 
-//add_filter( 'wp_get_nav_menu_items', 'prefix_nav_menu_classes', 10, 3 );
-
+add_filter( 'wp_get_nav_menu_items', 'prefix_nav_menu_classes', 10, 3 );
 function prefix_nav_menu_classes($items, $menu, $args) {
     _wp_menu_item_classes_by_context($items);
 
-    $taxonomy = 'custom_taxonomy_concept';
+    $taxonomy = 'taxonomy_concept';
     $tax_terms = get_terms($taxonomy);
     $terms = vh_get_post_taxonomy();
 
     foreach ($items as $key => $value) {
-        if($value->current) {
-            array_push($value->classes, "active");
-        }
-        if(get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name == $terms["slug"]) {
+        //if we have a current menu-item or a current-menu-parent page add our own active class
+        if(in_array("current-menu-item", $value->classes) || in_array("current-menu-parent", $value->classes)){
             array_push($value->classes, "active");
         }
     }
