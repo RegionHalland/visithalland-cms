@@ -47,8 +47,19 @@
         </section>
         
         <div class="mobile-search">
-            <div class="search__inner">
-
+            <div class="mobile-search__inner p2">
+                <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
+                <div class="mobile-search__suggestions">
+                    <h5 class="mobile-search__header light">Populära sökningar:</h5>
+                    <ul class="mobile-search__suggestions-list light">
+                        <li class="mobile-search__suggestions-list-item mt2 light">
+                            <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Hundvänliga badplatser</span></li>
+                        <li class="mobile-search__suggestions-list-item mt2 light">
+                            <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Fina downhill spår</span></li>
+                        <li class="mobile-search__suggestions-list-item mt2 light">
+                            <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Familjevänliga utflykter</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
         
