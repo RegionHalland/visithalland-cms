@@ -4,11 +4,10 @@
 // get the current taxonomy term
 $term = get_queried_object(); ?>
 
-
 <main role="main" class="container" id="main-content">
 
 	<?php /* START - ConceptHeader */ ?>
-		<section class="concept-header relative overflow-hidden <?php echo $term->post_name ?>" role="heading">
+		<section class="concept-header relative overflow-hidden <?php echo $term->slug ?>" role="heading">
 		    <div class="concept-header__img-container topographic-pattern">
 				<picture>
 				    <source media="(min-width: 60em)"
@@ -47,7 +46,7 @@ $term = get_queried_object(); ?>
 					});
 
 					foreach ($spotlights as $key => $value) : ?>
-					<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo vh_get_post_taxonomy()["slug"] ?>">
+					<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo $term->slug ?>">
 					    <a href="<?php echo get_permalink($value->ID) ?>">
 					        <div class="page-thumbnail__img-container topographic-pattern">
 					            <div class="page-thumbnail__concept-badge"></div>
@@ -67,7 +66,7 @@ $term = get_queried_object(); ?>
 		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 			<div class="clearfix">
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
-					<article class="article-large <?php echo vh_get_post_taxonomy()["slug"] ?>">
+					<article class="article-large <?php echo $term->slug ?>">
 		                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
 		                        <div class="article-large__img-container topographic-pattern">
 									<picture>
@@ -102,7 +101,7 @@ $term = get_queried_object(); ?>
 				    <div class="clearfix">
 				        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
 				        	<?php /* START - ArticleMedium */ ?>
-							<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
+							<article class="article-medium <?php echo $term->slug ?>">
 								<a href="<?php echo get_permalink(get_field("featured", $term)[1]->ID) ?>" class="link-reset">
 								    <div class="article-medium__img-container topographic-pattern">
 										<picture>
@@ -132,7 +131,7 @@ $term = get_queried_object(); ?>
 				        </div>
 				        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
 				        	<?php /* START - ArticleMedium */ ?>
-								<article class="article-medium <?php echo vh_get_post_taxonomy()["slug"] ?>">
+								<article class="article-medium <?php echo $term->slug ?>">
 									<a href="<?php echo get_permalink(get_field("featured", $term)[2]->ID) ?>" class="link-reset">
 									    <div class="article-medium__img-container topographic-pattern">
 											<picture>
@@ -167,7 +166,7 @@ $term = get_queried_object(); ?>
 
 	<?php /* START - ArticleFull */ ?>
 		<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
-			<article class="article-full relative my5">
+			<article class="article-full relative my5 <?php echo $term->slug ?>">
 				<div class="article-full__img-container topographic-pattern">
 				    <picture>
 						<source media="(min-width: 40em)"
@@ -220,7 +219,7 @@ $term = get_queried_object(); ?>
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
 		        			<?php if(($index + 1) % 4 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">
-								<article class="article-image relative <?php echo vh_get_post_taxonomy()["slug"] ?>">
+								<article class="article-image relative <?php echo $term->slug ?>">
 									<div class="article-image__img-container topographic-pattern">
 										<picture>
 											<source media="(min-width: 700px)"
@@ -254,7 +253,7 @@ $term = get_queried_object(); ?>
 		        				</div>
 		        			<?php else: ?>
 		        				<div class="concept-grid__item col col-12 sm-col-6">
-									<article class="article-image relative <?php echo vh_get_post_taxonomy()["slug"] ?>">
+									<article class="article-image relative <?php echo $term->slug ?>">
 										<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 											<div class="article-medium__img-container topographic-pattern">
 												<picture>
@@ -292,7 +291,7 @@ $term = get_queried_object(); ?>
 					$happenings = vh_get_happenings_by_taxonomy_concept($post->ID, 3);
 		            foreach ($happenings as $index => $value) : ?>
 		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
-						    <article class="happening-list-item <?php echo vh_get_post_taxonomy()["slug"] ?>">
+						    <article class="happening-list-item <?php echo $term->slug ?>">
 				                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 				                    <div class="clearfix">
 				                        <div class="col col-5 sm-col-4 ">
@@ -332,7 +331,7 @@ $term = get_queried_object(); ?>
 						$current_term = get_term($term_id);
 						$current_term_cover_image = get_field("cover_image", $current_term);
 					?>
-					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12">
+					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 <?php echo $current_term->slug ?>">
 						<div class="concept-thumbnail-small <?php echo $value->title ?>">
 		                       <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
