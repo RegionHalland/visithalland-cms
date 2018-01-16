@@ -78,25 +78,14 @@ jQuery(function() {
 		}
 	});
 
-	jQuery('.search-button').on('click', function(){
-
-		jQuery('.search__input').fadeToggle(400);
-
-		jQuery('body').toggleClass('overflow-hidden');
-		jQuery('#main-content').toggleClass('menu-open');
-
-		if(jQuery('.mobile-navigation').hasClass('active')) {
-			jQuery('.mobile-navigation').fadeToggle(400);
-			jQuery('body').toggleClass('overflow-hidden');
-			jQuery('.mobile-navigation').toggleClass('active');
-			jQuery('#main-content').toggleClass('menu-open');
-		}
-	});
-
+	//Toggle search on mobile
 	jQuery('.mobile-search-button').on('click', function(){
+
 		jQuery('.mobile-search').fadeToggle(400);
 		jQuery('.mobile-search').toggleClass('active');
 
+		jQuery('.mobile-search__input').focus();
+
 		jQuery('body').toggleClass('overflow-hidden');
 		jQuery('#main-content').toggleClass('menu-open');
 
@@ -107,16 +96,39 @@ jQuery(function() {
 			jQuery('#main-content').toggleClass('menu-open');
 		}
 	});
+
+	//Toggle search on desktop
+	jQuery('.search-button').on('click', function(){
+		
+		jQuery('.search__input').fadeToggle(400);
+		//jQuery('.search__input').focus();
+
+		jQuery('body').toggleClass('overflow-hidden');
+		jQuery('#main-content').toggleClass('menu-open');
+
+		if(jQuery('.mobile-navigation').hasClass('active')) {
+			jQuery('body').toggleClass('overflow-hidden');
+			jQuery('#main-content').toggleClass('menu-open');
+		}
+	});
+
+	jQuery('.search__input').on('focus', function(){
+		jQuery('.search__results').fadeIn(300);
+	});
+
+	jQuery('.search__input').on('focusout', function(){
+		jQuery('.search__results').fadeOut(300);
+	});
+
+
+
+	//Toggle happening dropdown
 
 	jQuery('.happenings__dropdown-button').on('click', function(){
 		jQuery('.happenings__dropdown').fadeToggle(200);
 		jQuery('.happenings__dropdown').toggleClass('active');
 	})
 
-
-	jQuery('.nav-button').on('click', function(){
-		jQuery('.nav').toggleClass('active');
-	});
 });
 jQuery(function() {
     var map;

@@ -22,8 +22,13 @@
                     <?php foreach ($langs as $key => $value) : ?>
                         <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="header__support-link" ><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
                     <?php endforeach ?>
-                    <a class="header__support-link" href="">Our Way</a>
-                    <a class="header__support-link" href="">About</a>
+                    <?php
+                        $menuItems = wp_get_nav_menu_items("sekundar-meny");
+                        foreach ($menuItems as $key => $value) : ?>
+                            <a href="<?php echo get_permalink($value->ID) ?>" class="header__support-link">
+                                <span><?php echo $value->title ?></span>
+                            </a>
+                    <?php endforeach ?>
                 </div>
             </div>
             <div class="header__middle">
@@ -44,7 +49,7 @@
             </div>
             <div class="header__right flex items-center justify-end">
                 <div class="header__happenings">
-                    <button class="happenings__dropdown-button icon-button mr2">
+                    <button class="happenings__dropdown-button has-happenings icon-button mr2">
                         <i class="icon-button__icon material-icons">date_range</i>
                     </button>
                     <div class="happenings__dropdown">
@@ -52,7 +57,7 @@
                             <?php 
                             $happenings = vh_get_happenings(3);
                             foreach ($happenings as $index => $value) : ?>
-                                <article class="happening-list-item mb3 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                                <article class="happening-list-item mb3 <?php echo $value->taxonomy["slug"]?>">
                                     <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                         <div class="clearfix">
                                             <div class="col col-5 sm-col-4 ">
@@ -67,7 +72,7 @@
                                                 </div>
                                             </div>
                                             <div class="happening-list-item__content col col-7 sm-col-8">
-                                                <h4 class=""><?php echo $value->post_title ?></h4>
+                                                <span class="happening-list-item__title"><?php echo $value->post_title ?></span>
                                             </div>
                                         </div>
                                     </a>
@@ -85,6 +90,9 @@
                         <i class="icon-button__icon material-icons">search</i>
                     </button>
                     <input class="search__input inline-block z1" type="search" placeholder="Skriv för att börja söka">
+                    <div class="search__results">
+                        
+                    </div>
                 </div>
             </div>
         </section>
@@ -109,7 +117,7 @@
         
 
         <!--- Mobile Search Start -->
-        <div class="mobile-search">
+        <div class="mobile-search topographic-pattern">
             <div class="mobile-search__inner p2">
                 <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
                 <div class="mobile-search__suggestions">

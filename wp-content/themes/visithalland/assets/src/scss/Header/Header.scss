@@ -63,17 +63,18 @@
 .happenings__dropdown {
 	position: absolute;
 	width:325px;
-	top:40px;
-	right:0px;
+	top:50px;
+	right:10px;
 	background:$white;
 	border-radius:$border-radius;
 	display:none;
 	transform:translateY(-20px);
 	z-index:3;
 	transition:transform 0.4s;
-
+	box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.22);
 	@media (min-width:$breakpoint-sm) {
 		top:70px;
+		right:20px;
 	}
 	&.active {
 		transform:translateY(0);
@@ -85,10 +86,10 @@
 	position: relative;
 	&.has-happenings {
 		&::after {
-			background:blue;
+			background:$orange;
 			content:'';
-			height:15px;
-			width:15px;
+			height:12px;
+			width:12px;
 			border-radius:50%;
 			position: absolute;
 			top:0;
@@ -108,12 +109,30 @@
 		transform:translateY(-50%);
 		padding:$space-3;
 		border-radius:$border-radius;
-		width:350px;
+		-webkit-appearance: none;
+		width:275px;
+		@media (min-width:$breakpoint-lg) {
+			width:350px;
+		}
 		font-size:0.7em;
 		border:none;
 		&.active {
 
 		}
+	}
+
+	&__results {
+		position: absolute;
+		width:350px;
+		@media (min-width:$breakpoint-lg) {
+			width:350px;
+		}
+		height:400px;
+		display:none;
+		border-radius:$border-radius;
+		background:white;
+		top:$space-5;
+		right:$space-3;
 	}
 }
 
@@ -161,13 +180,14 @@
 	}
 
 	&__suggestions-list-item {
-		color:$white;
+		color:palette(grey, base);
 		font-style:italic;
 		font-size:0.9em;
 	}
 
 	&__input {
 		padding:$space-3;
+		-webkit-appearance: none;
 		border-radius:$border-radius;
 		width:100%;
 		font-size:0.8em;

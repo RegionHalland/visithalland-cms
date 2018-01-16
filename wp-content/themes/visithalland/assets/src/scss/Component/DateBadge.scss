@@ -1,5 +1,5 @@
 .date-badge {
-	padding:0.5em 0.55em;
+	padding:$space-2 $space-2;
 	border-radius:$border-radius;
 	color:$white;
 	@include themify {

@@ -30,6 +30,12 @@
 		padding-bottom:75%;
 		background-color:palette(black, base);
 	}
+	&__title {
+		font-size:1.25rem;
+		font-family: $rift-font-family;
+		color:palette(black, base);
+		font-weight:bold;
+	}
 	&__img {
 		position:absolute;
 		top:0;
