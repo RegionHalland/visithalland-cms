@@ -79,8 +79,24 @@ jQuery(function() {
 	});
 
 	jQuery('.search-button').on('click', function(){
+
+		jQuery('.search__input').fadeToggle(400);
+
+		jQuery('body').toggleClass('overflow-hidden');
+		jQuery('#main-content').toggleClass('menu-open');
+
+		if(jQuery('.mobile-navigation').hasClass('active')) {
+			jQuery('.mobile-navigation').fadeToggle(400);
+			jQuery('body').toggleClass('overflow-hidden');
+			jQuery('.mobile-navigation').toggleClass('active');
+			jQuery('#main-content').toggleClass('menu-open');
+		}
+	});
+
+	jQuery('.mobile-search-button').on('click', function(){
 		jQuery('.mobile-search').fadeToggle(400);
 		jQuery('.mobile-search').toggleClass('active');
+
 		jQuery('body').toggleClass('overflow-hidden');
 		jQuery('#main-content').toggleClass('menu-open');
 

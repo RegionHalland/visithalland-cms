@@ -223,6 +223,37 @@ function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
 	return $posts;
 }
 
+
+function vh_get_happenings($numberposts = 3) {
+	$tax_query = array();
+
+	$posts = get_posts(array(
+	  'post_type' => array(
+	  		"happening"
+	  ),
+	  'numberposts'  => $numberposts,
+	  'tax_query' 	 => $tax_query
+	));
+
+	foreach ($posts as $key => $value) {
+		$value->meta_fields = get_fields($value->ID);
+		$value->author = vh_get_author($value->post_author);
+		$value->taxonomy = array(
+			"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		);
+	}
+
+	//Sort happenings by start date
+	usort($posts, function($a, $b)
+	{
+		return strcmp(strtotime($a->meta_fields["start_date"]), strtotime($b->meta_fields["start_date"]));
+	});
+
+	return $posts;
+}
+
+
 function vh_get_meet_local_by_taxonomy_concept($post_id = null, $numberposts = 1) {
 	global $post;
 	if (!isset($post_id)) $post_id = $post->ID;

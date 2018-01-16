@@ -9,43 +9,106 @@
     <?php wp_head(); ?>
 </head>
 <body>
-
-
     <header class="header col-12 sm-col-12 md-col-11 lg-col-10">
+
+        <!--- Top Header Start -->
         <section class="header__top-section topographic-pattern flex justify-between relative z2">
             <div class="header__left flex items-center">
                 <button class="icon-button menu-button">
                     <i class="icon-button__icon material-icons">menu</i>
                 </button>
+                <div class="header__support-links">
+                    <?php $langs =  pll_the_languages(array('raw' => true)); ?>
+                    <?php foreach ($langs as $key => $value) : ?>
+                        <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="header__support-link" ><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
+                    <?php endforeach ?>
+                    <a class="header__support-link" href="">Our Way</a>
+                    <a class="header__support-link" href="">About</a>
+                </div>
             </div>
             <div class="header__middle">
-                <picture>
-                    <source 
-                        media="(min-width: 60em)"
-                        data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-horizontal.svg"/>
-                    <img 
-                        class="header__logo center" 
-                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
-                        alt="Visithalland.com" />
-                </picture>
+                <a href="/" class="link-reset">
+                    <picture>
+                        <source 
+                            media="(min-width: 60em)"
+                            data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-horizontal.svg"/>
+                        <source 
+                            media="(min-width: 40em)"
+                            data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-vertical.svg"/>
+                        <img 
+                            class="header__logo center" 
+                            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
+                            alt="Visithalland.com" />
+                    </picture>
+                </a>
             </div>
             <div class="header__right flex items-center justify-end">
                 <div class="header__happenings">
-                    <button class="happenings__dropdown-button icon-button mr1">
+                    <button class="happenings__dropdown-button icon-button mr2">
                         <i class="icon-button__icon material-icons">date_range</i>
                     </button>
                     <div class="happenings__dropdown">
-                        <a href="">test</a>
-                        <a href="">test</a>
-                        
+                        <div class="happenings__dropdown-inner p3">
+                            <?php 
+                            $happenings = vh_get_happenings(3);
+                            foreach ($happenings as $index => $value) : ?>
+                                <article class="happening-list-item mb3 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                                    <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
+                                        <div class="clearfix">
+                                            <div class="col col-5 sm-col-4 ">
+                                                <div class="happening-list-item__img-container topographic-pattern relative">
+                                                    <img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+                                                </div>
+                                            </div>
+                                            <div class="happening-list-item__date">
+                                                <div class="date-badge">
+                                                    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
+                                                    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="happening-list-item__content col col-7 sm-col-8">
+                                                <h4 class=""><?php echo $value->post_title ?></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            <?php endforeach ?>
+                            <div class="btn btn--primary block coastal-living center">View all</div>
+                        </div>
                     </div>
                 </div>
-                <button class="icon-button search-button">
-                    <i class="icon-button__icon material-icons">search</i>
-                </button>
+                <div class="header__search">
+                    <button class="icon-button search-button z3">
+                        <i class="icon-button__icon material-icons">search</i>
+                    </button>
+                    <button class="icon-button mobile-search-button z3">
+                        <i class="icon-button__icon material-icons">search</i>
+                    </button>
+                    <input class="search__input inline-block z1" type="search" placeholder="Skriv för att börja söka">
+                </div>
             </div>
         </section>
+        <!--- Top Header End -->
+
+        <!--- Navigation Start -->
+        <nav class="navigation center topographic-pattern">
+            <?php
+                $menuItems = wp_get_nav_menu_items("huvudmeny");
+                foreach ($menuItems as $key => $value) : ?>
+                    <div class="navigation__item <?php echo $value->post_name ?>">
+                        <a href="<?php echo get_permalink($value->ID) ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                            <div class="navigation__icon-wrapper">
+                                <div class="navigation__icon"></div>
+                            </div>
+                            <span><?php echo $value->title ?></span>
+                        </a>
+                    </div>
+            <?php endforeach ?>
+        </nav>
+        <!--- Navigation End -->
         
+
+        <!--- Mobile Search Start -->
         <div class="mobile-search">
             <div class="mobile-search__inner p2">
                 <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
@@ -62,7 +125,9 @@
                 </div>
             </div>
         </div>
-        
+        <!--- Mobile Search End -->
+
+        <!--- Mobile Navigation Start -->
         <nav class="mobile-navigation topographic-pattern">
             <div class="mobile-navigation__inner p2">
                 <h5 class="mobile-navigation__header light">Vad intresserar dig?</h5>
@@ -87,49 +152,7 @@
                 </div>
             </div>
         </nav>
+        <!--- Mobile Navigation End -->
+
 
     </header>
-
-
-
-    <!-- <header role="banner" class="header col-12 sm-col-11 lg-col-10 mx-auto open">
-        <div class="header__inner relative">
-            <section class="masthead topographic-pattern flex items-center justify-center">
-                <div class="masthead__left">
-                    <button class="icon-button nav-button button-reset" aria-expanded="true" aria-controls="global-nav" onClick="">
-                        <span>
-                            <i class="material-icons">menu</i>
-                        </span>
-                    </button>
-                </div>
-
-                <div class="masthead__logo-wrapper center">
-                    <a href="/" class="link-reset"><img class="masthead__logo inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" /></a>
-                </div>
-
-                <div class="masthead__right flex justify-end">
-                    <?php //TODO search ?>
-                    <button class="icon-button nav-button button-reset" aria-expanded="true" aria-controls="global-nav">
-                        <span>
-                            <i class="material-icons">search</i>
-                        </span>
-                    </button>
-                </div>
-            </section>
-
-            <nav class="nav topographic-pattern" id="global-nav" tabIndex="-1" aria-labelledby="Navigation" aria-describedby="Navigation för webbplatsen" aria-hidden="true">
-                <?php
-                $menuItems = wp_get_nav_menu_items("huvudmeny");
-                foreach ($menuItems as $key => $value) : ?>
-                    <div class="nav__item <?php echo $value->post_name ?>">
-                        <a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
-                            <div class="nav__icon-wrapper">
-                                <div class="nav__icon"></div>
-                            </div>
-                            <span><?php echo $value->title ?></span>
-                        </a>
-                    </div>
-                <?php endforeach ?>
-            </nav>
-        </div> 
-    </header>-->

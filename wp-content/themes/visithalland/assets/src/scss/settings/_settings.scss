@@ -49,6 +49,7 @@ $palettes: (
 	),
 
 	black: (
+		xx-light  : lighten($black, 10%),
 		x-light  : lighten($black, 5%),
 		light    : lighten($black, 1%),
 		base     : $black,
