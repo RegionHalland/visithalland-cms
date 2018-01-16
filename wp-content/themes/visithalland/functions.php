@@ -77,22 +77,25 @@ function wpa_show_permalinks( $post_link, $post ){
 }
 add_filter( 'post_type_link', 'wpa_show_permalinks', 1, 2 );
 
-//add_filter( 'wp_get_nav_menu_items', 'prefix_nav_menu_classes', 10, 3 );
-
+add_filter( 'wp_get_nav_menu_items', 'prefix_nav_menu_classes', 10, 3 );
 function prefix_nav_menu_classes($items, $menu, $args) {
     _wp_menu_item_classes_by_context($items);
 
-    $taxonomy = 'custom_taxonomy_concept';
+    $taxonomy = 'taxonomy_concept';
     $tax_terms = get_terms($taxonomy);
     $terms = vh_get_post_taxonomy();
 
     foreach ($items as $key => $value) {
-        if($value->current) {
+        //array_push($value->classes, json_encode($value->classes));
+        if(in_array("current-menu-item", $value->classes) || in_array("current-menu-parent", $value->classes)){
+            array_push($value->classes, "active");
+        }
+        /*if($value->current) {
             array_push($value->classes, "active");
         }
         if(get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name == $terms["slug"]) {
             array_push($value->classes, "active");
-        }
+        }*/
     }
     return $items;
 }

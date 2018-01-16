@@ -11,12 +11,12 @@
             	<?php
                 $menuItems = wp_get_nav_menu_items("huvudmeny");
                 foreach ($menuItems as $key => $value): ?>
-                <div class="nav__item footer__nav-item <?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_name ?>">
-                	<a href="<?php echo $value->url ?>" class="nav__link link-reset  <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                <div class="nav__item footer__nav-item <?php echo $value->post_name ?>">
+                	<a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
 				        <div class="nav__icon-wrapper">
 				            <div class="nav__icon"></div>
 				        </div>
-				        <span><?php echo get_post(get_post_meta( $value->ID, '_menu_item_object_id', true ))->post_title ?></span>
+				        <span><?php echo $value->title ?></span>
 				    </a>
 				</div>
                 <?php endforeach ?>
