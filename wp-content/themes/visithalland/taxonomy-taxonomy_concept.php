@@ -326,9 +326,6 @@ $term = get_queried_object(); ?>
 		        <div class="concept-thumbnails clearfix">
 					<?php
 					$menuItems = wp_get_nav_menu_items("huvudmeny");
-					
-					//var_dump(get_field('cover_image', get_post(3455)));
-
 					foreach ($menuItems as $key => $value): ?>
 					<?php
 						$term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
