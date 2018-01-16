@@ -3,18 +3,166 @@
 	max-width:$container-max-width;
 	left:0;
 	right:0;
+	margin:0 auto;
 	z-index:999;
 	padding:0;
-
-	&:focus {
-		outline:0;
+	&__top-section {
+		padding:$space-2;
+		background-color: palette(black, base);
 	}
 
-	&__inner {
-		@media(min-width:$breakpoint-sm) {
-			border-radius: 0px 0px $border-radius $border-radius;
-		}
-		box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 2px 10px rgba(0,0,0,0.22);
+	&__left, &__right {
+		flex:2;
+	}
+	&__middle {
+		padding:$space-1 0;
+	}
+
+	&__logo {
+		margin-top:$space-1;
+	}
+
+	&__happenings {
+		display:inherit;
+		position:relative;
+	}
+}
+
+
+.happenings__dropdown {
+	position: absolute;
+	width:325px;
+	top:40px;
+	right:-20px;
+	height:350px;
+	background:$white;
+	border-radius:$border-radius;
+	display:none;
+	transform:translateY(-20px);
+	transition:transform 0.25s;
+	&.active {
+		transform:translateY(0);
+	} 
+
+}
+
+
+// Add or combine classes or a more general class
+.mobile-search {
+	padding:$space-5 $space-2 $space-2 $space-2;
+	height:100vh;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color: palette(black, light);
+	z-index:1;
+	display:none;
+	&.active {
+		transform:translateY(0%);
+	}
+}
+
+.mobile-navigation {
+	padding:$space-5 $space-2 $space-2 $space-2;
+	min-height:100vh;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color: palette(black, light);
+	z-index:1;
+	display:none; 
+	&__item {
+        display:block;
+		padding:$space-2 0;
+    }
+    &__link {
+        color: $white;
+        font-size: 1.2em;
+        font-family: $rift-font-family;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: opacity 0.2s;
+    }
+    &__icon-wrapper {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        overflow: hidden;
+        margin-right:$space-2;
+        height: 27.5px;
+        width: 27.5px;
+        transition: background-color 0.2s;
+        border-radius: $border-radius;
+        @include themify {
+            background-color: $color-primary;
+        }
+    }
+    &__icon {
+        transition: transform 0.25s;
+        @include themify {
+            height: 27.5px;
+            width: 27.5px;
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: $icon;
+        }
+    }
+
+    &__header {
+    	color:$white;
+    	font-size:1em;
+    	display: block;
+    	font-family: $rift-font-family;
+
+    }
+
+    &__header {
+    	opacity:0.75;
+    	font-size:0.9em;
+    	margin:$space-3 0;
+    }
+
+    &__support-link {
+    	color:$white;
+    	font-size:1.1em;
+    	font-weight:bold;
+    	font-family: $rift-font-family;
+    }
+
+	&.active {
+		transform:translateY(0%);
+	}
+}
+
+#main-content {
+	transition: transform 0.5s;
+}
+
+#main-content.menu-open {
+	transform:translateY(-20px);
+}
+
+.icon-button {
+	height:30px;
+	width:30px;
+	background:palette(black, x-light);
+	border-radius:50%;
+	position: relative;
+
+	&__icon {
+		position:absolute;
+		color:$white;
+		font-size:18px !important;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, -50%);
 	}
 }
 

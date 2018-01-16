@@ -63,6 +63,25 @@ jQuery(function() {
 
 
 	//Toggle menu on mobile 
+	jQuery('.menu-button').on('click', function(){
+		jQuery('.mobile-navigation').fadeToggle(400);
+		jQuery('.mobile-navigation').toggleClass('active');
+		jQuery('body').toggleClass('overflow-hidden');
+		jQuery('#main-content').toggleClass('menu-open');
+	});
+
+	jQuery('.search-button').on('click', function(){
+		jQuery('.mobile-search').fadeToggle(400);
+		jQuery('.mobile-search').toggleClass('active');
+		jQuery('body').toggleClass('overflow-hidden');
+		jQuery('#main-content').toggleClass('menu-open');
+	});
+
+	jQuery('.happenings__dropdown-button').on('click', function(){
+		jQuery('.happenings__dropdown').fadeToggle(200);
+		jQuery('.happenings__dropdown').toggleClass('active');
+	})
+
 
 	jQuery('.nav-button').on('click', function(){
 		jQuery('.nav').toggleClass('active');
