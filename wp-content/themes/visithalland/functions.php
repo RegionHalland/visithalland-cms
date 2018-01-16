@@ -31,7 +31,7 @@ function hwl_home_pagesize( $query ) {
     $query->set( 'posts_per_page', 50 );
     return;
 }
-add_action( 'pre_get_posts', 'hwl_home_pagesize', 1 );
+//add_action( 'pre_get_posts', 'hwl_home_pagesize', 1 );
 
 
 /* 
