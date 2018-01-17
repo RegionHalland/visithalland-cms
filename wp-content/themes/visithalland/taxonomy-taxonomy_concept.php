@@ -69,7 +69,7 @@ $term = get_queried_object(); ?>
 											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 										<source
 											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-										<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
+										<img class="article-large__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
 									</picture>
 		                        </div>
 		                        <div class="article-large__content clearfix">
@@ -104,7 +104,7 @@ $term = get_queried_object(); ?>
 												data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 											<source
 												data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-											<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
+											<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
 								    </div>
 								    <div class="article-medium__content">
@@ -134,7 +134,7 @@ $term = get_queried_object(); ?>
 													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 												<source
 													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-												<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
+												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
 									    <div class="article-medium__content">
@@ -169,7 +169,7 @@ $term = get_queried_object(); ?>
 							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 						<source
 							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-						<img class="concept-header__img" data-src="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $meet_local->ID)["alt"] ?>" />
+						<img class="article-full__img" data-src="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $meet_local->ID)["alt"] ?>" />
 				    </picture>
 				</div>
 				<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
@@ -219,7 +219,7 @@ $term = get_queried_object(); ?>
 												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 											<source
 												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-											<img class="concept-header__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+											<img class="article-image__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
 										</picture>
 									</div>
 									<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
