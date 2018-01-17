@@ -100,7 +100,7 @@ jQuery(function() {
 	//Toggle search on desktop
 	jQuery('.search-button').on('click', function(){
 		
-		jQuery('.search__input').fadeToggle(400);
+		jQuery('.search__input').fadeToggle(250);
 		//jQuery('.search__input').focus();
 
 		//jQuery('body').toggleClass('overflow-hidden');
@@ -125,7 +125,7 @@ jQuery(function() {
 
 		var opacity = 1 - scrollTop / 500
 
-		var transform = 0 + scrollTop / 5
+		var transform = 0 + scrollTop / 10
 
 		jQuery('.concept-header__img').css('transform', 'translateY(' + transform + 'px)');
 		jQuery('.landing-header__img').css('transform', 'translateY(' + transform + 'px)');
