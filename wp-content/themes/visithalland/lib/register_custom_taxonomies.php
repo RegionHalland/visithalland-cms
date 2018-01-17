@@ -7,7 +7,7 @@ function create_book_tax() {
 		array('meet_local', 'trip', 'happening', 'places', 'editor_tip', 'companies'),
 		array(
 		'rewrite' 					=> array('slug' => '/'),
-		//'rewrite' => array('slug' => null, 'with_front' => false, 'hierarchical' => false, 'with_front' => true ), // this makes hierarchical URLs
+		//'rewrite' => array('slug' => '', 'with_front' => false, 'hierarchical' => false, 'with_front' => true ), // this makes hierarchical URLs
 		'labels'                     => array(
 		'name'                       => _x( 'Koncept', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Koncept', 'Taxonomy Singular Name', 'text_domain' ),

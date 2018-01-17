@@ -1,6 +1,23 @@
 <?php
 /* Helper methods */
 
+/**
+ * Get Menu By Location
+ * @param   string    $theme_location    Theme location
+ * @return  mixed                        Menu Object or false if not found
+ */
+if ( ! function_exists( 'get_menu_by_location' ) ):
+    function get_menu_by_location( $theme_location ) {
+        $theme_locations = get_nav_menu_locations();
+        //return $theme_locations;
+        $menu_obj = get_term( $theme_locations[ $theme_location ], 'nav_menu' );
+        if ( $menu_obj )
+            return wp_get_nav_menu_items( $menu_obj->term_id, $args = array() );
+        else
+            return $menu_obj;
+    }
+endif;
+
 function vh_get_pretty_post_type_name(String $post_type) {
 	$export = array(
 		'happening' => "Happening",
@@ -101,16 +118,31 @@ function vh_get_page_by_path($page_path) {
 	return get_page_by_path( $page_path, OBJECT, 'page' );
 }
 
-function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
-	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
-	$tax_query = array(
-		array(
-			'taxonomy' => 'taxonomy_concept',
-			'field' 	 => 'id',
-			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-			'include_children' => false
-		)
-  	);
+function vh_get_posts_by_taxonomy_concept($post_id, $term = null, $numberposts = 3) {
+	$exclude = null;
+	//return $term;
+
+	if (!isset($term)) {
+		$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+		$tax_query = array(
+			array(
+				'taxonomy' => 'taxonomy_concept',
+				'field' 	 => 'id',
+				'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+				'include_children' => false
+			)
+		);
+		$exclude = array($post_id);
+  	} else {
+		$tax_query = array(
+			array(
+				'taxonomy' => 'taxonomy_concept',
+				'field' 	 => 'id',
+				'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
+				'include_children' => false
+			)
+		);
+  	}
 
 	$posts = get_posts(array(
 	  'post_type' => array(
@@ -119,7 +151,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 			"happening"
 	  ),
 	  'numberposts'  => $numberposts,
-	  'exclude' 	 => array($post_id),
+	  'exclude' 	 => $exclude,
 	  'tax_query' 	 => $tax_query
 	));
 
@@ -134,13 +166,13 @@ function vh_get_posts_by_taxonomy_concept($post_id, $numberposts = 3) {
 	return $posts;
 }
 
-function vh_get_spotlights_by_taxonomy_concept($post_id, $numberposts = 3) {
-	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
+function vh_get_spotlights_by_taxonomy_concept($term, $numberposts = 3) {
+	$posts = array();
 	$tax_query = array(
 		array(
 			'taxonomy' => 'taxonomy_concept',
 			'field' 	 => 'id',
-			'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
+			'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
 			'include_children' => false
 		)
   	);
@@ -150,7 +182,7 @@ function vh_get_spotlights_by_taxonomy_concept($post_id, $numberposts = 3) {
 			"trip",
 	  ),
 	  'numberposts'  => $numberposts,
-	  'exclude' 	 => array($post_id),
+	  //'exclude' 	 => array($post_id),
 	  'tax_query' 	 => $tax_query
 	));
 
@@ -207,21 +239,17 @@ function vh_get_posts_without_happenings_by_taxonomy_concept($post_id, $numberpo
 	return $posts;
 }
 
-function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
-	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
-	$tax_query = array();
+function vh_get_happenings_by_taxonomy_concept($term, $numberposts = 1) {
+	$posts = array();
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
 
-	//If coastal living
-	if ($post_id != 12) {
-		$tax_query = array(
-	  		array(
-		      'taxonomy' => 'taxonomy_concept',
-		      'field' 	 => 'id',
-		      'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-		      'include_children' => false
-		    )
-	  	);
-	}
 	$posts = get_posts(array(
 	  'post_type' => array(
 	  		"happening"
@@ -235,9 +263,9 @@ function vh_get_happenings_by_taxonomy_concept($post_id, $numberposts = 1) {
 		$value->meta_fields = get_fields($value->ID);
 		$value->author = vh_get_author($value->post_author);
 		$value->taxonomy = array(
-					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-				);
+			"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		);
 	}
 
 	//Sort happenings by start date
@@ -280,8 +308,8 @@ function vh_get_happenings($numberposts = 3) {
 }
 
 
-function vh_get_meet_local_by_taxonomy_concept($post_id = null, $numberposts = 1) {
-	global $post;
+function vh_get_meet_local_by_taxonomy_concept($term, $numberposts = 1) {
+	/*global $post;
 	if (!isset($post_id)) $post_id = $post->ID;
 	$terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ) );
 	$tax_query = array();
@@ -296,13 +324,22 @@ function vh_get_meet_local_by_taxonomy_concept($post_id = null, $numberposts = 1
 		      'include_children' => false
 		    )
 	  	);
-	}
+	}*/
+
+	$tax_query = array(
+		array(
+			'taxonomy' => 'taxonomy_concept',
+			'field' 	 => 'id',
+			'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
+			'include_children' => false
+		)
+	);
+
 	$posts = get_posts(array(
 	  'post_type' => array(
 	  		"meet_local"
 	  ),
 	  'numberposts'  => $numberposts,
-	  'exclude' 	 => array($post_id),
 	  'tax_query' 	 => $tax_query
 	));
 
@@ -310,9 +347,9 @@ function vh_get_meet_local_by_taxonomy_concept($post_id = null, $numberposts = 1
 		$value->meta_fields = get_fields($value->ID);
 		$value->author = vh_get_author($value->post_author);
 		$value->taxonomy = array(
-					"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-					"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-				);
+			"name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+			"slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+		);
 	}
 	return $posts;
 }

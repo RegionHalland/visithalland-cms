@@ -1,4 +1,10 @@
 <?php
+add_action( 'init', 'custom_page_rules' );
+
+function custom_page_rules() {
+  global $wp_rewrite;
+  $wp_rewrite->page_structure = $wp_rewrite->root . 'coastal-living/%pagename%'; 
+}
 
 //Modification of acf plugin
 include_once('lib/acf.php');
@@ -26,13 +32,6 @@ include_once('lib/editor.php');
 
 //Enqueues of styles and scripts
 include_once('lib/enqueue.php');
-
-function hwl_home_pagesize( $query ) {
-    $query->set( 'posts_per_page', 50 );
-    return;
-}
-//add_action( 'pre_get_posts', 'hwl_home_pagesize', 1 );
-
 
 /* 
 

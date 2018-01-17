@@ -39,7 +39,7 @@ $term = get_queried_object(); ?>
 				</div>
 				<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 					<?php
-					$spotlights = vh_get_spotlights_by_taxonomy_concept($posts[0]->ID, 3);
+					$spotlights = vh_get_spotlights_by_taxonomy_concept($term, 1);
 					foreach ($spotlights as $key => $value) : ?>
 					<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo $term->slug ?>">
 					    <a href="<?php echo get_permalink($value->ID) ?>">
@@ -160,15 +160,16 @@ $term = get_queried_object(); ?>
 		</div>
 
 	<?php /* START - ArticleFull */ ?>
-		<?php if(isset(vh_get_meet_local_by_taxonomy_concept()[0])) : ?>
+		<?php $meet_local = count(vh_get_meet_local_by_taxonomy_concept($term)) > 0 ? vh_get_meet_local_by_taxonomy_concept($term)[0] : null ?>
+		<?php if(isset($meet_local)) : ?>
 			<article class="article-full relative my5 <?php echo $term->slug ?>">
 				<div class="article-full__img-container topographic-pattern">
 				    <picture>
 						<source media="(min-width: 40em)"
-							data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 						<source
-							data-srcset="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-						<img class="concept-header__img" data-src="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", vh_get_meet_local_by_taxonomy_concept()[0]->ID)["alt"] ?>" />
+							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+						<img class="concept-header__img" data-src="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $meet_local->ID)["alt"] ?>" />
 				    </picture>
 				</div>
 				<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
@@ -180,13 +181,13 @@ $term = get_queried_object(); ?>
 								<div class="article-tag__icon"></div>
 							</div>
 							<span class="article-tag__type">
-							<?php echo vh_get_pretty_post_type_name(vh_get_meet_local_by_taxonomy_concept()[0]->post_type) ?>
+							<?php echo vh_get_pretty_post_type_name($meet_local->post_type) ?>
 							</span>
 						</div>
 					    
-					    <a href="<?php echo get_permalink(vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?>" class="link-reset article-full__link link light">
-					        <h2 class="article-full__title light mt1 mb2"><?php echo vh_get_meet_local_by_taxonomy_concept()[0]->post_title ?></h2>
-					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", vh_get_meet_local_by_taxonomy_concept()[0]->ID) ?></p>
+					    <a href="<?php echo get_permalink($meet_local->ID) ?>" class="link-reset article-full__link link light">
+					        <h2 class="article-full__title light mt1 mb2"><?php echo $meet_local->post_title ?></h2>
+					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", $meet_local->ID) ?></p>
 					        <div class="article-link inline-block mt0">
 					            <hr class="article-link__divider block mb3"/>
 					            <span class="article-link__text">Läs hela artikeln</span>
@@ -207,7 +208,7 @@ $term = get_queried_object(); ?>
 		    <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
 		        <div class="clearfix mxn2">
 		        	<?php
-		        		$posts_without_place_happening_business = vh_get_posts_by_taxonomy_concept($post->ID, -1);
+		        		$posts_without_place_happening_business = vh_get_posts_by_taxonomy_concept(null, $term, -1);
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
 		        			<?php if(($index + 1) % 3 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">

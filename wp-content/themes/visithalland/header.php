@@ -19,9 +19,9 @@
                 </button>
                 <div class="header__support-links">
                     <?php
-                        $menuItems = wp_get_nav_menu_items("sekundar-meny");
+                        $menuItems = get_menu_by_location("secondary-menu");
                         foreach ($menuItems as $key => $value) : ?>
-                            <a href="<?php echo get_permalink($value->ID) ?>" class="header__support-link">
+                            <a href="<?php echo $value->url ?>" class="header__support-link">
                                 <span><?php echo $value->title ?></span>
                             </a>
                     <?php endforeach ?>
@@ -97,8 +97,8 @@
         <!--- Navigation Start -->
         <nav class="navigation center topographic-pattern">
             <?php
-                $menuItems = wp_get_nav_menu_items("huvudmeny");
-                foreach ($menuItems as $key => $value) : ?>
+                $mainMenuItems = get_menu_by_location("main-menu");
+                foreach ($mainMenuItems as $key => $value) : ?>
                     <div class="navigation__item <?php echo $value->post_name ?>">
                         <a href="<?php echo get_permalink($value->ID) ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="navigation__icon-wrapper">

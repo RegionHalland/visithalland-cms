@@ -12,7 +12,7 @@
                 $menuItems = wp_get_nav_menu_items("huvudmeny");
                 foreach ($menuItems as $key => $value): ?>
                 <div class="nav__item footer__nav-item <?php echo $value->post_name ?>">
-                	<a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                	<a href="<?php echo get_permalink($value->ID) ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
 				        <div class="nav__icon-wrapper">
 				            <div class="nav__icon"></div>
 				        </div>
@@ -28,7 +28,7 @@
                     <span class="footer__column-header">Om webbplatsen</span>
                     <ul class="footer__list">
                         <li class="footer__list-item mt1 light">
-                            <a href="<?php echo get_permalink($id = 3331)?>" class="footer__link link-reset">Om cookies</a>
+                            <a href="#" class="footer__link link-reset">Om cookies</a>
                         </li>
                     </ul>
                 </div>
