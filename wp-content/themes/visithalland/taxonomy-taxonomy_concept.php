@@ -281,7 +281,7 @@ $term = get_queried_object(); ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
 		        <div class="concept-happenings clearfix">
 		            <?php 
-					$happenings = vh_get_happenings_by_taxonomy_concept($post->ID, 3);
+					$happenings = vh_get_happenings_by_taxonomy_concept($term, 3);
 		            foreach ($happenings as $index => $value) : ?>
 		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
 						    <article class="happening-list-item <?php echo $term->slug ?>">

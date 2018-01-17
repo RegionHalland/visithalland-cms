@@ -251,12 +251,11 @@ function vh_get_happenings_by_taxonomy_concept($term, $numberposts = 1) {
 	);
 
 	$posts = get_posts(array(
-	  'post_type' => array(
-	  		"happening"
-	  ),
-	  'numberposts'  => $numberposts,
-	  'exclude' 	 => array($post_id),
-	  'tax_query' 	 => $tax_query
+		'post_type' => array(
+			"happening"
+		),
+		'numberposts'  => $numberposts,
+		'tax_query' 	 => $tax_query
 	));
 
 	foreach ($posts as $key => $value) {
