@@ -209,7 +209,7 @@ $term = get_queried_object(); ?>
 		        	<?php
 		        		$posts_without_place_happening_business = vh_get_posts_by_taxonomy_concept($post->ID, -1);
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
-		        			<?php if(($index + 1) % 4 === 0) : ?>
+		        			<?php if(($index + 1) % 3 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">
 								<article class="article-image relative <?php echo $term->slug ?>">
 									<div class="article-image__img-container topographic-pattern">
