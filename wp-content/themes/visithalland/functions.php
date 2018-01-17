@@ -1,6 +1,5 @@
 <?php
 add_action( 'init', 'custom_page_rules' );
-
 function custom_page_rules() {
   global $wp_rewrite;
   $wp_rewrite->page_structure = $wp_rewrite->root . 'coastal-living/%pagename%'; 

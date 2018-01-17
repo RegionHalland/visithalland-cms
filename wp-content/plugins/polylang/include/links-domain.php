@@ -21,8 +21,8 @@ class PLL_Links_Domain extends PLL_Links_Abstract_Domain {
 
 		$this->hosts = $this->get_hosts();
 
-		 // Filrer the site url ( mainly to get the correct login form )
-		 add_filter( 'site_url', array( $this, 'site_url' ) );
+		// Filter the site url ( mainly to get the correct login form )
+		add_filter( 'site_url', array( $this, 'site_url' ) );
 	}
 
 
@@ -57,21 +57,6 @@ class PLL_Links_Domain extends PLL_Links_Abstract_Domain {
 			$url = preg_replace( '#:\/\/(' . implode( '|', $this->hosts ) . ')($|\/.*)#', '://' . parse_url( $this->home, PHP_URL_HOST ) . '$2', $url );
 		}
 		return $url;
-	}
-
-	/**
-	 * Returns the language based on language code in url
-	 * links_model interface
-	 *
-	 * @since 1.2
-	 * @since 2.0 add $url argument
-	 *
-	 * @param string $url optional, defaults to current url
-	 * @return string language slug
-	 */
-	public function get_language_from_url( $url = '' ) {
-		$host = empty( $url ) ? $_SERVER['HTTP_HOST'] : parse_url( $url, PHP_URL_HOST );
-		return ( $lang = array_search( $host , $this->hosts ) ) ? $lang : '';
 	}
 
 	/**

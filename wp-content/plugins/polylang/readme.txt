@@ -4,7 +4,7 @@ Donate link: https://polylang.pro
 Tags: multilingual, bilingual, translate, translation, language, multilanguage, international, localization
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 2.2.4
+Stable tag: 2.2.8
 License: GPLv2 or later
 
 Making WordPress multilingual
@@ -75,6 +75,40 @@ Don't hesitate to [give your feedback](http://wordpress.org/support/view/plugin-
 4. The Edit Post screen with the Languages metabox
 
 == Changelog ==
+
+= 2.2.8 (2018-01-09) =
+
+* Pro: Fix: Impossible to link past events by translation in The Events Calendar
+* Disallow to delete translations of the default term for all taxonomies
+* Fix: Auto add pages adds WooCommerce pages in default language to menus in all languages
+* Fix most used tag cloud in Tags metabox in WP4.9+. Props Pär Thernström. #208
+
+= 2.2.7 (2017-11-30) =
+
+* Fix queries by taxonomy broken since WP 4.9
+* Fix PHP notice in icl_object_id()
+
+= 2.2.6 (2017-11-22) =
+
+* Pro: Fix query by post name and alternative language always returning the post in current language (when sharing slugs)
+* Pro: Fix query by taxonomy and alternative language returning empty results
+* Rework how translation files are loaded in ajax on front when the user is logged (in WP 4.7+)
+* Add filter 'get_objects_with_no_lang_limit'
+* Force loading the admin side when using WP CLI (Props chrisschrijver)
+* Fix check for terms with no language not scaling
+* Fix pll_count_posts not working with multiple post types
+* Fix inconsistent spacing between flag and language name in language switcher parent menu item (Props Amit Tal)
+* Fix spacing between flag and language name when displaying an RTL language
+* Fix get_terms not accepting comma separated values for 'lang' parameter (Props Pavlo Zhukov)
+* Fix possible wrong language detected in url when using subdomains (Props Pavlo Zhukov)
+* Fix double escaped query
+
+= 2.2.5 (2017-11-09) =
+
+* Update plugin updater class to 1.6.15
+* Add $link in cache key of links filters
+* Add support for 'nav_menu' post type in wpml_object_id
+* Fix conflict with Timber (introduced in 2.2.4)
 
 = 2.2.4 (2017-10-26) =
 

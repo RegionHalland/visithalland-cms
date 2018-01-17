@@ -18,6 +18,7 @@
                     <i class="icon-button__icon material-icons">menu</i>
                 </button>
                 <div class="header__support-links">
+                    <?php do_action('wpml_add_language_selector'); ?>
                     <?php
                         $menuItems = get_menu_by_location("secondary-menu");
                         foreach ($menuItems as $key => $value) : ?>
@@ -28,7 +29,8 @@
                 </div>
             </div>
             <div class="header__middle">
-                <a href="/" class="link-reset">
+                <?php $my_home_url = apply_filters( 'wpml_home_url', get_option( 'home' ) ); ?>
+                <a href="<?php echo $my_home_url; ?>" class="link-reset">
                     <picture>
                         <source 
                             media="(min-width: 60em)"
@@ -100,7 +102,7 @@
                 $mainMenuItems = get_menu_by_location("main-menu");
                 foreach ($mainMenuItems as $key => $value) : ?>
                     <div class="navigation__item <?php echo $value->post_name ?>">
-                        <a href="<?php echo get_permalink($value->ID) ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                        <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="navigation__icon-wrapper">
                                 <div class="navigation__icon"></div>
                             </div>
