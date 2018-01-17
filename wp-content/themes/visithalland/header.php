@@ -18,10 +18,6 @@
                     <i class="icon-button__icon material-icons">menu</i>
                 </button>
                 <div class="header__support-links">
-                    <?php $langs =  pll_the_languages(array('raw' => true)); ?>
-                    <?php foreach ($langs as $key => $value) : ?>
-                        <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="header__support-link" ><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
-                    <?php endforeach ?>
                     <?php
                         $menuItems = wp_get_nav_menu_items("sekundar-meny");
                         foreach ($menuItems as $key => $value) : ?>
