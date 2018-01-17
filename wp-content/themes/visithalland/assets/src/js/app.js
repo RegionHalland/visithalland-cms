@@ -103,13 +103,8 @@ jQuery(function() {
 		jQuery('.search__input').fadeToggle(400);
 		//jQuery('.search__input').focus();
 
-		jQuery('body').toggleClass('overflow-hidden');
-		jQuery('#main-content').toggleClass('menu-open');
-
-		if(jQuery('.mobile-navigation').hasClass('active')) {
-			jQuery('body').toggleClass('overflow-hidden');
-			jQuery('#main-content').toggleClass('menu-open');
-		}
+		//jQuery('body').toggleClass('overflow-hidden');
+		//jQuery('#main-content').toggleClass('menu-open');
 	});
 
 	jQuery('.search__input').on('focus', function(){
@@ -119,6 +114,22 @@ jQuery(function() {
 	jQuery('.search__input').on('focusout', function(){
 		jQuery('.search__results').fadeOut(300);
 	});
+
+
+
+	jQuery(document).on('scroll', function() {
+		var scrollTop = jQuery(document).scrollTop()
+		var scrollBottom = scrollTop + jQuery(window).height()
+
+		pageBottom = jQuery(document).height()
+
+		var opacity = 1 - scrollTop / 500
+
+		var transform = 0 + scrollTop / 5
+
+		jQuery('.concept-header__img').css('transform', 'translateY(' + transform + 'px)');
+		jQuery('.landing-header__img').css('transform', 'translateY(' + transform + 'px)');
+	})
 
 
 

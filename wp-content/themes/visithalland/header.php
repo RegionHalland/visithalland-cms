@@ -149,10 +149,13 @@
                 <?php endforeach ?>
                 <div class="mobile-navigation__support mt4">
                     <h5 class="mobile-navigation__header light">Växla språk</h5>
-                    <?php $langs =  pll_the_languages(array('raw' => true)); ?>
-                        <?php foreach ($langs as $key => $value) : ?>
-                            <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="mobile-navigation__support-link my2 block" ><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
-                        <?php endforeach ?>
+                    <?php
+                        $menuItems = wp_get_nav_menu_items("sekundar-meny");
+                        foreach ($menuItems as $key => $value) : ?>
+                            <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__support-link my2 block">
+                                <span><?php echo $value->title ?></span>
+                            </a>
+                    <?php endforeach ?>
                 </div>
             </div>
         </nav>
