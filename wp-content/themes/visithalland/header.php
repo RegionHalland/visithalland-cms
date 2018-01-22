@@ -18,9 +18,19 @@
                     <i class="icon-button__icon material-icons">menu</i>
                 </button>
                 <div class="header__support-links">
-                    <?php do_action('wpml_add_language_selector'); ?>
                     <?php
-                        $menuItems = get_menu_by_location("secondary-menu");
+                        $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+                        $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                        $menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+
+                        //Language switcher
+                        foreach ($langs as $key => $val) : ?>
+                            <a href="<?php echo $val["url"] ?>" class="header__support-link">
+                                <span><?php echo $val["native_name"] ?></span>
+                            </a>
+                        <?php endforeach; ?>
+
+                        <?php 
                         foreach ($menuItems as $key => $value) : ?>
                             <a href="<?php echo $value->url ?>" class="header__support-link">
                                 <span><?php echo $value->title ?></span>
@@ -99,7 +109,9 @@
         <!--- Navigation Start -->
         <nav class="navigation center topographic-pattern">
             <?php
-                $mainMenuItems = get_menu_by_location("main-menu");
+                $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
+                //$mainMenuItems = get_menu_by_location("main-menu");
                 foreach ($mainMenuItems as $key => $value) : ?>
                     <div class="navigation__item <?php echo $value->post_name ?>">
                         <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">

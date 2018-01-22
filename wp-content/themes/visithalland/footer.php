@@ -9,10 +9,12 @@
             <span class="footer__column-header">Upplevelser</span>
             <nav class="footer__list">
             	<?php
-                $mainMenuItems = get_menu_by_location("main-menu");
+                $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
+                //$mainMenuItems = get_menu_by_location("main-menu");
                 foreach ($mainMenuItems as $key => $value): ?>
                 <div class="nav__item footer__nav-item <?php echo $value->post_name ?>">
-                	<a href="<?php echo get_permalink($value->ID) ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                	<a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
 				        <div class="nav__icon-wrapper">
 				            <div class="nav__icon"></div>
 				        </div>
