@@ -48,7 +48,7 @@ function custom_post_type_editor_tip() {
 		'label'                 => __( 'Redaktionen tipsar', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
-		'supports'              => array('editor' ,'title', 'author', 'revisions'),
+		'supports'              => array('title', 'author', 'revisions'),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
