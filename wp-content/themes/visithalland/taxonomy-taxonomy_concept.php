@@ -57,7 +57,9 @@ $term = get_queried_object(); ?>
 				</div>
 			</div>
 		<?php /* END - NavigationCarousel */ ?>
+		
 
+		<?php /* START - Featured Articles */ ?>
 		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 			<div class="clearfix">
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
@@ -134,7 +136,7 @@ $term = get_queried_object(); ?>
 													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 												<source
 													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
+												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
 									    <div class="article-medium__content">
@@ -158,6 +160,7 @@ $term = get_queried_object(); ?>
 				</div>
 			</div>
 		</div>
+	<?php /* END - Featured Articles */ ?>
 
 	<?php /* START - ArticleFull */ ?>
 		<?php $meet_local = count(vh_get_meet_local_by_taxonomy_concept($term)) > 0 ? vh_get_meet_local_by_taxonomy_concept($term)[0] : null ?>

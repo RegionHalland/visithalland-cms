@@ -5,7 +5,7 @@
     $author_id = get_the_author_meta('ID');
     
 ?>
-	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
+	<article class="container" role="main" id="main-content">
 	    <section class="happening-header relative clearfix">
                 <div class="happening-header__backdrop topographic-pattern"></div>
                 <div class="happening-header__inner col-11 md-col-10 lg-col-8 mx-auto relative">
