@@ -26,7 +26,7 @@
 	                        <div class="article-tag__icon"></div>
 	                    </div><span class="article-tag__type"><?php echo vh_get_pretty_post_type_name($post->post_type) ?></span></div>
 	                <h1 class="meet-a-local-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
-	                <p class="meet-a-local-header__preamble center"<?php the_excerpt(); ?></p>
+	                <p class="meet-a-local-header__preamble center"><?php the_field("excerpt") ?></p>
 	                <address class="author-vertical center block mt4 mb4">
 	                    <div class="author-vertical__img-container mx-auto">
 	                        <img 
@@ -79,7 +79,7 @@
 		                                <h3 class="mt3 tip__title"><?php echo $value[0]->post_title ?></h3>
 		                                <p class="my3 tip__quote"><?php the_sub_field('quote', $value->ID)?></p>
 		                                <div class="tip__links">
-		                                    <a class="tip__btn btn btn--primary link-reset" href="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium@2x"]; ?>">
+		                                    <a class="tip__btn btn btn--primary link-reset" href="<?php echo get_permalink($value[0]->ID) ?>">
 		                                        Läs mer om <?php echo $value[0]->post_title ?>
 		                                    </a>
 		                                    <div class="tip__btn btn btn--dark">Visa på karta</div>
