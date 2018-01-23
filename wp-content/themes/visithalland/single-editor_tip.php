@@ -49,7 +49,7 @@
     <div class="article-content clearfix">
         <div class="col-11 md-col-10 lg-col-8 mx-auto">
         	<article class="article-body">
-        			<?php the_content(); ?>
+        			<?php echo get_field('body'); ?>
             </article>
             <?php
                 $mentions = get_field("mentioned");
