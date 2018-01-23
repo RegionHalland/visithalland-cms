@@ -8,12 +8,17 @@
 
     <!-- Fetches Material Icons - Will be removed -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+
     <?php wp_head(); ?>
 </head>
 <body>
     <header class="header col-12 sm-col-12 md-col-11 lg-col-10">
 
         <!--- Top Header Start -->
+        <a class="skip-to-content topographic-pattern" href="#main-content">
+            <span class="skip-to-content__label">Skip to content</span>
+        </a>
         <section class="header__top-section topographic-pattern flex justify-between relative z2">
             <div class="header__left flex items-center">
                 <button class="icon-button menu-button">
@@ -118,19 +123,21 @@
 
         <!--- Navigation Start -->
         <nav class="navigation center topographic-pattern">
-            <?php
-                $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
-                $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
-                foreach ($mainMenuItems as $key => $value) : ?>
-                    <div class="navigation__item <?php echo $value->post_name ?>">
-                        <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
-                            <div class="navigation__icon-wrapper">
-                                <div class="navigation__icon"></div>
-                            </div>
-                            <span><?php echo $value->title ?></span>
-                        </a>
-                    </div>
-            <?php endforeach ?>
+            <div class="navigation__inner">
+                <?php
+                    $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                    $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
+                    foreach ($mainMenuItems as $key => $value) : ?>
+                        <div class="navigation__item <?php echo $value->post_name ?>">
+                            <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                                <div class="navigation__icon-wrapper">
+                                    <div class="navigation__icon"></div>
+                                </div>
+                                <span><?php echo $value->title ?></span>
+                            </a>
+                        </div>
+                <?php endforeach ?>
+            </div>
         </nav>
         <!--- Navigation End -->
         

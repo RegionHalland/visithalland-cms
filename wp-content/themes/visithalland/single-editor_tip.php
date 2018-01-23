@@ -53,7 +53,6 @@
             </article>
             <?php
                 $mentions = get_field("mentioned");
-                // TODO Needs images //
                 if (isset($mentions) && $mentions !== '') : ?>
                 <div class="article-mentions mt2 clearfix">
                     <div class="article-mentions__header">
