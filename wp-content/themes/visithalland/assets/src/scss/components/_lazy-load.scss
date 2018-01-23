@@ -1,13 +1,11 @@
-.is-visible {
+.loaded {
 	animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 	@keyframes fadeIn {
 		from {
-			//transform:translateY(5px);
 			opacity:0;
 		}
 		to {
 			opacity:1;
-			//transform:translateY(0px);
 		}
 	}
 }

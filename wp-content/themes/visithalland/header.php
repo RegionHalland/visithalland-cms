@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/dist/css/main.min.css" />
     <link rel="stylesheet" href="https://use.typekit.net/vzi2bvt.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fetches Material Icons - Will be removed -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <?php wp_head(); ?>
 </head>
@@ -15,7 +17,9 @@
         <section class="header__top-section topographic-pattern flex justify-between relative z2">
             <div class="header__left flex items-center">
                 <button class="icon-button menu-button">
-                    <i class="icon-button__icon material-icons">menu</i>
+                    <svg class="icon icon-button__icon">
+                        <use xlink:href="#menu-icon"/>
+                    </svg>
                 </button>
                 <div class="header__support-links">
                     <?php
@@ -46,7 +50,9 @@
             <div class="header__right flex items-center justify-end">
                 <div class="header__happenings">
                     <button class="happenings__dropdown-button has-happenings icon-button mr2">
-                        <i class="icon-button__icon material-icons">date_range</i>
+                        <svg class="icon icon-button__icon">
+                            <use xlink:href="#calendar-icon"/>
+                        </svg>
                     </button>
                     <div class="happenings__dropdown">
                         <div class="happenings__dropdown-inner p3">
@@ -80,10 +86,14 @@
                 </div>
                 <div class="header__search">
                     <button class="icon-button search-button z3">
-                        <i class="icon-button__icon material-icons">search</i>
+                        <svg class="icon icon-button__icon">
+                            <use xlink:href="#search-icon"/>
+                        </svg>
                     </button>
                     <button class="icon-button mobile-search-button z3">
-                        <i class="icon-button__icon material-icons">search</i>
+                        <svg class="icon icon-button__icon">
+                            <use xlink:href="#search-icon"/>
+                        </svg>
                     </button>
                     <input class="search__input inline-block z1" type="search" placeholder="Skriv för att börja söka">
                     <div class="search__results">
@@ -160,6 +170,6 @@
             </div>
         </nav>
         <!--- Mobile Navigation End -->
-
-
     </header>
+
+    <!-- Body tag continues -->

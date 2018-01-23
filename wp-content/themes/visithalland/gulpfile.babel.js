@@ -12,6 +12,8 @@ import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import concat from 'gulp-concat'
 import uglify from 'gulp-uglify'
+import svgmin from 'gulp-svgmin'
+import svgstore from 'gulp-svgstore'
 
 // Build CSS
 gulp.task('css:dist', () => {
@@ -52,6 +54,21 @@ gulp.task('js:dist', () => {
 		.pipe(gulp.dest('./assets/dist/js/'))
 })
 
+// Minify SVGs
+gulp.task('svgmin', () => {
+    return gulp.src('./assets/src/icons/**/*.svg')
+        .pipe(svgmin({
+              plugins: [{
+                cleanupIDs: false
+            }, {
+                collapseGroups: false
+            }]
+        }))
+        .pipe(svgstore())
+        .pipe(rename('sprite.svg'))
+        .pipe(gulp.dest('./assets/dist/icons'));
+})
+
 // Browsersync
 gulp.task('browsersync', () => {
 	browsersync.init({
@@ -66,7 +83,7 @@ gulp.task('bs-reload', () => {
 
 // Watch
 gulp.task('watch', ['js:dist', 'css:dist', 'browsersync'], () => {
-	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
+	gulp.watch('./assets/src/scss/**/**/*.scss', ['css:dist', 'bs-reload']);
 	gulp.watch(['./assets/src/js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
