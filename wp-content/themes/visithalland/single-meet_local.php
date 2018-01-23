@@ -69,7 +69,7 @@
 							                    srcSet="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
 							                <source
 							                    srcSet="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-							                <img class="meet-a-local-header__img" 
+							                <img class="tip__img" 
 							                        src="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] ?>" 
 							                        alt="<?php echo get_field("cover_image", $value[0]->ID)["alt"] ?>"  
 							                />
@@ -132,7 +132,7 @@
                                             srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
                                         <source
                                             srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                                        <img class="concept-header__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+                                        <img class="article-medium__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
                                     </picture>
                                 </div>
                                 <div class="article-medium__content">
