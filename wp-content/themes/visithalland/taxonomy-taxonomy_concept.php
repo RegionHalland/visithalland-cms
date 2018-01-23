@@ -32,30 +32,32 @@ $term = get_queried_object(); ?>
 	<?php /* END - ConceptHeader */ ?>
 	
 		<?php /* START - NavigationCarousel */ ?>
-			<div class="concept-carousel clearfix">
-				<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
-					<button class="slider-button navigation-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
-					<button class="slider-button navigation-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
-				</div>
-				<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
-					<?php
-					$spotlights = vh_get_spotlights_by_taxonomy_concept($term, 1);
-					foreach ($spotlights as $key => $value) : ?>
-					<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo $term->slug ?>">
-					    <a href="<?php echo get_permalink($value->ID) ?>">
-					        <div class="page-thumbnail__img-container topographic-pattern">
-					            <div class="page-thumbnail__concept-badge"></div>
-					                <picture>
-					                    <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
-					                </picture>
-					        </div>
-					        <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
-					        <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
-					    </a>
+			<?php
+				$spotlights = vh_get_spotlights_by_taxonomy_concept($term, 1);
+				if (count($spotlights)) : ?>
+					<div class="concept-carousel clearfix">
+						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
+							<button class="slider-button navigation-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
+							<button class="slider-button navigation-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
+						</div>
+						<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
+							<?php foreach ($spotlights as $key => $value) : ?>				
+								<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo $term->slug ?>">
+								    <a href="<?php echo get_permalink($value->ID) ?>">
+								        <div class="page-thumbnail__img-container topographic-pattern">
+								            <div class="page-thumbnail__concept-badge"></div>
+								                <picture>
+								                    <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
+								                </picture>
+								        </div>
+								        <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
+								        <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
+								    </a>
+								</div>
+							<?php endforeach ?>
+						</div>
 					</div>
-					<?php endforeach ?>
-				</div>
-			</div>
+			<?php endif ?>
 		<?php /* END - NavigationCarousel */ ?>
 		
 
