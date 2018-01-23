@@ -317,7 +317,8 @@ $term = get_queried_object(); ?>
 
 		        <div class="concept-thumbnails clearfix">
 					<?php
-					$menuItems = wp_get_nav_menu_items("huvudmeny");
+					$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                	$menuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
 					foreach ($menuItems as $key => $value): ?>
 					<?php
 						$term_id = get_post_meta($value->ID, '_menu_item_object_id', true);

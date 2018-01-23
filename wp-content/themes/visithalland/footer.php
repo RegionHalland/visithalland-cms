@@ -11,7 +11,6 @@
             	<?php
                 $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                 $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
-                //$mainMenuItems = get_menu_by_location("main-menu");
                 foreach ($mainMenuItems as $key => $value): ?>
                 <div class="nav__item footer__nav-item <?php echo $value->post_name ?>">
                 	<a href="<?php echo $value->url ?>" class="nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
@@ -37,10 +36,13 @@
                 <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
                     <span class="footer__column-header">Språk</span>
                     <ul class="footer__list">
-                        <?php $langs =  pll_the_languages(array('raw' => true)); ?>
-                        <?php foreach ($langs as $key => $value) : ?>
+                        <?php
+                        $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+                        $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+
+                        foreach ($langs as $key => $value) : ?>
                             <li class="footer__list-item mt1 light">
-                                <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="footer__link link-reset"><?php echo isset($value["name"]) ? $value["name"] : "" ?> </a>
+                                <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="footer__link link-reset"><?php echo isset($value["native_name"]) ? $value["native_name"] : "" ?> </a>
                             </li>
                         <?php endforeach ?>
                     </ul>
