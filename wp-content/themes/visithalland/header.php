@@ -121,8 +121,12 @@
             <?php
                 $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                 $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
-                foreach ($mainMenuItems as $key => $value) : ?>
-                    <div class="navigation__item <?php echo $value->post_name ?>">
+
+                foreach ($mainMenuItems as $key => $value) :
+                    $term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
+                    $current_term = get_term($term_id); ?>
+
+                    <div class="navigation__item <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
                         <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="navigation__icon-wrapper">
                                 <div class="navigation__icon"></div>
@@ -159,8 +163,10 @@
             <div class="mobile-navigation__inner p2">
                 <h5 class="mobile-navigation__header light">Vad intresserar dig?</h5>
                 <?php
-                    foreach ($mainMenuItems as $key => $value) : ?>
-                        <div class="mobile-navigation__item <?php echo $value->post_name ?>">
+                    foreach ($mainMenuItems as $key => $value) : 
+                        $term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
+                        $current_term = get_term($term_id); ?>
+                        <div class="mobile-navigation__item <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                 <div class="mobile-navigation__icon-wrapper">
                                     <div class="mobile-navigation__icon"></div>
