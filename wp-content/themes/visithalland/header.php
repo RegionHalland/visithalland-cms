@@ -23,7 +23,18 @@
                 </button>
                 <div class="header__support-links">
                     <?php
-                        $menuItems = get_menu_by_location("secondary-menu");
+                        $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+                        $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                        $menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+
+                        //Language switcher
+                        foreach ($langs as $key => $val) : ?>
+                            <a href="<?php echo $val["url"] ?>" class="header__support-link">
+                                <span><?php echo $val["native_name"] ?></span>
+                            </a>
+                        <?php endforeach; ?>
+
+                        <?php 
                         foreach ($menuItems as $key => $value) : ?>
                             <a href="<?php echo $value->url ?>" class="header__support-link">
                                 <span><?php echo $value->title ?></span>
@@ -32,7 +43,8 @@
                 </div>
             </div>
             <div class="header__middle">
-                <a href="/" class="link-reset">
+                <?php $my_home_url = apply_filters( 'wpml_home_url', get_option( 'home' ) ); ?>
+                <a href="<?php echo $my_home_url; ?>" class="link-reset">
                     <picture>
                         <source 
                             media="(min-width: 60em)"
@@ -107,10 +119,11 @@
         <!--- Navigation Start -->
         <nav class="navigation center topographic-pattern">
             <?php
-                $mainMenuItems = get_menu_by_location("main-menu");
+                $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
                 foreach ($mainMenuItems as $key => $value) : ?>
                     <div class="navigation__item <?php echo $value->post_name ?>">
-                        <a href="<?php echo get_permalink($value->ID) ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                        <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="navigation__icon-wrapper">
                                 <div class="navigation__icon"></div>
                             </div>
@@ -146,8 +159,7 @@
             <div class="mobile-navigation__inner p2">
                 <h5 class="mobile-navigation__header light">Vad intresserar dig?</h5>
                 <?php
-                    $menuItems = wp_get_nav_menu_items("huvudmeny");
-                    foreach ($menuItems as $key => $value) : ?>
+                    foreach ($mainMenuItems as $key => $value) : ?>
                         <div class="mobile-navigation__item <?php echo $value->post_name ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                 <div class="mobile-navigation__icon-wrapper">
@@ -160,9 +172,14 @@
                 <div class="mobile-navigation__support mt4">
                     <h5 class="mobile-navigation__header light">Växla språk</h5>
                     <?php
-                        $menuItems = wp_get_nav_menu_items("sekundar-meny");
+                        foreach ($langs as $k => $val) : ?>
+                           <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
+                                <span><?php echo $val["native_name"] ?></span>
+                            </a>
+                        <?php endforeach;
+
                         foreach ($menuItems as $key => $value) : ?>
-                            <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__support-link my2 block">
+                            <a href="<?php echo $value->url ?>" class="mobile-navigation__support-link my2 block">
                                 <span><?php echo $value->title ?></span>
                             </a>
                     <?php endforeach ?>

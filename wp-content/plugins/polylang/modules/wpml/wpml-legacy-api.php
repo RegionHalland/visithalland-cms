@@ -36,7 +36,7 @@ if ( ! function_exists( 'icl_get_languages' ) ) {
 	 * id               => the language id
 	 * active           => whether this is the active language or no, 0 or 1
 	 * native_name      => the language name
-	 * missing          => wether the translation is missing or not, 0 or 1
+	 * missing          => whether the translation is missing or not, 0 or 1
 	 * translated_name  => empty, does not exist in Polylang
 	 * language_code    => the language code ( slug )
 	 * country_flag_url => the url of the flag
@@ -139,7 +139,7 @@ if ( ! function_exists( 'icl_link_to_element' ) ) {
 		}
 
 		if ( ! empty( $args ) ) {
-			$link .= ( false === strpos( $link, '?' ) ? '?' : '&'  ) . http_build_query( $args );
+			$link .= ( false === strpos( $link, '?' ) ? '?' : '&' ) . http_build_query( $args );
 		}
 
 		if ( ! empty( $anchor ) ) {
@@ -162,16 +162,30 @@ if ( ! function_exists( 'icl_object_id' ) ) {
 	 *
 	 * @since 0.9.5
 	 *
-	 * @param int    $id                         object id
-	 * @param string $type                       optional, post type or taxonomy name of the object, defaults to 'post'
-	 * @param bool   $return_original_if_missing optional, true if Polylang should return the original id if the translation is missing, defaults to false
-	 * @param string $lang                       optional, language code, defaults to current language
-	 * @return int|null the object id of the translation, null if the translation is missing and $return_original_if_missing set to false
+	 * @param int    $id                         Object id
+	 * @param string $type                       Optional, post type or taxonomy name of the object, defaults to 'post'
+	 * @param bool   $return_original_if_missing Optional, true if Polylang should return the original id if the translation is missing, defaults to false
+	 * @param string $lang                       Optional, language code, defaults to current language
+	 * @return int|null The object id of the translation, null if the translation is missing and $return_original_if_missing set to false
 	 */
 	function icl_object_id( $id, $type = 'post', $return_original_if_missing = false, $lang = false ) {
-		$pll_type = ( 'post' === $type || pll_is_translated_post_type( $type ) ) ? 'post' : ( 'term' === $type || pll_is_translated_taxonomy( $type ) ? 'term' : false );
-		return $pll_type && ( $lang = $lang ? $lang : pll_current_language() ) && ( $tr_id = PLL()->model->$pll_type->get_translation( $id, $lang ) ) ? $tr_id :
-			( $return_original_if_missing ? $id : null );
+		$lang = $lang ? $lang : pll_current_language();
+
+		if ( 'nav_menu' === $type ) {
+			$theme = get_option( 'stylesheet' );
+			if ( isset( PLL()->options['nav_menus'][ $theme ] ) ) {
+				foreach ( PLL()->options['nav_menus'][ $theme ] as $loc => $menu ) {
+					if ( array_search( $id, $menu ) && ! empty( $menu[ $lang ] ) ) {
+						$tr_id = $menu[ $lang ];
+						break;
+					}
+				}
+			}
+		} elseif ( $pll_type = ( 'post' === $type || pll_is_translated_post_type( $type ) ) ? 'post' : ( 'term' === $type || pll_is_translated_taxonomy( $type ) ? 'term' : false ) ) {
+			$tr_id = PLL()->model->$pll_type->get_translation( $id, $lang );
+		}
+
+		return ! empty( $tr_id ) ? $tr_id : ( $return_original_if_missing ? $id : null );
 	}
 }
 

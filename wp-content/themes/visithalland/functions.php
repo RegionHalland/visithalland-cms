@@ -1,6 +1,5 @@
 <?php
 add_action( 'init', 'custom_page_rules' );
-
 function custom_page_rules() {
   global $wp_rewrite;
   $wp_rewrite->page_structure = $wp_rewrite->root . 'coastal-living/%pagename%'; 
@@ -69,6 +68,8 @@ function wpa_show_permalinks( $post_link, $post ){
         $terms = wp_get_object_terms( $post->ID, 'taxonomy_concept' );
         if( $terms ){
             return str_replace( '%taxonomy_concept%', $terms[0]->slug, $post_link );
+        } else {
+            return str_replace( '%taxonomy_concept%', 'coastal-living', $post_link );
         }
     }
     return $post_link;

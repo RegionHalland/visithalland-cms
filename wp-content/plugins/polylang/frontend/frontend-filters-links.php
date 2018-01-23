@@ -72,8 +72,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 	 * @return string modified post link
 	 */
 	public function _get_page_link( $link, $post_id ) {
-		$sample = false !== strpos( $link, '%pagename%' ); // To avoid a conflict with plugin Custom Permalinks
-		$cache_key = "post:{$post_id}:{$sample}";
+		$cache_key = "post:{$post_id}:{$link}";
 		if ( false === $_link = $this->cache->get( $cache_key ) ) {
 			$_link = parent::_get_page_link( $link, $post_id );
 			$this->cache->set( $cache_key, $_link );
@@ -92,7 +91,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 	 * @return string modified attachment link
 	 */
 	public function attachment_link( $link, $post_id ) {
-		$cache_key = 'post:' . $post_id;
+		$cache_key = "post:{$post_id}:{$link}";
 		if ( false === $_link = $this->cache->get( $cache_key ) ) {
 			$_link = parent::attachment_link( $link, $post_id );
 			$this->cache->set( $cache_key, $_link );
@@ -111,8 +110,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 	 * @return string modified post link
 	 */
 	public function post_type_link( $link, $post ) {
-		$sample = false !== strpos( $link, '%postname%' ); // To avoid a conflict with plugin Custom Permalinks
-		$cache_key = "post:{$post->ID}:{$sample}";
+		$cache_key = "post:{$post->ID}:{$link}";
 		if ( false === $_link = $this->cache->get( $cache_key ) ) {
 			$_link = parent::post_type_link( $link, $post );
 			$this->cache->set( $cache_key, $_link );
@@ -132,7 +130,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 	 * @return string modified link
 	 */
 	public function term_link( $link, $term, $tax ) {
-		$cache_key = 'term:' . $term->term_id;
+		$cache_key = "term:{$term->term_id}:{$link}";
 		if ( false === $_link = $this->cache->get( $cache_key ) ) {
 			if ( in_array( $tax, $this->model->get_filtered_taxonomies() ) ) {
 				$_link = $this->links_model->switch_language_in_link( $link, $this->curlang );
@@ -168,7 +166,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 			}
 		}
 
-		// Ouptputs the section only if there are translations ( $urls always contains self link )
+		// Outputs the section only if there are translations ( $urls always contains self link )
 		if ( ! empty( $urls ) && count( $urls ) > 1 ) {
 
 			// Prepare the list of languages to remove the country code
@@ -215,7 +213,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 	 * @return string
 	 */
 	public function home_url( $url, $path ) {
-		if ( ! ( did_action( 'template_redirect' ) || did_action( 'login_init' ) ) || rtrim( $url,'/' ) != $this->links_model->home ) {
+		if ( ! ( did_action( 'template_redirect' ) || did_action( 'login_init' ) ) || rtrim( $url, '/' ) != $this->links_model->home ) {
 			return $url;
 		}
 
@@ -238,7 +236,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 			 *
 			 * @param array $args
 			 */
-			$white_list = apply_filters( 'pll_home_url_white_list',  array(
+			$white_list = apply_filters( 'pll_home_url_white_list', array(
 				array( 'file' => $theme_root ),
 				array( 'function' => 'wp_nav_menu' ),
 				array( 'function' => 'login_footer' ),
@@ -259,7 +257,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 			 *
 			 * @param array $args
 			 */
-			$black_list = apply_filters( 'pll_home_url_black_list',  array(
+			$black_list = apply_filters( 'pll_home_url_black_list', array(
 				array( 'file' => 'searchform.php' ), // Since WP 3.6 searchform.php is passed through get_search_form
 				array( 'function' => 'get_search_form' ),
 			) );
@@ -330,7 +328,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 		}
 
 		if ( empty( $requested_url ) ) {
-			$requested_url  = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$requested_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		}
 
 		if ( is_single() || is_page() ) {
@@ -362,7 +360,7 @@ class PLL_Frontend_Filters_Links extends PLL_Filters_Links {
 			$redirect_url = $requested_url;
 		} else {
 			// First get the canonical url evaluated by WP
-			// Workaround a WP bug wich removes the port for some urls and get it back at second call to redirect_canonical
+			// Workaround a WP bug which removes the port for some urls and get it back at second call to redirect_canonical
 			$_redirect_url = ( ! $_redirect_url = redirect_canonical( $requested_url, false ) ) ? $requested_url : $_redirect_url;
 			$redirect_url = ( ! $redirect_url = redirect_canonical( $_redirect_url, false ) ) ? $_redirect_url : $redirect_url;
 
