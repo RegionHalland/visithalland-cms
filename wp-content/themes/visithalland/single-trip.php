@@ -160,12 +160,8 @@
 	</article>
 <?php endwhile; ?>
 
-<div class="previous-post-link">
-	<?php previous_post_link('%link', '<< Previous Post', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
-</div>
-
 <div class="next-post-link">
-	<?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
 </div>
 
 </div>
