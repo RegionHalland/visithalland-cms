@@ -2,17 +2,18 @@
 //Add our styles to the editor
 function editorStyle()
 {
-    add_editor_style("https://stage.visithalland.com/public/js/styles.css");
+    add_editor_style(get_stylesheet_directory_uri() . '/assets/dist/css/editor.min.css');
+    add_editor_style('https://use.typekit.net/vzi2bvt.css');
 }
 add_action('admin_init', 'editorStyle');
 
 
 //Add typekit to the editor
-function my_theme_mce_external_plugins( $plugin_array ) {
-	$plugin_array['typekit'] = get_template_directory_uri() . '/assets/js/typekit.tinymce.js';
-	return $plugin_array;
-}
-add_filter( 'mce_external_plugins', 'my_theme_mce_external_plugins' );
+// function my_theme_mce_external_plugins( $plugin_array ) {
+// 	$plugin_array['typekit'] = get_template_directory_uri() . '/assets/js/typekit.tinymce.js';
+// 	return $plugin_array;
+// }
+// add_filter( 'mce_external_plugins', 'my_theme_mce_external_plugins' );
 
 
 //Remove and only use pararaphs, h2 and h3

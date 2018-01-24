@@ -44,9 +44,15 @@
 	}
 
 	&__list-item {
-		font-size:1.25em;
+		font-size:1rem;
 		font-family: $rift-font-family;
 		margin-top:$space-2;
+    	opacity:0.75;
+    	font-weight:bold;
+    	transition: opacity 0.25s;
+    	&:hover {
+    		opacity:1;
+    	}
 	}
 
 	&__link {
