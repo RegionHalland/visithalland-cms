@@ -43,10 +43,14 @@
 @import 'components/slider';
 @import 'components/google-place-details';
 @import 'components/author-vertical';
+@import 'components/author-horizontal';
 @import 'components/author-small';
 
 // Landing
 @import './landing/landing';
+
+// Page
+@import './page/page';
 
 // Article
 @import './article/article';

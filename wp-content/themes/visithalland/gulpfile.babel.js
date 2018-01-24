@@ -59,7 +59,8 @@ gulp.task('svgmin', () => {
     return gulp.src('./assets/src/icons/**/*.svg')
         .pipe(svgmin({
               plugins: [{
-                cleanupIDs: false
+                cleanupIDs: false,
+                removeStyleElement: true
             }, {
                 collapseGroups: false
             }]

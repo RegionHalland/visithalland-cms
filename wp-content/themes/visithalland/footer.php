@@ -41,24 +41,29 @@
             <div class="col col-12 sm-col-12 md-col-4">
                 <div class="clearfix">
                     <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header">Om webbplatsen</span>
-                        <ul class="footer__list">
-                            <li class="footer__list-item mt1 light">
-                                <a href="#" class="footer__link link-reset">Om cookies</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header">Språk</span>
+                        <span class="footer__column-header">Om siten</span>
                         <ul class="footer__list">
                             <?php
                                 $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
                                 $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+                                $menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
 
-                                foreach ($langs as $key => $value) : ?>
+                                //Language switcher
+                                foreach ($langs as $key => $val) : ?>
                                     <li class="footer__list-item mt1 light">
-                                        <a href="<?php echo isset($value["url"]) ? $value["url"] : "#"; ?>" class="footer__link link-reset"><?php echo isset($value["native_name"]) ? $value["native_name"] : "" ?> </a>
-                                        </li>
+                                        <a href="<?php echo $val["url"] ?>" class="footer__link link-reset"">
+                                            <span><?php echo $val["native_name"] ?></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+
+                                <?php 
+                                foreach ($menuItems as $key => $value) : ?>
+                                    <li class="footer__list-item mt1 light">
+                                        <a href="<?php echo $value->url ?>" class="footer__link link-reset"">
+                                            <span><?php echo $value->title ?></span>
+                                        </a>
+                                    </li>
                             <?php endforeach ?>
                         </ul>
                     </div>
@@ -95,6 +100,28 @@
 
         </div>
     </div>
+
+    <!-- Cookie Banner Start -->
+    <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
+        <div class="cookie-banner col-12">
+            <div class="cookie-banner__inner col-12 sm-col-6 md-col-4" tabindex="1">
+                <span class="cookie-banner__policy">
+                    <?php echo get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )); ?>
+                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' ) ); ?>" class="cookie-banner__link">
+                        Se våra användningsvillkor
+                    </a>
+                </span>
+
+                <button class="cookie-banner__button icon-button" id="cookie-accept" title="Okay, close" tabindex="2">
+                    <svg class="icon icon-button__icon">
+                        <use xlink:href="#close-icon"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    <?php } ?>
+    <!-- Cookie Banner End -->
+
 </footer>
 
 <!-- Footer End -->
