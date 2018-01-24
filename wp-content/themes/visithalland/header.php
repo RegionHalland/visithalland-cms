@@ -3,24 +3,23 @@
 <head>
 	<title><?php echo wp_get_document_title(); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Fetches Material Icons - Will be removed -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-
     <?php wp_head(); ?>
+
+
 </head>
 <body>
     <header class="header">
 
         <!--- Header Inner Start -->
-        <!-- Is used to restrict width on larger screens -->
+        <!-- The inner element is used to restrict width on larger screens -->
         <div class="header__inner col-12 sm-col-12 md-col-11 lg-col-10">
             
 
             <!--- Top Header Start -->
             <a class="skip-to-content topographic-pattern" href="#main-content">
-                <span class="skip-to-content__label">Skip to content</span>
+                <span class="skip-to-content__label"><?php _e( 'Hoppa till innehåll', 'visithalland' ); ?></span>
             </a>
             <section class="header__top-section topographic-pattern flex justify-between relative z2">
                 <div class="header__left flex items-center">
@@ -100,7 +99,9 @@
                                         </a>
                                     </article>
                                 <?php endforeach ?>
-                                <div class="btn btn--primary block coastal-living center">View all</div>
+                                <div class="btn btn--primary block coastal-living center">
+                                    <?php _e( 'Visa fler', 'visithalland' ); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -150,14 +151,17 @@
                 <div class="mobile-search__inner p2">
                     <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
                     <div class="mobile-search__suggestions">
-                        <h5 class="mobile-search__header light">Populära sökningar:</h5>
+                        <h5 class="mobile-search__header light"><?php _e( 'Populära sökningar', 'visithalland' ); ?></h5>
                         <ul class="mobile-search__suggestions-list light">
                             <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Hundvänliga badplatser</span></li>
+                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Hundvänliga badplatser</span>
+                            </li>
                             <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Fina downhill spår</span></li>
+                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Fina downhill spår</span>
+                            </li>
                             <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Familjevänliga utflykter</span></li>
+                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Familjevänliga utflykter</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -167,7 +171,7 @@
             <!--- Mobile Navigation Start -->
             <nav class="mobile-navigation topographic-pattern">
                 <div class="mobile-navigation__inner p2">
-                    <h5 class="mobile-navigation__header light">Vad intresserar dig?</h5>
+                    <h5 class="mobile-navigation__header light"><?php _e( 'Upplevelser', 'visithalland' ); ?></h5>
 
                     <?php
                         foreach ($mainMenuItems as $key => $value) : ?>
@@ -181,7 +185,7 @@
                             </div>
                     <?php endforeach ?>
                     <div class="mobile-navigation__support mt4">
-                        <h5 class="mobile-navigation__header light">Växla språk</h5>
+                        <h5 class="mobile-navigation__header light"><?php _e( 'Fler länkar', 'visithalland' ); ?></h5>
                         <?php
                             foreach ($langs as $k => $val) : ?>
                                <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
