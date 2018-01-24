@@ -19,7 +19,7 @@ $container.on( 'load.infiniteScroll', function( event, response ) {
   //var data = JSON.parse( response );
   // put that data into template
   //var itemsHTML = template.compile( data );
-  var elements = $(theHtmlString);
+  var elements = $(response);
   console.log(response);
   // convert to jQuery object
   //var $items = $( itemsHTML );
