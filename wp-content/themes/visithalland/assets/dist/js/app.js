@@ -20,7 +20,8 @@ $container.on( 'load.infiniteScroll', function( event, response ) {
   // put that data into template
   //var itemsHTML = template.compile( data );
   var elements = jQuery(response);
-  console.log(jQuery(response).find('.next-link').attr('href'));
+  var nextUrlTwo = jQuery(response).find('.next-link').attr('href');
+  console.log(nextUrlTwo);
   // convert to jQuery object
   //var $items = $( itemsHTML );
   // append items
