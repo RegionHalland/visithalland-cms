@@ -2,10 +2,9 @@ jQuery(function() {
 	var nextUrl = jQuery('.next-link').attr('href');
 console.log(nextUrl);
 
-var $container = jQuery('.container').infiniteScroll({
+var $container = jQuery('#container').infiniteScroll({
   // options
   path: function() {
-  	var pageNumber = ( this.loadCount + 1 ) * 10;
   	return nextUrl;
   	//return '/articles/P' + pageNumber;
   }, 
@@ -20,12 +19,19 @@ $container.on( 'load.infiniteScroll', function( event, response ) {
   // put that data into template
   //var itemsHTML = template.compile( data );
   var elements = jQuery(response);
-  var nextUrlTwo = jQuery(response).find('.next-link').attr('href');
-  console.log(nextUrlTwo);
+  var nextUrlTwo = jQuery(response).find('.next-link');
+  nextUrl = nextUrlTwo.attr('href');
+  console.log(nextUrlTwo.attr('href'));
   // convert to jQuery object
   //var $items = $( itemsHTML );
   // append items
   //$container.infiniteScroll( 'appendItems', $items );
+});
+
+// jQuery
+$container.on( 'last.infiniteScroll', function( event, response, path ) {
+  console.log( 'Loaded: ' + path );
+  console.log('we have reached the end')
 });
 
 

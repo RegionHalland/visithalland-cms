@@ -5,6 +5,7 @@
     $author_id = get_the_author_meta('ID');
     
 ?>
+<div id="container">
 	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
 	    <section class="meet-a-local-header">
 	        <div class="meet-a-local-header__img-container topographic-pattern">
@@ -157,4 +158,13 @@
 	</article>
 <?php endwhile; ?>
 
+<div class="previous-post-link">
+	<?php previous_post_link('%link', '<< Previous Post', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
+</div>
+
+<div class="next-post-link">
+	<?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+</div>
+
+</div>
 <?php get_footer(); ?>
