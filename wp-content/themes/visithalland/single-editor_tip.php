@@ -5,6 +5,7 @@
     $author_id = get_the_author_meta('ID');
     
 ?>
+<div class="container">
 <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
     <section class="editorial-header relative clearfix" role="heading" id="page-content">
         <div class="editorial-header__backdrop topographic-pattern"></div>
@@ -49,7 +50,7 @@
     <div class="article-content clearfix">
         <div class="col-11 md-col-10 lg-col-8 mx-auto">
         	<article class="article-body">
-        			<?php echo get_field('body'); ?>
+        	   <?php echo get_field('body'); ?>
             </article>
             <?php
                 $mentions = get_field("mentioned");
@@ -150,5 +151,22 @@
 
 <?php endwhile; ?>
 </article>
+
+<?php
+$postTerm = wp_get_post_terms($post->ID, 'taxonomy_concept', array("fields" => "all"))[0];
+var_dump($postTerm);
+$term_slug = get_term_for_default_lang($postTerm->term_id, "taxonomy_concept")->slug;
+var_dump(get_term_for_default_lang($postTerm->term_id, "taxonomy_concept")->slug);
+?>
+<div class="previous-post-link">
+                <?php previous_post_link('%link', '<< Previous Post', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
+            </div>
+
+            <div class="next-post-link">
+                <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+            </div> 
+</div>
+<?php /*echo do_shortcode('[ajax_load_more id="6446773558" post__not_in="'.$post->ID.'" container_type="div" post_type="post, meet_local, trip, happening, editor_tip" taxonomy="taxonomy_concept" taxonomy_terms="'.$term_slug.'" taxonomy_operator="IN" posts_per_page="1"]')
+?>*/?>
 
 <?php get_footer(); ?>
