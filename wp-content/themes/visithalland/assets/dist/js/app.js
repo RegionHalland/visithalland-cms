@@ -1,38 +1,30 @@
 jQuery(function() {
 	var nextUrl = jQuery('.next-link').attr('href');
-console.log(nextUrl);
+	console.log(nextUrl);
 
-var $container = jQuery('#container').infiniteScroll({
-  // options
-  path: function() {
-  	return nextUrl;
-  	//return '/articles/P' + pageNumber;
-  }, 
-  append: 'article',
-  history: false,
-  debug: true
-});
+	var $container = jQuery('#container').infiniteScroll({
+		// options
+		path: function() {
+			return nextUrl;
+		},
+		append: '#container',
+		history: true,
+		status: '.page-load-status',
+		debug: true
+	});
 
-$container.on( 'load.infiniteScroll', function( event, response ) {
-  // prase response text into JSON data
-  //var data = JSON.parse( response );
-  // put that data into template
-  //var itemsHTML = template.compile( data );
-  var elements = jQuery(response);
-  var nextUrlTwo = jQuery(response).find('.next-link');
-  nextUrl = nextUrlTwo.attr('href');
-  console.log(nextUrlTwo.attr('href'));
-  // convert to jQuery object
-  //var $items = $( itemsHTML );
-  // append items
-  //$container.infiniteScroll( 'appendItems', $items );
-});
+	$container.on( 'load.infiniteScroll', function( event, response ) {
+		var elements = jQuery(response);
+		var nextUrlTwo = jQuery(response).find('.next-link');
+		nextUrl = nextUrlTwo.attr('href');
+		console.log(nextUrlTwo.attr('href'));
+	});
 
-// jQuery
-$container.on( 'last.infiniteScroll', function( event, response, path ) {
-  console.log( 'Loaded: ' + path );
-  console.log('we have reached the end')
-});
+	// jQuery
+	$container.on( 'last.infiniteScroll', function( event, response, path ) {
+		console.log( 'Loaded: ' + path );
+		console.log('we have reached the end')
+	});
 
 
 	//Init lazyload and the IntersectionObserver API if supported by the browser
@@ -187,7 +179,7 @@ $container.on( 'last.infiniteScroll', function( event, response, path ) {
 		jQuery('.happenings__dropdown').toggleClass('active');
 	})
 
-	jQuery.get('http://' + window.location.host + '/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
+	jQuery.get('/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
         var div = document.createElement('div');
         div.style.width = 0
         div.style.height = 0
