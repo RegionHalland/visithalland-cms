@@ -179,7 +179,7 @@ jQuery(function() {
 		jQuery('.happenings__dropdown').toggleClass('active');
 	})
 
-	jQuery.get('http://' + window.location.host + '/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
+	jQuery.get('/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
         var div = document.createElement('div');
         div.style.width = 0
         div.style.height = 0
