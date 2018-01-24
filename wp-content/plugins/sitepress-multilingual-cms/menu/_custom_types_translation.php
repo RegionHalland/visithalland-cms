@@ -13,63 +13,61 @@ if ( !isset( $iclTranslationManagement ) ) {
 }
 global $wp_taxonomies;
 
-$default_language = $sitepress->get_default_language();
-
-$custom_posts = array();
-$icl_post_types = $sitepress->get_translatable_documents( true );
-
-foreach ( $icl_post_types as $k => $v ) {
-	if ( !in_array( $k, array( 'post', 'page', 'attachment' ) ) ) {
-		$custom_posts[ $k ] = $v;
+function prepare_synchronization_needed_warning( $elements, $type ) {
+	$notice = '';
+	if ( $elements ) {
+		$msg = esc_html( __( "You haven't set your synchronization preferences for these %s: %s. Default value was selected.", 'sitepress' ) );
+		$notice .= '<div class="updated below-h2"><p>';
+		$notice .= sprintf( $msg, $type, '<i>' . implode( '</i>, <i>', $elements ) . '</i>' );
+		$notice .= '</p></div>';
 	}
+
+	return $notice;
 }
 
+$default_language = $sitepress->get_default_language();
+
+$wpml_post_types = new WPML_Post_Types( $sitepress );
+$custom_posts = $wpml_post_types->get_translatable_and_readonly( true );
+
+$custom_posts_sync_not_set = array();
 foreach ( $custom_posts as $k => $custom_post ) {
 	if ( !isset( $sitepress_settings[ 'custom_posts_sync_option' ][ $k ] ) ) {
 		$custom_posts_sync_not_set[ ] = $custom_post->labels->name;
 	}
 }
 
-$notice = '';
-if ( !empty( $custom_posts_sync_not_set ) ) {
-	$notice .= '<div class="updated below-h2"><p>';
-	$notice .= sprintf( __( "You haven't set your synchronization preferences for these custom posts: %s. Default value was selected.", 'sitepress' ),
-						'<i>' . join( '</i>, <i>', $custom_posts_sync_not_set ) . '</i>' );
-	$notice .= '</p></div>';
-}
+$custom_taxonomies = array_diff( array_keys( (array) $wp_taxonomies ), array( 'nav_menu', 'link_category', 'post_format' ) );
 
-$custom_taxonomies = array_diff( array_keys( (array)$wp_taxonomies ), array( 'post_tag', 'category', 'nav_menu', 'link_category', 'post_format' ) );
-
+$tax_sync_not_set = array();
 foreach ( $custom_taxonomies as $custom_tax ) {
 	if ( !isset( $sitepress_settings[ 'taxonomies_sync_option' ][ $custom_tax ] ) ) {
 		$tax_sync_not_set[ ] = $wp_taxonomies[ $custom_tax ]->label;
 	}
 }
-if ( !empty( $tax_sync_not_set ) ) {
-	$notice .= '<div class="updated below-h2"><p>';
-	$notice .= sprintf( __( "You haven't set your synchronization preferences for these taxonomies: %s. Default value was selected.", 'sitepress' ),
-						'<i>' . join( '</i>, <i>', $tax_sync_not_set ) . '</i>' );
-	$notice .= '</p></div>';
-}
 
-if(!empty($custom_posts)){
-	
+$translation_modes = new WPML_Translation_Modes();
+
+$custom_types_ui = new WPML_Custom_Types_Translation_UI( $translation_modes, new WPML_UI_Unlock_Button() );
+
+if ( $custom_posts ) {
+	$notice = prepare_synchronization_needed_warning( $custom_posts_sync_not_set, 'custom posts' );
+
 	if ( class_exists( 'WPML_Custom_Post_Slug_UI' ) ) {
 		$CPT_slug_UI = new WPML_Custom_Post_Slug_UI( $wpdb, $sitepress );
 	} else {
 		$CPT_slug_UI = null;
 	}
-	
-	?>
 
+	?>
 
     <div class="wpml-section" id="ml-content-setup-sec-7">
 
         <div class="wpml-section-header">
-            <h3><?php _e('Custom posts', 'sitepress');?></h3>
+            <h3><?php esc_html_e( 'Post Types Translation', 'sitepress' );?></h3>
         </div>
 
-        <div class="wpml-section-content">
+        <div class="wpml-section-content wpml-section-content-wide">
 
             <?php
             	if ( isset( $notice ) ) {
@@ -81,68 +79,49 @@ if(!empty($custom_posts)){
             <form id="icl_custom_posts_sync_options" name="icl_custom_posts_sync_options" action="">
 				<?php wp_nonce_field('icl_custom_posts_sync_options_nonce', '_icl_nonce') ?>
 
-                <table class="widefat">
-                    <thead>
-                        <tr>
-                            <th colspan="3">
-                                <?php _e('Custom post types', 'sitepress');?>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($custom_posts as $k=>$custom_post): ?>
-                            <?php
-                                $rdisabled = isset($iclTranslationManagement->settings['custom-types_readonly_config'][$k]) ? 'disabled="disabled"':'';
-                            ?>
-                            <tr>
-                                <td>
+	            <div class="wpml-flex-table wpml-translation-setup-table wpml-margin-top-sm">
+		            <?php $custom_types_ui->render_custom_types_header_ui( esc_html__( 'Post types', 'sitepress' ) ); ?>
+		            <div class="wpml-flex-table-body">
+		            <?php foreach ( $custom_posts as $k => $custom_post ):
+			            $disabled = isset( $iclTranslationManagement->settings['custom-types_readonly_config'][ $k ] ) ? 'disabled="disabled"' : '';
 
-                                    <p>
-                                        <?php echo $custom_post->labels->name; ?>
-                                    </p>
-									
-                                </td>
-                                <td align="right">
-                                    <p>
-                                        <label>
-                                            <input class="icl_sync_custom_posts" type="radio" name="icl_sync_custom_posts[<?php echo $k ?>]" value="1" <?php echo $rdisabled; ?> <?php if ( @intval($sitepress_settings['custom_posts_sync_option'][$k]) == 1 ): ?>checked<?php endif; ?> />
-                                            <?php _e('Translate', 'sitepress') ?>
-                                        </label>
-                                    </p>
-                                </td>
-                                <td>
-                                   <p>
-                                        <label>
-                                            <input class="icl_sync_custom_posts" type="radio" name="icl_sync_custom_posts[<?php echo $k ?>]" value="0" <?php echo $rdisabled; ?> <?php if( @intval($sitepress_settings['custom_posts_sync_option'][$k]) == 0 ): ?>checked<?php endif; ?> />
-                                            <?php _e('Do nothing', 'sitepress') ?>
-                                        </label>
-                                   </p>
-                                    <?php if ($rdisabled): ?>
-                                        <input type="hidden" name="icl_sync_custom_posts[<?php echo $k ?>]" value="<?php echo @intval($sitepress_settings['custom_posts_sync_option'][$k]) ?>" />
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-							<tr>
-								<td colspan="3">
-									<?php
-										if ( $CPT_slug_UI ) {
-											$CPT_slug_UI->render( $k, $custom_post );
-										}
-									?>
-								</td>
-							</tr>
-							
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+			            $translation_mode = WPML_CONTENT_TYPE_DONT_TRANSLATE;
+			            if ( isset( $sitepress_settings['custom_posts_sync_option'][ $k ] ) ) {
+				            $translation_mode = (int) $sitepress_settings['custom_posts_sync_option'][ $k ];
+			            }
+			            $unlocked = false;
+			            if ( isset( $sitepress_settings['custom_posts_unlocked_option'][ $k ] ) ) {
+				            $unlocked = (int) $sitepress_settings['custom_posts_unlocked_option'][ $k ];
+			            }
+			            ?>
+
+			            <div class="wpml-flex-table-row wpml-flex-table-row-wrap">
+				            <?php
+				            $custom_types_ui->render_row(
+					            esc_html( $custom_post->labels->name ),
+					            'icl_sync_custom_posts',
+					            $k,
+					            $disabled,
+					            $translation_mode,
+					            $unlocked
+				            );
+				            if ( $CPT_slug_UI ) { ?>
+					            <div class="wpml-flex-table-cell-span">
+						            <?php $CPT_slug_UI->render( $k, $custom_post ); ?>
+					            </div>
+				            <?php } ?>
+			            </div>
+		            <?php endforeach; ?>
+		            </div>
+	            </div>
 
                 <p class="buttons-wrap">
                     <span class="icl_ajx_response" id="icl_ajx_response_cp"></span>
                     <input type="submit"
 						   id="js_custom_posts_sync_button"
 						   class="button button-primary"
-						   value="<?php _e('Save', 'sitepress') ?>"
-						   data-message="<?php echo esc_attr(__("You haven't entered translations for all slugs. Are you sure you want to save these settings?", 'sitepress' ) );?>" />
+						   value="<?php esc_attr_e( 'Save', 'sitepress' ) ?>"
+						   data-message="<?php esc_attr_e( "You haven't entered translations for all slugs. Are you sure you want to save these settings?", 'sitepress' );?>" />
                 </p>
 
             </form>
@@ -154,56 +133,61 @@ if(!empty($custom_posts)){
 <?php
 }
 
-if(!empty($custom_taxonomies)) {
+if ( $custom_taxonomies ) {
+	$notice = prepare_synchronization_needed_warning( $tax_sync_not_set, 'taxonomies' );
 
 ?>
 	<div class="wpml-section" id="ml-content-setup-sec-8">
 
 	    <div class="wpml-section-header">
-	        <h3><?php _e('Custom taxonomies', 'sitepress');?></h3>
+	        <h3><?php esc_html_e( 'Taxonomies Translation', 'sitepress' ); ?></h3>
 	    </div>
 
-	    <div class="wpml-section-content">
-	        <form id="icl_custom_tax_sync_options" name="icl_custom_tax_sync_options" action="">
+	    <div class="wpml-section-content wpml-section-content-wide">
+
+		    <?php
+		    if ( isset( $notice ) ) {
+			    echo $notice;
+		    }
+
+		    ?>
+
+		    <form id="icl_custom_tax_sync_options" name="icl_custom_tax_sync_options" action="">
 	            <?php wp_nonce_field('icl_custom_tax_sync_options_nonce', '_icl_nonce') ?>
-	            <table class="widefat">
-	                <thead>
-	                    <tr>
-	                        <th colspan="3">
-	                            <?php _e('Custom taxonomies', 'sitepress');?>
-	                        </th>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                    <?php foreach($custom_taxonomies as $ctax): ?>
-	                    <?php $rdisabled = isset($iclTranslationManagement->settings['taxonomies_readonly_config'][$ctax]) ? 'disabled':''; ?>
-	                    <tr>
-	                        <td>
-	                            <p><?php echo $wp_taxonomies[$ctax]->label; ?> (<i><?php echo $ctax; ?></i>)</p>
-	                        </td>
-	                        <td align="right">
-	                            <p>
-	                                <label>
-	                                    <input type="radio" name="icl_sync_tax[<?php echo $ctax ?>]" value="1" <?php echo $rdisabled; ?> <?php if ( @$sitepress_settings['taxonomies_sync_option'][$ctax] == 1 ): ?> checked<?php endif; ?> />
-	                                    <?php _e('Translate', 'sitepress') ?>
-	                                </label>
-	                            </p>
-	                        </td>
-	                        <td>
-	                            <p>
-	                                <label>
-	                                    <input type="radio" name="icl_sync_tax[<?php echo $ctax ?>]" value="0" <?php echo $rdisabled; if ( @$sitepress_settings['taxonomies_sync_option'][$ctax] == 0 ): ?> checked<?php endif; ?> />
-	                                    <?php _e('Do nothing', 'sitepress') ?>
-	                                </label>
-	                            </p>
-	                        </td>
-	                    </tr>
-	                    <?php endforeach; ?>
-	                </tbody>
-	            </table>
+
+			    <div class="wpml-flex-table wpml-translation-setup-table wpml-margin-top-sm">
+				    <?php $custom_types_ui->render_custom_types_header_ui( esc_html__( 'Taxonomy', 'sitepress' ) ); ?>
+				    <div class="wpml-flex-table-body">
+					    <?php foreach ( $custom_taxonomies as $ctax ):
+						    $disabled = isset( $iclTranslationManagement->settings['taxonomies_readonly_config'][ $ctax ] ) ? 'disabled' : '';
+
+						    $translation_mode = WPML_CONTENT_TYPE_DONT_TRANSLATE;
+						    if ( isset( $sitepress_settings['taxonomies_sync_option'][ $ctax ] ) ) {
+							    $translation_mode = (int) $sitepress_settings['taxonomies_sync_option'][ $ctax ];
+						    }
+						    $unlocked = false;
+						    if ( isset( $sitepress_settings['taxonomies_unlocked_option'][ $ctax ] ) ) {
+							    $unlocked = (int) $sitepress_settings['taxonomies_unlocked_option'][ $ctax ];
+						    }
+						    ?>
+						    <div class="wpml-flex-table-row">
+							    <?php
+							    $custom_types_ui->render_row(
+								    esc_html( $wp_taxonomies[ $ctax ]->label ),
+								    'icl_sync_tax',
+								    $ctax,
+								    $disabled,
+								    $translation_mode,
+								    $unlocked
+							    );
+							    ?>
+						    </div>
+					    <?php endforeach; ?>
+				    </div>
+			    </div>
 	            <p class="buttons-wrap">
 	                <span class="icl_ajx_response" id="icl_ajx_response_ct"></span>
-	                <input type="submit" class="button-primary" value="<?php _e('Save', 'sitepress') ?>" />
+	                <input type="submit" class="button-primary" value="<?php esc_html_e( 'Save', 'sitepress' ) ?>" />
 	            </p>
 	        </form>
 	    </div> <!-- .wpml-section-content -->

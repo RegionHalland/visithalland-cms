@@ -1,5 +1,5 @@
 <?php
-require_once 'wpml-update-term-action.class.php';
+require_once dirname( __FILE__ ) . '/wpml-update-term-action.class.php';
 
 /**
  * @since      3.1.8
@@ -184,6 +184,18 @@ class WPML_Terms_Translations {
 								$new_ttid             = $wpdb->insert_id;
 								$data[ 'element_id' ] = $new_ttid;
 								$wpdb->insert( $wpdb->prefix . 'icl_translations', $data );
+
+								do_action(
+									'wpml_translation_update',
+									array(
+										'type' => 'insert',
+										'trid' => $data['trid'],
+										'element_id' => $data['element_id'],
+										'element_type' => $data['element_type'],
+										'translation_id' => $wpdb->insert_id,
+										'context' => 'tax'
+									)
+								);
 							}
 						}
 					}
@@ -253,58 +265,9 @@ class WPML_Terms_Translations {
 				$terms_by_language_and_taxonomy[ $lang ][ $tax ][] = $term->term_id;
 			}
 			$terms_json = wp_json_encode( $terms_by_language_and_taxonomy );
-			$output     = '<div id="icl-terms-by-lang" style="display: none;">' . $terms_json . '</div>';
+			$output     = '<div id="icl-terms-by-lang" style="display: none;">' . wp_kses_post( $terms_json ) . '</div>';
 			echo $output;
 		}
-	}
-
-	/**
-	 * @param $post_id
-	 * @param $target_lang
-	 *
-	 * Function for displaying all terms on a post, that do not possess a translation in the given target language.
-	 *
-	 * @return array
-	 */
-	public static function get_untranslated_terms_for_post( $post_id, $target_lang ) {
-		global $sitepress;
-
-		// First we get a list of all taxonomies that are translated.
-
-		$post_object = get_post( $post_id );
-
-		$taxonomies = get_object_taxonomies( $post_object, 'objects' );
-
-		$untranslated_terms = array();
-
-		foreach ( $taxonomies as $key => $taxobject ) {
-			$tax = $taxobject->name;
-			if ( $sitepress->is_translated_taxonomy( $tax ) ) {
-				$terms_for_tax = wp_get_post_terms( $post_id, $tax );
-
-				if ( $terms_for_tax ) {
-					$untranslated_terms_in_taxonomy = array();
-					foreach ( $terms_for_tax as $term_in_tax ) {
-						$trid              = $sitepress->get_element_trid( $term_in_tax->term_taxonomy_id, 'tax_' . $tax );
-						$term_translations = $sitepress->get_element_translations( $trid, 'tax_' . $tax );
-						//Check each of these translated taxonomies for terms that are not available in the target language
-						if ( ! isset( $term_translations [ $target_lang ] ) ) {
-							$untranslated_terms_in_taxonomy[ ] = $term_in_tax->name;
-						}
-					}
-					if ( ! empty( $untranslated_terms_in_taxonomy ) ) {
-						// The return only differentiates between hierarchical and flat taxonomies. Also it is ensured that all terms only show up once in the output of this function.
-						if ( isset( $untranslated_terms [ $tax ] ) ) {
-							$untranslated_terms [ $tax ] = array_unique( array_merge( $untranslated_terms [ $tax ], $untranslated_terms_in_taxonomy ) );
-						} else {
-							$untranslated_terms [ $taxobject->label ] = $untranslated_terms_in_taxonomy;
-						}
-					}
-				}
-			}
-		}
-
-		return $untranslated_terms;
 	}
 
 	/**
@@ -333,7 +296,7 @@ class WPML_Terms_Translations {
 
 		extract( $args, EXTR_OVERWRITE );
 
-		require_once 'wpml-update-term-action.class.php';
+		require_once dirname( __FILE__ ) . '/wpml-update-term-action.class.php';
 
 		$new_term_action = new WPML_Update_Term_Action( $wpdb, $sitepress, $args );
 		$new_term        = $new_term_action->execute();
@@ -401,16 +364,37 @@ class WPML_Terms_Translations {
 			$translated_slug = false;
 
 			if ( ! $term && isset( $original_term->name ) ) {
+				$term = $original_term->name;
+
+				/**
+				 * @deprecated use 'wpml_duplicate_generic_string' instead, with the same arguments
+				 */
                 $term = apply_filters( 'icl_duplicate_generic_string',
-                    $original_term->name,
+                    $term,
+                    $lang_code,
+                    array( 'context' => 'taxonomy', 'attribute' => $taxonomy, 'key' => $original_term->term_id ) );
+
+                $term = apply_filters( 'wpml_duplicate_generic_string',
+	                $term,
                     $lang_code,
                     array( 'context' => 'taxonomy', 'attribute' => $taxonomy, 'key' => $original_term->term_id ) );
 			}
 			if ( isset( $original_term->slug ) ) {
+				$translated_slug = $original_term->slug;
+
+				/**
+				 * @deprecated use 'wpml_duplicate_generic_string' instead, with the same arguments
+				 */
                 $translated_slug =  apply_filters( 'icl_duplicate_generic_string',
-                    $original_term->slug,
+	                $translated_slug,
                     $lang_code,
                     array( 'context' => 'taxonomy_slug', 'attribute' => $taxonomy, 'key' => $original_term->term_id ) );
+
+                $translated_slug =  apply_filters( 'wpml_duplicate_generic_string',
+	                $translated_slug,
+                    $lang_code,
+                    array( 'context' => 'taxonomy_slug', 'attribute' => $taxonomy, 'key' => $original_term->term_id ) );
+
 				$translated_slug = self::term_unique_slug( $translated_slug, $taxonomy, $lang_code );
 			}
 			$new_translated_term = false;
@@ -489,9 +473,7 @@ class WPML_Terms_Translations {
 			}
 			$terms_from_translated_post = wp_get_post_terms( $translated_post_id, $taxonomy );
 			if ( $is_original ) {
-				/** @var $iclTranslationManagement TranslationManagement */
-				$iclTranslationManagement = wpml_load_core_tm();
-				$duplicates = $iclTranslationManagement->get_duplicates( $post_id );
+				$duplicates = $sitepress->get_duplicates( $post_id );
 				if ( in_array( $translated_post_id, $duplicates ) ) {
 					$terms = array_merge( $terms_from_original_post, $terms_from_translated_post );
 				} else {

@@ -15,9 +15,40 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 	private $ttids;
 	private $term_ids;
 
+	/**
+	 * @param int $term_id
+	 *
+	 * @return null|string
+	 */
 	public function lang_code_by_termid( $term_id ) {
 
 		return $this->get_element_lang_code( $this->adjust_ttid_for_term_id( $term_id ) );
+	}
+
+	/**
+	 * Converts term_id into term_taxonomy_id
+	 *
+	 * @param int $term_id
+	 *
+	 * @return int
+	 */
+	public function adjust_ttid_for_term_id( $term_id ) {
+		$this->maybe_warm_term_id_cache();
+
+		return $term_id && isset( $this->ttids[ $term_id ] ) ? end( $this->ttids[ $term_id ] ) : $term_id;
+	}
+
+	/**
+	 * Converts term_taxonomy_id into term_id
+	 *
+	 * @param int $ttid term_taxonomy_id
+	 *
+	 * @return int
+	 */
+	public function adjust_term_id_for_ttid( $ttid ) {
+		$this->maybe_warm_term_id_cache();
+
+		return $ttid && isset( $this->term_ids[ $ttid ] ) ? $this->term_ids[ $ttid ] : $ttid;
 	}
 
 	public function reload() {
@@ -66,14 +97,7 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 	 * @since 3.2.3
 	 */
 	public function get_taxonomy_post_types( $taxonomy ) {
-		global $wp_taxonomies;
-
-		$post_types = array();
-		if ( isset( $wp_taxonomies[ $taxonomy ] ) && isset( $wp_taxonomies[ $taxonomy ]->object_type ) ) {
-			$post_types = $wp_taxonomies[ $taxonomy ]->object_type;
-		}
-
-		return $post_types;
+		return WPML_WP_Taxonomy::get_linked_post_types( $taxonomy );
 	}
 
 	protected function get_element_join() {
@@ -82,6 +106,10 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 				JOIN {$this->wpdb->term_taxonomy} tax
 					ON t.element_id = tax.term_taxonomy_id
 						AND t.element_type = CONCAT('tax_', tax.taxonomy)";
+	}
+
+	protected function get_type_prefix() {
+		return 'tax_';
 	}
 
 	private function maybe_warm_term_id_cache() {
@@ -104,15 +132,18 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 		}
 	}
 
-	private function adjust_ttid_for_term_id( $term_id ) {
-		$this->maybe_warm_term_id_cache();
-
-		return $term_id && isset( $this->ttids[ $term_id ] ) ? end( $this->ttids[ $term_id ] ) : $term_id;
-	}
-
-	private function adjust_term_id_for_ttid( $ttid ) {
-		$this->maybe_warm_term_id_cache();
-
-		return $ttid && isset( $this->term_ids[ $ttid ] ) ? $this->term_ids[ $ttid ] : $ttid;
+	/**
+	 * @param $term
+	 * @param string $slug
+	 * @param $taxonomy
+	 * @param $lang_code
+	 *
+	 * @return string
+	 */
+	public function generate_unique_term_slug( $term, $slug = '', $taxonomy, $lang_code ) {
+		if ( '' === trim( $slug ) ) {
+			$slug = sanitize_title( $term );
+		}
+		return WPML_Terms_Translations::term_unique_slug( $slug, $taxonomy, $lang_code );
 	}
 }

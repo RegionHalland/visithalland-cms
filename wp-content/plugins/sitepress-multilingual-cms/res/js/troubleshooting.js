@@ -8,6 +8,7 @@ jQuery(document).ready(function () {
 	var remove_notifications_button = jQuery('#icl_remove_notifications');
 	var restore_notifications_button = jQuery('#icl_restore_notifications');
 	var restore_notifications_all_users = jQuery('#icl_restore_notifications_all_users');
+	var sync_posts_taxonomies_button = jQuery('#wpml_sync_posts_taxonomies');
 	remove_notifications_button.off('click');
 	remove_notifications_button.bind('click', remove_all_notifications);
 	restore_notifications_button.off('click');
@@ -124,7 +125,7 @@ jQuery(document).ready(function () {
 					var type_term_popup_html = '<div id="icl_fix_languages_and_post_types"><p>' + text + '</p></div>';
 					jQuery(type_term_popup_html).dialog(
 						{
-							dialogClass: 'wpml-dialog wp-dialog',
+							dialogClass: 'wpml-dialog otgs-ui-dialog',
 							width      : 'auto',
 							modal      : true,
 							buttons    : {
@@ -184,7 +185,7 @@ jQuery(document).ready(function () {
 					var termSuffixUpdatedHTML = '<div id="icl_fix_term_suffixes"><p>' + troubleshooting_strings.suffixesRemoved + '</p></div>';
 					jQuery(termSuffixUpdatedHTML).dialog(
 						{
-							dialogClass: 'wpml-dialog wp-dialog',
+							dialogClass: 'wpml-dialog otgs-ui-dialog',
 							width      : 'auto',
 							modal      : true,
 							buttons    : {
@@ -209,4 +210,40 @@ jQuery(document).ready(function () {
 			self.next().fadeOut();
 		});
 	});
+
+	sync_posts_taxonomies_button.click(function(){
+		var requestData = {};
+
+		sync_posts_taxonomies_button.siblings('.wpml-notice').empty();
+		sync_posts_taxonomies_button.attr('disabled', 'disabled');
+		sync_posts_taxonomies_button.after(icl_ajxloaderimg);
+		requestData.batch_number = 0;
+		requestData.post_type    = sync_posts_taxonomies_button.siblings('select[name="wpml_post_type"]').val();
+		sync_posts_taxonomies_send_ajax(requestData);
+	});
+
+	var sync_posts_taxonomies_send_ajax = function(requestData) {
+		requestData.debug_action = 'synchronize_posts_taxonomies';
+		requestData.nonce        = troubleshooting_strings.syncPostsTaxNonce;
+		jQuery.ajax({
+			type    : "POST",
+			url     : location.href,
+			data    : requestData,
+			success: sync_posts_taxonomies_receive_ajax
+		});
+	};
+
+	var sync_posts_taxonomies_receive_ajax = function(response) {
+		sync_posts_taxonomies_button.siblings('.wpml-notice').html(response.data.message);
+
+		if ( response.success && ! response.data.completed ) {
+			var requestData = response.data || {};
+			requestData.debug_action = 'synchronize_posts_taxonomies';
+			requestData.nonce        = troubleshooting_strings.syncPostsTaxNonce;
+			sync_posts_taxonomies_send_ajax(requestData);
+		} else {
+			sync_posts_taxonomies_button.next().fadeOut();
+			sync_posts_taxonomies_button.removeAttr('disabled');
+		}
+	};
 });

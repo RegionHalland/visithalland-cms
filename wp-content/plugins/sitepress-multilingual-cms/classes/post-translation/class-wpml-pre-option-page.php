@@ -1,7 +1,9 @@
 <?php
 
 class WPML_Pre_Option_Page extends WPML_WPDB_And_SP_User {
-
+	
+	const CACHE_GROUP = 'wpml_pre_option_page';
+	
 	private $switched;
 	private $lang;
 	
@@ -12,13 +14,12 @@ class WPML_Pre_Option_Page extends WPML_WPDB_And_SP_User {
 		$this->lang     = $lang;
 	}
 	
-	public function get( $type ) {
+	public function get( $type, $from_language = null ) {
 
 		$cache_key   = $type;
-		$cache_group = 'wpml_pre_option_page';
 		$cache_found = false;
 		
-		$cache       = new WPML_WP_Cache( $cache_group );
+		$cache       = new WPML_WP_Cache( self::CACHE_GROUP );
 		$results     = $cache->get( $cache_key, $cache_found );
 
 		if ( ( ( ! $cache_found || ! isset ( $results[ $type ] ) ) && ! $this->switched )
@@ -43,16 +44,43 @@ class WPML_Pre_Option_Page extends WPML_WPDB_And_SP_User {
 				)
 			);
 
-			foreach ( $values as $lang_result ) {
-				$results [ $type ] [ $lang_result->language_code ] = $lang_result->element_id;
+			if ( count( $values ) ) {
+				foreach ( $values as $lang_result ) {
+					$results [ $type ] [ $lang_result->language_code ] = $lang_result->element_id;
+				}
 			}
 
-			if ( $results ) {
-				$cache->set( $cache_key, $results );
-			}
+			$cache->set( $cache_key, $results );
 		}
 
-		return isset( $results[ $type ][ $this->lang ] ) ? $results[ $type ][ $this->lang ] : '';
+		$target_language = $from_language ? $from_language : $this->lang;
+
+		return isset( $results[ $type ][ $target_language ] ) ? $results[ $type ][ $target_language ] : false;
+	}
+
+	public function clear_cache() {
+		$cache = new WPML_WP_Cache( self::CACHE_GROUP );
+		$cache->flush_group_cache();
+	}
+
+	function fix_trashed_front_or_posts_page_settings( $post_id ) {
+		$post_id = (int) $post_id;
+		$page_on_front_current  = (int) $this->get( 'page_on_front' );
+		$page_for_posts_current = (int) $this->get( 'page_for_posts' );
+
+		$page_on_front_default  = (int) $this->get( 'page_on_front', $this->sitepress->get_default_language() );
+		$page_for_posts_default = (int) $this->get( 'page_for_posts', $this->sitepress->get_default_language() );
+
+		if ( $page_on_front_current === $post_id && $page_on_front_current !== $page_on_front_default ) {
+			remove_filter( 'pre_option_page_on_front', array( $this->sitepress, 'pre_option_page_on_front' ) );
+			update_option( 'page_on_front', $page_on_front_default );
+			add_filter( 'pre_option_page_on_front', array( $this->sitepress, 'pre_option_page_on_front' ) );
+		}
+		if ( $page_for_posts_current === $post_id && $page_for_posts_current !== $page_for_posts_default ) {
+			remove_filter( 'pre_option_page_for_posts', array( $this->sitepress, 'pre_option_page_for_posts' ) );
+			update_option( 'page_for_posts', $page_for_posts_default );
+			add_filter( 'pre_option_page_for_posts', array( $this->sitepress, 'pre_option_page_for_posts' ) );
+		}
 	}
 
 }

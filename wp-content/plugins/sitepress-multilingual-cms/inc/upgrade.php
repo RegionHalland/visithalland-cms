@@ -1,5 +1,8 @@
 <?php
-if (!defined('ICL_SITEPRESS_DEV_VERSION') && (version_compare( get_option( 'icl_sitepress_version' ), ICL_SITEPRESS_VERSION, '=' ) || ( isset( $_REQUEST[ 'action' ] ) && $_REQUEST[ 'action' ] == 'error_scrape' ) || ! isset( $wpdb ) )) {
+
+$wp_api = new WPML_WP_API();
+
+if (!defined('ICL_SITEPRESS_DEV_VERSION') && ( $wp_api->version_compare_naked( get_option( 'icl_sitepress_version' ), ICL_SITEPRESS_VERSION, '=' ) || ( isset( $_REQUEST[ 'action' ] ) && $_REQUEST[ 'action' ] == 'error_scrape' ) || ! isset( $wpdb ) )) {
 	return;
 }
 
@@ -19,7 +22,7 @@ function icl_plugin_upgrade(){
     
     $iclsettings = get_option('icl_sitepress_settings');
     
-    require_once ICL_PLUGIN_PATH . '/inc/cache.php';
+    require_once WPML_PLUGIN_PATH . '/inc/cache.php';
     icl_cache_clear('locale_cache_class');
     icl_cache_clear('flags_cache_class');
     icl_cache_clear('language_name_cache_class');
@@ -77,7 +80,7 @@ function icl_plugin_upgrade(){
     }
     
     if(get_option('icl_sitepress_version') && version_compare(get_option('icl_sitepress_version'), '2.0.0', '<')){    
-        include_once ICL_PLUGIN_PATH . '/inc/upgrade-functions/upgrade-2.0.0.php';
+        include_once WPML_PLUGIN_PATH . '/inc/upgrade-functions/upgrade-2.0.0.php';
         
         if(empty($iclsettings['migrated_2_0_0'])){
             define('ICL_MULTI_STEP_UPGRADE', true);
@@ -90,31 +93,33 @@ function icl_plugin_upgrade(){
         $wpdb->query($sql);
     }
     
-		$versions = array(
-			'2.0.5',
-			'2.2.2',
-			'2.3.0',
-			'2.3.1',
-			'2.3.3',
-			'2.4.0',
-			'2.5.0',
-			'2.5.2',
-			'2.6.0',
-			'2.7'  ,
-			'2.9'  ,
-			'2.9.3',
-			'3.1'  ,
-			'3.1.5',
-			'3.1.8',
-			'3.1.9.5',
-			'3.2',
-			'3.2.3',
-			'3.3',
-		);
-    
-		foreach($versions as $version) {
-			icl_upgrade_version( $version );
-		}
+	$versions = array(
+		'2.0.5',
+		'2.2.2',
+		'2.3.0',
+		'2.3.1',
+		'2.3.3',
+		'2.4.0',
+		'2.5.0',
+		'2.5.2',
+		'2.6.0',
+		'2.7'  ,
+		'2.9'  ,
+		'2.9.3',
+		'3.1'  ,
+		'3.1.5',
+		'3.1.8',
+		'3.1.9.5',
+		'3.2',
+		'3.2.3',
+		'3.3',
+		'3.3.7',
+		'3.5.1',
+	);
+
+	foreach($versions as $version) {
+		icl_upgrade_version( $version );
+	}
     
 	//Forcing upgrade logic when ICL_SITEPRESS_DEV_VERSION is defined
 	//This allow to run the logic between different alpha/beta/RC versions
@@ -126,6 +131,8 @@ function icl_plugin_upgrade(){
     if(version_compare(get_option('icl_sitepress_version'), ICL_SITEPRESS_VERSION, '<')){
         update_option('icl_sitepress_version', ICL_SITEPRESS_VERSION);
     }
+
+    do_action( 'wpml_upgraded', ICL_SITEPRESS_VERSION );
 }
 
 function icl_upgrade_version($version, $force = false){
@@ -136,7 +143,7 @@ function icl_upgrade_version($version, $force = false){
 	}
 
 	if($force || (get_option('icl_sitepress_version') && version_compare(get_option('icl_sitepress_version'), $version, '<' ))){
-        $upg_file = ICL_PLUGIN_PATH . '/inc/upgrade-functions/upgrade-' . $version . '.php';        
+        $upg_file = WPML_PLUGIN_PATH . '/inc/upgrade-functions/upgrade-' . $version . '.php';
         if(file_exists($upg_file) && is_readable($upg_file)){
             if(!defined('WPML_DOING_UPGRADE')){
                 define('WPML_DOING_UPGRADE', true);    

@@ -6,8 +6,7 @@
  * @package    wpml-core
  * @subpackage post-translation
  */
-
-class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
+class WPML_Admin_Post_Actions extends WPML_Post_Translation {
 
 	public function init() {
 		parent::init ();
@@ -33,23 +32,25 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 		return $trid;
 	}
 
-	public function save_post_actions( $pidd, $post ) {
+	public function save_post_actions( $post_id, $post ) {
 		global $sitepress;
 
 		wp_defer_term_counting( true );
-		$post = isset( $post ) ? $post : get_post( $pidd );
+		$post = isset( $post ) ? $post : get_post( $post_id );
 		// exceptions
 		if ( ! $this->has_save_post_action( $post ) ) {
 			wp_defer_term_counting( false );
 
 			return;
 		}
-		if ( WPML_WordPress_Actions::is_bulk_trash( $pidd ) ||
-			 WPML_WordPress_Actions::is_bulk_untrash( $pidd ) ||
-			 WPML_WordPress_Actions::is_heartbeat( ) ) {
+		if ( WPML_WordPress_Actions::is_bulk_trash( $post_id ) ||
+		     WPML_WordPress_Actions::is_bulk_untrash( $post_id ) ||
+		     $this->has_invalid_language_details_on_heartbeat()
+		) {
 
 			return;
 		}
+
 		$default_language = $sitepress->get_default_language();
 		$post_vars        = (array) $_POST;
 		foreach ( (array) $post as $k => $v ) {
@@ -57,12 +58,13 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 		}
 
 		$post_vars['post_type'] = isset( $post_vars['post_type'] ) ? $post_vars['post_type'] : $post->post_type;
-		$post_id                = $pidd;
+
 		if ( isset( $post_vars['action'] ) && $post_vars['action'] === 'post-quickpress-publish' ) {
 			$language_code = $default_language;
 		} else {
-			$post_id       = isset( $post_vars['post_ID'] ) ? $post_vars['post_ID']
-				: $pidd; //latter case for XML-RPC publishing
+			if( isset( $post_vars['post_ID'] ) ){
+				$post_id = $post_vars['post_ID'];
+			}
 			$language_code = $this->get_save_post_lang( $post_id, $sitepress );
 		}
 
@@ -99,7 +101,23 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 		if ( isset( $post_vars['icl_tn_note'] ) ) {
 			update_post_meta( $post_id, '_icl_translator_note', $post_vars['icl_tn_note'] );
 		}
+		$save_filter_action_state = new WPML_WP_Filter_State( 'save_post' );
 		$this->after_save_post( $trid, $post_vars, $language_code, $source_language );
+		$save_filter_action_state->restore();
+	}
+
+	private function has_invalid_language_details_on_heartbeat() {
+		if ( ! WPML_WordPress_Actions::is_heartbeat() ) {
+			return false;
+		}
+
+		if ( isset( $_POST['data']['icl_post_language'], $_POST['data']['icl_trid'] ) ) {
+			$_POST['icl_post_language'] = filter_var( $_POST['data']['icl_post_language'], FILTER_SANITIZE_STRING );
+			$_POST['icl_trid'] = filter_var( $_POST['data']['icl_trid'], FILTER_SANITIZE_NUMBER_INT );
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -108,7 +126,7 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 	 *
 	 * @return null|string
 	 */
-	protected function get_save_post_lang( $post_id, $sitepress ) {
+	public function get_save_post_lang( $post_id, $sitepress ) {
 		$language_code = filter_var(
 			( isset( $_POST['icl_post_language'] ) ? $_POST['icl_post_language'] : '' ),
 			FILTER_SANITIZE_FULL_SPECIAL_CHARS );
@@ -147,12 +165,11 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 	 * @return null|string
 	 */
 	protected function get_save_post_source_lang( $trid, $language_code, $default_language ) {
-		/** @var WPML_Backend_Request $wpml_request_handler */
+		/** @var WPML_Backend_Request|WPML_Frontend_Request $wpml_request_handler */
 		global $wpml_request_handler;
 
 		$source_language = filter_input ( INPUT_GET, 'source_lang', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
-		$source_language = $source_language ? $source_language
-			: $wpml_request_handler->get_source_language_from_referer ();
+		$source_language = $source_language ? $source_language : $wpml_request_handler->get_source_language_from_referer();
 		$source_language = $source_language ? $source_language : SitePress::get_source_language_by_trid ( $trid );
 		$source_language = $source_language === 'all' ? $default_language : $source_language;
 		$source_language = $source_language !== $language_code ? $source_language : null;
@@ -160,12 +177,21 @@ class WPML_Admin_Post_Actions extends  WPML_Post_Translation{
 		return $source_language;
 	}
 
-	private function get_trid_from_referer() {
+	public function get_trid_from_referer() {
 		if ( isset( $_SERVER[ 'HTTP_REFERER' ] ) ) {
-			$query = parse_url ( $_SERVER[ 'HTTP_REFERER' ], PHP_URL_QUERY );
+			$query = wpml_parse_url ( $_SERVER[ 'HTTP_REFERER' ], PHP_URL_QUERY );
 			parse_str ( $query, $vars );
 		}
 
-		return isset( $vars[ 'trid' ] ) ? filter_var ( $vars[ 'trid' ], FILTER_SANITIZE_NUMBER_INT ) : false;
+		if ( isset( $_SERVER[ 'REQUEST_URI' ] ) ) {
+			$request_uri = wpml_parse_url( $_SERVER[ 'REQUEST_URI' ], PHP_URL_QUERY );
+			parse_str( $request_uri, $request_uri_vars );
+		}
+
+		/**
+		 * trid from `HTTP_REFERER` should be return only if `REQUEST_URI` also has trid set.
+		 * @link https://onthegosystems.myjetbrains.com/youtrack/issue/wpmltm-1351
+		 */
+		return isset( $vars[ 'trid' ] ) && isset( $request_uri_vars['trid'] ) ? filter_var ( $vars[ 'trid' ], FILTER_SANITIZE_NUMBER_INT ) : false;
 	}
 }

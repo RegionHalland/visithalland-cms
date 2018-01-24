@@ -1,7 +1,7 @@
 <?php
-require ICL_PLUGIN_PATH . '/inc/post-translation/wpml-post-duplication.class.php';
-require 'wpml-post-synchronization.class.php';
-require_once 'wpml-wordpress-actions.class.php';
+require dirname( __FILE__ ) . '/wpml-post-duplication.class.php';
+require dirname( __FILE__ ) . '/wpml-post-synchronization.class.php';
+require_once dirname( __FILE__ ) . '/wpml-wordpress-actions.class.php';
 
 /**
  * Class WPML_Post_Translation
@@ -46,7 +46,7 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 	 * Filters the sticky posts option. If synchronization of sticky posts is activated it will translated
 	 * wrong language values, if deactivated filter out wrong language values.
 	 *
-	 * @param int[]     $posts
+	 * @param array     $posts
 	 * @param SitePress $sitepress
 	 *
 	 * @used-by \SitePress::option_sticky_posts which uses this function to filter the sticky posts array after
@@ -55,6 +55,7 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 	 * @return int[]
 	 */
 	public function pre_option_sticky_posts_filter( $posts, &$sitepress ) {
+		/** @var array $posts */
 		$posts                       = $posts ? $posts : get_option( 'sticky_posts' );
 		$this->filtered_sticky_posts = array();
 		if ( $posts ) {
@@ -115,7 +116,8 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 		return $this->get_original_post_attr ( $trid, 'ID', $source_lang_code );
 	}
 
-	public function get_original_menu_order( $trid, $source_lang_code = null ) {
+	public function get_original_menu_order
+	( $trid, $source_lang_code = null ) {
 
 		return $this->get_original_post_attr ( $trid, 'menu_order', $source_lang_code );
 	}
@@ -161,12 +163,18 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 	}
 
 	public function delete_post_translation_entry( $post_id ) {
+
+		$update_args = array( 'context' => 'post', 'element_id' => $post_id );
+		do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'before_delete' ) ) );
+
 		$sql = $this->wpdb->prepare( "DELETE FROM {$this->wpdb->prefix}icl_translations
 								WHERE element_id = %d
 									AND element_type LIKE 'post%%'
 								LIMIT 1",
 		                       $post_id );
 		$res = $this->wpdb->query( $sql );
+
+		do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'after_delete' ) ) );
 
 		return $res;
 	}
@@ -202,7 +210,7 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 	 * @param SitePress $sitepress
 	 * @return bool|mixed|null|string|void
 	 */
-	protected function get_save_post_lang( $post_id, $sitepress ) {
+	public function get_save_post_lang( $post_id, $sitepress ) {
 		$language_code = $this->get_element_lang_code ( $post_id );
 		$language_code = $language_code ? $language_code : $sitepress->get_current_language ();
 		$language_code = $sitepress->is_active_language ( $language_code ) ? $language_code
@@ -237,11 +245,30 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 		$original_id      = $this->get_original_element( $post_vars['ID'] );
 		$translation_sync->sync_with_translations( $original_id ? $original_id : $post_vars['ID'], $post_vars );
 		$translation_sync->sync_with_duplicates( $post_vars['ID'] );
-		require_once ICL_PLUGIN_PATH . '/inc/cache.php';
+		if ( ! function_exists( 'icl_cache_clear' ) ) {
+			require_once WPML_PLUGIN_PATH . '/inc/cache.php';
+		}
 		icl_cache_clear( $post_vars['post_type'] . 's_per_language', true );
 		wp_defer_term_counting( false );
 		if ( $post_vars['post_type'] !== 'nav_menu_item' ) {
 			do_action( 'wpml_tm_save_post', $post_vars['ID'], get_post( $post_vars['ID'] ), false );
+		}
+		// Flush object cache.
+		$this->flush_object_cache_for_groups( array( 'ls_languages', 'element_translations' ) );
+
+		do_action( 'wpml_after_save_post', $post_vars['ID'], $trid, $language_code, $source_language );
+	}
+
+	/**
+	 * Create new instance of WPML_WP_Cache for each group and flush cache for group.
+	 * @param array $groups
+	 */
+	private function flush_object_cache_for_groups( $groups = array() ) {
+		if ( ! empty( $groups ) ) {
+			foreach ( $groups as $group ) {
+				$cache            = new WPML_WP_Cache( $group );
+				$cache->flush_group_cache();
+			}
 		}
 	}
 
@@ -275,20 +302,31 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 		return $res;
 	}
 
-	protected function has_save_post_action( $post ) {
+	public function has_save_post_action( $post ) {
+		if ( ! $post ) {
+			return false;
+		}
+		$is_auto_draft              = isset( $post->post_status ) && $post->post_status === 'auto-draft';
+		$is_editing_different_post  = array_key_exists( 'post_ID', $_POST ) && (int) $_POST['post_ID']
+		                              && $post->ID != $_POST['post_ID'];
+		$is_saving_a_revision       = array_key_exists( 'post_type', $_POST ) && 'revision' === $_POST['post_type'];
+		$is_untrashing              = array_key_exists( 'action', $_GET ) && 'untrash' === $_GET['action'];
+		$is_auto_save               = array_key_exists( 'autosave', $_POST );
+		$skip_sitepress_actions     = array_key_exists( 'skip_sitepress_actions', $_POST );
+		$is_post_a_revision         = 'revision' === $post->post_type;
+		$is_scheduled_to_be_trashed = get_post_meta( $post->ID, '_wp_trash_meta_status', true );
+		$is_add_meta_action         = isset( $_POST['action'] ) && 'add-meta' === $_POST['action'];
 
-		return !( !$this->is_translated_type ( $post->post_type )
-		          || ( isset( $post->post_status ) && $post->post_status === "auto-draft" )
-		          || isset( $_POST[ 'autosave' ] )
-		          || isset( $_POST[ 'skip_sitepress_actions' ] )
-		          || ( isset( $_POST[ 'post_ID' ] )
-		               && $_POST[ 'post_ID' ] != $post->ID )
-		          || ( isset( $_POST[ 'post_type' ] )
-		               && $_POST[ 'post_type' ] === 'revision' )
-		          || $post->post_type === 'revision'
-		          || get_post_meta ( $post->ID, '_wp_trash_meta_status', true )
-		          || ( isset( $_GET[ 'action' ] )
-		               && $_GET[ 'action' ] === 'untrash' ) );
+		return $this->is_translated_type( $post->post_type )
+		       && ! ( $is_auto_draft
+		              || $is_auto_save
+		              || $skip_sitepress_actions
+		              || $is_editing_different_post
+		              || $is_saving_a_revision
+		              || $is_post_a_revision
+		              || $is_scheduled_to_be_trashed
+		              || $is_add_meta_action
+		              || $is_untrashing );
 	}
 
 	protected function get_element_join() {
@@ -298,6 +336,11 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 					ON t.element_id = p.ID
 						AND t.element_type = CONCAT('post_', p.post_type)";
 	}
+
+	protected function get_type_prefix() {
+		return 'post_';
+	}
+
 
 	public function is_translated_type( $post_type ) {
 		global $sitepress;
@@ -323,7 +366,8 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 		return apply_filters ( 'wpml_allowed_target_langs', $can_translate, $post->ID, 'post' );
 	}
 
-	/** Before setting the language of the post to be saved, check if a translation in this language already exists
+	/**
+	 * Before setting the language of the post to be saved, check if a translation in this language already exists
 	 * This check is necessary, so that synchronization actions like thrashing or un-trashing of posts, do not lead to
 	 * database corruption, due to erroneously changing a posts language into a state,
 	 * where it collides with an existing translation. While the UI prevents this sort of action for the most part,
@@ -339,7 +383,7 @@ abstract class WPML_Post_Translation extends WPML_Element_Translation {
 	 * @param Integer $post_id
 	 * @param String  $source_language
 	 */
-	protected function maybe_set_elid( $trid, $post_type, $language_code, $post_id, $source_language ) {
+	private function maybe_set_elid( $trid, $post_type, $language_code, $post_id, $source_language ) {
 		global $sitepress;
 
 		$element_type = 'post_' . $post_type;

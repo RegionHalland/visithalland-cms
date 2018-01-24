@@ -13,8 +13,7 @@ class WPML_Comment_Duplication{
 			array(
 				'comment_post_ID' => $duplicate_of,
 				'comment_parent'  => $original_parent
-			),
-			array( 'comment_ID' => $comment['comment_ID'] )
+			), array( 'comment_ID' => $comment['comment_ID'] ), array( '%d', '%d' ), array( '%d' )
 		);
 		wp_update_comment_count_now($duplicate_of);
 	}
@@ -55,25 +54,26 @@ class WPML_Comment_Duplication{
 		} else {
 			$wpdb->insert ( $wpdb->comments, $comment );
 			$dup_comment_id = $wpdb->insert_id;
-		}
-		add_action ( 'wp_insert_comment', array( $iclTranslationManagement, 'duplication_insert_comment' ), 100 );
-		update_comment_meta ( $dup_comment_id, '_icl_duplicate_of', $original_cid );
-		// comment meta
-		$meta = $wpdb->get_results (
-			$wpdb->prepare (
-				"SELECT meta_key, meta_value FROM {$wpdb->commentmeta} WHERE comment_id=%d",
-				$original_cid
-			)
-		);
-		foreach ( $meta as $meta_row ) {
-			$wpdb->insert (
-				$wpdb->commentmeta,
-				array(
-					'comment_id' => $dup_comment_id,
-					'meta_key'   => $meta_row->meta_key,
-					'meta_value' => $meta_row->meta_value
+
+			add_action ( 'wp_insert_comment', array( $iclTranslationManagement, 'duplication_insert_comment' ), 100 );
+			update_comment_meta ( $dup_comment_id, '_icl_duplicate_of', $original_cid );
+			// comment meta
+			$meta = $wpdb->get_results (
+				$wpdb->prepare (
+					"SELECT meta_key, meta_value FROM {$wpdb->commentmeta} WHERE comment_id=%d",
+					$original_cid
 				)
 			);
+			foreach ( $meta as $meta_row ) {
+				$wpdb->insert (
+					$wpdb->commentmeta,
+					array(
+						'comment_id' => $dup_comment_id,
+						'meta_key'   => $meta_row->meta_key,
+						'meta_value' => $meta_row->meta_value
+					), array( '%d', '%s', '%s' )
+				);
+			}
 		}
 
 		wp_update_comment_count_now ( $dup_id );
