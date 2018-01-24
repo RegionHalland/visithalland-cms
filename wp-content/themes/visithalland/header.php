@@ -163,11 +163,12 @@
                 </div>
             </div>
             <!--- Mobile Search End -->
-
+            
             <!--- Mobile Navigation Start -->
             <nav class="mobile-navigation topographic-pattern">
                 <div class="mobile-navigation__inner p2">
                     <h5 class="mobile-navigation__header light">Vad intresserar dig?</h5>
+
                     <?php
                         foreach ($mainMenuItems as $key => $value) : ?>
                             <div class="mobile-navigation__item <?php echo $value->post_name ?>">
