@@ -51,7 +51,7 @@ $term = get_queried_object(); ?>
 								                </picture>
 								        </div>
 								        <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
-								        <h4 class="page-thumbnail__link"><?php _e( 'Read More', 'visithalland' ); ?></h4>
+								        <h4 class="page-thumbnail__link"><?php _e( 'Läs mer', 'visithalland' ); ?></h4>
 								    </a>
 								</div>
 							<?php endforeach ?>
@@ -195,7 +195,7 @@ $term = get_queried_object(); ?>
 					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", $meet_local->ID) ?></p>
 					        <div class="article-link inline-block mt0">
 					            <hr class="article-link__divider block mb3"/>
-					            <span class="article-link__text">Läs hela artikeln</span>
+					            <span class="article-link__text"><?php _e( 'Läs hela artikeln', 'visithalland' ); ?></span>
 					            <span class="article-link__icon-wrapper">
 					                <i class="material-icons article-link__icon">arrow_forward</i>
 					            </span>

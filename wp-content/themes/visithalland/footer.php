@@ -15,7 +15,7 @@
 
             <!-- Footer Navigation Start -->
             <div class="footer__column col sm-col-7 col-12 md-col-3 mt2">
-                <span class="footer__column-header">Upplevelser</span>
+                <span class="footer__column-header"><?php _e( 'Upplevelser', 'visithalland' ); ?></span>
                 <nav class="footer__list footer-nav">
                     <?php
                     $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
@@ -41,7 +41,7 @@
             <div class="col col-12 sm-col-12 md-col-4">
                 <div class="clearfix">
                     <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header">Om siten</span>
+                        <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
                         <ul class="footer__list">
                             <?php
                                 $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
@@ -68,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="footer__column col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header">Partners</span>
+                        <span class="footer__column-header"><?php _e( 'Partners', 'visithalland' ); ?></span>
                         <ul class="footer__list">
                             <li class="footer__list-item mt1 light">
                                 <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
@@ -91,7 +91,10 @@
                         </a>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
-                        <p class="light footer__eu-paragraph mt0">VisitHalland.com är del av EU-projektet Destination Halland 2020. Projektet finansieras via Europeiska regionala utvecklingsfonden.</p>
+                        <p class="light footer__eu-paragraph mt0">
+                            <!-- This needs to be dynamic -->
+                            VisitHalland.com är del av EU-projektet Destination Halland 2020. Projektet finansieras via Europeiska regionala utvecklingsfonden.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -108,11 +111,11 @@
                 <span class="cookie-banner__policy">
                     <?php echo get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )); ?>
                     <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' ) ); ?>" class="cookie-banner__link">
-                        Se våra användningsvillkor
+                        <?php _e( 'Se användningsvillkor', 'visithalland' ); ?>
                     </a>
                 </span>
 
-                <button class="cookie-banner__button icon-button" id="cookie-accept" title="Okay, close" tabindex="2">
+                <button class="cookie-banner__button icon-button" id="cookie-accept" title="<?php _e( 'Stäng', 'visithalland' ); ?>" tabindex="2">
                     <svg class="icon icon-button__icon">
                         <use xlink:href="#close-icon"/>
                     </svg>
