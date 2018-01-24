@@ -6,6 +6,7 @@
     
 ?>
 <div id="container">
+<!-- Try to remove this container and append to some other container -->
     <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
         <section class="editorial-header relative clearfix" role="heading" id="page-content">
             <div class="editorial-header__backdrop topographic-pattern"></div>
@@ -152,9 +153,21 @@
     <?php endwhile; ?>
     </article>
 
-<div class="next-post-link">
-    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+    <!-- Link needed for infinite scroll -->
+    <div class="next-post-link">
+        <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
+    </div>
+    <!-- End Link needed for infinite scroll -->
+    
 </div>
 
+<!-- Working on infinite scroll feedback -->
+ <div class="page-load-status">
+    <p class="infinite-scroll-request">Hämtar nästa artikel yao...</p>
+    <p class="infinite-scroll-last">End of content</p>
+    <p class="infinite-scroll-error">No more pages to load</p>
 </div>
+ <!--- End Infinite Scroll -->
+
+
 <?php get_footer(); ?>
