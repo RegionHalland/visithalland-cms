@@ -1,5 +1,5 @@
 jQuery(function() {
-	var nextUrl = jQuery('.next-link').last().attr('href');
+	var nextUrl = jQuery('.next-link').attr('href');
 console.log(nextUrl);
 
 var $container = jQuery('.container').infiniteScroll({
@@ -19,8 +19,8 @@ $container.on( 'load.infiniteScroll', function( event, response ) {
   //var data = JSON.parse( response );
   // put that data into template
   //var itemsHTML = template.compile( data );
-  var elements = $(response);
-  console.log(response);
+  var elements = jQuery(response);
+  console.log(jQuery(response).find('.next-link').attr('href'));
   // convert to jQuery object
   //var $items = $( itemsHTML );
   // append items
