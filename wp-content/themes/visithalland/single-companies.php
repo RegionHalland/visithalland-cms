@@ -44,12 +44,12 @@
         <section class="details clearfix left-align col-11 md-col-10 lg-col-8 mx-auto">
             <div id="map"></div>
             <section id="opening-hours" class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0">
-                <span class="details__section-label block">Visit us</span>
+                <span class="details__section-label block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></span>
 
             </section>
-            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block">Get in touch</span><a id="details-show-on-map" href="" class="details__phone block"><i class="details__icon material-icons mr2">business</i>Visa på karta</a></section>
+            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span><a id="details-show-on-map" href="" class="details__phone block"><i class="details__icon material-icons mr2">business</i><?php _e( 'Visa på karta', 'visithalland' ); ?></a></section>
             <section
-                class="details__section col col-12 sm-col-4"><span class="details__section-label block">Read more</span><a id="details-visit-website" href="#" class="btn btn--primary inline-block">Besök webbplats</a></section>
+                class="details__section col col-12 sm-col-4"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a id="details-visit-website" href="#" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a></section>
         </section>
         <?php /* End - Google business Details */ ?>
 
