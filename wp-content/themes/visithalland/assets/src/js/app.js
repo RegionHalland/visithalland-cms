@@ -1,4 +1,33 @@
 jQuery(function() {
+	var nextUrl = jQuery('.next-link').last().attr('href');
+console.log(nextUrl);
+
+var $container = jQuery('.container').infiniteScroll({
+  // options
+  path: function() {
+  	var pageNumber = ( this.loadCount + 1 ) * 10;
+  	return nextUrl;
+  	//return '/articles/P' + pageNumber;
+  }, 
+  append: 'article',
+  history: false,
+  debug: true
+});
+
+$container.on( 'load.infiniteScroll', function( event, response ) {
+  // prase response text into JSON data
+  //var data = JSON.parse( response );
+  // put that data into template
+  //var itemsHTML = template.compile( data );
+  var elements = $(theHtmlString);
+  console.log(response);
+  // convert to jQuery object
+  //var $items = $( itemsHTML );
+  // append items
+  //$container.infiniteScroll( 'appendItems', $items );
+});
+
+
 	//Init lazyload and the IntersectionObserver API if supported by the browser
 	(function(w, d){
 		var b = d.getElementsByTagName('body')[0];

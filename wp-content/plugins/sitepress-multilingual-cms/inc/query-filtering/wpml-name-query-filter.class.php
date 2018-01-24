@@ -50,11 +50,13 @@ abstract class WPML_Name_Query_Filter extends WPML_Slug_Resolution {
 	 *
 	 * @param WP_Query $page_query
 	 *
-	 * @return WP_Query that uses the id index stored in \WPML_Name_Query_Filter::$id_index
+	 * @return array
+	 *                  - WP_Query that uses the id index stored in \WPML_Name_Query_Filter::$id_index
 	 *                  instead of "name" or "pagename" in case a match was found, otherwise
 	 *                  returns the input query unaltered.
+	 *                  - int|false the page ID
 	 */
-	public function filter_page_name( $page_query ) {
+	public function filter_page_name( WP_Query $page_query ) {
 		$this->active_languages = $this->get_ordered_langs();
 		$this->al_regexp        = $this->generate_al_regexp( $this->active_languages );
 		foreach ( $this->indexes as $index ) {
@@ -62,7 +64,12 @@ abstract class WPML_Name_Query_Filter extends WPML_Slug_Resolution {
 			if ( (bool) $pages_with_name === true ) {
 				$pid = $this->select_best_match( $pages_with_name );
 				if ( isset( $pid ) ) {
-					$page_query = $this->maybe_adjust_query_by_pid( $page_query, $pid, $index );
+					if ( ! isset( $page_query->queried_object_id ) || $pid != $page_query->queried_object_id ) {
+						$page_query = $this->maybe_adjust_query_by_pid( $page_query, $pid, $index );
+						break;
+					} else {
+						unset( $pid );
+					}
 				} elseif ( (bool) $page_name_for_query === true ) {
 					$page_query->query_vars[ $index ]    = $page_name_for_query;
 					$page_query->query_vars['post_type'] = $this->post_type;
@@ -87,22 +94,27 @@ abstract class WPML_Name_Query_Filter extends WPML_Slug_Resolution {
 		         && isset( $page_query->queried_object->ID )
 		         && (int) $page_query->queried_object->ID === (int) $pid )
 		) {
-			$page_query->query[ 'page_id' ]            = null;
+			if ( isset( $page_query->query[ 'page_id' ] ) ) {
+				$page_query->query[ 'page_id' ]        = (int) $pid;
+			}
 			$page_query->query_vars[ 'page_id' ]       = null;
 			$page_query->query_vars[ $this->id_index ] = (int) $pid;
-			$page_query->query[ $this->id_index ]      = (int) $pid;
+			if ( isset( $page_query->query[ $this->id_index ] ) ) {
+				$page_query->query[ $this->id_index ]  = (int) $pid;
+			}
 			$page_query->is_page                       = false;
-			$page_query->query[ $index ]               = "";
-			if ( isset( $page_query->query_vars[ $this->post_type ] ) ) {
+			if ( isset( $page_query->query_vars[ $this->post_type ] )
+			     && $this->post_type !== 'page'
+			) {
+				$this->set_query_var_to_restore( $this->post_type, $page_query );
 				unset( $page_query->query_vars[ $this->post_type ] );
-				$page_query->query[ $this->post_type ] = "";
 			}
 			unset( $page_query->query_vars[ $index ] );
 			if ( ! empty( $page_query->queried_object ) ) {
 				$page_query->queried_object    = get_post( $pid );
 				$page_query->queried_object_id = (int) $pid;
 			}
-			
+
 			$page_query = $this->adjusting_id( $page_query );
 		}
 
@@ -149,15 +161,21 @@ abstract class WPML_Name_Query_Filter extends WPML_Slug_Resolution {
 	 *
 	 * @return array
 	 */
-	private function query_needs_adjustment( $page_query, $index ) {
+	private function query_needs_adjustment( WP_Query $page_query, $index ) {
 		if ( empty( $page_query->query_vars[ $index ] ) ) {
 			$pages_with_name     = false;
 			$page_name_for_query = false;
 		} else {
 			$page_name_for_query = preg_replace( $this->al_regexp, '', $page_query->query_vars[ $index ] );
-			$pages_with_name     = strpos( $page_name_for_query, '/' ) === false
-				? $this->get_single_slug_adjusted_IDs( $page_name_for_query )
-				: $this->get_multiple_slug_adjusted_IDs( explode( '/', $page_name_for_query ) );
+
+			if ( $this->page_name_has_parent( $page_name_for_query ) ) {
+				$pages_with_name = $this->get_multiple_slug_adjusted_IDs( explode( '/', $page_name_for_query ) );
+			} else {
+				$pages_with_name = $this->get_single_slug_adjusted_IDs(
+					$page_name_for_query,
+					$this->get_post_parent_query_var( $page_query )
+				);
+			}
 		}
 
 		return array( $pages_with_name, $page_name_for_query );
@@ -166,18 +184,65 @@ abstract class WPML_Name_Query_Filter extends WPML_Slug_Resolution {
 	/**
 	 * @param string $page_name_for_query
 	 *
+	 * @return bool
+	 */
+	private function page_name_has_parent( $page_name_for_query ) {
+		return false !== strpos( $page_name_for_query, '/' );
+	}
+
+	/**
+	 * @param WP_Query $page_query
+	 *
+	 * @return int|string
+	 */
+	private function get_post_parent_query_var( WP_Query $page_query ) {
+		$post_parent = 0;
+
+		if ( isset( $page_query->query_vars['post_parent'] ) ) {
+			$post_parent = $page_query->query_vars['post_parent'];
+		}
+
+		return $post_parent;
+	}
+
+	/**
+	 * @param string     $page_name_for_query
+	 * @param string|int $post_parent
+	 *
 	 * @return array
 	 */
-	private function get_single_slug_adjusted_IDs( $page_name_for_query ) {
+	private function get_single_slug_adjusted_IDs( $page_name_for_query, $post_parent ) {
+		$cache = new WPML_WP_Cache( get_class( $this ) );
+		$cache_key =  'get_single_slug_adjusted_IDs' . $this->post_type . $page_name_for_query . $post_parent;
+		$found = false;
+
+		$pages_with_name = $cache->get( $cache_key, $found );
+
+		if ( ! $found ) {
+			$pages_with_name = $this->get_single_slug_adjusted_IDs_from_DB( $page_name_for_query, $post_parent );
+			$cache->set( $cache_key, $pages_with_name );
+		}
+
+		return $pages_with_name;
+	}
+
+	/**
+	 * @param string     $page_name_for_query
+	 * @param string|int $post_parent
+	 *
+	 * @return array
+	 */
+	private function get_single_slug_adjusted_IDs_from_DB( $page_name_for_query, $post_parent ) {
 		$pages_with_name = $this->wpdb->get_col(
 			$this->wpdb->prepare(
 				"
 				SELECT ID
 				" . $this->get_from_join_snippet()
 				. $this->get_where_snippet() . " p.post_name = %s
-				ORDER BY p.post_parent = 0 DESC
+				ORDER BY p.post_parent = %d DESC
 				",
-				$page_name_for_query
+				$page_name_for_query,
+				$post_parent
 			)
 		);
 

@@ -7,18 +7,37 @@
 function wpml_site_uses_icl() {
 	global $wpdb;
 
-	$icl_job_count = false;
+	$setting = 'site_does_not_use_icl';
 
-	$table_exists = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}icl_translation_status'" );
-
-	if ( $table_exists ) {
-		$icl_job_count_query = "SELECT COUNT(*)
-							FROM {$wpdb->prefix}icl_translation_status
-							WHERE translation_service = 'icanlocalize'";
-		$icl_job_count       = $wpdb->get_var( $icl_job_count_query );
+	if ( icl_get_setting( $setting, false ) ) {
+		return false;
 	}
 
-	return $icl_job_count;
+	$cache = new WPML_WP_Cache( 'wpml-checks' );
+
+	$found         = false;
+	$site_uses_icl = $cache->get( 'site_uses_icl', $found );
+
+	if ( ! $found ) {
+		$site_uses_icl = false;
+
+		$table_exists = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}icl_translation_status'" );
+
+		if ( $table_exists ) {
+			$icl_job_count_query = "SELECT rid
+							FROM {$wpdb->prefix}icl_translation_status
+							WHERE translation_service = 'icanlocalize'
+							LIMIT 1;";
+			$site_uses_icl       = (bool) $wpdb->get_var( $icl_job_count_query );
+		}
+		$cache->set( 'site_uses_icl', $site_uses_icl );
+	}
+
+	if ( icl_get_setting( 'setup_complete', false ) && ! $site_uses_icl ) {
+		icl_set_setting( $setting, true, true );
+	}
+
+	return $site_uses_icl;
 }
 
 /**
@@ -93,7 +112,7 @@ function icl_get_sub_setting( $key, $sub_key, $default = false ) {
 function wpml_get_sub_setting_filter( $default, $key, $sub_key, $deprecated = null ) {
 	$default = $deprecated !== null  && !$default ? $deprecated : $default;
 
-	$parent = wpml_get_setting_filter( $key, array() );
+	$parent = wpml_get_setting_filter(array(), $key );
 
 	return isset( $parent[ $sub_key ] ) ? $parent[ $sub_key ] : $default;
 }
@@ -135,9 +154,8 @@ function icl_get_settings() {
  * @return array
  */
 function icl_plugin_action_links( $links, $file ) {
-	$this_plugin = basename( ICL_PLUGIN_PATH ) . '/sitepress.php';
-	if ( $file == $this_plugin ) {
-		$links[ ] = '<a href="admin.php?page=' . basename( ICL_PLUGIN_PATH ) . '/menu/languages.php">' . __( 'Configure', 'sitepress' ) . '</a>';
+	if ( $file == WPML_PLUGIN_BASENAME ) {
+		$links[ ] = '<a href="admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/languages.php">' . __( 'Configure', 'sitepress' ) . '</a>';
 	}
 
 	return $links;
@@ -158,17 +176,6 @@ if ( ! function_exists( 'icl_js_escape' ) ) {
 
 		return $str;
 	}
-}
-
-function icl_nobreak( $str ) {
-	return preg_replace( "# #", '&nbsp;', $str );
-}
-
-function icl_strip_control_chars( $string ) {
-	// strip out control characters (all but LF, NL and TAB)
-	$string = preg_replace( '/[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]/', '', $string );
-
-	return $string;
 }
 
 function _icl_tax_has_objects_recursive( $id, $term_id = - 1, $rec = 0 ) {
@@ -210,56 +217,26 @@ function _icl_tax_has_objects_recursive( $id, $term_id = - 1, $rec = 0 ) {
 	return false;
 }
 
-function icl_get_post_children_recursive( $post, $type = 'page' ) {
-	global $wpdb;
-
-	$post = (array) $post;
-
-	$children = $wpdb->get_col( $wpdb->prepare( "SELECT ID
-                                               FROM {$wpdb->posts}
-                                               WHERE post_type=%s
-                                                AND post_parent IN (" . wpml_prepare_in( $post, '%d' ) . ")", $type ) );
-
-	if ( ! empty( $children ) ) {
-		$children = array_merge( $children, icl_get_post_children_recursive( $children ) );
-	}
-
-	return $children;
-}
-
-function icl_get_tax_children_recursive( $id, $taxonomy = 'category' ) {
-	global $wpdb;
-
-	$id = (array) $id;
-
-	$children = $wpdb->get_col( $wpdb->prepare( "SELECT term_id
-                                               FROM {$wpdb->term_taxonomy} x
-                                               WHERE x.taxonomy=%s
-                                                AND parent IN (" . wpml_prepare_in( $id, '%d' ) . ")", $taxonomy ) );
-
-	if ( ! empty( $children ) ) {
-		$children = array_merge( $children, icl_get_tax_children_recursive( $children ) );
-	}
-
-	return $children;
-}
-
 function _icl_trash_restore_prompt() {
 	if ( isset( $_GET[ 'lang' ] ) ) {
 		$post = get_post( intval( $_GET[ 'post' ] ) );
 		if ( isset( $post->post_status ) && $post->post_status == 'trash' ) {
 			$post_type_object = get_post_type_object( $post->post_type );
-			$ret              = '<p>';
-			$ret .= sprintf( __( 'This translation is currently in the trash. You need to either <a href="%s">delete it permanently</a> or <a href="%s">restore</a> it in order to continue.' ), get_delete_post_link( $post->ID, '', true ), wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link
-			                                                                                                                                                                                                                                                                    . '&amp;action=untrash', $post->ID ) ),
-			                                                                                                                                                                                                                                                'untrash-post_'
-			                                                                                                                                                                                                                                                . $post->ID ) );
-			$ret .= '</p>';
+
+			$delete_post_link  = '<a href="' . esc_url( get_delete_post_link( $post->ID, '', true ) ) . '">' . esc_html( 'delete it permanently', 'sitepress' ) . '</a>';
+			$restore_post_link = '<a href="' . wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $post->ID ) ), 'untrash-post_' . $post->ID ) . '">' . esc_html( 'restore', 'sitepress' ) . '</a>';
+			$ret               = '<p>' . sprintf( esc_html__( 'This translation is currently in the trash. You need to either %s or %s it in order to continue.' ), $delete_post_link, $restore_post_link );
+
 			wp_die( $ret );
 		}
 	}
 }
 
+/**
+ * @param string $message should be already escaped as it might contain HTML
+ * @param string $icon
+ * @param array $args
+ */
 function icl_pop_info( $message, $icon = 'info', $args = array() ) {
 	switch ( $icon ) {
 		case 'info':
@@ -283,10 +260,11 @@ function icl_pop_info( $message, $icon = 'info', $args = array() ) {
 	$close_icon = ICL_PLUGIN_URL . '/res/img/ico-close.png';
 	?>
 	<div class="icl_pop_info_wrap">
-		<img class="icl_pop_info_but <?php echo join( ' ', $but_style )?>" src="<?php echo $icon ?>" width="<?php echo $icon_size ?>" height="<?php echo $icon_size ?>" alt="info"/>
+		<img class="icl_pop_info_but <?php echo esc_attr( join( ' ', $but_style ) ); ?>" src="<?php echo esc_url( $icon ); ?>"
+		     width="<?php echo esc_attr( $icon_size ) ?>" height="<?php echo esc_attr( $icon_size ); ?>" alt="info"/>
 
 		<div class="icl_cyan_box icl_pop_info">
-			<img class="icl_pop_info_but_close" align="right" src="<?php echo $close_icon; ?>" width="12" height="12" alt="x"/>
+			<img class="icl_pop_info_but_close" align="right" src="<?php echo esc_url( $close_icon ); ?>" width="12" height="12" alt="x"/>
 			<?php echo $message; ?>
 		</div>
 	</div>
@@ -358,6 +336,7 @@ function icl_makes_duplicates_public( $master_post_id ) {
  * @uses  SitePress
  * @since 3.2
  * @use \SitePress::api_hooks
+ * @deprecated This function will be removed in future releases.
  */
 function wpml_make_post_duplicates_action( $master_post_id ) {
 
@@ -365,7 +344,7 @@ function wpml_make_post_duplicates_action( $master_post_id ) {
 
 	$master_post = get_post( $master_post_id );
 
-	if ( $master_post->post_status == 'auto-draft' || $master_post->post_type == 'revision' ) {
+	if ( 'auto-draft' === $master_post->post_status || 'revision' === $master_post->post_type ) {
 		return;
 	}
 
@@ -380,30 +359,7 @@ function wpml_make_post_duplicates_action( $master_post_id ) {
 			continue;
 		}
 
-		$post_array[ 'post_author' ]   = $master_post->post_author;
-		$post_array[ 'post_date' ]     = $master_post->post_date;
-		$post_array[ 'post_date_gmt' ] = $master_post->post_date_gmt;
-		$post_array[ 'post_content' ]  = addslashes_gpc( apply_filters( 'icl_duplicate_generic_string', $master_post->post_content, $lang_to, array( 'context' => 'post', 'attribute' => 'content', 'key' => $master_post->ID ) ) );
-		$post_array[ 'post_title' ]    = addslashes_gpc( apply_filters( 'icl_duplicate_generic_string', $master_post->post_title, $lang_to, array( 'context' => 'post', 'attribute' => 'title', 'key' => $master_post->ID ) ) );
-		$post_array[ 'post_excerpt' ]  = addslashes_gpc( apply_filters( 'icl_duplicate_generic_string', $master_post->post_excerpt, $lang_to, array( 'context' => 'post', 'attribute' => 'excerpt', 'key' => $master_post->ID ) ) );
-		$post_array[ 'post_status' ]   = $master_post->post_status;
-		//TODO [WPML 3.3.] wp_insert_post() does accept 'post_category': even though is not part of the WP_Post object, it deals with it. But as far as I know $master_post doesn't have this property, when set with get_post(), so probably we need to fix that, shouldn't we?
-		$post_array[ 'post_category' ]  = $master_post->post_category;
-		$post_array[ 'comment_status' ] = $master_post->comment_status;
-		$post_array[ 'ping_status' ]    = $master_post->ping_status;
-		$post_array[ 'post_name' ]      = $master_post->post_name;
-		$post_array[ 'menu_order' ]     = $master_post->menu_order;
-		$post_array[ 'post_type' ]      = $master_post->post_type;
-		$post_array[ 'post_mime_type' ] = $master_post->post_mime_type;
-
-		if ( $master_post->post_parent ) {
-			$parent                      = icl_object_id( $master_post->post_parent, $master_post->post_type, false, $lang_to );
-			$post_array[ 'post_parent' ] = $parent;
-		}
-
-		$id = wp_insert_post( $post_array );
-
-		$sitepress->set_element_language_details( $id, 'post_' . $post_array[ 'post_type' ], $trid, $lang_to, $lang_from, false );
+		$sitepress->make_duplicate( $master_post_id, $lang_to );
 	}
 }
 
@@ -505,7 +461,7 @@ function wpml_strip_subdir_from_url( $url ) {
 	/** @var WPML_URL_Converter $wpml_url_converter */
 	global $wpml_url_converter;
 
-	$subdir       = parse_url( $wpml_url_converter->get_abs_home(), PHP_URL_PATH );
+	$subdir       = wpml_parse_url( $wpml_url_converter->get_abs_home(), PHP_URL_PATH );
 	$subdir_slugs = array_values( array_filter( explode( '/', $subdir ) ) );
 
 	$url_path_expl = explode( '/', preg_replace( '#^(http|https)://#', '', $url ) );
@@ -551,9 +507,9 @@ function is_not_installing_plugins() {
 		return true;
 	} elseif ( $_REQUEST[ 'action' ] != 'activate' && $_REQUEST[ 'action' ] != 'activate-selected' ) {
 		return true;
-	} elseif ( ( ! isset( $_REQUEST[ 'plugin' ] ) || $_REQUEST[ 'plugin' ] != basename( ICL_PLUGIN_PATH ) . '/' . basename( __FILE__ ) ) && ! in_array( ICL_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) ) {
+	} elseif ( ( ! isset( $_REQUEST[ 'plugin' ] ) || $_REQUEST[ 'plugin' ] != WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ) ) && ! in_array( WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) ) {
 		return true;
-	} elseif ( in_array( ICL_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) && ! isset( $sitepress ) ) {
+	} elseif ( in_array( WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) && ! isset( $sitepress ) ) {
 		return true;
 	}
 
@@ -576,14 +532,6 @@ function wpml_mb_strpos( $haystack, $needle, $offset = 0 ) {
 	return strpos( $haystack, $needle, $offset );
 }
 
-function wpml_mb_strlen( $str ) {
-	if ( function_exists( 'mb_strlen' ) ) {
-		return mb_strlen( $str );
-	}
-
-	return strlen( $str );
-}
-
 function wpml_set_plugin_as_inactive() {
 	global $icl_plugin_inactive;
 	if ( ! defined( 'ICL_PLUGIN_INACTIVE' ) ) {
@@ -596,34 +544,19 @@ function wpml_version_is( $version_to_check, $comparison = '==' ) {
 	return version_compare( ICL_SITEPRESS_VERSION, $version_to_check, $comparison ) && function_exists( 'wpml_site_uses_icl' );
 }
 
-function wpml_site_uses_icl_message_notice() {
-	$plugin_download_url = 'https://wpml.org/account/downloads/#migrate-icanlocalize-translation-to-wpml-3-2';
-	$plugin_download_label = _x('Download from WPML.org', 'Site Uses ICL: message notice, plugin download button', 'sitepress');
-	$plugin_download_anchor = '<a href="' . $plugin_download_url . '" class="button-primary" target="_blank">' . $plugin_download_label . '</a>';
-
-	$messages[] = _x( 'Your website is using ICanLocalize for professional translation. This version of WPML requires an update to your ICanLocalize project. We prepared a plugin that will do this update for you.', 'Site Uses ICL: message notice line 1', 'sitepress' );
-	$messages[] = $plugin_download_anchor;
-	$messages[] = _x( 'After you log-in, go to Downloads and get the plugin called "Migrate ICanLocalize Translation to WPML 3.2". Install and activate it, then follow the instructions to migrate your translation project.', 'Site Uses ICL: message notice line 2', 'sitepress' );
-	?>
-	<div class="error">
-		<p><?php echo implode( '</p><p>', $messages ); ?></p>
-	</div>
-<?php
-}
-
 /**
  * Interrupts the plugin activation process if the WPML Core Plugin could not be activated
  */
 function icl_suppress_activation() {
 	$active_plugins    = get_option( 'active_plugins' );
-	$icl_sitepress_idx = array_search( ICL_PLUGIN_FOLDER . '/sitepress.php', $active_plugins );
+	$icl_sitepress_idx = array_search( WPML_PLUGIN_BASENAME, $active_plugins );
 	if ( false !== $icl_sitepress_idx ) {
 		unset( $active_plugins[ $icl_sitepress_idx ] );
 		update_option( 'active_plugins', $active_plugins );
 		unset( $_GET[ 'activate' ] );
 		$recently_activated = get_option( 'recently_activated' );
-		if ( ! isset( $recently_activated[ ICL_PLUGIN_FOLDER . '/sitepress.php' ] ) ) {
-			$recently_activated[ ICL_PLUGIN_FOLDER . '/sitepress.php' ] = time();
+		if ( ! isset( $recently_activated[ WPML_PLUGIN_BASENAME ] ) ) {
+			$recently_activated[ WPML_PLUGIN_BASENAME ] = time();
 			update_option( 'recently_activated', $recently_activated );
 		}
 	}
@@ -634,7 +567,7 @@ function icl_suppress_activation() {
  */
 function activate_installer( $sitepress = null ) {
 	// installer hook - start
-	include_once ICL_PLUGIN_PATH . '/inc/installer/loader.php'; //produces global variable $wp_installer_instance
+	include_once WPML_PLUGIN_PATH . '/vendor/otgs/installer/loader.php'; //produces global variable $wp_installer_instance
 	$args = array(
 		'plugins_install_tab' => 1,
 		'high_priority'       => 1,
@@ -658,25 +591,25 @@ function activate_installer( $sitepress = null ) {
 function wpml_missing_filter_input_notice() {
 	?>
 	<div class="message error">
-		<h3><?php _e( "WPML can't be functional because it requires a disabled PHP extension!", 'sitepress' ) ?></h3>
+		<h3><?php esc_html_e( "WPML can't be functional because it requires a disabled PHP extension!", 'sitepress' ); ?></h3>
 
-		<p><?php _e( "To ensure and improve the security of your website, WPML makes use of the ", 'sitepress' ) ?><a href="http://php.net/manual/en/book.filter.php">PHP Data Filtering</a> extension.<br><br>
-			<?php _e( "The filter extension is enabled by default as of PHP 5.2.0. Before this time an experimental PECL extension was
-            used, however, the PECL version is no longer recommended to be used or updated. (source: ", 'sitepress' ) ?><a href="http://php.net/manual/en/filter.installation.php">PHP Manual Function Reference Variable and
+		<p><?php esc_html_e( "To ensure and improve the security of your website, WPML makes use of the ", 'sitepress' ); ?><a href="http://php.net/manual/en/book.filter.php">PHP Data Filtering</a> extension.<br><br>
+			<?php esc_html_e( "The filter extension is enabled by default as of PHP 5.2.0. Before this time an experimental PECL extension was
+            used, however, the PECL version is no longer recommended to be used or updated. (source: ", 'sitepress' ); ?><a href="http://php.net/manual/en/filter.installation.php">PHP Manual Function Reference Variable and
 			                                                                                                                                                                       Type Related Extensions Filter
 			                                                                                                                                                                       Installing/Configuring</a>)<br>
 			<br>
-			<?php _e( "The filter extension is enabled by default as of PHP 5.2, therefore it must have been disabled by either you or your host.", 'sitepress' ) ?>
-			<br><?php _e( "To enable it, either you or your host will need to open your website's php.ini file and either:", 'sitepress' ) ?><br>
+			<?php esc_html_e( "The filter extension is enabled by default as of PHP 5.2, therefore it must have been disabled by either you or your host.", 'sitepress' ); ?>
+			<br><?php esc_html_e( "To enable it, either you or your host will need to open your website's php.ini file and either:", 'sitepress' ); ?><br>
 		<ol>
-			<li><?php _e( "Remove the 'filter_var' string from the 'disable_functions' directive or...", 'sitepress' ) ?>
+			<li><?php esc_html_e( "Remove the 'filter_var' string from the 'disable_functions' directive or...", 'sitepress' ); ?>
 			</li>
-			<li><?php _e( "Add the following line:", 'sitepress' ) ?> <code class="inline-code">extension=filter.so</code></li>
+			<li><?php esc_html_e( "Add the following line:", 'sitepress' ); ?> <code class="inline-code">extension=filter.so</code></li>
 		</ol>
 		<?php $ini_location = php_ini_loaded_file();
 		if ( $ini_location !== false ) {
 			?>
-			<strong><?php echo __( "Your php.ini file is located at", 'sitepress' ) . ' ' . $ini_location ?>.</strong>
+			<strong><?php esc_html_e( "Your php.ini file is located at", 'sitepress' ) . ' ' . esc_html( $ini_location); ?>.</strong>
 		<?php
 		}
 		?>
@@ -688,22 +621,104 @@ function repair_el_type_collate() {
 	global $wpdb;
 
 	$correct_collate = $wpdb->get_var (
-		"SELECT collation_name
-          FROM information_schema.COLUMNS
-          WHERE TABLE_NAME = '{$wpdb->posts}'
-                AND COLUMN_NAME = 'post_type'
-                    AND table_schema = (SELECT DATABASE())
-          LIMIT 1"
+		$wpdb->prepare(
+			"SELECT collation_name
+	          FROM information_schema.COLUMNS
+	          WHERE TABLE_NAME = '%s'
+	                AND COLUMN_NAME = 'post_type'
+	                    AND table_schema = (SELECT DATABASE())
+	          LIMIT 1",
+			$wpdb->posts
+		)
 	);
 
 	// translations
 	$table_name = $wpdb->prefix . 'icl_translations';
-	$sql
-	            = "
-             ALTER TABLE `{$table_name}`
-                CHANGE `element_type` `element_type` VARCHAR( 36 ) NOT NULL DEFAULT 'post_post' COLLATE {$correct_collate}
-            ";
+	$sql = $wpdb->prepare(
+		"ALTER TABLE `$table_name` CHANGE `element_type` `element_type` VARCHAR( 36 ) NOT NULL DEFAULT 'post_post' COLLATE %s",
+		$correct_collate
+	);
+
 	if ( $wpdb->query ( $sql ) === false ) {
 		throw new Exception( $wpdb->last_error );
 	}
+}
+
+/**
+ * Wrapper for `parse_url` using `wp_parse_url`
+ *
+ * @param $url
+ * @param int $component
+ *
+ * @return array|string|int|null
+ */
+function wpml_parse_url( $url, $component = -1 ) {
+	$ret = null;
+
+	$component_map = array(
+		PHP_URL_SCHEME     => 'scheme',
+		PHP_URL_HOST       => 'host',
+		PHP_URL_PORT       => 'port',
+		PHP_URL_USER       => 'user',
+		PHP_URL_PASS       => 'pass',
+		PHP_URL_PATH       => 'path',
+		PHP_URL_QUERY      => 'query',
+		PHP_URL_FRAGMENT   => 'fragment',
+	);
+
+	if ( $component === -1 ) {
+		$ret = wp_parse_url( $url );
+	} else if ( isset( $component_map[ $component ] ) ) {
+		$key = $component_map[ $component ];
+		$parsed = wp_parse_url( $url );
+		$ret = isset( $parsed[ $key ] ) ? $parsed[ $key ] : null;
+	}
+
+	return $ret;
+}
+
+// Add wp_parse_url function for versions of WP before 4.4
+
+if ( ! function_exists( 'wp_parse_url' ) ) {
+	function wp_parse_url( $url ) {
+		$parts = @parse_url( $url );
+		if ( ! $parts ) {
+			// < PHP 5.4.7 compat, trouble with relative paths including a scheme break in the path
+			if ( '/' == $url[0] && false !== strpos( $url, '://' ) ) {
+				// Since we know it's a relative path, prefix with a scheme/host placeholder and try again
+				if ( ! $parts = @parse_url( 'placeholder://placeholder' . $url ) ) {
+					return $parts;
+				}
+				// Remove the placeholder values
+				unset( $parts['scheme'], $parts['host'] );
+			} else {
+				return $parts;
+			}
+		}
+	
+		// < PHP 5.4.7 compat, doesn't detect schemeless URL's host field
+		if ( '//' == substr( $url, 0, 2 ) && ! isset( $parts['host'] ) ) {
+			$path_parts = explode( '/', substr( $parts['path'], 2 ), 2 );
+			$parts['host'] = $path_parts[0];
+			if ( isset( $path_parts[1] ) ) {
+				$parts['path'] = '/' . $path_parts[1];
+			} else {
+				unset( $parts['path'] );
+			}
+		}
+	
+		return $parts;
+	}
+}
+
+/**
+ * Wrapper function to prevent ampersand to be encoded (depending on some PHP versions)
+ * @link http://php.net/manual/en/function.http-build-query.php#102324
+ *
+ * @param array|object $query_data
+ *
+ * @return string
+ */
+function wpml_http_build_query( $query_data ) {
+	return http_build_query( $query_data, '', '&' );
 }

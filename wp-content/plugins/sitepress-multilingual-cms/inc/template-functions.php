@@ -137,10 +137,8 @@ function icl_get_languages( $a = '' ) {
 function wpml_get_active_languages_filter( $empty_value, $args = '' ) {
 	global $sitepress;
 
-	$args = wp_parse_args( $args );
-	$langs = $sitepress->get_ls_languages( $args );
-
-	return $langs;
+	$args  = wp_parse_args( $args );
+	return $sitepress->get_ls_languages( $args );
 }
 
 /**
@@ -161,6 +159,8 @@ function icl_disp_language( $native_name, $translated_name = false, $lang_native
 }
 
 /**
+ * @deprecated since 3.6.0 / See new Language Switcher API with use of Twig templates
+ *
  * Get the native or translated language name or both
  * Checks if native_language_name and translated_language_name are different.
  * If so, it returns them both, otherwise, it returns only one.
@@ -329,11 +329,11 @@ function wpml_link_to_element_filter(
 		$url .= '#' . $anchor;
 	}
 
-	$link = '<a href="' . $url . '">';
+	$link = '<a href="' . esc_url( $url ) . '">';
 	if ( isset( $link_text ) && $link_text ) {
-		$link .= $link_text;
+		$link .= esc_html( $link_text );
 	} else {
-		$link .= $title;
+		$link .= esc_html( $title );
 	}
 	$link .= '</a>';
 
@@ -487,35 +487,15 @@ function wpml_get_current_language() {
 }
 
 /**
- * @todo: [WPML 3.3] refactor in 3.3
- *
- * @param     $folder
- * @param int $rec
+ * @param string $folder
  *
  * @return bool
  */
-function icl_tf_determine_mo_folder( $folder, $rec = 0 ) {
+function icl_tf_determine_mo_folder( $folder ) {
 	global $sitepress;
+	$mo_file_search = new WPML_MO_File_Search( $sitepress );
 
-	$dh  = @opendir( $folder );
-	$lfn = $sitepress->get_locale_file_names();
-
-	while ( $dh && $file = readdir( $dh ) ) {
-		if ( 0 === strpos( $file, '.' ) ) {
-			continue;
-		}
-		if ( is_file( $folder . '/' . $file ) && preg_match( '#\.mo$#i', $file )
-		     && in_array( preg_replace( '#\.mo$#i', '', $file ), $lfn )
-		) {
-			return $folder;
-		} elseif ( is_dir( $folder . '/' . $file ) && $rec < 5 ) {
-			if ( $f = icl_tf_determine_mo_folder( $folder . '/' . $file, $rec + 1 ) ) {
-				return $f;
-			};
-		}
-	}
-
-	return false;
+	return $mo_file_search->determine_mo_folder( $folder );
 }
 
 /**
@@ -646,7 +626,7 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 			$output .= '
 <fieldset id="wpml_cf_translation_preferences_fieldset_' . $id . '" class="wpml_cf_translation_preferences_fieldset ' . $class . '-form-fieldset form-fieldset fieldset">' . '<legend>' . __( 'Translation preferences', 'sitepress' ) . '</legend>';
 		}
-		$actions  = array( 'ignore' => 0, 'copy' => 1, 'translate' => 2 );
+		$actions  = array( 'ignore' => 0, 'copy' => 1, 'translate' => 2, 'copy-once' => 3 );
 		$action   = isset( $actions[ @strval( $default_value ) ] ) ? $actions[ @strval( $default_value ) ] : 0;
 		$disabled = false;
 		if ( $custom_field ) {
@@ -694,11 +674,13 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 		);
 
 		$output .= '<ul><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_ignore_', '0', __( 'Do nothing', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_ignore_', WPML_IGNORE_CUSTOM_FIELD, __( "Don't translate", 'sitepress' ) );
 		$output .= '</li><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_', '1', __( 'Copy from original', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_', WPML_COPY_CUSTOM_FIELD, __( "Copy from original to translation", 'sitepress' ) );
 		$output .= '</li><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_translate_', '2', __( 'Translate', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_once_', WPML_COPY_ONCE_CUSTOM_FIELD, __( "Copy once", 'sitepress' ) );
+		$output .= '</li><li>';
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_translate_', WPML_TRANSLATE_CUSTOM_FIELD, __( "Translate", 'sitepress' ) );
 		$output .= '</li></ul>';
 
 		if ( $custom_field && $ajax ) {
@@ -715,38 +697,6 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 	}
 
 	return $output;
-}
-
-/**
- * @todo: [WPML 3.3] refactor in 3.3
- *
- * @param $id
- * @param $custom_field
- *
- * @return bool
- */
-function wpml_cf_translation_preferences_store( $id, $custom_field ) {
-	if ( defined( 'WPML_TM_VERSION' ) ) {
-		if ( empty( $id ) || empty( $custom_field )
-		     || ! isset( $_POST[ 'wpml_cf_translation_preferences' ][ $id ] )
-		) {
-			return false;
-		}
-		$custom_field = @strval( $custom_field );
-		$action       = @intval( $_POST[ 'wpml_cf_translation_preferences' ][ $id ] );
-		/** @var TranslationManagement $iclTranslationManagement */
-		global $iclTranslationManagement;
-		if ( ! empty( $iclTranslationManagement ) ) {
-			$iclTranslationManagement->settings[ 'custom_fields_translation' ][ $custom_field ] = $action;
-			$iclTranslationManagement->save_settings();
-
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	return false;
 }
 
 /**
@@ -907,8 +857,8 @@ function wpml_custom_post_translation_options() {
 		$link  = admin_url( 'admin.php?page=' . WPML_TM_FOLDER . '/menu/main.php&sm=mcsetup#icl_custom_posts_sync_options' );
 		$link2 = admin_url( 'admin.php?page=' . WPML_TM_FOLDER . '/menu/main.php&sm=mcsetup#icl_slug_translation' );
 	} else {
-		$link  = admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/translation-options.php#icl_custom_posts_sync_options' );
-		$link2 = admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/translation-options.php#icl_slug_translation' );
+		$link  = admin_url( 'admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/translation-options.php#icl_custom_posts_sync_options' );
+		$link2 = admin_url( 'admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/translation-options.php#icl_slug_translation' );
 	}
 
 	if ( $translated ) {
@@ -936,91 +886,26 @@ function wpml_custom_post_translation_options() {
 }
 
 /**
- * @todo  : [WPML 3.3] refactor in 3.3
- * Choose appropriate template file when paged and not default language
- * Some fix when somebody uses 'page_on_front', set page with custom Template,
- * this page has Loop of posts. Before that, when you changed language to
- * non-default and paged, WPML looses page Template and uses index.php from theme
- * @since 3.1.5
- *
- * @param string $template Template path retrieved from @see wp-includes/template-loader.php
- *
- * @return string New template path (or default)
- */
-function icl_template_paged( $template ) {
-	global $wp_query, $sitepress;
-
-	// we don't want to run this on default language
-	if ( ICL_LANGUAGE_CODE == icl_get_default_language() ) {
-		return $template;
-	}
-
-	// seems WPML overwrite 'page' param too early, let's fix this
-	if ( ( is_home() || is_front_page() ) && $sitepress->get_setting( 'language_negotiation_type' ) == 3 ) {
-		set_query_var( 'page', get_query_var( 'paged' ) );
-	}
-
-	// if template is chosen correctly there is no need to change it
-	if ( $template != get_home_template() ) {
-		return $template;
-	}
-
-	// this is a place where real error occurs. on paged page result we loose
-	// $wp_query->queried_object. so if it set correctly, there is no need to
-	// change template
-	if ( $wp_query->get_queried_object() != null ) {
-		return $template;
-	}
-
-	// does our site really use custom page as front page?
-	if ( 1 > intval( get_option( 'page_on_front' ) ) ) {
-		return $template;
-	}
-
-	// get template slug for custom page chosen as front page
-	$template_slug = get_page_template_slug( get_option( 'page_on_front' ) );
-
-	// "The function get_page_template_slug() returns an empty string when the value of '_wp_page_template' is either empty or 'default'."
-	if ( ! $template_slug ) {
-		return $template;
-	}
-
-	$templates = array();
-
-	$templates[ ] = $template_slug;
-
-	$template = get_query_template( 'page', $templates );
-
-	return $template;
-}
-
-/**
- * @todo: [WPML 3.3] refactor in 3.3
- * apply this filter only on non default language
- */
-add_filter( 'template_include', 'icl_template_paged' );
-
-/**
  * @since      unknown
  * @deprecated 3.2 use 'wpml_add_language_selector' filter instead
  */
 function icl_language_selector() {
-	global $sitepress;
-
-	return $sitepress->get_language_selector();
+	ob_start();
+	do_action( 'wpml_add_language_selector' );
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
 }
 
 /**
  * Display the drop down language selector
  * @since 3.2
- * Will use the language selector include configuration from the WPML -> Language admin screen
+ * Will use the language selector settings from "Language switcher as shortcode or action"
  * @use \SitePress::api_hooks
- * example: do_action('wpml_add_language_selector');
+ * example: do_action( 'wpml_add_language_selector' );
  */
 function wpml_add_language_selector_action() {
-	global $sitepress;
-
-	echo $sitepress->get_language_selector();
+	do_action( 'wpml_add_language_selector' );
 }
 
 /**
@@ -1028,7 +913,11 @@ function wpml_add_language_selector_action() {
  * @deprecated 3.2 use 'wpml_footer_language_selector' filter instead
  */
 function icl_language_selector_footer() {
-	return SitePressLanguageSwitcher::get_language_selector_footer();
+	ob_start();
+	do_action( 'wpml_footer_language_selector' );
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
 }
 
 /**
@@ -1039,7 +928,7 @@ function icl_language_selector_footer() {
  * example: do_action('wpml_footer_language_selector');
  */
 function wpml_footer_language_selector_action() {
-	echo SitePressLanguageSwitcher::get_language_selector_footer();
+	do_action( 'wpml_footer_language_selector' );
 }
 
 /**
@@ -1061,7 +950,7 @@ function wpml_footer_language_selector_action() {
 function wpml_get_language_input_field() {
 	global $sitepress;
 	if ( isset( $sitepress ) ) {
-		return "<input type='hidden' name='lang' value='" . $sitepress->get_current_language() . "' />";
+		return "<input type='hidden' name='lang' value='" . esc_attr( $sitepress->get_current_language() ) . "' />";
 	}
 
 	return null;
@@ -1104,7 +993,7 @@ function wpml_get_language_form_field() {
 	global $sitepress;
 	if ( isset( $sitepress ) ) {
 		$current_language    = $sitepress->get_current_language();
-		$language_form_field = "<input type='hidden' name='lang' value='" . $current_language . "' />";
+		$language_form_field = "<input type='hidden' name='lang' value='" . esc_attr( $current_language ) . "' />";
 		$language_form_field = apply_filters( 'wpml_language_form_input_field', $language_form_field, $current_language );
 	}
 
@@ -1471,5 +1360,7 @@ function wpml_permalink_filter($permalink, $language_code = null) {
  */
 function wpml_switch_language_action($language_code = null) {
 	global $sitepress;
+
 	$sitepress->switch_lang( $language_code, true );
 }
+

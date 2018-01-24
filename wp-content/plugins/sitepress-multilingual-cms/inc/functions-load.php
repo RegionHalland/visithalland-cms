@@ -7,14 +7,15 @@
 /**
  * Loads global variables providing functionality that is used throughout the plugin.
  *
- * @global $wpml_language_resolution
+ * @param null|book              $is_admin If set to `null` it will read from `is_admin()`
+ *
+ * @global                       $wpml_language_resolution
  * @global $wpml_slug_filter
  * @global WPML_Term_Translation $wpml_term_translations
  */
-function load_essential_globals() {
+function load_essential_globals( $is_admin = null ) {
 	global $wpml_language_resolution, $wpml_term_translations, $wpdb;
 
-	$wpml_languages = array();
 	$settings       = get_option( 'icl_sitepress_settings' );
 	if ( (bool) $settings === false ) {
 		icl_sitepress_activate();
@@ -24,12 +25,12 @@ function load_essential_globals() {
 			$active_plugins = get_option( 'active_plugins' );
 			$wpmu_sitewide_plugins = (array) maybe_unserialize( get_site_option( 'active_sitewide_plugins' ) );
 			
-			if ( in_array( trailingslashit( ICL_PLUGIN_FOLDER ) . 'sitepress.php',
-													 $active_plugins,
-													 true ) === false &&
-				 in_array( trailingslashit( ICL_PLUGIN_FOLDER ) . 'sitepress.php',
-													 array_keys( $wpmu_sitewide_plugins ),
-													 true ) === false
+			if ( in_array( WPML_PLUGIN_BASENAME,
+							 $active_plugins,
+							 true ) === false &&
+				 in_array( WPML_PLUGIN_BASENAME,
+							 array_keys( $wpmu_sitewide_plugins ),
+							 true ) === false
 				) {
 				
 				// The plugin has just be reactivated.
@@ -50,19 +51,19 @@ function load_essential_globals() {
 		: array();
 	$active_language_codes                = (bool) $active_language_codes === true
 		? $active_language_codes : wpml_reload_active_languages_setting ();
-	$wpml_languages[ 'active_languages' ] = $active_language_codes;
 	$default_lang_code                    = isset( $settings[ 'default_language' ] ) ? $settings[ 'default_language' ]
 		: false;
 	$wpml_language_resolution             = new WPML_Language_Resolution( $active_language_codes, $default_lang_code );
-	$admin                                = is_admin ();
+	$admin                                = $is_admin === null ? is_admin() : $is_admin;
 
 	wpml_load_post_translation( $admin, $settings );
 	$wpml_term_translations = new WPML_Term_Translation( $wpdb );
 	$domain_validation      = filter_input( INPUT_GET, '____icl_validate_domain' ) ? 1 : false;
 	$domain_validation      = filter_input( INPUT_GET, '____icl_validate_directory' ) ? 2 : $domain_validation;
 	$url_converter          = load_wpml_url_converter( $settings, $domain_validation, $default_lang_code );
+	$directory = $domain_validation === 2 || ( is_multisite() && ! is_subdomain_install() );
 	if ( $domain_validation ) {
-		echo wpml_validate_host( $_SERVER['REQUEST_URI'], $url_converter, $domain_validation === 2 );
+		echo wpml_validate_host( $_SERVER['REQUEST_URI'], $url_converter, $directory );
 		exit;
 	}
 	if ( $admin ) {
@@ -70,10 +71,10 @@ function load_essential_globals() {
 	}
 }
 
-function wpml_load_post_translation( $admin, $settings ) {
+function wpml_load_post_translation( $is_admin, $settings ) {
 	global $wpml_post_translations, $wpdb;
 
-	if ( $admin === true ) {
+	if ( $is_admin === true ) {
 		$wpml_post_translations = new WPML_Admin_Post_Actions( $settings, $wpdb );
 	} else {
 		$wpml_post_translations = new WPML_Frontend_Post_Actions( $settings, $wpdb );
@@ -83,29 +84,29 @@ function wpml_load_post_translation( $admin, $settings ) {
 	$wpml_post_translations->init ();
 }
 
-function wpml_load_request_handler( $admin, $active_language_codes, $default_language ) {
+function wpml_load_request_handler( $is_admin, $active_language_codes, $default_language ) {
 	global $wpml_request_handler, $wpml_url_converter;
 
 	if ( ! isset( $wpml_request_handler ) ) {
-		require ICL_PLUGIN_PATH . '/inc/request-handling/wpml-request.class.php';
-		require ICL_PLUGIN_PATH . '/inc/request-handling/wpml-backend-request.class.php';
+		require WPML_PLUGIN_PATH . '/inc/request-handling/wpml-request.class.php';
+		require WPML_PLUGIN_PATH . '/inc/request-handling/wpml-backend-request.class.php';
 	}
 
-	if ( $admin === true ) {
+	$wpml_cookie = new WPML_Cookie();
+	$wp_api      = new WPML_WP_API();
+
+	if ( $is_admin === true ) {
 		$wpml_request_handler = new WPML_Backend_Request(
 			$wpml_url_converter,
 			$active_language_codes,
-			$default_language,
-			new WPML_Cookie() );
+			$default_language, $wpml_cookie,
+			$wp_api );
 	} else {
-		global $pagenow;
-
 		$wpml_request_handler = new WPML_Frontend_Request(
 			$wpml_url_converter,
 			$active_language_codes,
-			$default_language,
-			new WPML_Cookie(),
-			$pagenow );
+			$default_language, $wpml_cookie,
+			$wp_api );
 	}
 
 	return $wpml_request_handler;
@@ -123,28 +124,19 @@ function wpml_load_query_filter( $installed ) {
 	}
 }
 
-function load_wpml_url_converter($settings, $domain_validation, $default_lang_code){
-	global $wpml_url_converter;
+function load_wpml_url_converter( $settings, $domain_validation, $default_lang_code ) {
+	/**
+	 * @var WPML_URL_Converter $wpml_url_converter
+	 * @var WPML_Language_Resolution $wpml_language_resolution
+	 */
+	global $wpml_url_converter, $wpml_language_resolution;
 
-	$wpml_wp_api        = new WPML_WP_API();
+	$url_type     = isset( $settings['language_negotiation_type'] ) ? $settings['language_negotiation_type'] : false;
+	$url_type     = $domain_validation ? $domain_validation : $url_type;
+	$active_language_codes = $wpml_language_resolution->get_active_language_codes();
 
-	$url_type          = isset( $settings[ 'language_negotiation_type' ] ) ? $settings[ 'language_negotiation_type' ]
-		: false;
-	$url_type          = $domain_validation ? $domain_validation : $url_type;
-	$hidden_langs = isset( $settings[ 'hidden_languages' ] ) ? $settings[ 'hidden_languages' ] : array();
-	if ( $url_type == 1 ) {
-		require ICL_PLUGIN_PATH . '/inc/url-handling/wpml-lang-subdir-converter.class.php';
-		$dir_default        = isset( $settings[ 'urls' ] ) && isset( $settings[ 'urls' ][ 'directory_for_default_language' ] )
-			? $settings[ 'urls' ][ 'directory_for_default_language' ] : false;
-		$wpml_url_converter = new WPML_Lang_Subdir_Converter( $dir_default, $default_lang_code, $hidden_langs, $wpml_wp_api );
-	} elseif ( $url_type == 2 ) {
-		require ICL_PLUGIN_PATH . '/inc/url-handling/wpml-lang-domains-converter.class.php';
-		$domains            = isset( $settings[ 'language_domains' ] ) ? $settings[ 'language_domains' ] : array();
-		$wpml_url_converter = new WPML_Lang_Domains_Converter( $domains, $default_lang_code, $hidden_langs, $wpml_wp_api );
-	} else {
-		require ICL_PLUGIN_PATH . '/inc/url-handling/wpml-lang-parameter-converter.class.php';
-		$wpml_url_converter = new WPML_Lang_Parameter_Converter( $default_lang_code, $hidden_langs, $wpml_wp_api );
-	}
+	$factory            = new WPML_URL_Converter_Factory( $settings, $default_lang_code, $active_language_codes );
+	$wpml_url_converter = $factory->create( (int) $url_type );
 
 	return $wpml_url_converter;
 }
@@ -170,7 +162,7 @@ function wpml_validate_host( $req_uri, $wpml_url_converter, $directory = true ) 
 		$lang_slug = '';
 	}
 
-	return '<!--' . untrailingslashit ( trailingslashit ( $wpml_url_converter->get_abs_home () ) . $lang_slug ) . '-->';
+	return '<!--' . esc_url( untrailingslashit ( trailingslashit ( $wpml_url_converter->get_abs_home () ) . $lang_slug ) ) . '-->';
 }
 
 /**
@@ -196,18 +188,20 @@ function is_taxonomy_translated( $taxonomy ) {
  */
 function is_post_type_translated( $post_type ) {
 
-	return in_array( $post_type, array( 'post', 'page', 'nav_menu_item' ), true )
-	       || in_array(
+	return 'nav_menu_item' === $post_type ||
+	       in_array(
 		       $post_type,
 		       array_keys( array_filter( icl_get_setting( 'custom_posts_sync_option', array() ) ) )
 	       );
 }
 
 function setup_admin_menus() {
-	global $pagenow;
+	global $pagenow, $sitepress;
 
-	if ( $pagenow === 'edit-tags.php' ) {
+	if ( $pagenow === 'edit-tags.php' || $pagenow === 'term.php' ) {
 		maybe_load_translated_tax_screen ();
+		$wpml_term_translation_help_notice = new WPML_Taxonomy_Translation_Help_Notice( wpml_get_admin_notices(), $sitepress );
+		$wpml_term_translation_help_notice->add_hooks();
 	}
 }
 
@@ -216,7 +210,7 @@ function maybe_load_translated_tax_screen() {
 	$taxonomy_get = $taxonomy_get ? $taxonomy_get : 'post_tag';
 	if ( is_taxonomy_translated( $taxonomy_get ) ) {
 		global $wpdb, $sitepress;
-		require ICL_PLUGIN_PATH . '/menu/term-taxonomy-menus/wpml-tax-menu-loader.class.php';
+		require WPML_PLUGIN_PATH . '/menu/term-taxonomy-menus/wpml-tax-menu-loader.class.php';
 		new WPML_Tax_Menu_Loader( $wpdb, $sitepress, $taxonomy_get );
 	}
 }
@@ -224,12 +218,16 @@ function maybe_load_translated_tax_screen() {
 function wpml_reload_active_languages_setting( $override = false ) {
 	global $wpdb, $sitepress_settings;
 
-	if ( (bool) $sitepress_settings === true
+	if ( true === (bool) $sitepress_settings
 	     && ( $override || wpml_get_setting_filter( false, 'setup_complete' ) )
 	) {
-		$active_languages                       = $wpdb->get_col( "	SELECT code
+		if ( $wpdb->query( "SHOW TABLES LIKE '{$wpdb->prefix}icl_languages'") ) {
+			$active_languages                       = $wpdb->get_col( "	SELECT code
 																	FROM {$wpdb->prefix}icl_languages
 																	WHERE active = 1" );
+		} else {
+			$active_languages = array();
+		}
 		$sitepress_settings['active_languages'] = $active_languages;
 		icl_set_setting( 'active_languages', $active_languages, true );
 	} else {
@@ -248,7 +246,7 @@ function wpml_get_setup_instance() {
 	global $wpml_installation, $wpdb, $sitepress;
 
 	if ( ! isset( $wpml_installation ) ) {
-		require ICL_PLUGIN_PATH . '/inc/setup/wpml-installation.class.php';
+		require WPML_PLUGIN_PATH . '/inc/setup/wpml-installation.class.php';
 		$wpml_installation = new WPML_Installation( $wpdb, $sitepress );
 	}
 
@@ -256,17 +254,17 @@ function wpml_get_setup_instance() {
 }
 
 function wpml_load_admin_files() {
-	require ICL_PLUGIN_PATH . '/menu/wpml-troubleshooting-terms-menu.class.php';
-	require ICL_PLUGIN_PATH . '/inc/wpml-post-edit-ajax.class.php';
-	require ICL_PLUGIN_PATH . '/menu/wpml-post-status-display.class.php';
-	require ICL_PLUGIN_PATH . '/inc/utilities/wpml-color-picker.class.php';
+	require_once WPML_PLUGIN_PATH . '/menu/wpml-troubleshooting-terms-menu.class.php';
+	require_once WPML_PLUGIN_PATH . '/inc/wpml-post-edit-ajax.class.php';
+	require_once WPML_PLUGIN_PATH . '/menu/wpml-post-status-display.class.php';
+	require_once WPML_PLUGIN_PATH . '/inc/utilities/wpml-color-picker.class.php';
 }
 
 function wpml_get_post_status_helper() {
-	global $wpml_post_status, $wpdb;
+	global $wpml_post_status, $wpdb, $sitepress;
 
 	if ( ! isset( $wpml_post_status ) ) {
-		$wpml_post_status = new WPML_Post_Status( $wpdb );
+		$wpml_post_status = new WPML_Post_Status( $wpdb, $sitepress->get_wp_api() );
 	}
 
 	return $wpml_post_status;
@@ -276,7 +274,7 @@ function wpml_get_create_post_helper() {
 	global $wpml_create_post_helper, $sitepress;
 
 	if ( ! isset( $wpml_create_post_helper ) ) {
-		require ICL_PLUGIN_PATH . '/inc/post-translation/wpml-create-post-helper.class.php';
+		require WPML_PLUGIN_PATH . '/inc/post-translation/wpml-create-post-helper.class.php';
 		$wpml_create_post_helper = new WPML_Create_Post_Helper( $sitepress );
 	}
 
@@ -290,7 +288,7 @@ function wpml_load_core_tm() {
 	global $iclTranslationManagement;
 
 	if ( !isset( $iclTranslationManagement ) ) {
-		require_once ICL_PLUGIN_PATH . '/inc/translation-management/translation-management.class.php';
+		require_once WPML_PLUGIN_PATH . '/inc/translation-management/translation-management.class.php';
 		$iclTranslationManagement = new TranslationManagement();
 	}
 
@@ -300,7 +298,7 @@ function wpml_load_core_tm() {
 function wpml_get_langs_in_dirs_val( $http_client, $wpml_url_converter, $posted_url = false ) {
 	global $sitepress;
 
-	require_once ICL_PLUGIN_PATH . '/inc/url-handling/wpml-lang-url-validator.class.php';
+	require_once WPML_PLUGIN_PATH . '/inc/url-handling/wpml-lang-url-validator.class.php';
 	$posted_url = $posted_url ? $posted_url : (string) filter_input ( INPUT_POST, 'url' );
 
 	return new WPML_Lang_URL_Validator( $http_client, $wpml_url_converter, $posted_url, $sitepress );
@@ -310,7 +308,7 @@ function wpml_get_root_page_actions_obj() {
 	global $wpml_root_page_actions, $sitepress_settings;
 
 	if ( !isset( $wpml_root_page_actions ) ) {
-		require_once ICL_PLUGIN_PATH . '/inc/post-translation/wpml-root-page-actions.class.php';
+		require_once WPML_PLUGIN_PATH . '/inc/post-translation/wpml-root-page-actions.class.php';
 		$wpml_root_page_actions = new WPML_Root_Page_Actions( $sitepress_settings );
 	}
 
@@ -321,10 +319,10 @@ function wpml_get_hierarchy_sync_helper( $type = 'post' ) {
 	global $wpdb;
 
 	if ( $type === 'post' ) {
-		require_once ICL_PLUGIN_PATH . '/inc/post-translation/wpml-post-hierarchy-sync.class.php';
+		require_once WPML_PLUGIN_PATH . '/inc/post-translation/wpml-post-hierarchy-sync.class.php';
 		$hierarchy_helper = new WPML_Post_Hierarchy_Sync( $wpdb );
 	} elseif ( $type === 'term' ) {
-		require_once ICL_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-hierarchy-sync.class.php';
+		require_once WPML_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-hierarchy-sync.class.php';
 		$hierarchy_helper = new WPML_Term_Hierarchy_Sync( $wpdb );
 	} else {
 		$hierarchy_helper = false;
@@ -338,7 +336,6 @@ function wpml_maybe_setup_post_edit() {
 
 	if ( in_array( $pagenow, array( 'post.php', 'post-new.php', 'edit.php' ), true ) || defined( 'DOING_AJAX' )
 	) {
-		require ICL_PLUGIN_PATH . '/menu/post-menus/post-edit-screen/wpml-post-edit-screen.class.php';
 		$post_edit_screen = new WPML_Post_Edit_Screen( $sitepress );
 		add_action( 'admin_head', array( $sitepress, 'post_edit_language_options' ) );
 	}
@@ -351,7 +348,7 @@ function wpml_load_frontend_tax_filters() {
 	global $wpml_term_filters;
 
 	if ( !isset( $wpml_term_filters ) ) {
-		require ICL_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-frontend-tax-filters.class.php';
+		require WPML_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-frontend-tax-filters.class.php';
 		$wpml_term_filters = new WPML_Frontend_Tax_Filters();
 	}
 
@@ -365,7 +362,6 @@ function wpml_load_settings_helper() {
 	global $wpml_settings_helper, $sitepress, $wpml_post_translations;
 
 	if ( ! isset( $wpml_settings_helper ) ) {
-		require_once ICL_PLUGIN_PATH . '/inc/setup/wpml-settings-helper.class.php';
 		$wpml_settings_helper = new WPML_Settings_Helper( $wpml_post_translations, $sitepress );
 	}
 
@@ -374,7 +370,7 @@ function wpml_load_settings_helper() {
 
 function wpml_get_term_translation_util() {
 	global $sitepress;
-	require_once ICL_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-translation-utils.class.php';
+	require_once WPML_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-translation-utils.class.php';
 
 	return new WPML_Term_Translation_Utils( $sitepress );
 }
@@ -386,7 +382,7 @@ function wpml_load_term_filters() {
 	global $wpml_term_filters_general, $sitepress, $wpdb;
 
 	if ( ! isset( $wpml_term_filters_general ) ) {
-		require ICL_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-filters.class.php';
+		require WPML_PLUGIN_PATH . '/inc/taxonomy-term-translation/wpml-term-filters.class.php';
 		$wpml_term_filters_general = new WPML_Term_Filters( $wpdb, $sitepress );
 		$wpml_term_filters_general->init();
 	}
@@ -395,12 +391,17 @@ function wpml_load_term_filters() {
 }
 
 function wpml_show_user_options() {
-	global $sitepress, $current_user;
+	global $sitepress, $current_user, $user_id, $pagenow;
 
-	$user_options_menu = new WPML_User_Options_Menu( $sitepress, $current_user );
+	if ( ! isset( $user_id ) && 'profile.php' === $pagenow ) {
+		$user_id = $current_user->ID;
+	}
+
+	$user = new WP_User( $user_id );
+	$user_options_menu = new WPML_User_Options_Menu( $sitepress, $user );
 	echo $user_options_menu->render();
 }
 
 if ( is_admin() ) {
-	add_action( 'show_user_profile', 'wpml_show_user_options' );
+	add_action( 'personal_options', 'wpml_show_user_options' );
 }

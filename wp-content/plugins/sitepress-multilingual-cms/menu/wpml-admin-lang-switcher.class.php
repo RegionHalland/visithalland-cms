@@ -46,8 +46,9 @@ class WPML_Admin_Language_Switcher {
                 }
                 break;
             case 'edit-tags.php':
+			case 'term.php':
                 $is_tax = true;
-                if ( isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'edit' ) {
+                if ( $sitepress->get_wp_api()->is_term_edit_page() ) {
                     $all_languages_enabled = false;
                 }
     
@@ -198,7 +199,7 @@ class WPML_Admin_Language_Switcher {
         // Current language
         $wp_admin_bar->add_menu( array(
                                       'parent' => false, 'id' => $parent,
-                                      'title'  => $lang[ 'flag' ] . '&nbsp;' . $lang[ 'anchor' ] . '&nbsp;&nbsp;<img title="' . __( 'help', 'sitepress' ) . '" id="wpml_als_help_link" src="' . ICL_PLUGIN_URL . '/res/img/question1.png" alt="' . __( 'help', 'sitepress' ) . '" width="16" height="16"/>',
+                                      'title'  => $lang[ 'flag' ] . '&nbsp;' . $lang[ 'anchor' ] . '&nbsp;&nbsp;<i title="' . __( 'help', 'sitepress' ) . '" id="wpml_als_help_link" class="otgs-ico-help"></i>',
                                       'href'   => false, 'meta' => array(
                 'title' => __( 'Showing content in:', 'sitepress' ) . ' ' . $lang[ 'anchor' ],
             )

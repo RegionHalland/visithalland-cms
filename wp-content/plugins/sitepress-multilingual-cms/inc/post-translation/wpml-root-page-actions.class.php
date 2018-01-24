@@ -14,10 +14,20 @@ class WPML_Root_Page_Actions {
 		$root_id = $this->get_root_page_id ();
 
 		if ( $root_id ) {
-			$wpdb->delete (
-				$wpdb->prefix . 'icl_translations',
-				array( 'element_id' => $root_id, 'element_type' => 'post_page' )
+
+			$update_args = array(
+				'element_id' => $root_id,
+				'element_type' => 'post_page',
+				'context' => 'post'
 			);
+
+			do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'before_delete' ) ) );
+
+			$wpdb->delete (
+				$wpdb->prefix . 'icl_translations', array( 'element_id' => $root_id, 'element_type' => 'post_page' ), array( '%d', '%s' )
+			);
+
+			do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'after_delete' ) ) );
 		}
 	}
 
@@ -31,8 +41,13 @@ class WPML_Root_Page_Actions {
 	 * @uses \WPML_Root_Page::is_root_page
 	 */
 	public function is_url_root_page( $url ) {
+		$ret = false;
 
-		return WPML_Root_Page::is_root_page( $url );
+		if ( $this->get_root_page_id() ) {
+			$ret = WPML_Root_Page::is_root_page( $url );
+		}
+
+		return $ret;
 	}
 
 	/**
@@ -48,6 +63,7 @@ class WPML_Root_Page_Actions {
 		       && ! empty( $urls['directory_for_default_language'] )
 		       && isset( $urls['show_on_root'] )
 		       && $urls['show_on_root'] === 'page'
+		       && $urls['root_page']
 				? $urls['root_page'] : false;
 	}
 
@@ -173,12 +189,22 @@ class WPML_Root_Page_Actions {
 				remove_action ( 'save_post', array( $iclTranslationManagement, 'save_post_actions' ), 11, 2 );
 			}
 
+			$update_args = array(
+				'element_id' => $post->ID,
+				'element_type' => 'post_page',
+				'context' => 'post'
+			);
+
+			do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'before_delete' ) ) );
+
 			$wpdb->query (
 				$wpdb->prepare (
 					"DELETE FROM {$wpdb->prefix}icl_translations WHERE element_type='post_page' AND element_id=%d",
 					$post->ID
 				)
 			);
+
+			do_action( 'wpml_translation_update', array_merge( $update_args, array( 'type' => 'after_delete' ) ) );
 		}
 	}
 
@@ -211,30 +237,45 @@ class WPML_Root_Page_Actions {
 		} else {
 			remove_action( 'parse_query', array( $this, 'wpml_home_url_parse_query' ) );
 
-			$request_array                  = explode( '/', $_SERVER["REQUEST_URI"] );
-			$sanitized_query                = array_pop( $request_array );
-			$potential_pagination_parameter = array_pop( $request_array );
+			$uri_path  = trim( wpml_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
+			$uri_parts = explode( '/', $uri_path );
+			$potential_pagination_parameter = array_pop( $uri_parts );
+
+			$query_args = array();
+			wp_parse_str( wpml_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_QUERY ), $query_args );
 
 			if ( is_numeric( $potential_pagination_parameter ) ) {
-				if ( $sanitized_query ) {
-					$sanitized_query .= '&';
-				}
-				$sanitized_query .= 'page=' . $potential_pagination_parameter;
+				$query_args['page'] = $potential_pagination_parameter;
 			}
 
-			$sanitized_query = str_replace( '?', '', $sanitized_query );
-			$q->parse_query( $sanitized_query );
+			$q->parse_query( $query_args );
+			$root_id = $this->get_root_page_id();
 			add_action( 'parse_query', array( $this, 'wpml_home_url_parse_query' ) );
-			$root_id                  = $this->get_root_page_id();
-			$q->query_vars['page_id'] = $root_id;
-			$q->query['page_id']      = $root_id;
-			$q->is_page               = 1;
-			$q->queried_object        = new WP_Post( get_post( $root_id ) );
-			$q->queried_object_id     = $root_id;
-			$q->query_vars['error']   = "";
-			$q->is_404                = false;
-			$q->query['error']        = null;
+
+			if ( false !== $root_id ) {
+				$q = $this->set_page_query_parameters( $q, $root_id );
+			} else {
+				$front_page = get_option( 'page_on_front' );
+				if ( $front_page ) {
+					$q = $this->set_page_query_parameters( $q, $front_page );
+				}
+			}
 		}
+
+		return $q;
+	}
+
+	private function set_page_query_parameters( $q, $page_id ) {
+		$q->query_vars['page_id'] = $page_id;
+		$q->query['page_id']      = $page_id;
+		$q->is_page               = 1;
+		$q->queried_object        = new WP_Post( get_post( $page_id ) );
+		$q->queried_object_id     = $page_id;
+		$q->query_vars['error']   = '';
+		$q->is_404                = false;
+		$q->query['error']        = null;
+		$q->is_home               = false;
+		$q->is_singular           = true;
 
 		return $q;
 	}
