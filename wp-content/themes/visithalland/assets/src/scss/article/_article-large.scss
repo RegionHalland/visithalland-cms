@@ -1,15 +1,10 @@
 .article-large {
 	margin-top:$space-4;
-	&:hover {
-		.article-large__img {
-			transform:scale(1.05);
-		}
-	}
 	&__img-container {
 		overflow: hidden;
 		position:relative;
 		border-radius:$border-radius;
-		padding-bottom:66%;
+		padding-bottom:66.66%;
 		background-color:palette(black, base);
 	}
 
@@ -23,6 +18,18 @@
 
 	&__title {
 		word-break: break-word;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 		@media (min-width: $breakpoint-sm) {
 			font-size:2.25rem;
 			line-height: 1.1;

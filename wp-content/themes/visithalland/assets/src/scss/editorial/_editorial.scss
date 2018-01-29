@@ -50,6 +50,19 @@
 		border-top:solid;
 		padding:$space-3 0;
 		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:0 auto;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 
 	&__content {

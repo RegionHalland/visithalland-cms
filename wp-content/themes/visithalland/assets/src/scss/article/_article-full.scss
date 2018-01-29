@@ -93,6 +93,18 @@
 
 	&__title {
 		font-size:1.8em;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 		@media(min-width:$breakpoint-sm) {
 			font-size:2em;
 		}

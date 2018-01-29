@@ -68,24 +68,20 @@ $term = get_queried_object(); ?>
 					<article class="article-large <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 		                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
 		                        <div class="article-large__img-container topographic-pattern">
+		                        	<div class="article-tag absolute top-0 left-0 mt3 ml3 z3">
+										<div class="article-tag__icon-wrapper">
+											<div class="article-tag__icon"></div>
+										</div>
+									</div>
 									<picture>
 										<source media="(min-width: 40em)"
 											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
 										<source
 											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-										<img class="article-large__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
+										<img class="article-large__img z2" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
 									</picture>
 		                        </div>
-		                        <div class="article-large__content clearfix">
-									<div class="article-tag mt3 mb2">
-										<div class="article-tag__icon-wrapper">
-											<div class="article-tag__icon"></div>
-										</div>
-										<span class="article-tag__type">
-											<?php echo vh_get_pretty_post_type_name(get_field("featured", $term)[0]->post_type) ?>
-										</span>
-									</div>
-
+		                        <div class="article-large__content mt3 clearfix">
 		                            <div class="col col-12 sm-col-5">
 		                                <h2 class="article-large__title pt0"><?php echo get_field("featured", $term)[0]->post_title ?></h2>
 		                            </div>
@@ -103,6 +99,11 @@ $term = get_queried_object(); ?>
 							<article class="article-medium <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 								<a href="<?php echo get_permalink(get_field("featured", $term)[1]->ID) ?>" class="link-reset">
 								    <div class="article-medium__img-container topographic-pattern">
+								    	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
+											<div class="article-tag__icon-wrapper">
+												<div class="article-tag__icon"></div>
+											</div>
+										</div>
 										<picture>
 											<source media="(min-width: 40em)"
 												data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
@@ -111,17 +112,8 @@ $term = get_queried_object(); ?>
 											<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
 								    </div>
-								    <div class="article-medium__content">
-										<div class="article-tag mt3 mb2">
-											<div class="article-tag__icon-wrapper">
-												<div class="article-tag__icon"></div>
-											</div>
-											<span class="article-tag__type">
-												<?php echo vh_get_pretty_post_type_name(get_field("featured", $term)[1]->post_type) ?>
-											</span>
-										</div>
-
-										<h3 class="mb1 mt1 pt0"><?php echo get_field("featured", $term)[1]->post_title ?></h3>
+								    <div class="article-medium__content mt2">
+										<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[1]->post_title ?></h3>
 										<p class="mt2"><?php echo get_field("excerpt", get_field("featured", $term)[1]->ID) ?></p>
 								    </div>
 								</a>
@@ -133,6 +125,11 @@ $term = get_queried_object(); ?>
 								<article class="article-medium <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 									<a href="<?php echo get_permalink(get_field("featured", $term)[2]->ID) ?>" class="link-reset">
 									    <div class="article-medium__img-container topographic-pattern">
+									    	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
+												<div class="article-tag__icon-wrapper">
+													<div class="article-tag__icon"></div>
+												</div>
+											</div>
 											<picture>
 												<source media="(min-width: 40em)"
 													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
@@ -141,17 +138,8 @@ $term = get_queried_object(); ?>
 												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
-									    <div class="article-medium__content">
-											<div class="article-tag mt3 mb2">
-												<div class="article-tag__icon-wrapper">
-													<div class="article-tag__icon"></div>
-												</div>
-												<span class="article-tag__type">
-													<?php echo vh_get_pretty_post_type_name(get_field("featured", $term)[2]->post_type) ?>
-												</span>
-											</div>
-											
-											<h3 class="mb1 mt1 pt0"><?php echo get_field("featured", $term)[2]->post_title ?></h3>
+									    <div class="article-medium__content mt2">
+											<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[2]->post_title ?></h3>
 											<p class="mt2"><?php echo get_field("excerpt", get_field("featured", $term)[2]->ID) ?></p>
 									    </div>
 									</a>
@@ -193,8 +181,7 @@ $term = get_queried_object(); ?>
 					    <a href="<?php echo get_permalink($meet_local->ID) ?>" class="link-reset article-full__link link light">
 					        <h2 class="article-full__title light mt1 mb2"><?php echo $meet_local->post_title ?></h2>
 					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", $meet_local->ID) ?></p>
-					        <div class="article-link inline-block mt0">
-					            <hr class="article-link__divider block mb3"/>
+					        <div class="article-link inline-block mt2">
 					            <span class="article-link__text"><?php _e( 'Läs hela artikeln', 'visithalland' ); ?></span>
 					            <span class="article-link__icon-wrapper">
 					                <i class="material-icons article-link__icon">arrow_forward</i>
@@ -239,7 +226,6 @@ $term = get_queried_object(); ?>
 											</div>
 											<h2 class="article-image__title light my1"><?php echo $value->post_title ?></h2>
 											<div class="article-link inline-block mt0">
-												<hr class="article-link__divider block mb3"/>
 												<span class="article-link__text">Läs hela artikeln</span>
 												<span class="article-link__icon-wrapper">
 												<i class="material-icons article-link__icon">arrow_forward</i>

@@ -68,16 +68,23 @@
                 </div>
                 <div class="header__right flex items-center justify-end">
                     <div class="header__happenings">
-                        <button class="happenings__dropdown-button has-happenings icon-button">
+                        <?php 
+                            $happenings = vh_get_happenings(3);
+                            if (count($happenings) > 0) {
+                                $class = 'has-happenings';
+                            } else {
+                                $class = '';
+                            } 
+                        ?>
+                        <button class="happenings__dropdown-button <?php echo $class ?> icon-button">
                             <svg class="icon icon-button__icon">
                                 <use xlink:href="#calendar-icon"/>
                             </svg>
                         </button>
+
                         <div class="happenings__dropdown">
                             <div class="happenings__dropdown-inner p3">
-                                <?php 
-                                $happenings = vh_get_happenings(3);
-                                foreach ($happenings as $index => $value) : ?>
+                               <?php foreach ($happenings as $index => $value) : ?>
                                     <article class="happening-list-item mb3 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy["slug"]) ?>">
                                         <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                             <div class="clearfix">
@@ -103,6 +110,7 @@
                                     <?php _e( 'Visa fler', 'visithalland' ); ?>
                                 </div>
                             </div>
+                            <?php ?>
                         </div>
                     </div>
                     <div class="header__search">
