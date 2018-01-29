@@ -3,7 +3,7 @@
 		width:100%;
 		background-color:palette(black, x-light);
 		position:relative;
-		height:200px;
+		height:235px;
 		&::after {
 			content:'';
 			background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='37'%3E%3Cpath fill='%23FFF' d='M0 10.427c213.803 7.342 470.91 6.059 771.324-3.848C1071.738-3.33 1294.63-2.046 1440 10.427V37H0V10.427z'/%3E%3C/svg%3E");
@@ -42,22 +42,17 @@
 		font-size:1.1em;
 	    font-weight:400;
 	    line-height: 1.5;
-	    font-style:italic;
 	    color:palette(black,dark);
-	    border-width:2px;
-		border-style:none;
-		border-bottom:solid;
-		border-top:solid;
-		padding:$space-3 0;
-		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
-		&::after {
+	    @media (min-width:$breakpoint-md) {
+	    	padding:$space-1 0;
+	    }
+		&::after, &::before {
 			content:'';
 			display:block;
 			width:20px;
 			height:5px;
-			margin:0 auto;
+			margin:$space-3 auto;
 			border-radius:$border-radius;
-			margin:$space-3 0;
 			background-color:palette(grey, light);
 			@include themify {
 	        	background:$color-primary;
