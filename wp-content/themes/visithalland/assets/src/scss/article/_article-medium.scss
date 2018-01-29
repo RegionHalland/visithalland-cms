@@ -15,6 +15,21 @@
 		}
 	}
 
+	&__title {
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+	}
+
 	&__img-container {
 		overflow: hidden;
 		position:relative;
@@ -30,5 +45,4 @@
 		left:0;
 		transition: transform 0.35s;
 	}
-	
 }

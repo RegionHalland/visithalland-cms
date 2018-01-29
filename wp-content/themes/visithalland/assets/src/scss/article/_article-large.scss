@@ -9,11 +9,8 @@
 		overflow: hidden;
 		position:relative;
 		border-radius:$border-radius;
-		padding-bottom:56.25%;
+		padding-bottom:75%;
 		background-color:palette(black, base);
-		@media(min-width:$breakpoint-sm) {
-			padding-bottom:66.66%;
-		}
 	}
 
 	&__img {

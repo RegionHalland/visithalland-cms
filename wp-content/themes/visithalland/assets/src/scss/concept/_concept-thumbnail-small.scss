@@ -6,7 +6,7 @@
 		border-radius:$border-radius;
 		background-color:palette(black, base);
 		@media(min-width:$breakpoint-sm) {
-			padding-bottom:125%;
+			padding-bottom:100%;
 		}
 		&::before {
 			content:'';

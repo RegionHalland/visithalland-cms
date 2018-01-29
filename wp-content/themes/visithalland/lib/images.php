@@ -35,6 +35,9 @@ add_image_size( 'vh_small@2x', 800, 600, array( 'center', 'center' ) );
 add_image_size( 'vh_medium', 800, 600, array( 'center', 'center' ) );
 add_image_size( 'vh_medium@2x', 1200, 900, array( 'center', 'center' ) );
 
+add_image_size( 'vh_medium_square', 800, 800, array( 'center', 'center' ) );
+add_image_size( 'vh_medium_square@2x', 1200, 1200, array( 'center', 'center' ) );
+
 add_image_size( 'vh_large', 900, 675 , array( 'center', 'center' ) );
 add_image_size( 'vh_large@2x', 1800, 1350, array( 'center', 'center' ) );
 
