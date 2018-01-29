@@ -29,7 +29,6 @@ jQuery(function() {
 		
 
 		console.log("Hide infinite thingy")
-
 		jQuery('.infinite-scroll').removeClass('visible');
 	});
 

@@ -34,16 +34,18 @@
                     </div>
                     <h1 class="editorial-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
                     <p class="editorial-header__preamble center"><?php echo get_field("excerpt"); ?></p>
-                    <address class="author-vertical center block mt4 mb4">
-                        <div class="author-vertical__img-container mx-auto">
+                    <address class="author-vertical mt4 mb4">
+                        <div class="author-vertical__img-container">
                             <img 
                                 src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
                                 alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
                                 class="author-vertical__img"
                             />
                         </div>
-                        <span class="block author-vertical__name"><?php the_author_meta('display_name'); ?></span>
-                        <span class="block author-vertical__title"><?php the_author_meta('description'); ?></span>
+                        <div class="author-vertical__bio">
+                            <span class="block author-vertical__name"><?php the_author_meta('display_name'); ?></span>
+                            <span class="block author-vertical__title"><?php echo get_field('role', 'user_'. $author_id); ?></span>
+                        </div>
                     </address>
                 </div>
             </div>
@@ -163,9 +165,9 @@
 
 <!-- Working on infinite scroll feedback -->
 <div class="container">
-    <div class="infinite-scroll">
+    <!-- <div class="infinite-scroll">
         
-    </div>
+    </div> -->
     <div class="page-load-status">
         <p class="infinite-scroll-request">Hämtar nästa artikel</p>
         <p class="infinite-scroll-last">Slut på innehåll</p>

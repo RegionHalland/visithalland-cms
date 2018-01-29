@@ -42,6 +42,19 @@
                             <p class="happening-header__preamble">
                                 <?php the_field('body'); ?>
                             </p>
+                            <address class="author-horizontal mt2 mb4">
+                                <div class="author-horizontal__img-container">
+                                    <img 
+                                        src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
+                                        alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
+                                        class="author-horizontal__img"
+                                    />
+                                </div>
+                                <div class="author-horizontal__bio">
+                                    <span class="block author-horizontal__name"><?php the_author_meta('display_name'); ?></span>
+                                    <span class="block author-horizontal__title"><?php echo get_field('role', 'user_'. $author_id); ?></span>
+                                </div>
+                            </address>
                         </div>
                         <aside class="happening-info relative  z3 col col-11 sm-col-6" role="complementary">
                             <div class="happening-info__inner topographic-pattern">
@@ -123,12 +136,28 @@
                     <?php endforeach ?>
                 </div>
             </div>
-	</article>
-<?php endwhile; ?>
+    	</article>
+    <?php endwhile; ?>
 
-<div class="next-post-link">
-    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+    <div class="next-post-link">
+        <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
+    </div>
+
 </div>
 
+<!-- Working on infinite scroll feedback -->
+<div class="container">
+    <!-- <div class="infinite-scroll">
+        
+    </div> -->
+    <div class="page-load-status">
+        <p class="infinite-scroll-request">Hämtar nästa artikel</p>
+        <p class="infinite-scroll-last">Slut på innehåll</p>
+        <p class="infinite-scroll-error">Kunde inte hitta fler artiklar</p>
+    </div>
 </div>
+ <!--- End Infinite Scroll -->
+
+
+
 <?php get_footer(); ?>

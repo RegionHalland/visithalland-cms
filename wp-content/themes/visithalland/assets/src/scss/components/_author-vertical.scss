@@ -1,15 +1,17 @@
 .author-vertical {
+	display:block;
 	&__img-container {
 		width:40px;
 		height:40px;
+		margin:$space-2 auto;
 		@media (min-width:$breakpoint-sm) {
 			width:50px;
 			height:50px;
 		}
-		background:palette(grey, light);
+		background:palette(black, light);
 		position:relative;
 		overflow: hidden;
-		border-radius:50%;
+		border-radius:$border-radius;
 	}
 	&__img {
 		width:100%;
@@ -17,16 +19,22 @@
 		top:0;
 		left:0;
 	}
-	&__title, &__name {
-		font-size:14px;
-		margin-top:$space-1;
+	&__bio {
+		flex:1;
+		margin-left:$space-2;
+		vertical-align: middle;
 	}
 	&__title {
 		font-style:italic;
 		color:palette(grey, x-dark);
+		font-size:0.8rem;
+		margin-top:$space-1;
+		line-height: 1.4;
 	}
 	&__name {
-		font-weight:bold;
 		color:palette(black, light);
+		font-size:1rem;
+		font-family: $rift-font-family;
+		font-weight:bold;
 	}
 }

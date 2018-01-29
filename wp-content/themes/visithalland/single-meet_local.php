@@ -28,17 +28,19 @@
 	                    </div><span class="article-tag__type"><?php echo vh_get_pretty_post_type_name($post->post_type) ?></span></div>
 	                <h1 class="meet-a-local-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
 	                <p class="meet-a-local-header__preamble center"><?php the_field("excerpt") ?></p>
-	                <address class="author-vertical center block mt4 mb4">
-	                    <div class="author-vertical__img-container mx-auto">
-	                        <img 
-	                            src="<?php echo get_avatar_url($author_id); ?>" 
-	                            alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
-	                            class="author-vertical__img"
-	                        />
-	                    </div>
-	                    <span class="block author-vertical__name"><?php the_author_meta('display_name'); ?></span>
-	                    <span class="block author-vertical__title"><?php the_author_meta('description'); ?></span>
-	                </address>
+	                <address class="author-vertical mt4 mb4">
+                        <div class="author-vertical__img-container">
+                            <img 
+                                src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
+                                alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
+                                class="author-vertical__img"
+                            />
+                        </div>
+                        <div class="author-vertical__bio">
+                            <span class="block author-vertical__name"><?php the_author_meta('display_name'); ?></span>
+                            <span class="block author-vertical__title"><?php echo get_field('role', 'user_'. $author_id); ?></span>
+                        </div>
+                    </address>
 	            </div>
 	        </div>
     	</section>
@@ -156,11 +158,27 @@
         </div>
         <?php /* Start - Featured Articles */ ?>   
 	</article>
-<?php endwhile; ?>
+	<?php endwhile; ?>
 
-<div class="next-post-link">
-    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>                    
+	<div class="next-post-link">
+	    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>          
+	</div>
 </div>
 
+
+
+<!-- Working on infinite scroll feedback -->
+<div class="container">
+    <!-- <div class="infinite-scroll">
+        
+    </div> -->
+    <div class="page-load-status">
+        <p class="infinite-scroll-request">Hämtar nästa artikel</p>
+        <p class="infinite-scroll-last">Slut på innehåll</p>
+        <p class="infinite-scroll-error">Kunde inte hitta fler artiklar</p>
+    </div>
 </div>
+ <!--- End Infinite Scroll -->
+
+
 <?php get_footer(); ?>
