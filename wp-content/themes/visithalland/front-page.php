@@ -17,8 +17,10 @@
 	<div class="clearfix mxn2">
 		<div class="landing-concepts col-11 md-col-10 lg-col-10 mx-auto">
 		<?php
-			$menuItems = wp_get_nav_menu_items("huvudmeny");
-			foreach ($menuItems as $key => $value): ?>
+		    $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+            $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
+			//$menuItems = wp_get_nav_menu_items("huvudmeny");
+			foreach ($mainMenuItems as $key => $value): ?>
 			<?php
 				$term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
 				$current_term = get_term($term_id);

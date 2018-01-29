@@ -329,7 +329,7 @@ $term = get_queried_object(); ?>
 					?>
 					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
 						<div class="concept-thumbnail-small <?php echo $value->title ?>">
-		                       <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
+		                       <a href="<?php echo $value->url ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
 	                                    <picture>
 	                                        <source media="(min-width: 40em)"
