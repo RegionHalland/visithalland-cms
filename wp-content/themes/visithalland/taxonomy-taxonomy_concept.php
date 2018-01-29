@@ -7,7 +7,7 @@ $term = get_queried_object(); ?>
 <main role="main" class="container" id="main-content">
 
 	<?php /* START - ConceptHeader */ ?>
-		<section class="concept-header relative overflow-hidden <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>" role="heading">
+		<section class="concept-header relative overflow-hidden <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>" role="heading">
 		    <div class="concept-header__img-container topographic-pattern">
 				<picture>
 				    <source media="(min-width: 60em)"
