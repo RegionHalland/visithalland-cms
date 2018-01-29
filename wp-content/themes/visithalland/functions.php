@@ -1,4 +1,62 @@
 <?php
+
+/*	    <!-- Link needed for infinite scroll -->
+		<?php
+// Get terms for post
+$terms = get_the_terms( $post->ID , 'taxonomy_concept' );
+// Loop over each item since it's an array
+if ( $terms != null ){
+foreach( $terms as $term ) {
+// Print the name method from $term which is an OBJECT
+$termSlug = $term->slug;
+// Get rid of the other data stored in the object, since it's not needed
+unset($term);
+} } ?>
+
+<?php
+
+$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+echo $term->slug; // will show the slug
+
+// get_posts in same custom taxonomy
+$postlist_args = array(
+'posts_per_page' => -1,
+'orderby' => 'rand',
+'post_type' => array(
+			"meet_local",
+			"editor_tip",
+			"trip",
+			"happening"
+		),
+'taxonomy_concept' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
+);
+$postlist = get_posts( $postlist_args );
+
+// get ids of posts retrieved from get_posts
+$ids = array();
+foreach ($postlist as $thepost) {
+$ids[] = $thepost->ID;
+}
+
+// get and echo previous and next post in the same taxonomy
+$thisindex = array_search($post->ID, $ids);
+$previd = $ids[$thisindex-1];
+$nextid = $ids[$thisindex+1];
+
+?>
+
+<?php
+
+if ( !empty($previd) ) {
+echo '<a rel="prev" href="' . get_permalink($previd). '">previous</a>';
+}
+
+if ( !empty($nextid) ) {
+echo '<a class="next-link" rel="next" href="' . get_permalink($nextid). '">next</a>';
+}
+
+?>*/
 add_action( 'init', 'custom_page_rules' );
 function custom_page_rules() {
   global $wp_rewrite;
@@ -10,6 +68,7 @@ function posts_link_next_class($format){
      return $format;
 }
 //add_filter('previous_post_link', 'posts_link_next_class');
+//add_filter('next_post_link', 'posts_link_next_class');
 
 //Modification of acf plugin
 include_once('lib/acf.php');
