@@ -132,7 +132,7 @@
                         $langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                         $mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
                         foreach ($mainMenuItems as $key => $value) : ?>
-                            <div class="navigation__item <?php echo $value->post_name ?>">
+                            <div class="navigation__item <?php echo vh_get_taxonomyslug_by_string($value->post_name) ?>">
                                 <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                     <div class="navigation__icon-wrapper">
                                         <div class="navigation__icon"></div>
@@ -175,7 +175,7 @@
 
                     <?php
                         foreach ($mainMenuItems as $key => $value) : ?>
-                            <div class="mobile-navigation__item <?php echo $value->post_name ?>">
+                            <div class="mobile-navigation__item <?php echo vh_get_taxonomyslug_by_string($value->post_name) ?>">
                                 <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                     <div class="mobile-navigation__icon-wrapper">
                                         <div class="mobile-navigation__icon"></div>
