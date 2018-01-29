@@ -68,7 +68,7 @@
                 </div>
                 <div class="header__right flex items-center justify-end">
                     <div class="header__happenings">
-                        <button class="happenings__dropdown-button has-happenings icon-button mr2">
+                        <button class="happenings__dropdown-button has-happenings icon-button">
                             <svg class="icon icon-button__icon">
                                 <use xlink:href="#calendar-icon"/>
                             </svg>

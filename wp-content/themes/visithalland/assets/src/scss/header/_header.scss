@@ -328,6 +328,11 @@
 	}
 }
 
+//Temporarily removed search button
+.mobile-search-button, .search-button {
+	display:none !important;
+}
+
 .search-button {
 	display:none;
 	@media (min-width:$breakpoint-sm) {
