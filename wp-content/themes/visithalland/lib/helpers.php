@@ -38,12 +38,29 @@ function vh_get_pretty_post_type_name(String $post_type) {
 	return null;
 }
 
+function get_term_for_default_lang( $term, $taxonomy ) {
+        /** @var $sitepress SitePress */
+        global $sitepress;
+        global $icl_adjust_id_url_filter_off;
+ 
+        $term_id = is_int( $term ) ? $term : $term->term_id;
+ 
+        $default_term_id = (int) icl_object_id( $term_id, $taxonomy, true, $sitepress->get_default_language() );
+ 
+        $orig_flag_value = $icl_adjust_id_url_filter_off;
+ 
+        $icl_adjust_id_url_filter_off = true;
+        $term = get_term( $default_term_id, $taxonomy );
+        $icl_adjust_id_url_filter_off = $orig_flag_value;
+ 
+        return $term;
+}
+
 function vh_get_taxonomyslug_by_string(String $taxonomySlug){
 	global $sitepress;
 	$original_lang = ICL_LANGUAGE_CODE; // Save the current language
 	$new_lang = $sitepress->get_default_language(); // The language in which you want to get the terms
-	$sitepress->switch_lang($new_lang); // Switch to new language
-
+	$sitepress->switch_lang($new_lang); // Switch to new language	
 	// Query the terms in new language instead of current language
 	$terms = get_terms(array('taxonomy_concept' => 'category', 'hide_empty' => false) );
 
@@ -63,11 +80,13 @@ function vh_get_taxonomyslug_by_string(String $taxonomySlug){
 function vh_get_post_taxonomy() {
 	global $post;
 
-	if (is_array(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )) && count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0 ){
-		return array(
-			"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-			"slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-		);
+	if(isset($post->ID)){
+		if (is_array(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )) && count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0 ){
+			return array(
+				"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
+				"slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
+			);
+		}
 	}
 }
 
