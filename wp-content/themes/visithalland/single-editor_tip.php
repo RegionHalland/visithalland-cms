@@ -14,11 +14,11 @@
                 <div class="editorial-header__img-container topographic-pattern">
                     <picture>
                         <source media="(min-width: 40em)"
-                            srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+                            data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
                         <source
-                            srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+                            data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
                         <img class="editorial-header__img"
-                                src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
+                                data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
                                 alt="<?php echo get_field("cover_image")["alt"] ?>"  
                         />
                     </picture>
@@ -37,7 +37,7 @@
                     <address class="author-vertical mt4 mb4">
                         <div class="author-vertical__img-container">
                             <img 
-                                src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
+                                data-src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
                                 alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
                                 class="author-vertical__img"
                             />
@@ -70,7 +70,7 @@
                                                 <div class="article-mention__img-container relative">
                                                 	<img 
                                                         class="article-mention__img" 
-                                                        src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
+                                                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
                                                         alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
                                                     />
                                                 </div>
@@ -127,10 +127,10 @@
                                     <div class="article-medium__img-container topographic-pattern">
                                         <picture>
                                             <source media="(min-width: 40em)"
-                                                srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+                                                data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
                                             <source
-                                                srcSet="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                                            <img class="article-medium__img" src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
+                                                data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+                                            <img class="article-medium__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
                                         </picture>
                                     </div>
                                     <div class="article-medium__content">

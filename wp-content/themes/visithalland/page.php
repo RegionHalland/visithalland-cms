@@ -22,11 +22,11 @@
 					<div class="page-header__img-container col-12">
 						<picture>
 		                    <source media="(min-width: 40em)"
-		                        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+		                        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
 		                    <source
-		                        srcSet="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+		                        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
 		                    <img class="page-header__img"
-		                            src="<?php echo get_field("cover_image")["sizes"]["vh_large"] ?>" 
+		                            data-src="<?php echo get_field("cover_image")["sizes"]["vh_large"] ?>" 
 		                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
 		                    />
 		                </picture>
@@ -43,7 +43,7 @@
 	    			<address class="author-horizontal mt4 mb4">
 	                    <div class="author-horizontal__img-container">
 	                        <img 
-	                            src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
+	                            data-src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
 	                            alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
 	                            class="author-horizontal__img"
 	                        />

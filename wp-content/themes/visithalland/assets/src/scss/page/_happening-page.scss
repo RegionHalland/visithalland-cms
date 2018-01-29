@@ -1,0 +1,59 @@
+.happening-page {
+
+	&__sidebar {
+		@media(min-width:$breakpoint-sm) {
+			padding-right:$space-3;
+		}
+	}
+	&__body {
+		@media(min-width:$breakpoint-sm) {
+			padding-left:$space-3;
+			float:right;
+		}
+	}
+
+}
+
+.happening-page-header {
+	&__backdrop {
+		background-color:palette(black, dark);
+
+		@media(min-width:$breakpoint-sm) {
+			height:60%;
+		}
+
+		@media(min-width:$breakpoint-md) {
+			height:90%;
+		}
+		height:80%;
+		z-index:1;
+		position:absolute;
+		width:100%;
+		top:0;
+		left:0;
+		right:0;
+	}
+	&__inner {
+		z-index:2;
+		position: relative;
+		margin-top:$space-6;
+		padding-top:$space-4;
+	}
+
+	&__img-container {
+		display:inline-block;
+		margin:$space-4 0;
+		position: relative;
+		overflow: hidden;
+		border-radius:$border-radius;
+		padding-bottom:56.25%;
+		background-color:palette(black, dark);
+	}
+
+	&__img {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+	}
+}

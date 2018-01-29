@@ -11,11 +11,11 @@
 	        <div class="meet-a-local-header__img-container topographic-pattern">
 	            <picture>
 	                <source media="(min-width: 40em)"
-	                    srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 	                <source
-	                    srcSet="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 	                <img class="meet-a-local-header__img" 
-	                        src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
+	                        data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
 	                        alt="<?php echo get_field("cover_image")["alt"] ?>"  
 	                />
 	            </picture>
@@ -95,7 +95,6 @@
 					endif;
 					?>
         </section>
-	    </div>
 
 	    <?php //START - Article Share Section ?>
 	    <section class="article-share clearfix">
@@ -156,7 +155,8 @@
                 <?php endforeach ?>
             </div>
         </div>
-        <?php /* Start - Featured Articles */ ?>   
+        <?php /* End - Featured Articles */ ?>   
+    </div>
 	</article>
 
 	<div class="next-post-link">

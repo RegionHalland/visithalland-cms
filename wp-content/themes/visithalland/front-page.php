@@ -3,14 +3,14 @@
 	<div class="landing-header">
     	<div class="landing-header__img-container">
     		<span class="landing-header__logo center">
-    			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/landing-logo.svg">
+    			<img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/landing-logo.svg">
     		</span>
 			<picture>
 				<source media="(min-width: 60em)"
-					srcSet="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+					data-srcset="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 				<source
-					srcSet="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-				<img class="concept-header__img" src="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["alt"] ?>" />
+					data-srcset="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+				<img class="concept-header__img" data-src="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["alt"] ?>" />
 			</picture>
 		</div>
 	</div>
@@ -36,10 +36,10 @@
 			            <div class="concept-thumbnail-large__img-container">
 			                <picture>
 			                    <source media="(min-width: 40em)"
-			                        srcSet="<?php echo $current_term_cover_image["url"] ?>" />
+			                        data-srcset="<?php echo $current_term_cover_image["url"] ?>" />
 			                    <source 
-			                        srcSet="<?php echo $current_term_cover_image["url"] ?>" />
-			                    <img class="concept-thumbnail-large__img" src="<?php echo $current_term_cover_image["url"] ?>" />
+			                        data-srcset="<?php echo $current_term_cover_image["url"] ?>" />
+			                    <img class="concept-thumbnail-large__img" data-src="<?php echo $current_term_cover_image["url"] ?>" />
 			                </picture>
 			            	<div class="concept-thumbnail-large__inner center">
 			                	<div class="concept-thumbnail-large__icon mx-auto mb2"></div>
@@ -62,10 +62,10 @@
 			                            <div class="article-medium__img-container topographic-pattern">
 											<picture>
 											    <source media="(min-width: 40em)"
-											        srcSet="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
+											        data-srcset="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
 											    <source
-											        srcSet="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
-											    <img class="concept-thumbnail-large__img" src="<?php echo get_field("cover_image", $featured->ID)["url"] ?>" />
+											        data-srcset="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
+											    <img class="concept-thumbnail-large__img" data-src="<?php echo get_field("cover_image", $featured->ID)["url"] ?>" />
 											</picture>
 			                            </div>
 			                            <div class="article-medium__content">
@@ -94,10 +94,10 @@
 	                    <div class="concept-thumbnail-small__img-container">
 	                    	<picture>
 		                        <source media="(min-width: 40em)"
-		                            srcSet="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
+		                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
 		                        <source
-		                            srcSet="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
-		                        <img class="concept-thumbnail-small__img" src="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
+		                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
+		                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
 	                    	</picture>
 	                    <div class="concept-thumbnail-small__inner center">
 	                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
