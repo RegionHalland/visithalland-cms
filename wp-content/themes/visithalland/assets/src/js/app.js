@@ -8,7 +8,7 @@ jQuery(function() {
 			return nextUrl;
 		},
 		append: '#container',
-		history: true,
+		history: 'replace',
 		status: '.page-load-status',
 		debug: true,
 		scrollThreshold: 800
