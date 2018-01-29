@@ -29,17 +29,17 @@ add_image_size( 'vh_profile@2x', 150, 150, array( 'center', 'top' ) );
 add_image_size( 'vh_thumbnail', 200, 200, array( 'center', 'center' ) );
 add_image_size( 'vh_thumbnail@2x', 400, 400, array( 'center', 'center' ) );
 
-add_image_size( 'vh_small', 400, 300, array( 'center', 'center' ) );
-add_image_size( 'vh_small@2x', 800, 600, array( 'center', 'center' ) );
+add_image_size( 'vh_small', 450, 300, array( 'center', 'center' ) );
+add_image_size( 'vh_small@2x', 900, 600, array( 'center', 'center' ) );
 
-add_image_size( 'vh_medium', 800, 600, array( 'center', 'center' ) );
-add_image_size( 'vh_medium@2x', 1200, 900, array( 'center', 'center' ) );
+add_image_size( 'vh_medium', 900, 600, array( 'center', 'center' ) );
+add_image_size( 'vh_medium@2x', 1200, 800, array( 'center', 'center' ) );
 
 add_image_size( 'vh_medium_square', 800, 800, array( 'center', 'center' ) );
 add_image_size( 'vh_medium_square@2x', 1200, 1200, array( 'center', 'center' ) );
 
-add_image_size( 'vh_large', 900, 675 , array( 'center', 'center' ) );
-add_image_size( 'vh_large@2x', 1800, 1350, array( 'center', 'center' ) );
+add_image_size( 'vh_large', 900, 600 , array( 'center', 'center' ) );
+add_image_size( 'vh_large@2x', 1800, 1200, array( 'center', 'center' ) );
 
 add_image_size( 'vh_hero_wide', 1920, 1080, array( 'center', 'center' ) );
 add_image_size( 'vh_hero_wide@2x', 2880, 1620, array( 'center', 'center' ) );
@@ -72,6 +72,8 @@ function my_custom_sizes( $sizes ) {
         'vh_small@2x' => __( 'Small @2x' ),
         'vh_medium' => __( 'Medium' ),
         'vh_medium@2x' => __( 'Medium @2x' ),
+        'vh_medium_square' => __( 'Medium Square' ),
+        'vh_medium_square@2x' => __( 'Medium Square @2x' ),
         'vh_large' => __( 'Large' ),
         'vh_large@2x' => __( 'Large @2x' ),
         'vh_hero_wide' => __( 'Hero Wide' ),
