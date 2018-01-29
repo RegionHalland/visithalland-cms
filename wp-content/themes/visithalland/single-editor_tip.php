@@ -151,16 +151,9 @@
                     <?php endforeach ?>
                 </div>
             </div>
-
     <?php endwhile; ?>
     </article>
-
-    <!-- Link needed for infinite scroll -->
-    <div class="next-post-link">
-        <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
-    </div>
-    <!-- End Link needed for infinite scroll -->
-    
+        <a href="<?php echo get_permalink(get_adjacent_post( $in_same_term = true, $excluded_terms = '', $previous = true, $taxonomy = "taxonomy_concept" )->ID)?>" class="next-link"></a>
 </div>
 
 <!-- Working on infinite scroll feedback -->

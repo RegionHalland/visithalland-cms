@@ -1,6 +1,6 @@
 jQuery(function() {
 	var nextUrl = jQuery('.next-link').attr('href');
-	console.log(nextUrl);
+	console.log("nextUrl:", nextUrl);
 
 	var $container = jQuery('#container').infiniteScroll({
 		// options

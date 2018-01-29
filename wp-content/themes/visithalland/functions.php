@@ -9,7 +9,7 @@ function posts_link_next_class($format){
      $format = str_replace('href=', 'class="next-link" href=', $format);
      return $format;
 }
-add_filter('next_post_link', 'posts_link_next_class');
+//add_filter('previous_post_link', 'posts_link_next_class');
 
 //Modification of acf plugin
 include_once('lib/acf.php');

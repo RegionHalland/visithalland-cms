@@ -158,11 +158,16 @@
         </div>
         <?php /* Start - Featured Articles */ ?>   
 	</article>
-	<?php endwhile; ?>
 
 	<div class="next-post-link">
-	    <?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>          
+		<?php // next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?>
+		<div class="next-posts"><?php next_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?></div>
 	</div>
+	<div class="prev-posts"><?php previous_post_link('%link', 'Next Post >>', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_concept'); ?></div>
+	
+	<?php endwhile; ?>
+
+
 </div>
 
 

@@ -65,7 +65,8 @@ $term = get_queried_object(); ?>
 		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 			<div class="clearfix">
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
-					<article class="article-large <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+
+					<article class="article-large <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 		                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
 		                        <div class="article-large__img-container topographic-pattern">
 		                        	<div class="article-tag absolute top-0 left-0 mt3 ml3 z3">
