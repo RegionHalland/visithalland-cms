@@ -9,7 +9,10 @@
 	}
 
 	&__title {
-		font-size:2rem;
+		font-size:1.75rem;
+		@media (min-width:$breakpoint-md) {
+			font-size:2rem;
+		}
 		&::after {
 			content:'';
 			display:block;

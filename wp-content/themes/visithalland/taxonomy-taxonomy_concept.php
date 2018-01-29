@@ -33,7 +33,7 @@ $term = get_queried_object(); ?>
 	
 		<?php /* START - NavigationCarousel */ ?>
 			<?php
-				$spotlights = vh_get_spotlights_by_taxonomy_concept($term, 1);
+				$spotlights = vh_get_spotlights_by_taxonomy_concept($term);
 				if (count($spotlights)) : ?>
 					<div class="concept-carousel clearfix">
 						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
@@ -269,9 +269,15 @@ $term = get_queried_object(); ?>
 			<?php /* START - CONCEPT SIDEBAR */ ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
 		        <div class="concept-happenings clearfix">
+
 		            <?php 
-					$happenings = vh_get_happenings_by_taxonomy_concept($term, 3);
-		            foreach ($happenings as $index => $value) : ?>
+						$happenings = vh_get_happenings_by_taxonomy_concept($term, 3);
+					?>
+
+					<?php if (count($happenings) > 0) : ?>
+						<h3 class="concept-happenings__title"><?php _e( 'Happenings du inte vill missa', 'visithalland' ); ?></h3>
+					<?php endif ?>
+		            <?php foreach ($happenings as $index => $value) : ?>
 		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
 						    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 				                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
@@ -305,6 +311,7 @@ $term = get_queried_object(); ?>
 		        </div>
 
 		        <div class="concept-thumbnails clearfix">
+		        	<h3 class="concept-thumbnails__title"><?php _e( 'Se vad mer Halland har att erbjuda', 'visithalland' ); ?></h3>
 					<?php
 					$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                 	$menuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);

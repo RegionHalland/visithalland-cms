@@ -18,6 +18,20 @@
 
 .concept-thumbnails {
 	margin-top:$space-4;
+	&__title {
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+	}
 	@media (min-width:$breakpoint-sm) and (max-width:$breakpoint-lg) {
 		margin-left:-$space-2;
 		margin-right:-$space-2;
@@ -26,12 +40,6 @@
 		margin:0; 
 		padding:$space-2 0 $space-2 $space-3;
 		padding-left:$space-4;
-		border-width:2px;
-		border-style:none;
-		border-bottom:none;
-		border-left:solid;
-		border-right:none;
-		border-image: url('../../src/graphics/border-dark.png') 20 round;
 	}
 	&__item {
 		margin:0 0 $space-3 0;
@@ -45,17 +53,24 @@
 }
 
 .concept-happenings {
-	margin-top:$space-4;
 	@media(min-width:$breakpoint-lg) {
 		margin:0; 
-		padding:$space-2 $space-3;
+		padding:0 $space-3;
 		padding-left:$space-4;
-		border-width:2px;
-		border-style:none;
-		border-bottom:none;
-		border-left:solid;
-		border-right:none;
-		border-image: url('../../src/graphics/border-dark.png') 20 round;
+	}
+	&__title {
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 	&__item {
 		margin:0 0 $space-3 0;

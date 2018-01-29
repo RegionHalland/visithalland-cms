@@ -48,18 +48,24 @@
 		font-size:1.4em;
 		font-style: italic;
 		padding:$space-3 $space-2;
-		border-width:2px;
-		border-style:none;
-		border-bottom:solid;
 		text-align:center;
 		width:100%;
 		@media (min-width:$breakpoint-sm) {
 			width:80%;
 		}
 		margin:$space-4 auto;
-		border-top:solid;
-		padding:$space-3 0;
-		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
+		&::after, &::before {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 auto;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 
 	ul {

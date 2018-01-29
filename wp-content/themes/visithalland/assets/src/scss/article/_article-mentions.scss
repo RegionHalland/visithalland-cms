@@ -1,15 +1,19 @@
 .article-mentions {
 	padding:$space-3 0;
-	border-width:2px;
-	border-style:none;
-	border-bottom:solid;
-	border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	&__header {
-		padding:$space-3 0;
-		border-width:2px;
-		border-style:none;
-		border-bottom:solid;
-		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
+		margin-top:$space-3;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 0;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 }
 
