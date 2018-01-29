@@ -38,42 +38,27 @@ function vh_get_pretty_post_type_name(String $post_type) {
 	return null;
 }
 
-function get_term_for_default_lang( $term, $taxonomy ) {
-        /** @var $sitepress SitePress */
-        global $sitepress;
-        global $icl_adjust_id_url_filter_off;
- 
-        $term_id = is_int( $term ) ? $term : $term->term_id;
- 
-        $default_term_id = (int) icl_object_id( $term_id, $taxonomy, true, $sitepress->get_default_language() );
- 
-        $orig_flag_value = $icl_adjust_id_url_filter_off;
- 
-        $icl_adjust_id_url_filter_off = true;
-        $term = get_term( $default_term_id, $taxonomy );
-        $icl_adjust_id_url_filter_off = $orig_flag_value;
- 
-        return $term;
+function vh_get_taxonomyslug_by_string(String $taxonomySlug){
+	global $sitepress;
+	$original_lang = ICL_LANGUAGE_CODE; // Save the current language
+	$new_lang = $sitepress->get_default_language(); // The language in which you want to get the terms
+	$sitepress->switch_lang($new_lang); // Switch to new language
+
+	// Query the terms in new language instead of current language
+	$terms = get_terms(array('taxonomy_concept' => 'category', 'hide_empty' => false) );
+
+	foreach ($terms as $url) {
+		if (strpos($taxonomySlug, $url->slug) !== FALSE) {
+			//We've found a matching slug in our default taxonomy list
+			return $url->slug;
+		}
+	}
+
+	// Roll back to current language            
+	$sitepress->switch_lang($original_lang);
+
+	return '';
 }
-
-/*function vh_get_main_menu(){
-	$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
-	$mainMenuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
-
-	foreach ($mainMenuItems as $key => $value) :
-	    $term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
-	    $current_term = get_term($term_id); ?>
-
-	    <div class="navigation__item <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
-	        <a href="<?php echo $value->url ?>" class="navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
-	            <div class="navigation__icon-wrapper">
-	                <div class="navigation__icon"></div>
-	            </div>
-	            <span><?php echo $value->title ?></span>
-	        </a>
-	    </div>
-	endforeach
-}*/
 
 function vh_get_post_taxonomy() {
 	/*global $post;

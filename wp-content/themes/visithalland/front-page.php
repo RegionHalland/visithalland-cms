@@ -29,7 +29,7 @@
 			?>
 	    	<?php if($key === 0) : ?>
 	        <div class="col col-12 landing-concepts__item">
-		        <div class="concept-thumbnail-large px2 <?php echo $value->post_name ?>">
+		        <div class="concept-thumbnail-large px2 <?php echo vh_get_taxonomyslug_by_string($value->post_name) ?>">
 			        <a href="<?php echo $value->url ?>">
 			            <div class="concept-thumbnail-large__img-container">
 			                <picture>
@@ -87,7 +87,7 @@
 
 	    <?php else : ?>
 	        <div class="col col-12 sm-col-4 px2 landing-concepts__item landing-concepts__item--small">
-	            <div class="concept-thumbnail-small <?php echo $value->post_name ?>">
+	            <div class="concept-thumbnail-small <?php echo vh_get_taxonomyslug_by_string($value->post_name)?>">
 	                <a href="<?php echo $value->url ?>" class="link-reset">
 	                    <div class="concept-thumbnail-small__img-container">
 	                    	<picture>

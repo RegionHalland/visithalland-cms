@@ -330,7 +330,7 @@ $term = get_queried_object(); ?>
 						$current_term = get_term($term_id);
 						$current_term_cover_image = get_field("cover_image", $current_term);
 					?>
-					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 <?php echo $current_term->slug ?>">
+					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
 						<div class="concept-thumbnail-small <?php echo $value->title ?>">
 		                       <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
