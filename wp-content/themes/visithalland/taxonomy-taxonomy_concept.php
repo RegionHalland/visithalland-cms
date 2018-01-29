@@ -33,7 +33,7 @@ $term = get_queried_object(); ?>
 	
 		<?php /* START - NavigationCarousel */ ?>
 			<?php
-				$spotlights = vh_get_spotlights_by_taxonomy_concept($term, 1);
+				$spotlights = vh_get_spotlights_by_taxonomy_concept($term);
 				if (count($spotlights)) : ?>
 					<div class="concept-carousel clearfix">
 						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
