@@ -6,7 +6,7 @@
     
 ?>
 <div id="container">
-	<article class="container" role="main" id="main-content">
+	<article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
 	    <section class="happening-header relative clearfix">
                 <div class="happening-header__backdrop topographic-pattern"></div>
                 <div class="happening-header__inner col-11 md-col-10 lg-col-8 mx-auto relative">
@@ -107,7 +107,7 @@
                     <?php
                         $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                         foreach ($featuredArticles as $key => $value): ?>
-                            <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                            <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                                 <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                     <div class="article-medium__img-container topographic-pattern">
                                         <picture>

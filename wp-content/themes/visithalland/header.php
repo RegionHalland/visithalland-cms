@@ -78,7 +78,7 @@
                                 <?php 
                                 $happenings = vh_get_happenings(3);
                                 foreach ($happenings as $index => $value) : ?>
-                                    <article class="happening-list-item mb3 <?php echo $value->taxonomy["slug"]?>">
+                                    <article class="happening-list-item mb3 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy["slug"]) ?>">
                                         <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                             <div class="clearfix">
                                                 <div class="col col-5 sm-col-4 ">

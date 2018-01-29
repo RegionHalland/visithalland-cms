@@ -6,7 +6,7 @@
     
 ?>
 <div id="container">
-	<article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
+	<article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
 	    <section class="meet-a-local-header">
 	        <div class="meet-a-local-header__img-container topographic-pattern">
 	            <picture>
@@ -22,7 +22,7 @@
 	        </div>
 	        <div class="meet-a-local-header__inner col-12 md-col-10 lg-col-8 mx-auto">
 	            <div class="meet-a-local-header__content center">
-	                <div class="article-tag <?php echo vh_get_post_taxonomy()['slug']; ?>">
+	                <div class="article-tag">
 	                    <div class="article-tag__icon-wrapper">
 	                        <div class="article-tag__icon"></div>
 	                    </div><span class="article-tag__type"><?php echo vh_get_pretty_post_type_name($post->post_type) ?></span></div>
@@ -127,7 +127,7 @@
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_post_taxonomy()["slug"] ?>">
+                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <picture>

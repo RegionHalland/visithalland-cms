@@ -7,7 +7,7 @@
 ?>
 <div id="container">
 <!-- Try to remove this container and append to some other container -->
-    <article class="container <?php echo vh_get_post_taxonomy()['slug']; ?>" role="main" id="main-content">
+    <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
         <section class="editorial-header relative clearfix" role="heading" id="page-content">
             <div class="editorial-header__backdrop topographic-pattern"></div>
             <div class="editorial-header__inner col-11 md-col-10 lg-col-8 mx-auto">

@@ -61,14 +61,14 @@ function vh_get_taxonomyslug_by_string(String $taxonomySlug){
 }
 
 function vh_get_post_taxonomy() {
-	/*global $post;
+	global $post;
 
 	if (is_array(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )) && count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0 ){
 		return array(
 			"title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
 			"slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
 		);
-	}*/
+	}
 }
 
 function vh_get_next_article($post, $paged = 1){
