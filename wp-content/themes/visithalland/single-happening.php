@@ -139,10 +139,10 @@
     	</article>
     <?php endwhile; ?>
 
-    <div class="next-post-link">
-       <?php echo vh_get_next_previous_link(); ?>
-    </div>
+</div>
 
+<div class="next-post-link">
+    <div id="nextPages" data-all='<?php echo json_encode(vh_get_next_previous_link()) ?>'></div>
 </div>
 
 <!-- Working on infinite scroll feedback -->

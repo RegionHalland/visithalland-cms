@@ -1,11 +1,27 @@
 jQuery(function() {
 	var nextUrl = jQuery('.next-link').attr('href');
 	console.log("nextUrl:", nextUrl);
-	if (typeof nextUrl !== "undefined") {
+	var nextPages = [
+		'http://visithalland.test/hiking-biking/trip/pa-tva-hjul-langs-kattegatt/',
+		'http://visithalland.test/hiking-biking/editor_tip/cykelhistoria-i-halland/',
+		/*'api',
+		'events',
+		'extras',
+		'license',*/
+	];
+	
+
+	var all = jQuery("#nextPages").data("all");
+	console.log(all);
+	var nextPages = all;
+	console.log(nextPages);
+
+	//if (typeof nextUrl !== "undefined") {
 		var $container = jQuery('#container').infiniteScroll({
 			// options
 			path: function() {
-				return nextUrl;
+				return nextPages[this.loadCount];
+				//return nextUrl;
 			},
 			append: '#container',
 			history: 'replace',
@@ -45,10 +61,10 @@ jQuery(function() {
 
 		jQuery('.infinite-scroll').removeClass('visible');
 		});
-	} else {
+	/*} else {
 		//We have no url we should not show loading state divs
 		jQuery('.page-load-status').remove();
-	}
+	}*/
 
 
 	//Init lazyload and the IntersectionObserver API if supported by the browser
