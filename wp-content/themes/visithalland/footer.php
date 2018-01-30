@@ -50,11 +50,13 @@
 
                                 //Language switcher
                                 foreach ($langs as $key => $val) : ?>
+                                <?php if (!$val["active"]) : ?>
                                     <li class="footer__list-item mt1 light">
                                         <a href="<?php echo $val["url"] ?>" class="footer__link link-reset"">
                                             <span><?php echo $val["native_name"] ?></span>
                                         </a>
                                     </li>
+                                <?php endif; ?>
                                 <?php endforeach; ?>
 
                                 <?php 

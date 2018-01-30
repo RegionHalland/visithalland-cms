@@ -45,9 +45,11 @@
 
                             //Language switcher
                             foreach ($langs as $key => $val) : ?>
+                                <?php if (!$val["active"]) : ?>
                                 <a href="<?php echo $val["url"] ?>" class="header__support-link">
                                     <span><?php echo $val["native_name"] ?></span>
                                 </a>
+                                <?php endif; ?>
                             <?php endforeach; ?>
 
                             <?php 
@@ -104,25 +106,17 @@
                                                     </div>
                                                     <div class="happening-list-item__content col col-7 sm-col-8">
                                                         <span class="happening-list-item__title"><?php echo $value->post_title ?></span>
-                                                        <div class="read-more">
-                                                            <span class="read-more__text">
-                                                                <?php _e( 'Läs mer', 'visithalland' ); ?>
-                                                            </span>
-                                                            <div class="read-more__button">
-                                                                <svg class="icon read-more__icon">
-                                                                    <use xlink:href="#arrow-right-icon"/>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
                                         </article>
                                     <?php endforeach ?>
-                                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
-                                        <?php _e( 'Visa fler', 'visithalland' ); ?>
-                                    </a>
+
+                                        <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
+                                            <?php _e( 'Visa fler', 'visithalland' ); ?>
+                                        </a>
                                 </div>
+                                <?php ?>
                             </div>
                         <?php endif ?>
                     </div>
@@ -209,9 +203,11 @@
                         <h5 class="mobile-navigation__header light"><?php _e( 'Fler länkar', 'visithalland' ); ?></h5>
                         <?php
                             foreach ($langs as $k => $val) : ?>
-                               <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
+                                <?php if (!$val["active"]) : ?>
+                                <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
                                     <span><?php echo $val["native_name"] ?></span>
                                 </a>
+                                <?php endif; ?>
                             <?php endforeach;
 
                             foreach ($menuItems as $key => $value) : ?>
