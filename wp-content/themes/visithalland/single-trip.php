@@ -60,9 +60,16 @@
 
 					                        </div>
 					                        <div class="spotlight-large__links">
-					                            <a class="spotlight-large__btn btn btn--primary link-reset" href="<?php echo get_permalink($value->ID) ?>">
-														<?php _e( 'Se', 'visithalland' ); ?> <?php echo $value->post_title ?>
-					                            </a>
+					                            <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
+						                            <div class="read-more">
+												    	<span class="read-more__text light"><?php _e( 'Se', 'visithalland' ); ?> <?php echo $value->post_title ?></span>
+												    	<div class="read-more__button">
+													    	<svg class="icon read-more__icon">
+						                                    	<use xlink:href="#arrow-right-icon"/>
+						                                	</svg>
+					                                	</div>
+												    </div>
+											    </a>
 					                        </div>
 					                    </div>
 					                </div>
@@ -88,9 +95,16 @@
 					                            <?php the_field("body", $value->ID); ?>
 					                        </div>
 					                        <div class="spotlight-small__links mt3">
-					                            <a class="spotlight-small__btn btn btn--primary link-reset" href="<?php echo get_permalink($value->ID) ?>">
-					                              <?php _e( 'Se', 'visithalland' ); ?> <?php echo $value->post_title ?>
-					                            </a>
+					                            <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
+						                            <div class="read-more">
+												    	<span class="read-more__text"><?php _e( 'Se', 'visithalland' ); ?> <?php echo $value->post_title ?></span>
+												    	<div class="read-more__button">
+													    	<svg class="icon read-more__icon">
+						                                    	<use xlink:href="#arrow-right-icon"/>
+						                                	</svg>
+					                                	</div>
+												    </div>
+											    </a>
 					                        </div>
 					                    </div>
 					                </div>

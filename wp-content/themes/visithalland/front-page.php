@@ -60,6 +60,11 @@
 			                <article class="article-medium <?php echo get_field("featured", $current_term)[0]->post_name ?>">
 			                        <a href="<?php echo get_permalink(get_field("featured", $current_term)[0]->ID) ?>">
 			                            <div class="article-medium__img-container topographic-pattern">
+			                            	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
+												<div class="article-tag__icon-wrapper">
+													<div class="article-tag__icon"></div>
+												</div>
+											</div>
 											<picture>
 											    <source media="(min-width: 40em)"
 											        data-srcset="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
@@ -69,16 +74,16 @@
 											</picture>
 			                            </div>
 			                            <div class="article-medium__content">
-			                                    <div class="article-tag mt3 mb2 <?php echo $featured->post_type ?>">
-			                                        <div class="article-tag__icon-wrapper">
-			                                            <div class="article-tag__icon"></div>
-			                                        </div>
-			                                        <span class="article-tag__type">
-			                                            <?php echo vh_get_pretty_post_type_name($featured->post_type) ?>
-			                                        </span>
-			                                    </div>
-			                                <h3 class="mb1 mt1 pt0"><?php echo $featured->post_title ?></h3>
-			                                <p class="mt2"><?php echo get_field("excerpt", $featured->ID) ?></p>
+			                                <h3 class="article-medium__title mb1 mt3 pt0"><?php echo $featured->post_title ?></h3>
+			                                <p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", $featured->ID) ?></p>
+			                                <div class="read-more">
+										    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+										    	<div class="read-more__button">
+											    	<svg class="icon read-more__icon">
+				                                    	<use xlink:href="#arrow-right-icon"/>
+				                                	</svg>
+			                                	</div>
+										    </div>
 			                            </div>
 			                        </a>
 			                </article>

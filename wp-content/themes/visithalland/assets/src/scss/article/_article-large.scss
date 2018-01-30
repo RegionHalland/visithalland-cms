@@ -36,6 +36,12 @@
 		}
 	}
 
+	&__right-col {
+		@media(min-width:$breakpoint-sm) {
+			padding-left:$space-3;
+		}
+	}
+
 	&__excerpt {
 		position:relative;
 		max-height:135px;

@@ -76,7 +76,6 @@
                                                 </div>
                                             </div>
                         						<div class="article-mention__content col col-7 sm-col-8">
-                                                    <h5 class="article-mention__label"><?php echo $value->post_title ?></h5>
                                                     <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
                                                     <div class="read-more">
                                                         <span class="read-more__text">

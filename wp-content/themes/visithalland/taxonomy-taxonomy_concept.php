@@ -93,7 +93,7 @@ $term = get_queried_object(); ?>
 		                            <div class="col col-12 sm-col-5">
 		                                <h2 class="article-large__title pt0"><?php echo get_field("featured", $term)[0]->post_title ?></h2>
 		                            </div>
-		                            <div class="col col-12 sm-col-7">
+		                            <div class="col col-12 sm-col-7 article-large__right-col">
 		                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured", $term)[0]->ID) ?></p>
 		                                <div class="read-more">
 									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
