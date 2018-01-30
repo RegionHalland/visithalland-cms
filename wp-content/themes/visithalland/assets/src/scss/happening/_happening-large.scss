@@ -1,7 +1,18 @@
 .happening-large {
 	&__img-container {
-		padding-bottom:66.66%;
-		background:red;
+		overflow: hidden;
+		position:relative;
+		background-color:palette(black, base);
+		border-radius:$border-radius;
+		padding-bottom:66%;
+	}
+
+	&__img {
+		width:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		transition: transform 0.35s;
 	}
 
 	&__title {
@@ -21,7 +32,8 @@
 	&__info-title {
 		font-family: $rift-font-family;
 		font-weight:bold;
-		font-size:1.25rem;
+		font-size:1.1rem;
+		color:palette(black, light);
 		&::after {
 			content:'';
 			display:block;
