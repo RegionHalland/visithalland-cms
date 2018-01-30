@@ -45,9 +45,11 @@
 
                             //Language switcher
                             foreach ($langs as $key => $val) : ?>
+                                <?php if (!$val["active"]) : ?>
                                 <a href="<?php echo $val["url"] ?>" class="header__support-link">
                                     <span><?php echo $val["native_name"] ?></span>
                                 </a>
+                                <?php endif; ?>
                             <?php endforeach; ?>
 
                             <?php 
@@ -201,9 +203,11 @@
                         <h5 class="mobile-navigation__header light"><?php _e( 'Fler länkar', 'visithalland' ); ?></h5>
                         <?php
                             foreach ($langs as $k => $val) : ?>
-                               <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
+                                <?php if (!$val["active"]) : ?>
+                                <a href="<?php echo $val["url"] ?>" class="mobile-navigation__support-link my2 block">
                                     <span><?php echo $val["native_name"] ?></span>
                                 </a>
+                                <?php endif; ?>
                             <?php endforeach;
 
                             foreach ($menuItems as $key => $value) : ?>
