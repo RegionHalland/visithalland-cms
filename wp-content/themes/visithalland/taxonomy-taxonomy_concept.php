@@ -128,7 +128,7 @@ $term = get_queried_object(); ?>
 											<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
 								    </div>
-								    <div class="article-medium__content mt2">
+								    <div class="article-medium__content mt3">
 										<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[1]->post_title ?></h3>
 										<p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", get_field("featured", $term)[1]->ID) ?></p>
 										<div class="read-more">
@@ -162,7 +162,7 @@ $term = get_queried_object(); ?>
 												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
-									    <div class="article-medium__content mt2">
+									    <div class="article-medium__content mt3">
 											<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[2]->post_title ?></h3>
 											<p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", get_field("featured", $term)[2]->ID) ?></p>
 											<div class="read-more">

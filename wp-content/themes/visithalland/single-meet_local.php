@@ -82,10 +82,18 @@
 		                                <h3 class="mt3 tip__title"><?php echo $value[0]->post_title ?></h3>
 		                                <p class="my3 tip__quote"><?php the_sub_field('quote', $value->ID)?></p>
 		                                <div class="tip__links">
-		                                    <a class="tip__btn btn btn--primary link-reset" href="<?php echo get_permalink($value[0]->ID) ?>">
-		                                        <?php _e( 'Läs mer om', 'visithalland' ); ?> <?php echo $value[0]->post_title ?>
+		                                    <a class="link-reset" href="<?php echo get_permalink($value[0]->ID) ?>">
+		                                        <div class="read-more inline-block">
+											    	<span class="read-more__text">
+											    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+											    	</span>
+											    	<div class="read-more__button">
+												    	<svg class="icon read-more__icon">
+					                                    	<use xlink:href="#arrow-right-icon"/>
+					                                	</svg>
+				                                	</div>
+											    </div>
 		                                    </a>
-		                                    <div class="tip__btn btn btn--dark"><?php _e( 'Visa på karta', 'visithalland' ); ?></div>
 		                                </div>
 		                            </div>
 		                        </div>
