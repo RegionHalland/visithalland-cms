@@ -268,17 +268,17 @@ $term = get_queried_object(); ?>
 
 			<?php /* START - CONCEPT SIDEBAR */ ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
-		        <div class="concept-happenings clearfix">
+		        <div class="concept-happenings mb4 clearfix mxn2">
 
 		            <?php 
 						$happenings = vh_get_happenings_by_taxonomy_concept($term, 3);
 					?>
 
 					<?php if (count($happenings) > 0) : ?>
-						<h3 class="concept-happenings__title"><?php _e( 'Happenings du inte vill missa', 'visithalland' ); ?></h3>
+						<h3 class="concept-happenings__title px2"><?php _e( 'Happenings du inte vill missa', 'visithalland' ); ?></h3>
 					<?php endif ?>
 		            <?php foreach ($happenings as $index => $value) : ?>
-		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12">
+		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12 px2">
 						    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 				                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 				                    <div class="clearfix">
@@ -310,8 +310,8 @@ $term = get_queried_object(); ?>
 		        	<?php endforeach ?>
 		        </div>
 
-		        <div class="concept-thumbnails clearfix">
-		        	<h3 class="concept-thumbnails__title"><?php _e( 'Se vad mer Halland har att erbjuda', 'visithalland' ); ?></h3>
+		        <div class="concept-thumbnails clearfix mxn2">
+		        	<h3 class="concept-thumbnails__title px2"><?php _e( 'Se vad mer Halland har att erbjuda', 'visithalland' ); ?></h3>
 					<?php
 					$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                 	$menuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
@@ -321,7 +321,7 @@ $term = get_queried_object(); ?>
 						$current_term = get_term($term_id);
 						$current_term_cover_image = get_field("cover_image", $current_term);
 					?>
-					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
+					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 px2 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
 						<div class="concept-thumbnail-small <?php echo $value->title ?>">
 		                       <a href="<?php echo $value->url ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
