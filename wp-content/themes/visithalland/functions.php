@@ -23,6 +23,7 @@ function vh_get_next_previous_link(){
         'paged' => get_query_var( 'paged' ),
         'posts_per_page' => -1,
         'orderby' => 'title',
+        'post__not_in' => array($post->ID),
         'post_type' => array(
             "meet_local",
             "editor_tip",

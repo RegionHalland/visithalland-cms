@@ -1,78 +1,59 @@
 jQuery(function() {
-	window.ga_debug = { trace: true };
-	var nextUrl = jQuery('.next-link').attr('href');
-	console.log("nextUrl:", nextUrl);
-	var nextPages = [
-		'http://visithalland.test/hiking-biking/trip/pa-tva-hjul-langs-kattegatt/',
-		'http://visithalland.test/hiking-biking/editor_tip/cykelhistoria-i-halland/',
-		/*'api',
-		'events',
-		'extras',
-		'license',*/
-	];
-	
+	var nextPages = jQuery("#nextPages").data("all");
 
-	var all = jQuery("#nextPages").data("all");
-	console.log(all);
-	var nextPages = all;
-	console.log(nextPages);
+	var $container = jQuery('#container').infiniteScroll({
+		// options
+		path: function() {
+			return nextPages[this.loadCount];
+			//return nextUrl;
+		},
+		append: '#container',
+		history: 'replace',
+		status: '.page-load-status',
+		debug: false,
+		scrollThreshold: 800
+	});
 
-	//if (typeof nextUrl !== "undefined") {
-		var $container = jQuery('#container').infiniteScroll({
-			// options
-			path: function() {
-				return nextPages[this.loadCount];
-				//return nextUrl;
-			},
-			append: '#container',
-			history: 'replace',
-			status: '.page-load-status',
-			debug: false,
-			scrollThreshold: 800
-		});
-
-		$container.on( 'request.infiniteScroll', function( event, path ) {
+	$container.on( 'request.infiniteScroll', function( event, path ) {
 		console.log( 'Loading page: ' + path );
 
 		jQuery('.infinite-scroll').addClass('visible');
-		});
+	});
 
 
-		$container.on( 'load.infiniteScroll', function( event, response ) {
-			var elements = jQuery(response);
-			var nextUrlTwo = jQuery(response).find('.next-link');
-			nextUrl = nextUrlTwo.attr('href');
-			console.log(nextUrlTwo.attr('href'));
-			
+	$container.on( 'load.infiniteScroll', function( event, response ) {
+		var elements = jQuery(response);
+		var nextUrlTwo = jQuery(response).find('.next-link');
+		nextUrl = nextUrlTwo.attr('href');
+		console.log(nextUrlTwo.attr('href'));
+		
 
-			console.log("Hide infinite thingy")
-			jQuery('.infinite-scroll').removeClass('visible');
-		});
+		console.log("Hide infinite thingy")
+		jQuery('.infinite-scroll').removeClass('visible');
+	});
 
-		// jQuery
-		$container.on( 'last.infiniteScroll', function( event, response, path ) {
-			console.log( 'Loaded: ' + path );
-			console.log('we have reached the end')
+	$container.on( 'last.infiniteScroll', function( event, response, path ) {
+		console.log( 'Loaded: ' + path );
+		console.log('we have reached the end')
 
-			jQuery('.infinite-scroll').removeClass('visible');
-		});
+		jQuery('.infinite-scroll').removeClass('visible');
+	});
 
-		// jQuery
-		$container.on('history.infiniteScroll', function (event, title, path) {
-			console.log('History changed to: ' + path);
-			
-			ga('send', 'pageview', path);
-		});
-
-		$container.on( 'error.infiniteScroll', function( event, error, path ) {
+	$container.on( 'error.infiniteScroll', function( event, error, path ) {
 		console.log( 'Could not load: ' + path )
 
 		jQuery('.infinite-scroll').removeClass('visible');
+	});
+
+	$container.on('history.infiniteScroll', function (event, title, path) {
+		console.log('History changed to: ' + path);
+		ga('create', 'UA-89278649-4');
+		ga('send', {
+			hitType: 'pageview',
+			page: path
 		});
-	/*} else {
-		//We have no url we should not show loading state divs
-		jQuery('.page-load-status').remove();
-	}*/
+		
+	});
 
 
 	//Init lazyload and the IntersectionObserver API if supported by the browser
