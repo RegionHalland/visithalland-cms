@@ -22,37 +22,44 @@
                             />
                         </picture>
                 </div>
-                <div class="business-header__content center">
-                    <div class="article-tag">
-                        <div class="article-tag__icon-wrapper">
-                            <div class="article-tag__icon"></div>
+                <div class="clearfix">
+                    <div class="business-header__content col col-12 md-col-7">
+                        <div class="article-tag">
+                            <div class="article-tag__icon-wrapper">
+                                <div class="article-tag__icon"></div>
+                            </div>
+                            <span class="article-tag__type">
+                                <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
+                            </span>
                         </div>
-                        <span class="article-tag__type">
-                            <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
-                        </span>
+                        <h1 class="business-header__title h1 mb3 mt2"><?php the_title(); ?></h1>
+                        <div class="business-header__details">
+                            <?php the_field('body', $post->ID); ?>
+                        </div>
                     </div>
-                    <h1 class="business-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
-                    <div class="business-header__details">
-                        <?php the_field('body', $post->ID); ?>
+                    <div class="business__details col col-12 md-col-5">
+                    <?php /* START - Google business Details */ ?>
+                            <section class="details clearfix ">
+                                <div id="map"></div>
+                                <section id="opening-hours" class="details__section details__open-hours col col-12 list-style-none p0">
+                                    <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
+                                </section>
+                                <section class="details__section col col-12">
+                                    <span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span>
+                                    <a id="details-show-on-map" href="" class="details__phone block">
+                                        <i class="details__icon material-icons mr2">business</i>
+                                        <?php _e( 'Visa på karta', 'visithalland' ); ?>
+                                    </a>
+                                </section>
+                                <section
+                                    class="details__section col col-12"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a id="details-visit-website" href="#" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a></section>
+                            </section>
+                        <?php /* End - Google business Details */ ?>
                     </div>
                 </div>
             </div>
         </section>
         <?php /* End - business Header */ ?>
-
-        <?php /* START - Google business Details */ ?>
-        <section class="details clearfix left-align col-11 md-col-10 lg-col-8 mx-auto">
-            <div id="map"></div>
-            <section id="opening-hours" class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0">
-                <span class="details__section-label block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></span>
-
-            </section>
-            <section class="details__section col col-12 sm-col-4"><span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span><a id="details-show-on-map" href="" class="details__phone block"><i class="details__icon material-icons mr2">business</i><?php _e( 'Visa på karta', 'visithalland' ); ?></a></section>
-            <section
-                class="details__section col col-12 sm-col-4"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a id="details-visit-website" href="#" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a></section>
-        </section>
-        <?php /* End - Google business Details */ ?>
-
 
         <?php //START - Article Share Section ?>
         <section class="article-share clearfix">
@@ -79,12 +86,12 @@
         
 
         <?php /* Start - Featured Articles */ ?>     
-        <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-            <div class="clearfix">  
+        <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
+            <div class="clearfix mxn2">  
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
+                        <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <picture>

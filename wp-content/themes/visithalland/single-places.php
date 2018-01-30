@@ -1,13 +1,12 @@
 <?php get_header(); ?>
 
-<?php while ( have_posts() ) : the_post(); 
+    <?php while ( have_posts() ) : the_post(); 
+        $author_id = get_the_author_meta('ID');
+    ?>
 
-    $author_id = get_the_author_meta('ID');
-    
-?>
     <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
 
-        <?php /* START - Place Header */ ?>
+        <?php /* START - place Header */ ?>
         <section class="place-header relative clearfix" role="heading" id="page-content">
             <div class="place-header__backdrop topographic-pattern"></div>
             <div class="place-header__inner col-11 md-col-10 lg-col-8 mx-auto">
@@ -23,51 +22,45 @@
                             />
                         </picture>
                 </div>
-                <div class="place-header__content center">
-                    <div class="article-tag">
-                        <div class="article-tag__icon-wrapper">
-                            <div class="article-tag__icon"></div>
+                <div class="clearfix">
+                    <div class="place-header__content col col-12 md-col-7">
+                        <div class="article-tag">
+                            <div class="article-tag__icon-wrapper">
+                                <div class="article-tag__icon"></div>
+                            </div>
+                            <span class="article-tag__type">
+                                <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
+                            </span>
                         </div>
-                        <span class="article-tag__type">
-                            <?php echo vh_get_pretty_post_type_name($post->post_type) ?>
-                        </span>
+                        <h1 class="place-header__title h1 mb3 mt2"><?php the_title(); ?></h1>
+                        <div class="place-header__details">
+                            <?php the_field('body', $post->ID); ?>
+                        </div>
                     </div>
-                    <h1 class="place-header__title h1 mb3 center mt2"><?php the_title(); ?></h1>
-                    <div class="place-header__details">
-                        <?php the_field('body', $value->ID); ?>
+                    <div class="place__details col col-12 md-col-5">
+                    <?php /* START - Google place Details */ ?>
+                            <section class="details clearfix ">
+                                <div id="map"></div>
+                                <section id="opening-hours" class="details__section details__open-hours col col-12 list-style-none p0">
+                                    <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
+                                </section>
+                                <section class="details__section col col-12">
+                                    <span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span>
+                                    <a id="details-show-on-map" href="" class="details__phone block">
+                                        <i class="details__icon material-icons mr2">place</i>
+                                        <?php _e( 'Visa på karta', 'visithalland' ); ?>
+                                    </a>
+                                </section>
+                                <section
+                                    class="details__section col col-12"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a id="details-visit-website" href="#" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a></section>
+                            </section>
+                        <?php /* End - Google place Details */ ?>
                     </div>
                 </div>
             </div>
         </section>
-        <?php /* End - Place Header */ ?>
+        <?php /* End - place Header */ ?>
 
-        <?php /* START - Google Place Details */ ?>
-        <section class="details clearfix left-align col-11 md-col-10 lg-col-8 mx-auto">
-            <section class="details__section details__open-hours col col-12 sm-col-4 list-style-none p0">
-                <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
-                <li class="details__open-hour">måndag: Stängt</li>
-                <li class="details__open-hour">tisdag: Stängt</li>
-                <li class="details__open-hour">onsdag: 18:00–00:00</li>
-                <li class="details__open-hour">torsdag: 18:00–00:00</li>
-                <li class="details__open-hour">fredag: 18:00–00:00</li>
-                <li class="details__open-hour">lördag: 18:00–00:00</li>
-                <li class="details__open-hour">söndag: Stängt</li>
-            </section>
-            <section class="details__section col col-12 sm-col-4">
-                <span class="details__section-label block">
-                    <?php _e( 'Kontakta oss', 'visithalland' ); ?>
-                </span>
-                <a href="http://maps.google.com/?q=Prostens Pizza, Falkenberg, Sverige" class="details__phone block">
-                    <i class="details__icon material-icons mr2">place</i>
-                    <?php _e( 'Visa på karta', 'visithalland' ); ?>
-                </a>
-            </section>
-            <section
-                class="details__section col col-12 sm-col-4"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a href="http://www.prostenspizza.se/" class="btn btn--primary inline-block"><?php _e( 'Besök webbplats', 'visithalland' ); ?></a></section>
-        </section>
-        <?php /* End - Google Place Details */ ?>
-
-        
         <?php //START - Article Share Section ?>
         <section class="article-share clearfix">
             <div class="center mx-auto">
@@ -93,12 +86,12 @@
         
 
         <?php /* Start - Featured Articles */ ?>     
-        <div class="featured-articles mxn2 mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-            <div class="clearfix">  
+        <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
+            <div class="clearfix mxn2">  
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
+                        <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <picture>
@@ -129,8 +122,12 @@
         </div>
         <?php /* Start - Featured Articles */ ?>   
 
-
+        
     </article>
 <?php endwhile; ?>
 
 <?php get_footer(); ?>
+
+<?php
+
+?>
