@@ -1,17 +1,5 @@
 .happening-page {
 
-	&__sidebar {
-		@media(min-width:$breakpoint-sm) {
-			padding-right:$space-3;
-		}
-	}
-	&__body {
-		@media(min-width:$breakpoint-sm) {
-			padding-left:$space-3;
-			float:right;
-		}
-	}
-
 }
 
 .happening-page-header {
