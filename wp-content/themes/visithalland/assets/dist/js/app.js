@@ -1,4 +1,5 @@
 jQuery(function() {
+	window.ga_debug = { trace: true };
 	var nextUrl = jQuery('.next-link').attr('href');
 	console.log("nextUrl:", nextUrl);
 	if (typeof nextUrl !== "undefined") {
@@ -10,7 +11,7 @@ jQuery(function() {
 			append: '#container',
 			history: 'replace',
 			status: '.page-load-status',
-			debug: true,
+			debug: false,
 			scrollThreshold: 800
 		});
 
@@ -38,6 +39,13 @@ jQuery(function() {
 			console.log('we have reached the end')
 
 			jQuery('.infinite-scroll').removeClass('visible');
+		});
+
+		// jQuery
+		$container.on('history.infiniteScroll', function (event, title, path) {
+			console.log('History changed to: ' + path);
+			
+			ga('send', 'pageview', path);
 		});
 
 		$container.on( 'error.infiniteScroll', function( event, error, path ) {
