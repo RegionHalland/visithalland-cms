@@ -20,9 +20,21 @@
 		margin:$space-1 0;
 	}
 	&__section-label {
-		font-family: $shelby-font-family;
-		font-size:1.25em;
-		color:$white;
+		font-family: $rift-font-family;
+		font-size:1rem;
+		color:palette(grey, light);
+		&::after {
+			content:'';
+			display:block;
+			width:10px;
+			height:4px;
+			border-radius:$border-radius;
+			margin:$space-2 0;
+			background-color:palette(grey, x-dark);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 	&__section-info {
 		font-family: $rift-font-family;

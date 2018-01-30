@@ -42,7 +42,7 @@
                             <p class="happening-header__preamble">
                                 <?php the_field('body'); ?>
                             </p>
-                            <address class="author-horizontal mt2 mb4">
+                            <address class="author-horizontal mt4 mb4">
                                 <div class="author-horizontal__img-container">
                                     <img 
                                         src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
@@ -139,10 +139,10 @@
     	</article>
     <?php endwhile; ?>
 
-    <div class="next-post-link">
-       <?php echo vh_get_next_previous_link(); ?>
-    </div>
+</div>
 
+<div class="next-post-link">
+    <div id="nextPages" data-all='<?php echo json_encode(vh_get_next_previous_link()) ?>'></div>
 </div>
 
 <!-- Working on infinite scroll feedback -->

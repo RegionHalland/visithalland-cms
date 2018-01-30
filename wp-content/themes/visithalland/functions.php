@@ -20,22 +20,23 @@ function vh_get_next_previous_link(){
 
     // get_posts in same custom taxonomy
     $postlist_args = array(
-    'posts_per_page' => -1,
-    'orderby' => 'rand',
-    'post_type' => array(
-        "meet_local",
-                "editor_tip",
-                "trip",
-                "happening"
-            ),
-            'taxonomy_concept' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
+        'paged' => get_query_var( 'paged' ),
+        'posts_per_page' => -1,
+        'orderby' => 'title',
+        'post_type' => array(
+            "meet_local",
+            "editor_tip",
+            "trip",
+            "happening"
+        ),
+        'taxonomy_concept' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
     );
     $postlist = get_posts( $postlist_args );
 
     // get ids of posts retrieved from get_posts
-    $ids = array();
+    /*$ids = array();
     foreach ($postlist as $thepost) {
-    $ids[] = $thepost->ID;
+        $ids[] = $thepost->ID;
     }
 
     // get and echo previous and next post in the same taxonomy
@@ -45,16 +46,24 @@ function vh_get_next_previous_link(){
     }
     if(isset($ids[$thisindex+1])){
         $nextid = $ids[$thisindex+1];
+    }*/
+
+    $urlList = array();
+    //echo get_query_var( 'paged' );
+    foreach ($postlist as $key => $value) {
+        # code...
+        //$urlList.push(get_permalink($value->ID));
+        array_push($urlList, get_permalink($value->ID));    
     }
+    return $urlList;
 
-
-    if ( !empty($previd) ) {
+    /*if ( !empty($previd) ) {
         return '<a class="next-link" rel="prev" href="' . get_permalink($previd). '">previous</a>';
     }
 
     if ( !empty($nextid) ) {
-        return '<a class="next-link" rel="next" href="' . get_permalink($nextid). '">next</a>';
-    }
+        //return '<a class="next-link" rel="next" href="' . get_permalink($nextid). '">next</a>';
+    }*/
 
 }
 

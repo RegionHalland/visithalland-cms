@@ -194,7 +194,7 @@
                     <?php
                         foreach ($mainMenuItems as $key => $value) : ?>
                             <div class="mobile-navigation__item <?php echo vh_get_taxonomyslug_by_string($value->post_name) ?>">
-                                <a href="<?php echo get_permalink($value->ID) ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                                <a href="<?php echo $value->url ?>" class="mobile-navigation__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                     <div class="mobile-navigation__icon-wrapper">
                                         <div class="mobile-navigation__icon"></div>
                                     </div>

@@ -17,6 +17,18 @@
 
 	&__title {
 		font-size:2rem;
+		&::after {
+			content:'';
+			display:block;
+			width:15px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 	
 	&__info {

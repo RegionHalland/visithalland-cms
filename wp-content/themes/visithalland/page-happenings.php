@@ -52,6 +52,9 @@
 			            <div class="clearfix my4">
 			            	<div class="col col-12 sm-col-6">
 			            		<h2 class="happening-large__title"><?php echo $value->post_title ?></h2>
+			            	</div>
+			            	<div class="col col-12 sm-col-6">
+			            		<p class="happening-large__excerpt"><?php the_field("excerpt", $value->ID) ?></p>
 			            		<div class="col col-6">
 			            			<div class="happening-large__info">
 			            				<span class="happening-large__info-title block">
@@ -76,9 +79,6 @@
 			            				</a>
 			            			</div>
 			            		</div>
-			            	</div>
-			            	<div class="col col-12 sm-col-6">
-			            		<p class="happening-large__excerpt"><?php the_field("excerpt", $value->ID) ?></p>
 			            	</div>
 			            </div>
 		        	</a>

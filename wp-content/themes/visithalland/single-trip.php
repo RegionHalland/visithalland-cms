@@ -13,7 +13,7 @@
 	                <source media="(min-width: 40em)"
 	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 	                <source
-	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 	                <img class="editorial-header__img" 
 	                        data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
 	                        alt="<?php echo get_field("cover_image")["alt"] ?>"  
@@ -160,10 +160,10 @@
 		</article>
 	<?php endwhile; ?>
 
-	<div class="next-post-link">
-	    <?php echo vh_get_next_previous_link(); ?>
-	</div>
+</div>
 
+<div class="next-post-link">
+    <div id="nextPages" data-all='<?php echo json_encode(vh_get_next_previous_link()) ?>'></div>
 </div>
 
 <!-- Working on infinite scroll feedback -->

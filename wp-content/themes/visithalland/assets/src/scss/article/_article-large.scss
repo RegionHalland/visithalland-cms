@@ -41,7 +41,7 @@
 		max-height:135px;
 		overflow:hidden;
 		text-overflow: ellipsis;
-		margin-top:$space-2;
+		margin-top:$space-1;
 		@include fade-text();
 		@media(min-width:$breakpoint-sm) {
 			margin-top:0;
