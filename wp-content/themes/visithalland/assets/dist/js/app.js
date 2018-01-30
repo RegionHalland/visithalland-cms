@@ -24,14 +24,14 @@ jQuery(function() {
 
 	$container.on( 'load.infiniteScroll', function( event, response ) {
 		var elements = jQuery(response);
-		var nextUrlTwo = jQuery(response).find('.next-link');
-		nextUrl = nextUrlTwo.attr('href');
-		console.log(nextUrlTwo.attr('href'));
-		
-
 		console.log("Hide infinite thingy")
 		jQuery('.infinite-scroll').removeClass('visible');
 	});
+
+	$container.on('append.infiniteScroll', function (event, response, path, items) {
+		console.log("lazyLoadInstance", lazyLoadInstance);
+		lazyLoadInstance.update();
+	})
 
 	$container.on( 'last.infiniteScroll', function( event, response, path ) {
 		console.log( 'Loaded: ' + path );
@@ -70,7 +70,6 @@ jQuery(function() {
 	window.addEventListener('LazyLoad::Initialized', function (e) {
     // Get the instance and puts it in the lazyLoadInstance variable
     	lazyLoadInstance = e.detail.instance;
-
     	/*setTimeout(function() {
     		console.log(jQuery('.loaded').closest('div'))
     		jQuery('.loaded').closest('div').css('background-image', 'none');
