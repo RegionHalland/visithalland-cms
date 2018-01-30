@@ -42,7 +42,7 @@
                             <p class="happening-header__preamble">
                                 <?php the_field('body'); ?>
                             </p>
-                            <address class="author-horizontal mt2 mb4">
+                            <address class="author-horizontal mt4 mb4">
                                 <div class="author-horizontal__img-container">
                                     <img 
                                         src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 

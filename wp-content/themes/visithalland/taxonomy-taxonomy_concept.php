@@ -17,7 +17,7 @@ $term = get_queried_object(); ?>
 				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
-		    <div class="concept-header__content clearfix absolute mx-auto bottom-0 left-0 right-0">
+		    <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
 		        <div class="col col-12 sm-col-7 md-col-10 lg-col-5">
 		            <h1 class="concept-header__title mt0 mb2 light">
 		                <div class="concept-header__icon mr3 inline-block"></div>
@@ -42,7 +42,7 @@ $term = get_queried_object(); ?>
 						</div>
 						<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 							<?php foreach ($spotlights as $key => $value) : ?>				
-								<div class="page-thumbnail col-6 sm-col-6 lg-col-3 center <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+								<div class="page-thumbnail col-6 sm-col-5 md-col-3 lg-col-3 center <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 								    <a href="<?php echo get_permalink($value->ID) ?>">
 								        <div class="page-thumbnail__img-container topographic-pattern">
 								            <div class="page-thumbnail__concept-badge"></div>
@@ -69,7 +69,7 @@ $term = get_queried_object(); ?>
 					<article class="article-large <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 		                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
 		                        <div class="article-large__img-container topographic-pattern">
-		                        	<div class="article-tag absolute top-0 left-0 mt3 ml3 z3">
+		                        	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
 										<div class="article-tag__icon-wrapper">
 											<div class="article-tag__icon"></div>
 										</div>
@@ -268,47 +268,46 @@ $term = get_queried_object(); ?>
 
 			<?php /* START - CONCEPT SIDEBAR */ ?>
 		    <div class="concept-sidebar col col-12 lg-col-4">
-		        <div class="concept-happenings mb4 clearfix mxn2">
+		    	<?php 
+					$happenings = vh_get_happenings_by_taxonomy_concept($term, 10);
+				?>
 
-		            <?php 
-						$happenings = vh_get_happenings_by_taxonomy_concept($term, 3);
-					?>
-
-					<?php if (count($happenings) > 0) : ?>
+				<?php if (count($happenings) > 0) : ?>
+		        	<div class="concept-happenings mb4 clearfix mxn2">
 						<h3 class="concept-happenings__title px2"><?php _e( 'Happenings du inte vill missa', 'visithalland' ); ?></h3>
-					<?php endif ?>
-		            <?php foreach ($happenings as $index => $value) : ?>
-		            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12 px2">
-						    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
-				                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
-				                    <div class="clearfix">
-				                        <div class="col col-5 sm-col-4 ">
-				                            <div class="happening-list-item__img-container topographic-pattern relative">
-				                            	<img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
-				                            </div>
-				                        </div>
-				                        <div class="happening-list-item__date">
-											<div class="date-badge">
-											    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
-											    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
-											</div>
-				                        </div>
-				                        <div class="happening-list-item__content col col-7 sm-col-8">
-				                            <h4 class=""><?php echo $value->post_title ?></h4>
-				                            <div class="article-link inline-block mt0">
-				                                <hr class="article-link__divider block"/>
-				                                <span class="article-link__text">Läs mer</span>
-				                                <span class="article-link__icon-wrapper">
-				                                    <i class="material-icons article-link__icon">arrow_forward</i>
-				                                </span>
-				                            </div>
-				                        </div>
-				                    </div>
-				                </a>
-				            </article>
-		            	</div>
-		        	<?php endforeach ?>
-		        </div>
+			            <?php foreach ($happenings as $index => $value) : ?>
+			            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12 px2">
+							    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+					                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
+					                    <div class="clearfix">
+					                        <div class="col col-5 sm-col-4 ">
+					                            <div class="happening-list-item__img-container topographic-pattern relative">
+					                            	<img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+					                            </div>
+					                        </div>
+					                        <div class="happening-list-item__date">
+												<div class="date-badge">
+												    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
+												    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
+												</div>
+					                        </div>
+					                        <div class="happening-list-item__content col col-7 sm-col-8">
+					                            <h4 class=""><?php echo $value->post_title ?></h4>
+					                            <div class="article-link inline-block mt0">
+					                                <hr class="article-link__divider block"/>
+					                                <span class="article-link__text">Läs mer</span>
+					                                <span class="article-link__icon-wrapper">
+					                                    <i class="material-icons article-link__icon">arrow_forward</i>
+					                                </span>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </a>
+					            </article>
+			            	</div>
+			        	<?php endforeach ?>
+		        	</div>
+		        <?php endif ?>
 
 		        <div class="concept-thumbnails clearfix mxn2">
 		        	<h3 class="concept-thumbnails__title px2"><?php _e( 'Se vad mer Halland har att erbjuda', 'visithalland' ); ?></h3>

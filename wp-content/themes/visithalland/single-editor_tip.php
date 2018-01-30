@@ -70,7 +70,7 @@
                                                 <div class="article-mention__img-container relative">
                                                 	<img 
                                                         class="article-mention__img" 
-                                                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail"] ?>" 
+                                                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail@2x"] ?>" 
                                                         alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
                                                     />
                                                 </div>
