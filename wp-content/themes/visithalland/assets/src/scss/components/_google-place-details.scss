@@ -1,20 +1,8 @@
 .details {
 	padding:$space-3 0;
 	position:relative;
-	border-width:2px;
-	border-style:none;
-	border-bottom:solid;
-	border-top:solid;
-	margin-top:$space-4;
-	border-image: url('../../src/graphics/border-top-dark.png') 3 round;
 	&__section {
-		padding:$space-4 $space-3;
-		&:first-of-type {
-			padding-left:0;
-		}
-		&:last-of-type {
-			padding-right:0;
-		}
+		margin-top:$space-4;
 	}
 
 	&__icon {
@@ -23,25 +11,22 @@
 		}
 	}
 	&__section-label {
-		font-family: $shelby-font-family;
-		font-size:1.35em;
-		color:palette(grey, x-dark);
-		margin-bottom:$space-2;
+		font-family: $rift-font-family;
+		font-size:1rem;
+		font-weight:bold;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 0;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 
-	}
-
-	&__open {
-		padding:$space-2;
-		border-radius: $border-radius;
-		font-family: $shelby-font-family;
-		font-size:1.5em;
-		line-height:0.5;
-		background:#ee4340;
-	}
-
-	&__closed {
-		padding:$space-2;
-		border-radius: $border-radius;
 	}
 
 	&__phone {
@@ -61,12 +46,7 @@
 	&__open-hour {
 		font-family: $rift-font-family;
 		font-weight:bold;
-		padding:$space-2 0;
-		font-size:1.1em;
-		border-width:2px;
-		border-style:none;
-		border-top:solid;
-		padding:$space-2 0;
-		border-image: url('../../src/graphics/border-top-dark.png') 3 round;
+		font-size:0.9em;
+		padding:$space-1 0;
 	}
 }

@@ -126,7 +126,7 @@
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
+                        <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <picture>

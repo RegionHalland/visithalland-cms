@@ -1,9 +1,20 @@
+.place {
+	&__details {
+		@media (min-width:$breakpoint-md) {
+			padding-left:$space-6;
+		}
+	}
+}
+
+
+
+
 .place-header {
 	&__backdrop {
 		width:100%;
 		background-color:palette(black, x-light);
 		position:relative;
-		height:200px;
+		height:230px;
 		&::after {
 			content:'';
 			background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='37'%3E%3Cpath fill='%23FFF' d='M0 10.427c213.803 7.342 470.91 6.059 771.324-3.848C1071.738-3.33 1294.63-2.046 1440 10.427V37H0V10.427z'/%3E%3C/svg%3E");
@@ -24,8 +35,6 @@
 	}
 
 	&__inner {
-		@media(min-width:$breakpoint-sm) {
-		}
 		@media(min-width:$breakpoint-lg) {
 			margin-top:-150px;
 		}
@@ -33,27 +42,33 @@
 		z-index:$z4;
 	}
 
-	&__details {
-	    color:palette(black,dark);
-	}
-
 	&__title {
 		font-size:2.2rem;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 0;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 		@media(min-width:$breakpoint-sm) {
 			font-size:2.65rem;
 		}
 	}
 
+	&__details {
+	    color:palette(black,dark);
+	}
+
 	&__content {
 		padding:$space-2 0;
 		margin-top:$space-2;
-		@media(min-width:$breakpoint-sm) {
-			padding:$space-2 $space-4;
-			margin-top:$space-3;
-		}
-		@media(min-width:$breakpoint-lg) {
-			padding:$space-2 $space-5;
-		}
+		
 	}
 
 	&__img-container {
