@@ -153,7 +153,9 @@
             </div>
     <?php endwhile; ?>
     </article>
-        <a href="<?php echo get_permalink(get_adjacent_post( $in_same_term = true, $excluded_terms = '', $previous = true, $taxonomy = "taxonomy_concept" )->ID)?>" class="next-link"></a>
+        <div class="next-post-link">
+            <div class="next-post-link"><?php echo vh_get_next_previous_link(); ?></div>
+        </div>
 </div>
 
 <!-- Working on infinite scroll feedback -->

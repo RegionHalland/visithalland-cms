@@ -1,50 +1,54 @@
 jQuery(function() {
 	var nextUrl = jQuery('.next-link').attr('href');
 	console.log("nextUrl:", nextUrl);
+	if (typeof nextUrl !== "undefined") {
+		var $container = jQuery('#container').infiniteScroll({
+			// options
+			path: function() {
+				return nextUrl;
+			},
+			append: '#container',
+			history: 'replace',
+			status: '.page-load-status',
+			debug: true,
+			scrollThreshold: 800
+		});
 
-	var $container = jQuery('#container').infiniteScroll({
-		// options
-		path: function() {
-			return nextUrl;
-		},
-		append: '#container',
-		history: 'replace',
-		status: '.page-load-status',
-		debug: true,
-		scrollThreshold: 800
-	});
+		$container.on( 'request.infiniteScroll', function( event, path ) {
+		console.log( 'Loading page: ' + path );
 
-	$container.on( 'request.infiniteScroll', function( event, path ) {
-	  console.log( 'Loading page: ' + path );
-
-	  jQuery('.infinite-scroll').addClass('visible');
-	});
+		jQuery('.infinite-scroll').addClass('visible');
+		});
 
 
-	$container.on( 'load.infiniteScroll', function( event, response ) {
-		var elements = jQuery(response);
-		var nextUrlTwo = jQuery(response).find('.next-link');
-		nextUrl = nextUrlTwo.attr('href');
-		console.log(nextUrlTwo.attr('href'));
-		
+		$container.on( 'load.infiniteScroll', function( event, response ) {
+			var elements = jQuery(response);
+			var nextUrlTwo = jQuery(response).find('.next-link');
+			nextUrl = nextUrlTwo.attr('href');
+			console.log(nextUrlTwo.attr('href'));
+			
 
-		console.log("Hide infinite thingy")
+			console.log("Hide infinite thingy")
+			jQuery('.infinite-scroll').removeClass('visible');
+		});
+
+		// jQuery
+		$container.on( 'last.infiniteScroll', function( event, response, path ) {
+			console.log( 'Loaded: ' + path );
+			console.log('we have reached the end')
+
+			jQuery('.infinite-scroll').removeClass('visible');
+		});
+
+		$container.on( 'error.infiniteScroll', function( event, error, path ) {
+		console.log( 'Could not load: ' + path )
+
 		jQuery('.infinite-scroll').removeClass('visible');
-	});
-
-	// jQuery
-	$container.on( 'last.infiniteScroll', function( event, response, path ) {
-		console.log( 'Loaded: ' + path );
-		console.log('we have reached the end')
-
-		jQuery('.infinite-scroll').removeClass('visible');
-	});
-
-	$container.on( 'error.infiniteScroll', function( event, error, path ) {
-	  console.log( 'Could not load: ' + path )
-
-	  jQuery('.infinite-scroll').removeClass('visible');
-	});
+		});
+	} else {
+		//We have no url we should not show loading state divs
+		jQuery('.page-load-status').remove();
+	}
 
 
 	//Init lazyload and the IntersectionObserver API if supported by the browser
