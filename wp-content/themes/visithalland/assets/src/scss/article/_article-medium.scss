@@ -1,12 +1,14 @@
 .article-medium {
-	&__content {
+	&__excerpt {
 		position:relative;
-		max-height:205px;
+		max-height:120px;
 		overflow:hidden;
+		font-size:0.9rem;
+		color:palette(black, x-light);
 		text-overflow: ellipsis;
 		@include fade-text();
 		@media (min-width:$breakpoint-md){
-			max-height:185px;
+			max-height:75px;
 		}
 	}
 
@@ -40,5 +42,39 @@
 		top:0;
 		left:0;
 		transition: transform 0.35s;
+	}
+}
+
+
+.read-more {
+	margin:$space-3 0;
+	&__text {
+		font-family:$rift-font-family;
+		font-weight:bold;
+		font-size:1.1rem;
+		vertical-align:middle;
+
+		&.light {
+			color:$white;
+		}
+	}
+	&__button {
+		display:inline-flex;
+		justify-content:center;
+		align-items:center;
+		height:22.5px;
+		margin-left:$space-2;
+		width:22.5px;
+		border-radius:$border-radius;
+		
+		@include themify {
+        	background:$color-primary;
+        }
+	}
+
+	&__icon {
+		height:10px;
+		width:10px;
+		display:inline-block;
 	}
 }

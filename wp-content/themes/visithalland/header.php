@@ -104,17 +104,25 @@
                                                     </div>
                                                     <div class="happening-list-item__content col col-7 sm-col-8">
                                                         <span class="happening-list-item__title"><?php echo $value->post_title ?></span>
+                                                        <div class="read-more">
+                                                            <span class="read-more__text">
+                                                                <?php _e( 'Läs mer', 'visithalland' ); ?>
+                                                            </span>
+                                                            <div class="read-more__button">
+                                                                <svg class="icon read-more__icon">
+                                                                    <use xlink:href="#arrow-right-icon"/>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
                                         </article>
                                     <?php endforeach ?>
-
-                                        <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
-                                            <?php _e( 'Visa fler', 'visithalland' ); ?>
-                                        </a>
+                                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
+                                        <?php _e( 'Visa fler', 'visithalland' ); ?>
+                                    </a>
                                 </div>
-                                <?php ?>
                             </div>
                         <?php endif ?>
                     </div>
