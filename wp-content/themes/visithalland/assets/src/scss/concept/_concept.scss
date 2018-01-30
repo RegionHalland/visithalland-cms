@@ -18,6 +18,13 @@
 
 .concept-thumbnails {
 	margin-top:$space-4;
+	@media (min-width:$breakpoint-lg) {
+		margin-top:0;
+	}
+	@media(min-width:$breakpoint-lg) {
+		padding:0 $space-3;
+		padding-left:$space-4;
+	}
 	&__title {
 		&::after {
 			content:'';
@@ -32,20 +39,8 @@
 	        }
 		}
 	}
-	@media (min-width:$breakpoint-sm) and (max-width:$breakpoint-lg) {
-		margin-left:-$space-2;
-		margin-right:-$space-2;
-	}
-	@media(min-width:$breakpoint-lg) {
-		margin:0; 
-		padding:$space-2 0 $space-2 $space-3;
-		padding-left:$space-4;
-	}
 	&__item {
 		margin:0 0 $space-3 0;
-		@media (min-width:$breakpoint-sm) and (max-width:$breakpoint-lg) {
-			padding:0 $space-2;
-		}
 		&:last-of-type {
 			margin:0;
 		}
@@ -53,8 +48,11 @@
 }
 
 .concept-happenings {
+	margin-top:$space-4;
+	@media (min-width:$breakpoint-lg) {
+		margin-top:0;
+	}
 	@media(min-width:$breakpoint-lg) {
-		margin:0; 
 		padding:0 $space-3;
 		padding-left:$space-4;
 	}
