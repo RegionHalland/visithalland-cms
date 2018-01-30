@@ -112,6 +112,21 @@
 }
 
 .featured-articles {
+
+	&__title {
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 auto;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+	}
 	padding:$space-2 0;
 	@media(min-width:$breakpoint-sm) {
 		padding:$space-2 0;

@@ -87,13 +87,19 @@
 
         <?php /* Start - Featured Articles */ ?>     
         <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-            <div class="clearfix mxn2">  
+            <div class="clearfix mxn2"> 
+                <h2 class="featured-articles__title mx-auto center">Vidare läsning</h2> 
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
                         <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
+                                    <div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
+                                        <div class="article-tag__icon-wrapper">
+                                            <div class="article-tag__icon"></div>
+                                        </div>
+                                    </div>
                                     <picture>
                                         <source media="(min-width: 40em)"
                                             data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
@@ -112,8 +118,17 @@
                                         </span>
                                     </div>
                                     
-                                    <h3 class="mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
-                                    <p class="mt2"><?php echo get_field("excerpt", $value->ID) ?></p>
+                                    <h3 class="article-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
+                                    <p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", $value->ID) ?></p>
+                                    <div class="read-more">
+                                        <span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+                                        <div class="read-more__button">
+                                            <svg class="icon read-more__icon">
+                                                <use xlink:href="#arrow-right-icon"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </a>
                         </article>
