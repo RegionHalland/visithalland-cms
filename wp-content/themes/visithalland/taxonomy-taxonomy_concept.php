@@ -209,7 +209,7 @@ $term = get_queried_object(); ?>
 									<div class="article-image__img-container topographic-pattern">
 										<picture>
 											<source media="(min-width: 700px)"
-												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium_square"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
 											<source
 												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
 											<img class="article-image__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />

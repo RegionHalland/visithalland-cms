@@ -77,51 +77,46 @@
                 </div>
                 <div class="header__right flex items-center justify-end">
                     <div class="header__happenings">
-                        <?php 
-                            $happenings = vh_get_happenings(3);
-                            if (count($happenings) > 0) {
-                                $class = 'has-happenings';
-                            } else {
-                                $class = '';
-                            } 
-                        ?>
-                        <button class="happenings__dropdown-button <?php echo $class ?> icon-button">
-                            <svg class="icon icon-button__icon">
-                                <use xlink:href="#calendar-icon"/>
-                            </svg>
-                        </button>
+                        <?php $happenings = vh_get_happenings(3);
+                           if (count($happenings) > 0)  : ?>
+                            <button class="happenings__dropdown-button has-happenings icon-button">
+                                <svg class="icon icon-button__icon">
+                                    <use xlink:href="#calendar-icon"/>
+                                </svg>
+                            </button>
 
-                        <div class="happenings__dropdown">
-                            <div class="happenings__dropdown-inner p3">
-                               <?php foreach ($happenings as $index => $value) : ?>
-                                    <article class="happening-list-item mb3 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy["slug"]) ?>">
-                                        <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
-                                            <div class="clearfix">
-                                                <div class="col col-5 sm-col-4 ">
-                                                    <div class="happening-list-item__img-container topographic-pattern relative">
-                                                        <img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+                            <div class="happenings__dropdown">
+                                <div class="happenings__dropdown-inner p3">
+                                   <?php foreach ($happenings as $index => $value) : ?>
+                                        <article class="happening-list-item mb3 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy["slug"]) ?>">
+                                            <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
+                                                <div class="clearfix">
+                                                    <div class="col col-5 sm-col-4 ">
+                                                        <div class="happening-list-item__img-container topographic-pattern relative">
+                                                            <img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+                                                        </div>
+                                                    </div>
+                                                    <div class="happening-list-item__date">
+                                                        <div class="date-badge">
+                                                            <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
+                                                            <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="happening-list-item__content col col-7 sm-col-8">
+                                                        <span class="happening-list-item__title"><?php echo $value->post_title ?></span>
                                                     </div>
                                                 </div>
-                                                <div class="happening-list-item__date">
-                                                    <div class="date-badge">
-                                                        <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
-                                                        <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
-                                                    </div>
-                                                </div>
-                                                <div class="happening-list-item__content col col-7 sm-col-8">
-                                                    <span class="happening-list-item__title"><?php echo $value->post_title ?></span>
-                                                </div>
-                                            </div>
+                                            </a>
+                                        </article>
+                                    <?php endforeach ?>
+
+                                        <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
+                                            <?php _e( 'Visa fler', 'visithalland' ); ?>
                                         </a>
-                                    </article>
-                                <?php endforeach ?>
-
-                                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
-                                        <?php _e( 'Visa fler', 'visithalland' ); ?>
-                                    </a>
+                                </div>
+                                <?php ?>
                             </div>
-                            <?php ?>
-                        </div>
+                        <?php endif ?>
                     </div>
                     <div class="header__search">
                         <button class="icon-button search-button z3">

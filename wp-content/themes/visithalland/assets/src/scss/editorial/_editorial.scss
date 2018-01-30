@@ -75,9 +75,6 @@
 	&__img-container {
 		position:relative;
 		padding-bottom:66.66%;
-		@media (min-width:$breakpoint-sm) {
-			padding-bottom:56.25%;
-		}
 		background-color:palette(black, base);
 		overflow: hidden;
 		border-radius: $border-radius;
