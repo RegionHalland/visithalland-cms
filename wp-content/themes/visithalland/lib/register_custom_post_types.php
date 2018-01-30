@@ -170,7 +170,7 @@ function custom_post_type_places() {
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
 		'menu_icon'           => 'dashicons-location-alt',
-		'rewrite' => array( 'slug' => '%taxonomy_concept%/place', 'with_front' => false )
+		'rewrite' => array( 'slug' => 'place', 'with_front' => false )
 	);
 	register_post_type( 'places', $args );
 
@@ -204,7 +204,7 @@ function custom_post_type_companies() {
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
 		'menu_icon'           => 'dashicons-store',
-		'rewrite' => array( 'slug' => '%taxonomy_concept%/business', 'with_front' => false )
+		'rewrite' => array( 'slug' => 'business', 'with_front' => false )
 	);
 	register_post_type( 'companies', $args );
 
