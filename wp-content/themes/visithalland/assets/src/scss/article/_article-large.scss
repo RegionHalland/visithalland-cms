@@ -36,6 +36,12 @@
 		}
 	}
 
+	&__right-col {
+		@media(min-width:$breakpoint-sm) {
+			padding-left:$space-3;
+		}
+	}
+
 	&__excerpt {
 		position:relative;
 		max-height:135px;
@@ -45,7 +51,7 @@
 		@include fade-text();
 		@media(min-width:$breakpoint-sm) {
 			margin-top:0;
-			padding-left:$space-3;
+			//padding-left:$space-3;
 			max-height:200px;
 			margin-top:0;
 		}

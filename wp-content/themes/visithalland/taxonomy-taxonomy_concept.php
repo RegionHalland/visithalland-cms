@@ -51,7 +51,14 @@ $term = get_queried_object(); ?>
 								                </picture>
 								        </div>
 								        <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
-								        <h4 class="page-thumbnail__link"><?php _e( 'Läs mer', 'visithalland' ); ?></h4>
+								        <div class="read-more">
+									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+									    	<div class="read-more__button">
+										    	<svg class="icon read-more__icon">
+			                                    	<use xlink:href="#arrow-right-icon"/>
+			                                	</svg>
+		                                	</div>
+									    </div>
 								    </a>
 								</div>
 							<?php endforeach ?>
@@ -86,8 +93,16 @@ $term = get_queried_object(); ?>
 		                            <div class="col col-12 sm-col-5">
 		                                <h2 class="article-large__title pt0"><?php echo get_field("featured", $term)[0]->post_title ?></h2>
 		                            </div>
-		                            <div class="col col-12 sm-col-7">
+		                            <div class="col col-12 sm-col-7 article-large__right-col">
 		                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured", $term)[0]->ID) ?></p>
+		                                <div class="read-more">
+									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+									    	<div class="read-more__button">
+										    	<svg class="icon read-more__icon">
+			                                    	<use xlink:href="#arrow-right-icon"/>
+			                                	</svg>
+		                                	</div>
+									    </div>
 		                            </div>
 		                        </div>
 		                    </a>
@@ -113,9 +128,17 @@ $term = get_queried_object(); ?>
 											<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
 								    </div>
-								    <div class="article-medium__content mt2">
+								    <div class="article-medium__content mt3">
 										<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[1]->post_title ?></h3>
-										<p class="mt2"><?php echo get_field("excerpt", get_field("featured", $term)[1]->ID) ?></p>
+										<p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", get_field("featured", $term)[1]->ID) ?></p>
+										<div class="read-more">
+									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+									    	<div class="read-more__button">
+										    	<svg class="icon read-more__icon">
+			                                    	<use xlink:href="#arrow-right-icon"/>
+			                                	</svg>
+		                                	</div>
+									    </div>
 								    </div>
 								</a>
 							</article>
@@ -139,9 +162,19 @@ $term = get_queried_object(); ?>
 												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
-									    <div class="article-medium__content mt2">
+									    <div class="article-medium__content mt3">
 											<h3 class="article-medium__title mb1 mt1 pt0"><?php echo get_field("featured", $term)[2]->post_title ?></h3>
-											<p class="mt2"><?php echo get_field("excerpt", get_field("featured", $term)[2]->ID) ?></p>
+											<p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", get_field("featured", $term)[2]->ID) ?></p>
+											<div class="read-more">
+										    	<span class="read-more__text">
+										    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+										    	</span>
+										    	<div class="read-more__button">
+											    	<svg class="icon read-more__icon">
+				                                    	<use xlink:href="#arrow-right-icon"/>
+				                                	</svg>
+			                                	</div>
+										    </div>
 									    </div>
 									</a>
 								</article>
@@ -182,12 +215,16 @@ $term = get_queried_object(); ?>
 					    <a href="<?php echo get_permalink($meet_local->ID) ?>" class="link-reset article-full__link link light">
 					        <h2 class="article-full__title light mt1 mb2"><?php echo $meet_local->post_title ?></h2>
 					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", $meet_local->ID) ?></p>
-					        <div class="article-link inline-block mt2">
-					            <span class="article-link__text"><?php _e( 'Läs hela artikeln', 'visithalland' ); ?></span>
-					            <span class="article-link__icon-wrapper">
-					                <i class="material-icons article-link__icon">arrow_forward</i>
-					            </span>
-					        </div>
+					        <div class="read-more mt3 inline-block">
+						    	<span class="read-more__text light">
+						    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+						    	</span>
+						    	<div class="read-more__button">
+							    	<svg class="icon read-more__icon">
+                                    	<use xlink:href="#arrow-right-icon"/>
+                                	</svg>
+                            	</div>
+						    </div>
 					    </a>
 					</div>    
 				</div>
@@ -226,12 +263,16 @@ $term = get_queried_object(); ?>
 												</span>
 											</div>
 											<h2 class="article-image__title light my1"><?php echo $value->post_title ?></h2>
-											<div class="article-link inline-block mt0">
-												<span class="article-link__text">Läs hela artikeln</span>
-												<span class="article-link__icon-wrapper">
-												<i class="material-icons article-link__icon">arrow_forward</i>
-												</span>
-											</div>
+											<div class="read-more">
+										    	<span class="read-more__text light">
+										    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+										    	</span>
+										    	<div class="read-more__button">
+											    	<svg class="icon read-more__icon">
+				                                    	<use xlink:href="#arrow-right-icon"/>
+				                                	</svg>
+			                                	</div>
+										    </div>
 										</div>
 									</a>
 								</article>
@@ -254,7 +295,17 @@ $term = get_queried_object(); ?>
 											</div>
 											<div class="article-medium__content mt3 <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 											    <h3 class="article-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
-											    <p class="mt2"><?php the_field("excerpt", $value->ID) ?></p>
+											    <p class="article-medium__excerpt mt2"><?php the_field("excerpt", $value->ID) ?></p>
+											    <div class="read-more">
+											    	<span class="read-more__text">
+											    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+											    	</span>
+											    	<div class="read-more__button">
+												    	<svg class="icon read-more__icon">
+					                                    	<use xlink:href="#arrow-right-icon"/>
+					                                	</svg>
+				                                	</div>
+											    </div>
 											</div>
 										</a>
 									</article>
@@ -293,13 +344,16 @@ $term = get_queried_object(); ?>
 					                        </div>
 					                        <div class="happening-list-item__content col col-7 sm-col-8">
 					                            <h4 class=""><?php echo $value->post_title ?></h4>
-					                            <div class="article-link inline-block mt0">
-					                                <hr class="article-link__divider block"/>
-					                                <span class="article-link__text">Läs mer</span>
-					                                <span class="article-link__icon-wrapper">
-					                                    <i class="material-icons article-link__icon">arrow_forward</i>
-					                                </span>
-					                            </div>
+					                            <div class="read-more">
+											    	<span class="read-more__text">
+											    		<?php _e( 'Läs mer', 'visithalland' ); ?>
+											    	</span>
+											    	<div class="read-more__button">
+												    	<svg class="icon read-more__icon">
+					                                    	<use xlink:href="#arrow-right-icon"/>
+					                                	</svg>
+				                                	</div>
+											    </div>
 					                        </div>
 					                    </div>
 					                </a>

@@ -1,5 +1,12 @@
+
+.loading {
+	opacity:0;
+}
+
 .loaded {
-	animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+	animation: fadeIn 0.2s;
+	opacity:0;
+	animation-fill-mode:forwards;
 	@keyframes fadeIn {
 		from {
 			opacity:0;

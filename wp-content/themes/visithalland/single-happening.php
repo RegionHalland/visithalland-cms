@@ -101,41 +101,6 @@
                 </div>
             </section>
             <?php //END - Article Share Section ?>
-            
-            <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
-                <div class="clearfix mxn2">  
-                    <?php
-                        $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
-                        foreach ($featuredArticles as $key => $value): ?>
-                            <article class="article-medium px2 col col-12 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
-                                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
-                                    <div class="article-medium__img-container topographic-pattern">
-                                        <picture>
-                                            <source media="(min-width: 40em)"
-                                                data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-                                            <source
-                                                data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                                            <img class="article-medium__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-                                        </picture>
-                                    </div>
-                                    <div class="article-medium__content">
-                                        <div class="article-tag mt3 mb2">
-                                            <div class="article-tag__icon-wrapper">
-                                                <div class="article-tag__icon"></div>
-                                            </div>
-                                            <span class="article-tag__type">
-                                                <?php echo vh_get_pretty_post_type_name($value->post_type); ?>
-                                            </span>
-                                        </div>
-                                        
-                                        <h3 class="mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
-                                        <p class="mt2"><?php echo get_field("excerpt", $value->ID) ?></p>
-                                    </div>
-                                </a>
-                            </article>
-                    <?php endforeach ?>
-                </div>
-            </div>
     	</article>
     <?php endwhile; ?>
 

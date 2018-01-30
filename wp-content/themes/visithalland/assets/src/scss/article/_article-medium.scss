@@ -1,12 +1,14 @@
 .article-medium {
-	&__content {
+	&__excerpt {
 		position:relative;
-		max-height:205px;
+		max-height:120px;
 		overflow:hidden;
+		font-size:0.9rem;
+		color:palette(black, x-light);
 		text-overflow: ellipsis;
 		@include fade-text();
 		@media (min-width:$breakpoint-md){
-			max-height:185px;
+			max-height:75px;
 		}
 	}
 
