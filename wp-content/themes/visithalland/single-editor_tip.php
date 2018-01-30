@@ -153,7 +153,9 @@
             </div>
     <?php endwhile; ?>
     </article>
-        <?php echo vh_get_next_previous_link(); ?>
+        <div class="next-post-link">
+            <div class="next-post-link"><?php echo vh_get_next_previous_link(); ?></div>
+        </div>
 </div>
 
 <!-- Working on infinite scroll feedback -->

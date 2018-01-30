@@ -159,7 +159,9 @@
     </div>
 	</article>
 
-	<?php echo vh_get_next_previous_link(); ?>
+	<div class="next-post-link">
+		<?php echo vh_get_next_previous_link(); ?>
+	</div>
 	
 	<?php endwhile; ?>
 
