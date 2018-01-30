@@ -106,9 +106,10 @@
                                         </a>
                                     </article>
                                 <?php endforeach ?>
-                                <div class="btn btn--primary block coastal-living center">
-                                    <?php _e( 'Visa fler', 'visithalland' ); ?>
-                                </div>
+
+                                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary block coastal-living center">
+                                        <?php _e( 'Visa fler', 'visithalland' ); ?>
+                                    </a>
                             </div>
                             <?php ?>
                         </div>

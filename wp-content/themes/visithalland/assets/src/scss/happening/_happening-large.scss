@@ -1,0 +1,39 @@
+.happening-large {
+	&__img-container {
+		padding-bottom:66.66%;
+		background:red;
+	}
+
+	&__title {
+		font-size:2rem;
+	}
+	
+	&__info {
+		margin-top:$space-4;
+	}
+
+	&__date {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		font-size:1.75rem;
+	}
+
+	&__info-title {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		font-size:1.25rem;
+		&::after {
+			content:'';
+			display:block;
+			width:15px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+
+	}
+}
