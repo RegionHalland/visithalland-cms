@@ -1,10 +1,12 @@
 .read-more {
 	margin:$space-3 0;
-	&:hover {
-		.read-more__text {
-			color:palette(black, base);
-			&.light {
-				color:$white;
+	@media (min-width:$breakpoint-sm){
+		&:hover {
+			.read-more__text {
+				color:palette(black, base);
+				&.light {
+					color:$white;
+				}
 			}
 		}
 	}

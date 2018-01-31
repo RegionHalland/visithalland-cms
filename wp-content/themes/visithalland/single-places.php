@@ -86,9 +86,9 @@
         
 
         <?php /* Start - Featured Articles */ ?>     
-        <div class="featured-articles col-11 md-col-10 lg-col-10 mx-auto">  
+        <div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">  
             <div class="clearfix mxn2"> 
-                <h2 class="featured-articles__title mx-auto center">Vidare läsning</h2> 
+                <h2 class="recommended-articles__title mx-auto center">Vidare läsning</h2> 
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>

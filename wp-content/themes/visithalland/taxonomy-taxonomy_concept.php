@@ -69,8 +69,16 @@ $term = get_queried_object(); ?>
 		
 
 		<?php /* START - Featured Articles */ ?>
-		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto">
+		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 			<div class="clearfix">
+				<header class="featured-articles__header">
+					<div class="featured-articles__badge inline-block">
+						<svg class="icon featured-articles__icon">
+                        	<use xlink:href="#recommend-icon"/>
+                    	</svg>
+					</div>
+					<div class="featured-articles__title inline-block ml2">Toppval för dig</div>
+				</header>
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
 
 					<article class="article-large <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
