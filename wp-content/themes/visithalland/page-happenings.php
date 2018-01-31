@@ -40,11 +40,11 @@
 						<div class="happening-large__img-container">
 							<picture>
 		                        <source media="(min-width: 40em)"
-		                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-		                        <source
 		                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+		                        <source
+		                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
 		                        <img class="happening-large__img"
-		                                data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" 
+		                                data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" 
 		                                alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
 		                        />
 		                    </picture>
