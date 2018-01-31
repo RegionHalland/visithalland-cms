@@ -57,10 +57,11 @@
     	font-size:0.9em;
     	margin-right:$space-3;
     	transition: opacity 0.25s;
-    	&:hover {
-    		opacity:1;
-    	}
-
+    	@media(min-width:$breakpoint-sm) {
+	    	&:hover {
+	    		opacity:1;
+	    	}
+	    }
 	}
 }
 
@@ -242,7 +243,7 @@
 	-webkit-overflow-scrolling:touch;
 	overflow-x:scroll;
 	&__inner {
-		@media (max-width:$breakpoint-sm) { 
+		@media (max-width:$breakpoint-md) { 
 			white-space: nowrap;
 		}
 	}
@@ -264,7 +265,22 @@
 
     }
     &__link {
-    	&.active, &:hover {
+
+    	@media(min-width:$breakpoint-sm) {
+	    	&:hover {
+				opacity:1;
+				.navigation__icon-wrapper {
+					@include themify {
+			            background-color: $color-primary;
+			        }
+				}
+				.navigation__icon {
+					transform: translateY(100%);
+				}
+			}
+		}
+
+		&.active {
 			opacity:1;
 			.navigation__icon-wrapper {
 				@include themify {

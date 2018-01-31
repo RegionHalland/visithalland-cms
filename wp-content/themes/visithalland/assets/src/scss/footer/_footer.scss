@@ -21,7 +21,10 @@
 		color:$white;
     	font-family: $rift-font-family;
     	opacity:0.75;
-    	font-size:0.9em;
+    	font-size:1rem;
+    	@media (min-width:$breakpoint-sm){
+    		font-size:0.9rem;
+    	}
     	margin:$space-2 0;
     	padding:$space-2 0;
     	border-bottom:1px solid palette(black, x-light);
@@ -121,7 +124,10 @@
 }
 
 .footer__intro, .footer__eu-paragraph{
-	font-size:0.9em;
+	font-size:1rem;
+	@media (min-width:$breakpoint-sm){
+		font-size:0.9rem;
+	}
 	color:$white;
 }
 

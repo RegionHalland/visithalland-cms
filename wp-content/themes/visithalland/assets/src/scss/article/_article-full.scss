@@ -99,7 +99,10 @@
 			width:20px;
 			height:5px;
 			border-radius:$border-radius;
-			margin:$space-3 0;
+			margin-top:$space-3;
+			@media (min-width:$breakpoint-sm) {
+				margin:$space-3 0;
+			}
 			background-color:palette(grey, light);
 			@include themify {
 	        	background:$color-primary;
