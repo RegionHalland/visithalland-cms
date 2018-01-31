@@ -86,7 +86,7 @@
         
 
         <?php /* Start - Featured Articles */ ?>     
-        <div class="featured-articles mt6 col-11 md-col-10 lg-col-10 mx-auto">  
+        <div class="featured-articles col-11 md-col-10 lg-col-10 mx-auto">  
             <div class="clearfix mxn2"> 
                 <h2 class="featured-articles__title mx-auto center">Vidare läsning</h2> 
                 <?php
@@ -109,16 +109,7 @@
                                     </picture>
                                 </div>
                                 <div class="article-medium__content">
-                                    <div class="article-tag mt3 mb2">
-                                        <div class="article-tag__icon-wrapper">
-                                            <div class="article-tag__icon"></div>
-                                        </div>
-                                        <span class="article-tag__type">
-                                            <?php echo vh_get_pretty_post_type_name($value->post_type); ?>
-                                        </span>
-                                    </div>
-                                    
-                                    <h3 class="article-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
+                                    <h3 class="article-medium__title mb1 mt3 pt0"><?php echo $value->post_title ?></h3>
                                     <p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", $value->ID) ?></p>
                                     <div class="read-more">
                                         <span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>

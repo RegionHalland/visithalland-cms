@@ -1,12 +1,17 @@
 .read-more {
 	margin:$space-3 0;
+	&:hover {
+		.read-more__text {
+			color:palette(black, base);
+		}
+	}
 	&__text {
 		font-family:$rift-font-family;
 		font-weight:bold;
 		font-size:1.1rem;
+		position:relative;
 		vertical-align:middle;
 		color:palette(grey, xx-dark);
-
 		&.light {
 			color:$white;
 		}

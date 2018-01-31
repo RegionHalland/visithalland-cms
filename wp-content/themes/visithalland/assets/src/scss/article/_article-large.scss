@@ -44,7 +44,7 @@
 
 	&__excerpt {
 		position:relative;
-		max-height:135px;
+		max-height:75px;
 		overflow:hidden;
 		text-overflow: ellipsis;
 		margin-top:$space-1;
@@ -52,7 +52,7 @@
 		@media(min-width:$breakpoint-sm) {
 			margin-top:0;
 			//padding-left:$space-3;
-			max-height:200px;
+			max-height:175px;
 			margin-top:0;
 		}
 	}

@@ -213,7 +213,7 @@ $term = get_queried_object(); ?>
 						</div>
 					    
 					    <a href="<?php echo get_permalink($meet_local->ID) ?>" class="link-reset article-full__link link light">
-					        <h2 class="article-full__title light mt1 mb2"><?php echo $meet_local->post_title ?></h2>
+					        <h2 class="article-full__title light mt1"><?php echo $meet_local->post_title ?></h2>
 					        <p class="article-full__excerpt mb2"><?php echo get_field("excerpt", $meet_local->ID) ?></p>
 					        <div class="read-more mt3 inline-block">
 						    	<span class="read-more__text light">
