@@ -6,7 +6,6 @@
     
 ?>
 <div id="container">
-<!-- Try to remove this container and append to some other container -->
     <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
         <section class="editorial-header relative clearfix" role="heading" id="page-content">
             <div class="editorial-header__backdrop topographic-pattern"></div>
@@ -130,9 +129,6 @@
 
 <!-- Working on infinite scroll feedback -->
 <div class="container">
-    <!-- <div class="infinite-scroll">
-        
-    </div> -->
     <div class="page-load-status">
         <p class="infinite-scroll-request">Hämtar nästa artikel</p>
         <p class="infinite-scroll-last">Slut på innehåll</p>

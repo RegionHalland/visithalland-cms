@@ -1,6 +1,6 @@
 jQuery(function() {
 	var nextPages = jQuery("#nextPages").data("all");
-	console.log(nextPages);
+	// console.log(nextPages);
 
 	var $container = jQuery('#container').infiniteScroll({
 		// options
@@ -16,38 +16,30 @@ jQuery(function() {
 	});
 
 	$container.on( 'request.infiniteScroll', function( event, path ) {
-		console.log( 'Loading page: ' + path );
-
-		jQuery('.infinite-scroll').addClass('visible');
+		// console.log( 'Loading page: ' + path );
 	});
 
 
 	$container.on( 'load.infiniteScroll', function( event, response ) {
 		var elements = jQuery(response);
-		console.log("Hide infinite thingy")
-		jQuery('.infinite-scroll').removeClass('visible');
 	});
 
 	$container.on('append.infiniteScroll', function (event, response, path, items) {
-		console.log("lazyLoadInstance", lazyLoadInstance);
+		// console.log("lazyLoadInstance", lazyLoadInstance);
 		lazyLoadInstance.update();
 	})
 
 	$container.on( 'last.infiniteScroll', function( event, response, path ) {
-		console.log( 'Loaded: ' + path );
-		console.log('we have reached the end')
-
-		jQuery('.infinite-scroll').removeClass('visible');
+		// console.log( 'Loaded: ' + path );
+		// console.log('we have reached the end')
 	});
 
 	$container.on( 'error.infiniteScroll', function( event, error, path ) {
-		console.log( 'Could not load: ' + path )
-
-		jQuery('.infinite-scroll').removeClass('visible');
+		// console.log( 'Could not load: ' + path )
 	});
 
 	$container.on('history.infiniteScroll', function (event, title, path) {
-		console.log('History changed to: ' + path);
+		//console.log('History changed to: ' + path);
 		ga('create', 'UA-89278649-4');
 		ga('send', {
 			hitType: 'pageview',
@@ -191,7 +183,6 @@ jQuery(function() {
 
 	// Init Cookie-banner Star
     jQuery('#cookie-accept').on('click', function () { 
-      console.log("test")//on click event
 	  days = 182; //number of days to keep the cookie
 	  myDate = new Date();
 	  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
@@ -272,4 +263,10 @@ jQuery(function() {
             jQuery('#opening-hours').append(opening_hours);
         }
     }
+});
+jQuery(function() {
+
+
+
+
 });
