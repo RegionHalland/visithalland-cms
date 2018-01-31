@@ -1,9 +1,5 @@
 jQuery(function() {
 	var nextPages = jQuery("#nextPages").data("all");
-<<<<<<< HEAD
-=======
-	// console.log(nextPages);
->>>>>>> headfull
 
 	var $container = jQuery('#container').infiniteScroll({
 		// options
