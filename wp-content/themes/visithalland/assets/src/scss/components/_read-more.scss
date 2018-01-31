@@ -3,6 +3,9 @@
 	&:hover {
 		.read-more__text {
 			color:palette(black, base);
+			&.light {
+				color:$white;
+			}
 		}
 	}
 	&__text {
