@@ -141,7 +141,7 @@ include_once('lib/rest/v2/callbacks.php');
 
 
 // Async load
-function ikreativ_async_scripts($url)
+function rh_async_scripts($url)
 {
     if ( strpos( $url, '#asyncload') === false )
         return $url;
@@ -150,7 +150,7 @@ function ikreativ_async_scripts($url)
     else
     return str_replace( '#asyncload', '', $url )."' async='async"; 
     }
-add_filter( 'clean_url', 'ikreativ_async_scripts', 11, 1 );
+add_filter( 'clean_url', 'rh_async_scripts', 11, 1 );
 
 
 
