@@ -7,11 +7,7 @@ function visithalland_scripts() {
 	global $post;
 	$postData = array();
 
-
-	wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js#asyncload', array(), null, true);
-
-	wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/assets/dist/js/app.min.js#asyncload', array( 'jquery' ) );
+	wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/assets/dist/js/app.min.js', array( 'jquery' ) );
 	wp_enqueue_style( 'stylesheet', get_stylesheet_directory_uri() . '/assets/dist/css/main.min.css' );
 	
 	if($post){
