@@ -1,3 +1,6 @@
+
+console.log("HAHAHAHA");
+
 jQuery(function() {
 	var nextPages = jQuery("#nextPages").data("all");
 	var $container = jQuery('#container').infiniteScroll({
