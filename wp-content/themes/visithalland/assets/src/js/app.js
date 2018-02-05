@@ -1,6 +1,5 @@
 jQuery(function() {
 	var nextPages = jQuery("#nextPages").data("all");
-
 	var $container = jQuery('#container').infiniteScroll({
 		// options
 		path: function() {
