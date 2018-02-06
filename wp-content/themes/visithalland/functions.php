@@ -140,6 +140,8 @@ include_once('lib/rest/v2/callbacks.php');
 //include_once('lib/helpers.php');
 
 
+add_theme_support('post-thumbnails');
+
 
 //Remove unwanted head tags from project
 remove_action('wp_head', 'print_emoji_detection_script', 7);

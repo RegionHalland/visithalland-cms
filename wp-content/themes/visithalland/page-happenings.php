@@ -9,10 +9,9 @@
 	$author_id = get_the_author_meta('ID');
 	$term = get_queried_object(); ?>
 
-?>
 
 
-	<article class="container" role="main" id="main-content">
+	<article class="container relative" role="main" id="main-content">
 		<div class="happening-page-header">
 			<div class="happening-page-header__backdrop topographic-pattern">
 			</div>
@@ -22,7 +21,7 @@
 						<h1 class="light mt3"><?php the_title(); ?></h1>
 					</div>
 					<div class="col col-12 sm-col-6">
-						<p class="preamble light mt3"><?php the_content(); ?></p>
+						<div class="preamble light mt3"><?php the_content(); ?></div>
 					</div>
 	            </div>
 			</div>
