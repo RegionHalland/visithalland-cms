@@ -3,8 +3,6 @@
 <head>
 	<title><?php echo wp_get_document_title(); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fetches Material Icons - Will be removed -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <?php wp_head(); ?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -165,20 +163,6 @@
             <div class="mobile-search topographic-pattern">
                 <div class="mobile-search__inner p2">
                     <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
-                    <div class="mobile-search__suggestions">
-                        <h5 class="mobile-search__header light"><?php _e( 'Populära sökningar', 'visithalland' ); ?></h5>
-                        <ul class="mobile-search__suggestions-list light">
-                            <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Hundvänliga badplatser</span>
-                            </li>
-                            <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Fina downhill spår</span>
-                            </li>
-                            <li class="mobile-search__suggestions-list-item mt2 light">
-                                <i class="mobile-search__suggestions-list-icon material-icons">search</i><span>Familjevänliga utflykter</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!--- Mobile Search End -->

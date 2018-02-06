@@ -203,29 +203,6 @@
     	border-bottom:1px solid palette(black, x-light);
     }
 
-	&__suggestions {
-		padding:$space-3 0;
-		border-radius:$border-radius;
-	}
-
-	&__suggestions-list {
-		margin-top:$space-3;
-
-	}
-
-	&__suggestions-list-icon {
-		color:$white;
-		font-size:1em !important;
-		margin-right:$space-2;
-		vertical-align: middle;
-	}
-
-	&__suggestions-list-item {
-		color:palette(grey, base);
-		font-style:italic;
-		font-size:0.9em;
-	}
-
 	&__input {
 		padding:$space-3;
 		-webkit-appearance: none;

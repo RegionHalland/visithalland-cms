@@ -47,7 +47,9 @@
                                 <section class="details__section col col-12">
                                     <span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span>
                                     <a id="details-show-on-map" href="" class="details__phone block">
-                                        <i class="details__icon material-icons mr2">business</i>
+                                        <svg class="icon details__icon">
+                                            <use xlink:href="#pin-icon"/>
+                                        </svg>
                                         <?php _e( 'Visa på karta', 'visithalland' ); ?>
                                     </a>
                                 </section>

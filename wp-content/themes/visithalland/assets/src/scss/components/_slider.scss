@@ -155,8 +155,8 @@ http://flickity.metafizzy.co
 		background:$black;
 		cursor:pointer;
 	}
-	i {
-		font-size:0.8em;
+	&__icon {
+		height:12.5px;
 		color:$white;
 	}	
 }

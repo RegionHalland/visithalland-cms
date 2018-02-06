@@ -6,8 +6,9 @@
 	}
 
 	&__icon {
+		width:17.5px;
 		@include themify {
-		 	color:$color-primary;
+		 	fill:$color-primary;
 		}
 	}
 	&__section-label {

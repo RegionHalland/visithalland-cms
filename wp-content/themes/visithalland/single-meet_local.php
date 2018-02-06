@@ -52,8 +52,16 @@
 	        </div>
     	</div>
     	<div class="slider-button-container relative mt4 z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
-			<button class="slider-button tip-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
-			<button class="slider-button tip-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
+			<button class="slider-button tip-carousel--previous">
+				<svg class="icon slider-button__icon">
+                    <use xlink:href="#arrow-left-icon"/>
+                </svg>
+			</button>
+			<button class="slider-button tip-carousel--next">
+				<svg class="icon slider-button__icon">
+                    <use xlink:href="#arrow-right-icon"/>
+                </svg>
+			</button>
 		</div>
 	    <section class="tip-carousel col-11 md-col-10 lg-col-10 mx-auto mx-auto clearfix">
     			<?php 

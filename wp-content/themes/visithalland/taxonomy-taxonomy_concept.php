@@ -37,8 +37,16 @@ $term = get_queried_object(); ?>
 				if (count($spotlights)) : ?>
 					<div class="concept-carousel clearfix">
 						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
-							<button class="slider-button navigation-carousel--previous"><i class="slider-button__icon material-icons">arrow_back</i></button>
-							<button class="slider-button navigation-carousel--next"><i class="slider-button__icon material-icons">arrow_forward</i></button>
+							<button class="slider-button navigation-carousel--previous">
+								<svg class="icon slider-button__icon">
+		                            <use xlink:href="#arrow-left-icon"/>
+		                        </svg>
+							</button>
+							<button class="slider-button navigation-carousel--next">
+								<svg class="icon slider-button__icon">
+		                            <use xlink:href="#arrow-right-icon"/>
+		                        </svg>
+		                    </button>
 						</div>
 						<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 							<?php foreach ($spotlights as $key => $value) : ?>				
