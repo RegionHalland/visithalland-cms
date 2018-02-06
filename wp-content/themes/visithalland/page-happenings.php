@@ -22,7 +22,7 @@
 						<h1 class="light mt3"><?php the_title(); ?></h1>
 					</div>
 					<div class="col col-12 sm-col-6">
-						<p class="preamble light mt3"><?php echo get_field('excerpt'); ?></p>
+						<p class="preamble light mt3"><?php the_content(); ?></p>
 					</div>
 	            </div>
 			</div>
