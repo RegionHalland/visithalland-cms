@@ -77,7 +77,7 @@
 			                                <h3 class="article-medium__title mb1 mt3 pt0"><?php echo $featured->post_title ?></h3>
 			                                <p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", $featured->ID) ?></p>
 			                                <div class="read-more">
-										    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+										    	<span class="read-more__text"><?php _e( 'Read more', 'visithalland' ); ?></span>
 										    	<div class="read-more__button">
 											    	<svg class="icon read-more__icon">
 				                                    	<use xlink:href="#arrow-right-icon"/>
