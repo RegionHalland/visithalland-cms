@@ -88,6 +88,7 @@
 	&__paragraph {
 		color:palette(grey, light);
 		display:none;
+		margin-top:$space-3;
 		@media(min-width:$breakpoint-sm) {
 			display:block;
 		}
@@ -102,6 +103,18 @@
 		}
 	}
 	&__title {
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 auto;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
 	}
 	&__icon {
 		vertical-align: middle;
