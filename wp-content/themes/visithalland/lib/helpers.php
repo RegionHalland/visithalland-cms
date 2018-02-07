@@ -209,7 +209,7 @@ function vh_get_posts_by_taxonomy_concept($post_id, $term = null, $numberposts =
 	return $posts;
 }
 
-function vh_get_spotlights_by_taxonomy_concept($term, $numberposts = 3) {
+function vh_get_spotlights_by_taxonomy_concept($term, $numberposts = 10) {
 	$posts = array();
 	$tax_query = array(
 		array(

@@ -90,6 +90,46 @@
 
 .concept-sidebar {
 
+	&__header {
+		margin-bottom:$space-4;
+	}
+	&__title {
+		font-family:$rift-font-family;
+		font-weight:bold;
+		font-size:$h3;
+		@media (min-width:$breakpoint-sm){
+			font-size:$h3;
+
+		}
+	}
+
+	&__badge {
+		@media (min-width:$breakpoint-sm){
+			height:35px;
+			width:35px;
+		}
+		height:35px;
+		width:35px;
+		border-radius:50%;
+		display:inline-flex;
+		justify-content:center;
+		align-items:center;
+		@include themify {
+			background:$color-primary;
+		}
+	}
+
+	&__icon {
+		height:15px;
+		width:15px;
+		fill:$white;
+		@media (min-width:$breakpoint-sm){
+			height:15px;
+			width:15px;
+		}
+	}
+
+
 }
 
 .featured-article {
@@ -139,7 +179,6 @@
 }
 
 .featured-articles {
-
 
 	&__header {
 		margin-top:$space-4;
@@ -191,7 +230,6 @@
 			width:15px;
 		}
 	}
-
 
 	padding:$space-2 0;
 	margin-top:$space-3;

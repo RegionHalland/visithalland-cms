@@ -9,12 +9,13 @@ $term = get_queried_object(); ?>
 	<?php /* START - ConceptHeader */ ?>
 		<section class="concept-header relative overflow-hidden <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>" role="heading">
 		    <div class="concept-header__img-container topographic-pattern">
-				<picture>
+		    	<picture>
 				    <source media="(min-width: 60em)"
-				        data-srcset="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $term, 'vh_hero_wide@2x' ) . " 2x" ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 				    <source
-				        data-srcset="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $term, 'vh_hero_tall@2x' ) . " 2x" ?>" />
-				    <img class="concept-header__img" data-src="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_wide' ) ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
+				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" 
+				    	alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
 		    <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
@@ -106,7 +107,7 @@ $term = get_queried_object(); ?>
 											</div>
 										</div>
 										<picture>
-											<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_large@2x' ) . " 2x" ?>" />
+											<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large@2x' ) . " 2x" ?>" />
 											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 											<img class="article-large__img z2" 
 												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' )?>"
@@ -360,14 +361,23 @@ $term = get_queried_object(); ?>
 				
 
 			<?php /* START - CONCEPT SIDEBAR */ ?>
-		    <div class="concept-sidebar col col-12 lg-col-4">
+		    <div class="concept-sidebar col col-12 lg-col-4 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 		    	<?php 
 					$happenings = vh_get_happenings_by_taxonomy_concept($term, 10);
 				?>
 
 				<?php if (count($happenings) > 0) : ?>
-		        	<div class="concept-happenings mb4 clearfix mxn2">
-						<h3 class="concept-happenings__title px2"><?php _e( 'Happenings du inte vill missa', 'visithalland' ); ?></h3>
+		        	<div class="concept-happenings mb5 clearfix mxn2">
+		        		<header class="concept-sidebar__header px2">
+							<div class="concept-sidebar__badge inline">
+								<svg class="icon concept-sidebar__icon">
+		                        	<use xlink:href="#calendar-icon"/>
+		                    	</svg>
+							</div>
+							<div class="concept-sidebar__title inline ml2">
+								<?php _e( 'Kul happenings', 'visithalland' ); ?>
+							</div>
+						</header>
 			            <?php foreach ($happenings as $index => $value) : ?>
 			            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12 px2">
 							    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
@@ -413,7 +423,16 @@ $term = get_queried_object(); ?>
 		        <?php endif ?>
 
 		        <div class="concept-thumbnails clearfix mxn2">
-		        	<h3 class="concept-thumbnails__title px2"><?php _e( 'Se vad mer Halland har att erbjuda', 'visithalland' ); ?></h3>
+		        	<header class="concept-sidebar__header px2">
+						<div class="concept-sidebar__badge inline">
+							<svg class="icon concept-sidebar__icon">
+	                        	<use xlink:href="#discover-icon"/>
+	                    	</svg>
+						</div>
+						<div class="concept-sidebar__title inline ml2">
+							<?php _e( 'Mer att upptäcka', 'visithalland' ); ?>
+						</div>
+					</header>
 					<?php
 					$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
                 	$menuItems = wp_get_nav_menu_items("huvudmeny" . $langMenuCode);
