@@ -297,7 +297,7 @@ $term = get_queried_object(); ?>
 													<div class="article-tag__icon"></div>
 												</div>
 												<span class="article-tag__type">
-													<?php echo vh_get_pretty_post_type_name(get_field("featured", $term)[0]->post_type) ?>
+													<?php echo vh_get_pretty_post_type_name($value->post_type) ?>
 												</span>
 											</div>
 											<h2 class="article-image__title light my1"><?php echo $value->post_title ?></h2>
