@@ -46,21 +46,23 @@
 		            			<div class="spotlight-grid-item col col-12">
 					                <div class="spotlight-large clearfix">
 					                    <div class="spotlight-large__img-container topographic-pattern">
-											<picture>
-								                <source media="(min-width: 40em)"
-								                    data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-								                <source
-								                    data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-								                <img class="meet-a-local-header__img" 
-								                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" 
-								                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
-								                />
+					                    	<picture>
+
+								            	<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_hero_wide@2x' ) . " 2x" ?>" />
+
+								                <source data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+
+								                 <img class="spotlight-large__img"
+							                            data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_wide' ); ?>" 
+							                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+							                    />
+
 								            </picture>
 					                    </div>
 					                    <div class="spotlight-large__content col-12 lg-col-8 relative">
 					                        <h2 class="spotlight-large__title mt2 p0 mb0"><?php echo $value->post_title ?></h2>
 					                        <div class="spotlight-large__excerpt mt1">
-					                            <?php the_field("body", $value->ID); ?>
+					                            <?php the_field("excerpt", $value->ID); ?>
 
 					                        </div>
 					                        <div class="spotlight-large__links">
@@ -83,20 +85,20 @@
 					                <div class="spotlight-small">
 					                    <div class="spotlight-small__img-container topographic-pattern">
 											<picture>
-								                <source media="(min-width: 40em)"
-								                    data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-								                <source
-								                    data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-								                <img class="meet-a-local-header__img" 
-								                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" 
-								                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
-								                />
-								            </picture>
+						            			<source
+					                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+						                        <img class="spotlight-small__img"
+						                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
+						                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+						                        />
+						                        
+						                    </picture>	
 					                    </div>
 					                    <div class="spotlight-small__content col-12 lg-col-12 relative">
 					                        <h3 class="spotlight-small__title mb2 mt3 p0 mb0"><?php echo $value->post_title ?></h3>
 					                        <div class="spotlight-small__excerpt mt1">
-					                            <?php the_field("body", $value->ID); ?>
+					                            <?php the_field("excerpt", $value->ID); ?>
 					                        </div>
 					                        <div class="spotlight-small__links mt3">
 					                            <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
