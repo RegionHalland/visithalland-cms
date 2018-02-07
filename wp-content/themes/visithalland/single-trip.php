@@ -62,7 +62,7 @@
 					                    <div class="spotlight-large__content col-12 lg-col-8 relative">
 					                        <h2 class="spotlight-large__title mt2 p0 mb0"><?php echo $value->post_title ?></h2>
 					                        <div class="spotlight-large__excerpt mt1">
-					                            <?php the_field("excerpt", $value->ID); ?>
+					                            <p><?php the_field("excerpt", $value->ID); ?></p>
 					                        </div>
 					                        <div class="spotlight-large__links">
 					                            <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
@@ -109,7 +109,7 @@
 
 					                        </h3>
 					                        <div class="spotlight-small__excerpt mt1">
-					                            <?php the_field("excerpt", $value->ID); ?>
+					                            <p><?php the_field("excerpt", $value->ID); ?></p>
 					                        </div>
 					                        <div class="spotlight-small__links mt3">
 					                            <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
