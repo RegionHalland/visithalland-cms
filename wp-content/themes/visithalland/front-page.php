@@ -35,12 +35,12 @@
 			        <a href="<?php echo $value->url ?>">
 			            <div class="concept-thumbnail-large__img-container">
 			                <picture>
-			                    <source media="(min-width: 40em)"
-			                        data-srcset="<?php echo $current_term_cover_image["url"] ?>" />
-			                    <source 
-			                        data-srcset="<?php echo $current_term_cover_image["url"] ?>" />
-			                    <img class="concept-thumbnail-large__img" data-src="<?php echo $current_term_cover_image["url"] ?>" />
-			                </picture>
+                            	<source media="(min-width:40em)"
+                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_wide"] . " 1x," . $current_term_cover_image["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+                                <source
+                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+                                <img class="concept-thumbnail-large__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_hero_wide"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+                            </picture>
 			            	<div class="concept-thumbnail-large__inner center">
 			                	<div class="concept-thumbnail-large__icon mx-auto mb2"></div>
 			                	<h2 class="concept-thumbnail-large__title"><?php echo $value->title ?></h2>
@@ -66,11 +66,10 @@
 												</div>
 											</div>
 											<picture>
-											    <source media="(min-width: 40em)"
-											        data-srcset="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
-											    <source
-											        data-srcset="<?php echo get_field("cover_image", get_field("featured", $current_term)[0]->ID)["url"] ?>" />
-											    <img class="concept-thumbnail-large__img" data-src="<?php echo get_field("cover_image", $featured->ID)["url"] ?>" />
+												<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $current_term)[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $current_term)[1]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+												<img class="article-medium__img" 
+													data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $current_term)[0]->ID, 'vh_medium' )?>"
+													alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
 											</picture>
 			                            </div>
 			                            <div class="article-medium__content">
@@ -98,12 +97,12 @@
 	                <a href="<?php echo $value->url ?>" class="link-reset">
 	                    <div class="concept-thumbnail-small__img-container">
 	                    	<picture>
-		                        <source media="(min-width: 40em)"
-		                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
-		                        <source
-		                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
-		                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" />
-	                    	</picture>
+                            	<source media="(min-width:40em)"
+                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium_square"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
+                                <source
+                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+                                <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+                            </picture>
 	                    <div class="concept-thumbnail-small__inner center">
 	                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
 	                        <h2 class="concept-thumbnail-small__title">

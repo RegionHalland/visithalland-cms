@@ -3,21 +3,24 @@
 <?php while ( have_posts() ) : the_post(); 
 
     $author_id = get_the_author_meta('ID');
+    $post_id = get_the_id();
     
 ?>
 <div id="container">
 	<article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
 	    <section class="meet-a-local-header">
 	        <div class="meet-a-local-header__img-container topographic-pattern">
-	            <picture>
-	                <source media="(min-width: 40em)"
-	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-	                <source
-	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-	                <img class="meet-a-local-header__img" 
-	                        data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
-	                        alt="<?php echo get_field("cover_image")["alt"] ?>"  
-	                />
+	        	<picture>
+
+	            	<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_wide@2x' ) . " 2x" ?>" />
+
+	                <source data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+
+	                 <img class="meet-a-local-header__img"
+                            data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ); ?>" 
+                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                    />
+                    
 	            </picture>
 	        </div>
 	        <div class="meet-a-local-header__inner col-12 md-col-10 lg-col-8 mx-auto">
@@ -47,7 +50,7 @@
     	<div class="article-content clearfix">
 	        <div class="col-11 md-col-10 lg-col-8 mx-auto">
 	            <article class="article-body">
-	            	<?php the_field("body") ?>
+	            	<?php the_content(); ?>
 	            </article>
 	        </div>
     	</div>
@@ -76,19 +79,19 @@
 								<div class="tip col col-10 sm-col-8 md-col-5">
 		                            <div class="tip__img-container topographic-pattern">
 		                                <picture>
-							                <source media="(min-width: 40em)"
-							                    srcSet="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-							                <source
-							                    srcSet="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-							                <img class="tip__img" 
-							                        src="<?php echo get_field("cover_image", $value[0]->ID)["sizes"]["vh_medium"] ?>" 
-							                        alt="<?php echo get_field("cover_image", $value[0]->ID)["alt"] ?>"  
-							                />
-							            </picture>
+					            			<source
+				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+					                        <img class="tip__img"
+					                                data-src="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ); ?>" 
+					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                        />
+					                        
+					                    </picture>	
 		                            </div>
 		                            <div class="tip__content inline-block">
 		                                <h3 class="mt3 tip__title"><?php echo $value[0]->post_title ?></h3>
-		                                <p class="my3 tip__quote"><?php the_sub_field('quote', $value->ID)?></p>
+		                                <p class="my3 tip__quote"><?php the_sub_field('quote', $value[0]->ID)?></p>
 		                                <div class="tip__links">
 		                                    <a class="link-reset" href="<?php echo get_permalink($value[0]->ID) ?>">
 		                                        <div class="read-more inline-block">

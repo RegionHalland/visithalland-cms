@@ -3,6 +3,7 @@
 <?php while ( have_posts() ) : the_post(); 
 
     $author_id = get_the_author_meta('ID');
+    $post_id = get_the_id();
     
 ?>
 <div id="container">
@@ -18,14 +19,14 @@
 							  </div>
                         </div>
                         <picture>
-		                    <source media="(min-width: 40em)"
-		                        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
-		                    <source
-		                        data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_medium"] . " 1x," . get_field("cover_image")["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-		                    <img class="happening-header__img" 
-		                            data-src="<?php echo get_field("cover_image")["sizes"]["vh_large"] ?>" 
-		                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
-		                    />
+                            <source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_large@2x' ) . " 2x" ?>" />
+
+		                    <source data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_medium@2x' ) . " 2x" ?>" />
+
+                            <img class="happening-header__img"
+                                    data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ); ?>" 
+                                    alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                            />
 		                </picture>
                     </div>
                     <div class="clearfix">
@@ -40,7 +41,7 @@
 			                </div>
                             <h1 class="happening-header__title h1 mb3  mt2"><?php the_title(); ?></h1>
                             <p class="happening-header__preamble">
-                                <?php the_field('body'); ?>
+                                <?php the_content(); ?>
                             </p>
                             <address class="author-horizontal mt4 mb4">
                                 <div class="author-horizontal__img-container">
@@ -64,10 +65,6 @@
                                     	<span><?php echo $dateobj = date("j", strtotime(get_field("start_date"))); ?></span>
 								    	<span><?php echo $dateobj = date("M", strtotime(get_field("start_date"))); ?></span>
 								    </span>
-                                </section>
-                                <section class="happening-info__section">
-                                    <h3 class="happening-info__section-label"><?php _e( 'Bra att veta', 'visithalland' ); ?></h3>
-                                    <span class="happening-info__section-info"><?php the_field('good_to_know'); ?></span>
                                 </section>
                                 <section class="happening-info__section">
                                     <h3 class="happening-info__section-label"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></h3>

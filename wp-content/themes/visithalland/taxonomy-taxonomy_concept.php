@@ -11,10 +11,10 @@ $term = get_queried_object(); ?>
 		    <div class="concept-header__img-container topographic-pattern">
 				<picture>
 				    <source media="(min-width: 60em)"
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
+				        data-srcset="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $term, 'vh_hero_wide@2x' ) . " 2x" ?>" />
 				    <source
-				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
+				        data-srcset="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $term, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+				    <img class="concept-header__img" data-src="<?php echo get_the_post_thumbnail_url( $term, 'vh_hero_wide' ) ?>" alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
 		    <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
@@ -54,9 +54,16 @@ $term = get_queried_object(); ?>
 								    <a href="<?php echo get_permalink($value->ID) ?>">
 								        <div class="page-thumbnail__img-container topographic-pattern">
 								            <div class="page-thumbnail__concept-badge"></div>
-								                <picture>
-								                    <img class="page-thumbnail__img" data-src="<?php echo get_field('cover_image', $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field('cover_image', $value->ID)["alt"] ?>" />
-								                </picture>
+								            <picture>
+							            		<source
+						                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+						                        <img class="page-thumbnail__img"
+						                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
+						                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+						                        />
+						                        
+						                    </picture>	
 								        </div>
 								        <h3 class="page-thumbnail__title mt3 mb2"><?php echo $value->post_title ?></h3>
 								        <div class="read-more">
@@ -89,44 +96,48 @@ $term = get_queried_object(); ?>
 				</header>
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
 
-					<article class="article-large <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
-		                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
-		                        <div class="article-large__img-container topographic-pattern">
-		                        	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
-										<div class="article-tag__icon-wrapper">
-											<div class="article-tag__icon"></div>
+					<?php /* START Featured Article Large */ ?>
+						<article class="article-large <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
+			                    <a href="<?php echo get_permalink(get_field("featured", $term)[0]->ID) ?>" class="link-reset">
+			                        <div class="article-large__img-container topographic-pattern">
+			                        	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
+											<div class="article-tag__icon-wrapper">
+												<div class="article-tag__icon"></div>
+											</div>
 										</div>
-									</div>
-									<picture>
-										<source media="(min-width: 40em)"
-											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-										<source
-											data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-										<img class="article-large__img z2" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
-									</picture>
-		                        </div>
-		                        <div class="article-large__content mt3 clearfix">
-		                            <div class="col col-12 sm-col-5">
-		                                <h2 class="article-large__title pt0"><?php echo get_field("featured", $term)[0]->post_title ?></h2>
-		                            </div>
-		                            <div class="col col-12 sm-col-7 article-large__right-col">
-		                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured", $term)[0]->ID) ?></p>
-		                                <div class="read-more">
-									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
-									    	<div class="read-more__button">
-										    	<svg class="icon read-more__icon">
-			                                    	<use xlink:href="#arrow-right-icon"/>
-			                                	</svg>
-		                                	</div>
-									    </div>
-		                            </div>
-		                        </div>
-		                    </a>
-		            </article>
+										<picture>
+											<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_large@2x' ) . " 2x" ?>" />
+											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+											<img class="article-large__img z2" 
+												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' )?>"
+												alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
+										</picture>
+			                        </div>
+			                        <div class="article-large__content mt3 clearfix">
+			                            <div class="col col-12 sm-col-5">
+			                                <h2 class="article-large__title pt0"><?php echo get_field("featured", $term)[0]->post_title ?></h2>
+			                            </div>
+			                            <div class="col col-12 sm-col-7 article-large__right-col">
+			                                <p class="article-large__excerpt mt0"><?php echo get_field("excerpt", get_field("featured", $term)[0]->ID) ?></p>
+			                                <div class="read-more">
+										    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+										    	<div class="read-more__button">
+											    	<svg class="icon read-more__icon">
+				                                    	<use xlink:href="#arrow-right-icon"/>
+				                                	</svg>
+			                                	</div>
+										    </div>
+			                            </div>
+			                        </div>
+			                    </a>
+			            </article>
+		            <?php /* END Featured Article Large */ ?>
+
 				</div>
 				<div class="featured-articles__secondary col col-12 lg-col-4 p0">
 				    <div class="clearfix">
 				        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
+				        	
 				        	<?php /* START - ArticleMedium */ ?>
 							<article class="article-medium <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 								<a href="<?php echo get_permalink(get_field("featured", $term)[1]->ID) ?>" class="link-reset">
@@ -137,11 +148,10 @@ $term = get_queried_object(); ?>
 											</div>
 										</div>
 										<picture>
-											<source media="(min-width: 40em)"
-												data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-											<source
-												data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-											<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
+											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+											<img class="article-medium__img" 
+												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' )?>"
+												alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
 								    </div>
 								    <div class="article-medium__content mt3">
@@ -159,6 +169,7 @@ $term = get_queried_object(); ?>
 								</a>
 							</article>
 							<?php /* END - ArticleMedium */ ?>
+
 				        </div>
 				        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
 				        	<?php /* START - ArticleMedium */ ?>
@@ -171,11 +182,10 @@ $term = get_queried_object(); ?>
 												</div>
 											</div>
 											<picture>
-												<source media="(min-width: 40em)"
-													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-												<source
-													data-srcset="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-												<img class="article-medium__img" data-src="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
+												<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+												<img class="article-medium__img" 
+													data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' )?>"
+													alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
 									    </div>
 									    <div class="article-medium__content mt3">
@@ -207,12 +217,16 @@ $term = get_queried_object(); ?>
 		<?php if(isset($meet_local)) : ?>
 			<article class="article-full relative my5 <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 				<div class="article-full__img-container topographic-pattern">
+
 				    <picture>
-						<source media="(min-width: 40em)"
-							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-						<source
-							data-srcset="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-						<img class="article-full__img" data-src="<?php echo get_field("cover_image", $meet_local->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $meet_local->ID)["alt"] ?>" />
+						<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide@2x' ) . " 2x" ?>" />
+
+		                <source data-srcset="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+
+		                 <img class="article-full__img"
+	                            data-src="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide' ); ?>" 
+	                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+	                    />
 				    </picture>
 				</div>
 				<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
@@ -261,12 +275,19 @@ $term = get_queried_object(); ?>
 								<article class="article-image relative <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 									<div class="article-image__img-container topographic-pattern">
 										<picture>
-											<source media="(min-width: 700px)"
-												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
-											<source
-												data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-											<img class="article-image__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-										</picture>
+
+											<source media="(min-width:40em)""
+				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_large@2x' ) . " 2x" ?>" />
+
+					            			<source
+				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+
+					                        <img class="article-image__img"
+					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
+					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                        />
+					                        
+					                    </picture>	
 									</div>
 									<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 										<div class="article-image__content absolute left-0 bottom-0">
@@ -304,10 +325,15 @@ $term = get_queried_object(); ?>
 													</div>
 												</div>
 												<picture>
-													<source
-												    	data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-													<img class="article-medium__img z3" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-												</picture>
+							            			<source
+						                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+							                        <img class="article-medium__img z3"
+							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
+							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+							                        />
+							                        
+							                    </picture>	
 											</div>
 											<div class="article-medium__content mt3 <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
 											    <h3 class="article-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
@@ -349,7 +375,14 @@ $term = get_queried_object(); ?>
 					                    <div class="clearfix">
 					                        <div class="col col-5 sm-col-4 ">
 					                            <div class="happening-list-item__img-container topographic-pattern relative">
-					                            	<img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+					                            	<picture>
+	 													<source
+	                                            			data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
+	                                            		<img class="happening-list-item__img"
+							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
+							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+							                        	/>
+	                                    			</picture>
 					                            </div>
 					                        </div>
 					                        <div class="happening-list-item__date">
@@ -395,11 +428,11 @@ $term = get_queried_object(); ?>
 		                       <a href="<?php echo $value->url ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
 	                                    <picture>
-	                                        <source media="(min-width: 40em)"
-	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] . " 1x," . $current_term_cover_image["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
+	                                    	<source media="(min-width:40em)"
+	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium_square"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
 	                                        <source
-	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_large"] . " 1x," . $current_term_cover_image["sizes"]["vh_large"] . " 2x" ?>" />
-	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_hero_tall"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
 	                                    </picture>
 		                                <div class="concept-thumbnail-small__inner center">
 		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>

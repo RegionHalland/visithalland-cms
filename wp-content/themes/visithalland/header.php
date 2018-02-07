@@ -93,7 +93,14 @@
                                                 <div class="clearfix">
                                                     <div class="col col-5 sm-col-4 ">
                                                         <div class="happening-list-item__img-container topographic-pattern relative">
-                                                            <img class="happening-list-item__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail@2x"] ?>" alt=<?php echo get_field("cover_image", $value->ID)["alt"] ?> />
+                                                            <picture>
+                                                                <source
+                                                                    data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
+                                                                <img class="happening-list-item__img"
+                                                                    data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
+                                                                    alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                                                />
+                                                            </picture>
                                                         </div>
                                                     </div>
                                                     <div class="happening-list-item__date">

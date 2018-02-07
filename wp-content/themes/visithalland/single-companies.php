@@ -2,6 +2,7 @@
 
     <?php while ( have_posts() ) : the_post(); 
         $author_id = get_the_author_meta('ID');
+        $post_id = get_the_id();
     ?>
 
     <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
@@ -11,16 +12,20 @@
             <div class="business-header__backdrop topographic-pattern"></div>
             <div class="business-header__inner col-11 md-col-10 lg-col-8 mx-auto">
                 <div class="business-header__img-container topographic-pattern">
-                        <picture>
-                            <source media="(min-width: 40em)"
-                                data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
-                            <source
-                                data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_medium"] . " 1x," . get_field("cover_image")["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                            <img class="happening-header__img" 
-                                    data-src="<?php echo get_field("cover_image")["sizes"]["vh_large"] ?>" 
-                                    alt="<?php echo get_field("cover_image")["alt"] ?>"  
-                            />
-                        </picture>
+                    <picture>
+
+                        <source media="(min-width: 40em)"
+                            data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_large@2x' ) . " 2x" ?>" />
+
+                        <source
+                            data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_medium@2x' ) . " 2x" ?>" />
+
+                        <img class="happening-header__img"
+                                data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ); ?>" 
+                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                        />
+                        
+                    </picture>
                 </div>
                 <div class="clearfix">
                     <div class="business-header__content col col-12 md-col-7">
@@ -34,7 +39,7 @@
                         </div>
                         <h1 class="business-header__title h1 mb3 mt2"><?php the_title(); ?></h1>
                         <div class="business-header__details">
-                            <?php the_field('body', $post->ID); ?>
+                            <?php the_content(); ?>
                         </div>
                     </div>
                     <div class="business__details col col-12 md-col-5">
@@ -103,12 +108,15 @@
                                         </div>
                                     </div>
                                     <picture>
-                                        <source media="(min-width: 40em)"
-                                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
                                         <source
-                                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                                        <img class="article-medium__img" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_hero_wide"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-                                    </picture>
+                                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+                                        <img class="article-medium__img z3"
+                                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
+                                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                        />
+                                        
+                                    </picture>  
                                 </div>
                                 <div class="article-medium__content">
                                     <h3 class="article-medium__title mb1 mt3 pt0"><?php echo $value->post_title ?></h3>

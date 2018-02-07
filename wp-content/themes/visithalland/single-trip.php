@@ -3,6 +3,7 @@
 <?php while ( have_posts() ) : the_post(); 
 
     $author_id = get_the_author_meta('ID');
+    $post_id = get_the_id();
     
 ?>
 <div id="container">
@@ -10,14 +11,16 @@
 	    <section class="spotlight-header">
 	        <div class="spotlight-header__img-container">
 	            <picture>
-	                <source media="(min-width: 40em)"
-	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
-	                <source
-	                    data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image")["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-	                <img class="editorial-header__img" 
-	                        data-src="<?php echo get_field("cover_image")["sizes"]["vh_hero_wide"] ?>" 
-	                        alt="<?php echo get_field("cover_image")["alt"] ?>"  
-	                />
+
+	            	<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_wide@2x' ) . " 2x" ?>" />
+
+	                <source data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_tall@2x' ) . " 2x" ?>" />
+
+	                 <img class="spotlight-header__img"
+                            data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ); ?>" 
+                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                    />
+
 	            </picture>
 	            <div class="spotlight-header__scrim absolute z1 left-0 bottom-0 right-0"></div>
 	            <div class="spotlight-header__content z2 relative center">
@@ -26,7 +29,8 @@
 	                        <div class="spotlight-header__icon mx-auto"></div>
 	                        <h1 class="spotlight-header__title center light"><?php the_title(); ?></h1>
 	                        <div class="spotlight-header__paragraph light mt2">
-	                            <p><?php the_excerpt(); ?></p>
+	                            <p><?php the_field('excerpt'); ?></p>
+
 	                        </div>
 	                    </div>
 	                </div>

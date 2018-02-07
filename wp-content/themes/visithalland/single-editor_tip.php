@@ -3,8 +3,10 @@
 <?php while ( have_posts() ) : the_post(); 
 
     $author_id = get_the_author_meta('ID');
+    $post_id = get_the_id();
     
 ?>
+
 <div id="container">
     <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
         <section class="editorial-header relative clearfix" role="heading" id="page-content">
@@ -12,14 +14,18 @@
             <div class="editorial-header__inner col-11 md-col-10 lg-col-8 mx-auto">
                 <div class="editorial-header__img-container topographic-pattern">
                     <picture>
+
                         <source media="(min-width: 40em)"
-                            data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" ?>" />
+                            data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_large@2x' ) . " 2x" ?>" />
+
                         <source
-                            data-srcset="<?php echo get_field("cover_image")["sizes"]["vh_medium"] . " 1x," . get_field("cover_image")["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+                            data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_medium@2x' ) . " 2x" ?>" />
+
                         <img class="editorial-header__img"
-                                data-src="<?php echo get_field("cover_image")["sizes"]["vh_large"] ?>" 
+                                data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ); ?>" 
                                 alt="<?php echo get_field("cover_image")["alt"] ?>"  
                         />
+
                     </picture>
                 </div>
                 <div class="editorial-header__content center">
@@ -52,7 +58,7 @@
         <div class="article-content clearfix">
             <div class="col-11 md-col-10 lg-col-8 mx-auto">
             	<article class="article-body">
-            	   <?php echo get_field('body'); ?>
+            	   <?php the_content(); ?>
                 </article>
                 <?php
                     $mentions = get_field("mentioned");
@@ -67,11 +73,14 @@
                                         <div class="clearfix">
                                             <div class="col col-5 sm-col-4 ">
                                                 <div class="article-mention__img-container relative">
-                                                	<img 
-                                                        class="article-mention__img" 
-                                                        data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_thumbnail@2x"] ?>" 
-                                                        alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" 
-                                                    />
+                                                	<picture>
+                                                        <source
+                                                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
+                                                        <img class="article-mention__img"
+                                                            data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
+                                                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                                        />
+                                                    </picture>
                                                 </div>
                                             </div>
                         						<div class="article-mention__content col col-7 sm-col-8">

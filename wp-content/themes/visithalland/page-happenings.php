@@ -39,18 +39,21 @@
 						<div class="happening-large__img-container">
 							<picture>
 		                        <source media="(min-width: 40em)"
-		                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_large@2x"] . " 2x" ?>" />
+		                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_large@2x' ) . " 2x" ?>" />
+
 		                        <source
-		                            data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
+		                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
 		                        <img class="happening-large__img"
-		                                data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_large"] ?>" 
-		                                alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>"  
+		                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
+		                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 		                        />
+		                        
 		                    </picture>
 			            </div>
 			            <div class="clearfix my4">
 			            	<div class="col col-12 sm-col-6">
-			            		<h2 class="happening-large__title"><?php echo $value->post_title ?></h2>
+			            		<h2 class="happening-large__title"><?php echo $value->post_title ?> </h2>
 			            	</div>
 			            	<div class="col col-12 sm-col-6">
 			            		<p class="happening-large__excerpt"><?php the_field("excerpt", $value->ID) ?></p>
@@ -109,11 +112,16 @@
 										</div>
 			                        </div>
 								    <div class="happening-medium__img-container topographic-pattern">
-										<picture>
-											<source
-										    	data-srcset="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] . " 1x," . get_field("cover_image", $value->ID)["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-											<img class="happening-medium__img z2" data-src="<?php echo get_field("cover_image", $value->ID)["sizes"]["vh_medium"] ?>" alt="<?php echo get_field("cover_image", $value->ID)["alt"] ?>" />
-										</picture>
+									    <picture>
+					                        <source
+					                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
+
+					                        <img class="happening-medium__img z2"
+					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
+					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                        />
+					                        
+					                    </picture>								    	
 								    </div>
 								    <div class="happening-medium__content mt2">
 										<h3 class="happening-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
