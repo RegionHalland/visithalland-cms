@@ -67,6 +67,8 @@ function vh_get_taxonomyslug_by_string(String $taxonomySlug){
 	foreach ($terms as $url) {
 		if (strpos($taxonomySlug, $url->slug) !== FALSE) {
 			//We've found a matching slug in our default taxonomy list
+			// Roll back to current language            
+			$sitepress->switch_lang($original_lang);
 			return $url->slug;
 		}
 	}
