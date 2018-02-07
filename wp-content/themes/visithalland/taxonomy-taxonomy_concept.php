@@ -361,14 +361,14 @@ $term = get_queried_object(); ?>
 				
 
 			<?php /* START - CONCEPT SIDEBAR */ ?>
-		    <div class="concept-sidebar col col-12 lg-col-4 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
+		    <div class="concept-sidebar col col-12 lg-col-4">
 		    	<?php 
 					$happenings = vh_get_happenings_by_taxonomy_concept($term, 10);
 				?>
 
 				<?php if (count($happenings) > 0) : ?>
 		        	<div class="concept-happenings mb5 clearfix mxn2">
-		        		<header class="concept-sidebar__header px2">
+		        		<header class="concept-sidebar__header px2 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 							<div class="concept-sidebar__badge inline">
 								<svg class="icon concept-sidebar__icon">
 		                        	<use xlink:href="#calendar-icon"/>
@@ -423,7 +423,7 @@ $term = get_queried_object(); ?>
 		        <?php endif ?>
 
 		        <div class="concept-thumbnails clearfix mxn2">
-		        	<header class="concept-sidebar__header px2">
+		        	<header class="concept-sidebar__header px2 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 						<div class="concept-sidebar__badge inline">
 							<svg class="icon concept-sidebar__icon">
 	                        	<use xlink:href="#discover-icon"/>
@@ -443,7 +443,7 @@ $term = get_queried_object(); ?>
 						$current_term_cover_image = get_field("cover_image", $current_term);
 					?>
 					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 px2 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
-						<div class="concept-thumbnail-small <?php echo $value->title ?>">
+						<div class="concept-thumbnail-small">
 		                       <a href="<?php echo $value->url ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
 	                                    <picture>
