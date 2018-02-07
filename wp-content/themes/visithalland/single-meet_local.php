@@ -90,7 +90,18 @@
 					                    </picture>	
 		                            </div>
 		                            <div class="tip__content inline-block">
-		                                <h3 class="mt3 tip__title"><?php echo $value[0]->post_title ?></h3>
+
+		                                <h3 class="mt3 tip__title">
+		                                	<?php if (get_field("title", $value[0]->ID) != '') : ?>
+													
+												<?php echo the_field("title", $value[0]->ID) ?>
+
+											<?php else : ?>
+
+												<?php echo $value[0]->post_title ?>
+
+											<?php endif ?>
+										</h3>
 		                                <p class="my3 tip__quote"><?php the_sub_field('quote', $value[0]->ID)?></p>
 		                                <div class="tip__links">
 		                                    <a class="link-reset" href="<?php echo get_permalink($value[0]->ID) ?>">

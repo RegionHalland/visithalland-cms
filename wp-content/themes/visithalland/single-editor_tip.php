@@ -84,7 +84,17 @@
                                                 </div>
                                             </div>
                         						<div class="article-mention__content col col-7 sm-col-8">
-                                                    <h4 class="article-mention__title"><?php echo $value->post_title ?></h4>
+                                                    <h4 class="article-mention__title">
+                                                        <?php if (get_field("title", $value->ID) != '') : ?>
+                                                    
+                                                            <?php echo the_field("title", $value->ID) ?>
+
+                                                        <?php else : ?>
+
+                                                            <?php echo $value->post_title ?>
+
+                                                        <?php endif ?>
+                                                    </h4>
                                                     <div class="read-more">
                                                         <span class="read-more__text">
                                                             <?php _e( 'Läs mer', 'visithalland' ); ?>
