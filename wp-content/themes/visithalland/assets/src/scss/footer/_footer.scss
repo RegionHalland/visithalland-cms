@@ -27,7 +27,6 @@
     	}
     	margin:$space-2 0;
     	padding:$space-2 0;
-    	border-bottom:1px solid palette(black, x-light);
 		margin-bottom:$space-2;
 		display:block;
 	}
@@ -133,11 +132,10 @@
 
 
 .footer__eu {
-	background:palette(black, dark);
 	border-radius:$border-radius;
-	padding:$space-3;
-	@media (min-width:$breakpoint-md) {
-		padding:$space-4;
+	padding:0;
+	@media (min-width:$breakpoint-sm){
+		padding:$space-3;
 	}
 	margin-top:$space-6;
 }

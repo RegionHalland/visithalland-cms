@@ -50,8 +50,7 @@
 			        <div class="clearfix">
 				        <div class="concept-thumbnail-large__content col col-12 sm-col-7">
 					        <p><?php the_field("excerpt", $current_term ) ?></p>
-					        <hr class="concept-thumbnail-large__divider my3 block" />
-					        <a class="btn btn--primary inline-block" href="<?php echo $value->url ?>">
+					        <a class="btn mt3 btn--primary inline-block" href="<?php echo $value->url ?>">
 					            <span><?php echo $value->title ?></span>
 					        </a>
 				        </div>
