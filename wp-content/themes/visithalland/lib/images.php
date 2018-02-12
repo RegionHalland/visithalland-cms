@@ -44,7 +44,7 @@ function replace_img_src($content){
             $imgs = $document->getElementsByTagName('img');
             if ($imgs) {
                 foreach($imgs as $key=>$value) {
-                    if ($key !== 0) {
+
                         $img_src = $value->getAttribute('src');
                         if ($value->hasAttribute("width") && $value->hasAttribute("height")) {
                             $value->setAttribute('data-width',$value->getAttribute('width'));
@@ -55,7 +55,6 @@ function replace_img_src($content){
 
                         $value->setAttribute('data-src', $img_src);
                         /*$value->setAttribute("onError","$(this).parents('.image').length !== 0 ? $(this).parents('.image').css('display','none') : $(this).css('display','none');");*/
-                    } else $value->setAttribute('data-loaded', 'true');
                 }
             }
 
