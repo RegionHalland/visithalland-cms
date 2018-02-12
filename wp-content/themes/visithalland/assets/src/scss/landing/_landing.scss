@@ -39,16 +39,82 @@
 	}
 }
 
+.landing-eu {
+	border-radius:$border-radius;
+	@media (min-width:$breakpoint-sm){
+		position:absolute;
+		bottom:0;
+		left:0;
+		right:0;
+	}
+	&__inner {
+		background:$black;
+		padding:$space-3 0;
+		@media (min-width:$breakpoint-sm){
+			padding:$space-3;
+		}
+	}
+
+	&__btn {
+		width:100%;
+		@media (min-width:$breakpoint-sm){
+			float:right;
+		}
+	}
+
+	&__paragraph {
+		font-size:1rem;
+		@media (min-width:$breakpoint-sm){
+			font-size:0.9rem;
+		}
+	}
+}
+
+.landing-happenings {
+	padding:$space-3 0;
+}
+
 .landing-concepts {
 	z-index:$z4;
 	position:relative;
-	margin-top: -$space-5;
 	&__item {
-		@media (min-width:$breakpoint-sm) {
+
+	}
+
+	&__header {
+
+	}
+	&__title {
+		font-family:$rift-font-family;
+		font-weight:bold;
+		font-size:$h3;
+		@media (min-width:$breakpoint-sm){
+			font-size:$h3;
 
 		}
-		&--small {
-			margin-top:$space-4;
+	}
+
+	&__badge {
+		@media (min-width:$breakpoint-sm){
+			height:35px;
+			width:35px;
+		}
+		height:35px;
+		width:35px;
+		border-radius:50%;
+		display:inline-flex;
+		justify-content:center;
+		align-items:center;
+		background:$orange;
+	}
+
+	&__icon {
+		height:15px;
+		width:15px;
+		fill:$white;
+		@media (min-width:$breakpoint-sm){
+			height:15px;
+			width:15px;
 		}
 	}
 }

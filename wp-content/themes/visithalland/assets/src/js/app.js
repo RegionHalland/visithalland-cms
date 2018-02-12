@@ -107,6 +107,24 @@ jQuery(function() {
 
 
 
+	jQuery('.landing-concepts__carousel').flickity({
+  		// options
+  		cellAlign: 'left',
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	jQuery('.landing-concepts__carousel--next').on( 'click', function() {
+	  jQuery('.landing-concepts__carousel').flickity('next');
+	});
+	// next wrapped
+	jQuery('.landing-concepts__carousel--previous').on( 'click', function() {
+	  jQuery('.landing-concepts__carousel').flickity('previous');
+	});
+
+
+
 
 
 	//Toggle menu on mobile 
@@ -186,6 +204,10 @@ jQuery(function() {
 	  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
 	  document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
 	  jQuery(".cookie-banner").fadeOut(300); //jquery to slide it up
+	});
+
+	jQuery('#eu-btn').on('click', function () { 
+	  jQuery(".landing-eu").fadeOut(300); //jquery to slide it up
 	});
 
 

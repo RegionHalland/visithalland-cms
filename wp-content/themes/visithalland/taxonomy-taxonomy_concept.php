@@ -37,7 +37,7 @@ $term = get_queried_object(); ?>
 				$spotlights = vh_get_spotlights_by_taxonomy_concept($term);
 				if (count($spotlights)) : ?>
 					<div class="concept-carousel clearfix">
-						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto"">
+						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto">
 							<button class="slider-button navigation-carousel--previous">
 								<svg class="icon slider-button__icon">
 		                            <use xlink:href="#arrow-left-icon"/>
