@@ -43,25 +43,46 @@
                         </div>
                     </div>
                     <div class="business__details col col-12 md-col-5">
-                    <?php /* START - Google business Details */ ?>
-                            <section class="details clearfix ">
-                                <div id="map"></div>
-                                <section id="opening-hours" class="details__section details__open-hours col col-12 list-style-none p0">
-                                    <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
+                    <?php if(get_field("google_conditional")) :?>
+                        <?php /* START - Google place Details */ ?>
+                                <section class="details clearfix ">
+                                    <div id="map"></div>
+                                    <section id="opening-hours" class="details__section details__open-hours col col-12 list-style-none p0">
+                                        <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
+                                    </section>
+                                    <section class="details__section col col-12">
+                                        <span class="details__section-label block"><?php _e( 'Visa på karta', 'visithalland' ); ?></span>
+                                        <a id="details-show-on-map" href="" class="details__phone block">
+                                            <svg class="icon details__icon">
+                                                <use xlink:href="#pin-icon"/>
+                                            </svg>
+                                            <?php _e( 'Visa på karta', 'visithalland' ); ?>
+                                        </a>
+                                    </section>
+                                        <section
+                                            class="details__section col col-12">
+                                            <span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+                                            <a id="details-visit-website" href="" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a>
+                                        </section>
                                 </section>
-                                <section class="details__section col col-12">
-                                    <span class="details__section-label block"><?php _e( 'Kontakt', 'visithalland' ); ?></span>
-                                    <a id="details-show-on-map" href="" class="details__phone block">
-                                        <svg class="icon details__icon">
-                                            <use xlink:href="#pin-icon"/>
-                                        </svg>
-                                        <?php _e( 'Visa på karta', 'visithalland' ); ?>
-                                    </a>
-                                </section>
-                                <section
-                                    class="details__section col col-12"><span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span><a id="details-visit-website" href="#" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a></section>
+                        <?php /* End - Google place Details */ ?>
+                    <?php else :?>
+                        <section class="details clearfix ">
+                            <section class="details__section col col-12">
+                                <span class="details__section-label block"><?php _e( 'Visa på karta', 'visithalland' ); ?></span>
+                                <a href="http://www.google.com/maps/place/<?php echo get_field("location")['lat']; ?>,<?php echo get_field("location")['lng']; ?>" class="details__phone block">
+                                    <svg class="icon details__icon">
+                                        <use xlink:href="#pin-icon"/>
+                                    </svg>
+                                    <?php _e( 'Visa på karta', 'visithalland' ); ?>
+                                </a>
                             </section>
-                        <?php /* End - Google business Details */ ?>
+                            <section class="details__section col col-12">
+                                <span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+                                <a href="<?php echo get_field("external_links")[0]["link"]; ?>" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a>
+                            </section>
+                        </section>
+                    <?php endif ?>
                     </div>
                 </div>
             </div>

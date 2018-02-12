@@ -68,7 +68,7 @@
                                 </section>
                                 <section class="happening-info__section">
                                     <h3 class="happening-info__section-label"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></h3>
-                                    <a href="<?php the_field('external_links'[0]); ?>" class="btn btn--primary inline-block"><?php _e( 'Mer information', 'visithalland' ); ?></a>
+                                    <a href="<?php echo get_field("external_links", $value->ID)[0]["link"]; ?>" class="btn btn--primary inline-block"><?php _e( 'Mer information', 'visithalland' ); ?></a>
                                 </section>
                             </div>
                         </aside>
