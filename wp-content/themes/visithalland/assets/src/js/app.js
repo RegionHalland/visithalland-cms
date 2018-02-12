@@ -1,12 +1,12 @@
 jQuery(function() {
 	var nextPages = jQuery("#nextPages").data("all");
-	var $container = jQuery('#container').infiniteScroll({
+	var $container = jQuery('#infinite-container').infiniteScroll({
 		// options
 		path: function() {
 			return nextPages[this.loadCount];
 			//return nextUrl;
 		},
-		append: '#container',
+		append: '#infinite-container',
 		history: 'replace',
 		status: '.page-load-status',
 		debug: false,

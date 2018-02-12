@@ -1,21 +1,19 @@
 
 
-.infinite-scroll {
-	position:fixed;
-	bottom:0;
-	background:palette(black, base);
-	margin:0 auto;
-	height:50px;
-	border-radius:$border-radius;
-	width:100%;
-	left:0;
-	right:0;
-	z-index:999;
-	transition: transform 0.25s;
-	// transform:translateY(100%);
-	// &.visible {
-	// 	transform:translateY(0%);
-	// }
+
+#infinite-container > #infinite-container {
+	animation: fadeInNow 1s;
+	background:$white;
+	animation-fill-mode:forwards;
+}
+
+@keyframes fadeInNow {
+	from {
+		transform:translateY(10px);
+	}
+	to {
+		transform:translateY(0px);
+	}
 }
 
 .page-load-status {
