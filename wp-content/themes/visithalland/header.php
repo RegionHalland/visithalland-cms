@@ -70,7 +70,7 @@
                                 data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-vertical.svg"/>
                             <img 
                                 class="header__logo center" 
-                                src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
+                                data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
                                 alt="Visithalland.com" />
                         </picture>
                     </a>

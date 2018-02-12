@@ -139,6 +139,12 @@ include_once('lib/rest/v2/callbacks.php');
 //Add helpers used in callbacks.php for generic methods
 //include_once('lib/helpers.php');
 
+//Move Yoast to bottom
+function yoasttobottom() {
+    return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'yoasttobottom');
+
 
 add_theme_support('post-thumbnails');
 

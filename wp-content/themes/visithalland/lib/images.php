@@ -19,6 +19,54 @@ function title_caption_image($html, $id, $caption, $title, $align, $url, $size, 
 add_filter( 'image_send_to_editor', 'title_caption_image', 10, 9 );
 
 
+function faster_replace_img_src($content){
+    $html = preg_replace_callback('#(<img\s[^>]*src)="([^"]+)"#',"callback_img", $content );
+    return $html;
+}
+
+function callback_img($match) {
+    list( , $img, $src) = $match;
+    return "$img=\"$preloading_image\" data-src=\"$src\" ";
+}
+
+/* Replace the source attribute for images in the post to activate lazy loading */
+function replace_img_src($content){
+    if (!is_feed()) {
+
+        $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+        if ($content) {
+            $document = new DOMDocument();
+            libxml_use_internal_errors(true);
+            $document->loadHTML(utf8_decode($content));
+            libxml_use_internal_errors(false);
+            libxml_clear_errors();
+
+            $imgs = $document->getElementsByTagName('img');
+            if ($imgs) {
+                foreach($imgs as $key=>$value) {
+                    if ($key !== 0) {
+                        $img_src = $value->getAttribute('src');
+                        if ($value->hasAttribute("width") && $value->hasAttribute("height")) {
+                            $value->setAttribute('data-width',$value->getAttribute('width'));
+                            $value->setAttribute('data-height',$value->getAttribute('height'));
+                            $value->removeAttribute('height');
+                            $value->removeAttribute('width');
+                        }
+
+                        $value->setAttribute('data-src', $img_src);
+                        /*$value->setAttribute("onError","$(this).parents('.image').length !== 0 ? $(this).parents('.image').css('display','none') : $(this).css('display','none');");*/
+                    } else $value->setAttribute('data-loaded', 'true');
+                }
+            }
+
+            $html = $document->saveHTML();
+            return $html;
+        }
+    }
+}
+
+add_filter       ('the_content', 'replace_img_src');
+
 /* 
 	Add custom image sizes
 */
