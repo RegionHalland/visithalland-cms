@@ -46,7 +46,7 @@
                             <address class="author-horizontal mt4 mb4">
                                 <div class="author-horizontal__img-container">
                                     <img 
-                                        src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
+                                        data-src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
                                         alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
                                         class="author-horizontal__img"
                                     />

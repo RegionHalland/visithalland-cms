@@ -93,7 +93,7 @@ $term = get_queried_object(); ?>
                         	<use xlink:href="#recommend-icon"/>
                     	</svg>
 					</div>
-					<div class="featured-articles__title inline-block ml2"><?php _e( 'Toppval för dig', 'visithalland' ); ?></div>
+					<div class="featured-articles__title inline-block ml2"><?php _e( 'Vi rekommenderar', 'visithalland' ); ?></div>
 				</header>
 				<div class="featured-articles__primary col col-12 lg-col-8 relative">
 
