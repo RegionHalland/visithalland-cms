@@ -96,7 +96,10 @@
 	    	<?php endforeach ?>
 	    </div>
 	</div>
+	
 
+	<?php $happenings = vh_get_happenings(); ?>
+	<?php if (count($happenings) > 0)  : ?>
 	<div class="landing-happenings clearfix mxn2 mt4">
 
 		<div class="col-11 md-col-10 lg-col-10 mx-auto">
@@ -115,7 +118,6 @@
 				<a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary coastal-living inline-block right"><?php _e( 'Visa fler', 'visithalland' ); ?></a>
 				
 			</div>
-			<?php $happenings = vh_get_happenings(); ?>
 
 			<?php foreach ($happenings as $index => $value) : ?>
 	        	<div class="col col-12 sm-col-4 px2 mt3">
@@ -159,8 +161,8 @@
 	        	</div>
 	    	<?php endforeach ?>
 	    </div>
-
 	</div>
+	<?php endif?>
 </main>
 
 <?php get_footer(); ?>
