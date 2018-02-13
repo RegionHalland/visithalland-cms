@@ -39,7 +39,7 @@
 			<header class="landing-concepts__header inline-block">
 				<div class="landing-concepts__badge inline">
 					<svg class="icon landing-concepts__icon">
-                    	<use xlink:href="#calendar-icon"/>
+                    	<use xlink:href="#recommend-icon"/>
                 	</svg>
 				</div>
 				<div class="landing-concepts__title inline ml2">

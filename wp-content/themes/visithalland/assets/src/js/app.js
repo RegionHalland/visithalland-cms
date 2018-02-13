@@ -207,6 +207,10 @@ jQuery(function() {
 	});
 
 	jQuery('#eu-btn').on('click', function () { 
+	  days = 10; //number of days to keep the cookie
+	  myDate = new Date();
+	  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
+	  document.cookie = "hide_eu = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
 	  jQuery(".landing-eu").fadeOut(300); //jquery to slide it up
 	});
 
