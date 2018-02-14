@@ -33,7 +33,7 @@ function visithalland_scripts() {
 add_action( 'wp_enqueue_scripts', 'visithalland_scripts', 20 );
 
 
-function gutenberg_boilerplate_block() {
+/*function gutenberg_boilerplate_block() {
     wp_register_script(
         'gutenberg-boilerplate-es5-step01',
         plugins_url( 'visithalland-blocks/block.js'),
@@ -44,4 +44,4 @@ function gutenberg_boilerplate_block() {
         'editor_script' => 'gutenberg-boilerplate-es5-step01',
     ) );
 }
-add_action( 'init', 'gutenberg_boilerplate_block' );
+add_action( 'init', 'gutenberg_boilerplate_block' );*/
