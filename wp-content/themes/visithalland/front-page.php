@@ -22,10 +22,9 @@
 	                    </a>
 	                </div>
 	                <div class="col col-12 sm-col-9 md-col-6 my2 px3">
-	                    <p class="landing-eu__paragraph light mt0">
-	                        <!-- This needs to be dynamic -->
-	                        VisitHalland.com är del av EU-projektet Destination Halland 2020. Projektet finansieras via Europeiska regionala utvecklingsfonden.
-	                    </p>
+	                    <div class="landing-eu__paragraph light mt0">
+	                    	<?php dynamic_sidebar( 'eu-banner' ); ?> 
+	                    </div>
 	                </div>
 	                <div class="col col-12 sm-col-9 md-col-4 my2 px3">
 	                    <button class="btn btn--primary landing-eu__btn coastal-living block" id="eu-btn"><?php _e( 'Okej!', 'visithalland' ); ?></button>

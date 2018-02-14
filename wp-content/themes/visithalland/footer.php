@@ -8,7 +8,7 @@
             <!-- Footer Site Info Start -->
             <div class="footer__column col sm-col-6 col-12 md-col-5">
                 <img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
-                <p class="footer__intro mt1">En reseguide som hjälper dig att hitta till det bästa i Halland. Visithalland.com utvecklas och drivs av Region Halland.</p>
+                <p class="footer__intro light mt1"><?php bloginfo('description'); ?></p>
             </div>
             <!-- Footer Site Info End -->
 
@@ -93,10 +93,10 @@
                         </a>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
-                        <p class="light footer__eu-paragraph mt0">
+                        <div class="light footer__eu-paragraph mt0">
                             <!-- This needs to be dynamic -->
-                            VisitHalland.com är del av EU-projektet Destination Halland 2020. Projektet finansieras via Europeiska regionala utvecklingsfonden.
-                        </p>
+                            <?php dynamic_sidebar( 'eu-banner' ); ?>
+                        </div>
                     </div>
                 </div>
             </div>
