@@ -328,7 +328,8 @@ function vh_get_happenings($numberposts = 3) {
 	  		"happening"
 	  ),
 	  'numberposts'  => $numberposts,
-	  'tax_query' 	 => $tax_query
+	  'tax_query' 	 => $tax_query,
+	  'suppress_filters' => false
 	));
 
 	foreach ($posts as $key => $value) {
