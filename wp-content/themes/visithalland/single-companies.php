@@ -3,7 +3,7 @@
     <?php while ( have_posts() ) : the_post(); 
         $author_id = get_the_author_meta('ID');
         $post_id = get_the_id();
-        $currentTerm = count(get_the_terms($value, "taxonomy_concept")) ? get_the_terms($value, "taxonomy_concept")[0] : ""
+        $currentTerm = count(get_the_terms($post, "taxonomy_concept")) ? get_the_terms($post, "taxonomy_concept")[0] : ""
     ?>
 
     <article class="container <?php echo get_term_for_default_lang($currentTerm, "taxonomy_concept")->slug ?>" role="main" id="main-content">
