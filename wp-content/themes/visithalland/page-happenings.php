@@ -11,7 +11,7 @@
 
 
 
-	<article class="container" role="main" id="main-content">
+	<article class="container relative" role="main" id="main-content">
 		<div class="happening-page-header">
 			<div class="happening-page-header__backdrop topographic-pattern">
 			</div>
