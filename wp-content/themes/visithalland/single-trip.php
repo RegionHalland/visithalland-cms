@@ -7,7 +7,7 @@
     
 ?>
 <div id="infinite-container">
-	<article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
+	<article class="container <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>" role="main" id="main-content">
 	    <section class="spotlight-header">
 	        <div class="spotlight-header__img-container">
 	            <picture>

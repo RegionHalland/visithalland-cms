@@ -34,7 +34,7 @@
 			<?php if($index === 0) : ?>
 
 				<?php /* Next Happening Start */ ?>
-				<article class="happening-large col-11 md-col-10 lg-col-8 mx-auto z4 relative mt4 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy[slug]) ?>">
+				<article class="happening-large col-11 md-col-10 lg-col-8 mx-auto z4 relative mt4 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
 					<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 						<div class="happening-large__img-container">
 							<picture>
@@ -103,7 +103,7 @@
 	    				<?php if($index > 0) : ?>
 
 			    		<div class="happening-page__grid-item col col-12 sm-col-6 md-col-4 px2 mt3">
-							<article class="happening-medium relative <?php echo vh_get_taxonomyslug_by_string($value->taxonomy[slug]) ?>">
+							<article class="happening-medium relative <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
 								<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 									<div class="happening-medium__date z3">
 										<div class="date-badge">

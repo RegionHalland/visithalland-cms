@@ -1,4 +1,6 @@
 jQuery(function() {
+	console.log("wp-blocks", wp);
+
 	var nextPages = jQuery("#nextPages").data("all");
 	var $container = jQuery('#infinite-container').infiniteScroll({
 		// options

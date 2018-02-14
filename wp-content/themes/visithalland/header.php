@@ -88,7 +88,7 @@
                             <div class="happenings__dropdown">
                                 <div class="happenings__dropdown-inner p3">
                                    <?php foreach ($happenings as $index => $value) : ?>
-                                        <article class="happening-list-item mb3 <?php echo vh_get_taxonomyslug_by_string($value->taxonomy["slug"]) ?>">
+                                        <article class="happening-list-item mb3 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
                                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                                 <div class="clearfix">
                                                     <div class="col col-5 sm-col-4 ">

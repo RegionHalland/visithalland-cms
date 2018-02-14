@@ -71,7 +71,7 @@
 
 			?>
 		        <div class="col col-10 sm-col-5 lg-col-4 px2 landing-concepts__item landing-concepts__item--small">
-		            <div class="concept-thumbnail-small <?php echo vh_get_taxonomyslug_by_string($value->post_name)?>">
+		            <div class="concept-thumbnail-small <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
 		                <a href="<?php echo $value->url ?>" class="link-reset">
 		                    <div class="concept-thumbnail-small__img-container">
 		                    	<picture>
@@ -120,7 +120,7 @@
 
 			<?php foreach ($happenings as $index => $value) : ?>
 	        	<div class="col col-12 sm-col-4 px2 mt3">
-				    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($value->taxonomy['slug']); ?>">
+				    <article class="happening-list-item <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
 		                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 		                    <div class="clearfix">
 		                        <div class="col col-5 sm-col-4 ">

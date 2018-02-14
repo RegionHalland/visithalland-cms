@@ -23,7 +23,7 @@
                     foreach ($mainMenuItems as $key => $value): 
                         $term_id = get_post_meta($value->ID, '_menu_item_object_id', true);
                         $current_term = get_term($term_id); ?>
-                    <div class="footer-nav__item footer__nav-item <?php echo vh_get_taxonomyslug_by_string($value->post_name) ?>">
+                    <div class="footer-nav__item footer__nav-item <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
                         <a href="<?php echo $value->url ?>" class="footer-nav__link link-reset <?php echo array_walk($value->classes, create_function('$a', 'echo $a . " ";')); ?>">
                             <div class="footer-nav__icon-wrapper">
                                 <div class="footer-nav__icon"></div>

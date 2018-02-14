@@ -3,9 +3,10 @@
     <?php while ( have_posts() ) : the_post(); 
         $author_id = get_the_author_meta('ID');
         $post_id = get_the_id();
+        $currentTerm = count(get_the_terms($value, "taxonomy_concept")) ? get_the_terms($value, "taxonomy_concept")[0] : ""
     ?>
 
-    <article class="container <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>" role="main" id="main-content">
+    <article class="container <?php echo get_term_for_default_lang($currentTerm, "taxonomy_concept")->slug ?>" role="main" id="main-content">
 
         <?php /* START - business Header */ ?>
         <section class="business-header relative clearfix" role="heading" id="page-content">
@@ -120,7 +121,7 @@
                 <?php
                     $featuredArticles = vh_get_posts_by_taxonomy_concept($post->ID);
                     foreach ($featuredArticles as $key => $value): ?>
-                        <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo vh_get_taxonomyslug_by_string(vh_get_post_taxonomy()['slug']) ?>">
+                        <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
                             <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
                                 <div class="article-medium__img-container topographic-pattern">
                                     <div class="article-tag absolute top-0 left-0 mt2 ml2 z3">

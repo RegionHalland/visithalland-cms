@@ -51,7 +51,7 @@ $term = get_queried_object(); ?>
 						</div>
 						<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
 							<?php foreach ($spotlights as $key => $value) : ?>				
-								<div class="page-thumbnail col-6 sm-col-5 md-col-3 lg-col-3 center <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+								<div class="page-thumbnail col-6 sm-col-5 md-col-3 lg-col-3 center <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 								    <a href="<?php echo get_permalink($value->ID) ?>">
 								        <div class="page-thumbnail__img-container topographic-pattern">
 								            <div class="page-thumbnail__concept-badge"></div>
@@ -140,7 +140,7 @@ $term = get_queried_object(); ?>
 				        <div class="featured-article__left col col-12 sm-col-6 lg-col-12 mt4 p0">
 				        	
 				        	<?php /* START - ArticleMedium */ ?>
-							<article class="article-medium <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+							<article class="article-medium <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 								<a href="<?php echo get_permalink(get_field("featured", $term)[1]->ID) ?>" class="link-reset">
 								    <div class="article-medium__img-container topographic-pattern">
 								    	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
@@ -174,7 +174,7 @@ $term = get_queried_object(); ?>
 				        </div>
 				        <div class="featured-article__right col col-12 sm-col-6 lg-col-12 mt4 p0">
 				        	<?php /* START - ArticleMedium */ ?>
-								<article class="article-medium <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+								<article class="article-medium <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 									<a href="<?php echo get_permalink(get_field("featured", $term)[2]->ID) ?>" class="link-reset">
 									    <div class="article-medium__img-container topographic-pattern">
 									    	<div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
@@ -216,7 +216,7 @@ $term = get_queried_object(); ?>
 	<?php /* START - ArticleFull */ ?>
 		<?php $meet_local = count(vh_get_meet_local_by_taxonomy_concept($term)) > 0 ? vh_get_meet_local_by_taxonomy_concept($term)[0] : null ?>
 		<?php if(isset($meet_local)) : ?>
-			<article class="article-full relative my5 <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+			<article class="article-full relative my5 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 				<div class="article-full__img-container topographic-pattern">
 
 				    <picture>
@@ -232,7 +232,7 @@ $term = get_queried_object(); ?>
 				</div>
 				<div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
 				<div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
-					<div class="article-full__content col col-12 md-col-6 lg-col-6 <?php echo $post->post_name ?>">
+					<div class="article-full__content col col-12 md-col-6 lg-col-6">
 
 						<div class="article-tag--light mt3 mb2">
 							<div class="article-tag__icon-wrapper">
@@ -273,7 +273,7 @@ $term = get_queried_object(); ?>
 		        		foreach ($posts_without_place_happening_business as $index => $value) : ?>
 		        			<?php if(($index + 1) % 3 === 0) : ?>
 		        				<div class="concept-grid__item col col-12">
-								<article class="article-image relative <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+								<article class="article-image relative <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 									<div class="article-image__img-container topographic-pattern">
 										<picture>
 
@@ -317,7 +317,7 @@ $term = get_queried_object(); ?>
 		        				</div>
 		        			<?php else: ?>
 		        				<div class="concept-grid__item col col-12 sm-col-6">
-									<article class="article-medium relative <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+									<article class="article-medium relative <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 										<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 											<div class="article-medium__img-container relative topographic-pattern">
 												<div class="article-tag mt2 ml2 absolute z4 left-0 top-0">
@@ -336,7 +336,7 @@ $term = get_queried_object(); ?>
 							                        
 							                    </picture>	
 											</div>
-											<div class="article-medium__content mt3 <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+											<div class="article-medium__content mt3 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 											    <h3 class="article-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
 											    <p class="article-medium__excerpt mt2"><?php the_field("excerpt", $value->ID) ?></p>
 											    <div class="read-more">
@@ -380,7 +380,7 @@ $term = get_queried_object(); ?>
 						</header>
 			            <?php foreach ($happenings as $index => $value) : ?>
 			            	<div class="concept-happenings__item col col-12 sm-col-6 lg-col-12 px2">
-							    <article class="happening-list-item <?php echo vh_get_taxonomyslug_by_string($term->slug) ?>">
+							    <article class="happening-list-item <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 					                <a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 					                    <div class="clearfix">
 					                        <div class="col col-5 sm-col-4 ">
@@ -442,7 +442,7 @@ $term = get_queried_object(); ?>
 						$current_term = get_term($term_id);
 						$current_term_cover_image = get_field("cover_image", $current_term);
 					?>
-					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 px2 <?php echo vh_get_taxonomyslug_by_string($current_term->slug) ?>">
+					<div class="concept-thumbnails__item col col-12 sm-col-6 lg-col-12 px2 <?php echo get_term_for_default_lang($current_term, "taxonomy_concept")->slug ?>">
 						<div class="concept-thumbnail-small">
 		                       <a href="<?php echo $value->url ?>" class="link-reset">
 		                            <div class="concept-thumbnail-small__img-container">
