@@ -23,7 +23,7 @@
 	                </div>
 	                <div class="col col-12 sm-col-9 md-col-6 my2 px3">
 	                    <div class="landing-eu__paragraph light mt0">
-	                    	<?php echo get_field("excerpt", apply_filters( 'wpml_object_id', get_page_by_path("eu")->ID, 'page' )); ?> 
+	                    	<?php echo get_field("excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )); ?> 
 	                    </div>
 	                </div>
 	                <div class="col col-12 sm-col-9 md-col-4 my2 px3">
