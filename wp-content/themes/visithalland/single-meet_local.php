@@ -166,9 +166,9 @@
         
     </div> -->
     <div class="page-load-status">
-        <p class="infinite-scroll-request">Hämtar nästa artikel</p>
-        <p class="infinite-scroll-last">Slut på innehåll</p>
-        <p class="infinite-scroll-error">Kunde inte hitta fler artiklar</p>
+        <p class="infinite-scroll-request"><?php _e( 'Hämtar nästa artikel', 'visithalland' ); ?></p>
+        <p class="infinite-scroll-last"><?php _e( 'Slut på innehåll', 'visithalland' ); ?></p>
+        <p class="infinite-scroll-error"><?php _e( 'Kunde inte hitta fler artiklar', 'visithalland' ); ?></p>
     </div>
 </div>
  <!--- End Infinite Scroll -->
