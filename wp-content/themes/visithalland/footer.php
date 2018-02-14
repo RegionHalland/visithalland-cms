@@ -93,10 +93,10 @@
                         </a>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
-                        <div class="light footer__eu-paragraph mt0">
+                        <p class="light footer__eu-paragraph mt0">
                             <!-- This needs to be dynamic -->
                             <?php echo get_field("excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )); ?>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
