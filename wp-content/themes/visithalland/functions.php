@@ -157,44 +157,6 @@ remove_action('wp_head', 'wlwmanifest_link');
 
 
 
-//Widget 
-
-function arphabet_widgets_init() {
-
-    register_sidebar( array(
-        'name'          => 'EU Projekt Banner',
-        'id'            => 'eu-banner',
-        'before_widget' => '<p class="light">',
-        'after_widget'  => '</p>',
-    ) );
-
-}
-add_action( 'widgets_init', 'arphabet_widgets_init' );
-
-// unregister all widgets
-function unregister_default_widgets() {
-    unregister_widget('WP_Widget_Pages');
-    unregister_widget('WP_Widget_Calendar');
-    unregister_widget('WP_Widget_Archives');
-    unregister_widget('WP_Widget_Links');
-    unregister_widget('WP_Widget_Meta');
-    unregister_widget('WP_Widget_Search');
-    unregister_widget('WP_Widget_Categories');
-    unregister_widget('WP_Widget_Recent_Posts');
-    unregister_widget('WP_Widget_Recent_Comments');
-    unregister_widget('WP_Widget_RSS');
-    unregister_widget('WP_Widget_Tag_Cloud');
-    unregister_widget('WP_Nav_Menu_Widget');
-    unregister_widget('WP_Widget_Media_Video');
-    unregister_widget('WP_Widget_Media_Image');
-    unregister_widget('WP_Widget_Media_Audio');
-
-    unregister_widget('Twenty_Eleven_Ephemera_Widget');
-}
-add_action('widgets_init', 'unregister_default_widgets', 11);
-
-
-
 // Async load
 function rh_async_scripts($url)
 {

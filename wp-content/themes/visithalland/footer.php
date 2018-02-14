@@ -95,7 +95,7 @@
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
                         <div class="light footer__eu-paragraph mt0">
                             <!-- This needs to be dynamic -->
-                            <?php dynamic_sidebar( 'eu-banner' ); ?>
+                            <?php echo get_field("excerpt", apply_filters( 'wpml_object_id', get_page_by_path("eu")->ID, 'page' )); ?>
                         </div>
                     </div>
                 </div>
