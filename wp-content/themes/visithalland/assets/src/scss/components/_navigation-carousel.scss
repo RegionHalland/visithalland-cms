@@ -1,14 +1,8 @@
 .page-thumbnail {
-	animation: fadeInLeft 0.4s;
-	animation-fill-mode:forwards;
-	opacity:0;
 	&:first-of-type {
 		margin-left:0;
 	}
 	margin-left:$space-3;
-	@for $i from 1 to 10 {
-	  &:nth-child(#{$i}) { animation-delay: $i * 0.25s; }
-	}
 	&__concept-badge {
 		position:absolute;
 		top:$space-2;
