@@ -52,7 +52,7 @@
                                         <span class="details__section-label block"><?php _e( 'Öppettider', 'visithalland' ); ?></span>
                                     </section>
                                     <section class="details__section col col-12">
-                                        <span class="details__section-label block"><?php _e( 'Visa på karta', 'visithalland' ); ?></span>
+                                        <span class="details__section-label block"><?php _e( 'Hitta hit', 'visithalland' ); ?></span>
                                         <a id="details-show-on-map" href="" class="details__phone block">
                                             <svg class="icon details__icon">
                                                 <use xlink:href="#pin-icon"/>
