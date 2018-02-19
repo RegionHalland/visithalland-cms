@@ -43,7 +43,7 @@ jQuery(function() {
 		ga('create', 'UA-89278649-4');
 		ga('send', {
 			hitType: 'pageview',
-			page: path
+			location: path
 		});
 		
 	});
