@@ -62,7 +62,7 @@
                                     </section>
                                         <section
                                             class="details__section col col-12">
-                                            <span class="details__section-label block"><?php _e( 'Läs mer om', 'visithalland' ); ?></span>
+                                            <span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
                                             <a id="details-visit-website" href="" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a>
                                         </section>
                                 </section>
@@ -79,7 +79,7 @@
                                 </a>
                             </section>
                             <section class="details__section col col-12">
-                                <span class="details__section-label block"><?php _e( 'Läs mer om', 'visithalland' ); ?></span>
+                                <span class="details__section-label block"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
                                 <a href="<?php echo get_field("external_links")[0]["link"]; ?>" class="btn btn--primary inline-block"><?php _e( 'Gå till webbplats', 'visithalland' ); ?></a>
                             </section>
                         </section>
