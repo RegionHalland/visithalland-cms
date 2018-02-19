@@ -19,13 +19,13 @@
 		background-color:palette(black, dark);
 
 		@media(min-width:$breakpoint-sm) {
-			height:60%;
+			height:600px;
 		}
 
 		@media(min-width:$breakpoint-md) {
-			height:90%;
+			height:750px;
 		}
-		height:50%;
+		height:525px;
 		z-index:1;
 		position:absolute;
 		width:100%;

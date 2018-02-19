@@ -7,14 +7,13 @@
 		background-color:palette(black, dark);
 
 		@media(min-width:$breakpoint-sm) {
-			height:40%;
+			height:600px;
 		}
 
 		@media(min-width:$breakpoint-md) {
-			height:90%;
-			max-height:700px;
+			height:750px;
 		}
-		height:60%;
+		height:525px;
 		z-index:1;
 		position:absolute;
 		width:100%;
