@@ -118,7 +118,7 @@ jQuery(function() {
 		ga('create', 'UA-89278649-4');
 		ga('send', {
 			hitType: 'pageview',
-			location: path
+			path: path.replace(/^.*\/\/[^\/]+/, '')
 		});
 		
 	});
