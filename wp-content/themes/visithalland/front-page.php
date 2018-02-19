@@ -18,7 +18,7 @@
 	            <div class="landing-eu__inner clearfix">
 	                <div class="col col-5 sm-col-3 md-col-2 my2 px3">
 	                    <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
-	                        <img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/eu-logo.svg" />
+	                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/eu-logo.svg" />
 	                    </a>
 	                </div>
 	                <div class="col col-12 sm-col-9 md-col-6 my2 px3">
