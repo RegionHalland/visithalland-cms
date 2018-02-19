@@ -4,6 +4,7 @@
 // get the current taxonomy term
 $term = get_queried_object(); ?>
 
+<div class="container">
 <main role="main" class="container" id="main-content">
 
 	<?php /* START - ConceptHeader */ ?>
@@ -467,4 +468,5 @@ $term = get_queried_object(); ?>
 		</div>
 		<?php /* END - CONCEPT SIDEBAR  */ ?>
 </main>
+</div>
 <?php get_footer(); ?>

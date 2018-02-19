@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div class="container">
 <main role="main" class="container" id="main-content">
 	<div class="landing-header relative">
     	<div class="landing-header__img-container">
@@ -163,5 +164,5 @@
 	</div>
 	<?php endif?>
 </main>
-
+</div>
 <?php get_footer(); ?>

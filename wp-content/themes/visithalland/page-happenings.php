@@ -116,7 +116,7 @@
 					                        <source
 					                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-					                        <img class="happening-medium__img z2"
+					                        <img class="happening-medium__img lazyload z2"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
 					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 					                        />
