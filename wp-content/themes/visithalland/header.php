@@ -64,13 +64,13 @@
                         <picture>
                             <source 
                                 media="(min-width: 60em)"
-                                data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-horizontal.svg"/>
+                                srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-horizontal.svg"/>
                             <source 
                                 media="(min-width: 40em)"
-                                data-srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-vertical.svg"/>
+                                srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-vertical.svg"/>
                             <img 
                                 class="header__logo center" 
-                                data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
+                                src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo-small.svg"  
                                 alt="Visithalland.com" />
                         </picture>
                     </a>
@@ -96,7 +96,7 @@
                                                             <picture>
                                                                 <source
                                                                     data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
-                                                                <img class="happening-list-item__img"
+                                                                <img class="happening-list-item__img lazyload"
                                                                     data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
                                                                     alt="<?php echo get_field("cover_image")["alt"] ?>"  
                                                                 />

@@ -7,7 +7,7 @@
             
             <!-- Footer Site Info Start -->
             <div class="footer__column col sm-col-6 col-12 md-col-5">
-                <img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
                 <p class="footer__intro light mt1"><?php bloginfo('description'); ?></p>
             </div>
             <!-- Footer Site Info End -->
@@ -74,7 +74,7 @@
                         <ul class="footer__list">
                             <li class="footer__list-item mt1 light">
                                 <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
-                                    <img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/tripadvisor-logo.svg" />
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/tripadvisor-logo.svg" />
                                 </a>
                             </li>
                         </ul>
@@ -89,7 +89,7 @@
                 <div class="clearfix">
                     <div class="col col-5 sm-col-3 md-col-2 footer__left mt2">
                         <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
-                            <img data-src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/eu-logo.svg" />
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/eu-logo.svg" />
                         </a>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">

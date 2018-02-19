@@ -14,7 +14,7 @@ $term = get_queried_object(); ?>
 				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_wide@2x"] . " 2x" ?>" />
 				    <source
 				        data-srcset="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_tall"] . " 1x," . get_field("cover_image", $term)["sizes"]["vh_hero_tall@2x"] . " 2x" ?>" />
-				    <img class="concept-header__img" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" 
+				    <img class="concept-header__img lazyload" data-src="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" 
 				    	alt="<?php echo get_field("cover_image", $term)["alt"] ?>" />
 				</picture>
 		    </div>
@@ -59,7 +59,7 @@ $term = get_queried_object(); ?>
 							            		<source
 						                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-						                        <img class="page-thumbnail__img"
+						                        <img class="page-thumbnail__img lazyload"
 						                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
 						                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 						                        />
@@ -109,7 +109,7 @@ $term = get_queried_object(); ?>
 										<picture>
 											<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large@2x' ) . " 2x" ?>" />
 											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
-											<img class="article-large__img z2" 
+											<img class="article-large__img z2 lazyload" 
 												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' )?>"
 												alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
 										</picture>
@@ -150,7 +150,7 @@ $term = get_queried_object(); ?>
 										</div>
 										<picture>
 											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
-											<img class="article-medium__img" 
+											<img class="article-medium__img lazyload" 
 												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' )?>"
 												alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
 										</picture>
@@ -184,7 +184,7 @@ $term = get_queried_object(); ?>
 											</div>
 											<picture>
 												<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
-												<img class="article-medium__img" 
+												<img class="article-medium__img lazyload" 
 													data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' )?>"
 													alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
 											</picture>
@@ -224,7 +224,7 @@ $term = get_queried_object(); ?>
 
 		                <source data-srcset="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
 
-		                 <img class="article-full__img"
+		                 <img class="article-full__img lazyload"
 	                            data-src="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide' ); ?>" 
 	                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
 	                    />
@@ -283,7 +283,7 @@ $term = get_queried_object(); ?>
 					            			<source
 				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
 
-					                        <img class="article-image__img"
+					                        <img class="article-image__img lazyload"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
 					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 					                        />
@@ -329,7 +329,7 @@ $term = get_queried_object(); ?>
 							            			<source
 						                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-							                        <img class="article-medium__img z3"
+							                        <img class="article-medium__img lazyload z3"
 							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
 							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 							                        />
@@ -388,7 +388,7 @@ $term = get_queried_object(); ?>
 					                            	<picture>
 	 													<source
 	                                            			data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
-	                                            		<img class="happening-list-item__img"
+	                                            		<img class="happening-list-item__img lazyload"
 							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
 							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 							                        	/>
@@ -451,7 +451,7 @@ $term = get_queried_object(); ?>
 	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium_square"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
 	                                        <source
 	                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-	                                        <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+	                                        <img class="concept-thumbnail-small__img lazyload" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
 	                                    </picture>
 		                                <div class="concept-thumbnail-small__inner center">
 		                                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>

@@ -16,7 +16,7 @@
 
 	                <source data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_tall@2x' ) . " 2x" ?>" />
 
-	                 <img class="meet-a-local-header__img"
+	                 <img class="meet-a-local-header__img lazyload"
                             data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ); ?>" 
                             alt="<?php echo get_field("cover_image")["alt"] ?>"  
                     />
@@ -36,7 +36,7 @@
                             <img 
                                 data-src="<?php echo get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"]; ?>" 
                                 alt="'Skrivet av: ' + <?php the_author_meta('display_name'); ?>" 
-                                class="author-vertical__img"
+                                class="author-vertical__img lazyload"
                             />
                         </div>
                         <div class="author-vertical__bio">
@@ -82,7 +82,7 @@
 					            			<source
 				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-					                        <img class="tip__img"
+					                        <img class="tip__img lazyload"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ); ?>" 
 					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 					                        />

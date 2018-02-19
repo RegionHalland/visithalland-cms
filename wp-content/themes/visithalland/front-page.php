@@ -8,7 +8,7 @@
     		<picture>
 				<source media="(min-width: 60em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_option( 'page_on_front' ), 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url(get_option( 'page_on_front' ), 'vh_hero_wide@2x' ) . " 2x" ?>" />
 				<source data-srcset="<?php echo get_the_post_thumbnail_url(get_option( 'page_on_front' ), 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url(get_option( 'page_on_front' ), 'vh_hero_tall@2x' ) . " 2x" ?>" />
-				<img class="concept-header__img" 
+				<img class="concept-header__img lazyload" 
 					data-src="<?php echo get_the_post_thumbnail_url(get_option( 'page_on_front' ), 'vh_hero_wide' )?>"
 					alt="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["alt"] ?>" />
 			</picture>
@@ -79,7 +79,7 @@
 	                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium_square"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
 	                                <source
 	                                    data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-	                                <img class="concept-thumbnail-small__img" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+	                                <img class="concept-thumbnail-small__img lazyload" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
 	                            </picture>
 		                    <div class="concept-thumbnail-small__inner center">
 		                    <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
@@ -128,7 +128,7 @@
 		                            	<picture>
 												<source
 	                                			data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
-	                                		<img class="happening-list-item__img"
+	                                		<img class="happening-list-item__img lazyload"
 				                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
 				                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 				                        	/>

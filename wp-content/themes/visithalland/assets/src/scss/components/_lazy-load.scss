@@ -1,13 +1,23 @@
 
-img:not([src]) {
-    visibility: hidden;
-}
+// img:not([src]) {
+//     visibility: hidden;
+// }
 
-.loading {
-	opacity:0;
-}
+// .loading {
+// 	opacity:0;
+// }
 
-.loaded {
-	transition: opacity 0.5s;
-	opacity:1;
+// .loaded {
+// 	transition: opacity 0.5s;
+// 	opacity:1;
+// }
+
+
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
 }

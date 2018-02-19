@@ -44,7 +44,7 @@
 		                        <source
 		                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-		                        <img class="happening-large__img"
+		                        <img class="happening-large__img lazyload"
 		                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
 		                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 		                        />

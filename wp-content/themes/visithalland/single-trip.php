@@ -16,7 +16,7 @@
 
 	                <source data-srcset="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post_id, 'vh_hero_tall@2x' ) . " 2x" ?>" />
 
-	                 <img class="spotlight-header__img"
+	                 <img class="spotlight-header__img lazyload"
                             data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ); ?>" 
                             alt="<?php echo get_field("cover_image")["alt"] ?>"  
                     />
@@ -52,7 +52,7 @@
 
 								                <source data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_hero_tall@2x' ) . " 2x" ?>" />
 
-								                 <img class="spotlight-large__img"
+								                 <img class="spotlight-large__img lazyload"
 							                            data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_hero_wide' ); ?>" 
 							                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
 							                    />
@@ -87,7 +87,7 @@
 						            			<source
 					                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-						                        <img class="spotlight-small__img"
+						                        <img class="spotlight-small__img lazyload"
 						                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
 						                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
 						                        />

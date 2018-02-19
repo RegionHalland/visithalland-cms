@@ -54,6 +54,7 @@ function replace_img_src($content){
                         }
 
                         $value->setAttribute('data-src', $img_src);
+                        $value->setAttribute('class','lazyload');
                         /*$value->setAttribute("onError","$(this).parents('.image').length !== 0 ? $(this).parents('.image').css('display','none') : $(this).css('display','none');");*/
                 }
             }
