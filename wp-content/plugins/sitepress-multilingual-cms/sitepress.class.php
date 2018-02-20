@@ -2188,7 +2188,7 @@ class SitePress extends WPML_WPDB_User implements
 				<table cellspacing="1" class="icl_translations_table" style="min-width:200px;margin-top:10px;">
 					<thead>
 					<tr>
-						<th colspan="2" style="padding:4px;background-color:#DFDFDF"><b><?php _e( 'Translate', 'sitepress' ); ?></b></th>
+						<th colspan="2" style="padding:4px;background-color:#DFDFDF"><b><?php esc_html_e( 'Translate', 'sitepress' ); ?></b></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -2197,13 +2197,13 @@ class SitePress extends WPML_WPDB_User implements
 					} ?>
 						<tr>
 							<?php if ( !isset( $translations[ $lang[ 'code' ] ]->element_id ) ): ?>
-								<td style="padding:4px;line-height:normal;"><?php echo $lang[ 'display_name' ] ?></td>
+								<td style="padding:4px;line-height:normal;"><?php echo esc_html( $lang[ 'display_name' ] );  ?></td>
 								<?php
 								$taxonomy = $_GET[ 'taxonomy' ];
 								$post_type_q = isset( $_GET[ 'post_type' ] ) ? '&amp;post_type=' . esc_html( $_GET[ 'post_type' ] ) : '';
-								$add_link = admin_url( "edit-tags.php?taxonomy=" . esc_html( $taxonomy ) . "&amp;trid=" . $trid . "&amp;lang=" . $lang[ 'code' ] . "&amp;source_lang=" . $selected_language . $post_type_q );
+								$add_link = admin_url( "edit-tags.php?taxonomy=" . esc_html( $taxonomy ) . "&amp;trid=" . $trid . "&amp;lang=" . esc_attr( $lang[ 'code' ] ) . "&amp;source_lang=" . esc_attr( $selected_language ) . $post_type_q );
 								?>
-								<td style="padding:4px;line-height:normal;"><a href="<?php echo $add_link ?>"><?php echo __( 'add', 'sitepress' ) ?></a></td>
+								<td style="padding:4px;line-height:normal;"><a href="<?php echo $add_link ?>"><?php echo esc_html__( 'add', 'sitepress' ) ?></a></td>
 							<?php endif; ?>
 						</tr>
 					<?php endforeach; ?>
@@ -2213,9 +2213,9 @@ class SitePress extends WPML_WPDB_User implements
 
 			<?php if ( $translations_found > 0 ): ?>
 				<p style="clear:both;margin:5px 0 5px 0">
-					<b><?php _e( 'Translations', 'sitepress' ) ?></b>
-					(<a class="icl_toggle_show_translations" href="#" <?php if (empty( $this->settings[ 'show_translations_flag' ] )): ?>style="display:none;"<?php endif; ?>><?php _e( 'hide', 'sitepress' ) ?></a><a
-						class="icl_toggle_show_translations" href="#" <?php if (!empty( $this->settings[ 'show_translations_flag' ] )): ?>style="display:none;"<?php endif; ?>><?php _e( 'show', 'sitepress' ) ?></a>)
+					<b><?php esc_html_e( 'Translations', 'sitepress' ) ?></b>
+					(<a class="icl_toggle_show_translations" href="#" <?php if (empty( $this->settings[ 'show_translations_flag' ] )): ?>style="display:none;"<?php endif; ?>><?php esc_html_e( 'hide', 'sitepress' ) ?></a><a
+						class="icl_toggle_show_translations" href="#" <?php if (!empty( $this->settings[ 'show_translations_flag' ] )): ?>style="display:none;"<?php endif; ?>><?php esc_html_e( 'show', 'sitepress' ) ?></a>)
 
 					<?php wp_nonce_field( 'toggle_show_translations_nonce', '_icl_nonce_tst' ) ?>
 				<table cellspacing="1" width="100%" id="icl_translations_table" style="<?php if ( empty( $this->settings[ 'show_translations_flag' ] ) ): ?>display:none;<?php endif; ?>margin-left:0;">
@@ -2224,13 +2224,13 @@ class SitePress extends WPML_WPDB_User implements
 						continue; ?>
 						<tr>
 							<?php if ( isset( $translations[ $lang[ 'code' ] ]->element_id ) ): ?>
-								<td style="line-height:normal;"><?php echo $lang[ 'display_name' ] ?></td>
+								<td style="line-height:normal;"><?php echo esc_html( $lang[ 'display_name' ] ) ?></td>
 								<?php
 								$taxonomy = $_GET[ 'taxonomy' ];
 								$edit_link = get_edit_term_link( $translations[ $lang[ 'code' ] ]->term_id, $taxonomy, isset( $_GET[ 'post_type' ] ) ? $_GET[ 'post_type' ] : null );
 								?>
 								<td align="right" width="30%"
-									style="line-height:normal;"><?php echo isset( $translations[ $lang[ 'code' ] ]->name ) ? '<a href="' . $edit_link . '" title="' . __( 'Edit', 'sitepress' ) . '">' . $translations[ $lang[ 'code' ] ]->name . '</a>' : __( 'n/a', 'sitepress' ) ?></td>
+									style="line-height:normal;"><?php echo isset( $translations[ $lang[ 'code' ] ]->name ) ? '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr__( 'Edit', 'sitepress' ) . '">' . esc_html( $translations[ $lang[ 'code' ] ]->name ) . '</a>' : esc_html__( 'n/a', 'sitepress' ) ?></td>
 
 							<?php endif; ?>
 						</tr>
@@ -2681,7 +2681,8 @@ class SitePress extends WPML_WPDB_User implements
 		                                                                           $_wp_query_back,
 		                                                                           $this->wp_query );
 
-		$display_as_translated_ls_link = new WPML_LS_Display_As_Translated_Link( $this, $wpml_url_converter->get_strategy(), $this->wp_query );
+		$display_as_translated_ls_link = new WPML_LS_Display_As_Translated_Link(
+			$this, $wpml_url_converter->get_strategy(), $this->wp_query, new WPML_Translation_Element_Factory( $this ) );
 
 		// 2. determine url
 		foreach ( $w_active_languages as $k => $lang ) {

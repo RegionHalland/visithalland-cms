@@ -44,9 +44,9 @@ function icl_widget_text_language_selectbox($language = 'multilingual',
     echo '>Multilingual</option>';
     if (!empty($languages)) {
         foreach ($languages as $lang) {
-            echo '<option value="' . $lang['code'] . '"';
+            echo '<option value="' . esc_attr( $lang['code'] ) . '"';
             echo $language == $lang['code'] ? ' selected="selected"' : '';
-            echo '>' . $lang['display_name'] . '</option>';
+            echo '>' . esc_html( $lang['display_name'] ) . '</option>';
         }
     }
     echo '</select>';

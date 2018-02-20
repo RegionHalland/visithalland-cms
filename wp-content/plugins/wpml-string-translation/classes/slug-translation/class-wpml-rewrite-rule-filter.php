@@ -39,7 +39,7 @@ class WPML_Rewrite_Rule_Filter {
 				// check original
 				$slug_translation = $this->slug_records->get_original( $type, $current_language );
 			}
-			if ( ( ! $slug_translation || $slug_translation === $slug ) && $default_language != 'en' ) {
+			if ( $display_as_translated_mode && ( ! $slug_translation || $slug_translation === $slug ) && $default_language != 'en' ) {
 				$slug_translation = $this->slug_records->get_translation( $type, $default_language );
 			}
 			$slug_translation = trim( $slug_translation, '/' );
@@ -62,7 +62,7 @@ class WPML_Rewrite_Rule_Filter {
 				if ( $slug && $slug != $slug_translation ) {
 					$new_match = $this->adjust_key( $match, $slug_translation, $slug );
 					$buff_value[ $new_match ] = $query;
-					if ( $new_match != $match && ( $display_as_translated_mode || $current_language !== $default_language ) ) {
+					if ( $new_match != $match && $display_as_translated_mode ) {
 						$buff_value[ $match ] = $query;
 					}
 				} else {

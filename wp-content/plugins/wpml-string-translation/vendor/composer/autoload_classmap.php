@@ -139,7 +139,6 @@ return array(
     'WPML_ST_MO_Scan_Db_Table_List' => $baseDir . '/classes/mo-scan/charset-validation/wpml-st-mo-scan-db-table-list.php',
     'WPML_ST_MO_Scan_Factory' => $baseDir . '/classes/mo-scan/wpml-st-mo-scan-factory.php',
     'WPML_ST_MO_Scan_Hooks' => $baseDir . '/classes/mo-scan/wpml-st-mo-scan-hooks.php',
-    'WPML_ST_MO_Scan_Notices' => $baseDir . '/classes/mo-scan/feedback/wpml-st-mo-scan-notices.php',
     'WPML_ST_MO_Scan_Storage' => $baseDir . '/classes/mo-scan/wpml-st-mo-scan-storage.php',
     'WPML_ST_MO_Scan_UI_Block' => $baseDir . '/classes/mo-scan/wpml-st-mo-scan-ui-block.php',
     'WPML_ST_MO_Translation' => $baseDir . '/classes/mo-scan/wpml-st-mo-translation.php',

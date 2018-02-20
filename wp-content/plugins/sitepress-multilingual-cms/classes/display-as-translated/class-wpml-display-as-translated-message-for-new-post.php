@@ -14,7 +14,7 @@ class WPML_Display_As_Translated_Message_For_New_Post implements IWPML_Action {
 	}
 
 	public function add_hooks() {
-		add_action( 'init', array( $this, 'init' ), 10 );
+		add_action( 'wp_loaded', array( $this, 'init' ), 10 );
 	}
 
 	public function init() {
@@ -37,9 +37,10 @@ class WPML_Display_As_Translated_Message_For_New_Post implements IWPML_Action {
 		$current_lang = $this->sitepress->get_language_details( $this->sitepress->get_current_language() );
 		$default_lang = $this->sitepress->get_language_details( $this->sitepress->get_default_language() );
 
-		$post_type     = get_post_type_object( $this->get_post_type() );
-		$singular_name = strtolower( $post_type->labels->singular_name );
-		$plural_name   = strtolower( $post_type->labels->name );
+		$post_type_name = $this->get_post_type();
+		$post_type      = get_post_type_object( $post_type_name );
+		$singular_name  = strtolower( $post_type->labels->singular_name );
+		$plural_name    = strtolower( $post_type->labels->name );
 
 		$output = esc_html(
 			sprintf( __( "You are creating a %1\$s in %3\$s and you've set %2\$s to display even when not translated. Please note that this %1\$s will only appear in %3\$s. Only %2\$s that you create in the site's default language (%4\$s) will appear in all the site's languages.", 'sitepress' ),

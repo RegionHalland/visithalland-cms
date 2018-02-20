@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2d1c4897c1b7bc041b8772ecde1f50fc
+class ComposerStaticInit5dd7b7ef6aab02e361e75641729d4472
 {
     public static $prefixesPsr0 = array (
         'x' => 
@@ -150,7 +150,6 @@ class ComposerStaticInit2d1c4897c1b7bc041b8772ecde1f50fc
         'WPML_ST_MO_Scan_Db_Table_List' => __DIR__ . '/../..' . '/classes/mo-scan/charset-validation/wpml-st-mo-scan-db-table-list.php',
         'WPML_ST_MO_Scan_Factory' => __DIR__ . '/../..' . '/classes/mo-scan/wpml-st-mo-scan-factory.php',
         'WPML_ST_MO_Scan_Hooks' => __DIR__ . '/../..' . '/classes/mo-scan/wpml-st-mo-scan-hooks.php',
-        'WPML_ST_MO_Scan_Notices' => __DIR__ . '/../..' . '/classes/mo-scan/feedback/wpml-st-mo-scan-notices.php',
         'WPML_ST_MO_Scan_Storage' => __DIR__ . '/../..' . '/classes/mo-scan/wpml-st-mo-scan-storage.php',
         'WPML_ST_MO_Scan_UI_Block' => __DIR__ . '/../..' . '/classes/mo-scan/wpml-st-mo-scan-ui-block.php',
         'WPML_ST_MO_Translation' => __DIR__ . '/../..' . '/classes/mo-scan/wpml-st-mo-translation.php',
@@ -251,8 +250,8 @@ class ComposerStaticInit2d1c4897c1b7bc041b8772ecde1f50fc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit2d1c4897c1b7bc041b8772ecde1f50fc::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit2d1c4897c1b7bc041b8772ecde1f50fc::$classMap;
+            $loader->prefixesPsr0 = ComposerStaticInit5dd7b7ef6aab02e361e75641729d4472::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5dd7b7ef6aab02e361e75641729d4472::$classMap;
 
         }, null, ClassLoader::class);
     }
