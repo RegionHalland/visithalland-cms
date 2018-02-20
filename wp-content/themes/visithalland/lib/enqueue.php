@@ -38,7 +38,7 @@ add_action( 'wp_enqueue_scripts', 'visithalland_scripts', 20 );
 
 function add_defer_attribute($tag, $handle) {
    // add script handles to the array below
-   $scripts_to_defer = array('flickity', 'lazysizes', 'infinite-scroll', 'google-maps');
+   $scripts_to_defer = array('vh-jquery', 'flickity', 'lazysizes', 'infinite-scroll', 'google-maps');
    
    foreach($scripts_to_defer as $defer_script) {
       if ($defer_script === $handle) {
