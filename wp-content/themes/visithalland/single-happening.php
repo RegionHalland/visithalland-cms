@@ -4,6 +4,8 @@
 
     $author_id = get_the_author_meta('ID');
     $post_id = get_the_id();
+    $thumbnail_id = get_post_thumbnail_id();
+    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
     
 ?>
 <div id="infinite-container">
@@ -25,7 +27,7 @@
 
                             <img class="happening-header__img lazyload"
                                     data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ); ?>" 
-                                    alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                    alt="<?php echo $alt ?>"  
                             />
 		                </picture>
                     </div>

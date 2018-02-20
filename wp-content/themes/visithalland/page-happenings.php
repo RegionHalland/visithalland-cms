@@ -37,6 +37,10 @@
 				<article class="happening-large col-11 md-col-10 lg-col-8 mx-auto z4 relative mt4 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
 					<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 						<div class="happening-large__img-container">
+							<?php 
+					        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+								  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+							?>
 							<picture>
 		                        <source media="(min-width: 40em)"
 		                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_large@2x' ) . " 2x" ?>" />
@@ -46,7 +50,7 @@
 
 		                        <img class="happening-large__img lazyload"
 		                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
-		                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+		                                alt="<?php echo $alt ?>"  
 		                        />
 		                        
 		                    </picture>
@@ -111,13 +115,17 @@
 										</div>
 			                        </div>
 								    <div class="happening-medium__img-container topographic-pattern">
+								    	<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+										?>
 									    <picture>
 					                        <source
 					                            data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
 					                        <img class="happening-medium__img lazyload z2"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
-					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                                alt="<?php echo $alt ?>"  
 					                        />
 					                        
 					                    </picture>								    	
@@ -125,6 +133,16 @@
 								    <div class="happening-medium__content mt2">
 										<h3 class="happening-medium__title mb1 mt1 pt0"><?php echo $value->post_title ?></h3>
 								    </div>
+								    <a class="link-reset" href="<?php echo get_permalink($value->ID) ?>">
+			                            <div class="read-more">
+									    	<span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
+									    	<div class="read-more__button">
+										    	<svg class="icon read-more__icon">
+			                                    	<use xlink:href="#arrow-right-icon"/>
+			                                	</svg>
+		                                	</div>
+									    </div>
+								    </a>
 								</a>
 							</article>
 			    		</div>

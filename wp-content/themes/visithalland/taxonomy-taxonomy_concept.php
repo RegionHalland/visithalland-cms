@@ -54,6 +54,11 @@ $term = get_queried_object(); ?>
 							<?php foreach ($spotlights as $key => $value) : ?>				
 								<div class="page-thumbnail col-6 sm-col-5 md-col-3 lg-col-3 center <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 								    <a href="<?php echo get_permalink($value->ID) ?>">
+										<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
+										?>
 								        <div class="page-thumbnail__img-container topographic-pattern">
 								            <div class="page-thumbnail__concept-badge"></div>
 								            <picture>
@@ -62,7 +67,7 @@ $term = get_queried_object(); ?>
 
 						                        <img class="page-thumbnail__img lazyload"
 						                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
-						                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+						                                alt="<?php echo $alt; ?>"  
 						                        />
 						                        
 						                    </picture>	
@@ -107,12 +112,17 @@ $term = get_queried_object(); ?>
 												<div class="article-tag__icon"></div>
 											</div>
 										</div>
+										<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id(get_field("featured", $term)[0]->ID);
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
+										?>
 										<picture>
 											<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_large@2x' ) . " 2x" ?>" />
 											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 											<img class="article-large__img z2 lazyload" 
 												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[0]->ID, 'vh_medium' )?>"
-												alt="<?php echo get_field("cover_image", get_field("featured", $term)[0]->ID)["alt"] ?>" />
+												alt="<?php echo $alt ?>" />
 										</picture>
 			                        </div>
 			                        <div class="article-large__content mt3 clearfix">
@@ -149,11 +159,16 @@ $term = get_queried_object(); ?>
 												<div class="article-tag__icon"></div>
 											</div>
 										</div>
+										<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id(get_field("featured", $term)[1]->ID);
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+
+										?>
 										<picture>
 											<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 											<img class="article-medium__img lazyload" 
 												data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[1]->ID, 'vh_medium' )?>"
-												alt="<?php echo get_field("cover_image", get_field("featured", $term)[1]->ID)["alt"] ?>" />
+												alt="<?php echo $alt ?>" />
 										</picture>
 								    </div>
 								    <div class="article-medium__content mt3">
@@ -183,11 +198,15 @@ $term = get_queried_object(); ?>
 													<div class="article-tag__icon"></div>
 												</div>
 											</div>
+											<?php 
+									        	  $thumbnail_id = get_post_thumbnail_id(get_field("featured", $term)[1]->ID);
+												  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+											?>
 											<picture>
 												<source data-srcset="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 												<img class="article-medium__img lazyload" 
 													data-src="<?php echo get_the_post_thumbnail_url(get_field("featured", $term)[2]->ID, 'vh_medium' )?>"
-													alt="<?php echo get_field("cover_image", get_field("featured", $term)[2]->ID)["alt"] ?>" />
+													alt="<?php echo $alt; ?>" />
 											</picture>
 									    </div>
 									    <div class="article-medium__content mt3">
@@ -219,7 +238,10 @@ $term = get_queried_object(); ?>
 		<?php if(isset($meet_local)) : ?>
 			<article class="article-full relative my5 <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 				<div class="article-full__img-container topographic-pattern">
-
+					<?php 
+			        	  $thumbnail_id = get_post_thumbnail_id( $meet_local->ID );
+						  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+					?>
 				    <picture>
 						<source media="(min-width: 40em)" data-srcset="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide@2x' ) . " 2x" ?>" />
 
@@ -227,7 +249,7 @@ $term = get_queried_object(); ?>
 
 		                 <img class="article-full__img lazyload"
 	                            data-src="<?php echo get_the_post_thumbnail_url( $meet_local->ID, 'vh_hero_wide' ); ?>" 
-	                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+	                            alt="<?php echo $alt ?>"  
 	                    />
 				    </picture>
 				</div>
@@ -240,7 +262,7 @@ $term = get_queried_object(); ?>
 								<div class="article-tag__icon"></div>
 							</div>
 							<span class="article-tag__type">
-							<?php echo vh_get_pretty_post_type_name($meet_local->post_type) ?>
+								<?php echo vh_get_pretty_post_type_name($meet_local->post_type) ?>
 							</span>
 						</div>
 					    
@@ -276,6 +298,11 @@ $term = get_queried_object(); ?>
 		        				<div class="concept-grid__item col col-12">
 								<article class="article-image relative <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 									<div class="article-image__img-container topographic-pattern">
+
+										<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+										?>
 										<picture>
 
 											<source media="(min-width:40em)""
@@ -286,7 +313,7 @@ $term = get_queried_object(); ?>
 
 					                        <img class="article-image__img lazyload"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_large' ); ?>" 
-					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                                alt="<?php echo $alt ?>"  
 					                        />
 					                        
 					                    </picture>	
@@ -326,13 +353,17 @@ $term = get_queried_object(); ?>
 														<div class="article-tag__icon"></div>
 													</div>
 												</div>
+												<?php 
+										        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+													  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+												?>
 												<picture>
 							            			<source
 						                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
 							                        <img class="article-medium__img lazyload z3"
 							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
-							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+							                                alt="<?php echo $alt ?>"  
 							                        />
 							                        
 							                    </picture>	
@@ -386,12 +417,16 @@ $term = get_queried_object(); ?>
 					                    <div class="clearfix">
 					                        <div class="col col-5 sm-col-4 ">
 					                            <div class="happening-list-item__img-container topographic-pattern relative">
+					                            	<?php 
+											        	  $thumbnail_id = get_post_thumbnail_id( $value->ID );
+														  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+													?>
 					                            	<picture>
 	 													<source
 	                                            			data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
 	                                            		<img class="happening-list-item__img lazyload"
 							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
-							                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+							                                alt="<?php echo $alt ?>"  
 							                        	/>
 	                                    			</picture>
 					                            </div>

@@ -4,6 +4,8 @@
 
     $author_id = get_the_author_meta('ID');
     $post_id = get_the_id();
+    $thumbnail_id = get_post_thumbnail_id();
+    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
     
 ?>
 <div id="infinite-container">
@@ -18,7 +20,7 @@
 
 	                 <img class="meet-a-local-header__img lazyload"
                             data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_hero_wide' ); ?>" 
-                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                            alt="<?php echo $alt ?>"  
                     />
                     
 	            </picture>
@@ -78,13 +80,17 @@
 					        ?>
 								<div class="tip col col-10 sm-col-8 md-col-5">
 		                            <div class="tip__img-container topographic-pattern">
+		                            	<?php 
+								        	  $thumbnail_id = get_post_thumbnail_id( $value[0]->ID );
+											  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+										?>
 		                                <picture>
 					            			<source
 				                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
 					                        <img class="tip__img lazyload"
 					                                data-src="<?php echo get_the_post_thumbnail_url( $value[0]->ID, 'vh_medium' ); ?>" 
-					                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+					                                alt="<?php echo $alt ?>"  
 					                        />
 					                        
 					                    </picture>	

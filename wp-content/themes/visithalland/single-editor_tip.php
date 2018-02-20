@@ -4,7 +4,11 @@
 
     $author_id = get_the_author_meta('ID');
     $post_id = get_the_id();
-    
+    $thumbnail_id = get_post_thumbnail_id();
+    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+    $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
+ 
+
 ?>
 
 <div id="infinite-container">
@@ -23,11 +27,12 @@
 
                         <img class="editorial-header__img lazyload"
                                 data-src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_large' ); ?>" 
-                                alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                alt="<?php echo $alt ?>"  
                         />
 
                     </picture>
                 </div>
+                <figcaption class="inline-block"><span class='image-credit right-align mt2'><?php echo $thumbnail_image[0]->post_content; ?></span></figcaption>
                 <div class="editorial-header__content center">
                     <div class="article-tag">
                         <div class="article-tag__icon-wrapper">
@@ -73,12 +78,16 @@
                                         <div class="clearfix">
                                             <div class="col col-5 sm-col-4 ">
                                                 <div class="article-mention__img-container relative">
+                                                    <?php 
+                                                          $thumbnail_id = get_post_thumbnail_id( $value->ID );
+                                                          $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+                                                    ?>
                                                 	<picture>
                                                         <source
                                                             data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
                                                         <img class="article-mention__img lazyload"
                                                             data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ); ?>" 
-                                                            alt="<?php echo get_field("cover_image")["alt"] ?>"  
+                                                            alt="<?php echo $alt ?>"  
                                                         />
                                                     </picture>
                                                 </div>
