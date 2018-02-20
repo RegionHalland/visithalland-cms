@@ -54,24 +54,6 @@ class WPML_ST_MO_Scan_Factory {
 	}
 
 	/**
-	 * @return WPML_ST_MO_Scan_Notices
-	 */
-	public function create_notices() {
-		if ( ! $this->notices ) {
-			$this->create_localization_type();
-			$this->notices = new WPML_ST_MO_Scan_Notices(
-				$this->localization_type->is_mo_loading_disabled(),
-				$this->create_queue(),
-				wpml_get_admin_notices(),
-				$this->get_wpml_wp_api()
-			);
-		}
-
-		return $this->notices;
-	}
-
-
-	/**
 	 * @return WPML_ST_MO_Queue
 	 */
 	private function create_queue() {

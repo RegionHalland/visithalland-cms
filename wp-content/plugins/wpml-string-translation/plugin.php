@@ -2,10 +2,10 @@
 /*
 Plugin Name: WPML String Translation
 Plugin URI: https://wpml.org/
-Description: Adds theme and plugins localization capabilities to WPML | <a href="https://wpml.org">Documentation</a> | <a href="https://wpml.org/version/string-translation-2-7-2/">WPML String Translation 2.7.2 release notes</a>
+Description: Adds theme and plugins localization capabilities to WPML | <a href="https://wpml.org">Documentation</a> | <a href="https://wpml.org/version/string-translation-2-7-3/">WPML String Translation 2.7.3 release notes</a>
 Author: OnTheGoSystems
 Author URI: http://www.onthegosystems.com/
-Version: 2.7.2
+Version: 2.7.3
 Plugin Slug: wpml-string-translation
 */
 
@@ -13,7 +13,7 @@ if ( defined( 'WPML_ST_VERSION' ) || get_option( '_wpml_inactive' ) ) {
 	return;
 }
 
-define( 'WPML_ST_VERSION', '2.7.2' );
+define( 'WPML_ST_VERSION', '2.7.3' );
 
 // Do not uncomment the following line!
 // If you need to use this constant, use it in the wp-config.php file
@@ -128,9 +128,6 @@ function load_wpml_st_basics() {
 			foreach ( $mo_scan_hooks as $mo_scan_hook ) {
 				$mo_scan_hook->add_hooks();
 			}
-
-			$mo_scan_notices = $mo_scan_factory->create_notices();
-			$mo_scan_notices->init_notices();
 		}
 	}
 }
