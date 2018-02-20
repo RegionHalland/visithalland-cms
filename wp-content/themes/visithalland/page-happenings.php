@@ -100,7 +100,6 @@
 
 	    			foreach($happenings as $index => $value) : ?>
 
-	    				<?php if($index > 0) : ?>
 
 			    		<div class="happening-page__grid-item col col-12 sm-col-6 md-col-4 px2 mt3">
 							<article class="happening-medium relative <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
@@ -130,7 +129,6 @@
 							</article>
 			    		</div>
 
-			    	<?php endif ?>
 
 	    		<?php endforeach ?>
 
