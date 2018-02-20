@@ -39,4 +39,10 @@ jQuery(function() {
 		$('.happenings__dropdown').toggleClass('active');
 	});
 
+
+	
+    var myScrollPos = $('.navigation__link.active').offset().left + $('.navigation__link.active').outerWidth(true)/2 + $('.navigation').scrollLeft() - $('.navigation').width()/2;
+    //$('.navigation').scrollLeft(myScrollPos);
+    $('.navigation').animate({scrollLeft: myScrollPos}, 200);
+
 });

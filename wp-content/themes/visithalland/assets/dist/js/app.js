@@ -22,6 +22,8 @@ jQuery(function() {
 	  document.cookie = "hide_eu = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
 	  $(".landing-eu").fadeOut(300); //$ to slide it up
 	});
+
+
 });
 jQuery(function() {
     var map;
@@ -163,6 +165,12 @@ jQuery(function() {
 		$('.happenings__dropdown').fadeToggle(200);
 		$('.happenings__dropdown').toggleClass('active');
 	});
+
+
+	
+    var myScrollPos = $('.navigation__link.active').offset().left + $('.navigation__link.active').outerWidth(true)/2 + $('.navigation').scrollLeft() - $('.navigation').width()/2;
+    //$('.navigation').scrollLeft(myScrollPos);
+    $('.navigation').animate({scrollLeft: myScrollPos}, 200);
 
 });
 //This file controls scroll events

@@ -15,4 +15,6 @@ jQuery(function() {
 	  document.cookie = "hide_eu = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
 	  $(".landing-eu").fadeOut(300); //$ to slide it up
 	});
+
+
 });
