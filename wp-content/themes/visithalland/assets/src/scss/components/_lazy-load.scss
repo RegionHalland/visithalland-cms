@@ -1,9 +1,12 @@
 .lazyload,
 .lazyloading {
 	opacity: 0;
+	transform:translateY(5px) scale(1.015);
+	transform-origin: bottom center;
 }
 
 .lazyloaded {
 	opacity: 1;
-	transition: opacity 300ms;
+	transform:translateY(0px) scale(1);
+	transition: all 500ms;
 }

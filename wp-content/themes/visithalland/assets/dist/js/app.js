@@ -1,243 +1,28 @@
 jQuery(function() {
-	console.log("wp-blocks", wp);
-
-	var nextPages = jQuery("#nextPages").data("all");
-	var $container = jQuery('#infinite-container').infiniteScroll({
-		// options
-		path: function() {
-			return nextPages[this.loadCount];
-			//return nextUrl;
-		},
-		append: '#infinite-container',
-		history: 'replace',
-		status: '.page-load-status',
-		debug: false,
-		scrollThreshold: 800
-	});
-
-	$container.on( 'request.infiniteScroll', function( event, path ) {
-		// console.log( 'Loading page: ' + path );
-	});
-
-
-	$container.on( 'load.infiniteScroll', function( event, response ) {
-		var elements = jQuery(response);
-	});
-
-	$container.on('append.infiniteScroll', function (event, response, path, items) {
-		// console.log("lazyLoadInstance", lazyLoadInstance);
-		lazyLoadInstance.update();
-	})
-
-	$container.on( 'last.infiniteScroll', function( event, response, path ) {
-		// console.log( 'Loaded: ' + path );
-		// console.log('we have reached the end')
-	});
-
-	$container.on( 'error.infiniteScroll', function( event, error, path ) {
-		// console.log( 'Could not load: ' + path )
-	});
-
-	$container.on('history.infiniteScroll', function (event, title, path) {
-		//console.log('History changed to: ' + path);
-		ga('create', 'UA-89278649-4');
-		ga('send', {
-			hitType: 'pageview',
-			path: path.replace(/^.*\/\/[^\/]+/, '')
-		});
-		
-	});
-
-
-	// //Init lazyload and the IntersectionObserver API if supported by the browser
-	// (function(w, d){
-	// 	var b = d.getElementsByTagName('body')[0];
-	// 	var s = d.createElement("script"); s.async = true;
-	// 	var v = !("IntersectionObserver" in w) ? "8.6.0" : "10.4.1";
-	// 	s.src = "https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/" + v + "/lazyload.min.js";
-	// 	w.lazyLoadOptions = {}; // Your options here. See "recipes" for more information about async.
-	// 	b.appendChild(s);
-	// }(window, document));
-
-	// window.addEventListener('LazyLoad::Initialized', function (e) {
- //    // Get the instance and puts it in the lazyLoadInstance variable
- //    	lazyLoadInstance = e.detail.instance;
- //    	// setTimeout(function() {
- //    	// 	console.log(jQuery('.loaded').closest('div'))
- //    	// 	jQuery('.loaded').closest('div').css('background-image', 'none');
- //    	// 	jQuery('.loaded').closest('div').css('filter', 'none');
- //    	// }, 2000);
-    	
-	// }, false);
-
-	
-
-	//console.log(.closest( 'div' ))
-
-  	//Init Flickity
-	jQuery('.navigation-carousel').flickity({
-  		// options
-  		cellAlign: 'left',
-  		contain: true,
-  		prevNextButtons: false,
-  		pageDots: false,
-	});
-
-	jQuery('.navigation-carousel--next').on( 'click', function() {
-	  jQuery('.navigation-carousel').flickity('next');
-	});
-	// next wrapped
-	jQuery('.navigation-carousel--previous').on( 'click', function() {
-	  jQuery('.navigation-carousel').flickity('previous');
-	});
-
-	jQuery('.tip-carousel').flickity({
-  		// options
-  		cellAlign: 'left',
-  		contain: true,
-  		prevNextButtons: false,
-  		pageDots: false,
-	});
-
-	jQuery('.tip-carousel--next').on( 'click', function() {
-	  jQuery('.tip-carousel').flickity('next');
-	});
-	// next wrapped
-	jQuery('.tip-carousel--previous').on( 'click', function() {
-	  jQuery('.tip-carousel').flickity('previous');
-	});
-
-
-
-	jQuery('.landing-concepts__carousel').flickity({
-  		// options
-  		cellAlign: 'left',
-  		contain: true,
-  		prevNextButtons: false,
-  		pageDots: false,
-	});
-
-	jQuery('.landing-concepts__carousel--next').on( 'click', function() {
-	  jQuery('.landing-concepts__carousel').flickity('next');
-	});
-	// next wrapped
-	jQuery('.landing-concepts__carousel--previous').on( 'click', function() {
-	  jQuery('.landing-concepts__carousel').flickity('previous');
-	});
 
 
 
 
+});
 
-	//Toggle menu on mobile 
-	jQuery('.menu-button').on('click', function(){
-
-		jQuery('.mobile-navigation').fadeToggle(400);
-		jQuery('.mobile-navigation').toggleClass('active');
-		jQuery('body').toggleClass('overflow-hidden');
-		jQuery('#main-content').toggleClass('menu-open');
-
-		if(jQuery('.mobile-search').hasClass('active')) {
-			jQuery('.mobile-search').fadeToggle(400);
-			jQuery('body').toggleClass('overflow-hidden');
-			jQuery('.mobile-search').toggleClass('active');
-			jQuery('#main-content').toggleClass('menu-open');
-		}
-	});
-
-	//Toggle search on mobile
-	jQuery('.mobile-search-button').on('click', function(){
-
-		jQuery('.mobile-search').fadeToggle(400);
-		jQuery('.mobile-search').toggleClass('active');
-
-		jQuery('.mobile-search__input').focus();
-
-		jQuery('body').toggleClass('overflow-hidden');
-		jQuery('#main-content').toggleClass('menu-open');
-
-		if(jQuery('.mobile-navigation').hasClass('active')) {
-			jQuery('.mobile-navigation').fadeToggle(400);
-			jQuery('body').toggleClass('overflow-hidden');
-			jQuery('.mobile-navigation').toggleClass('active');
-			jQuery('#main-content').toggleClass('menu-open');
-		}
-	});
-
-	//Toggle search on desktop
-	jQuery('.search-button').on('click', function(){
-		
-		jQuery('.search__input').fadeToggle(250);
-		//jQuery('.search__input').focus();
-
-		//jQuery('body').toggleClass('overflow-hidden');
-		//jQuery('#main-content').toggleClass('menu-open');
-	});
-
-	jQuery('.search__input').on('focus', function(){
-		jQuery('.search__results').fadeIn(300);
-	});
-
-	jQuery('.search__input').on('focusout', function(){
-		jQuery('.search__results').fadeOut(300);
-	});
-
-
-
-	jQuery(document).on('scroll', function() {
-		var scrollTop = jQuery(document).scrollTop()
-		var scrollBottom = scrollTop + jQuery(window).height()
-
-		pageBottom = jQuery(document).height()
-
-		var opacity = 1 - scrollTop / 500
-
-		var transform = 0 + scrollTop / 10
-
-		jQuery('.concept-header__img').css('transform', 'translateY(' + transform + 'px)');
-		jQuery('.landing-header__img').css('transform', 'translateY(' + transform + 'px)');
-	})
-
-
+jQuery(function() {
 	// Init Cookie-banner Star
-    jQuery('#cookie-accept').on('click', function () { 
+    $('#cookie-accept').on('click', function () { 
 	  days = 182; //number of days to keep the cookie
 	  myDate = new Date();
 	  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
 	  document.cookie = "comply_cookie = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
-	  jQuery(".cookie-banner").fadeOut(300); //jquery to slide it up
+	  $(".cookie-banner").fadeOut(300); //$ to slide it up
 	});
 
-	jQuery('#eu-btn').on('click', function () { 
+	$('#eu-btn').on('click', function () { 
 	  days = 10; //number of days to keep the cookie
 	  myDate = new Date();
 	  myDate.setTime(myDate.getTime()+(days*24*60*60*1000));
 	  document.cookie = "hide_eu = comply_yes; expires = " + myDate.toGMTString(); //creates the cookie: name|value|expiry
-	  jQuery(".landing-eu").fadeOut(300); //jquery to slide it up
+	  $(".landing-eu").fadeOut(300); //$ to slide it up
 	});
-
-
-
-	//Toggle happening dropdown
-
-	jQuery('.happenings__dropdown-button').on('click', function(){
-		jQuery('.happenings__dropdown').fadeToggle(200);
-		jQuery('.happenings__dropdown').toggleClass('active');
-	})
-
-	jQuery.get('/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
-        var div = document.createElement('div');
-        div.style.width = 0
-        div.style.height = 0
-        div.style.opacity = 0
-        div.style.position = 'absolute'
-        div.setAttribute("aria-hidden", "true")
-        div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
-        document.body.insertBefore(div, document.body.childNodes[0]);
-    });
-
 });
-
 jQuery(function() {
     var map;
     var service;
@@ -289,4 +74,180 @@ jQuery(function() {
             jQuery('#opening-hours').append(opening_hours);
         }
     }
+});
+jQuery(function() {
+	var nextPages = $("#nextPages").data("all");
+	var $container = $('#infinite-container').infiniteScroll({
+		// options
+		path: function() {
+			return nextPages[this.loadCount];
+			//return nextUrl;
+		},
+		append: '#infinite-container',
+		history: 'replace',
+		status: '.page-load-status',
+		debug: false,
+		scrollThreshold: 800
+	});
+
+	$container.on( 'request.infiniteScroll', function( event, path ) {
+		// console.log( 'Loading page: ' + path );
+	});
+
+
+	$container.on( 'load.infiniteScroll', function( event, response ) {
+		var elements = $(response);
+	});
+
+	$container.on('append.infiniteScroll', function (event, response, path, items) {
+		// console.log("lazyLoadInstance", lazyLoadInstance);
+		// lazyLoadInstance.update();
+	})
+
+	$container.on( 'last.infiniteScroll', function( event, response, path ) {
+		// console.log( 'Loaded: ' + path );
+		// console.log('we have reached the end')
+	});
+
+	$container.on( 'error.infiniteScroll', function( event, error, path ) {
+		// console.log( 'Could not load: ' + path )
+	});
+
+	$container.on('history.infiniteScroll', function (event, title, path) {
+		//console.log('History changed to: ' + path);
+		ga('create', 'UA-89278649-4');
+		ga('send', {
+			hitType: 'pageview',
+			path: path.replace(/^.*\/\/[^\/]+/, '')
+		});
+		
+	});
+});
+jQuery(function() {	
+	//Toggle menu on mobile 
+	$('.menu-button').on('click', function(){
+
+		$('.mobile-navigation').fadeToggle(400);
+		$('.mobile-navigation').toggleClass('active');
+		$('body').toggleClass('overflow-hidden');
+		$('#main-content').toggleClass('menu-open');
+
+		if($('.mobile-search').hasClass('active')) {
+			$('.mobile-search').fadeToggle(400);
+			$('body').toggleClass('overflow-hidden');
+			$('.mobile-search').toggleClass('active');
+			$('#main-content').toggleClass('menu-open');
+		}
+	});
+
+	//Toggle search on mobile
+	$('.mobile-search-button').on('click', function(){
+
+		$('.mobile-search').fadeToggle(400);
+		$('.mobile-search').toggleClass('active');
+
+		$('.mobile-search__input').focus();
+
+		$('body').toggleClass('overflow-hidden');
+		$('#main-content').toggleClass('menu-open');
+
+		if($('.mobile-navigation').hasClass('active')) {
+			$('.mobile-navigation').fadeToggle(400);
+			$('body').toggleClass('overflow-hidden');
+			$('.mobile-navigation').toggleClass('active');
+			$('#main-content').toggleClass('menu-open');
+		}
+	});
+
+	$('.happenings__dropdown-button').on('click', function(){
+		$('.happenings__dropdown').fadeToggle(200);
+		$('.happenings__dropdown').toggleClass('active');
+	});
+
+});
+//This file controls scroll events
+
+jQuery(function() {
+	$(document).on('scroll', function() {
+		var scrollTop = $(document).scrollTop()
+		var scrollBottom = scrollTop + $(window).height()
+
+		pageBottom = $(document).height()
+
+		var opacity = 1 - scrollTop / 500
+
+		var transform = 0 + scrollTop / 15
+
+		$('.concept-header__content').css('transform', 'translateY(' + transform + 'px)');
+		$('.concept-header__content').css('opacity', opacity);
+		//$('.landing-header__img').css('transform', 'translateY(' + transform + 'px)');
+	})
+});
+
+jQuery(function() {
+	
+
+	//Init Flickity
+	$('.navigation-carousel').flickity({
+  		// options
+  		cellAlign: 'left',
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	$('.navigation-carousel--next').on( 'click', function() {
+	  $('.navigation-carousel').flickity('next');
+	});
+	// next wrapped
+	$('.navigation-carousel--previous').on( 'click', function() {
+	  $('.navigation-carousel').flickity('previous');
+	});
+
+	$('.tip-carousel').flickity({
+  		// options
+  		cellAlign: 'left',
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	$('.tip-carousel--next').on( 'click', function() {
+	  $('.tip-carousel').flickity('next');
+	});
+	// next wrapped
+	$('.tip-carousel--previous').on( 'click', function() {
+	  $('.tip-carousel').flickity('previous');
+	});
+
+
+
+	$('.landing-concepts__carousel').flickity({
+  		// options
+  		cellAlign: 'left',
+  		contain: true,
+  		prevNextButtons: false,
+  		pageDots: false,
+	});
+
+	$('.landing-concepts__carousel--next').on( 'click', function() {
+	  $('.landing-concepts__carousel').flickity('next');
+	});
+	// next wrapped
+	$('.landing-concepts__carousel--previous').on( 'click', function() {
+	  $('.landing-concepts__carousel').flickity('previous');
+	});
+
+});
+jQuery(function() {
+	$.get('/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {
+        var div = document.createElement('div');
+        div.style.width = 0
+        div.style.height = 0
+        div.style.opacity = 0
+        div.style.position = 'absolute'
+        div.setAttribute("aria-hidden", "true")
+        div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+        document.body.insertBefore(div, document.body.childNodes[0]);
+    });
 });
