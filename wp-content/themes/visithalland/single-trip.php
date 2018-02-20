@@ -37,7 +37,7 @@
 	            </div>
 	        </div>
 	    </section>
-	    <div class="spotlight-content col-11 md-col-10 lg-col-10 mx-auto">
+	    <div class="spotlight-content col-11 md-col-10 lg-col-9 mx-auto">
 	        <div class="clearfix spotlight-grid">
 	        	 	<?php
 	                    $spotlights = get_field("stops");

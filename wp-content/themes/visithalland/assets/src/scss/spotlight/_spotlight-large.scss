@@ -63,8 +63,6 @@
 		position:relative;
 		display:none;
 		color:palette(grey, x-light);
-		max-height:100px;
-		overflow: hidden;
 		@media(min-width:$breakpoint-md) {
 			display:block;
 		}
