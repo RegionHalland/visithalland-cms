@@ -32,7 +32,7 @@
 
                     </picture>
                 </div>
-                <figcaption class="inline-block"><span class='image-credit right-align mt2'><?php echo $thumbnail_image[0]->post_content; ?></span></figcaption>
+                <figcaption class="block right-align mt2"><span class='image-credit'><?php echo $thumbnail_image[0]->post_content; ?></span></figcaption>
                 <div class="editorial-header__content center">
                     <div class="article-tag">
                         <div class="article-tag__icon-wrapper">
