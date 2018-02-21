@@ -107,7 +107,8 @@
     </div>
 
     <!-- Cookie Banner Start -->
-    <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
+
+    <?php if(!isset($_COOKIE["test_cookie"])) { ?>
         <div class="cookie-banner col-12">
             <div class="cookie-banner__inner col-12 sm-col-6 md-col-4" tabindex="1">
                 <span class="cookie-banner__policy">

@@ -20,6 +20,7 @@ function visithalland_scripts() {
 	wp_enqueue_script( 'flickity', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array( 'vh-jquery' ), false, true );
 	wp_enqueue_script( 'lazysizes', 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/lazysizes.min.js', array( 'vh-jquery' ), false, true );
 	wp_enqueue_script( 'infinite-scroll', 'https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js', array( 'vh-jquery' ), false, true );
+  wp_enqueue_script( 'js-cookie', 'https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js', array( 'vh-jquery' ), false, true );
 	wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCwAJMUt4ODfivqIGMgeZeTlH90-QqRFrU&libraries=places', array( 'vh-jquery' ), false, true );
 
 	
@@ -38,7 +39,7 @@ add_action( 'wp_enqueue_scripts', 'visithalland_scripts', 20 );
 
 function add_defer_attribute($tag, $handle) {
    // add script handles to the array below
-   $scripts_to_defer = array('flickity', 'lazysizes', 'infinite-scroll', 'google-maps');
+   $scripts_to_defer = array('flickity', 'lazysizes', 'infinite-scroll', 'google-maps', 'js-cookie');
    
    foreach($scripts_to_defer as $defer_script) {
       if ($defer_script === $handle) {
