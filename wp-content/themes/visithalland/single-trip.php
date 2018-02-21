@@ -6,6 +6,7 @@
     $post_id = get_the_id();
     $thumbnail_id = get_post_thumbnail_id();
     $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+    $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     
 ?>
 <div id="infinite-container">
@@ -31,9 +32,14 @@
 	                        <div class="spotlight-header__icon mx-auto"></div>
 	                        <h1 class="spotlight-header__title center light"><?php the_title(); ?></h1>
 	                        <div class="spotlight-header__paragraph light mt2">
-	                            <p><?php the_field('excerpt'); ?></p>
-
+	                            <!--<p><?php the_field('excerpt'); ?></p> -->
 	                        </div>
+	                        <figcaption class="image-credit--large mt2">
+			                    <svg class="icon image-credit--large__icon">
+			                        <use xlink:href="#camera-icon"/>
+			                    </svg>
+			                    <span class="image-credit--large__author"><?php echo $thumbnail_image[0]->post_content; ?></span>
+			                </figcaption>
 	                    </div>
 	                </div>
 	            </div>

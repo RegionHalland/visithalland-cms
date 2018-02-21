@@ -6,6 +6,7 @@
         $currentTerm = count(get_the_terms($post, "taxonomy_concept")) ? get_the_terms($post, "taxonomy_concept")[0] : ""
         $thumbnail_id = get_post_thumbnail_id();
         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+        $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     ?>
 
     <article class="container <?php echo get_term_for_default_lang($currentTerm, "taxonomy_concept")->slug ?>" role="main" id="main-content">
@@ -29,6 +30,12 @@
                         />
                         
                     </picture>
+                    <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z4">
+                        <svg class="icon image-credit--large__icon">
+                            <use xlink:href="#camera-icon"/>
+                        </svg>
+                        <span class="image-credit--large__author"><?php echo $thumbnail_image[0]->post_content; ?></span>
+                    </figcaption>
                 </div>
                 <div class="clearfix">
                     <div class="business-header__content col col-12 md-col-7">
