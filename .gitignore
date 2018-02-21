@@ -15,3 +15,4 @@ wp-content/uploads/*
 /sitemap.xml.gz
 .DS_Store
 /wp-content/themes/visithalland/node_modules
+wp-content/ewww/*
