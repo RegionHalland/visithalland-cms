@@ -31,8 +31,13 @@
                         />
 
                     </picture>
+                    <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z4">
+                        <svg class="icon image-credit--large__icon">
+                            <use xlink:href="#camera-icon"/>
+                        </svg>
+                        <span class="image-credit--large__author"><?php echo $thumbnail_image[0]->post_content; ?></span>
+                    </figcaption>
                 </div>
-                <figcaption class="block right-align mt2"><span class='image-credit'><?php echo $thumbnail_image[0]->post_content; ?></span></figcaption>
                 <div class="editorial-header__content center">
                     <div class="article-tag">
                         <div class="article-tag__icon-wrapper">
