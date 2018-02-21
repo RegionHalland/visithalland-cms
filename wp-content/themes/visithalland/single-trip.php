@@ -34,12 +34,14 @@
 	                        <div class="spotlight-header__paragraph light mt2">
 	                            <!--<p><?php the_field('excerpt'); ?></p> -->
 	                        </div>
+	                        <?php if($thumbnail_image[0]->post_content) : ?>
 	                        <figcaption class="image-credit--large mt2">
 			                    <svg class="icon image-credit--large__icon">
 			                        <use xlink:href="#camera-icon"/>
 			                    </svg>
 			                    <span class="image-credit--large__author"><?php echo $thumbnail_image[0]->post_content; ?></span>
 			                </figcaption>
+			                <?php endif ?>
 	                    </div>
 	                </div>
 	            </div>

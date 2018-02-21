@@ -25,12 +25,14 @@
                     />
                     
 	            </picture>
+	            <?php if($thumbnail_image[0]->post_content) : ?>
 	            <figcaption class="image-credit--large absolute bottom-0 right-0 mr3 mb5 z4">
                     <svg class="icon image-credit--large__icon">
                         <use xlink:href="#camera-icon"/>
                     </svg>
                     <span class="image-credit--large__author"><?php echo $thumbnail_image[0]->post_content; ?></span>
                 </figcaption>
+                <?php endif ?>
 	        </div>
 	        <div class="meet-a-local-header__inner col-12 md-col-10 lg-col-8 mx-auto">
 	            <div class="meet-a-local-header__content center">
