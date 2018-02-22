@@ -32,7 +32,7 @@
 	                        <div class="spotlight-header__icon mx-auto"></div>
 	                        <h1 class="spotlight-header__title center light"><?php the_title(); ?></h1>
 	                        <div class="spotlight-header__paragraph light mt2">
-	                            <!--<p><?php the_field('excerpt'); ?></p> -->
+	                            <p><?php the_field('excerpt'); ?></p>
 	                        </div>
 	                        <?php if($thumbnail_image[0]->post_content) : ?>
 	                        <figcaption class="image-credit--large mt2">
