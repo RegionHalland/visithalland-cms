@@ -34,10 +34,10 @@
 		</div>
 	    <div class="col-11 md-col-10 lg-col-8 mx-auto">
 	    	<div class="clearfix">
-	    		<div class="article-body col col-12 sm-col-9 md-col-9 page__body">
-			    	<?php the_content(); ?>
-			    </div>
-			    <div class="col col-12 sm-col-9 md-col-9 page__body">
+	    		<div class="col col-12 sm-col-9 md-col-9 page__body">
+	    			<div class="article-body">
+			    		<?php the_content(); ?>
+			    	</div>
 			    	<?php if( have_rows('contact') ): ?>
 	                    <div class="contacts mt2 clearfix">
 	                        <div class="contacts__header">
@@ -57,7 +57,7 @@
 			                        <div class="contact__bio">
 			                            <span class="block contact__name"><?php echo get_sub_field('contact_person')['display_name'] ?></span>
 			                            <span class="block contact__title"><?php echo get_field('role', 'user_'. $user_id) ?></span>
-			                            <a class="contact__email" href="mailto:<?php the_author_meta('user_email'); ?>">
+			                            <a class="contact__email" href="mailto:<?php echo get_sub_field('contact_person')['user_email'] ?>">
 			                            	<?php echo get_sub_field('contact_person')['user_email'] ?>
 
 										</a>
@@ -66,7 +66,7 @@
 	                        <?php endwhile ?>
 	                    </div>
 	                <?php endif ?>
-	            </div>
+			    </div>
 			    <div class="col col-12 sm-col-3 md-col-3 page__sidebar">
 	    			<address class="author-horizontal mt4 mb4">
 	                    <div class="author-horizontal__img-container">
