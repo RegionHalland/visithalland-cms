@@ -39,7 +39,7 @@
 			    		<?php the_content(); ?>
 			    	</div>
 			    	<?php if( have_rows('contact') ): ?>
-	                    <div class="contacts mt2 clearfix">
+	                    <div class="contacts mt4 clearfix">
 	                        <div class="contacts__header">
 	                            <h3><?php _e( 'Kontaktpersoner', 'visithalland' ); ?></h3>
 	                        </div>
