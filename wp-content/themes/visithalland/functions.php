@@ -139,6 +139,16 @@ include_once('lib/rest/v2/callbacks.php');
 //Add helpers used in callbacks.php for generic methods
 //include_once('lib/helpers.php');
 
+add_filter('og_image_init', 'my_og_image_init');
+function my_og_image_init($images)
+{
+    if ( is_archive() ) {
+        $images[] = 'https://mywebsite.co.uk/wp-content/uploads/2016/01/my-picture.jpg';
+    }
+    return $images;
+}
+
+
 //Move Yoast to bottom
 function yoasttobottom() {
     return 'low';

@@ -11,11 +11,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KC8VK82');</script>
     <!-- End Google Tag Manager -->
-    
-    <?php if ( is_archive() ) : ?>
-        <?php $term = get_queried_object(); ?>
-        <meta property="og:image" content="<?php echo get_field("cover_image", $term)["sizes"]["vh_hero_wide"] ?>" />
-    <?php endif ?>
 
 
 </head>
