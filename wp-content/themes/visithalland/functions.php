@@ -143,7 +143,7 @@ add_filter('og_image_init', 'my_og_image_init');
 function my_og_image_init($images)
 {
     if ( is_archive() ) {
-        $images[] = 'https://mywebsite.co.uk/wp-content/uploads/2016/01/my-picture.jpg';
+        $images[] = '';
     }
     return $images;
 }
