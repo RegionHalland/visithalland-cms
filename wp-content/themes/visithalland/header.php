@@ -14,8 +14,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KC8VK82');</script>
     <!-- End Google Tag Manager -->
-
-
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
