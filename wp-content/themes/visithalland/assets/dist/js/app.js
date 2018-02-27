@@ -1,22 +1,14 @@
 jQuery(function() {
-
-
-
-
-});
-
-jQuery(function() {
 	// Init Cookie-banner Star
-    $('#cookie-accept').on('click', function () { 
-		Cookies.set('test_cookie', 'comply', { expires: 7 });
+	$('#cookie-accept').on('click', function () { 
+		Cookies.set('test_cookie', 'comply', { expires: 5000 });
 		$(".cookie-banner").fadeOut(300); //$ to slide it up
 	});
 
+	//Click event for EU information
 	$('#eu-btn').on('click', function () { 
-	  $(".landing-eu").fadeOut(300); //$ to slide it up
+		$(".landing-eu").fadeOut(300); //$ to slide it up
 	});
-
-
 });
 jQuery(function() {
     var map;
@@ -24,8 +16,8 @@ jQuery(function() {
 
     if (jQuery('#map').length){
         initMap();
-    }
-
+	}
+	
     function initMap() {
         var locationToSearch = {lat: Number(phpVars.meta_fields.location.lat), lng: Number(phpVars.meta_fields.location.lng)};
 
@@ -76,7 +68,6 @@ jQuery(function() {
 		// options
 		path: function() {
 			return nextPages[this.loadCount];
-			//return nextUrl;
 		},
 		append: '#infinite-container',
 		history: 'replace',
@@ -85,43 +76,21 @@ jQuery(function() {
 		scrollThreshold: 800
 	});
 
-	$container.on( 'request.infiniteScroll', function( event, path ) {
-		// console.log( 'Loading page: ' + path );
-	});
-
-
 	$container.on( 'load.infiniteScroll', function( event, response ) {
 		var elements = $(response);
 	});
 
-	$container.on('append.infiniteScroll', function (event, response, path, items) {
-		// console.log("lazyLoadInstance", lazyLoadInstance);
-		// lazyLoadInstance.update();
-	})
-
-	$container.on( 'last.infiniteScroll', function( event, response, path ) {
-		// console.log( 'Loaded: ' + path );
-		// console.log('we have reached the end')
-	});
-
-	$container.on( 'error.infiniteScroll', function( event, error, path ) {
-		// console.log( 'Could not load: ' + path )
-	});
-
 	$container.on('history.infiniteScroll', function (event, title, path) {
-		//console.log('History changed to: ' + path);
 		ga('create', 'UA-89278649-4');
 		ga('send', {
 			hitType: 'pageview',
 			path: path.replace(/^.*\/\/[^\/]+/, '')
 		});
-		
 	});
 });
 jQuery(function() {	
 	//Toggle menu on mobile 
 	$('.menu-button').on('click', function(){
-
 		$('.mobile-navigation').fadeToggle(400);
 		$('.mobile-navigation').toggleClass('active');
 		$('body').toggleClass('overflow-hidden');
@@ -137,12 +106,9 @@ jQuery(function() {
 
 	//Toggle search on mobile
 	$('.mobile-search-button').on('click', function(){
-
 		$('.mobile-search').fadeToggle(400);
 		$('.mobile-search').toggleClass('active');
-
 		$('.mobile-search__input').focus();
-
 		$('body').toggleClass('overflow-hidden');
 		$('#main-content').toggleClass('menu-open');
 
@@ -159,35 +125,21 @@ jQuery(function() {
 		$('.happenings__dropdown').toggleClass('active');
 	});
 
-
-	
     var myScrollPos = $('.navigation__link.active').offset().left + $('.navigation__link.active').outerWidth(true)/2 + $('.navigation').scrollLeft() - $('.navigation').width()/2;
-    //$('.navigation').scrollLeft(myScrollPos);
     $('.navigation').animate({scrollLeft: myScrollPos}, 200);
-
 });
-//This file controls scroll events
-
 jQuery(function() {
 	$(document).on('scroll', function() {
 		var scrollTop = $(document).scrollTop()
 		var scrollBottom = scrollTop + $(window).height()
-
 		pageBottom = $(document).height()
-
 		var opacity = 1 - scrollTop / 500
-
 		var transform = 0 + scrollTop / 15
-
 		$('.concept-header__content').css('transform', 'translateY(' + transform + 'px)');
 		$('.concept-header__content').css('opacity', opacity);
-		//$('.landing-header__img').css('transform', 'translateY(' + transform + 'px)');
 	})
 });
-
 jQuery(function() {
-	
-
 	//Init Flickity
 	$('.navigation-carousel').flickity({
   		// options
@@ -200,6 +152,7 @@ jQuery(function() {
 	$('.navigation-carousel--next').on( 'click', function() {
 	  $('.navigation-carousel').flickity('next');
 	});
+	
 	// next wrapped
 	$('.navigation-carousel--previous').on( 'click', function() {
 	  $('.navigation-carousel').flickity('previous');
@@ -214,14 +167,12 @@ jQuery(function() {
 	});
 
 	$('.tip-carousel--next').on( 'click', function() {
-	  $('.tip-carousel').flickity('next');
+		$('.tip-carousel').flickity('next');
 	});
 	// next wrapped
 	$('.tip-carousel--previous').on( 'click', function() {
-	  $('.tip-carousel').flickity('previous');
+		$('.tip-carousel').flickity('previous');
 	});
-
-
 
 	$('.landing-concepts__carousel').flickity({
   		// options
@@ -232,13 +183,13 @@ jQuery(function() {
 	});
 
 	$('.landing-concepts__carousel--next').on( 'click', function() {
-	  $('.landing-concepts__carousel').flickity('next');
+		$('.landing-concepts__carousel').flickity('next');
 	});
+	
 	// next wrapped
 	$('.landing-concepts__carousel--previous').on( 'click', function() {
-	  $('.landing-concepts__carousel').flickity('previous');
+		$('.landing-concepts__carousel').flickity('previous');
 	});
-
 });
 jQuery(function() {
 	$.get('/wp-content/themes/visithalland/assets/dist/icons/sprite.svg', function(data) {

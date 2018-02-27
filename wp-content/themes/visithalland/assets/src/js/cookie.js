@@ -1,13 +1,12 @@
 jQuery(function() {
 	// Init Cookie-banner Star
-    $('#cookie-accept').on('click', function () { 
-		Cookies.set('test_cookie', 'comply', { expires: 7 });
+	$('#cookie-accept').on('click', function () { 
+		Cookies.set('test_cookie', 'comply', { expires: 5000 });
 		$(".cookie-banner").fadeOut(300); //$ to slide it up
 	});
 
+	//Click event for EU information
 	$('#eu-btn').on('click', function () { 
-	  $(".landing-eu").fadeOut(300); //$ to slide it up
+		$(".landing-eu").fadeOut(300); //$ to slide it up
 	});
-
-
 });

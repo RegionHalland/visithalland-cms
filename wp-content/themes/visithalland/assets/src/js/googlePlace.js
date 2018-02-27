@@ -4,8 +4,8 @@ jQuery(function() {
 
     if (jQuery('#map').length){
         initMap();
-    }
-
+	}
+	
     function initMap() {
         var locationToSearch = {lat: Number(phpVars.meta_fields.location.lat), lng: Number(phpVars.meta_fields.location.lng)};
 

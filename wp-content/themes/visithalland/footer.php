@@ -133,7 +133,7 @@
 
     <!-- Cookie Banner Start -->
 
-    <?php if(!isset($_COOKIE["test_cookie"])) { ?>
+    <?php if(!isset($_COOKIE["test_cookie"])) : ?>
         <div class="cookie-banner col-12">
             <div class="cookie-banner__inner col-12 sm-col-6 md-col-4" tabindex="1">
                 <span class="cookie-banner__policy">
@@ -142,7 +142,6 @@
                         <?php _e( 'Se användningsvillkor', 'visithalland' ); ?>
                     </a>
                 </span>
-
                 <button class="cookie-banner__button icon-button" id="cookie-accept" title="<?php _e( 'Stäng', 'visithalland' ); ?>" tabindex="2">
                     <svg class="icon icon-button__icon">
                         <use xlink:href="#close-icon"/>
@@ -150,7 +149,7 @@
                 </button>
             </div>
         </div>
-    <?php } ?>
+	<?php endif; ?>
     <!-- Cookie Banner End -->
 
 </footer>
