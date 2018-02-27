@@ -90,24 +90,9 @@ gulp.task('watch', ['js:dist', 'css:dist', 'browsersync'], () => {
 	gulp.watch(['./assets/src/js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
-//Critical css
-gulp.task('critical-css', function () {
-	// PostCSS plugins
-	return gulp.src('./assets/dist/css/main.min.css')
-		.pipe(criticalCss({
-			out: 'critical.php', // output file name
-			url: 'http://localhost:3000/', // url from where we want penthouse to extract critical styles
-			width: 1400, // max window width for critical media queries
-			height: 900, // max window height for critical media queries
-			userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' // pretend to be googlebot when grabbing critical page styles.
-		}))
-		.pipe(gulp.dest('./')); // destination folder for the output file
-});
-
 /* BUILD */
 gulp.task('build', function (callback) {
 	runSequence('css:dist',
-		'critical-css', // run critical after your styles process has completed.
 		'js:dist',
 		callback);
 });
