@@ -4,6 +4,7 @@ a,
 article,
 body,
 div,
+h2,
 h5,
 header,
 html,
@@ -61,6 +62,7 @@ body {
   }
 }
 
+h2,
 h5 {
   font-family: rift-soft,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
   font-weight: 800;
@@ -100,6 +102,10 @@ button {
 
 .light {
   color: #fff;
+}
+
+h2 {
+  font-size: 1.75rem;
 }
 
 h5 {
@@ -142,6 +148,10 @@ h5 {
 
 .mr2 {
   margin-right: .5rem;
+}
+
+.mb2 {
+  margin-bottom: .5rem;
 }
 
 .ml2 {
@@ -236,10 +246,6 @@ h5 {
 
   .sm-col-5 {
     width: 41.66667%;
-  }
-
-  .sm-col-6 {
-    width: 50%;
   }
 
   .sm-col-8 {
@@ -883,40 +889,4 @@ h5 {
   left: 0;
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
-}
-
-.cookie-banner {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color: #fff;
-  z-index: 999;
-  padding: 1rem 1rem;
-}
-
-.cookie-banner__link {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.cookie-banner__policy {
-  color: #dce0e1;
-  line-height: 1.25;
-  font-size: .9rem;
-}
-
-.cookie-banner__inner {
-  position: relative;
-  background: #041d24;
-  padding: 2rem 4rem 2rem 2rem;
-  border-radius: 4px;
-}
-
-.cookie-banner__button {
-  background: #062832;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
 }

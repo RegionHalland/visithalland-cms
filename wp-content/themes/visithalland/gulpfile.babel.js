@@ -15,7 +15,7 @@ import uglify from 'gulp-uglify'
 import svgmin from 'gulp-svgmin'
 import svgstore from 'gulp-svgstore'
 import criticalCss from 'gulp-penthouse';
-import cssNano from 'cssnano';
+import runSequence from 'run-sequence';
 
 // Build CSS
 gulp.task('css:dist', () => {
@@ -85,8 +85,8 @@ gulp.task('bs-reload', () => {
 })
 
 // Watch
-gulp.task('watch', ['js:dist', 'css:dist', 'critical-css', 'browsersync'], () => {
-	gulp.watch('./assets/src/scss/**/**/*.scss', ['css:dist', 'bs-reload', 'critical-css']);
+gulp.task('watch', ['js:dist', 'css:dist', 'browsersync'], () => {
+	gulp.watch('./assets/src/scss/**/**/*.scss', ['css:dist', 'bs-reload']);
 	gulp.watch(['./assets/src/js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
@@ -104,5 +104,15 @@ gulp.task('critical-css', function () {
 		.pipe(gulp.dest('./')); // destination folder for the output file
 });
 
+/* BUILD */
+gulp.task('build', function (callback) {
+	runSequence('css:dist',
+		'critical-css', // run critical after your styles process has completed.
+		'js:dist',
+		callback);
+});
+
 // Default build
-gulp.task('default', ['css:dist', 'js:dist'])
+gulp.task('default', function () {
+	gulp.start('build');
+});
