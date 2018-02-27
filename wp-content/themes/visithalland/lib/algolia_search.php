@@ -18,10 +18,11 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     if ( $post->post_type !== 'places' && $post->post_type !== 'companies' && $post->post_type !== 'meet_local' && $post->post_type !== 'editor_tip' && $post->post_type !== 'trip' && $post->post_type !== 'happening') {
         // We only want to add an attribute for the 'speaker' post type.
         // Here the post isn't a 'speaker', so we return the attributes unaltered.
+        // Here we make sure we push the post's language data to Algolia.
+        $attributes['wpml'] = apply_filters( 'wpml_post_language_details', null,  $post->ID );
         return $attributes;
     }
 
-    //$attributes['post_name'] = "TEST";
     // Get the field value with the 'get_field' method and assign it to the attributes array.
     // @see https://www.advancedcustomfields.com/resources/get_field/
     
@@ -50,18 +51,26 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
             "slug"  => $taxonomy[0]->slug
         );
     }
-    
-    /*if(count(wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ))) > 0) {
-        $attributes['taxonomy'] = array(
-                "title" => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->name,
-                "slug"  => wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ) )[0]->slug
-        );
-    }*/
 
-    //Place specific
-
+    // Here we make sure we push the post's language data to Algolia.
+    $attributes['wpml'] = apply_filters( 'wpml_post_language_details', null,  $post->ID );
 
     // Always return the value we are filtering.
     return $attributes;
 }
+
+/**
+ * @param array $settings
+ *
+ * @return array
+ */
+function my_posts_index_settings( array $settings ) {
+    // We add the language code to the facets to be able to easily filter on it.
+    $settings['attributesForFaceting'][] = 'wpml.language_code';
+
+    return $settings;
+}
+
+add_filter( 'algolia_posts_index_settings', 'my_posts_index_settings' );
+add_filter( 'algolia_searchable_posts_index_settings', 'my_posts_index_settings' );
 ?>
