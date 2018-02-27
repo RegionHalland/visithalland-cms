@@ -35,7 +35,7 @@ add_filter( 'mce_buttons_2', 'vh_remove_mce_2_buttons');
 function configure_tinymce($in) {
 	$in['paste_preprocess'] = "function(plugin, args){
 		// Strip all HTML tags except those we have whitelisted
-		var whitelist = 'p,span,b,strong,i,em,h3,h4,h5,h6,ul,li,ol';
+		var whitelist = 'p,span,b,strong,i,em,h2,h3,h4,h5,h6,ul,li,ol';
 		var stripped = jQuery('<div>' + args.content + '</div>');
 		var els = stripped.find('*').not(whitelist);
 		for (var i = els.length - 1; i >= 0; i--) {
