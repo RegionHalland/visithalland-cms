@@ -22,7 +22,6 @@
         <!--- Header Inner Start -->
         <!-- The inner element is used to restrict width on larger screens -->
         <div class="header__inner col-12 sm-col-12 md-col-11 lg-col-10">
-            
 
             <!--- Top Header Start -->
             <a class="skip-to-content topographic-pattern" href="#main-content">
@@ -49,7 +48,6 @@
                                 </a>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-
                             <?php 
                             foreach ($menuItems as $key => $value) : ?>
                                 <a href="<?php echo $value->url ?>" class="header__support-link">
@@ -77,6 +75,7 @@
                 </div>
                 <div class="header__right flex items-center justify-end">
                     <div class="header__happenings">
+                        <?php get_search_form() ?>
                         <?php $happenings = vh_get_happenings(3);
                            if (count($happenings) > 0)  : ?>
                             <button class="happenings__dropdown-button has-happenings icon-button">
