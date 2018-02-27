@@ -122,6 +122,47 @@
     }
 }
 
+
+.footer-contact { 
+	&__a {
+		margin-top:$space-3;
+		&:first-of-type {
+			margin-left:0;
+		}
+		margin-left:$space-2;
+	}
+	&__icon-wrapper {
+		height:27.5px;
+		width:27.5px;
+		display:inline-flex;
+		justify-content:center;
+		align-items:center;
+		border-radius:50%;
+		background:$orange;
+		&.facebook {
+			background:#3b5998;
+		}
+		&.instagram {
+			background:#ff225c;
+		}
+	}
+	&__icon {
+		max-width:12.5px;
+		width:auto;
+		height:12.5px;
+		fill:$white;
+	}
+	&__span {
+		fontsize:1rem;
+		font-family:$rift-font-family;
+		font-weight:bold;
+		color:palette(grey, xx-light);
+		margin-left:$space-1;
+	}
+
+
+}
+
 .footer__intro, .footer__eu-paragraph{
 	font-size:1rem;
 	@media (min-width:$breakpoint-sm){

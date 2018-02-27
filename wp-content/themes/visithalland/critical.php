@@ -425,10 +425,6 @@ h5 {
   color: #fff;
 }
 
-.beach-coast .date-badge {
-  background: #ffa75f;
-}
-
 .food-culture .date-badge {
   background: #ec5050;
 }

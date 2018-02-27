@@ -9,6 +9,32 @@
             <div class="footer__column col sm-col-6 col-12 md-col-5">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/img/logo.svg" />
                 <p class="footer__intro light mt1"><?php bloginfo('description'); ?></p>
+                <div class="footer-contact mt3">
+                    <a href="mailto:info@visithalland.com" target="_blank" class="footer-contact__a light">
+                        <div class="footer-contact__icon-wrapper">
+                            <svg class="footer-contact__icon">
+                                <use xlink:href="#mail-icon"/>
+                            </svg>
+                        </div>
+                        <span class="footer-contact__span">Email</span>
+                    </a>
+                    <a href="https://www.facebook.com/halland.se/" target="_blank" class="footer-contact__a light">
+                        <div class="footer-contact__icon-wrapper facebook">
+                            <svg class="footer-contact__icon">
+                                <use xlink:href="#facebook-icon"/>
+                            </svg>
+                        </div>
+                        <span class="footer-contact__span">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/visithalland/?hl=en" target="_blank" class="footer-contact__a light">
+                        <div class="footer-contact__icon-wrapper instagram">
+                            <svg class="footer-contact__icon">
+                                <use xlink:href="#instagram-icon"/>
+                            </svg>
+                        </div>
+                        <span class="footer-contact__span">Instagram</span>
+                    </a>
+                </div>
             </div>
             <!-- Footer Site Info End -->
 
@@ -82,7 +108,6 @@
                 </div>
             </div>
             <!-- Footer Secondary Menu, Partner Menu and Language Settings End -->
-
 
             <!-- Footer European Union Credit Start -->
             <div class="footer__eu col col-12">
