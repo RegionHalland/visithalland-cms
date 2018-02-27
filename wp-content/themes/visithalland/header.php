@@ -73,8 +73,8 @@
                         </picture>
                     </a>
                 </div>
-                <div class="flex items-center">
-                    <div class="header__search">
+                <div class="flex items-center col-12">
+                    <div class="header__search col-12">
                         <?php 
                             //Display search form
                             get_search_form() 

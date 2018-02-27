@@ -83,6 +83,8 @@
 
 <script type="text/javascript">
   jQuery(function () {
+		var getLangCode = '<?php echo apply_filters( 'wpml_current_language', NULL );  ?>';
+
 	/* init Algolia client */
 	var client = algoliasearch(algolia.application_id, algolia.search_api_key);
 
@@ -94,8 +96,9 @@
 		source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
 		  hitsPerPage: config['max_suggestions'],
 		  attributesToSnippet: [
-			'content:10'
-		  ],
+				'content:10',
+			],
+			facetFilters: 'wpml.language_code:'+getLangCode,
 		  highlightPreTag: '__ais-highlight__',
 		  highlightPostTag: '__/ais-highlight__'
 		}),

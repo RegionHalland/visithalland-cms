@@ -1,5 +1,5 @@
-<form role="search" method="get" id="searchform" class="searchform" action="//localhost:3000/">
-    <label class="screen-reader-text sr-only" for="s"><?php _e( 'Sök efter', 'visithalland' ); ?>:</label>
-    <input type="text" value="" name="s" id="s">
+<form role="search" method="get" id="searchform" class="searchform col-12" action="//localhost:3000/">
+    <label class="screen-reader-text sr-only col-12" for="s"><?php _e( 'Sök efter', 'visithalland' ); ?>:</label>
+    <input type="text" value="" name="s" id="s" class="col-12">
     <input type="submit" id="searchsubmit" value="Sök">
 </form>
