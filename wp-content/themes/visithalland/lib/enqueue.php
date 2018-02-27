@@ -14,7 +14,7 @@ function visithalland_scripts() {
     }
 
     wp_enqueue_style( 'stylesheet', get_stylesheet_directory_uri() . '/assets/dist/css/main.min.css' );
-    //wp_enqueue_style( 'typekit', 'https://use.typekit.net/vzi2bvt.css' );
+    wp_enqueue_style( 'typekit', 'https://use.typekit.net/vzi2bvt.css' );
 
 	wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/assets/dist/js/app.min.js', array( 'vh-jquery' ), false, true );
 	wp_enqueue_script( 'flickity', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array( 'vh-jquery' ), false, true );

@@ -3,9 +3,6 @@
 <head>
 	<title><?php echo wp_get_document_title(); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        <?php get_template_part('critical' ); ?>
-    </style>
     <?php wp_head(); ?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
