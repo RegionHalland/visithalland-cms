@@ -1,7 +1,7 @@
 jQuery(function() {
 	// Init Cookie-banner Star
 	$('#cookie-accept').on('click', function () { 
-		Cookies.set('test_cookie', 'comply', { expires: 5000 });
+		Cookies.set('cookie_consent', 'comply', { expires: 5000 });
 		$(".cookie-banner").fadeOut(300); //$ to slide it up
 	});
 
