@@ -73,9 +73,16 @@
                         </picture>
                     </a>
                 </div>
+                <div class="flex items-center">
+                    <div class="header__search">
+                        <?php 
+                            //Display search form
+                            get_search_form() 
+                        ?>
+                    </div>
+                </div>
                 <div class="header__right flex items-center justify-end">
                     <div class="header__happenings">
-                        <?php get_search_form() ?>
                         <?php $happenings = vh_get_happenings(3);
                            if (count($happenings) > 0)  : ?>
                             <button class="happenings__dropdown-button has-happenings icon-button">

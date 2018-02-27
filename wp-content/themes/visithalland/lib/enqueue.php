@@ -7,8 +7,8 @@ function visithalland_scripts() {
 
 
 	//Add custom jQuery to avoid scripts in <head>
-	if (!is_admin()) {
-		wp_deregister_script('jquery');
+    if (!is_admin()) {
+		//wp_deregister_script('jquery');
 	    wp_register_script('vh-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', NULL, false, true);
 	    wp_enqueue_script('vh-jquery');
     }
