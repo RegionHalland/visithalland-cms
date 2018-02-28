@@ -20,9 +20,9 @@
 	&__top-section {
 		padding:$space-2;
 		box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.22);
-		transition:transform 0.25s;
+		transition:transform 0.3s;
 		&.search-open {
-			transform:translateY(-10%);
+			transform:translateY(-20%);
 		}
 		transform:translateY(0%);
 		@media (min-width:$breakpoint-sm) {
@@ -75,12 +75,12 @@
 
 
 .header-search {
-	transition:transform 0.25s;
+	transition:transform 0.4s;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.22);
 	&.search-open {
 		transform:translateY(0%);
 	}
-	transform:translateY(10%);
+	transform:translateY(20%);
 	position:absolute;
 	overflow:hidden;
 	top:0;

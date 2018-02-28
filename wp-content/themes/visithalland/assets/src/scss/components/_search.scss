@@ -30,7 +30,9 @@
 .algolia-autocomplete {
 	background:$white;
 	padding:$space-2;
-
+	&.autocomplete-hide {
+		visibility:hidden;
+	}
 	@media (min-width:$breakpoint-sm) {
 		padding:$space-3;
 	}
