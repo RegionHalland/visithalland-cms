@@ -1,23 +1,240 @@
 <script type="text/html" id="tmpl-autocomplete-header">
-  <div class="autocomplete-header">
-	<div class="autocomplete-header-title">{{{ data.label }}}</div>
-	<div class="clear"></div>
-  </div>
+  <h3 class="autocomplete-header  my3">
+	{{{ data.label }}}
+  </h3>
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
+
+  <# if ( data.post_type == 'happening' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
 	<# if ( data.images.thumbnail ) { #>
-	  <img class="suggestion-post-thumbnail" src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}">
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+		  <div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
 	  <# } #>
-		<div class="suggestion-post-attributes">
-		  <span class="suggestion-post-title">{{{ data._highlightResult.post_title.value }}}</span>
-		  <# if ( data._snippetResult['content'] ) { #>
-			<span class="suggestion-post-content">{{{ data._snippetResult['content'].value }}}</span>
-			<# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
 		</div>
+	</div>
   </a>
+  <# } #>
+
+
+  <# if ( data.post_type == 'trip' ) { #>
+  <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+		  <div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
+	  <# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
+		</div>
+	</div>
+  </a>
+  <# } #>
+
+
+  <# if ( data.post_type == 'companies' ) { #>
+  <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+	  		<div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
+	  <# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
+		</div>
+	</div>
+  </a>
+  <# } #>
+
+  <# if ( data.post_type == 'places' ) { #>
+  <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+	  		<div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
+	  <# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
+		</div>
+	</div>
+  </a>
+  <# } #>
+
+
+  <# if ( data.post_type == 'meet_local' ) { #>
+  <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+	  		<div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
+	  <# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
+		</div>
+	</div>
+  </a>
+  <# } #>
+
+  <# if ( data.post_type == 'editor_tip' ) { #>
+  <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
+	  <div class="col col-4 md-col-4 relative">
+	  		<div class="suggestion__img-container topographic-pattern relative">
+		  	<div class="article-tag absolute top-0 left-0 mt1 ml1 z3">
+				<div class="article-tag__icon-wrapper">
+					<div class="article-tag__icon"></div>
+				</div>
+			</div>
+        	<picture>
+        		<img class="suggestion__img lazyload"
+                    data-src="{{ data.images.thumbnail.url }}"
+                    alt="{{ data.post_title }}"
+            	/>
+			</picture>
+        </div>
+	  </div>
+	  <# } #>
+		<div class="col col-8 md-col-8 suggestion__content">
+		  <span class="suggestion__title">{{{ data.post_title }}}</span>
+		  <div class="read-more">
+	    	<span class="read-more__text">
+	    		Läs mer
+	    	</span>
+	    	<div class="read-more__button">
+		    	<svg class="icon read-more__icon">
+                	<use xlink:href="#arrow-right-icon"/>
+            	</svg>
+        	</div>
+	    </div>
+		</div>
+	</div>
+  </a>
+  <# } #>
+
+
+
 </script>
+
 
 <script type="text/html" id="tmpl-autocomplete-term-suggestion">
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.name }}">
@@ -76,13 +293,14 @@
 
 <script type="text/html" id="tmpl-autocomplete-empty">
   <div class="autocomplete-empty">
-	  <?php esc_html_e( 'No results matched your query ', 'algolia' ); ?>
-	<span class="empty-query">"{{ data.query }}"</span>
+	  <h4 class="my3"><?php esc_html_e( 'Inga sökresultat hittade', 'algolia' ); ?></h4>
   </div>
 </script>
 
 <script type="text/javascript">
   jQuery(function () {
+		var getLangCode = '<?php echo apply_filters( 'wpml_current_language', NULL );  ?>';
+
 	/* init Algolia client */
 	var client = algoliasearch(algolia.application_id, algolia.search_api_key);
 
@@ -94,8 +312,9 @@
 		source: algoliaAutocomplete.sources.hits(client.initIndex(config['index_name']), {
 		  hitsPerPage: config['max_suggestions'],
 		  attributesToSnippet: [
-			'content:10'
-		  ],
+				'content:10',
+			],
+			facetFilters: 'wpml.language_code:'+getLangCode,
 		  highlightPreTag: '__ais-highlight__',
 		  highlightPostTag: '__/ais-highlight__'
 		}),
