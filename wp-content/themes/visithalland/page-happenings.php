@@ -34,7 +34,7 @@
 			<?php if($index === 0) : ?>
 
 				<?php /* Next Happening Start */ ?>
-				<article class="happening-large col-11 md-col-10 lg-col-8 mx-auto z4 relative mt4 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
+				<article class="happening-large col-11 md-col-10 lg-col-8 mx-auto z3 relative mt4 <?php echo get_term_for_default_lang(get_the_terms($value, "taxonomy_concept")[0], "taxonomy_concept")->slug ?>">
 					<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 						<div class="happening-large__img-container">
 							<?php 

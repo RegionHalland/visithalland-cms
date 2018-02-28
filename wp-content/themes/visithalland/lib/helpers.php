@@ -324,12 +324,12 @@ function vh_get_happenings($numberposts = 3) {
 	$tax_query = array();
 
 	$posts = get_posts(array(
-	  'post_type' => array(
-	  		"happening"
-	  ),
-	  'numberposts'  => $numberposts,
-	  'tax_query' 	 => $tax_query,
-	  'suppress_filters' => false
+		'post_type' => array(
+			"happening"
+		),
+		'numberposts'  => $numberposts,
+		'tax_query' 	 => $tax_query,
+		'suppress_filters' => false
 	));
 
 	foreach ($posts as $key => $value) {
