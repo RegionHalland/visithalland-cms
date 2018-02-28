@@ -42,12 +42,12 @@ jQuery(function() {
 		$('.header-search').fadeToggle(400);
 		if ($('.header-search').attr('aria-expanded') === "false") {
 			$('.header-search').attr( 'aria-expanded', 'true');
-			$('.searchform__input').focus();
+			//$('.searchform__input').focus();
 		}
 	    else {
 			$('.header-search').attr( 'aria-expanded', 'false');
-			$('.algolia-autocomplete').fadeOut(100);
-			$('.searchform__input').val('');
+			//$('.algolia-autocomplete').fadeOut(100);
+			//$('.searchform__input').val('');
 		}
 	});
 
