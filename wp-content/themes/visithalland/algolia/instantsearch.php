@@ -64,7 +64,7 @@
 						</div>
 						<picture>
 							<img class="article-medium__img lazyload" 
-								data-src="{{ data.images.thumbnail.url }}"
+								data-src="{{ data.images.vh_medium.url }}"
 								alt="{{ data.post_title }}" />
 						</picture>
 				    </div>

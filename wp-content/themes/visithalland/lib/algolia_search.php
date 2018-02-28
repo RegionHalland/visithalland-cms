@@ -13,6 +13,15 @@ add_filter( 'algolia_searchable_post_shared_attributes', 'my_post_attributes', 1
  *
  * @return array
  */
+
+add_filter('algolia_post_images_sizes', function($sizes) {
+    $sizes[] = 'vh_medium';
+    $sizes[] = 'vh_thumbnail'; 
+
+    return $sizes;
+});
+
+
 function my_post_attributes( array $attributes, WP_Post $post ) {
 
     if ( $post->post_type !== 'places' && $post->post_type !== 'companies' && $post->post_type !== 'meet_local' && $post->post_type !== 'editor_tip' && $post->post_type !== 'trip' && $post->post_type !== 'happening') {

@@ -8,7 +8,7 @@
 
   <# if ( data.post_type == 'happening' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 		  <div class="suggestion__img-container topographic-pattern relative">
@@ -19,7 +19,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
@@ -46,7 +46,7 @@
 
   <# if ( data.post_type == 'trip' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 		  <div class="suggestion__img-container topographic-pattern relative">
@@ -57,7 +57,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
@@ -84,7 +84,7 @@
 
   <# if ( data.post_type == 'companies' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 	  		<div class="suggestion__img-container topographic-pattern relative">
@@ -95,7 +95,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
@@ -121,7 +121,7 @@
 
   <# if ( data.post_type == 'places' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 	  		<div class="suggestion__img-container topographic-pattern relative">
@@ -132,7 +132,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
@@ -159,7 +159,7 @@
 
   <# if ( data.post_type == 'meet_local' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 	  		<div class="suggestion__img-container topographic-pattern relative">
@@ -170,7 +170,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
@@ -196,7 +196,7 @@
 
   <# if ( data.post_type == 'editor_tip' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
-	<# if ( data.images.thumbnail ) { #>
+	<# if ( data.images.vh_thumbnail ) { #>
 	<div class="suggestion clearfix {{{ data.taxonomy.slug }}}">
 	  <div class="col col-4 md-col-4 relative">
 	  		<div class="suggestion__img-container topographic-pattern relative">
@@ -207,7 +207,7 @@
 			</div>
         	<picture>
         		<img class="suggestion__img lazyload"
-                    data-src="{{ data.images.thumbnail.url }}"
+                    data-src="{{ data.images.vh_thumbnail.url }}"
                     alt="{{ data.post_title }}"
             	/>
 			</picture>
