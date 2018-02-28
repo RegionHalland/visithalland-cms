@@ -48,6 +48,7 @@ jQuery(function() {
 			$('.header-search').attr( 'aria-expanded', 'false');
 			//$('.algolia-autocomplete').fadeOut(100);
 			//$('.searchform__input').val('');
+			console.log("HIIIIDE DAMNIT")
 		}
 	});
 
