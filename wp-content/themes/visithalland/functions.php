@@ -108,6 +108,9 @@ include_once('lib/editor.php');
 //Enqueues of styles and scripts
 include_once('lib/enqueue.php');
 
+//Amp related customization
+include_once('lib/amp.php');
+
 /* 
 
 ***	REST related files
