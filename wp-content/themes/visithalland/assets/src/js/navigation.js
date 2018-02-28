@@ -35,6 +35,22 @@ jQuery(function() {
 		$('.happenings__dropdown').toggleClass('active');
 	});
 
-    var myScrollPos = $('.navigation__link.active').offset().left + $('.navigation__link.active').outerWidth(true)/2 + $('.navigation').scrollLeft() - $('.navigation').width()/2;
-    $('.navigation').animate({scrollLeft: myScrollPos}, 200);
+
+
+	$('.search-button, .search-close-button').on('click', function(){
+		$('.header-search, .header__top-section').toggleClass('search-open');
+		$('.header-search').fadeToggle(400);
+		if ($('.header-search').attr('aria-expanded') === "false") {
+			$('.header-search').attr( 'aria-expanded', 'true');
+			$('.searchform__input').focus();
+		}
+	    else {
+			$('.header-search').attr( 'aria-expanded', 'false');
+		}
+	});
+
+	if ($('.navigation__link').hasClass('active')) {
+	    var myScrollPos = $('.navigation__link.active').offset().left + $('.navigation__link.active').outerWidth(true)/2 + $('.navigation').scrollLeft() - $('.navigation').width()/2;
+	    $('.navigation').animate({scrollLeft: myScrollPos}, 200);
+    }
 });

@@ -74,8 +74,13 @@ gulp.task('svgmin', () => {
 
 // Browsersync
 gulp.task('browsersync', () => {
-	browsersync.init({
-		proxy: 'cms.visithalland.test'
+	var files = [
+		'**/*.php',
+		'**/*.{png,jpg,gif}'
+	];
+	browsersync.init(files, {
+		proxy: 'cms.visithalland.test',
+		injectChanges: true
 	});
 })
 

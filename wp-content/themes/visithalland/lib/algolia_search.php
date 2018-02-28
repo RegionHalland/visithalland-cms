@@ -32,6 +32,12 @@ function my_post_attributes( array $attributes, WP_Post $post ) {
     $taxonomy = wp_get_post_terms($post->ID, 'taxonomy_concept', array( '' ));
     $location = get_field('location', $post->ID);
 
+    $start_date = get_field('start_date', $post->ID);
+
+    if($start_date) {
+        $attributes['start_date'] = $start_date;
+    }
+
     if($post_name) {
         $attributes['post_name'] = $post_name;
     }

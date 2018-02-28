@@ -38,7 +38,7 @@ $term = get_queried_object(); ?>
 				$spotlights = vh_get_spotlights_by_taxonomy_concept($term);
 				if (count($spotlights)) : ?>
 					<div class="concept-carousel clearfix">
-						<div class="slider-button-container relative z4 py3 col-11 md-col-10 lg-col-10 mx-auto">
+						<div class="slider-button-container relative z3 py3 col-11 md-col-10 lg-col-10 mx-auto">
 							<button class="slider-button navigation-carousel--previous">
 								<svg class="icon slider-button__icon">
 		                            <use xlink:href="#arrow-left-icon"/>
@@ -50,7 +50,7 @@ $term = get_queried_object(); ?>
 		                        </svg>
 		                    </button>
 						</div>
-						<div class="navigation-carousel relative z4 col-11 md-col-10 lg-col-10 mx-auto">
+						<div class="navigation-carousel relative z3 col-11 md-col-10 lg-col-10 mx-auto">
 							<?php foreach ($spotlights as $key => $value) : ?>				
 								<div class="page-thumbnail col-6 sm-col-5 md-col-3 lg-col-3 center <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 								    <a href="<?php echo get_permalink($value->ID) ?>">
@@ -91,7 +91,7 @@ $term = get_queried_object(); ?>
 		
 
 		<?php /* START - Featured Articles */ ?>
-		<div class="featured-articles relative z4 col-11 md-col-10 lg-col-10 mx-auto <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
+		<div class="featured-articles relative z3 col-11 md-col-10 lg-col-10 mx-auto <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 			<div class="clearfix">
 				<header class="featured-articles__header">
 					<div class="featured-articles__badge inline-block">
@@ -348,7 +348,7 @@ $term = get_queried_object(); ?>
 									<article class="article-medium relative <?php echo get_term_for_default_lang($term, "taxonomy_concept")->slug ?>">
 										<a href="<?php echo get_permalink($value->ID) ?>" class="link-reset">
 											<div class="article-medium__img-container relative topographic-pattern">
-												<div class="article-tag mt2 ml2 absolute z4 left-0 top-0">
+												<div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
 													<div class="article-tag__icon-wrapper">
 														<div class="article-tag__icon"></div>
 													</div>

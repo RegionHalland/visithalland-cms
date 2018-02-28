@@ -27,6 +27,7 @@
             <a class="skip-to-content topographic-pattern" href="#main-content">
                 <span class="skip-to-content__label"><?php _e( 'Hoppa till innehåll', 'visithalland' ); ?></span>
             </a>
+            
             <section class="header__top-section topographic-pattern flex justify-between relative z2">
                 <div class="header__left flex items-center">
                     <button class="icon-button menu-button">
@@ -73,15 +74,12 @@
                         </picture>
                     </a>
                 </div>
-                <div class="flex items-center col-12">
-                    <div class="header__search col-12">
-                        <?php 
-                            //Display search form
-                            get_search_form() 
-                        ?>
-                    </div>
-                </div>
                 <div class="header__right flex items-center justify-end">
+                    <button class="icon-button search-button mr2">
+                        <svg class="icon icon-button__icon">
+                            <use xlink:href="#search-icon"/>
+                        </svg>
+                    </button>
                     <div class="header__happenings">
                         <?php $happenings = vh_get_happenings(3);
                            if (count($happenings) > 0)  : ?>
@@ -131,23 +129,14 @@
                             </div>
                         <?php endif ?>
                     </div>
-                    <div class="header__search">
-                        <button class="icon-button search-button z3">
-                            <svg class="icon icon-button__icon">
-                                <use xlink:href="#search-icon"/>
-                            </svg>
-                        </button>
-                        <button class="icon-button mobile-search-button z3">
-                            <svg class="icon icon-button__icon">
-                                <use xlink:href="#search-icon"/>
-                            </svg>
-                        </button>
-                        <input class="search__input inline-block z1" type="search" placeholder="Skriv för att börja söka">
-                        <div class="search__results">
-                            
-                        </div>
-                    </div>
                 </div>
+            </section>
+
+            <section class="header-search topographic-pattern flex justify-between relative z2" aria-expanded="false">
+                <?php 
+                    //Display search form
+                    get_search_form() 
+                ?>
             </section>
             <!--- Top Header End -->
 
@@ -170,15 +159,6 @@
                 </div>
             </nav>
             <!--- Navigation End -->
-            
-
-            <!--- Mobile Search Start -->
-            <div class="mobile-search topographic-pattern">
-                <div class="mobile-search__inner p2">
-                    <input class="mobile-search__input inline-block" type="search" placeholder="Skriv för att börja söka">
-                </div>
-            </div>
-            <!--- Mobile Search End -->
             
             <!--- Mobile Navigation Start -->
             <nav class="mobile-navigation topographic-pattern">

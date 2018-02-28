@@ -17,7 +17,7 @@ function custom_post_type_meet_local() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 6,
+		'menu_position'         => 8,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -53,7 +53,7 @@ function custom_post_type_editor_tip() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 6,
+		'menu_position'         => 7,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -68,7 +68,7 @@ function custom_post_type_editor_tip() {
 	register_post_type( 'editor_tip', $args );
 
 }
-add_action( 'init', 'custom_post_type_editor_tip', 200 );
+add_action( 'init', 'custom_post_type_editor_tip', 1 );
 
 
 
@@ -89,7 +89,7 @@ function custom_post_type_trips() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 4,
+		'menu_position'         => 6,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -160,7 +160,7 @@ function custom_post_type_places() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 5,
+		'menu_position'         => 4,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -194,7 +194,7 @@ function custom_post_type_companies() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 5,
+		'menu_position'         => 3,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,

@@ -75,21 +75,6 @@
 	}
 }
 
-
-.mentioned {
-	&__outer {
-		animation:fadeInUp 0.35s;
-		opacity:0;
-		animation-fill-mode:forwards;
-		@for $i from 1 through 10 {
-			&:nth-child(#{$i}) { 
-				animation-delay:(0.1s * $i); 
-			}
-		}
-	}
-}
-
-
 .editorial-mentions {
 	list-style:none;
 }
