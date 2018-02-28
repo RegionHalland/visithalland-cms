@@ -11,10 +11,11 @@
 		width:100%;
 		max-width:450px;
 		text-decoration: none;
-		line-height: 1rem;
+		line-height: 1.125rem;
+		font-size:1rem;
 		font-family:$rift-font-family;
 		font-weight:bold;
-		padding: 0.9em $space-3;
+		padding: 0.65em $space-2;
 		@media (min-width:$breakpoint-md) {
 			padding: 0.9em $space-3;
 			font-size: 0.9rem;
@@ -28,8 +29,13 @@
 
 .algolia-autocomplete {
 	background:$white;
-	padding:$space-3;
+	padding:$space-2;
+
+	@media (min-width:$breakpoint-sm) {
+		padding:$space-3;
+	}
 	z-index:$z3;
+	-webkit-overflow-scrolling:touch;
 	border-radius:0 0 $border-radius $border-radius ;
 	max-height:500px;
 	overflow:scroll;
