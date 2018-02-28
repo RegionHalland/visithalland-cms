@@ -11,7 +11,7 @@
 		<div class="clearfix mt5">
 			<div class="col-11 md-col-10 lg-col-10 mx-auto">
 				<h2 class="mb1">Dina sökresultat</h2>
-				<a href="#" class="algolia-powered-by-link mb2 block" title="Algolia">
+				<a href="#" class="algolia-powered-by-link mb2 inline-block" title="Algolia">
 					<svg width="130" viewBox="0 0 130 18" xmlns="http://www.w3.org/2000/svg">
 					  <title>Search by Algolia</title>
 					  <defs>
