@@ -39,16 +39,17 @@ jQuery(function() {
 
 	$('.search-button, .search-close-button').on('click', function(){
 		$('.header-search, .header__top-section').toggleClass('search-open');
-		$('.header-search').fadeToggle(400);
 		if ($('.header-search').attr('aria-expanded') === "false") {
+			$('.header-search').fadeIn(400);
 			$('.header-search').attr( 'aria-expanded', 'true');
 			$('.searchform__input').focus();
 		}
 	    else {
+	    	$('.algolia-autocomplete').fadeOut(100);
+	    	$('.header-search').fadeOut(400);
 			$('.header-search').attr( 'aria-expanded', 'false');
-			$('.algolia-autocomplete').fadeOut(100);
 			$('.searchform__input').val('');
-			console.log("HIIIIDE DAMNIT");
+			console.log("Hide DAMNIT");
 		}
 	});
 
