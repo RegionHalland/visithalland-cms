@@ -136,7 +136,7 @@ jQuery(function() {
 		}
 	    else {
 			$('.header-search').attr( 'aria-expanded', 'false');
-			$('.searchform__input').blur();
+			$('.algolia-autocomplete').fadeOut(100);
 		}
 	});
 
