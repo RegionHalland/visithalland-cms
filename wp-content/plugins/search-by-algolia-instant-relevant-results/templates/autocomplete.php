@@ -6,45 +6,6 @@
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
 
-
-  <!-- <# if ( data.post_type == 'happening' ) { #>
-	<article class="happening-list-item mt3 {{{ data.taxonomy.slug }}}">
-        <a href="{{ data.permalink }}" title="{{ data.post_title }}" class="link-reset">
-            <div class="clearfix">
-                <div class="col col-5 sm-col-4">
-                    <div class="happening-list-item__img-container topographic-pattern relative">
-                    	<picture>
-                    		<img class="happening-list-item__img lazyload"
-                                data-src="{{ data.images.thumbnail.url }}"
-                                alt="{{ data.post_title }}"
-                        	/>
-            			</picture>
-                    </div>
-                </div>
-                <div class="happening-list-item__date">
-					<div class="date-badge">
-					    <span class="date-badge__day">22</span>
-					    <span class="date-badge__month">jan</span>
-					</div>
-                </div>
-                <div class="happening-list-item__content col col-7 sm-col-8">
-                    <h4 class="">{{{ data._highlightResult.post_title.value }}}</h4>
-                    <div class="read-more">
-				    	<span class="read-more__text">
-				    		Läs mer
-				    	</span>
-				    	<div class="read-more__button">
-					    	<svg class="icon read-more__icon">
-                            	<use xlink:href="#arrow-right-icon"/>
-                        	</svg>
-                    	</div>
-				    </div>
-                </div>
-            </div>
-        </a>
-    </article>
-  <# } #> -->
-
   <# if ( data.post_type == 'happening' ) { #>
   <a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
 	<# if ( data.images.thumbnail ) { #>
@@ -332,8 +293,7 @@
 
 <script type="text/html" id="tmpl-autocomplete-empty">
   <div class="autocomplete-empty">
-	  <?php esc_html_e( 'No results matched your query ', 'algolia' ); ?>
-	<span class="empty-query">"{{ data.query }}"</span>
+	  <h4 class="my3"><?php esc_html_e( 'Inga sökresultat hittade', 'algolia' ); ?></h4>
   </div>
 </script>
 
