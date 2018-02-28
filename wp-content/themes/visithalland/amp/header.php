@@ -3,6 +3,7 @@
     <head>
     <meta charset="utf-8">
     <title><?php the_title() ?></title>
+    <?php wp_head(); ?>
     <link rel="canonical" href="./regular-html-version.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <?php echo "<style amp-custom>" . file_get_contents(get_stylesheet_directory_uri() . "/assets/dist/css/amp.min.css") . "</style>" ?>
