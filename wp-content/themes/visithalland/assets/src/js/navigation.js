@@ -51,7 +51,6 @@ jQuery(function() {
 	    	$('.header-search').fadeOut(400);
 			$('.header-search').attr( 'aria-expanded', 'false');
 			$('.searchform__input').val('');
-			console.log("Hide DAMNIT");
 		}
 	});
 

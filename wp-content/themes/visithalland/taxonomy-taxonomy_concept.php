@@ -361,7 +361,7 @@ $term = get_queried_object(); ?>
 							            			<source
 						                            	data-srcset="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" ?>" />
 
-							                        <img class="article-medium__img lazyload z3"
+							                        <img class="article-medium__img lazyload"
 							                                data-src="<?php echo get_the_post_thumbnail_url( $value->ID, 'vh_medium' ); ?>" 
 							                                alt="<?php echo $alt ?>"  
 							                        />
