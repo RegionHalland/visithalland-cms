@@ -1,27 +1,26 @@
 {
-  "name": "roots/bedrock",
+  "name": "regionhalland/visithalland",
   "type": "project",
   "license": "MIT",
-  "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
-  "homepage": "https://roots.io/bedrock/",
+  "description": "visithalland.com",
+  "homepage": "https://www.visithalland.com/",
   "authors": [
     {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
+      "name": "Sebastian Marcusson",
+      "email": "sebastian@digitaliseringsbyran.se",
+      "homepage": "https://github.com/sebastiansson"
     },
     {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
+      "name": "Albin Martinsson",
+      "email": "albin@digitaliseringsbyran.se",
+      "homepage": "https://github.com/albinmartinsson91"
     }
   ],
   "keywords": [
-    "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
+    "wordpress", "visithalland", "region halland", "halland", "composer"
   ],
   "support": {
-    "issues": "https://github.com/roots/bedrock/issues",
-    "forum": "https://discourse.roots.io/category/bedrock"
+    "issues": "https://github.com/RegionHalland/visithalland-cms/issues"
   },
   "config": {
     "preferred-install": "dist"
@@ -42,7 +41,55 @@
           "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
         }
       }
-    }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpml/sitepress-multilingual-cms",
+        "version": "3.9.3",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321072&version=3.9.3"
+        }
+      }
+	},
+	{
+		"type": "package",
+		"package": {
+			"name": "wpml/wpml-string-translation",
+			"version": "2.7.3",
+			"type": "wordpress-plugin",
+			"dist": {
+				"type": "zip",
+				"url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3"
+			}
+		}
+	},
+	{
+		"type": "package",
+		"package": {
+			"name": "wpml/acfml",
+			"version": "0.7",
+			"type": "wordpress-plugin",
+			"dist": {
+				"type": "zip",
+				"url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=0.7"
+			}
+		}
+	},
+	{
+		"type": "package",
+		"package": {
+			"name": "wpml/wpml-media-translation",
+			"version": "2.3.3",
+			"type": "wordpress-plugin",
+			"dist": {
+				"type": "zip",
+				"url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3"
+			}
+		}
+	}
   ],
   "require": {
     "php": ">=5.6",
@@ -63,7 +110,10 @@
     "wpackagist-plugin/schema": "dev-trunk",
     "wpackagist-plugin/search-by-algolia-instant-relevant-results": "2.10.0",
     "yoast/wordpress-seo": "6.3.1",
-    "advanced-custom-fields/advanced-custom-fields-pro": "*"
+    "advanced-custom-fields/advanced-custom-fields-pro": "*",
+    "wpml/sitepress-multilingual-cms": "*",
+    "wpml/wpml-string-translation": "*",
+    "wpml/wpml-media-translation": "*"
 
   },
   "require-dev": {

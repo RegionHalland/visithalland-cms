@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "31e54a41eb27bccfab5b3b5b5121cc29",
+    "content-hash": "421fc07d692ea074ee72c705e92e2b2b",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -672,6 +672,43 @@
             "homepage": "https://wordpress.org/plugins/search-by-algolia-instant-relevant-results/"
         },
         {
+            "name": "wpml/sitepress-multilingual-cms",
+            "version": "3.9.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321072&version=3.9.3",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "^1.0",
+                "philippbaschke/acf-pro-installer": "^1.0"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "wpml/wpml-media-translation",
+            "version": "2.3.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "wpml/wpml-string-translation",
+            "version": "2.7.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "xrstf/composer-php52",
             "version": "v1.0.20",
             "source": {
@@ -972,6 +1009,17 @@
                 "standards"
             ],
             "time": "2018-02-20T21:35:23+00:00"
+        },
+        {
+            "name": "wpml/acfml",
+            "version": "0.7",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=0.7",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
         }
     ],
     "aliases": [],
