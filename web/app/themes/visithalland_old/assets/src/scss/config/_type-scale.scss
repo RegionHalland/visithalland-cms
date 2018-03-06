@@ -1,0 +1,28 @@
+//
+// @name Typescale
+// @page Config/Typescale
+//
+// @description
+// This module provides utilities for adjusting font-size.
+// 
+// @markup
+//   <p class="h1">Heading 1</p>
+//   <p class="h2">Heading 2</p>
+//   <p class="h3">Heading 3</p>
+//   <p class="h4">Heading 4</p>
+//   <p class="h5">Heading 5</p>
+//   <p class="h6">Heading 6</p>
+//
+
+* {
+	&.light {
+		color:$white;
+	}
+} 
+
+h1, .h1 { font-size: $h1 }
+h2, .h2 { font-size: $h2 }
+h3, .h3 { font-size: $h3 }
+h4, .h4 { font-size: $h4 }
+h5, .h5 { font-size: $h5 }
+h6, .h6 { font-size: $h6 }
