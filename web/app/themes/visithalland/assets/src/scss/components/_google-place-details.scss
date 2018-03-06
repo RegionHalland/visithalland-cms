@@ -1,0 +1,56 @@
+.details {
+	padding:$space-3 0;
+	position:relative;
+	&__section {
+		margin-top:$space-4;
+	}
+
+	&__icon {
+		width:17.5px;
+		@include themify {
+		 	fill:$color-primary;
+		}
+	}
+	&__section-label {
+		font-family: $rift-font-family;
+		font-size:1rem;
+		font-weight:bold;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 0;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+
+	}
+
+	&__phone {
+		font-family: $rift-font-family;
+		font-size:1.2em;
+		vertical-align: top;
+		font-weight:bold;
+		i {
+			vertical-align: middle;
+		}
+	}
+
+	&__open-hours {
+
+	}
+
+	&__open-hour {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		font-size:1rem;
+		padding:$space-1 0;
+		@media (min-width:$breakpoint-sm){
+			font-size:0.9rem;
+		}
+	}
+}

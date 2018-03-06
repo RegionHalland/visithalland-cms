@@ -1,0 +1,110 @@
+html {
+	box-sizing: border-box;
+	text-size-adjust: 100%;
+	
+	@media (min-width: $breakpoint-md) {
+		font-size: 112.5%; /* 18px */
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: $fira-font-family;
+	line-height: 1;
+
+	@media (min-width:$breakpoint-lg) {
+		background:palette(grey, x-light);
+	}
+	// Added font-smoothing to prevent smudges - please review performance
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $paragraph-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $rift-font-family;
+	font-weight: 800;
+	color: $black;
+}
+
+p {
+	line-height: 1.5;
+}
+
+strong,
+.strong { font-weight: $bold-font-weight }
+
+em, .em,
+i, .i { font-style: italic }
+
+a {
+	text-decoration: none;
+	color: palette(black, dark);
+}
+
+table {
+	width: 100%;
+	max-width: 100%;
+}
+
+th { 
+	font-weight: $bold-font-weight;
+	vertical-align: bottom; 
+	text-align: left;
+}	
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre,
+code,
+kbd,
+samp {
+	font-size: 1rem;
+}
+
+pre {
+	margin-top: 0;
+	overflow: auto;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 75%;
+	line-height: 0;
+}
+
+sub { bottom: -0.25em }
+sup { top: -0.5em }
+
+figcaption {
+	font-size: $h5;
+	font-style: italic;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: palette(grey, light)
+}
+
+input {
+	font-family: inherit;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1;
+	background: none;
+	appearance: none;
+	border: 0;
+	padding: 0;
+	border-radius: 0;
+}

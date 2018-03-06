@@ -1,0 +1,91 @@
+// Spacing
+$space-1: .25rem;
+$space-2: .5rem;
+$space-3: 1rem;
+$space-4: 2rem;
+$space-5: 4rem;
+$space-6: 8rem;
+
+// Type-scale
+$h1: 2.65rem;
+$h2: 1.75rem;
+$h3: 1.5rem;
+$h4: 1.4rem;
+$h5: .875rem;
+$h6: .75rem;
+
+// Typography
+$fira-font-family:   "fira-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$rift-font-family: "rift-soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$shelby-font-family: "shelby", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$line-height-1: 1;
+$line-height-2: 1.125;
+$line-height-3: 1.25;
+$line-height-4: 1.5;
+$letter-spacing: 1;
+$caps-letter-spacing: .2em;
+$bold-font-weight: bold;
+
+$border-radius: 4px;
+
+// Colors
+$brand-primary-color: #ee4340;
+$paragraph-color: palette(black, light);
+
+//Colors
+$white    : #fff;
+$black    : #05242D;
+$grey     : #C0C8CA;
+$orange   : #F06E08;
+
+$palettes: (
+	grey: (
+		xx-light : lighten($grey, 20%),
+		x-light  : lighten($grey, 16%),
+		light    : lighten($grey, 10%),
+		base     : $grey,
+		dark     : darken($grey, 8%),
+		x-dark   : darken($grey, 30%),
+		xx-dark   : darken($grey, 45%)
+	),
+
+	black: (
+		xx-light  : lighten($black, 10%),
+		x-light  : lighten($black, 5%),
+		light    : lighten($black, 1%),
+		base     : $black,
+		dark     : darken($black, 2%),
+		x-dark     : darken($black, 5%)
+	)
+);
+
+// Darken
+$darken-1: rgba(0, 0, 0, .0625);
+$darken-2: rgba(0, 0, 0, .125);
+$darken-3: rgba(0, 0, 0, .25);
+
+
+// Widths
+$width-1: 24rem;
+$width-2: 32rem;
+$width-3: 48rem;
+$width-4: 64rem;
+
+// Container
+$container-max-width: 1600px;
+
+// Breakpoints
+
+//Small Tablets (portrait)
+$breakpoint-sm: 40em;
+//Tablet (Landscape)
+$breakpoint-md: 60em;
+//Laptop and up
+$breakpoint-lg: 80em;
+
+// Z-index
+$z1: 1;
+$z2: 2;
+$z3: 3;
+$z4: 4;
+

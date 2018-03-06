@@ -1,0 +1,29 @@
+
+
+
+#infinite-container > #infinite-container {
+	animation: fadeInNow 1s;
+	animation-fill-mode:forwards;
+}
+
+@keyframes fadeInNow {
+	from {
+		transform:translateY(10px);
+	}
+	to {
+		transform:translateY(0px);
+	}
+}
+
+.page-load-status {
+	font-family:$rift-font-family;
+	font-weight:bold;
+	color:palette(grey, base);
+	text-align:center;
+	padding:$space-4;
+}
+
+
+.next-post-link {
+	display:none;
+}

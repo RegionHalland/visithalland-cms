@@ -1,0 +1,75 @@
+.business {
+	&__details {
+		@media (min-width:$breakpoint-md) {
+			padding-left:$space-5;
+		}
+	}
+}
+
+
+
+
+.business-header {
+	&__backdrop {
+		width:100%;
+		background-color:palette(black, x-light);
+		position:relative;
+		height:230px;
+		@media(min-width:$breakpoint-lg) {
+			height:375px;
+		}
+	}
+
+	&__inner {
+		@media(min-width:$breakpoint-lg) {
+			margin-top:-150px;
+		}
+		margin-top:-100px;
+		z-index:$z3;
+	}
+
+	&__title {
+		font-size:2.2rem;
+		&::after {
+			content:'';
+			display:block;
+			width:20px;
+			height:5px;
+			margin:$space-3 0;
+			border-radius:$border-radius;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+		@media(min-width:$breakpoint-sm) {
+			font-size:2.65rem;
+		}
+	}
+
+	&__details {
+	    color:palette(black,dark);
+	}
+
+	&__content {
+		padding:$space-2 0;
+		margin-top:$space-2;
+		
+	}
+
+	&__img-container {
+		position:relative;
+		padding-bottom:66.66%;
+		background-color:palette(black, base);
+		overflow: hidden;
+		border-radius: $border-radius;
+	}
+
+	&__img {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		z-index:$z1;
+	}
+}

@@ -1,0 +1,30 @@
+.happening-page {
+
+}
+
+.happening-page-header {
+	&__backdrop {
+		background-color:palette(black, dark);
+
+		@media(min-width:$breakpoint-sm) {
+			height:600px;
+		}
+
+		@media(min-width:$breakpoint-md) {
+			height:750px;
+		}
+		height:525px;
+		z-index:1;
+		position:absolute;
+		width:100%;
+		top:0;
+		left:0;
+		right:0;
+	}
+	&__inner {
+		z-index:2;
+		position: relative;
+		margin-top:$space-6;
+		padding-top:$space-4;
+	}
+}

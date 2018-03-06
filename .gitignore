@@ -8,6 +8,10 @@ web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 
+# Cache
+web/app/cache
+web/app/ewww
+
 # WordPress
 web/wp
 web/.htaccess

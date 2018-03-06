@@ -1,0 +1,14 @@
+.image-credit--large {
+	padding:$space-2;
+
+	&__author {
+		font-style:italic;
+		color:$white;
+		font-size:0.8rem;
+	}
+
+	&__icon {
+		fill:$white;
+		margin-right:$space-2;
+	}
+}

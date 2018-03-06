@@ -1,0 +1,64 @@
+.concept-thumbnail-small {
+	&__img-container {
+		padding-bottom:66%;
+		position:relative;
+		overflow: hidden;
+		border-radius:$border-radius;
+		background-color:palette(black, base);
+		@media(min-width:$breakpoint-sm) {
+			padding-bottom:100%;
+		}
+		&::before {
+			content:'';
+			position:absolute;
+			top:0;
+			left:0;
+			height:100%;
+			width:100%;
+			z-index: $z3;
+			background:rgba(0,0,0,0.35);
+		}
+	}
+	&__img {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		z-index:$z1;
+	}
+
+	&__icon {
+		border-radius:$border-radius;
+		@include themify {
+	        height:30px;
+	        width:30px;
+	        @media(min-width:$breakpoint-lg) {
+		    	height:35px;
+	        	width:35px;
+		    }
+	        background-size:100%;
+	        background-position:center;
+	        background-repeat:no-repeat;
+	        background-color:$color-primary;
+	        background-image:$icon;
+	    }
+	}
+
+	&__inner {
+		position:absolute;
+		top:50%;
+		left:50%;
+		width:100%;
+		text-align: center;
+		transform:translate(-50%, -50%);
+		z-index: $z3;
+	}
+
+	&__title {
+		font-size:1.8em;
+		color:$white;
+		@media(min-width:$breakpoint-sm) {
+			font-size:2.1em;
+		}
+	}
+}

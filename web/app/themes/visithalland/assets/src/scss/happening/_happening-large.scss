@@ -1,0 +1,63 @@
+.happening-large {
+	&__img-container {
+		overflow: hidden;
+		position:relative;
+		background-color:palette(black, base);
+		border-radius:$border-radius;
+		padding-bottom:66%;
+	}
+
+	&__img {
+		width:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		transition: transform 0.35s;
+	}
+
+	&__title {
+		font-size:2rem;
+		&::after {
+			content:'';
+			display:block;
+			width:15px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+	}
+	
+	&__info {
+		margin-top:$space-4;
+	}
+
+	&__date {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		font-size:1.75rem;
+	}
+
+	&__info-title {
+		font-family: $rift-font-family;
+		font-weight:bold;
+		font-size:1.1rem;
+		color:palette(black, light);
+		&::after {
+			content:'';
+			display:block;
+			width:15px;
+			height:5px;
+			border-radius:$border-radius;
+			margin:$space-3 0;
+			background-color:palette(grey, light);
+			@include themify {
+	        	background:$color-primary;
+	        }
+		}
+
+	}
+}
