@@ -1,7 +1,6 @@
-# Visithalland-cms 🗺
+# visithalland-cms 🗺
 
 Visithalland is a Wordpress theme based on [Sage](https://github.com/roots/sage).
-
 
 ## Features
 
@@ -11,14 +10,6 @@ Visithalland is a Wordpress theme based on [Sage](https://github.com/roots/sage)
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
 * Autoloader for mu-plugins (use regular plugins as mu-plugins)
 * Enhanced security (separated web root and secure passwords with [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt))
-
-Use [Trellis](https://github.com/roots/trellis) for additional features:
-
-* Easy development environments with [Vagrant](http://www.vagrantup.com/)
-* Easy server provisioning with [Ansible](http://www.ansible.com/) (Ubuntu 16.04, PHP 7.1, MariaDB)
-* One-command deploys
-
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
 
 ## Requirements
 
@@ -39,19 +30,13 @@ See a complete working example in the [roots-example-project.com repo](https://g
   * `DB_PASSWORD` - Database password
   * `DB_HOST` - Database host
   * `WP_ENV` - Set to environment (`development`, `staging`, `production`)
-  * `WP_HOME` - Full URL to WordPress home (http://example.com)
-  * `WP_SITEURL` - Full URL to WordPress including subdirectory (http://example.com/wp)
+  * `WP_HOME` - Full URL to WordPress home (http://visithalland.test)
+  * `WP_SITEURL` - Full URL to WordPress including subdirectory (http://visithalland.test/wp)
   * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
 
-  If you want to automatically generate the security keys (assuming you have wp-cli installed locally) you can use the very handy [wp-cli-dotenv-command][wp-cli-dotenv]:
+  You can cut and paste from the [Roots WordPress Salt Generator](https://roots.io/salts.html).
 
-      wp package install aaemnnosttv/wp-cli-dotenv-command
-
-      wp dotenv salts regenerate
-
-  Or, you can cut and paste from the [Roots WordPress Salt Generator][roots-wp-salt].
-
-4. Follow Wordpress installation guide at `http://example.com/wp/wp-admin`
+4. Follow Wordpress installation guide at `http://visithalland.test/wp/wp-admin`
 
 ## Deploys 
 
@@ -65,8 +50,7 @@ Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://r
 
 ## Contributing
 
-Contributions are welcome from everyone. [File a bug! 🐞](https://github.com/RegionHalland/visithalland-cms/issues)
-
+Contributions are welcome from everyone. [File a bug! 🐞](https://github.com/RegionHalland/visithalland-cms/issues/new). Don't be afraid of our swedish, you can use english.
 ## Community
 
 TBA
