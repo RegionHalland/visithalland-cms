@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Sober\Controller\Controller;
@@ -34,17 +35,50 @@ class App extends Controller
 	{
 		$langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
 
+        $langs = array_filter($langs, function($lang) {
+            return $lang["active"] == false;
+        });
+
 		return $langs;
-		//$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
-		//$menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
 	}
 
 	public function secondaryMenuItems()
 	{
-		$secondary_menu_items = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+        $lang_menu_code = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+		$secondary_menu_items = wp_get_nav_menu_items("sekundar-meny" . $lang_menu_code);
 
 		return $secondary_menu_items;
+    }
 
-		//$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
-	}
+    function vh_get_happenings($numberposts = 3)
+    {
+        $tax_query = array();
+
+        $posts = get_posts(array(
+            'post_type' => array(
+                "happening"
+            ),
+            'numberposts'  => $numberposts,
+            'tax_query' 	 => $tax_query,
+            'suppress_filters' => false
+        ));
+
+        foreach ($posts as $key => $value) {
+            $value->meta_fields = get_fields($value->ID);
+            $value->author = vh_get_author($value->post_author);
+            $value->taxonomy = array(
+                "name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->name,
+                "slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->slug
+            );
+        }
+
+        //Sort happenings by start date
+        usort($posts, function ($a, $b) {
+            return strcmp(strtotime($a->meta_fields["start_date"]), strtotime($b->meta_fields["start_date"]));
+        });
+
+        return $posts;
+    }
+
+    }
 }

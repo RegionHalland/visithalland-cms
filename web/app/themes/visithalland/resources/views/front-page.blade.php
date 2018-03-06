@@ -14,7 +14,5 @@
 		@include('partials.content-'.get_post_type())
 	@endwhile
 
-	{{$hej}}
-
 	{!! get_the_posts_navigation() !!}
 @endsection

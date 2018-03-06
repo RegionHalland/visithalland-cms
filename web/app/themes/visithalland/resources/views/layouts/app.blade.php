@@ -3,8 +3,6 @@
 	@include('partials.head')
 	<body @php(body_class())>
 
-	{{$site_name}}
-
 	<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC8VK82"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
