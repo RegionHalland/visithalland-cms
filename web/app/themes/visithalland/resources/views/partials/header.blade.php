@@ -13,12 +13,10 @@
 					</svg>
 				</button>
 
-
 				<div class="header__support-links">
 					<?php
-						$langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
-						$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
-						$menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+
+
 
 						//Language switcher
 						foreach ($langs as $key => $val) : ?>
@@ -29,7 +27,7 @@
 							<?php endif; ?>
 						<?php endforeach; ?>
 						<?php
-						foreach ($menuItems as $key => $value) : ?>
+						foreach ($secondary_menu_items as $key => $value) : ?>
 							<a href="<?php echo $value->url ?>" class="header__support-link">
 								<span><?php echo $value->title ?></span>
 							</a>

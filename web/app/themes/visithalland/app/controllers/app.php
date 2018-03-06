@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Sober\Controller\Controller;
@@ -29,5 +28,23 @@ class App extends Controller
             return __('Not Found', 'sage');
         }
         return get_the_title();
-    }
+	}
+
+	public function langs()
+	{
+		$langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+
+		return $langs;
+		//$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+		//$menuItems = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+	}
+
+	public function secondaryMenuItems()
+	{
+		$secondary_menu_items = wp_get_nav_menu_items("sekundar-meny" . $langMenuCode);
+
+		return $secondary_menu_items;
+
+		//$langMenuCode = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+	}
 }

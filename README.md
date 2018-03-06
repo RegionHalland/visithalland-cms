@@ -38,9 +38,8 @@ Visithalland is a Wordpress theme based on [Sage](https://github.com/roots/sage)
 
 4. Follow Wordpress installation guide at `http://visithalland.test/wp/wp-admin`
 
-## Deploys 
-
-TBA
+## Coding Standards
+All code authored by us should be according to the [PSR-2 standard](https://www.php-fig.org/psr/psr-2/).
 
 ## Documentation 📖
 TBA
@@ -48,9 +47,9 @@ TBA
 See -
 Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
 
+
 ## Contributing
-
 Contributions are welcome from everyone. [File a bug! 🐞](https://github.com/RegionHalland/visithalland-cms/issues/new). Don't be afraid of our swedish, you can use english.
-## Community
 
+## Community
 TBA
