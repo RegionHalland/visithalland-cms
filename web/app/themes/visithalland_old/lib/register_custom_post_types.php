@@ -73,15 +73,15 @@ add_action( 'init', 'custom_post_type_editor_tip', 1 );
 
 
 // Register Trip ideas
-function custom_post_type_trips() {
+function custom_post_type_spotlight() {
 	$labels = array(
-		'name'                  => _x( 'Äventyr', 'Post Type General Name', 'visithalland' ),
-		'singular_name'         => _x( 'Äventyr', 'Post Type Singular Name', 'visithalland' ),
-		'menu_name'             => __( 'Äventyr', 'visithalland' ),
-		'name_admin_bar'        => __( 'Äventyr', 'visithalland' ),
+		'name'                  => _x( 'Spotlight', 'Post Type General Name', 'visithalland' ),
+		'singular_name'         => _x( 'Spotlight', 'Post Type Singular Name', 'visithalland' ),
+		'menu_name'             => __( 'Spotlight', 'visithalland' ),
+		'name_admin_bar'        => __( 'Spotlight', 'visithalland' ),
 	);
 	$args = array(
-		'label'                 => __( 'Äventyr', 'visithalland' ),
+		'label'                 => __( 'Spotlight', 'visithalland' ),
 		'description'           => __( 'Post Type Description', 'visithalland' ),
 		'labels'                => $labels,
 		'supports'              => array('title', 'author', 'revisions', 'thumbnail', 'editor'),
@@ -99,12 +99,12 @@ function custom_post_type_trips() {
 		'capability_type'       => 'post',
 		'show_in_rest'       => true,
 		'menu_icon'           => 'dashicons-location-alt',
-		'rewrite' => array( 'slug' => '%taxonomy_concept%/trip', 'with_front' => false )
+		'rewrite' => array( 'slug' => '%taxonomy_concept%/spotlight', 'with_front' => false )
 	);
-	register_post_type( 'trip', $args );
+	register_post_type( 'spotlight', $args );
 
 }
-add_action( 'init', 'custom_post_type_trips', 1 );
+add_action( 'init', 'custom_post_type_spotlights', 1 );
 
 
 
