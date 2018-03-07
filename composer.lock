@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "421fc07d692ea074ee72c705e92e2b2b",
+    "content-hash": "fc515b485ecf35ce27696654d4ff4f6c",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -362,6 +362,68 @@
                 "wp"
             ],
             "time": "2016-07-20T10:19:36+00:00"
+        },
+        {
+            "name": "regionhalland/visithalland-custom-post-types",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
+                "reference": "ac631929c0a9c893531eaf0b59ace87e958836a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/ac631929c0a9c893531eaf0b59ace87e958836a6",
+                "reference": "ac631929c0a9c893531eaf0b59ace87e958836a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7"
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Marcusson",
+                    "email": "sebastian@digitaliseringsbyran.se"
+                }
+            ],
+            "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
+            "time": "2018-03-07T12:38:21+00:00"
+        },
+        {
+            "name": "regionhalland/visithalland-custom-taxonomies",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RegionHalland/visithalland-custom-taxonomies.git",
+                "reference": "49b726ed05e4251ed9eed88b57aaaae472b93a06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/49b726ed05e4251ed9eed88b57aaaae472b93a06",
+                "reference": "49b726ed05e4251ed9eed88b57aaaae472b93a06",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7"
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Marcusson",
+                    "email": "sebastian@digitaliseringsbyran.se"
+                }
+            ],
+            "description": "Wordpress plugin for adding custom taxonomies used on https://www.visithalland.com.",
+            "time": "2018-03-07T12:41:44+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",

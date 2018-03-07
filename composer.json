@@ -113,7 +113,9 @@
     "advanced-custom-fields/advanced-custom-fields-pro": "*",
     "wpml/sitepress-multilingual-cms": "*",
     "wpml/wpml-string-translation": "*",
-    "wpml/wpml-media-translation": "*"
+    "wpml/wpml-media-translation": "*",
+    "regionhalland/visithalland-custom-post-types": "^1.0",
+    "regionhalland/visithalland-custom-taxonomies": "^1.0"
 
   },
   "require-dev": {
