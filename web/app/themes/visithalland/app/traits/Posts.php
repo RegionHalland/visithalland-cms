@@ -26,11 +26,6 @@ trait Posts
             // Get all ACF meta_fields of the WP_post
             $value->meta_fields = get_fields($value->ID);
             $value->terms = self::getTerms($value);
-
-            /*$value->taxonomy = array(
-                "name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->name,
-                "slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->slug
-            );*/
         }
 
         // Sort happenings by start date asc.

@@ -103,8 +103,36 @@
 				    @endif
 				</div>
             </div>
+        </section>
 
-		</section>
+        <section class="header-search topographic-pattern flex justify-between relative z2" aria-expanded="false">
+            <?php
+                //Display search form
+                get_search_form()
+            ?>
+        </section>
+
+        <!--- Navigation Start -->
+        <nav class="navigation center topographic-pattern">
+            <div class="navigation__inner">
+                 @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
+                    @if(is_array($primary_navigation_items))
+                        @foreach($primary_navigation_items as $key => $navigation_item)
+                            <div class="navigation__item {{json_encode($navigation_item->url)}}">
+                                <a href="<?php echo $navigation_item->url ?>" class="navigation__link link-reset <?php echo array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                                    <div class="navigation__icon-wrapper">
+                                        <div class="navigation__icon"></div>
+                                    </div>
+                                    <span><?php echo $navigation_item->title ?></span>
+                                </a>
+                            </div>
+
+                        @endforeach
+                    @endif
+            </div>
+        </nav>
+        <!--- Navigation End -->
+
 
 	</div>
 </header>

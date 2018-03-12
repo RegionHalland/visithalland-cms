@@ -7,6 +7,7 @@ use Sober\Controller\Controller;
 class App extends Controller
 {
     use Traits\Posts;
+    use Traits\Navigation;
 
     public function siteName()
     {

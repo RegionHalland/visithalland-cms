@@ -67,4 +67,26 @@ add_filter('comments_template', function ($comments_template) {
         $comments_template
     );
     return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
-});
+}, 10, 1);
+
+
+/*
+
+Custom Visithalland filters
+
+*/
+
+// Add active class to current menu item
+add_filter('wp_get_nav_menu_items', function ($items, $menu, $args)
+{
+    _wp_menu_item_classes_by_context($items);
+
+    foreach ($items as $key => $value) {
+        //if we have a current menu-item or a current-menu-parent page add our own active class
+        if (in_array("current-menu-item", $value->classes) || in_array("current-menu-parent", $value->classes)) {
+            array_push($value->classes, "active");
+        }
+    }
+    return $items;
+
+}, 10, 3);
