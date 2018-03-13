@@ -72,7 +72,7 @@ add_action('after_setup_theme', function () {
 /**
  * Register sidebars
  */
-add_action('widgets_init', function () {
+/*add_action('widgets_init', function () {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget'  => '</section>',
@@ -87,7 +87,7 @@ add_action('widgets_init', function () {
         'name'          => __('Footer', 'sage'),
         'id'            => 'sidebar-footer'
     ] + $config);
-});
+});*/
 
 /**
  * Updates the `$post` variable on each iteration of the loop.

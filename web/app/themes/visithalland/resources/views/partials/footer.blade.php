@@ -8,7 +8,7 @@
             <!-- Footer Site Info Start -->
             <div class="footer__column col sm-col-6 col-12 md-col-5">
                 <img src="@asset('images/logo.svg')" />
-                <p class="footer__intro light mt1"><?php bloginfo('description'); ?></p>
+                <p class="footer__intro light mt1">{{ bloginfo('description') }}</p>
                 <div class="footer-contact mt3">
                     <a href="mailto:info@visithalland.com" target="_blank" class="footer-contact__a light">
                         <div class="footer-contact__icon-wrapper">
@@ -47,11 +47,11 @@
                     @if(is_array($primary_navigation_items))
                         @foreach($primary_navigation_items as $key => $navigation_item)
                             <div class="footer-nav__item footer__nav-item beach-coast">
-                                <a href="<?php echo $navigation_item->url ?>" class="footer-nav__link link-reset <?php echo array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                                <a href="{{ $navigation_item->url }}" class="footer-nav__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
                                     <div class="footer-nav__icon-wrapper">
                                         <div class="footer-nav__icon"></div>
                                     </div>
-                                    <span><?php echo $navigation_item->title ?></span>
+                                    <span>{{ $navigation_item->title }}</span>
                                 </a>
                             </div>
                         @endforeach
@@ -111,14 +111,13 @@
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
                         <p class="light footer__eu-paragraph mt0">
-                            <!-- This needs to be dynamic -->
-                            <?php echo get_field("eu_excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )); ?>
+                            <!-- TODO: Make dynamic -->
+                            {{ get_field("eu_excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )) }}
                         </p>
                     </div>
                 </div>
             </div>
             <!-- Footer European Union Credit End -->
-
 
         </div>
     </div>
@@ -129,12 +128,12 @@
         <div id="cookie-notice" class="cookie-banner col-12">
             <div class="cookie-banner__inner col-12 sm-col-6 md-col-4" tabindex="1">
                 <span class="cookie-banner__policy">
-                    <?php echo get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )); ?>
-                    <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' ) ); ?>" class="cookie-banner__link">
-                        <?php _e( 'Se användningsvillkor', 'visithalland' ); ?>
+                    {{ get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )) }}
+                    <a href="{{ get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' ) ) }}" class="cookie-banner__link">
+                        @php _e( 'Se användningsvillkor', 'visithalland' ) @endphp
                     </a>
                 </span>
-                <button id="cookie-consent" class="cookie-banner__button icon-button" id="cookie-accept" title="<?php _e( 'Stäng', 'visithalland' ); ?>" tabindex="2">
+                <button id="cookie-consent" class="cookie-banner__button icon-button" id="cookie-accept" title="@php _e( 'Stäng', 'visithalland' ) @endphp" tabindex="2">
                     <svg class="icon icon-button__icon">
                         <use xlink:href="#close-icon"/>
                     </svg>
