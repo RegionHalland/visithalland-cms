@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.page-header')
-    {{ get_the_post_thumbnail_url() }}
+    {{ get_the_post_thumbnail_url($post, "vh_hero_wide") }}
     <div class="container">
         <main role="main" class="container" id="main-content">
             <div class="landing-header relative">
@@ -11,11 +11,11 @@
                         <img src="@asset('images/landing-logo.svg')">
                     </span>
                     <picture>
-                        <source media="(min-width: 60em)" data-srcset="{{ get_the_post_thumbnail_url('vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url('vh_hero_wide@2x' ) . " 2x"  }}" />
-                        <source data-srcset="{{ get_the_post_thumbnail_url('vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url('vh_hero_tall@2x' ) . " 2x"  }}" />
+                        <source media="(min-width: 60em)" data-srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_wide@2x' ) . " 2x"  }}" />
+                        <source data-srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_tall') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_tall@2x') . " 2x"  }}" />
                         <img class="concept-header__img lazyload"
-                            data-src="{{ get_the_post_thumbnail_url('vh_hero_wide' ) }}"
-                            alt="<?php echo get_field("cover_image", get_option( 'page_on_front' ))["alt"] ?>" />
+                            data-src="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') }}"
+                            alt="{{ get_field("cover_image", $post->ID)["alt"] }}" />
                     </picture>
                 </div>
                 <div class="landing-eu clearfix z3">
@@ -47,7 +47,7 @@
                             </svg>
                         </div>
                         <div class="landing-concepts__title inline ml2">
-                            <?php _e( 'Vad gillar du?', 'visithalland' ); ?>
+                            @php _e( 'Vad gillar du?', 'visithalland' ) @endphp
                         </div>
                     </header>
                     <button class="slider-button landing-concepts__carousel--next right">
@@ -67,16 +67,17 @@
                     <div class="landing-concepts__carousel col-11 md-col-10 lg-col-10 mx-auto">
                         @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
                                 @foreach($primary_navigation_items as $key => $navigation_item)
+
                                     <div class="col col-10 sm-col-5 lg-col-4 px2 landing-concepts__item landing-concepts__item--small">
                                         <div class="concept-thumbnail-small beach-coast">
                                             <a href="{{ $navigation_item->url }}" class="link-reset">
                                                 <div class="concept-thumbnail-small__img-container">
                                                     <picture>
                                                         <source media="(min-width:40em)"
-                                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium_square"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium_square@2x"] . " 2x" ?>" />
+                                                            data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square@2x"] . " 2x" }}" />
                                                         <source
-                                                            data-srcset="<?php echo $current_term_cover_image["sizes"]["vh_medium"] . " 1x," . $current_term_cover_image["sizes"]["vh_medium@2x"] . " 2x" ?>" />
-                                                        <img class="concept-thumbnail-small__img lazyload" data-src="<?php echo $current_term_cover_image["sizes"]["vh_medium"] ?>" alt="<?php echo $current_term_cover_image["alt"] ?>" />
+                                                            data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium@2x"] . " 2x" }}" />
+                                                        <img class="concept-thumbnail-small__img lazyload" data-src="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium"] }}" alt="{{ $navigation_item->meta_fields["cover_image"]["alt"] }}" />
                                                     </picture>
                                                 <div class="concept-thumbnail-small__inner center">
                                                 <div class="concept-thumbnail-small__icon mx-auto mb2"></div>
@@ -97,9 +98,7 @@
                 @if(is_array($header_happenings))
 
                 <div class="landing-happenings clearfix mxn2 mt4">
-
                     <div class="col-11 md-col-10 lg-col-10 mx-auto">
-
                         <div class="landing-happenings__header px2 py3 flex justify-between items-center ">
                             <header class="landing-concepts__header inline-block">
                                 <div class="landing-concepts__badge inline">
@@ -108,41 +107,40 @@
                                     </svg>
                                 </div>
                                 <div class="landing-concepts__title inline ml2">
-                                    <?php _e( 'Just nu', 'visithalland' ); ?>
+                                    @php _e( 'Just nu', 'visithalland' ) @endphp
                                 </div>
                             </header>
-                            <a href="<?php echo get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("happenings")->ID, 'page' ) ); ?>" class="btn btn--primary coastal-living inline-block right"><?php _e( 'Visa fler', 'visithalland' ); ?></a>
-
+                            <a href="{{ get_permalink( apply_filters( 'wpml_object_id', get_page_by_path('happenings')->ID, 'page')) }}" class="btn btn--primary coastal-living inline-block right">link</a>
                         </div>
 
                         @foreach($header_happenings as $key => $happening)
                             <div class="col col-12 sm-col-4 px2 mt3">
                                 <article class="happening-list-item beach-coast">
-                                    <a href="<?php echo get_permalink($happening->ID) ?>" class="link-reset">
+                                    <a href="{{ get_permalink($happening->ID) }}" class="link-reset">
                                         <div class="clearfix">
                                             <div class="col col-5 sm-col-4 ">
                                                 <div class="happening-list-item__img-container topographic-pattern relative">
                                                     <picture>
-                                                            <source
-                                                            data-srcset="<?php echo get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" ?>" />
+                                                        <source
+                                                            data-srcset="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
                                                         <img class="happening-list-item__img lazyload"
-                                                            data-src="<?php echo get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ); ?>"
-                                                            alt="<?php echo get_field("cover_image")["alt"] ?>"
+                                                            data-src="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) }}"
+                                                            alt="{{ get_field("cover_image")["alt"] }}"
                                                         />
                                                     </picture>
                                                 </div>
                                             </div>
                                             <div class="happening-list-item__date">
                                                 <div class="date-badge">
-                                                    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $happening->ID))); ?></span>
-                                                    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $happening->ID))); ?></span>
+                                                    <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $happening->ID))) }}</span>
+                                                    <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $happening->ID))) }}</span>
                                                 </div>
                                             </div>
                                             <div class="happening-list-item__content col col-7 sm-col-8">
                                                 <h4 class="">{{ $happening->post_title }}</h4>
                                                 <div class="read-more">
                                                     <span class="read-more__text">
-                                                        <?php _e( 'Läs mer', 'visithalland' ); ?>
+                                                        @php _e('Läs mer', 'visithalland') @endphp
                                                     </span>
                                                     <div class="read-more__button">
                                                         <svg class="icon read-more__icon">
