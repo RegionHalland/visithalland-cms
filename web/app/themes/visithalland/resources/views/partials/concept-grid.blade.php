@@ -45,7 +45,6 @@
                                 </a>
                             </article>
                         </div>
-
                         @else
                             <div class="concept-grid__item col col-12 sm-col-6">
                                 <article class="article-medium relative beach-coast">
