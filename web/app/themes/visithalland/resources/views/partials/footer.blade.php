@@ -18,7 +18,7 @@
                         </div>
                         <span class="footer-contact__span">Email</span>
                     </a>
-                    <a href="https://www.facebook.com/visithallandcoastal/" target="_blank" class="footer-contact__a light">
+                    <a href="https://www.facebook.com/visithalland.se/" target="_blank" class="footer-contact__a light">
                         <div class="footer-contact__icon-wrapper facebook">
                             <svg class="footer-contact__icon">
                                 <use xlink:href="#facebook-icon"/>

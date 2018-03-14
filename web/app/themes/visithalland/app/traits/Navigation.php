@@ -28,4 +28,20 @@ trait Navigation
         return ["Error"];
     }
 
+    public function secondaryMenuItems()
+	{
+        /*
+            TODO: Make the secondary menu item non static. So it can be named anything. Maybe
+            we can use the theme_location instead.
+
+            If the language code is sv (Swedish) we don't prefix the menu name with the code because sv is default.
+            We assume that the secondary menu name is ”sekundar-meny” for swedish and ”sekundar-meny-{languagecode}” for other languages.
+        */
+
+        $lang_menu_code = ICL_LANGUAGE_CODE != "sv" ? "-" . ICL_LANGUAGE_CODE : "";
+		$secondary_menu_items = wp_get_nav_menu_items("sekundar-meny" . $lang_menu_code);
+
+		return $secondary_menu_items;
+    }
+
 }

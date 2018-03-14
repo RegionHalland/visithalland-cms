@@ -115,7 +115,7 @@
                 @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
                 @if(is_array($primary_navigation_items))
                     @foreach($primary_navigation_items as $key => $navigation_item)
-                        <div class="navigation__item {{ $navigation_item->meta_fields->class_name }}">
+                        <div class="navigation__item beach-coast {{ $navigation_item->meta_fields->class_name }}">
                             <a href="<?php echo $navigation_item->url ?>" class="navigation__link link-reset <?php echo array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')); ?>">
                                 <div class="navigation__icon-wrapper">
                                     <div class="navigation__icon"></div>

@@ -365,16 +365,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "ac631929c0a9c893531eaf0b59ace87e958836a6"
+                "reference": "a018618aefc661fc21c0b869a5f3dcb278dc8753"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/ac631929c0a9c893531eaf0b59ace87e958836a6",
-                "reference": "ac631929c0a9c893531eaf0b59ace87e958836a6",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/a018618aefc661fc21c0b869a5f3dcb278dc8753",
+                "reference": "a018618aefc661fc21c0b869a5f3dcb278dc8753",
                 "shasum": ""
             },
             "require": {
@@ -392,7 +392,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-03-07T12:38:21+00:00"
+            "time": "2018-03-14T10:48:46+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
@@ -1071,17 +1071,6 @@
                 "standards"
             ],
             "time": "2018-02-20T21:35:23+00:00"
-        },
-        {
-            "name": "wpml/acfml",
-            "version": "0.7",
-            "dist": {
-                "type": "zip",
-                "url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=0.7",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "wordpress-plugin"
         }
     ],
     "aliases": [],
