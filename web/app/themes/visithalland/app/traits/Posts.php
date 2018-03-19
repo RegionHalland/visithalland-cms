@@ -74,48 +74,45 @@ trait Posts
         }
 
         return $posts;
+    }
 
-        /*if (!isset($term)) {
-            $terms = wp_get_post_terms($post_id, 'taxonomy_concept', array( '' ));
-            $tax_query = array(
-                    array(
-                        'taxonomy' => 'taxonomy_concept',
-                        'field' 	 => 'id',
-                        'terms'	 => $terms[0]->term_id, // Where term_id of Term 1 is "1".
-                        'include_children' => false
-                    )
-                );
-            $exclude = array($post_id);
-        } else {
-            $tax_query = array(
-                    array(
-                        'taxonomy' => 'taxonomy_concept',
-                        'field' 	 => 'id',
-                        'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
-                        'include_children' => false
-                    )
-                );
+    public static function getNextPostLink()
+    {
+        global $post;
+        // Get terms for post
+        $terms = get_the_terms($post->ID, 'taxonomy_concept');
+        // Loop over each item since it's an array
+        if ($terms != null) {
+            foreach ($terms as $term) {
+                // Print the name method from $term which is an OBJECT
+                $termSlug = $term->slug;
+                // Get rid of the other data stored in the object, since it's not needed
+                unset($term);
+            }
         }
 
-            $posts = get_posts(array(
-                'post_type' => array(
-                        "editor_tip",
-                        "trip",
-                        "happening"
-                ),
-                'numberposts'  => $numberposts,
-                'exclude' 	 => $exclude,
-                'tax_query' 	 => $tax_query
-            ));
+        $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+        // get_posts in same custom taxonomy
+        $postlist_args = array(
+            'paged' => get_query_var('paged'),
+            'posts_per_page' => -1,
+            'orderby' => 'title',
+            'post__not_in' => array($post->ID),
+            'post_type' => array(
+                "meet_local",
+                "editor_tip",
+                "trip",
+                "happening"
+            ),
+            'taxonomy_concept' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
+        );
+        $postlist = get_posts($postlist_args);
 
-            foreach ($posts as $key => $value) {
-                $value->meta_fields = get_fields($value->ID);
-                $value->author = vh_get_author($value->post_author);
-                $value->taxonomy = array(
-                            "name" 	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->name,
-                            "slug"	=> wp_get_post_terms($value->ID, 'taxonomy_concept', array( '' ))[0]->slug
-                        );
-            }
-            return $posts;*/
+        $urlList = array();
+        foreach ($postlist as $key => $value) {
+            array_push($urlList, get_permalink($value->ID));
+        }
+
+        return $urlList;
     }
 }
