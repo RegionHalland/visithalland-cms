@@ -1,12 +1,13 @@
 class InfiniteScroll {
     // TODO: Test if it works
-    constructor() {
-        this.bind();
+    constructor(){
+        //this.bind();
     }
 
-    bind() {
+    bind(){
+        // Todo make this work ---->
         var nextPages = $("#nextPages").data("all");
-        var $container = $('#infinite-container').infiniteScroll({
+        var $container = new InfiniteScroll('.container', {
             // options
             path: function () {
                 return nextPages[this.loadCount];
@@ -15,8 +16,9 @@ class InfiniteScroll {
             history: 'replace',
             status: '.page-load-status',
             debug: false,
-            scrollThreshold: 800
+            scrollThreshold: 800,
         });
+
 
         $container.on('load.infiniteScroll', function (event, response) {
             var elements = $(response);
@@ -26,7 +28,7 @@ class InfiniteScroll {
             ga('create', 'UA-89278649-4');
             ga('send', {
                 hitType: 'pageview',
-                path: path.replace(/^.*\/\/[^\/]+/, '')
+                path: path.replace(/^.*\/\/[^\/]+/, ''),
             });
         });
     }
