@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 //Modify inserted images to be enclosed by a figure tag
 add_action('image_send_to_editor', function ($html, $id, $caption, $title, $align, $url, $size, $alt) {
     $attachment = get_post($id);
@@ -37,7 +38,7 @@ add_action('the_content', function ($content)
     if (!is_feed()) {
         $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
         if ($content) {
-            $document = new DOMDocument();
+            $document = new \DOMDocument();
             libxml_use_internal_errors(true);
             $document->loadHTML(utf8_decode($content));
             libxml_use_internal_errors(false);
