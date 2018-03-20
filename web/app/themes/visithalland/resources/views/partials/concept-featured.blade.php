@@ -2,16 +2,17 @@
 
 @if(isset($featured_posts))
     
-	<div class="mt5 col-11 md-col-10 lg-col-10 mx-auto beach-coast">
-		<div class="dynamic-grid clearfix">
+	<section class="mt5 col-11 md-col-10 lg-col-10 mx-auto beach-coast">
+		<div class="featured-grid clearfix">
 		    @foreach ($featured_posts as $post)
 		        <?php setup_postdata($post); 
 		        	$post_id = $post->ID; 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 				?>
+				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1) 
-					<div class="dynamic-grid__item dynamic-grid__item--large col col-12 sm-col-12 lg-col-8">
+					<div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8">
 						<a href="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
@@ -27,7 +28,7 @@
 								</picture>
 								<div class="image-blurb__content">
 									<h2 class="image-blurb__title">{!! $post->post_title !!}</h2>
-									<div class="read-more">
+									<div class="read-more my3">
 					                    <span class="read-more__text light">
 					                        @php _e( 'Läs mer', 'visithalland' ); @endphp
 					                    </span>
@@ -41,8 +42,10 @@
 							</article>
 						</a>
 					</div>
+				
+				{{-- Gets second and third item in array --}}
 				@elseif($loop->iteration > 1 && $loop->iteration <= 3)
-					<div class="dynamic-grid__item dynamic-grid__item--medium col col-12 sm-col-6 lg-col-4">
+					<div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4">
 						<a href="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
@@ -58,7 +61,7 @@
 								</picture>
 								<div class="image-blurb__content">
 									<h3 class="image-blurb__title">{!! $post->post_title !!}</h3>
-									<div class="read-more">
+									<div class="read-more my3">
 					                    <span class="read-more__text light">
 					                        @php _e( 'Läs mer', 'visithalland' ); @endphp
 					                    </span>
@@ -72,8 +75,10 @@
 							</article>
 						</a>
 					</div>
+				
+				{{-- Loops remaining items as small --}}
 				@else
-					<div class="dynamic-grid__item dynamic-grid__item--small col col-12 sm-col-6 lg-col-4">
+					<div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
 						<a href="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
@@ -89,7 +94,7 @@
 								</picture>
 								<div class="image-blurb__content">
 									<h3 class="image-blurb__title">{!! $post->post_title !!}</h3>
-									<div class="read-more">
+									<div class="read-more my3">
 					                    <span class="read-more__text light">
 					                        @php _e( 'Läs mer', 'visithalland' ); @endphp
 					                    </span>
@@ -106,8 +111,8 @@
 				@endif
 		    @endforeach
 		</div>
-	</div>
-	
+	</section>
+
     <?php wp_reset_postdata(); ?>
 
 @endif

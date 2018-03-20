@@ -1,0 +1,43 @@
+.scroll-indicator {
+    height:40px;
+    width:40px;
+    background:palette(black, base);
+    position:absolute;
+    bottom:-20px;
+    z-index:$z3;
+    left:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    overflow:hidden;
+    @media(min-width:$breakpoint-md) {
+        height:50px;
+        width:50px;
+        bottom:-25px;
+    }
+}
+
+.scroll-indicator__icon {
+    height:15px;
+    width:15px;
+    background:palette(black, dark);
+    border-radius:50%;
+    animation: scroll-indicator-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+@keyframes scroll-indicator-animation {
+    0% {
+        transform:translateY(-225%);
+    }
+    33% {
+        transform:translateY(0%);
+    }
+    66% {
+        transform:translateY(0%);
+    }
+    100% {
+        transform:translateY(225%);
+    }
+}

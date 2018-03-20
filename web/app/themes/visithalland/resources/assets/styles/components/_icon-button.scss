@@ -4,10 +4,9 @@
 	background:palette(black, x-light);
 	border-radius:50%;
 	position: relative;
-	transition:background 0.25s, transform 0.25s;
+	transition:background 0.25s;
 	&:hover {
 		background:palette(black, xx-light);
-		transform:scale(0.95);
 	}
 
 	@media (min-width:$breakpoint-sm) {

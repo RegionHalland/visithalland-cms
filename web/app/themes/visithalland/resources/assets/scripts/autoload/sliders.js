@@ -24,6 +24,24 @@ class Sliders {
             landingConceptsCarousel.previous();
         });
 
+
+
+        var spotlightCarousel = new Flickity('.spotlight-carousel', {
+            cellAlign: 'left',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false,
+            imagesLoaded: true
+        });
+
+        $('.spotlight-carousel--next').on('click', function () {
+            spotlightCarousel.next();
+        });
+
+        $('.spotlight-carousel--previous').on('click', function () {
+            spotlightCarousel.previous();
+        });
+
         // We can't do it like this anymore:
         /*$('.navigation-carousel').flickity({
             // options
