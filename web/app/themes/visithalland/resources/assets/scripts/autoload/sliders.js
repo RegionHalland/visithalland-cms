@@ -24,7 +24,7 @@ class Sliders {
             landingConceptsCarousel.previous();
         });
 
-        /* Tip Carousel on meet-a-local page */
+        /* Tip carousel on meet-a-local page */
         var tipCarousel = new Flickity('.tip-carousel', {
             cellAlign: 'left',
             contain: true,
@@ -38,6 +38,24 @@ class Sliders {
         // next wrapped
         $('.tip-carousel--previous').on('click', function () {
             tipCarousel.previous();
+        });
+
+
+        /* Spotlight carousel */
+        var spotlightCarousel = new Flickity('.spotlight-carousel', {
+            cellAlign: 'left',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false,
+            imagesLoaded: true
+        });
+
+        $('.spotlight-carousel--next').on('click', function () {
+            spotlightCarousel.next();
+        });
+
+        $('.spotlight-carousel--previous').on('click', function () {
+            spotlightCarousel.previous();
         });
 
         // We can't do it like this anymore:

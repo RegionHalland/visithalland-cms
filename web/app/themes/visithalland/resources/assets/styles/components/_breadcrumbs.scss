@@ -1,24 +1,30 @@
-.breadcrumb {
-	margin-bottom:em(8px);
-	&.dark {
-		.h5 {
-			color:palette(black, base);
-		}
-	}
-	.h5 {
-		color:palette(grey, light);
-	}
-	@include for-size('desktop-up') {
-		a {
-			transition: opacity 0.2s;
-			&:hover {
-				opacity:0.9;
-			}
-		}
-	}
-	&__spacer {
+.breadcrumbs {
+	&__icon {
 		display:inline-block;
-		color:palette(gray, dark);
-		margin:0 em(4px);
+		margin-right:$space-1;
+		vertical-align: middle;
+		@include themify {
+			background:$color-primary;
+			background-image:$icon;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size:80%;
+			border-radius:$border-radius;
+			height:20px;
+			width:20px;
+		}
+	}
+ 
+	&__divider {
+		color:palette(grey, base);
+	}
+	&__a {
+		font-weight:300;
+		font-family:$rift-font-family;
+		color:palette(grey, base);
+		vertical-align: middle;
+		&--current {
+			color:$white;
+		}
 	}
 }
