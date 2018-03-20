@@ -2,7 +2,7 @@ html {
 	box-sizing: border-box;
 	text-size-adjust: 100%;
 	
-	@media (min-width: $breakpoint-md) {
+	@media (min-width: $breakpoint-lg) {
 		font-size: 112.5%; /* 18px */
 	}
 }

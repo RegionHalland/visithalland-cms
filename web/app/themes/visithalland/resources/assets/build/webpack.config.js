@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const SvgStore = require('webpack-svgstore-plugin');
 
 const config = require('./config');
 
@@ -164,6 +165,15 @@ let webpackConfig = {
         output: { path: config.paths.dist },
         context: config.paths.assets,
       },
+    }),
+    new SvgStore({
+      // svgo options 
+      svgoOptions: {
+        plugins: [
+          { removeTitle: true }
+        ]
+      },
+      prefix: ''
     }),
     /*new webpack.LoaderOptionsPlugin({
       test: /\.js$/,

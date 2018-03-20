@@ -2,7 +2,7 @@
 import 'jquery';
 
 // Import everything from autoload
-import "./autoload/**/*"
+import "./autoload/**/*";
 
 // import local dependencies
 import Router from './util/Router';
@@ -20,5 +20,12 @@ const routes = new Router({
   aboutUs,
 });
 
+
 // Load Events
 jQuery(document).ready(() => routes.loadEvents());
+
+// Build SVG sprite
+var __svg__ = { 
+	path: '../icons/**/*.svg', 
+	name: 'icons/sprite.svg'
+};

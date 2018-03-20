@@ -1,5 +1,5 @@
 <header class="header">
-	<div class="header__inner col-12 sm-col-12 md-col-11 lg-col-10">
+	<div class="header__inner col-12 sm-col-12 md-col-12 lg-col-10">
 
 		<a class="skip-to-content topographic-pattern" href="#main-content">
 			<span class="skip-to-content__label"><?php _e( 'Hoppa till innehåll', 'visithalland' ); ?></span>

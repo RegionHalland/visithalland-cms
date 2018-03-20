@@ -99,7 +99,6 @@
 	display:block;
 	text-align:center;
 	background-color:palette(black, dark);
-
 	left:-999px;
     position:absolute;
     top:auto;
@@ -183,13 +182,10 @@
 		display:block;
 		padding:$space-1 $space-4;
 	}
-	@media (min-width:$breakpoint-md) {
-		display:block;
-		padding:$space-1 $space-4;
-		border-radius: 0 0 $border-radius $border-radius;
-	}
+
 	@media (min-width:$breakpoint-lg) {
 		overflow:hidden;
+		border-radius: 0 0 $border-radius $border-radius;
 	}
 	&__item {
         display:inline-block;

@@ -1,4 +1,4 @@
-<section class="concept-header relative overflow-hidden beach-coast" role="heading">
+<section class="concept-header relative beach-coast" role="heading">
     <div class="concept-header__img-container topographic-pattern">
         <picture>
             <source media="(min-width: 60em)"
@@ -10,14 +10,26 @@
         </picture>
     </div>
     <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
-        <div class="col col-12 sm-col-7 md-col-10 lg-col-5">
-            <h1 class="concept-header__title mt0 mb2 light">
-                <div class="concept-header__icon mr3 inline-block"></div>
+        <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
+            <div class="breadcrumbs inline-block mb2">
+                <div class="breadcrumbs__icon beach-coast">
+                    
+                </div>
+                <a href="" class="breadcrumbs__a breadcrumbs__a inline-block">Startsida</a>
+                <span class="breadcrumbs__divider">/</span>
+                <a href="" class="breadcrumbs__a breadcrumbs__a--current inline-block">Camping & Hiking</a>
+            </div>
+            <h1 class="concept-header__title mt0 mb3 light">
                 <span>{{ $term->name }}</span>
             </h1>
+            <p class="concept-header__p light mt3">
+                <?php the_field("excerpt", $term); ?>  
+            </p>
         </div>
-        <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
-            <p class="concept-header__intro light"><?php the_field("excerpt", $term); ?></p>
+        <div class="scroll-indicator">
+            <svg class="scroll-indicator__icon">
+                <use xlink:href="#arrow-down-icon"/>
+            </svg>
         </div>
     </div>
 </section>

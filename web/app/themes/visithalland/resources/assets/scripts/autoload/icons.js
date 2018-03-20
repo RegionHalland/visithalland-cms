@@ -1,6 +1,6 @@
 class Icons {
     constructor() {
-        this.spriteURL = '/wp-content/themes/visithalland/assets/dist/icons/sprite.svg';
+        this.spriteURL = '/app/themes/visithalland/dist/icons/sprite.svg';
         this.getIcons(this.spriteURL);
     }
 
