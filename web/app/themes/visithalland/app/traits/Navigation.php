@@ -28,6 +28,11 @@ trait Navigation
         return ["Error"];
     }
 
+    /**
+    * Returns navigation items located at the menu of theme_location secondary_navigation
+    *
+    * @return array Output menu items in current language
+    */
     public function secondaryMenuItems()
 	{
         /*

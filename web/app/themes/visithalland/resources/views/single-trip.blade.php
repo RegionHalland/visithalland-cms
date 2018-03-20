@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <?php while ( have_posts() ) : the_post();
+    @php while ( have_posts() ) : the_post();
         $post->ID = get_the_id();
         $thumbnail_id = get_post_thumbnail_id();
         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
-    ?>
+    @endphp
     <div id="infinite-container">
         <article class="container beach-coast" role="main" id="main-content">
             <section class="spotlight-header">
@@ -15,8 +15,8 @@
                         <source media="(min-width: 40em)" data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide@2x' ) . " 2x" }} />
                         <source data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_hero_tall@2x' ) . " 2x" }} />
                         <img class="spotlight-header__img lazyload"
-                                data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide' ) }}"
-                                alt="{{ $alt }}"
+                            data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide' ) }}"
+                            alt="{{ $alt }}"
                         />
                     </picture>
                     <div class="spotlight-header__scrim absolute z1 left-0 bottom-0 right-0"></div>
@@ -24,7 +24,7 @@
                         <div class="clearfix">
                             <div class="col-12 sm-col-10 md-col-8 lg-col-6 mx-auto">
                                 <div class="spotlight-header__icon mx-auto"></div>
-                                <h1 class="spotlight-header__title center light"><?php the_title(); ?></h1>
+                                <h1 class="spotlight-header__title center light">{{ the_title() }}</h1>
                                 <div class="spotlight-header__paragraph light mt2">
                                     <p>{{ get_field('excerpt') }}</p>
                                 </div>
@@ -95,12 +95,10 @@
                                         <picture>
                                             <source
                                                 data-srcset="{{ get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" }}" />
-
                                             <img class="spotlight-small__img lazyload"
                                                     data-src="{{ get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) }}"
                                                     alt="{{ $alt }}"
                                             />
-
                                         </picture>
                                     </div>
                                     <div class="spotlight-small__content col-12 lg-col-12 relative">
@@ -136,7 +134,6 @@
             @include('partials.share')
             </article>
         @endwhile
-
     </div>
     @include('partials.infinite-scroll')
 @endsection

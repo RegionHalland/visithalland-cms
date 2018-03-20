@@ -47,6 +47,10 @@ trait Posts
 
     public static function getPosts(array $exludeTypes = array("happening"), \WP_Term $term = null, int $numberposts = 10)
     {
+        // Get the global $post object
+        global $post;
+
+        // Get our post types and remove those included inside $excludeTypes
         self::$post_types = array_diff(self::$post_types, $exludeTypes);
 
         if($term !== null) {
@@ -63,14 +67,13 @@ trait Posts
         $posts = get_posts(array(
             'post_type'   => self::$post_types,
             'numberposts' => $numberposts,
-            'tax_query'   => $tax_query ? $tax_query : null
-            //'exclude' 	 => $exclude,
+            'tax_query'   => $tax_query ? $tax_query : null,
+            'exclude' 	 => $post->ID,
         ));
 
         foreach ($posts as $key => $value) {
             $value->terms = self::getTerms($value);
             $value->post_type_label = get_post_type_object($value->post_type)->labels->name;
-
         }
 
         return $posts;
