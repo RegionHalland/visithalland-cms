@@ -1,0 +1,29 @@
+.dynamic-grid {
+  margin:-$space-1;
+  
+  &__item {
+    padding:$space-1;
+
+    &--large {
+      height:400px;
+      @media (min-width:$breakpoint-sm) {
+        height:600px;
+      }
+    }
+
+    &--medium {
+      height:300px;
+      @media (min-width:$breakpoint-sm) {
+        height:450px;
+      }
+    }
+
+    &--small {
+      height:300px;
+      @media (min-width:$breakpoint-sm) {
+        height:300px;
+      }
+    }
+
+  }
+}
