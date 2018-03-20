@@ -24,6 +24,22 @@ class Sliders {
             landingConceptsCarousel.previous();
         });
 
+        /* Tip Carousel on meet-a-local page */
+        var tipCarousel = new Flickity('.tip-carousel', {
+            cellAlign: 'left',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false
+        });
+
+        $('.tip-carousel--next').on('click', function () {
+            tipCarousel.next();
+        });
+        // next wrapped
+        $('.tip-carousel--previous').on('click', function () {
+            tipCarousel.previous();
+        });
+
         // We can't do it like this anymore:
         /*$('.navigation-carousel').flickity({
             // options
