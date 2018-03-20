@@ -13,7 +13,7 @@
 	&__text {
 		font-family:$rift-font-family;
 		font-weight:bold;
-		font-size:1.1rem;
+		font-size:1rem;
 		position:relative;
 		vertical-align:middle;
 		color:palette(grey, xx-dark);
@@ -25,9 +25,10 @@
 		display:inline-flex;
 		justify-content:center;
 		align-items:center;
-		height:22.5px;
+		height:20px;
 		margin-left:$space-2;
-		width:22.5px;
+		width:20px;
+		vertical-align:middle;
 		border-radius:$border-radius;
 		
 		@include themify {

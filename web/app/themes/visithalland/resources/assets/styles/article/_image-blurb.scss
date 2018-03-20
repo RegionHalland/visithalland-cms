@@ -1,0 +1,41 @@
+.image-blurb {
+	display:flex;
+	position:relative;
+	overflow:hidden;
+	height:100%;
+	width:100%;
+	align-items:flex-end;
+	background:palette(black, base);
+	border-radius:$border-radius;
+	padding:$space-2 $space-3;
+	&::after {
+ 		content:'';
+ 		position:absolute;
+ 		bottom:0;
+ 		left:0;
+ 		right:0;
+ 		z-index:1;
+ 		height:65%;
+ 		width:100%;
+ 		@include scrimGradient(palette(black, dark), 'to top');
+ 	}
+	&__img {
+		position:absolute;
+		top:50%;
+		left:50%;
+		height:100%;
+		width:auto;
+		transform:translate(-50%, -50%);
+	}
+
+	&__content {
+		position:relative;
+		z-index:$z3;
+		width:100%;
+	}
+
+	&__title {
+		color:$white;
+		width:80%;
+	}
+}
