@@ -4,7 +4,7 @@
                 @php $posts = App::getPosts(array("happening", "places", "companies"), get_queried_object()); @endphp
                 @foreach($posts as $key => $post)
                     @if(($key + 1) % 3 === 0)
-                        <div class="concept-grid__item col col-12">
+                        <div class="concept-grid__item col col-12 beach-coast">
                             <article class="article-image relative">
                                 <div class="article-image__img-container topographic-pattern">
                                     <picture>
