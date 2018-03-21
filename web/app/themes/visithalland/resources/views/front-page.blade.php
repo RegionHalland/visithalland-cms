@@ -63,9 +63,8 @@
             <div class="landing-concepts__carousel col-11 md-col-10 lg-col-10 mx-auto">
                 @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
                         @foreach($primary_navigation_items as $key => $navigation_item)
-
                             <div class="col col-10 sm-col-5 lg-col-4 px2 landing-concepts__item landing-concepts__item--small">
-                                <div class="concept-thumbnail-small beach-coast">
+                                <div class="concept-thumbnail-small {{ $navigation_item->meta_fields['class_name'] }}">
                                     <a href="{{ $navigation_item->url }}" class="link-reset">
                                         <div class="concept-thumbnail-small__img-container">
                                             <picture>
@@ -92,7 +91,6 @@
 
     @php $header_happenings = App::getHappenings() @endphp
         @if(is_array($header_happenings))
-
         <div class="landing-happenings clearfix mxn2 mt4">
             <div class="col-11 md-col-10 lg-col-10 mx-auto">
                 <div class="landing-happenings__header px2 py3 flex justify-between items-center ">
@@ -111,7 +109,7 @@
 
                 @foreach($header_happenings as $key => $happening)
                     <div class="col col-12 sm-col-4 px2 mt3">
-                        <article class="happening-list-item beach-coast">
+                        <article class="happening-list-item {{ App::getTerms($happening)["terms_default_lang"]->slug }}">
                             <a href="{{ get_permalink($happening->ID) }}" class="link-reset">
                                 <div class="clearfix">
                                     <div class="col col-5 sm-col-4 ">

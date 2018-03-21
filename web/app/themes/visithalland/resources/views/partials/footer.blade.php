@@ -1,6 +1,3 @@
-
-<!-- Footer Start -->
-
 <footer class="footer topographic-pattern">
     <div class="footer__content relative col-11 md-col-10 lg-col-10 mx-auto">
         <div class="clearfix">
@@ -46,7 +43,7 @@
                     @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
                     @if(is_array($primary_navigation_items))
                         @foreach($primary_navigation_items as $key => $navigation_item)
-                            <div class="footer-nav__item footer__nav-item beach-coast">
+                            <div class="footer-nav__item footer__nav-item {{ $navigation_item->meta_fields['class_name'] }}">
                                 <a href="{{ $navigation_item->url }}" class="footer-nav__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
                                     <div class="footer-nav__icon-wrapper">
                                         <div class="footer-nav__icon"></div>
@@ -79,7 +76,7 @@
                             @if(is_array($secondary_menu_items))
                                 @foreach ($secondary_menu_items as $key => $secondary_menu_item)
                                     <li class="footer__list-item mt1 light">
-                                        <a href="{{ $secondary_menu_item->url }}>" class="footer__link link-reset"">
+                                        <a href="{{ $secondary_menu_item->url }}>" class="footer__link link-reset">
                                             <span>{{ $secondary_menu_item->title }}</span>
                                         </a>
                                     </li>
@@ -123,7 +120,6 @@
     </div>
 
     <!-- Cookie Banner Start -->
-
     @if(!isset($_COOKIE["cookie_notice_accepted"]))
         <div id="cookie-notice" class="cookie-banner col-12">
             <div class="cookie-banner__inner col-12 sm-col-6 md-col-4" tabindex="1">
