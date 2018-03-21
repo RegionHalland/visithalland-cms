@@ -1,4 +1,6 @@
 <div class="concept-content relative mt2 col-11 md-col-10 lg-col-10 mx-auto">
+
+    {{-- Concept Grid Start--}}
     <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
         <div class="clearfix mxn2">
                 @php $posts = App::getPosts(array("happening", "places", "companies"), get_queried_object()); @endphp
@@ -89,4 +91,13 @@
                 @endforeach
         </div>
     </div>
+
+
+
+    <div class="concept-sidebar col col-12 lg-col-4">
+    <h2> Test </h2>
+    </div>
+
+
+
 </div>

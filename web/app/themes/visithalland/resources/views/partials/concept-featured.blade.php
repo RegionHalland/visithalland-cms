@@ -1,4 +1,4 @@
-<?php $featured_posts = get_field('featured', $term); ?>
+@php $featured_posts = get_field('featured', $term); @endphp
 
 @if(isset($featured_posts))
     
