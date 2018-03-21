@@ -19,7 +19,6 @@ add_action('image_send_to_editor', function ($html, $id, $caption, $title, $alig
     return $html5;
 }, 10, 9);
 
-
 function faster_replace_img_src($content)
 {
     $html = preg_replace_callback('#(<img\s[^>]*src)="([^"]+)"#', "callback_img", $content);

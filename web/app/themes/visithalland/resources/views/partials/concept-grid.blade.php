@@ -1,5 +1,4 @@
 <div class="concept-content relative mt2 col-11 md-col-10 lg-col-10 mx-auto">
-
     {{-- Concept Grid Start--}}
     <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
         <div class="clearfix mxn2">
@@ -18,13 +17,11 @@
                                     <picture>
                                         <source media="(min-width:40em)"
                                             data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_large@2x' ) . " 2x" }}" />
-
                                         <source
                                             data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_hero_tall@2x' ) . " 2x" }}" />
-
                                         <img class="article-image__img lazyload"
-                                                data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) }}"
-                                                alt="{{ get_post_meta(get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true) }}"
+                                            data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) }}"
+                                            alt="{{ get_post_meta(get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true) }}"
                                         />
                                     </picture>
                                 </div>

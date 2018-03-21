@@ -78,7 +78,7 @@
                     @if(is_array($secondary_menu_items))
                         @foreach ($secondary_menu_items as $key => $secondary_menu_item)
                             <li class="footer__list-item mt1 light">
-                                <a href="{{ $secondary_menu_item->url }}>" class="footer__link link-reset"">
+                                <a href="{{ $secondary_menu_item->url }}" class="footer__link link-reset"">
                                     <span>{{ $secondary_menu_item->title }}</span>
                                 </a>
                             </li>
