@@ -5,16 +5,12 @@
 	max-width: $container-max-width;
 	margin:0 auto;
 
-
 	&__content {
 		padding:$space-4 0;
 	}
 
 	&__column {
 		margin-top:$space-4;
-		@media(min-width:$breakpoint-sm) {
-			padding:0 $space-4;
-		}
 		padding:0;
 	}
 	&__column-header {
@@ -29,16 +25,6 @@
     	padding:$space-2 0;
 		margin-bottom:$space-2;
 		display:block;
-	}
-
-	&__list {
-
-	}
-
-	&__left, &__right {
-		@media (min-width:$breakpoint-sm) {
-			padding:0 $space-3;
-		}
 	}
 
 	&__list-item {
@@ -159,8 +145,11 @@
 		color:palette(grey, xx-light);
 		margin-left:$space-1;
 	}
+}
 
 
+.footer__intro {
+	max-width:80%;
 }
 
 .footer__intro, .footer__eu-paragraph{
@@ -175,8 +164,5 @@
 .footer__eu {
 	border-radius:$border-radius;
 	padding:0;
-	@media (min-width:$breakpoint-sm){
-		padding:$space-3;
-	}
-	margin-top:$space-6;
+	margin-top:$space-5;
 }

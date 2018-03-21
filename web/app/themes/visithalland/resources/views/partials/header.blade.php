@@ -116,11 +116,11 @@
                 @if(is_array($primary_navigation_items))
                     @foreach($primary_navigation_items as $key => $navigation_item)
                         <div class="navigation__item beach-coast {{ $navigation_item->meta_fields->class_name }}">
-                            <a href="<?php echo $navigation_item->url ?>" class="navigation__link link-reset <?php echo array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                            <a href="{{ $navigation_item->url }}" class="navigation__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
                                 <div class="navigation__icon-wrapper">
                                     <div class="navigation__icon"></div>
                                 </div>
-                                <span><?php echo $navigation_item->title ?></span>
+                                <span>{{ $navigation_item->title }}</span>
                             </a>
                         </div>
                     @endforeach
@@ -137,11 +137,11 @@
                         @if(is_array($primary_navigation_items))
                             @foreach($primary_navigation_items as $key => $navigation_item)
                                 <div class="mobile-navigation__item beach-coast">
-                                    <a href="<?php echo $navigation_item->url ?>" class="mobile-navigation__link link-reset <?php echo array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')); ?>">
+                                    <a href="{{ $navigation_item->url }}" class="mobile-navigation__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
                                         <div class="mobile-navigation__icon-wrapper">
                                             <div class="mobile-navigation__icon"></div>
                                         </div>
-                                        <span><?php echo $navigation_item->title ?></span>
+                                        <span>{{ $navigation_item->title }}</span>
                                     </a>
                                 </div>
                             @endforeach
@@ -151,16 +151,16 @@
                         <h5 class="mobile-navigation__header light"><?php _e( 'Fler länkar', 'visithalland' ); ?></h5>
                         @if(is_array($non_active_langs))
                             @foreach ($non_active_langs as $key => $lang)
-                                <a href="<?php echo $lang["url"] ?>" class="mobile-navigation__support-link my2 block">
-                                    <span><?php echo $lang["native_name"] ?></span>
+                                <a href="{{ $lang["url"] }}" class="mobile-navigation__support-link my2 block">
+                                    <span>{{ $lang["native_name"] }}</span>
                                 </a>
                             @endforeach
                         @endif
 
                     @if(is_array($secondary_menu_items))
                         @foreach ($secondary_menu_items as $key => $secondary_menu_item)
-                            <a href="<?php echo $secondary_menu_item->url ?>" class="mobile-navigation__support-link my2 block">
-                                <span><?php echo $secondary_menu_item->title ?></span>
+                            <a href="{{ $secondary_menu_item->url }}" class="mobile-navigation__support-link my2 block">
+                                <span>{{ $secondary_menu_item->title }}</span>
                             </a>
                         @endforeach
                     @endif

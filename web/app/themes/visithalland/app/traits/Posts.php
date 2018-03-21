@@ -16,9 +16,21 @@ trait Posts
         self::$post_types = VISITHALLAND_POST_TYPES;
     }
 
-    public static function getHappenings(Int $number_posts = 3)
+    public static function getHappenings(Int $number_posts = 3, \WP_Term $term = null)
     {
-        $tax_query = array();
+
+        if($term !== null) {
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'taxonomy_concept',
+                    'field'      => 'id',
+                    'terms'  => $term->term_id, // Where term_id of Term 1 is "1".
+                    'include_children' => false
+                )
+            );
+        } else {
+             $tax_query = array();
+        }
 
         $posts = get_posts(array(
             'post_type' => array(

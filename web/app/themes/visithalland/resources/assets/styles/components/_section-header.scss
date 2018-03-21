@@ -1,0 +1,30 @@
+.section-header {
+	display:inline-flex;
+	&__icon-wrapper {
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		border-radius:50%;
+		height:35px;
+		width:35px;
+		@media (min-width:$breakpoint-sm) {
+			height:40px;
+			width:40px;
+		}
+		@include themify() {
+			background-color:$color-primary;
+		}
+	}
+	&__title {
+		display:flex;
+		justify-content:center;
+		font-weight:bold;
+		margin-left:$space-2;
+		align-items:center;
+		font-family:$rift-font-family;
+		font-size:1.2rem;
+		@media (min-width:$breakpoint-sm) {
+			font-size:1.2rem;
+		}
+	}
+}

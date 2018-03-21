@@ -6,41 +6,41 @@
 @endphp
 
 @if(isset($featured_article))
-    {{-- <article class="article-full relative my5 beach-coast">
-        <div class="article-full__img-container topographic-pattern">
-            @php 
-                  $thumbnail_id = get_post_thumbnail_id( $meet_local->ID );
-                  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-            @endphp 
-            <picture>
-                <source 
-                    media="(min-width: 40em)"
-                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_wide@2x' ) . " 2x" }}" />
-                <source 
-                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_tall@2x' ) . " 2x" }}" />
-                <img 
-                    class="article-full__img lazyload" 
-                    data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_wide' )}}"
-                    alt="{{ $alt }}" />
-            </picture>
-        </div>
-        <div class="article-full__scrim absolute left-0 right-0 bottom-0 z1"></div>
-        <div class="article-full__inner absolute bottom-0 left-0 right-0 z2 clearfix">
-            <div class="article-full__content col col-12 md-col-6 lg-col-6">
-
-                <div class="article-tag--light mt3 mb2">
-                    <div class="article-tag__icon-wrapper">
-                        <div class="article-tag__icon"></div>
-                    </div>
-                    <span class="article-tag__type">
-                        Post type
-                    </span>
+    <article class="article-full relative my5 beach-coast">
+        <a href="{{ get_permalink($featured_article->ID) }}" class="link-reset article-full__link link light">
+            <div class="article-full__img-container topographic-pattern">
+                <picture>
+                    <source 
+                        media="(min-width: 40em)"
+                        data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_wide@2x' ) . " 2x" }}" />
+                    <source 
+                        data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_tall@2x' ) . " 2x" }}" />
+                    <img 
+                        class="article-full__img lazyload" 
+                        data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_wide' )}}"
+                        alt="{{ $alt }}" />
+                </picture>
+            </div>
+            <div class="article-full__inner col-11 lg-col-10 mx-auto">
+                <div class="article-full__header">
+                    
+                    {{-- Section Header Start --}}
+                    <header class="section-header">
+                        <div class="section-header__icon-wrapper">
+                            <svg class="section-header__icon icon">
+                                <use xlink:href="#recommend-icon"/>
+                            </svg>
+                        </div>
+                        <div class="section-header__title">
+                            @php _e( 'Populärt just nu', 'visithalland' ); @endphp
+                        </div>
+                    </header>
+                    {{-- Section Header End --}}
+                    
                 </div>
-                
-                <a href="{{ get_permalink($meet_local->ID) }}" class="link-reset article-full__link link light">
-                    <h2 class="article-full__title light mt1">{{ $meet_local->post_title }}</h2>
-                    <p class="article-full__excerpt mb2">{{ get_field("excerpt", $meet_local->ID) }}</p>
-                    <div class="read-more mt3 inline-block">
+                <div class="article-full__content col-10 sm-col-8 lg-col-5">
+                    <h2 class="article-full__title light mt1">{{ $featured_article->post_title }}</h2>
+                    <div class="read-more mt4 inline-block">
                         <span class="read-more__text light">
                             @php _e( 'Läs mer', 'visithalland' ); @endphp
                         </span>
@@ -50,9 +50,9 @@
                             </svg>
                         </div>
                     </div>
-                </a>
-            </div>    
-        </div>
-    </article> --}}
+                </div>
+            </div>
+        </a>
+    </article>
 
 @endif

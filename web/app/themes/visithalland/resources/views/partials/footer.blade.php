@@ -6,7 +6,7 @@
         <div class="clearfix">
 
             <!-- Footer Site Info Start -->
-            <div class="footer__column col sm-col-6 col-12 md-col-5">
+            <div class="footer__column col col-12 sm-col-9 md-col-5">
                 <img src="@asset('images/logo.svg')" />
                 <p class="footer__intro light mt1">{{ bloginfo('description') }}</p>
                 <div class="footer-contact mt3">
@@ -40,7 +40,7 @@
 
 
             <!-- Footer Navigation Start -->
-            <div class="footer__column col sm-col-7 col-12 md-col-3 mt2">
+            <div class="footer__column col col-6 sm-col-4 md-col-3 mt2">
                 <span class="footer__column-header"><?php _e( 'Upplevelser', 'visithalland' ); ?></span>
                 <nav class="footer__list footer-nav">
                     @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
@@ -61,55 +61,53 @@
             <!-- Footer Navigation End -->
 
             <!-- Footer Secondary Menu, Partner Menu and Language Settings Start -->
-            <div class="col col-12 sm-col-12 md-col-4">
-                <div class="clearfix">
-                    <div class="footer__column  col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
-                        <ul class="footer__list">
-                            @if(is_array($non_active_langs))
-                                @foreach ($non_active_langs as $key => $lang)
-                                    <li class="footer__list-item mt1 light">
-                                        <a href="{{ $lang["url"] }}" class="footer__link link-reset"">
-                                            <span>{{ $lang["native_name"] }}</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endif
 
-                            @if(is_array($secondary_menu_items))
-                                @foreach ($secondary_menu_items as $key => $secondary_menu_item)
-                                    <li class="footer__list-item mt1 light">
-                                        <a href="{{ $secondary_menu_item->url }}>" class="footer__link link-reset"">
-                                            <span>{{ $secondary_menu_item->title }}</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </div>
-                    <div class="footer__column col col-12 sm-col-4 md-col-12 mt2">
-                        <span class="footer__column-header"><?php _e( 'Partners', 'visithalland' ); ?></span>
-                        <ul class="footer__list">
+            <div class="footer__column  col col-6 sm-col-3 md-col-3 mt2">
+                <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
+                <ul class="footer__list">
+                    @if(is_array($non_active_langs))
+                        @foreach ($non_active_langs as $key => $lang)
                             <li class="footer__list-item mt1 light">
-                                <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
-                                    <img src="@asset('images/tripadvisor-logo.svg')" />
+                                <a href="{{ $lang["url"] }}" class="footer__link link-reset"">
+                                    <span>{{ $lang["native_name"] }}</span>
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                </div>
+                        @endforeach
+                    @endif
+
+                    @if(is_array($secondary_menu_items))
+                        @foreach ($secondary_menu_items as $key => $secondary_menu_item)
+                            <li class="footer__list-item mt1 light">
+                                <a href="{{ $secondary_menu_item->url }}>" class="footer__link link-reset"">
+                                    <span>{{ $secondary_menu_item->title }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+
+            <div class="footer__column col col-6 sm-col-3 md-col-3 mt2">
+                <span class="footer__column-header"><?php _e( 'Partners', 'visithalland' ); ?></span>
+                <ul class="footer__list">
+                    <li class="footer__list-item mt1 light">
+                        <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
+                            <img src="@asset('images/tripadvisor-logo.svg')" />
+                        </a>
+                    </li>
+                </ul>
             </div>
             <!-- Footer Secondary Menu, Partner Menu and Language Settings End -->
 
             <!-- Footer European Union Credit Start -->
             <div class="footer__eu col col-12">
                 <div class="clearfix">
-                    <div class="col col-5 sm-col-3 md-col-2 footer__left mt2">
+                    <div class="col col-5 sm-col-3 md-col-2 pr4 mt2">
                         <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
                             <img src="@asset('images/eu-logo.svg')" />
                         </a>
                     </div>
-                    <div class="col col-12 sm-col-9 md-col-6 footer__right mt2">
+                    <div class="col col-12 sm-col-9 md-col-6 mt2">
                         <p class="light footer__eu-paragraph mt0">
                             <!-- TODO: Make dynamic -->
                             {{ get_field("eu_excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )) }}

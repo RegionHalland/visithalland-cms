@@ -42,9 +42,19 @@
 .spotlight-thumbnail__img-wrapper {
   height:90px;
   width:90px;
+  overflow:hidden;
+  position:relative;
   border-radius:50%;
   margin-right:0.75rem;
   background:lightgrey;
+}
+
+.spotlight-thumbnail__img {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:auto;
 }
 
 .spotlight-thumbnail__content {
