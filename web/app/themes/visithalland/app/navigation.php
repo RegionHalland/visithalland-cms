@@ -16,7 +16,6 @@ add_filter('wp_get_nav_menu_items', function ($items, $menu, $args) {
 }, 10, 3);
 
 
-
 if (class_exists("VisithallandCustomPostTypes") || class_exists("VisithallandCustomPostTypes")) {
     // Prefix all links to our custom posts using our taxnomy tags
     add_filter('post_type_link', function ($post_link, $post) {
@@ -40,3 +39,9 @@ if (class_exists("VisithallandCustomPostTypes") || class_exists("VisithallandCus
         echo $return->get_error_message();
     }*/
 }
+
+add_filter('init', function ()
+{
+    global $wp_rewrite;
+    $wp_rewrite->page_structure = $wp_rewrite->root . 'coastal-living/%pagename%';
+});
