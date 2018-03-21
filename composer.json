@@ -50,7 +50,7 @@
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321072&version=3.9.3"
+          "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321072"
         }
       }
 	},
@@ -62,7 +62,7 @@
 			"type": "wordpress-plugin",
 			"dist": {
 				"type": "zip",
-				"url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3"
+				"url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6"
 			}
 		}
 	},
@@ -74,7 +74,7 @@
 			"type": "wordpress-plugin",
 			"dist": {
 				"type": "zip",
-				"url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=0.7"
+				"url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807"
 			}
 		}
 	},
@@ -86,7 +86,7 @@
 			"type": "wordpress-plugin",
 			"dist": {
 				"type": "zip",
-				"url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3"
+				"url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807"
 			}
 		}
 	}
