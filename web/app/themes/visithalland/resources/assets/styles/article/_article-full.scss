@@ -1,9 +1,5 @@
 .article-full {
 	position:relative;
-	&__scrim {
-		height:100%;
-		@include scrimGradient(palette(black, dark), 'to top');
-	}
 	&__img-container {
 		overflow:hidden;
 		position:relative;
@@ -13,6 +9,29 @@
 		@media(min-width:$breakpoint-sm) {
 			padding-bottom:56.25%;
 		}
+		&::before {
+ 			content:'';
+	 		position:absolute;
+	 		top:0;
+	 		left:0;
+	 		right:0;
+	 		z-index:$z1;
+	 		height:50%;
+	 		opacity:0.5;
+	 		width:100%;
+	 		@include scrimGradient(palette(black, dark), 'to bottom');
+	 	}
+		&::after {
+ 			content:'';
+	 		position:absolute;
+	 		bottom:0;
+	 		left:0;
+	 		right:0;
+	 		z-index:$z1;
+	 		height:50%;
+	 		width:100%;
+	 		@include scrimGradient(palette(black, dark), 'to top');
+	 	}
 	}
 	&__img {
 		width:100%;
@@ -22,81 +41,35 @@
 		width:100%;
 	}
 	&__inner {
-		padding-left:$space-3;
-		padding-right:$space-3;
+		z-index:$z3;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		display:flex;
+		height:100%;
+		flex-direction:column;
+		justify-content:space-between;
+		align-items:flex-start;
+		padding:$space-4 0;
 		@media(min-width:$breakpoint-md) {
-			padding-left:$space-4; 
-			padding-right:$space-2;
+			padding:$space-5 0;
 		}
 	}
-	&__excerpt {
-		display: none;
-		@media(min-width:$breakpoint-md) {
-			display:block;
-		}
+	&__header {
 	}
-	&__link {
-		@media(min-width:$breakpoint-md) {
-			.article-link {
-				&__divider, &__text, &__icon-wrapper {
-					opacity:0;
-					transition:transform 0.25s, opacity 0.25s;
-					transform:translateY(20px);
-				}
-			}
-			&:hover, &:focus {
-				.article-link {
-					&__divider, &__text, &__icon-wrapper {
-						opacity:1;
-						transform:translateY(0px);
-					}
-					&__text {
-						transition-delay:0.1s;
-					}
-					&__icon-wrapper {
-						transition-delay:0.2s;
-					}
-				}
-			}
-		}
+
+	&__content {
+
 	}
 
 	&__title {
 		font-size:1.8em;
-		&::after {
-			content:'';
-			display:block;
-			width:20px;
-			height:5px;
-			border-radius:$border-radius;
-			margin-top:$space-3;
-			@media (min-width:$breakpoint-sm) {
-				margin:$space-3 0;
-			}
-			background-color:palette(grey, light);
-			@include themify {
-	        	background:$color-primary;
-	        }
-		}
 		@media(min-width:$breakpoint-sm) {
 			font-size:2em;
 		}
 		@media(min-width:$breakpoint-md) {
-			font-size:2.5em;
-		}
-	}
-	&__content {
-		padding-left:$space-1; 
-		padding-right:$space-1;
-		padding-bottom:$space-5;
-		@media(min-width:$breakpoint-sm) {
-			padding-left:$space-5; 
-			padding-bottom:$space-5;
-			margin-bottom:$space-5;
-		}
-		@media(min-width:$breakpoint-lg) {
-			padding-left:$space-6;
-			padding-bottom:$space-5;
+			font-size:2.25em;
 		}
 	}
 }

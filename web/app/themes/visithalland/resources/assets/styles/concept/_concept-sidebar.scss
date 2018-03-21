@@ -1,5 +1,5 @@
 .concept-sidebar {
-
-
-
+	@media (min-width:$breakpoint-lg){
+		padding-left:$space-4;
+	}
 }

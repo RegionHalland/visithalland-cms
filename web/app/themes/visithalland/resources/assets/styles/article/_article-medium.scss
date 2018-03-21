@@ -1,31 +1,21 @@
 .article-medium {
 	&__excerpt {
 		position:relative;
-		max-height:50px;
+		max-height:45px;
 		overflow:hidden;
-		font-size:1rem;
+		margin-top:$space-3;
+		font-size:.95rem;
+		font-style:italic;
 		color:palette(black, x-light);
-		text-overflow: ellipsis;
 		@include fade-text();
 		@media (min-width:$breakpoint-md){
-			max-height:60px;
+			max-height:50px;
 		}
 	}
 
 	&__title {
 		font-size:1.6rem;
-		&::after {
-			content:'';
-			display:block;
-			width:20px;
-			height:5px;
-			border-radius:$border-radius;
-			margin:$space-3 0;
-			background-color:palette(grey, light);
-			@include themify {
-	        	background:$color-primary;
-	        }
-		}
+		
 	}
 
 	&__img-container {

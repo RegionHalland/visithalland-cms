@@ -1,5 +1,5 @@
 .date-badge {
-	padding:$space-2 $space-2;
+	padding:0.5rem;
 	border-radius:$border-radius;
 	color:$white;
 	@include themify {
@@ -15,9 +15,10 @@
 	}
 	&__month {
 		font-weight:bold;
-		font-size:0.9em;
+		font-size:0.8em;
 		font-family: $rift-font-family;
 		display:block;
 		text-align:center;
+		opacity:0.75;
 	}
 }

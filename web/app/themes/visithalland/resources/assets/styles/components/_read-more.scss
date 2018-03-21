@@ -17,7 +17,7 @@
 		vertical-align:middle;
 		color:palette(grey, xx-dark);
 		&.light {
-			color:$white;
+			color:palette(grey, x-light);
 		}
 	}
 	&__button {
