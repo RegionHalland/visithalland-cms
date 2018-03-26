@@ -17,7 +17,6 @@
 		    @foreach($concept_spotlights as $key => $spotlight)
 				<a href="{{ get_permalink($spotlight->ID) }}" class="spotlight-thumbnail beach-coast {{ $spotlight->terms["terms_default_lang"]->slug }}">
 					<div class="spotlight-thumbnail__img-wrapper">
-						<div class="concept-badge"></div>
 						<img class="spotlight-thumbnail__img lazyload"
 		                    data-src="{{ get_the_post_thumbnail_url( $spotlight->ID, 'vh_thumbnail@2x' ) }}"
 		                    alt="{{ get_field("cover_image")["alt"] }}"

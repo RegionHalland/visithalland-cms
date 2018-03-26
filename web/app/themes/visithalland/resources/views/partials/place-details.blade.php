@@ -19,7 +19,7 @@
                     <a id="details-visit-website" href="" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
                 </section>
         </section>
-        @else
+    @else
         <section class="details clearfix ">
             <section class="details__section col col-12">
                 <span class="details__section-label block">{{ _e('Visa på karta', 'visithalland') }}</span>
@@ -30,10 +30,13 @@
                     {{ _e( 'Visa på karta', 'visithalland' )}}
                 </a>
             </section>
-            <section class="details__section col col-12">
-                <span class="details__section-label block">{{ _e( 'Läs mer', 'visithalland' )}}</span>
-                <a href="{{ get_field("external_links")[0]["link"] }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
-            </section>
+
+            @if(isset(get_field("external_links")[0]["link"]))
+                <section class="details__section col col-12">
+                    <span class="details__section-label block">{{ _e( 'Läs mer', 'visithalland' )}}</span>
+                    <a href="{{ get_field("external_links")[0]["link"] }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
+                </section>
+            @endif
         </section>
     @endif
 </div>
