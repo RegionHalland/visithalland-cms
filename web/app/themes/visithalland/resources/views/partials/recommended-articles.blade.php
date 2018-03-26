@@ -1,6 +1,6 @@
 <div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
     <div class="clearfix mxn2">
-        <h2 class="recommended-articles__title mx-auto center">@php _e('Vidare läsning', 'visithalland'); @endphp</h2>
+        <h2 class="recommended-articles__title mx-auto mb2 center">@php _e('Vidare läsning', 'visithalland'); @endphp</h2>
         @php
             $terms = get_the_terms($post->ID, 'taxonomy_concept');
             $featuredArticles = App::getPosts(array(), $terms[0], 3);
@@ -26,7 +26,7 @@
                         <div class="article-medium__content">
                             <h3 class="article-medium__title mb1 mt3 pt0"><?php echo $value->post_title ?></h3>
                             <p class="article-medium__excerpt mt2"><?php echo get_field("excerpt", $value->ID) ?></p>
-                            <div class="read-more">
+                            <div class="read-more mt3">
                                 <span class="read-more__text"><?php _e( 'Läs mer', 'visithalland' ); ?></span>
                                 <div class="read-more__button">
                                     <svg class="icon read-more__icon">

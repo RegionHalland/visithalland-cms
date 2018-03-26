@@ -28,7 +28,9 @@
                         </p>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-4 my2 px3">
-                        <button class="btn btn--primary landing-eu__btn coastal-living block" id="eu-btn"><?php _e( 'Okej!', 'visithalland' ); ?></button>
+                        <button class="btn btn--primary landing-eu__btn coastal-living block" id="eu-btn">
+                            {{ _e( 'Okej!', 'visithalland' )}}
+                        </button>
                     </div>
                 </div>
             </div>

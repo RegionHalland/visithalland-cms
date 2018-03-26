@@ -24,7 +24,7 @@
                         />
                     </picture>
                     @if(isset($thumbnail_image) && is_array($thumbnail_image) && $thumbnail_image[0]->post_content)
-                        <figcaption class="image-cr?edit--large absolute top-0 right-0 mr2 mt2 z4">
+                        <figcaption class="image-cr?edit--large absolute top-0 right-0 mr2 mt2 z3">
                             <svg class="icon image-credit--large__icon">
                                 <use xlink:href="#camera-icon"/>
                             </svg>

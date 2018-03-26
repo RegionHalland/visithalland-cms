@@ -32,7 +32,7 @@
                                     {{ $mention->post_title }}
                                 @endif
                             </h4>
-                            <div class="read-more">
+                            <div class="read-more mt2">
                                 <span class="read-more__text">
                                     @php _e( 'Läs mer', 'visithalland' ); @endphp
                                 </span>

@@ -67,6 +67,9 @@
   left:1rem;
   top:50%;
   transform:translateY(-50%);
+  @media (min-width:$breakpoint-md) {
+    left:0;
+  }
 }
 
 .spotlight-carousel--next {
@@ -75,6 +78,9 @@
   right:1rem;
   top:50%;
   transform:translateY(-50%);
+  @media (min-width:$breakpoint-md) {
+    right:0;
+  }
 }
 
 

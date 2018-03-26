@@ -4,12 +4,12 @@
 @if(is_array($concept_spotlights))
 	<section class="spotlight-section mt5 mb5 col-12 md-col-10 lg-col-10 mx-auto beach-coast">
 		<button class="icon-button spotlight-carousel--previous">
-			<svg class="icon icon-button__icon">
+			<svg class="icon--sm icon-button__icon">
 				<use xlink:href="#arrow-left-icon"/>
 			</svg>
 		</button>
 		<button class="icon-button spotlight-carousel--next">
-			<svg class="icon icon-button__icon">
+			<svg class="icon--sm icon-button__icon">
 				<use xlink:href="#arrow-right-icon"/>
 			</svg>
 		</button>
