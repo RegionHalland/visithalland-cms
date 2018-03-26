@@ -13,7 +13,7 @@
 				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1) 
 					<div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8">
-						<a href="{{ the_permalink($post->ID) }}">
+						<a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
 									<source 
@@ -46,7 +46,7 @@
 				{{-- Gets second and third item in array --}}
 				@elseif($loop->iteration > 1 && $loop->iteration <= 3)
 					<div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4">
-						<a href="{{ the_permalink($post->ID) }}">
+						<a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
 									<source 
@@ -79,7 +79,7 @@
 				{{-- Loops remaining items as small --}}
 				@else
 					<div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
-						<a href="{{ the_permalink($post->ID) }}">
+						<a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 							<article class="image-blurb">
 								<picture>
 									<source 

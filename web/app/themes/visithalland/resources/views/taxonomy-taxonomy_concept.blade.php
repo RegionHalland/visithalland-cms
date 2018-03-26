@@ -4,5 +4,8 @@
     @include('partials.concept-featured')
     @include('partials.concept-spotlight')
     @include('partials.concept-featured-article')
-    @include('partials.concept-grid')
+    <div class="mt2 col-11 md-col-10 lg-col-10 mx-auto">
+    	@include('partials.concept-grid')
+    	@include('partials.concept-sidebar')	
+    </div>
 @endsection

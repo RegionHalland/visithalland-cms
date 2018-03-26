@@ -14,8 +14,7 @@
 @import 'base/reset';
 @import 'base/base';
 
-// Config
-// Uses variables from settings.scss
+// Config - Uses variables from settings.scss
 @import 'config/type-scale';
 @import 'config/typography';
 @import 'config/layout';
@@ -26,7 +25,7 @@
 @import 'config/flexbox';
 @import 'config/position';
 
-// Generic Components
+// Generic and Reusable Components
 @import 'components/container';
 @import 'components/button';
 @import 'components/section-header';
@@ -34,19 +33,17 @@
 @import 'components/image-credit';
 @import 'components/flickity';
 @import 'components/lazy-load';
-@import 'components/article-link';
-@import 'components/progress-bar';
 @import 'components/button-primary';
 @import 'components/icon-button';
 @import 'components/topographic-pattern';
 @import 'components/icons';
 @import 'components/contact';
 @import 'components/article-tag';
-@import 'components/navigation-carousel';
 @import 'components/date-badge';
 @import 'components/slider';
 @import 'components/read-more';
 @import 'components/breadcrumbs';
+@import 'components/preamble';
 @import 'components/scroll-indicator';
 @import 'components/search';
 @import 'components/google-place-details';
@@ -58,11 +55,10 @@
 // Landing
 @import './landing/landing';
 
-// Page
+// General Page Format
 @import './page/page';
-@import './page/happening-page';
 
-// Article
+// Article Components and Styles
 @import './article/article';
 @import './article/article-full';
 @import './article/article-large';
@@ -72,50 +68,52 @@
 @import './article/article-mentions';
 @import './article/article-loader';
 @import './article/article-infinite';
-
-
+@import './article/article-hero';
 @import './article/image-blurb';
 
-// Header
+// Header Styles
 @import './header/header';
 
-// Concept Pages Styles
+
+// Taxonomy/Concept Page Styles
 @import './concept/concept';
 @import './concept/concept-header';
 @import './concept/concept-grid';
 @import './concept/concept-sidebar';
 @import './concept/featured-grid';
 @import './concept/spotlight-carousel';
-@import './concept/concept-thumbnail-small';
+@import './concept/concept-thumbnail';
 @import './concept/concept-thumbnail-large';
 
-// Editorial
+
+// Editorial Article Format
 @import './editorial/editorial';
 
-// Spotlights
+// Spotlight Article Format
 @import './spotlight/spotlight';
 @import './spotlight/spotlight-small';
 @import './spotlight/spotlight-large';
 
-// Meet a local
+// Meet A Local Article Format
 @import './meetalocal/meetalocal';
 
-// Happening
+// Happening Article Format
+@import './happening/happening-page';
 @import './happening/happening';
 @import './happening/happening-large';
 @import './happening/happening-medium';
 @import './happening/happening-list-item';
 
-// Places
+// Place Page Format
 @import './place/place';
 
-// Businesses
+// Businesse Page Format
 @import './business/business';
 
-// Footer
+// Footer Styles
 @import './footer/footer';
 
-// Cookies
+// Cookies Page Format
 @import './cookies/cookies';
 
 // Typekit

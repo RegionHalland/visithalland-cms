@@ -11,15 +11,10 @@
     </div>
     <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
         <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
+            
 
             {{-- Breadcrumbs Start - Insert Partial Here --}}
-            <div class="breadcrumbs inline-block mb2">
-                <div class="breadcrumbs__icon beach-coast"></div>
-                <a href="" class="breadcrumbs__a breadcrumbs__a inline-block">Startsida</a>
-                <span class="breadcrumbs__divider">/</span>
-                <a href="" class="breadcrumbs__a breadcrumbs__a--current inline-block">Camping & Hiking</a>
-            </div>
-            {{-- Breadcrumbs End --}}
+            @include('partials.breadcrumbs')
 
             <h1 class="concept-header__title mt0 mb3 light">
                 <span>{{ $term->name }}</span>

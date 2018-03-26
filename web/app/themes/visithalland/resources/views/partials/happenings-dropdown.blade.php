@@ -32,6 +32,16 @@
                             </div>
                             <div class="happening-list-item__content col col-7 sm-col-8">
                                 <span class="happening-list-item__title">{{ $happening->post_title }}</span>
+                                <div class="read-more mt2">
+                                    <span class="read-more__text">
+                                        @php _e('Läs mer', 'visithalland') @endphp
+                                    </span>
+                                    <div class="read-more__button">
+                                        <svg class="icon read-more__icon">
+                                            <use xlink:href="#arrow-right-icon"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>

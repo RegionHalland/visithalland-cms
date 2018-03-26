@@ -1,23 +1,21 @@
-.concept-thumbnail-small {
+.concept-thumbnail {
 	&__img-container {
-		padding-bottom:66%;
+		padding-bottom:100%;
 		position:relative;
 		overflow: hidden;
 		border-radius:$border-radius;
 		background-color:palette(black, base);
-		@media(min-width:$breakpoint-sm) {
-			padding-bottom:100%;
-		}
-		&::before {
-			content:'';
-			position:absolute;
-			top:0;
-			left:0;
-			height:100%;
-			width:100%;
-			z-index: $z3;
-			background:rgba(0,0,0,0.35);
-		}
+		&::after {
+	 		content:'';
+	 		position:absolute;
+	 		bottom:0;
+	 		left:0;
+	 		right:0;
+	 		z-index:1;
+	 		height:65%;
+	 		width:100%;
+	 		@include scrimGradient(palette(black, dark), 'to top');
+	 	}
 	}
 	&__img {
 		position:absolute;
@@ -29,13 +27,13 @@
 
 	&__icon {
 		border-radius:$border-radius;
+		position:absolute;
+		top:$space-2;
+		left:$space-2;
+		z-index:$z3;
 		@include themify {
-	        height:30px;
-	        width:30px;
-	        @media(min-width:$breakpoint-lg) {
-		    	height:35px;
-	        	width:35px;
-		    }
+	        height:25px;
+	        width:25px;
 	        background-size:100%;
 	        background-position:center;
 	        background-repeat:no-repeat;
@@ -46,19 +44,17 @@
 
 	&__inner {
 		position:absolute;
-		top:50%;
-		left:50%;
+		bottom:$space-2;
+		left:$space-3;
 		width:100%;
-		text-align: center;
-		transform:translate(-50%, -50%);
 		z-index: $z3;
 	}
 
 	&__title {
-		font-size:1.8em;
+		font-size:1.8rem;
 		color:$white;
 		@media(min-width:$breakpoint-sm) {
-			font-size:2.1em;
+			font-size:1.9rem;
 		}
 	}
 }

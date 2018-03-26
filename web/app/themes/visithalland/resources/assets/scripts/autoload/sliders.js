@@ -6,23 +6,23 @@ class Sliders {
 
     bind() {
         // TODO: Add Flickity for our new items -> this is how we do it now ---->
-        var landingConceptsCarousel = new Flickity('.landing-concepts__carousel', {
-            cellAlign: 'left',
-            contain: true,
-            prevNextButtons: false,
-            pageDots: false,
-            imagesLoaded: true
-        });
+        // var landingConceptsCarousel = new Flickity('.landing-concepts__carousel', {
+        //     cellAlign: 'left',
+        //     contain: true,
+        //     prevNextButtons: false,
+        //     pageDots: false,
+        //     imagesLoaded: true
+        // });
 
-        $('.landing-concepts__carousel--next').on('click', function () {
-            console.log("hej", landingConceptsCarousel);
-            landingConceptsCarousel.next();
-        });
+        // $('.landing-concepts__carousel--next').on('click', function () {
+        //     console.log("hej", landingConceptsCarousel);
+        //     landingConceptsCarousel.next();
+        // });
 
-        $('.landing-concepts__carousel--previous').on('click', function () {
-            console.log("hej", landingConceptsCarousel);
-            landingConceptsCarousel.previous();
-        });
+        // $('.landing-concepts__carousel--previous').on('click', function () {
+        //     console.log("hej", landingConceptsCarousel);
+        //     landingConceptsCarousel.previous();
+        // });
 
         /* Tip carousel on meet-a-local page */
         var tipCarousel = new Flickity('.tip-carousel', {
@@ -41,22 +41,22 @@ class Sliders {
         });
 
 
-        /* Spotlight carousel */
-        var spotlightCarousel = new Flickity('.spotlight-carousel', {
-            cellAlign: 'left',
-            contain: true,
-            prevNextButtons: false,
-            pageDots: false,
-            imagesLoaded: true
-        });
+        // /* Spotlight carousel */
+        // var spotlightCarousel = new Flickity('.spotlight-carousel', {
+        //     cellAlign: 'left',
+        //     contain: true,
+        //     prevNextButtons: false,
+        //     pageDots: false,
+        //     imagesLoaded: true
+        // });
 
-        $('.spotlight-carousel--next').on('click', function () {
-            spotlightCarousel.next();
-        });
+        // $('.spotlight-carousel--next').on('click', function () {
+        //     spotlightCarousel.next();
+        // });
 
-        $('.spotlight-carousel--previous').on('click', function () {
-            spotlightCarousel.previous();
-        });
+        // $('.spotlight-carousel--previous').on('click', function () {
+        //     spotlightCarousel.previous();
+        // });
 
         // We can't do it like this anymore:
         /*$('.navigation-carousel').flickity({

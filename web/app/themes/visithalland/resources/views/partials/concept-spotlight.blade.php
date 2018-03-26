@@ -15,7 +15,7 @@
 		</button>
 		<div class="spotlight-carousel">
 		    @foreach($concept_spotlights as $key => $spotlight)
-				<a href="{{ get_permalink($spotlight->ID) }}" class="spotlight-thumbnail beach-coast {{ $spotlight->terms["terms_default_lang"]->slug }}">
+				<a href="{{ get_permalink($spotlight->ID) }}" title="{{ $spotlight->post_title }}" class="spotlight-thumbnail beach-coast {{ $spotlight->terms["terms_default_lang"]->slug }}">
 					<div class="spotlight-thumbnail__img-wrapper">
 						<img class="spotlight-thumbnail__img lazyload"
 		                    data-src="{{ get_the_post_thumbnail_url( $spotlight->ID, 'vh_thumbnail@2x' ) }}"
