@@ -5,6 +5,9 @@
         &--large {
             height:400px;
             @media (min-width:$breakpoint-sm) {
+                height:500px;
+            }
+            @media (min-width:$breakpoint-md) {
                 height:600px;
             }
         }

@@ -1,15 +1,22 @@
+.happening__content {
+	@media(min-width:$breakpoint-md) {
+		padding-right:$space-3;
+	}
+}
+
+
 .happening-info {
 	border-radius:$border-radius;
 	background:$black;
 	overflow:hidden;
-	margin-top:$space-2;
+	margin-top:$space-3;
 	@media(min-width:$breakpoint-md) {
 		margin-top:0;
 	}
 	&__inner {
 		display:block;
 		padding:$space-3;
-		@media(min-width:$breakpoint-md) {
+		@media(min-width:$breakpoint-sm) {
 			padding:$space-3 $space-4;
 		}
 	}

@@ -1,9 +1,6 @@
 class DynamicGrid {
     constructor() {
 
-
-	console.log("TEST");
-
     function new_map( $el ) {
 	
 		// var

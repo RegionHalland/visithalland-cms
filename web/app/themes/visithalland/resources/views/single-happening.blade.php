@@ -9,12 +9,12 @@
 <div id="infinite-container">
 	<article class="container beach-coast" role="main" id="main-content">
         @include('partials.article-hero')
-        <div class="clearfix mt4">
-            <div class="col-11 md-col-10 lg-col-10 mx-auto clearfix">
-                <div class="col col-12 sm-col-6 mt2">
+        <div class="clearfix mt4 mb5">
+            <div class="col-11 sm-col-9 md-col-10 mx-auto clearfix">
+                <div class="happening__content col col-12 md-col-6 mt2">
                     <p class="preamble">{!! the_content() !!}
                 </div>
-                <aside class="col col-12 sm-col-6 mt3">
+                <aside class="col col-12 md-col-6 mt3">
                     <div class="happening-info">
                         <div class="happening-info__map acf-map">
                             <div class="marker" data-lat="{{ get_field("location")['lat']}}" data-lng="{{ get_field("location")['lng']}}"></div>
@@ -44,6 +44,7 @@
                 </aside>
             </div>
         </div>
+        @include('partials.recommended-happenings')
         @include('partials.share')
     </article>
     @endwhile

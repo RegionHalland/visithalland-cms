@@ -8,6 +8,7 @@ import "./autoload/**/*";
 import Router from './util/Router';
 import common from './routes/common';
 import archive from './routes/archive';
+import single from './routes/single';
 import home from './routes/home';
 import aboutUs from './routes/about';
 
@@ -15,8 +16,10 @@ import aboutUs from './routes/about';
 const routes = new Router({
   // All pages
   common,
-
+  // Archive
   archive,
+  //Single Trip -- Needs to be fixed
+  single,
   // Home page
   home,
   // About Us page, note the change from about-us to aboutUs.

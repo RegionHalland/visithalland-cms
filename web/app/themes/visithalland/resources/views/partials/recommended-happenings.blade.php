@@ -1,22 +1,21 @@
 <div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
     <div class="clearfix mxn2">
-        <h2 class="recommended-articles__title mx-auto mb2 center">@php _e('Vidare läsning', 'visithalland') @endphp</h2>
+        <h2 class="recommended-articles__title mx-auto mb2 center">@php _e('Fler events vi tror du gillar', 'visithalland') @endphp</h2>
         @php
-            $terms = get_the_terms($post->ID, 'taxonomy_concept');
-            $featuredArticles = App::getPosts(array(), $terms[0], 3);
+            $recommended_happenings = App::getHappenings();
         @endphp
-            @foreach($featuredArticles as $key => $value)
-                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 beach-coast">
+        @if(is_array($recommended_happenings))
+            @foreach($recommended_happenings as $key => $value)
+                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 {{ $value->terms["terms_default_lang"]->slug }}">
                     <a href="{{ get_permalink($value->ID) }}" class="link-reset">
                         <div class="article-medium__img-container topographic-pattern">
-                            <div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
-                                <div class="article-tag__icon-wrapper">
-                                    <div class="article-tag__icon"></div>
-                                </div>
+                            <div class="date-badge absolute top-0 left-0 ml2 mt2 z3">
+                                <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); ?></span>
+                                <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date", $value->ID))); ?></span>
                             </div>
                             <picture>
                                 <source
-                                    data-srcset="{{get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" }}" />
                                 <img class="article-medium__img lazyload"
                                         data-src="{{ get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) }}"
                                         alt="{{ get_field("cover_image")["alt"] }}"
@@ -38,6 +37,7 @@
                         </div>
                     </a>
                 </article>
-        @endforeach
+            @endforeach
+        @endif
     </div>
 </div>

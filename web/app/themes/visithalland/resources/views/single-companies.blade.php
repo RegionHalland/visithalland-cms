@@ -22,13 +22,13 @@
                             data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_large@2x' ) . " 2x" }}" />
                         <source
                             data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_medium@2x' ) . " 2x" }}" />
-                        <img class="happening-header__img lazyload"
+                        <img class="business-header__img lazyload"
                             data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) }}"
                             alt="{{ $alt }}"
                         />
                     </picture>
                     @if ($thumbnail_image[0]->post_content)
-                    <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z4">
+                    <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z3">
                         <svg class="icon image-credit--large__icon">
                             <use xlink:href="#camera-icon"/>
                         </svg>
@@ -47,7 +47,6 @@
                                     // TODO: Fix dynamic post type label
                                 @endphp
                                 Editorial
-                                <?php // echo vh_get_pretty_post_type_name($post->post_type) ?>
                             </span>
                         </div>
                         <h1 class="business-header__title h1 mb3 mt2">{!! get_the_title() !!}</h1>
@@ -61,7 +60,6 @@
         </section>
 
         @include('partials.share')
-
         @include('partials.recommended-articles')
 
     </article>
