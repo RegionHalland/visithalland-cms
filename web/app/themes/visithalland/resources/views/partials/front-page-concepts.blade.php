@@ -4,14 +4,12 @@
 @if(is_array($primary_navigation_items))
     
     <section class="mt2 col-11 md-col-10 lg-col-10 mx-auto">
-        <header class="section-header coastal-living block my3">
-            <div class="section-header__icon-wrapper">
-                <svg class="section-header__icon icon">
-                    <use xlink:href="#recommend-icon"/>
-                </svg>
-            </div>
+        <header class="section-header coastal-living block my4">
+            <svg class="section-header__icon icon--lg">
+                <use xlink:href="#test-icon"/>
+            </svg>
             <div class="section-header__title">
-                @php _e( 'Vad vill du göra?', 'visithalland' ); @endphp
+                @php _e( 'Upptäck det bästa av Halland', 'visithalland' ); @endphp
             </div>
         </header>
         <div class="featured-grid clearfix">

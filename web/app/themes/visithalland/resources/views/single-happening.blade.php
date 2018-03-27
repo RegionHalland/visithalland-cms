@@ -12,10 +12,13 @@
         <div class="clearfix mt4 mb5">
             <div class="col-11 sm-col-9 md-col-10 mx-auto clearfix">
                 <div class="happening__content col col-12 md-col-6 mt2">
-                    <p class="preamble">{!! the_content() !!}
+                    <p class="preamble">{{ get_field("excerpt") }}</p>
+                    <div class="article-body mt3">
+                        {{ the_content() }}
+                    </div>
                 </div>
                 <aside class="col col-12 md-col-6 mt3">
-                    <div class="happening-info">
+                    <div class="happening-info topographic-pattern">
                         <div class="happening-info__map acf-map">
                             <div class="marker" data-lat="{{ get_field("location")['lat']}}" data-lng="{{ get_field("location")['lng']}}"></div>
                         </div>

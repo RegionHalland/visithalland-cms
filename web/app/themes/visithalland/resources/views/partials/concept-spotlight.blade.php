@@ -1,5 +1,5 @@
 
-@php $concept_spotlights = App::getPosts(array("happening", "places", "companies", "editorial", "meet-a-local"), get_queried_object()) @endphp
+@php $concept_spotlights = App::getPosts(array("happening", "places", "companies", "editor_tip", "meet_local"), get_queried_object()) @endphp
 
 @if(is_array($concept_spotlights))
 	<section class="spotlight-section mt5 mb5 col-12 md-col-10 lg-col-10 mx-auto beach-coast">
@@ -24,7 +24,16 @@
 					</div>
 					<div class="spotlight-thumbnail__content">
 						<h4 class="spotlight-thumbnail__title">
-							{{ $spotlight->post_title }}
+
+							@if (get_field("title", $spotlight->ID) != '')
+								
+								{{ the_field("title", $spotlight->ID) }}
+
+							@else 
+
+								{{ $spotlight->post_title }}
+
+							@endif
 						</h4>
 						<div class="read-more mt2">
 		                    <span class="read-more__text">

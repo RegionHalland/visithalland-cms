@@ -1,6 +1,7 @@
 .lazyload,
 .lazyloading {
 	opacity: 0;
+	will-change: opacity;
 	transition: opacity 500ms;
 	transform-origin: bottom center;
 }

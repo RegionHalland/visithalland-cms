@@ -9,7 +9,7 @@
         <div class="page-header">
             <div class="page-header__backdrop topographic-pattern">
             </div>
-            <div class="page-header__inner col-11 md-col-10 lg-col-8 mx-auto">
+            <div class="page-header__inner col-11 md-col-10 lg-col-10 mx-auto">
                 <div class="clearfix">
                     <div class="col col-12 sm-col-6">
                         <h1 class="light mt3"> {{ get_the_title() }} </h1>

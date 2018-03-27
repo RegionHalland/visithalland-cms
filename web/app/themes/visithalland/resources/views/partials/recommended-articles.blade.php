@@ -1,6 +1,6 @@
 <div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
     <div class="clearfix mxn2">
-        <h2 class="recommended-articles__title mx-auto mb2 center">@php _e('Vidare läsning', 'visithalland') @endphp</h2>
+        <h3 class="recommended-articles__title mx-auto mb2 center">@php _e('Vidare läsning', 'visithalland') @endphp</h3>
         @php
             $terms = get_the_terms($post->ID, 'taxonomy_concept');
             $featuredArticles = App::getPosts(array(), $terms[0], 3);

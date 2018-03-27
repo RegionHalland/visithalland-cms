@@ -1,13 +1,13 @@
 .happening__content {
 	@media(min-width:$breakpoint-md) {
-		padding-right:$space-3;
+		padding-right:$space-4;
 	}
 }
 
 
 .happening-info {
 	border-radius:$border-radius;
-	background:$black;
+	background-color:palette(black, light);
 	overflow:hidden;
 	margin-top:$space-3;
 	@media(min-width:$breakpoint-md) {

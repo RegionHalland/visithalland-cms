@@ -1,6 +1,6 @@
 <div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
     <div class="clearfix mxn2">
-        <h2 class="recommended-articles__title mx-auto mb2 center">@php _e('Fler events vi tror du gillar', 'visithalland') @endphp</h2>
+        <h3 class="recommended-articles__title mx-auto mb2 center">@php _e('Fler events vi tror du gillar', 'visithalland') @endphp</h3>
         @php
             $recommended_happenings = App::getHappenings();
         @endphp

@@ -1,0 +1,57 @@
+.campaign-header {
+	&__img-container {
+		padding-bottom:125%;
+		position:relative;
+		overflow: hidden;
+		background-color:palette(black, base);
+		@media(min-width:$breakpoint-md) {
+			padding-bottom:56.25%;
+		}
+		&::after {
+	 		content:'';
+	 		position:absolute;
+	 		bottom:0;
+	 		left:0;
+	 		right:0;
+	 		z-index:1;
+	 		height:90%;
+	 		width:100%;
+	 		@include scrimGradient(palette(black, dark), 'to top');
+	 	}
+	}
+	&__img {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		z-index:$z1;
+	}
+
+	&__title {
+		color:$white;
+	}
+
+	&__excerpt {
+		color:palette(grey, x-light);
+		margin-top:$space-3;
+		display:none;
+		@media(min-width:$breakpoint-sm) {
+			display:block;
+		}
+	}
+
+	&__content {
+		padding:$space-4 0;
+		position:absolute;
+		bottom:$space-2;
+		left:0;
+		right:0;
+		z-index:$z3;
+		@media(min-width:$breakpoint-sm) {
+			bottom:$space-4;
+		}
+		@media(min-width:$breakpoint-lg) {
+			bottom:$space-5;
+		}
+	}
+}
