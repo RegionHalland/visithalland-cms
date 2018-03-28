@@ -49,19 +49,15 @@
             </div>
 
 			<div class="header__right flex items-center justify-end">
-				<button class="icon-button search-button mr2">
+				<a href="/?s" class="icon-button search-button mr2">
 					<svg class="icon icon-button__icon">
 						<use xlink:href="#search-icon"/>
 					</svg>
-                </button>
+                </a>
 
                 @include('partials.happenings-dropdown')
 
             </div>
-        </section>
-
-        <section class="header-search topographic-pattern flex justify-between relative z2" aria-expanded="false">
-            @php get_search_form() @endphp
         </section>
 
         <nav class="navigation center topographic-pattern">
