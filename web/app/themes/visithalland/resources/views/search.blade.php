@@ -5,10 +5,53 @@
         global $wp_query;
         $total_results = $wp_query->found_posts;
     @endphp
+	
+    {{ get_search_form() }}
+    <article class="container" role="main" id="main-content">
+	        <div class="col-11 md-col-10 lg-col-10 mx-auto">
+	        	<div class="search-inner clearfix mxn2 mt2 mb4">
+	        		@if(isset($wp_query))
+			            @foreach ($wp_query->posts as $key => $post)
+			            	@php
+				            	$post_id = $post->ID;
+								$thumbnail_id = get_post_thumbnail_id($post_id);
+								$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+							@endphp
+			            	<div class="col col-12 sm-col-4 search-result px2 mt3">
+						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
+										<article class="image-blurb">
+											<picture>
+												<source
+													media="(min-width: 40em)"
+													data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_large@2x' ) . " 2x" }}" />
+												<source
+													data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
+												<img
+													class="image-blurb__img lazyload"
+													data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
+													alt="{{ $alt }}" />
+											</picture>
+											<div class="image-blurb__content">
+												<h3 class="image-blurb__title">{{ $post->post_title}}</h3>
+												<div class="read-more my3">
+								                    <span class="read-more__text light">
+								                        @php _e( 'Läs mer', 'visithalland' ); @endphp
+								                    </span>
+								                    <div class="read-more__button">
+								                        <svg class="icon read-more__icon">
+								                            <use xlink:href="#arrow-right-icon"/>
+								                        </svg>
+								                    </div>
+								                </div>
+							                </div>
+										</article>
+									</a>
+								</div>
+					    @endforeach
+				    @endif
+				</div>
+	    	</div>
+	    @include('partials.recommended-articles')
+	</article>
 
-   {{ get_search_form() }}
-
-    @foreach ($wp_query->posts as $key => $post)
-        {{ $post->post_title }}
-    @endforeach
 @endsection

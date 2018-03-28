@@ -8,6 +8,7 @@ class App extends Controller
 {
     use Traits\Posts;
     use Traits\Navigation;
+    use Traits\Breadcrumbs;
 
     public function siteName()
     {

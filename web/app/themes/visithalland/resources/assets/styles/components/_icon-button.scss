@@ -1,6 +1,10 @@
 .icon-button {
 	height:30px;
 	width:30px;
+	&--large {
+		height:45px;
+		width:45px;
+	}
 	background:palette(black, x-light);
 	border-radius:50%;
 	position: relative;
@@ -12,6 +16,10 @@
 	@media (min-width:$breakpoint-sm) {
 		height:40px;
 		width:40px;
+		&--large {
+			height:50px;
+			width:50px;
+		}
 	}
 
 	&__icon {
