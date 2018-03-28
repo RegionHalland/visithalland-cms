@@ -46,7 +46,7 @@
                     @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
                     @if(is_array($primary_navigation_items))
                         @foreach($primary_navigation_items as $key => $navigation_item)
-                            <div class="footer-nav__item footer__nav-item beach-coast">
+                            <div class="footer-nav__item footer__nav-item {{ $navigation_item->meta_fields['class_name'] }}">
                                 <a href="{{ $navigation_item->url }}" class="footer-nav__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
                                     <div class="footer-nav__icon-wrapper">
                                         <div class="footer-nav__icon"></div>

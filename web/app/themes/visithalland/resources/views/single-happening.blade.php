@@ -7,7 +7,7 @@
     $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
 @endphp
 <div id="infinite-container">
-	<article class="container beach-coast" role="main" id="main-content">
+	<article class="container {{ App::getTermClassName() }}" role="main" id="main-content">
         @include('partials.article-hero')
         <div class="clearfix mt4 mb5">
             <div class="col-11 sm-col-9 md-col-10 mx-auto clearfix">
@@ -22,7 +22,7 @@
                         <div class="happening-info__map acf-map">
                             <div class="marker" data-lat="{{ get_field("location")['lat']}}" data-lng="{{ get_field("location")['lng']}}"></div>
                         </div>
-                        <div class="happening-info__inner clearfix"> 
+                        <div class="happening-info__inner clearfix">
                             <section class="happening-info__section col col-12 sm-col-4">
                                 <span class="happening-info__section-label">@php _e( 'Datum', 'visithalland' ) @endphp</span>
                                 <span class="happening-info__date light">

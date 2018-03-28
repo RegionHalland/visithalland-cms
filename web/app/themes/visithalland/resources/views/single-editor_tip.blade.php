@@ -9,7 +9,7 @@
 @endphp
 
 <div id="infinite-container">
-    <article class="container beach-coast" role="main" id="main-content">
+    <article class="container {{ App::getTermClassName() }}" role="main" id="main-content">
         @include('partials.article-hero')
         @include('partials.article-content')
         @include('partials.share')

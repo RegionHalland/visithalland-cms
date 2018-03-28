@@ -8,7 +8,7 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <div id="infinite-container">
-        <article class="container beach-coast" role="main" id="main-content">
+        <article class="container" role="main" id="main-content">
             @include('partials.article-hero')
 
             <div class="article-content clearfix mt5 mb4">

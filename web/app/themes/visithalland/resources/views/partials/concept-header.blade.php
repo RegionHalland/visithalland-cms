@@ -1,4 +1,4 @@
-<header class="concept-header relative beach-coast" role="heading">
+<header class="concept-header relative" role="heading">
     <div class="concept-header__img-container topographic-pattern">
         <picture>
             <source media="(min-width: 60em)"
@@ -11,19 +11,17 @@
     </div>
     <div class="concept-header__content clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
         <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
-            
-
-            {{-- Breadcrumbs Start - Insert Partial Here --}}
+            {{-- Breadcrumbs Start --}}
             @include('partials.breadcrumbs')
 
             <h1 class="concept-header__title mt0 mb3 light">
                 <span>{{ $term->name }}</span>
             </h1>
             <p class="concept-header__p light mt3">
-                {{ the_field("excerpt", $term) }}  
+                {{ the_field("excerpt", $term) }}
             </p>
         </div>
-        
+
         {{-- Scroll Indicator Start --}}
         <div class="scroll-indicator">
             <svg class="scroll-indicator__icon">
@@ -31,6 +29,6 @@
             </svg>
         </div>
         {{-- Scroll Indicator End --}}
-        
+
     </div>
 </header>

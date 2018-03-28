@@ -12,7 +12,7 @@
     @endphp
 
 
-<article class="container beach-coast" role="main" id="main-content">
+<article class="container {{ App::getTermClassName() }}" role="main" id="main-content">
     @include('partials.article-hero')
     <div class="article-content clearfix mt5">
         <div class="col-11 md-col-10 lg-col-8 mx-auto">

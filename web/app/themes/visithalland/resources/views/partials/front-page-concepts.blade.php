@@ -1,8 +1,8 @@
-{{-- Get Concepts for grid --}}  
+{{-- Get Concepts for grid --}}
 @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
-    
+
 @if(is_array($primary_navigation_items))
-    
+
     <section class="mt2 col-11 md-col-10 lg-col-10 mx-auto">
         <header class="section-header coastal-living block my4">
             <svg class="section-header__icon icon--lg">
@@ -16,10 +16,10 @@
             @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
             @foreach($primary_navigation_items as $key => $navigation_item)
                 {{-- Gets first item in array --}}
-                @if($loop->iteration == 1) 
+                @if($loop->iteration == 1)
                     <div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8">
                         <a href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}">
-                            <article class="image-blurb beach-coast">
+                            <article class="image-blurb {{ $navigation_item->meta_fields['class_name'] }}">
                                 <picture>
                                     <source media="(min-width:40em)"
                                         data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large@2x"] . " 2x" }}" />
@@ -43,12 +43,12 @@
                             </article>
                         </a>
                     </div>
-                
+
                 {{-- Gets second and third item in array --}}
                 @elseif($loop->iteration > 1 && $loop->iteration <= 3)
                     <div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4">
                         <a href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}">
-                            <article class="image-blurb beach-coast">
+                            <article class="image-blurb {{ $navigation_item->meta_fields['class_name'] }}">
                                 <picture>
                                     <source media="(min-width:40em)"
                                         data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large@2x"] . " 2x" }}" />
@@ -72,12 +72,12 @@
                             </article>
                         </a>
                     </div>
-                
+
                 {{-- Loops remaining items as small --}}
                 @else
                     <div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
                         <a href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}">
-                            <article class="image-blurb beach-coast">
+                            <article class="image-blurb {{ $navigation_item->meta_fields['class_name'] }}">
                                 <picture>
                                     <source media="(min-width:40em)"
                                         data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_large@2x"] . " 2x" }}" />

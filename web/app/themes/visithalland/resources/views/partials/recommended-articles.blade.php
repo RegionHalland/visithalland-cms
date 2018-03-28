@@ -6,7 +6,7 @@
             $featuredArticles = App::getPosts(array(), $terms[0], 3);
         @endphp
             @foreach($featuredArticles as $key => $value)
-                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 beach-coast">
+                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4">
                     <a href="{{ get_permalink($value->ID) }}" class="link-reset">
                         <div class="article-medium__img-container topographic-pattern">
                             <div class="article-tag absolute top-0 left-0 mt2 ml2 z3">

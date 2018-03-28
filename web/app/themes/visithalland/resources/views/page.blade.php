@@ -5,7 +5,7 @@
         while ( have_posts() ) : the_post();
 	    $author_id = get_the_author_meta('ID');
     @endphp
-    <article class="container beach-coast" role="main" id="main-content">
+    <article class="container" role="main" id="main-content">
         <div class="page-header">
             <div class="page-header__backdrop topographic-pattern">
             </div>

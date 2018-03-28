@@ -2,7 +2,7 @@
 
 @section('content')
 
-@php 
+@php
 	while( have_posts() ) : the_post();
     $thumbnail_id = get_post_thumbnail_id();
     $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
@@ -12,7 +12,7 @@
 
 
 	<div id="infinite-container">
-	    <article class="container beach-coast" role="main" id="main-content">
+	    <article class="container" role="main" id="main-content">
 	        @include('partials.article-hero')
 	        @include('partials.article-content')
 	        @include('partials.meet-a-local-grid')
