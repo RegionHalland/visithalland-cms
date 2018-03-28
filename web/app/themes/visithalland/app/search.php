@@ -2,18 +2,6 @@
 
 namespace App;
 
-/**
- * @param array  $locations
- * @param string $file
- *
- * @return array
- */
-// Where to look for templates
-add_filter('algolia_templates_path', function () {
-     return '../resources/views/algolia/';
- });
-
-
 /* Load our custom searchform blade-file */
 add_filter('get_search_form', function () {
     return template('partials.searchform');
