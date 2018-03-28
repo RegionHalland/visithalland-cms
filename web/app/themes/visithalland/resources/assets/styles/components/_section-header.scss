@@ -29,17 +29,6 @@
 		position:relative;
 		font-size:1.4rem;
 
-		&::before {
-			content:'';
-			position:absolute;
-			bottom:0;
-			background:palette(grey, light);
-			opacity:0.45;
-			border-radius:$border-radius;
-			left:0;
-			right:0;
-			height:10px;
-			width:100%;
-		}
+		
 	}
 }

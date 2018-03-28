@@ -1,6 +1,5 @@
 .header {
 	position:fixed;
-	max-width:$container-max-width;
 	left:0;
 	right:0;
 	margin:0 auto;
@@ -10,6 +9,7 @@
 	&__inner {
 		box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.22);
 		margin:0 auto;
+		max-width: $container-max-width;
 		background:palette(black, base);
 		position:relative;
 		@media (min-width:$breakpoint-sm) {
