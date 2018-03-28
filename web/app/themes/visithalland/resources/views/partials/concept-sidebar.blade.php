@@ -50,7 +50,7 @@
     @if(is_array($primary_navigation_items))
         <div class="concept-sidebar__concepts mxn2 mt3 clearfix">
             @foreach($primary_navigation_items as $key => $navigation_item)
-                <div class="concept-thumbnail px2 col col-12 sm-col-6 lg-col-12 mt3 block {{ App::getTermClassName() }}">
+                <div class="concept-thumbnail px2 col col-12 sm-col-6 lg-col-12 mt3 block {{ $navigation_item->meta_fields['class_name'] }}">
                     <a href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}" class="link-reset">
                         <div class="concept-thumbnail__img-container">
                             <div class="concept-thumbnail__icon"></div>
