@@ -8,7 +8,7 @@ export default {
     var Flickity = require('flickity');
 
     var grid = $('.featured-grid')[0];
-    
+
     var pckry = new Packery(grid, {
       itemSelector: '.featured-grid__item',
       percentPosition: true,

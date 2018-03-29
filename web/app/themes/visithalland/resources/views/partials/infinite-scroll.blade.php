@@ -3,9 +3,6 @@
 </div>
 
 <div class="container">
-    <!-- <div class="infinite-scroll">
-
-    </div> -->
     <div class="page-load-status">
         <p class="infinite-scroll-request"><?php _e( 'Hämtar nästa artikel', 'visithalland' ); ?></p>
         <p class="infinite-scroll-last"><?php _e( 'Slut på innehåll', 'visithalland' ); ?></p>
