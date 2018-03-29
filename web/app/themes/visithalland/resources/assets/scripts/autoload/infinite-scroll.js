@@ -12,21 +12,6 @@ class InfiniteScroll {
         var nextPages = $("#nextPages").data("all");
         console.log(nextPages);
 
-        console.log("asd");
-
-        /*var nextPages = [
-            "http://localhost:3000/camping-friends/spotlight/en-regnig-dag",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200",
-            "https://cdn.syndication.twimg.com/tweets.json?next_version=true&callback=__twttr.callbacks.cb0&ids=804705433739022338&lang=en&suppress_response_codes=true&tz=GMT%2B0200"
-        ];*/
-
         var infScroll = new inf('#infinite-container', {
             path: function () {
                 return nextPages[this.loadCount];
@@ -34,6 +19,7 @@ class InfiniteScroll {
             append: '#main-content',
             status: '.page-load-status',
             scrollThreshold: 800,
+            history: 'replace',
             debug: true
             //scrollThreshold: false
         });
