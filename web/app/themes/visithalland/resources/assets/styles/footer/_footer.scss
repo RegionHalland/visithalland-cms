@@ -154,11 +154,12 @@
 }
 
 .footer__intro, .footer__eu-paragraph{
-	font-size:1rem;
+	font-size:0.9rem;
+	font-style:italic;
 	@media (min-width:$breakpoint-sm){
 		font-size:0.9rem;
 	}
-	color:$white;
+	color:palette(grey, light);
 }
 
 

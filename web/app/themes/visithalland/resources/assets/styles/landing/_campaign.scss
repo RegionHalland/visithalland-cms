@@ -29,8 +29,11 @@
 
 	&__title {
 		color:$white;
+		font-size:1.8rem;
+		max-width:80%;
 		@media(min-width:$breakpoint-sm) {
 			max-width:60%;
+			font-size:$h1;
 		}
 		@media(min-width:$breakpoint-md) {
 			max-width:50%;

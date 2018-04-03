@@ -9,8 +9,18 @@
     {{ get_search_form() }}
     <article class="container" role="main" id="main-content">
 	        <div class="col-11 md-col-10 lg-col-10 mx-auto">
-	        	<div class="search-inner clearfix mxn2 mt2 mb4">
-	        		@if(isset($wp_query))
+	        	@if(isset($wp_query))
+	        	<header class="section-header block mb2 mt4 coastal-living">
+		            <div class="section-header__icon-wrapper">
+		                <svg class="section-header__icon icon">
+		                    <use xlink:href="#search-icon"/>
+		                </svg>
+		            </div>
+		            <div class="section-header__title">
+		                @php _e( 'Dina sökresultat', 'visithalland' ) @endphp
+		            </div>
+        		</header>
+	        	<div class="search-inner clearfix mxn2 mb4">
 			            @foreach ($wp_query->posts as $key => $post)
 			            	@php
 				            	$post_id = $post->ID;
@@ -48,8 +58,8 @@
 									</a>
 								</div>
 					    @endforeach
-				    @endif
 				</div>
+				@endif
 	    	</div>
 	    @include('partials.recommended-articles')
 	</article>
