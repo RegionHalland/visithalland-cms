@@ -1,6 +1,15 @@
  @if( have_rows('tips') )
     <section class="mt5 mb5 col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
-        <h3 class="center my4">Tips från artikeln</h3>
+        <header class="section-header inline-block mb3 coastal-living">
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#recommend-icon"/>
+                </svg>
+            </div>
+            <div class="section-header__title">
+                @php _e( 'Tips från ', 'visithalland' ) @endphp {{ the_title() }}
+            </div>
+        </header>
         <div class="featured-grid clearfix">
 
             @php
@@ -13,7 +22,7 @@
             @endphp
 
             @if($current_index % 2 === 0)
-                <div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-12 lg-col-4">
+                <div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4">
                     <a href="{{ the_permalink($value[0]->ID) }}" title="{{ the_permalink($value[0]->ID) }}">
                         <article class="image-blurb">
                             <picture>
@@ -28,7 +37,7 @@
                                     alt="{{ $alt }}" />
                             </picture>
                             <div class="image-blurb__content">
-                                <h2 class="image-blurb__title">{!! $value[0]->post_title !!}</h2>
+                                <h3 class="image-blurb__title">{!! $value[0]->post_title !!}</h3>
                                 <div class="read-more my3">
                                     <span class="read-more__text light">
                                         @php _e( 'Läs mer', 'visithalland' ); @endphp
@@ -44,7 +53,7 @@
                     </a>
                 </div>
             @else
-                <div class="featured-grid__item featured-grid__item--small col col-12 sm-col-12 lg-col-4">
+                <div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
                     <a href="{{ the_permalink($value[0]->ID) }}" title="{{ the_permalink($value[0]->ID) }}">
                         <article class="image-blurb">
                             <picture>
@@ -59,7 +68,7 @@
                                     alt="{{ $alt }}" />
                             </picture>
                             <div class="image-blurb__content">
-                                <h2 class="image-blurb__title">{!! $value[0]->post_title !!}</h2>
+                                <h3 class="image-blurb__title">{!! $value[0]->post_title !!}</h3>
                                 <div class="read-more my3">
                                     <span class="read-more__text light">
                                         @php _e( 'Läs mer', 'visithalland' ); @endphp

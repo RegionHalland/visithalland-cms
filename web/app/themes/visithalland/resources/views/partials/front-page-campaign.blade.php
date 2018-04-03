@@ -4,10 +4,21 @@
             <h1 class="campaign-header__title">{{ get_field('campaign_title') }}</h1>
             <p class="campaign-header__excerpt">{{ get_field('campaign_excerpt') }}</p>
             @if(get_field('external_link'))
-                <a class="btn btn--primary inline-block mt3 mr2" href="{{ get_field('external_link') }}">Gå till webbplats</a>
+                <a class="btn btn--primary inline-block mt3 mr2" href="{{ get_field('external_link') }}">@php _e( 'Extern webbplats', 'visithalland' ) @endphp</a>
             @endif
             @if(get_field('internal_link'))
-                <a class="btn inline-block mt3" href="{{ get_field('internal_link') }}">Läs mer</a>
+                <a class="inline-block mt3 mb2 vertical-middle" href="{{ get_field('internal_link') }}">
+                    <div class="read-more">
+                        <span class="read-more__text light">
+                            @php _e( 'Läs mer', 'visithalland' ) @endphp
+                        </span>
+                        <div class="read-more__button coastal-living">
+                            <svg class="icon read-more__icon">
+                                <use xlink:href="#arrow-right-icon"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
             @endif
         </span>
         <picture>

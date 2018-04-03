@@ -1,8 +1,18 @@
-<div class="concept-sidebar col col-12 lg-col-4">
+<div class="concept-sidebar col col-12 lg-col-4 mb4">
     {{-- Gets And Loops Happenings Date Descending --}}
     @php $concept_happenings = App::getHappenings(10, $term) @endphp
     @if(is_array($concept_happenings))
-        <div class="concept-sidebar__happenings mxn2 mt3 clearfix">
+        <div class="concept-sidebar__happenings mxn2 mt1 mb3 clearfix">
+        <header class="section-header block mb3 mt2 px2 coastal-living">
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#calendar-icon"/>
+                </svg>
+            </div>
+            <div class="section-header__title">
+                @php _e( 'Kul events', 'visithalland' ) @endphp
+            </div>
+        </header>
         @foreach($concept_happenings as $key => $happening)
             <article class="happening-list-item col col-12 sm-col-6 lg-col-12 px2 mb3 {{ $happening->terms["terms_default_lang"]->slug }}">
                 <a href="{{ get_permalink($happening->ID) }}" title="{{ $happening->post_title }}" class="link-reset">
@@ -48,7 +58,17 @@
     {{-- Gets And Loops Navigation Items By Menu Order --}}
     @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
     @if(is_array($primary_navigation_items))
-        <div class="concept-sidebar__concepts mxn2 mt3 clearfix">
+        <div class="concept-sidebar__concepts mxn2 mb3 clearfix">
+            <header class="section-header block px2 mt2 coastal-living">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#discover-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    @php _e( 'Mer av Halland', 'visithalland' ) @endphp
+                </div>
+            </header>
             @foreach($primary_navigation_items as $key => $navigation_item)
                 <div class="concept-thumbnail px2 col col-12 sm-col-6 lg-col-12 mt3 block {{ $navigation_item->meta_fields['class_name'] }}">
                     <a href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}" class="link-reset">

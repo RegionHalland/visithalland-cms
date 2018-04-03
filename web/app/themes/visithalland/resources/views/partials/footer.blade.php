@@ -87,16 +87,7 @@
                 </ul>
             </div>
 
-            <div class="footer__column col col-6 sm-col-3 md-col-3 mt2">
-                <span class="footer__column-header"><?php _e( 'Partners', 'visithalland' ); ?></span>
-                <ul class="footer__list">
-                    <li class="footer__list-item mt1 light">
-                        <a href="https://www.tripadvisor.se/Tourism-g189887-Halland_County_West_Coast-Vacations.html" class="footer__link link-reset">
-                            <img src="@asset('images/tripadvisor-logo.svg')" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
             <!-- Footer Secondary Menu, Partner Menu and Language Settings End -->
 
             <!-- Footer European Union Credit Start -->

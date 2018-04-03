@@ -2,4 +2,15 @@
 	@media (min-width:$breakpoint-lg){
 		padding-left:$space-4;
 	}
+
+
+	&__happenings, &__concept {
+		@media (max-width:$breakpoint-lg){
+			margin-top:$space-4
+		}
+	}
+
+	&__concept {
+
+	}
 }

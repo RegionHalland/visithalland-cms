@@ -1,23 +1,63 @@
-#infinite-container > #infinite-container {
-	animation: fadeInNow 1s;
-	animation-fill-mode:forwards;
-}
-
-@keyframes fadeInNow {
-	from {
-		transform:translateY(10px);
-	}
-	to {
-		transform:translateY(0px);
-	}
-}
-
 .page-load-status {
+	//background:palette(black, dark);
 	font-family:$rift-font-family;
 	font-weight:bold;
-	color:palette(grey, base);
+	color:palette(grey, light);
 	text-align:center;
-	padding:$space-4;
+	z-index:999;
+	bottom:0;
+	padding:$space-3;
+	left:0;
+	right:0;
+	display:none;
+	// .infinite-scroll-request {
+	// 	display:none;
+	// }
+	// .infinite-scroll-last {
+	// 	display:none;
+	// }
+	// .infinite-scroll-error {
+	// 	display:none;
+	// }
+
+	animation: loadMore 0.75s;
+}
+
+
+.infinite-scroll-request {
+    height:40px;
+    width:40px;
+    background:palette(black, base);
+    margin:0 auto;
+    z-index:$z3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    overflow:hidden;
+    @media(min-width:$breakpoint-md) {
+        height:50px;
+        width:50px;
+        //bottom:-25px;
+    }
+}
+
+.infinite-scroll-request__icon {
+    height:15px;
+    width:15px;
+    background:palette(black, dark);
+    border-radius:50%;
+    animation: loader-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+@keyframes loader-animation {
+	from {
+		transform:rotate(0deg);
+	}
+	to {
+		transform:rotate(360deg);
+	}
 }
 
 

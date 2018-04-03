@@ -29,6 +29,12 @@
 
 	&__title {
 		color:$white;
+		@media(min-width:$breakpoint-sm) {
+			max-width:60%;
+		}
+		@media(min-width:$breakpoint-md) {
+			max-width:50%;
+		}
 	}
 
 	&__excerpt {

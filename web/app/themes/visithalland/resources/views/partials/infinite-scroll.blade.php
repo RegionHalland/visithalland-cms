@@ -4,8 +4,13 @@
 
 <div class="container">
     <div class="page-load-status">
-        <p class="infinite-scroll-request"><?php _e( 'Hämtar nästa artikel', 'visithalland' ); ?></p>
-        <p class="infinite-scroll-last"><?php _e( 'Slut på innehåll', 'visithalland' ); ?></p>
-        <p class="infinite-scroll-error"><?php _e( 'Kunde inte hitta fler artiklar', 'visithalland' ); ?></p>
+        <div class="infinite-scroll-request">
+        	 <svg class="infinite-scroll-request__icon">
+                <use xlink:href="#arrow-down-icon"/>
+            </svg>
+        </div>
+        <p class="infinite-scroll-last">End of content</p>
+  		<p class="infinite-scroll-error">No more pages to load</p>
+        
     </div>
 </div>

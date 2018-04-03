@@ -1,4 +1,5 @@
 .breadcrumbs {
+
 }
 
 .breadcrumbs__icon {
@@ -26,6 +27,10 @@
 	font-family:$rift-font-family;
 	color:palette(grey, base);
 	vertical-align: middle;
+	font-size:0.85rem;
+	@media(min-width:$breakpoint-md) {
+		font-size:1rem;
+	}
 	&--current {
 		color:$white;
 	}

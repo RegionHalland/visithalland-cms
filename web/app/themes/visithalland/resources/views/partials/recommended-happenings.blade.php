@@ -1,12 +1,21 @@
-<div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
+<div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto mb2">
     <div class="clearfix mxn2">
-        <h3 class="recommended-articles__title mx-auto mb2 center">@php _e('Fler events vi tror du gillar', 'visithalland') @endphp</h3>
+        <header class="section-header mb2 px2 coastal-living">
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#recommend-icon"/>
+                </svg>
+            </div>
+            <div class="section-header__title">
+                @php _e( 'Fler events vi tror du gillar', 'visithalland' ) @endphp
+            </div>
+        </header>
         @php
             $recommended_happenings = App::getHappenings();
         @endphp
         @if(is_array($recommended_happenings))
             @foreach($recommended_happenings as $key => $value)
-                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4 {{ $value->terms["terms_default_lang"]->slug }}">
+                <article class="article-medium mt4 px2 col col-12 sm-col-4 md-col-4 {{ $value->terms["terms_default_lang"]->slug }}">
                     <a href="{{ get_permalink($value->ID) }}" class="link-reset">
                         <div class="article-medium__img-container topographic-pattern">
                             <div class="date-badge absolute top-0 left-0 ml2 mt2 z3">

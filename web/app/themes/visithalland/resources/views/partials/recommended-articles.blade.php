@@ -1,6 +1,15 @@
-<div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto">
+<div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto mb5">
     <div class="clearfix mxn2">
-        <h3 class="recommended-articles__title mx-auto mb2 center">@php _e('Vidare läsning', 'visithalland') @endphp</h3>
+        <header class="section-header mb2 px2 coastal-living">
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#recommend-icon"/>
+                </svg>
+            </div>
+            <div class="section-header__title">
+                @php _e( 'Fler liknande artiklar', 'visithalland' ) @endphp
+            </div>
+        </header>
         @php
             $terms = get_the_terms($post->ID, 'taxonomy_concept');
             $featuredArticles = App::getPosts(array(), $terms[0], 3);

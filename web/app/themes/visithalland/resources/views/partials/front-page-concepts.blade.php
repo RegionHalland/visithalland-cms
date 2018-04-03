@@ -5,9 +5,11 @@
 
     <section class="mt2 col-11 md-col-10 lg-col-10 mx-auto">
         <header class="section-header coastal-living block my4">
-            <svg class="section-header__icon icon--lg">
-                <use xlink:href="#test-icon"/>
-            </svg>
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#recommend-icon"/>
+                </svg>
+            </div>
             <div class="section-header__title">
                 @php _e( 'Upptäck det bästa av Halland', 'visithalland' ); @endphp
             </div>

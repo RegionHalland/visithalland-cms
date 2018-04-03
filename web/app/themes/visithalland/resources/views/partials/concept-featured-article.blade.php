@@ -13,8 +13,11 @@
             <div class="article-full__img-container topographic-pattern">
                 <picture>
                     <source
-                        media="(min-width: 40em)"
+                        media="(min-width: 48.1em)"
                         data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_wide@2x' ) . " 2x" }}" />
+                    <source
+                        media="(min-width: 40em) and (max-width: 48em)"
+                        data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium_square' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium_square@2x' ) . " 2x" }}" />
                     <source
                         data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_hero_tall' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_hero_tall@2x' ) . " 2x" }}" />
                     <img

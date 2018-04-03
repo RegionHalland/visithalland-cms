@@ -17,7 +17,10 @@
 	}
 
 	&__title {
-		font-size:2em;
+		font-size:1.75rem;
+		@media(min-width:$breakpoint-md) {
+			font-size:2rem;
+		}
 	}
 
 	&__label {

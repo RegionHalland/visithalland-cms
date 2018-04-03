@@ -36,7 +36,7 @@
                                     <span class="read-more__text light">
                                         @php _e( 'Läs mer', 'visithalland' ); @endphp
                                     </span>
-                                    <div class="read-more__button">
+                                    <div class="read-more__button coastal-living">
                                         <svg class="icon read-more__icon">
                                             <use xlink:href="#arrow-right-icon"/>
                                         </svg>

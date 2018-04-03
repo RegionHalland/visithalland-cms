@@ -1,14 +1,21 @@
 @php $mentions = get_field("mentioned"); @endphp
 @if(isset($mentions) && is_array($mentions))
-    <div class="article-mentions mt2 clearfix">
-        <div class="article-mentions__header">
-            <h3>@php _e( 'Restips från artikeln', 'visithalland' ); @endphp</h3>
-        </div>
+    <div class="article-mentions mt3 clearfix">
+         <header class="section-header inline-block mb2 coastal-living">
+            <div class="section-header__icon-wrapper">
+                <svg class="section-header__icon icon">
+                    <use xlink:href="#recommend-icon"/>
+                </svg>
+            </div>
+            <div class="section-header__title">
+                @php _e( 'Tips från artikeln', 'visithalland' ) @endphp
+            </div>
+        </header>
         @foreach ($mentions as $key => $mention)
             <a href="{{ get_permalink($mention->ID) }}" class="link-reset">
                 <article class="article-mention col col-12 sm-col-6 mt3">
                     <div class="clearfix">
-                        <div class="col col-5 sm-col-4 ">
+                        <div class="col col-4 sm-col-4 ">
                             <div class="article-mention__img-container relative">
                                 @php
                                     $thumbnail_id = get_post_thumbnail_id( $mention->ID );
@@ -34,7 +41,7 @@
                             </h4>
                             <div class="read-more mt2">
                                 <span class="read-more__text">
-                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
+                                    @php _e( 'Läs mer', 'visithalland' ) @endphp
                                 </span>
                                 <div class="read-more__button">
                                     <svg class="icon read-more__icon">
