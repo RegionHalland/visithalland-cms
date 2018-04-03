@@ -22,9 +22,9 @@ add_filter('algolia_post_images_sizes', function ($sizes) {
 
     return $sizes;
 });
+ 
 
-
-add_filter('algolia_searchable_post_shared_attributes', function(array $attributes, WP_Post $post)
+add_filter('algolia_searchable_post_shared_attributes', function(array $attributes, \WP_Post $post)
 {
     if ($post->post_type !== 'places' && $post->post_type !== 'companies' && $post->post_type !== 'meet_local' && $post->post_type !== 'editor_tip' && $post->post_type !== 'trip' && $post->post_type !== 'happening') {
         // We only want to add an attribute for the 'speaker' post type.
@@ -77,7 +77,7 @@ add_filter('algolia_searchable_post_shared_attributes', function(array $attribut
 }, 10, 2);
 
 
-add_filter('algolia_post_shared_attributes', function(array $attributes, WP_Post $post)
+add_filter('algolia_post_shared_attributes', function(array $attributes, \WP_Post $post)
 {
     if ($post->post_type !== 'places' && $post->post_type !== 'companies' && $post->post_type !== 'meet_local' && $post->post_type !== 'editor_tip' && $post->post_type !== 'trip' && $post->post_type !== 'happening') {
         // We only want to add an attribute for the 'speaker' post type.
