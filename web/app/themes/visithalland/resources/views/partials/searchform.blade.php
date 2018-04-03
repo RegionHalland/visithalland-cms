@@ -1,4 +1,4 @@
-<div class="search-header">
+<div class="search-header topographic-pattern">
     <div class="col-11 md-col-10 lg-col-8 mx-auto">
         <form role="search" method="get" id="searchform" class="searchform">
             <label class="screen-reader-text sr-only col-12" for="s">@php _e( 'Sök efter', 'visithalland' ) @endphp:</label>

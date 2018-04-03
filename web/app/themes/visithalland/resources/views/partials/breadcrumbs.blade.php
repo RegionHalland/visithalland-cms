@@ -1,6 +1,3 @@
-
-
-
 @if(isset($get_breadcrumbs))
 	<div class="breadcrumbs inline-block mb2">
 		<div class="breadcrumbs__icon" {{ App::getTermClassName() }}"></div>

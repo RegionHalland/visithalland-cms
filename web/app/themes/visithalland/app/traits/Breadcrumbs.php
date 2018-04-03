@@ -34,8 +34,8 @@ trait Breadcrumbs
 
         $term = wp_get_post_terms($post->ID, 'taxonomy_concept')[0];
         
-        if (term_exists($term->name)) {
-            $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_permalink($term->term_id));
+        if (term_exists($term->name) && !is_archive()) {
+            $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
         }
            
         if (is_page() || (is_single() && $post_type->hierarchical == true)) {

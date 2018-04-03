@@ -40,9 +40,11 @@
 						<source
 							media="(min-width: 40em)"
 							srcset="@asset('images/logo-vertical.svg')"/>
+                        <source
+                            srcset="@asset('images/logo-small.svg')"/>
 						<img
 							class="header__logo center"
-							src="@asset('images/logo-small.svg')"
+							src="@asset('images/logo-horizontal.svg')"
 							alt="Visithalland.com" />
 					</picture>
 				</a>
