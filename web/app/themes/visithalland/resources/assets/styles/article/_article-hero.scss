@@ -1,7 +1,7 @@
 .article-hero {
 	&__backdrop {
 		width:100%;
-		background-color:palette(black, x-light);
+		background-color:palette(black, light);
 		position:relative;
 		height:235px;
 		@media(min-width:$breakpoint-sm) {

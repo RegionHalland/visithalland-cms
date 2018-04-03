@@ -1,36 +1,75 @@
 .page-load-status {
-	//background:palette(black, dark);
+	background-color:palette(black, light);
+	border-bottom:1px solid palette(black, base);
 	font-family:$rift-font-family;
 	font-weight:bold;
-	color:palette(grey, light);
-	text-align:center;
 	z-index:999;
-	bottom:0;
-	padding:$space-3;
-	left:0;
-	right:0;
-	display:none;
+	// position:fixed;
+	// bottom:0;
+	// left:0;
+	// right:0;
+	// max-width:$container-max-width;
+	// margin:0 auto;
+
 	// .infinite-scroll-request {
 	// 	display:none;
 	// }
-	// .infinite-scroll-last {
-	// 	display:none;
-	// }
-	// .infinite-scroll-error {
-	// 	display:none;
-	// }
-
-	animation: loadMore 0.75s;
+	.infinite-scroll-last {
+		display:none;
+	}
+	.infinite-scroll-error {
+		display:none;
+	}
 }
 
 
-.infinite-scroll-request {
+.next-article {
+	display:inline-flex;
+	vertical-align:top;
+	&__heading {
+		font-size:0.85rem;
+		color:palette(grey, light);
+		margin-top:$space-3;
+		margin-bottom:$space-1;
+		display:block;
+		font-weight:300;
+	}
+	&__title {
+		font-size:1.4rem;
+		display:block;
+	}
+	&__img-container {
+		width:100px;
+		height:100px;
+		transform:translateY(-15%);
+		border-radius:$border-radius;
+		position:relative;
+		background-color:palette(black, light);
+		overflow: hidden;
+	}
+	&__img {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		z-index:$z1;
+	}
+	&__content {
+		margin-left:$space-3;
+	}
+}
+
+
+.loading-indicator {
     height:40px;
     width:40px;
     background:palette(black, base);
-    margin:0 auto;
     z-index:$z3;
     display:flex;
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
     justify-content:center;
     align-items:center;
     border-radius:50%;
@@ -38,27 +77,18 @@
     @media(min-width:$breakpoint-md) {
         height:50px;
         width:50px;
-        //bottom:-25px;
+        bottom:-25px;
     }
 }
 
-.infinite-scroll-request__icon {
+.loading-indicator__icon {
     height:15px;
     width:15px;
     background:palette(black, dark);
     border-radius:50%;
-    animation: loader-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
+    animation: scroll-indicator-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-
-@keyframes loader-animation {
-	from {
-		transform:rotate(0deg);
-	}
-	to {
-		transform:rotate(360deg);
-	}
-}
 
 
 .next-post-link {

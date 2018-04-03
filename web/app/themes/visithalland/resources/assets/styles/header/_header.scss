@@ -142,7 +142,7 @@
 
 
 .navigation {
-	background-color: palette(black, light);
+	background-color: palette(black, base);
 	z-index:1;
 	-webkit-overflow-scrolling:touch;
 	overflow-x:scroll;
@@ -263,7 +263,7 @@
 	left:0;
 	right:0;
 	bottom:0;
-	background-color: palette(black, light);
+	background-color: palette(black, base);
 	z-index:1;
 	display:none;
 	&__item {
