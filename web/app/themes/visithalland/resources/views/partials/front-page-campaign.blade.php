@@ -1,6 +1,6 @@
 <div class="campaign-header relative">
     <div class="campaign-header__img-container">
-        <span class="campaign-header__content col-11 md-col-10 lg-col-10 mx-auto">
+        <div class="campaign-header__content col-11 md-col-10 lg-col-10 mx-auto">
             <h1 class="campaign-header__title">{{ get_field('campaign_title') }}</h1>
             <p class="campaign-header__excerpt">{{ get_field('campaign_excerpt') }}</p>
             @if(get_field('external_link'))
@@ -20,7 +20,7 @@
                     </div>
                 </a>
             @endif
-        </span>
+        </div>
         <picture>
             <source media="(min-width: 60em)" data-srcset="{{ get_field('campaign_img')['sizes']['vh_hero_wide'] . " 1x," . get_field('campaign_img')['sizes']['vh_hero_wide@2x'] . " 2x"  }}" />
             <source data-srcset="{{ get_field('campaign_img')['sizes']['vh_hero_tall'] . " 1x," . get_field('campaign_img')['sizes']['vh_hero_tall@2x'] . " 2x"  }}" />

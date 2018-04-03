@@ -42,8 +42,9 @@
 
 	&__excerpt {
 		color:palette(grey, x-light);
-		margin-top:$space-3;
+		margin-top:$space-2;
 		display:none;
+		font-style:italic;
 		@media(min-width:$breakpoint-sm) {
 			display:block;
 		}
