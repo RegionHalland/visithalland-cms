@@ -2,29 +2,53 @@
 
 }
 
-.happening-page-header {
-	&__backdrop {
-		background-color:palette(black, dark);
+.page-happening-header {
 
-		@media(min-width:$breakpoint-sm) {
-			height:600px;
-		}
+}
 
-		@media(min-width:$breakpoint-md) {
-			height:750px;
-		}
-		height:525px;
-		z-index:1;
-		position:absolute;
-		width:100%;
-		top:0;
-		left:0;
-		right:0;
+.page-happening-header__img-container {
+	height:400px;
+	position:relative;
+	overflow: hidden;
+	background-color:palette(black, base);
+	@media(min-width:$breakpoint-md) {
+		height:500px;
 	}
-	&__inner {
-		z-index:2;
-		position: relative;
-		margin-top:$space-6;
-		padding-top:$space-4;
+}
+
+.page-happening-header__title {
+	font-size:2.55em;
+	@media(min-width:$breakpoint-sm) {
+		font-size:3.15em;
+	}
+	@media(min-width:$breakpoint-md) {
+		font-size:2.8em;
+	}
+	@media(min-width:$breakpoint-lg) {
+		font-size:3.15em;
+	}
+}
+
+.page-happening-header__p {
+	color:palette(grey, light);
+	display:none;
+	font-size:0.95rem;
+	font-style:italic;
+	@media(min-width:$breakpoint-sm) {
+		display:block;
+	}
+	@media(min-width:$breakpoint-lg) {
+		width:80%;
+	}
+}
+
+.page-happening-header__content {
+	z-index:$z2;
+	padding-bottom:$space-5;
+	@media(min-width:$breakpoint-sm) {
+		padding-bottom:$space-5;
+	}
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:$space-5;
 	}
 }

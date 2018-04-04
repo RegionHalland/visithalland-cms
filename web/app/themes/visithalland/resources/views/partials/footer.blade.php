@@ -95,7 +95,7 @@
                 <div class="clearfix">
                     <div class="col col-5 sm-col-3 md-col-2 pr4 mt2">
                         <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
-                            <img src="@asset('images/eu-logo.svg')" />
+                            <img class="footer__eu-logo" src="@asset('images/eu-logo.svg')" />
                         </a>
                     </div>
                     <div class="col col-12 sm-col-9 md-col-6 mt2">

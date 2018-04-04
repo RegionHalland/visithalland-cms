@@ -14,39 +14,44 @@
             $terms = get_the_terms($post->ID, 'taxonomy_concept');
             $featuredArticles = App::getPosts(array(), $terms[0], 3);
         @endphp
+        <div class="pb4 pt3 clearfix mxn2">
             @foreach($featuredArticles as $key => $value)
-                <article class="article-medium mt3 px2 col col-12 sm-col-4 md-col-4">
-                    <a href="{{ get_permalink($value->ID) }}" class="link-reset">
-                        <div class="article-medium__img-container topographic-pattern">
-                            <div class="article-tag absolute top-0 left-0 mt2 ml2 z3">
-                                <div class="article-tag__icon-wrapper">
-                                    <div class="article-tag__icon"></div>
-                                </div>
-                            </div>
+                @php
+                    $post_id = $value->ID;
+                    $thumbnail_id = get_post_thumbnail_id($post_id);
+                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+                @endphp
+                <div class="col col-12 sm-col-4 px2 mt3">
+                    <a href="{{ the_permalink($post_id) }}" title="{{ the_permalink($post_id) }}">
+                        <article class="image-blurb image-blurb--fixed-height {{ $value->terms["terms_default_lang"]->slug }}">
                             <picture>
                                 <source
-                                    data-srcset="{{get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $value->ID, 'vh_medium@2x' ) . " 2x" }}" />
-                                <img class="article-medium__img lazyload"
-                                        data-src="{{ get_the_post_thumbnail_url( $value->ID, 'vh_medium' ) }}"
-                                        alt="{{ get_field("cover_image")["alt"] }}"
-                                />
+                                    media="(min-width: 40em)"
+                                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_large@2x' ) . " 2x" }}" />
+                                <source
+                                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
+                                <img
+                                    class="image-blurb__img lazyload"
+                                    data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
+                                    alt="{{ $alt }}" />
                             </picture>
-                        </div>
-                        <div class="article-medium__content">
-                            <h3 class="article-medium__title mb1 mt3 pt0">{{ $value->post_title }}</h3>
-                            <p class="article-medium__excerpt mt2">{{ get_field("excerpt", $value->ID) }}</p>
-                            <div class="read-more mt3">
-                                <span class="read-more__text">{{ _e( 'Läs mer', 'visithalland' ) }}</span>
-                                <div class="read-more__button">
-                                    <svg class="icon read-more__icon">
-                                        <use xlink:href="#arrow-right-icon"/>
-                                    </svg>
+                            <div class="image-blurb__content">
+                                <h3 class="image-blurb__title">{{ $value->post_title}}</h3>
+                                <div class="read-more my3">
+                                    <span class="read-more__text light">
+                                        @php _e( 'Läs mer', 'visithalland' ) @endphp
+                                    </span>
+                                    <div class="read-more__button">
+                                        <svg class="icon read-more__icon">
+                                            <use xlink:href="#arrow-right-icon"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
+                        </article>
                     </a>
-                </article>
-        @endforeach
+                </div>
+            @endforeach
+        </div>
     </div>
 </div>
