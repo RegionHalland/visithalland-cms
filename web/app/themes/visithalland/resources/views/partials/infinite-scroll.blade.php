@@ -20,8 +20,14 @@
 	            </svg>
 	        </div>
         </div>
-        <p class="infinite-scroll-last">End of content</p>
-  		<p class="infinite-scroll-error">No more pages to load</p>
+        <div class="infinite-scroll-last">
+            <span class="block mb2">😐</span>
+            <span class="block">Vi hittar inte fler artiklar</span>
+        </div>
+        <div class="infinite-scroll-error">
+            <span class="block mb2">😖</span>
+            <span class="block">Något gick fel</span>
+        </div>
 
     </div>
 </div>
