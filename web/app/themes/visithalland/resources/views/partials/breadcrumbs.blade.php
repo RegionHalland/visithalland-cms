@@ -1,7 +1,9 @@
 @if(isset($get_breadcrumbs))
 	<div class="breadcrumbs inline-block mb2">
 		<div class="breadcrumbs__icon" {{ App::getTermClassName() }}"></div>
+		@php(var_dump($get_breadcrumbs))
 		@foreach ($get_breadcrumbs as $breadcrumb)
+			@php(var_dump($breadcrumb))
 		    @if ($breadcrumb['url'])
                  <a class="breadcrumbs__link" href="{{ $breadcrumb['url'] }}">{!! $breadcrumb['name'] !!}</a>
                  <span class="breadcrumbs__divider">/</span>
