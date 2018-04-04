@@ -11,8 +11,8 @@ class InfiniteScroll {
 
 export function initInfiniteScroll() {
     var nextPages = $("#nextPages").data("all");
-
     //var nextPages = ["http://localhost:3000/hiking-biking/editor_tip/cykelhistoria-i-halland/", "http://localhost:3000/camping-friends/meet-a-local/anton-hubner/", "http://localhost:3000/hiking-biking/happening/kungsbackaloppet/", "http://localhost:3000/hiking-biking/happening/kungsbacka-river/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/"];
+
     var infScroll = new inf('#infinite-container', {
         path: function () {
             return nextPages[this.loadCount].permalink
