@@ -29,7 +29,7 @@
 							@endphp
 			            	<div class="col col-12 sm-col-4 search-result px2 mt3">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
-										<article class="image-blurb">
+										<article class="image-blurb {{ $post->terms["terms_default_lang"]->slug }}">
 											<picture>
 												<source
 													media="(min-width: 40em)"
