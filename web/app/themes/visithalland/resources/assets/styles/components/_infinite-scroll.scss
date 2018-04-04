@@ -4,21 +4,11 @@
 	font-family:$rift-font-family;
 	font-weight:bold;
 	z-index:999;
-	// position:fixed;
-	// bottom:0;
-	// left:0;
-	// right:0;
-	// max-width:$container-max-width;
-	// margin:0 auto;
-
-	// .infinite-scroll-request {
-	// 	display:none;
-	// }
-	.infinite-scroll-last {
+	.infinite-scroll-last, .infinite-scroll-error {
 		display:none;
-	}
-	.infinite-scroll-error {
-		display:none;
+		text-align:center;
+		color:palette(grey, light);
+		padding:$space-3 0;
 	}
 }
 

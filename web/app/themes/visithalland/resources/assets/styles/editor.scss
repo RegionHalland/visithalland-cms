@@ -18,9 +18,9 @@
 @import 'config/padding';
 
 
-body, html {
-	padding:$space-4;
-	background:$white;
+html {
+	padding:$space-3;
+	background:red;
 	line-height:1.35;
 }
 

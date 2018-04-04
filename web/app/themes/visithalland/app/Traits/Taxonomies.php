@@ -38,12 +38,14 @@ trait Taxonomies
     public static function getTermClassName(string $taxonomy = "taxonomy_concept")
     {
         global $post;
-        $terms = wp_get_post_terms($post->ID, $taxonomy);
-        if(is_array($terms)){
-            $term = $terms[0];
-            return get_field("class_name", $term);
+        if(wp_get_post_terms($post->ID, $taxonomy)) {
+            $terms = wp_get_post_terms($post->ID, $taxonomy);
+            if(is_array($terms)){
+                $term = $terms[0];
+                return get_field("class_name", $term);
+            }
+        } else {
+            return "coastal-living";
         }
-
-        return ["missing term"];
     }
 }
