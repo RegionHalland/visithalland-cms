@@ -31,6 +31,8 @@ trait Breadcrumbs
             $breadcrumbs = self::addBreadcrumb($breadcrumbs, $post_type->label, $cpt_archive_link);
         }
 
+        var_dump("HAHAAHAH");
+
         if (isset(wp_get_post_terms($post->ID, 'taxonomy_concept')[0])) {
             $term = wp_get_post_terms($post->ID, 'taxonomy_concept')[0];
 
