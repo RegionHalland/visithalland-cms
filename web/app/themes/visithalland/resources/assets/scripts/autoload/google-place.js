@@ -11,7 +11,6 @@ class GooglePlace {
 
     initMap() {
         var locationToSearch = { lat: Number(phpVars.meta_fields.location.lat), lng: Number(phpVars.meta_fields.location.lng) };
-
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: locationToSearch,
             zoom: 15

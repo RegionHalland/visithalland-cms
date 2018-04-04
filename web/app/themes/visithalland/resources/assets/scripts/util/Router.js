@@ -26,8 +26,10 @@ class Router {
    */
   fire(route, event = 'init', arg) {
     const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
+    //console.log(fire);
     if (fire) {
-      this.routes[route][event](arg);
+        //console.log("FIIIRE", route, event, arg);
+        this.routes[route][event](arg);
     }
   }
 

@@ -8,30 +8,35 @@ import "./autoload/**/*";
 import Router from './util/Router';
 import common from './routes/common';
 import archive from './routes/archive';
-import single from './routes/single';
+import singleTrip from './routes/singleTrip';
+import singleHappening from './routes/singleHappening';
+import singleMeetLocal from './routes/singleMeetLocal';
 import home from './routes/home';
-import aboutUs from './routes/about';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
-  // All pages
-  common,
-  // Archive
-  archive,
-  //Single Trip -- Needs to be fixed
-  single,
-  // Home page
-  home,
-  // About Us page, note the change from about-us to aboutUs.
-  aboutUs,
+    // All pages
+    common,
+    // Archive
+    archive,
+    // Single Trip
+    singleTrip,
+    // Single Happening
+    singleHappening,
+    // Single Happening
+    singleMeetLocal,
+    // Home page
+    home,
 });
 
 
 // Load Events
-jQuery(document).ready(() => routes.loadEvents());
+jQuery(document).ready(() =>
+    routes.loadEvents()
+);
 
 // Build SVG sprite
-var __svg__ = { 
-	path: '../icons/**/*.svg', 
+var __svg__ = {
+	path: '../icons/**/*.svg',
 	name: 'icons/sprite.svg'
 };
