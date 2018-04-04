@@ -1,7 +1,6 @@
 <div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter">
     <div class="clearfix mxn2">
             @php $posts = App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1); @endphp
-            <?php var_dump(count($posts)); ?>
             @foreach($posts as $key => $post)
                 @php
                     //Sets current_index to index + 1

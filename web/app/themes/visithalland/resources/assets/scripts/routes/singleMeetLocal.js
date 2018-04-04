@@ -8,7 +8,6 @@ export default {
 
         // Init Packery Grid
         initGrid();
-
     },
     finalize() {
         // JavaScript to be fired on the home page, after the init JS
