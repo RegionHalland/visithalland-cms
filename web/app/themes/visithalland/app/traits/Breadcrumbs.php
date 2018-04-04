@@ -31,11 +31,12 @@ trait Breadcrumbs
             $breadcrumbs = self::addBreadcrumb($breadcrumbs, $post_type->label, $cpt_archive_link);
         }
 
+        if (isset(wp_get_post_terms($post->ID, 'taxonomy_concept')[0])) {
+            $term = wp_get_post_terms($post->ID, 'taxonomy_concept')[0];
 
-        $term = wp_get_post_terms($post->ID, 'taxonomy_concept')[0];
-        
-        if (term_exists($term->name) && !is_archive()) {
-            $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
+            if (term_exists($term->name) && !is_archive()) {
+                $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
+            }
         }
            
         if (is_page() || (is_single() && $post_type->hierarchical == true)) {

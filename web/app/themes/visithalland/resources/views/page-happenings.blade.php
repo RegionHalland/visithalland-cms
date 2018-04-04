@@ -6,7 +6,7 @@
 
 @section('content')
 
-@while ( have_posts() ) : the_post(); 
+{{-- @while ( have_posts() ) : the_post(); 
 	
 	@php
 		$author_id = get_the_author_meta('ID');
@@ -67,7 +67,7 @@
 			            		<div class="col col-6">
 			            			<div class="happening-large__info">
 			            				<span class="happening-large__info-title block">
-			            					@php _e( 'Datum', 'visithalland' ); @endphp
+			            					@php _e( 'Datum', 'visithalland' ) @endphp
 			            				</span>
 			            				<span class="happening-large__date block">
 			            					<span class="">{{ $dateobj = date("j", strtotime(get_field("start_date", $value->ID))); }}</span>
@@ -78,13 +78,13 @@
 			            		<div class="col col-6">
 			            			<div class="happening-large__info">
 			            				<span class="happening-large__info-title block">
-			            					@php _e( 'Länk', 'visithalland' ); @endphp
+			            					@php _e( 'Länk', 'visithalland' ) @endphp
 			            				</span>
 			            				<a 
 			            					class="btn btn--primary inline-block coastal-living" 
 			            					href="{{ get_field("external_links", $value->ID)[0]["link"]; }}" 
 			            					class="btn btn--primary inline-block">
-			            					@php _e( 'Mer information', 'visithalland' ); @endphp
+			            					@php _e( 'Mer information', 'visithalland' ) @endphp
 			            				</a>
 			            			</div>
 			            		</div>
@@ -138,7 +138,7 @@
 								    </div>
 								    <a class="link-reset" href="{{get_permalink($value->ID)}}">
 			                            <div class="read-more">
-									    	<span class="read-more__text">@php _e( 'Läs mer', 'visithalland' ); @endphp</span>
+									    	<span class="read-more__text">@php _e( 'Läs mer', 'visithalland' ) @endphp</span>
 									    	<div class="read-more__button">
 										    	<svg class="icon read-more__icon">
 			                                    	<use xlink:href="#arrow-right-icon"/>
@@ -156,5 +156,5 @@
 
 
 	</article>
-	@endwhile
+	@endwhile --}}
 @endsection

@@ -1,5 +1,5 @@
 {{--
-  Template Name: Test Template
+  Template Name: Röv Template
 --}}
 
 @extends('layouts.app')
