@@ -128,7 +128,9 @@ trait Posts
             array_push($urlList,
                 array(
                     "permalink" => get_permalink($value->ID),
-                    "post_title" => $value->post_title
+                    "post_title" => $value->post_title,
+                    "thumbnailUrl" => get_the_post_thumbnail_url( $value->ID, 'vh_thumbnail' ),
+                    "thumbnailAlt" => get_the_post_thumbnail_caption($value->ID),
                 )
             );
         }

@@ -11,7 +11,6 @@ class InfiniteScroll {
 
 export function initInfiniteScroll() {
     var nextPages = $("#nextPages").data("all");
-    //var nextPages = ["http://localhost:3000/hiking-biking/editor_tip/cykelhistoria-i-halland/", "http://localhost:3000/camping-friends/meet-a-local/anton-hubner/", "http://localhost:3000/hiking-biking/happening/kungsbackaloppet/", "http://localhost:3000/hiking-biking/happening/kungsbacka-river/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/", "http://localhost:3000/hiking-biking/spotlight/upptack-hallands-vackra-natur/"];
 
     var infScroll = new inf('#infinite-container', {
         path: function () {
@@ -36,7 +35,9 @@ export function initInfiniteScroll() {
         });
     });
 
+    $(".next-article__img").last().attr("src", nextPages[infScroll.loadCount].thumbnailUrl);
     $(".next-article__title").last().html(nextPages[infScroll.loadCount].post_title);
+    $(".next-article__img").last().attr("alt", nextPages[infScroll.loadCount].thumbnailAlt);
 
     // Add history event listener for logging pageviews to Analytics.
     infScroll.on('append', function (title, path, items) {
@@ -44,8 +45,15 @@ export function initInfiniteScroll() {
         var nmr = infScroll.loadCount - 1;
         var x = nmr;
 
+        // TODO: Improve this, only replace if we got a new title/image/alt
         $($(".next-article__title")[x]).html(nextPages[nmr].post_title);
         $(".next-article__title").last().html(nextPages[now].post_title);
+
+        $($(".next-article__img")[x]).attr("src", nextPages[nmr].thumbnailUrl);
+        $(".next-article__img").last().attr("src", nextPages[now].thumbnailUrl);
+
+        $($(".next-article__img")[x]).attr("alt", nextPages[nmr].thumbnailAlt);
+        $(".next-article__img").last().attr("alt", nextPages[now].thumbnailAlt);
 
         var postType = $(items[1]).data("posttype");
 
