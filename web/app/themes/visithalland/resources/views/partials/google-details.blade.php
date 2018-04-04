@@ -1,5 +1,5 @@
 <div class="google-google-details block mt2">
-    @if (get_field("google_conditional")) 
+    @if (get_field("google_information")) 
         <section class="google-details clearfix ">
             <div id="map"></div>
              <section id="opening-hours" class="google-details__section google-details__open-hours col col-12 sm-col-3 list-style-none p0">

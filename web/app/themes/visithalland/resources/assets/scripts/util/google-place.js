@@ -4,32 +4,43 @@ class GooglePlace {
         this.map;
         this.service;
 
-        if (jQuery('#map').length) {
-            this.initMap();
-        }
+        console.log("we may a map")
+        console.log($('.acf-map').find(".marker"));
+        var lat = $('.acf-map').find(".marker").data('lat');
+        var lng = $('.acf-map').find(".marker").data('lng');
+
+        this.initMap(lat, lng)
     }
 
-    initMap() {
-        var locationToSearch = { lat: Number(phpVars.meta_fields.location.lat), lng: Number(phpVars.meta_fields.location.lng) };
+    initMap(lat, lng) {
+        console.log("lets init this shit", lat, lng)
+        var locationToSearch = { lat: Number(lat), lng: Number(lng) };
+        console.log(document.getElementById('map'));
+
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: locationToSearch,
             zoom: 15
         });
 
+        console.log("mt", $(".article-hero__title").text())
         this.service = new google.maps.places.PlacesService(map);
         this.service.nearbySearch({
             location: locationToSearch,
-            radius: 500,
-            keyword: phpVars.post.post_title
+            radius: 50,
+            keyword: $(".article-hero__title").text(),
         }, this.callback);
     }
 
     callback(results, status) {
+        console.log("callback", results, status)
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             if (results.length > 0) {
                 //We have a result
+                console.log("res", results)
                 var place = results[0];
-                service.getDetails({ placeId: place.place_id }, this.detailCallback);
+
+                // TODO - make this.service to be defined here...
+                this.service.getDetails({ placeId: place.place_id }, this.detailCallback);
             }
         }
     }
@@ -53,4 +64,4 @@ class GooglePlace {
     }
 }
 
-export default new GooglePlace();
+export default GooglePlace;

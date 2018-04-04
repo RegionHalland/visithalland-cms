@@ -116,18 +116,6 @@ class Map {
         }
     }
 
-/*$(document).ready(function(){
-
-$('.acf-map').each(function(){
-
-// create map
-map = new_map( $(this) );
-
-});
-
-});
-
-    }*/
 }
 
 export default new Map();
