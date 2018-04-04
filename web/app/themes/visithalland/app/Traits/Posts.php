@@ -63,7 +63,8 @@ trait Posts
         global $post;
 
         // Get our post types and remove those included inside $excludeTypes
-        self::$post_types = array_diff(self::$post_types, $exludeTypes);
+        $postTypesDiff = array_diff(self::$post_types, $exludeTypes);
+        //return $postTypesDiff;
 
         if($term !== null) {
             $tax_query = array(
@@ -77,7 +78,7 @@ trait Posts
         }
 
         $posts = get_posts(array(
-            'post_type'   => self::$post_types,
+            'post_type'   => $postTypesDiff,
             'numberposts' => $numberposts,
             'tax_query'   => $tax_query ? $tax_query : null,
             'exclude' 	 => $post->ID,
