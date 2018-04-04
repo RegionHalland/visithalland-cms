@@ -22,6 +22,6 @@
         </div>
         <p class="infinite-scroll-last">End of content</p>
   		<p class="infinite-scroll-error">No more pages to load</p>
-        
+
     </div>
 </div>

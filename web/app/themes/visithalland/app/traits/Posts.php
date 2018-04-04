@@ -125,7 +125,12 @@ trait Posts
 
         $urlList = array();
         foreach ($postlist as $key => $value) {
-            array_push($urlList, get_permalink($value->ID));
+            array_push($urlList,
+                array(
+                    "permalink" => get_permalink($value->ID),
+                    "post_title" => $value->post_title
+                )
+            );
         }
 
         return $urlList;
