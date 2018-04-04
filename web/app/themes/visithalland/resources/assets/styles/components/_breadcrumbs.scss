@@ -28,6 +28,11 @@
 	color:palette(grey, base);
 	vertical-align: middle;
 	font-size:0.85rem;
+	max-width: 120px;
+	display:inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	@media(min-width:$breakpoint-md) {
 		font-size:1rem;
 	}

@@ -1,4 +1,4 @@
-<header class="concept-header relative" role="heading">
+<header class="concept-header relative {{ App::getTermClassName() }}" role="heading">
     <div class="concept-header__img-container topographic-pattern">
         <picture>
             <source media="(min-width: 60em)"
