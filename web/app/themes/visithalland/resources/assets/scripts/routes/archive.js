@@ -1,14 +1,11 @@
+var Packery = require('packery');
+var Flickity = require('flickity');
+
 export default {
   init() {
-
   	console.log("This is the Archive Page");
-
-  	//Adds the dynamic featured article grid
-    var Packery = require('packery');
-    var Flickity = require('flickity');
-
     var grid = $('.featured-grid')[0];
-    
+
     var pckry = new Packery(grid, {
       itemSelector: '.featured-grid__item',
       percentPosition: true,

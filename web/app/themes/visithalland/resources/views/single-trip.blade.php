@@ -9,7 +9,7 @@
             $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
         @endphp
 
-        <article class="container" role="main" id="main-content">
+        <article class="container" role="main" id="main-content" data-posttype="{{get_post_type()}}">
             @include('partials.article-hero')
 
             <div class="article-content clearfix mt5 mb4">
