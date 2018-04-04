@@ -1,39 +1,30 @@
-import cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 class CookieNotice {
     constructor() {
-        this.name = 'cookie_notice_accepted';
-
-        if (this.getCookie(this.name) !== undefined) {
-            return;
-        }
-
-        this.cache();
         this.bind();
     }
 
-    cache() {
-        this.container = $('#cookie-notice');
-        this.consentBtn = this.container.find('#cookie-consent');
-    }
-
     bind() {
-        this.consentBtn.on('click', () => {
-            this.removeNotice();
-            this.setCookie(this.name);
-        })
-    }
+        // Init Cookie-banner Star
+        console.log(!Cookies.get('cookie_consent'));
+        if (!Cookies.get('cookie_consent')) {
+            console.log("I REALLY SHOULD FADE IN NOW")
+            setTimeout(() => {
+                // TODO remove this... on ready does not work.... I think it's time to call the one and only davidö
+                $(".cookie-banner").fadeIn(600);
+            }, 1000);
+        };
+        $('#cookie-accept').on('click', function () {
+            Cookies.set('cookie_consent', 'comply', { expires: 5000 });
+            $(".cookie-banner").fadeOut(300); //$ to slide it up
+        });
 
-    removeNotice() {
-        this.container.remove();
-    }
+        //Click event for EU information
+        $('#eu-btn').on('click', function () {
+            $(".landing-eu").fadeOut(300); //$ to slide it up
+        });
 
-    getCookie(name) {
-        return cookies.get(name);
-    }
-
-    setCookie(name) {
-        return cookies.set(name, 'true', { expires: 100 });
     }
 }
 
