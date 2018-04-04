@@ -11,7 +11,7 @@
     			</div>
         		<div class="next-article__content inline-block">
         			<span class="next-article__heading h5 light">Nästa artikel</span>
-        			<h3 class="next-article__title light">Artikeltitel</h3>
+        			<h3 class="next-article__title light"></h3>
         		</div>
         	</div>
         	<div class="loading-indicator">

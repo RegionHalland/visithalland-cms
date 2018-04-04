@@ -11,6 +11,7 @@ import archive from './routes/archive';
 import singleTrip from './routes/singleTrip';
 import singleHappening from './routes/singleHappening';
 import singleMeetLocal from './routes/singleMeetLocal';
+import singleEditorTip from './routes/singleEditorTip';
 import home from './routes/home';
 
 /** Populate Router instance with DOM routes */
@@ -23,8 +24,10 @@ const routes = new Router({
     singleTrip,
     // Single Happening
     singleHappening,
-    // Single Happening
+    // Single Meet A Local
     singleMeetLocal,
+    // Single Editor tip
+    singleEditorTip,
     // Home page
     home,
 });

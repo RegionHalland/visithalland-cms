@@ -3,6 +3,10 @@ import DynamicGrid from '../util/dynamicGrid';
 
 export default {
     init() {
+        // Init Infinite scroll
+        new InfiniteScroll();
+
+        // Init Packery Grid
         initGrid();
     },
     finalize() {

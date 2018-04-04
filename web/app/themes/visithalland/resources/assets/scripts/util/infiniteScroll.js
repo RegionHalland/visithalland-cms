@@ -83,4 +83,4 @@ export function initInfiniteScroll() {
     return infScroll;
 }
 
-export default new InfiniteScroll();
+export default InfiniteScroll;
