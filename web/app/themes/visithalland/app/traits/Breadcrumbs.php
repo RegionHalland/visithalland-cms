@@ -14,6 +14,8 @@ trait Breadcrumbs
 
         global $post;
 
+        var_dump("HAHAAHAH");
+
         if (!is_a($post, 'WP_Post') || is_front_page()) {
             return;
         }
