@@ -14,7 +14,7 @@
             $terms = get_the_terms($post->ID, 'taxonomy_concept');
             $featuredArticles = App::getPosts(array(), $terms[0], 3);
         @endphp
-        <div class="pb4 pt3 clearfix mxn2">
+        <div class="pb4 pt3 clearfix">
             @foreach($featuredArticles as $key => $value)
                 @php
                     $post_id = $value->ID;
