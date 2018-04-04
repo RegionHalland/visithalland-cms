@@ -11,7 +11,6 @@
 
         <article class="container" role="main" id="main-content" data-posttype="{{get_post_type()}}">
             @include('partials.article-hero')
-
             <div class="article-content clearfix mt5 mb4">
                 <div class="col-11 md-col-10 lg-col-8 mx-auto">
                     <p class="preamble">{{ get_field("excerpt") }}</p>
