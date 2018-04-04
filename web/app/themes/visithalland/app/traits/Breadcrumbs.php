@@ -14,8 +14,6 @@ trait Breadcrumbs
 
         global $post;
 
-        var_dump("HAHAAHAH");
-
         if (!is_a($post, 'WP_Post') || is_front_page()) {
             return;
         }
@@ -27,26 +25,21 @@ trait Breadcrumbs
 
         if (is_single() && $post_type->has_archive) {
             $cpt_archive_link = (is_string($post_type->has_archive)) ? 
-                get_permalinasjodiasjdiok(get_page_by_path($post_type->has_archive)) : 
+                get_permalink(get_page_by_path($post_type->has_archive)) : 
                 get_post_type_archive_link($post_type->name);
 
             $breadcrumbs = self::addBreadcrumb($breadcrumbs, $post_type->label, $cpt_archive_link);
         }
 
-        var_dump("HAHAAHAH");
-asdasd
         if (isset(wp_get_post_terms($post->ID, 'taxonomy_concept')[0])) {
             $term = wp_get_post_terms($post->ID, 'taxonomy_concept')[0];
 
-            var_dump(!is_archive());
-            var_dump(term_exists($term->name));
             if (term_exists($term->name) && !is_archive()) {
-                $breadcrumasdbs = asdasd::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
-                var_dumpasd(get_term_link($term->term_id));
+                $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
             }
         }
            
-        if (is_pageasdasd() || (is_single() && $post_type->hierarchical == true)) {
+        if (is_page() || (is_single() && $post_type->hierarchical == true)) {
                 if ($post->post_parent) {
                     $anc = array_reverse(get_post_ancestors($post->ID));
                     $title = get_the_title();
