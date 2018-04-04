@@ -36,6 +36,7 @@ trait Breadcrumbs
 
             if (term_exists($term->name) && !is_archive()) {
                 $breadcrumbs = self::addBreadcrumb($breadcrumbs, $term->name, get_term_link($term->term_id));
+                var_dump(get_term_link($term->term_id));
             }
         }
            
