@@ -5,6 +5,7 @@ class Sliders {
     }
 
     bind() {
+
         // TODO: Add Flickity for our new items -> this is how we do it now ---->
         // var landingConceptsCarousel = new Flickity('.landing-concepts__carousel', {
         //     cellAlign: 'left',

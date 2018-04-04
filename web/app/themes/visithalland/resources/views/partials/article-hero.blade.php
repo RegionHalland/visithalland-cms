@@ -1,4 +1,4 @@
-<section class="article-hero relative clearfix" role="heading" id="page-content">
+<section class="article-hero relative clearfix {{ App::getTermClassName() }}" role="heading" id="page-content">
     <div class="article-hero__backdrop topographic-pattern">
     </div>
     <div class="article-hero__inner relative col-11 md-col-10 lg-col-10 mx-auto">
