@@ -42,17 +42,23 @@ class GooglePlace {
     detailCallback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             var opening_hours;
+            console.log(results)
             //Add link to shown on map
             $('#google-details-show-on-map').attr('href', results.url)
 
             //Add link to visit website
             $('#google-details-visit-website').attr('href', results.website)
 
-            opening_hours = results.opening_hours.weekday_text.map(function (val, key) {
-                return '<li class="details__open-hour">' + val + '</li>';
-            });
-            //Add opening hours list items to content
-            $('#opening-hours').append(opening_hours);
+            if(results.opening_hours) {
+                $('.google-details__open-hours').show();
+
+                opening_hours = results.opening_hours.weekday_text.map(function (val, key) {
+                    return '<li class="details__open-hour">' + val + '</li>';
+                });
+
+                //Add opening hours list items to content
+                $('#opening-hours').append(opening_hours);
+            }
         }
     }
 }

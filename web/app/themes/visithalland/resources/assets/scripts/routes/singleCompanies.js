@@ -5,7 +5,7 @@ export default {
     init() {
         // Init Infinite scroll
         initMap();
-        var place = new Place();
+        new Place();
     },
     finalize() {
         // JavaScript to be fired on the home page, after the init JS
