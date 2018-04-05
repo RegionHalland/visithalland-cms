@@ -96,6 +96,10 @@
 	position:absolute;
 	height:100%;
 	width:auto;
+	@media (min-width:$breakpoint-md) {
+		height:auto;
+		width:100%;
+	}
 	top:50%;
 	left:50%;
 	opacity:0.5;
@@ -111,6 +115,9 @@
 
 
 .wizard {
+	max-width:500px;
+	margin-left:auto;
+	margin-right:auto;
 	z-index:$z3;
 	position:absolute;
 	bottom:0;
