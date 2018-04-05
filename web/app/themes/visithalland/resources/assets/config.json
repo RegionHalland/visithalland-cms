@@ -5,7 +5,8 @@
       "./styles/main.scss"
     ],
     "vue": [
-        "./scripts/vue/vue.js"
+        "./scripts/vue/vue.js",
+        "./styles/vue.scss"
     ],
     "editor": [
         "./styles/editor.scss"

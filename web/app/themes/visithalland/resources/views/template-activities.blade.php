@@ -7,8 +7,8 @@
 @section('content')
 
 {{-- PHP/html content starts --}}
-<h1>{{get_the_title()}}</h1>
-<p>{{the_content()}}</p>
+<h1>{{ get_the_title() }}</h1>
+<p>{{ the_content() }}</p>
 
 {{-- PHP/html content ends --}}
 
