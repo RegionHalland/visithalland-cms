@@ -10,11 +10,6 @@ export default {
     },
 };
 
-export function initHappening() {
-    //Init Map
-    initMap();
-};
-
 export function initMap() {
     Map.bind();
 };
