@@ -38,6 +38,11 @@ let webpackConfig = {
   },
   module: {
     rules: [
+      //Add Vue support
+      {
+        test: /\.vue$/,
+        loader: 'vue'
+      },
       /*{
         enforce: 'pre',
         test: /\.js$/,
@@ -120,6 +125,9 @@ let webpackConfig = {
       config.paths.assets,
       'node_modules',
     ],
+    alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+    },
     enforceExtension: false,
   },
   resolveLoader: {
@@ -167,7 +175,7 @@ let webpackConfig = {
       },
     }),
     new SvgStore({
-      // svgo options 
+      // svgo options
       svgoOptions: {
         plugins: [
           { removeTitle: true }

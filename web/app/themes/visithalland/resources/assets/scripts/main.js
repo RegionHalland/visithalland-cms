@@ -8,13 +8,13 @@ import "./autoload/**/*";
 import Router from './util/Router';
 import common from './routes/common';
 import archive from './routes/archive';
+import home from './routes/home';
 import singleTrip from './routes/singleTrip';
 import singleHappening from './routes/singleHappening';
 import singleMeetLocal from './routes/singleMeetLocal';
 import singleEditorTip from './routes/singleEditorTip';
 import singlePlaces from './routes/singlePlaces';
 import singleCompanies from './routes/singleCompanies';
-import home from './routes/home';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({

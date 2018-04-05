@@ -66,6 +66,13 @@
   },
   "devDependencies": {
     "autoprefixer": "~7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
     "browser-sync": "~2.23.6",
     "browsersync-webpack-plugin": "^0.6.0",
     "bs-html-injector": "~3.0",
@@ -95,6 +102,9 @@
     "stylelint-config-standard": "~18.0.0",
     "stylelint-webpack-plugin": "^0.10.1",
     "url-loader": "^0.6.2",
+    "vue-loader": "^14.2.2",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "~3.10.0",
     "webpack-assets-manifest": "^1.0.0",
     "webpack-dev-middleware": "~2.0.4",
@@ -109,6 +119,8 @@
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.0.2",
     "packery": "^2.1.1",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
     "webpack-svgstore-plugin": "^4.0.1"
   }
 }

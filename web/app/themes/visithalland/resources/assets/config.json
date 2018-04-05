@@ -4,6 +4,9 @@
       "./scripts/main.js",
       "./styles/main.scss"
     ],
+    "vue": [
+        "./scripts/vue/vue.js"
+    ],
     "editor": [
         "./styles/editor.scss"
     ],
