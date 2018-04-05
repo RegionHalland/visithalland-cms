@@ -28,9 +28,11 @@
     <div class="progress-bar mx-auto">
       <span class="progress-bar__indicator"></span>
     </div>
-    <router-link to="/">Hem</router-link>
-    <router-link to="/time">Få inspiration</router-link>
-    <router-link to="/activities">Activities</router-link>
-    <router-link to="/results">Results</router-link>
+    <div class="ful-router relative z4">
+        <router-link to="/">Hem</router-link>
+        <router-link to="/time">Få inspiration</router-link>
+        <router-link to="/activities">Activities</router-link>
+        <router-link to="/results">Results</router-link>
+    </div>
 </div>
 @endsection
