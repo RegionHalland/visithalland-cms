@@ -4,7 +4,7 @@ namespace App;
 
 // Add active class to current menu item
 add_action('admin_init', function () {
-    add_editor_style(get_stylesheet_directory_uri() . '/assets/dist/css/editor.min.css');
+    add_editor_style(\App\asset_path('styles/editor.css'));
     add_editor_style('https://use.typekit.net/vzi2bvt.css');
 });
 
