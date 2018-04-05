@@ -1,12 +1,12 @@
 <template>
-    <h1>{{ title }}</h1>
+	<a href="" class="btn block center btn--primary">{{ title }}</a>
 </template>
 
 <script>
     module.exports = {
         data: function(){
             return {
-                title: ""
+                title: "Få inspiration"
             }
         }
     }

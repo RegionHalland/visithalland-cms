@@ -6,27 +6,31 @@
 
 @section('content')
 
-{{-- PHP/html content starts --}}
-<h1>{{ get_the_title() }}</h1>
-<p>{{ the_content() }}</p>
+
+<div class="dh-landing flex items-center justify-center flex-column">
+    {{-- PHP/html content starts --}}
+    <h1 class="dh-landing__title z3 relative">{{ get_the_title() }}</h1>
+    <picture>
+        <source media="(min-width: 60em)" srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_wide@2x' ) . " 2x"  }}" />
+        <source srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_tall') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_tall@2x') . " 2x"  }}" />
+        <img class="dh-landing__img lazyload z2"
+            src="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') }}"
+            alt="{{ get_field("cover_image", $post->ID)["alt"] }}" />
+    </picture>
+</div>
 
 {{-- PHP/html content ends --}}
 
 
 {{-- Vue below --}}
-<div id="app">
+<div id="app" class="wizard">
     <router-view></router-view>
-
-
+    <div class="progress-bar mx-auto">
+      <span class="progress-bar__indicator"></span>
+    </div>
     <router-link to="/">Hem</router-link>
-    <br>
-    <br>
     <router-link to="/time">Få inspiration</router-link>
-    <br>
-    <br>
     <router-link to="/activities">Activities</router-link>
-    <br>
-    <br>
     <router-link to="/results">Results</router-link>
 </div>
 @endsection
