@@ -1,5 +1,5 @@
 <template>
-	<a href="" class="btn block center btn--primary">{{ title }}</a>
+    <router-link class="btn block center btn--primary" to="/time">Få inspiration</router-link>
 </template>
 
 <script>

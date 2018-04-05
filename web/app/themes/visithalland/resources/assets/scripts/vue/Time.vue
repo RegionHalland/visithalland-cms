@@ -7,7 +7,7 @@
 	     <h2 class="card__title">{{ title }}</h2>
 	  </header>
 	  <div class="card__content">
-	    
+
 	  </div>
 	</div>
 </template>
