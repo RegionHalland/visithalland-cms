@@ -12,7 +12,7 @@ use Roots\Sage\Template\BladeProvider;
  */
 add_action('wp_enqueue_scripts', function () {
 
-    if (is_amp_endpoint())
+    if (function_exists('is_amp_endpoint') && is_amp_endpoint())
     {
         wp_enqueue_script('sage/amp.js', asset_path('scripts/amp.js'), [], null, true);
         wp_enqueue_style('sage/amp.css', asset_path('styles/amp.css'), false, null);
