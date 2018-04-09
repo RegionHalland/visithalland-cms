@@ -21,5 +21,4 @@ export function initMeetLocal() {
 export function initGrid() {
     // Init a new grid
     var dg = new DynamicGrid();
-    console.log("i was called")
 };

@@ -53,7 +53,7 @@ class GooglePlace {
                 $('.google-details__open-hours').show();
 
                 opening_hours = results.opening_hours.weekday_text.map(function (val, key) {
-                    return '<li class="details__open-hour">' + val + '</li>';
+                    return '<li class="google-details__open-hour">' + val + '</li>';
                 });
 
                 //Add opening hours list items to content

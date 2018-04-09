@@ -20,5 +20,4 @@ export function initTrip() {
 
 export function initGrid() {
     var dg = new DynamicGrid();
-    console.log("i was called inside trip")
 };

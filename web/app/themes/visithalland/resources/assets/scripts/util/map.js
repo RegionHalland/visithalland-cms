@@ -7,7 +7,6 @@ class Map {
     bind(){
         var vm = this;
         $(document).ready(function () {
-            console.log("ready now")
             // Init map on last element in dom. Makes it work with infinite scroll
             vm.new_map($('.acf-map').last());
         });

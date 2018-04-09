@@ -39,7 +39,7 @@
 	}
 
 	&__open-hours {
-        display: none;
+		
 	}
 
 	&__open-hour {
@@ -48,7 +48,7 @@
 		font-size:1rem;
 		padding:$space-1 0;
 		@media (min-width:$breakpoint-sm){
-			font-size:0.9rem;
+			font-size:1rem;
 		}
 	}
 }

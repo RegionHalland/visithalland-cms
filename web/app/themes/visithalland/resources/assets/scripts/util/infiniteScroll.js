@@ -27,7 +27,6 @@ export function initInfiniteScroll() {
 
     // Add history event listener for logging pageviews to Analytics.
     infScroll.on('history', function (title, path) {
-        console.log("-------history----------", title, path);
         ga('create', 'UA-89278649-4');
         ga('send', {
             hitType: 'pageview',
@@ -63,11 +62,9 @@ export function initInfiniteScroll() {
                 initTrip();
                 break;
             case "happening":
-                console.log("we have a fucking hap")
                 initHappening();
                 break;
             case "meet_local":
-                console.log("we have a fucking meet a local")
                 initMeetLocal();
                 break;
 

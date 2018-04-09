@@ -21,5 +21,4 @@ export function initHappening() {
 
 export function initMap() {
     Map.bind();
-    console.log("init map called");
 };
