@@ -11,6 +11,13 @@ use Roots\Sage\Template\BladeProvider;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
+
+    if (is_amp_endpoint())
+    {
+        wp_enqueue_script('sage/amp.js', asset_path('scripts/amp.js'), [], null, true);
+        wp_enqueue_style('sage/amp.css', asset_path('styles/amp.css'), false, null);
+    } else{
+
     if (!is_page("en-dag-halland")) {
         wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
         wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
@@ -19,9 +26,8 @@ add_action('wp_enqueue_scripts', function () {
     if (is_page("en-dag-halland")) {
         wp_enqueue_script('sage/vue.js', asset_path('scripts/vue.js'), null, null, true);
         wp_enqueue_style('sage/vue.css', asset_path('styles/vue.css'), false, null);
-
     }
-
+    }
 
     //wp_enqueue_script('sage/asd.js', asset_path('scripts/vue.js'), ['jquery'], null, true);
 

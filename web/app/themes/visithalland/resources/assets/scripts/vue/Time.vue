@@ -13,11 +13,21 @@
 </template>
 
 <script>
-    module.exports = {
+import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import sv from 'date-fns/locale/sv';
+import en from 'date-fns/locale/en';
+
+    export default {
         data: function(){
             return {
                 title: "När vill du göra något?"
             }
+        },
+        created(){
+            var currentLang = window.navigator.language == "sv" ? "sv" : "en";
+            console.log(currentLang);
+
+            console.log(format(new Date(), '[Today is a] dddd'), {locale: sv} );
         }
     }
 </script>
