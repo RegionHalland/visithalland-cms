@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { format, formatDistance, formatRelative, subDays, distanceInWords, addDays } from 'date-fns';
 import sv from 'date-fns/locale/sv';
 import en from 'date-fns/locale/en';
 
     export default {
-        data: function(){
+        data(){
             return {
                 title: "När vill du göra något?"
             }
@@ -26,8 +26,14 @@ import en from 'date-fns/locale/en';
         created(){
             var currentLang = window.navigator.language == "sv" ? "sv" : "en";
             console.log(currentLang);
+            var today = new Date();
+            var tomorrow = addDays(new Date(), 1);
+            var dayAfterTomorrow = addDays(new Date(), 2);
 
-            console.log(format(new Date(), '[Today is a] dddd'), {locale: sv} );
+            console.log(today, "|", tomorrow, "|", dayAfterTomorrow);
+
+
+
         }
     }
 </script>
