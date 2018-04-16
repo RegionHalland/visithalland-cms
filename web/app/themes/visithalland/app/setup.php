@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', function () {
     if (function_exists('is_amp_endpoint') && is_amp_endpoint())
     {
         wp_enqueue_script('sage/amp.js', asset_path('scripts/amp.js'), [], null, true);
-        wp_enqueue_style('sage/amp.css', asset_path('styles/amp.css'), false, null);
+        //wp_enqueue_style('sage/amp.css', asset_path('styles/amp.css'), false, null);
     } else{
 
     if (!is_page("en-dag-halland")) {
@@ -46,6 +46,20 @@ add_action('after_setup_theme', function () {
     add_theme_support('soil-nav-walker');
     add_theme_support('soil-nice-search');
     add_theme_support('soil-relative-urls');
+
+
+    /** Removes Emoji and other bloated scripts from WP_HEAD **/
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('wp_head', 'rsd_link');
+    remove_action('wp_head', 'wlwmanifest_link');
+
+
+    /** Remove WPML Legacy Dropdown **/ 
+
+    define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);
+    define('ICL_DONT_LOAD_NAVIGATION_CSS', true);
+    define('ICL_DONT_LOAD_LANGUAGES_JS', true);
 
     /**
      * Enable plugins to manage the document title

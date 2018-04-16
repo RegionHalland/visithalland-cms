@@ -5,7 +5,7 @@ namespace App;
 // Amp CSS
 add_filter('amp_post_template_head', function ()
 {
-    $output = "<style amp-custom>" . file_get_contents(\App\asset_path('styles/main.css')) . "</style>";
+    $output = "<style amp-custom>" . file_get_contents(\App\asset_path('styles/amp.css')) . "</style>";
     echo $output;
 },10, 3);
 
