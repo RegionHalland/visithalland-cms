@@ -4,6 +4,9 @@
     @php
         while ( have_posts() ) : the_post();
 	    $author_id = get_the_author_meta('ID');
+        $thumbnail_id = get_post_thumbnail_id();
+        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+        $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <article class="container" role="main" id="main-content">
         <div class="page-header">
@@ -19,12 +22,12 @@
                         <div class="page-header__img-container col-12">
                             <picture>
                                 <source media="(min-width: 40em)"
-                                    data-srcset="{{ get_field("cover_image")["sizes"]["vh_large"] . " 1x," . get_field("cover_image")["sizes"]["vh_large@2x"] . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_large@2x' ) . " 2x" }}" />
                                 <source
-                                    data-srcset="{{ get_field("cover_image")["sizes"]["vh_medium"] . " 1x," . get_field("cover_image")["sizes"]["vh_medium@2x"] . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_medium@2x' ) . " 2x" }}" />
                                 <img class="page-header__img lazyload"
-                                    data-src="{{ get_field("cover_image")["sizes"]["vh_large"] }}"
-                                    alt="{{ get_field("cover_image")["alt"] }}"
+                                    data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) }}"
+                                    alt="{{ $alt }}"
                                 />
                             </picture>
                         </div>
