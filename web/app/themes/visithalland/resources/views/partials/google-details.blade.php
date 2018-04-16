@@ -32,12 +32,10 @@
                 </a>
             </section>
 
-            @if( have_rows('external_links') )
+            @if(get_field("external_link"))
                 <section class="google-details__section col col-6 sm-col-3">
                 <span class="google-details__section-label block">{{ _e( 'Läs mer', 'visithalland' )}}</span>
-                @php while ( have_rows('external_links') ) : the_row(); @endphp
-                    <a href="{{ get_sub_field('link') }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
-                @php endwhile @endphp
+                <a href="{{ get_field("external_link") }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
                 </section>
             @endif
         </section>

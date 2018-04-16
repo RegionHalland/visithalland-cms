@@ -13,9 +13,6 @@
             <div class="col-11 sm-col-9 md-col-10 mx-auto clearfix">
                 <div class="happening__content col col-12 md-col-6 mt2">
                     <p class="preamble">{{ get_field("excerpt") }}</p>
-                    {{-- <div class="article-body mt3">
-                        {{ the_content() }}
-                    </div> --}}
                 </div>
                 <aside class="col col-12 md-col-6 mt3">
                     <div class="happening-info topographic-pattern">
@@ -40,7 +37,9 @@
                                 </a>
                             </section>
                             <section class="happening-info__section col col-12 sm-col-4">
-                                <a href="{{ get_field("external_links") }}" class="btn btn--primary inline-block">@php _e( 'Mer information', 'visithalland' ) @endphp</a>
+                                @if(get_field("external_link"))
+                                    <a href="{{ get_field("external_link") }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
+                                @endif
                             </section>
                         </div>
                     </div>
