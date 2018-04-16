@@ -7,7 +7,30 @@
 	     <h2 class="card__title">{{ title }}</h2>
 	  </header>
 	  <div class="card__content">
-
+            <div>
+                <div>
+                    <h2>22 <br>Mars</h2>
+                </div>
+                    <div>
+                        <button>Idag</button>
+                    </div>
+            </div>
+            <div>
+                <div>
+                    <h2>22 <br>Mars</h2>
+                </div>
+                    <div>
+                        <button>Imorogn</button>
+                    </div>
+            </div>
+            <div>
+                <div>
+                    <h2>22 <br>Mars</h2>
+                </div>
+                    <div>
+                        <button>I övermorgon</button>
+                    </div>
+            </div>
 	  </div>
 	</div>
 </template>
@@ -20,7 +43,8 @@ import en from 'date-fns/locale/en';
     export default {
         data(){
             return {
-                title: "När vill du göra något?"
+                title: "När vill du göra något?",
+                routeBefore: "Time"
             }
         },
         created(){

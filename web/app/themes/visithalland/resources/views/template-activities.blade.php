@@ -24,7 +24,7 @@
 
 {{-- Vue below --}}
 <div id="app" class="wizard">
-    <router-view></router-view>
+    <router-view routeBefore="asd"></router-view>
     <div class="progress-bar mx-auto">
       <span class="progress-bar__indicator"></span>
     </div>

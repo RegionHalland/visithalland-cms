@@ -52,7 +52,7 @@
   },
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
-    "build:production": "webpack --progress --define process.env.NODE_ENV='production' --optimize-minimize --config resources/assets/build/webpack.config.js",
+    "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
     "rmdist": "rimraf dist",
@@ -121,7 +121,6 @@
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.0.2",
     "packery": "^2.1.1",
-    "superagent": "^3.8.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "webpack-svgstore-plugin": "^4.0.1"
