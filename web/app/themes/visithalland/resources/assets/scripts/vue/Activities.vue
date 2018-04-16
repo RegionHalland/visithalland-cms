@@ -19,13 +19,12 @@
 </template>
 
 <script>
-import request from 'superagent';
+import axios from 'axios';
 
     export default {
         data: function(){
             return {
                 title: "Våra rekommendationer",
-
                 items: [
                 { title: {
                     rendered: ""
@@ -36,11 +35,12 @@ import request from 'superagent';
         created () {
             // fetch the data when the view is created and the data is
             // already being observed
+            console.log(this);
             this.fetchData()
         },
         methods: {
             fetchData () {
-                var vm = this;
+                /*var vm = this;
                 request
                 .get('http://visithalland.test/wp-json/wp/v2/activity')
                 .redirects(0)
@@ -72,7 +72,7 @@ import request from 'superagent';
 
 
                     }
-                });
+                });*/
 
                 // Fetch data here
                 /*setTimeout(() => {
