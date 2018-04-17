@@ -11,9 +11,9 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
 
-    <article class="container {{ App::getTermClassName() }}" role="main" id="main-content">
+    <article class="{{ App::getTermClassName() }}" role="main" id="main-content">
         @include('partials.article-hero')
-        <div class="article-content clearfix mt5">
+        <div class="article-content container clearfix mt5">
             <div class="col-11 md-col-10 lg-col-8 mx-auto">
                 <p class="preamble">{{ get_field("excerpt") }}</p>
                 <div class="article-body mt4">

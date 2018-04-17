@@ -2,7 +2,7 @@
 
 @if(isset($featured_posts))
 
-<section class="mt5 col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
+<section class="mt5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
 		<div class="featured-grid clearfix">
 		    @foreach ($featured_posts as $post)
 		        <?php setup_postdata($post);

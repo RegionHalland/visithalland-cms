@@ -7,8 +7,8 @@
     @endphp
 	
     {{ get_search_form() }}
-    <article class="container" role="main" id="main-content">
-	        <div class="col-11 md-col-10 lg-col-10 mx-auto">
+    <article role="main" id="main-content">
+	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
 	        	@if(isset($wp_query))
 	        	<header class="section-header block mb2 mt4 coastal-living">
 		            <div class="section-header__icon-wrapper">

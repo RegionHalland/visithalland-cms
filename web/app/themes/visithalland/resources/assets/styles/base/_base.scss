@@ -14,11 +14,6 @@ html {
 body {
 	font-family: $fira-font-family;
 	line-height: 1;
-
-	@media (min-width:$breakpoint-lg) {
-		background:palette(grey, x-light);
-	}
-	// Added font-smoothing to prevent smudges - please review performance
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: $paragraph-color;

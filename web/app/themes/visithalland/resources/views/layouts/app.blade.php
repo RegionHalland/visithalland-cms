@@ -11,8 +11,8 @@
 	@php(do_action('get_header'))
 	@include('partials.header')
 
-	<div class="container" role="document">
-		<main role="main" class="container" id="main-content">
+	<div role="document">
+		<main role="main" class="" id="main-content">
 			@yield('content')
 		</main>
 	</div>

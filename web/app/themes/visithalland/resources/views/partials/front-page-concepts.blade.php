@@ -3,7 +3,7 @@
 
 @if(is_array($primary_navigation_items))
 
-    <section class="mt2 col-11 md-col-10 lg-col-10 mx-auto">
+    <section class="mt2 container col-11 md-col-10 lg-col-10 mx-auto">
         <header class="section-header coastal-living block my4">
             <div class="section-header__icon-wrapper">
                 <svg class="section-header__icon icon">

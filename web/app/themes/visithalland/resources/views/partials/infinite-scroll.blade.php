@@ -3,7 +3,7 @@
 </div>
 
 <div class="page-load-status topographic-pattern">
-    <div class="col-11 md-col-10 lg-col-10 mx-auto">
+    <div class="container col-11 md-col-10 lg-col-10 mx-auto">
         <div class="infinite-scroll-request relative">
         	<div class="next-article clearfix">
     			<div class="next-article__img-container inline-block">

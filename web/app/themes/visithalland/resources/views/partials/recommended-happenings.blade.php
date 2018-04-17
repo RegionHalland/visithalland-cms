@@ -1,4 +1,4 @@
-<div class="recommended-articles col-11 md-col-10 lg-col-10 mx-auto pb3">
+<div class="recommended-articles container col-11 md-col-10 lg-col-10 mx-auto pb3">
     <div class="clearfix">
         <header class="section-header mb2 coastal-living">
             <div class="section-header__icon-wrapper">

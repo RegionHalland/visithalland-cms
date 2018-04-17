@@ -2,7 +2,7 @@
 <!-- Footer Start -->
 
 <footer class="footer topographic-pattern">
-    <div class="footer__content relative col-11 md-col-10 lg-col-10 mx-auto">
+    <div class="footer__content relative container col-11 md-col-10 lg-col-10 mx-auto">
         <div class="clearfix">
 
             <!-- Footer Site Info Start -->

@@ -1,6 +1,6 @@
 @php $spotlights = get_field("stops"); @endphp
 @if(isset($spotlights))
-    <section class="mt5 col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
+    <section class="mt5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
         <div class="featured-grid clearfix">
             @foreach ($spotlights as $post)
                 <?php setup_postdata($post);

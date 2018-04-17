@@ -8,10 +8,10 @@
         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
-    <article class="container" role="main" id="main-content">
+    <article role="main" id="main-content">
         <div class="page-header">
             <div class="page-header__backdrop topographic-pattern">
-                <div class="page-header__inner col-11 md-col-10 lg-col-10 mx-auto">
+                <div class="page-header__inner container col-11 md-col-10 lg-col-10 mx-auto">
                     <div class="clearfix">
                         <div class="col col-12 sm-col-6">
                             <h1 class="light mt3"> {{ get_the_title() }} </h1>
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-11 md-col-10 lg-col-10 mx-auto pb5">
+        <div class="container col-11 md-col-10 lg-col-10 mx-auto pb5">
             <div class="clearfix">
                 <div class="col col-12 sm-col-9 md-col-8 page__body">
                     <div class="article-body">

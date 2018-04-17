@@ -1,5 +1,5 @@
  @if( have_rows('tips') )
-    <section class="mt5 mb5 col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
+    <section class="mt5 mb5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
         <header class="section-header inline-block mb3 coastal-living">
             <div class="section-header__icon-wrapper">
                 <svg class="section-header__icon icon">

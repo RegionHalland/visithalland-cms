@@ -26,7 +26,7 @@
                         alt="{{ $alt }}" />
                 </picture>
             </div>
-            <div class="article-full__inner col-11 lg-col-10 mx-auto">
+            <div class="article-full__inner container col-11 lg-col-10 mx-auto">
                 <div class="article-full__header">
 
                     {{-- Section Header Start --}}

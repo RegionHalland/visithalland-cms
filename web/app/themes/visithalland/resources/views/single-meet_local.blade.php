@@ -10,7 +10,7 @@
 @endphp
 
 	<div id="infinite-container">
-	    <article class="container" role="main" id="main-content" data-posttype="{{get_post_type()}}">
+	    <article role="main" id="main-content" data-posttype="{{get_post_type()}}">
 	        @include('partials.article-hero')
 	        @include('partials.article-content')
 	        @include('partials.meet-a-local-grid')

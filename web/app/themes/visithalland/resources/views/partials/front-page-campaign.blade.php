@@ -1,6 +1,6 @@
 <div class="campaign-header relative">
     <div class="campaign-header__img-container">
-        <div class="campaign-header__content col-11 md-col-10 lg-col-10 mx-auto">
+        <div class="campaign-header__content container col-11 md-col-10 lg-col-10 mx-auto">
             <h1 class="campaign-header__title">{{ get_field('campaign_title') }}</h1>
             <p class="campaign-header__excerpt">{{ get_field('campaign_excerpt') }}</p>
 
