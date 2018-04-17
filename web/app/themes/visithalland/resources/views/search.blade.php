@@ -26,10 +26,13 @@
 				            	$post_id = $post->ID;
 								$thumbnail_id = get_post_thumbnail_id($post_id);
 								$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+								$terms = get_the_terms($post_id, 'taxonomy_concept');
+
+								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp
 			            	<div class="col col-12 sm-col-4 search-result px2 mt3">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
-										<article class="image-blurb {{ $post->terms["terms_default_lang"]->slug }}">
+										<article class="image-blurb {{ $terms[0]->slug }}">
 											<picture>
 												<source
 													media="(min-width: 40em)"
