@@ -8,8 +8,8 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 
-	<div class="container" role="document">
-		<main role="main" class="container" id="main-content">
+	<div role="document">
+		<main role="main" id="main-content">
 			@yield('content')
         </main>
     </div>

@@ -13,31 +13,17 @@
 		max-width: $container-max-width;
 		background:palette(black, base);
 		position:relative;
-		@media (min-width:$breakpoint-sm) {
-			border-radius: 0 0 $border-radius $border-radius;
-		}
-
 	}
 	&__top-section {
 		padding:$space-2;
 		box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.22);
-		@media (min-width:$breakpoint-sm) {
-			padding:$space-2 $space-4;
-		}
-		@media (min-width:$breakpoint-md) {
-			padding:$space-2 $space-4;
-		}
 		background-color: palette(black, base);
 	}
-
-
-
 	&__logo {
 		margin-top:$space-1;
 		width:250px;
 	}
 }
-
 
 .navigation {
 	background-color: palette(black, base);
@@ -52,21 +38,6 @@
 		padding:0.75rem $space-2;
     }
     &__link {
-
-    	@media(min-width:$breakpoint-sm) {
-	    	&:hover {
-				opacity:1;
-				.navigation__icon-wrapper {
-					@include themify {
-			            background-color: $color-primary;
-			        }
-				}
-				.navigation__icon {
-					transform: translateY(100%);
-				}
-			}
-		}
-
 		&.active {
 			opacity:1;
 			.navigation__icon-wrapper {

@@ -28,6 +28,12 @@ trait Navigation
         return ["Error"];
     }
 
+
+    public static function getSecondaryNavigation() {
+
+            return self::secondaryMenuItems();
+    }
+
     /**
     * Returns navigation items located at the menu of theme_location secondary_navigation
     *
