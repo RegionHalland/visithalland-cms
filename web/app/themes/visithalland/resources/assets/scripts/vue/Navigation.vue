@@ -1,7 +1,7 @@
 <template>
     <header class="card__header">
-        <button class="card__button">
-        Gå bakåt
+        <button class="card__button" v-on:click="goBack()">
+            Gå bakåt
         </button>
         <h2 class="card__title">{{ this.$route.meta.title }}</h2>
     </header>
@@ -10,8 +10,10 @@
 <script>
     export default {
         name: "Navigation",
-        created(){
-            console.log("My nav")
+        methods: {
+            goBack() {
+                console.log(this.$router.go(-1))
+            }
         }
     }
 </script>

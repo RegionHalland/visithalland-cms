@@ -12,9 +12,7 @@
                     <h2 class="date__title mt0 p0">Idag</h2>
                     <div class="read-more mt1">
                         <span class="read-more__text">
-                            <router-link :to="{
-                                name: 'activities', params: { date: new Date() }
-                            }">Välj alternativ</router-link>
+                            <router-link :to="{name: 'activities', params: { date: new Date() }}">Välj alternativ</router-link>
                         </span>
                         <div class="read-more__button">
                             <svg class="icon read-more__icon">
@@ -39,15 +37,11 @@ import en from 'date-fns/locale/en';
         ],
         created(){
             var currentLang = window.navigator.language == "sv" ? "sv" : "en";
-            console.log(currentLang);
             var today = new Date();
             var tomorrow = addDays(new Date(), 1);
             var dayAfterTomorrow = addDays(new Date(), 2);
 
             console.log(today, "|", tomorrow, "|", dayAfterTomorrow);
-
-
-
         }
     }
 </script>

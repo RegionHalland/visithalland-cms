@@ -27,7 +27,8 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 const router = new VueRouter({
-    routes // short for `routes: routes`
+    routes, // short for `routes: routes`
+    //mode: 'history'
 })
 
 // 4. Create and mount the root instance.
