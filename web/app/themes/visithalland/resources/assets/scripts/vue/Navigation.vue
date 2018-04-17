@@ -1,7 +1,7 @@
 <template>
     <header class="card__header">
         <button class="card__button">
-        Gå bakåtss
+        Gå bakåt
         </button>
         <h2 class="card__title">{{ this.$route.meta.title }}</h2>
     </header>
