@@ -87,18 +87,22 @@
 
 .v-enter {
 	transform:translateX(110%) rotate(5deg);
+	opacity:0;
 }
 
 .v-enter-to {
 	transform:translateX(0%) rotate(0deg);
+	opacity:1;
 }
 
 .v-leave {
 	transform:translateX(0%) rotate(0deg);
+	opacity:1;
 }
 
 .v-leave-to {
 	transform:translateX(-110%) rotate(-5deg);
+	opacity:0;
 }
 
 
