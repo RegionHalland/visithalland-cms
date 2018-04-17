@@ -1,11 +1,5 @@
 <template>
 	<div class="card">
-	  <header class="card__header">
-	     <button class="card__button">
-	       Gå bakåt
-	     </button>
-	     <h2 class="card__title">{{ title }}</h2>
-	  </header>
 	  <div class="card__content">
             <div class="date coastal-living">
                 <div class="date-badge date-badge--large inline-block">
@@ -16,7 +10,9 @@
                     <h2 class="date__title mt0 p0">Idag</h2>
                     <div class="read-more mt1">
                         <span class="read-more__text">
-                            Välj alternativ
+                            <router-link :to="{
+                                name: 'activities', params: { date: new Date() }
+                            }">Välj alternativ</router-link>
                         </span>
                         <div class="read-more__button">
                             <svg class="icon read-more__icon">
@@ -36,6 +32,9 @@ import sv from 'date-fns/locale/sv';
 import en from 'date-fns/locale/en';
 
     export default {
+        props: [
+            "date"
+        ],
         data(){
             return {
                 title: "När vill du göra något?",
