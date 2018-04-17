@@ -9,8 +9,25 @@
 	  </header>
 	  <div class="card__content">
         
-
-        
+        <a href="" class="block mb3">
+            <div class="activity inline-flex hiking-biking">
+                <img src="" class="activity__img mr2" />
+                <div class="activity__content">
+                    <h2 class="activity__title">Äta något gott</h2>
+                    <div class="read-more mt1">
+                        <span class="read-more__text">
+                            Välj alternativ
+                        </span>
+                        <div class="read-more__button">
+                            <svg class="icon read-more__icon">
+                                <use xlink:href="#arrow-right-icon"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </a>
 
         <ul id="example-1">
             <li v-for="item in items">
