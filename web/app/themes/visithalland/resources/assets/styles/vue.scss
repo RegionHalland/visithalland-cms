@@ -38,9 +38,14 @@
     border:1px solid black;
     border-radius: $border-radius;
 }
+
 .card {
   overflow:hidden;
   border-radius:4px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
   background:$white;
 }
 
@@ -73,6 +78,49 @@
   }
 }
 
+
+.v-leave-active, .v-enter-active {
+	transition: all 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+	transform-origin:bottom center;
+
+}
+
+.v-enter {
+	transform:translateX(110%) rotate(5deg);
+}
+
+.v-enter-to {
+	transform:translateX(0%) rotate(0deg);
+}
+
+.v-leave {
+	transform:translateX(0%) rotate(0deg);
+}
+
+.v-leave-to {
+	transform:translateX(-110%) rotate(-5deg);
+}
+
+
+
+@keyframes fadeInUp {
+	from {
+		opacity:0;
+		transform:translateY(50%);
+	}
+	to {
+		opacity:1;
+		transform:translateY(0%);
+	}
+}
+
+
+.date, .activity, .result {
+	opacity:0;
+	animation-delay: 0.25s;
+	animation: fadeInUp 0.5s;
+	animation-fill-mode:forwards;
+}
 
 
 .date {
@@ -152,6 +200,10 @@
   position:absolute;
 }
 
+
+.card-container {
+	display:block;
+}
 
 .dh-landing {
 	height:100vh;
