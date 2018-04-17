@@ -15,7 +15,7 @@
             @include('partials.breadcrumbs')
 
             <h1 class="concept-header__title mt0 mb3 light">
-                <span>{{ $term->name }}</span>
+                <span>{!! $term->name !!}</span>
             </h1>
             <p class="concept-header__p light mt3">
                 {{ the_field("excerpt", $term) }}
