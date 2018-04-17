@@ -10,18 +10,27 @@
             @media (min-width:$breakpoint-md) {
                 height:600px;
             }
+            @media (min-width:$breakpoint-lg) {
+                height:650px;
+            }
         }
         &--medium {
             height:300px;
             @media (min-width:$breakpoint-sm) {
                 height:450px;
             }
+            @media (min-width:$breakpoint-lg) {
+                height:500px;
+            }
         }
 
         &--small {
             height:300px;
-             @media (min-width:$breakpoint-sm) {
+            @media (min-width:$breakpoint-sm) {
                 height:300px;
+            }
+            @media (min-width:$breakpoint-lg) {
+                height:350px;
             }
         }
     }

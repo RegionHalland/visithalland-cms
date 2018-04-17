@@ -25,12 +25,18 @@
 
 @import 'components/button';
 @import 'components/button-primary';
+@import 'components/date-badge';
+@import 'components/read-more';
 
 @import url('https://use.typekit.net/vzi2bvt.css');
 
 
 .ful-router a{
     color:white;
+    padding:0.5rem;
+    background:red;
+    border:1px solid black;
+    border-radius: $border-radius;
 }
 .card {
   overflow:hidden;
@@ -67,6 +73,17 @@
   }
 }
 
+
+
+.date__content {
+	text-align:top;
+	padding-left:$space-2;
+}
+
+.date__title {
+	font-size:$h3;
+}
+
 .progress-bar {
   width:50px;
   margin-top:1rem;
@@ -90,7 +107,7 @@
 	height:100vh;
 	width:100%;
 	overflow:hidden;
-	background:palette(black, base);
+	background:palette(black, x-dark);
 	position:relative;
 }
 
@@ -113,7 +130,6 @@
 	text-align:center;
 	width:100%;
 }
-
 
 
 .wizard {

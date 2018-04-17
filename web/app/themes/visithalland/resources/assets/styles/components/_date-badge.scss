@@ -2,6 +2,9 @@
 	padding:0.5rem;
 	border-radius:$border-radius;
 	color:$white;
+	&--large {
+		padding:0.85rem;
+	}
 	@include themify {
 		background:$color-primary;
 	}

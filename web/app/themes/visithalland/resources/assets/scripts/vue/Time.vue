@@ -7,29 +7,24 @@
 	     <h2 class="card__title">{{ title }}</h2>
 	  </header>
 	  <div class="card__content">
-            <div>
-                <div>
-                    <h2>22 <br>Mars</h2>
+            <div class="date">
+                <div class="date-badge date-badge--large coastal-living inline-block">
+                    <span class="date-badge__day">22</span>
+                    <span class="date-badge__month">Mar</span>
                 </div>
-                    <div>
-                        <button>Idag</button>
+                <div class="date__content inline-block">
+                    <h2 class="date__title mt0 p0">Idag</h2>
+                    <div class="read-more mt2">
+                        <span class="read-more__text">
+                            Välj alternativ
+                        </span>
+                        <div class="read-more__button">
+                            <svg class="icon read-more__icon">
+                                <use xlink:href="#arrow-right-icon"/>
+                            </svg>
+                        </div>
                     </div>
-            </div>
-            <div>
-                <div>
-                    <h2>22 <br>Mars</h2>
                 </div>
-                    <div>
-                        <button>Imorogn</button>
-                    </div>
-            </div>
-            <div>
-                <div>
-                    <h2>22 <br>Mars</h2>
-                </div>
-                    <div>
-                        <button>I övermorgon</button>
-                    </div>
             </div>
 	  </div>
 	</div>
