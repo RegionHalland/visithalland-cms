@@ -1,14 +1,9 @@
 
 <template>
 	<div class="card">
-	  <header class="card__header">
-	     <button class="card__button">
-	       Gå bakåt
-	     </button>
-	     <h2 class="card__title">{{ title }}</h2>
-	  </header>
+	  <Navigation></Navigation>
+
 	  <div class="card__content">
-        
         <a href="" class="block mb3">
             <div class="activity inline-flex hiking-biking">
                 <img src="" class="activity__img mr2" />
@@ -24,7 +19,7 @@
                             </svg>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </a>
@@ -41,11 +36,9 @@
 
 <script>
 import axios from 'axios';
-
     export default {
         data: function(){
             return {
-                title: "Våra rekommendationer",
                 items: [
                 { title: {
                     rendered: ""

@@ -1,11 +1,6 @@
 <template>
 	<div class="card">
-	  <header class="card__header">
-	     <button class="card__button">
-	       Gå bakåt
-	     </button>
-	     <h2 class="card__title">{{ title }}</h2>
-	  </header>
+	  <Navigation></Navigation>
 	  <div class="card__content">
 	  	<header class="result-header">
 	  		Nära dig
@@ -25,11 +20,11 @@
 			                </svg>
 			            </div>
 			        </div>
-			        
+
 			    </div>
 			</div>
 		</a>
-	    
+
 	  </div>
 	</div>
 </template>
@@ -38,7 +33,6 @@
     module.exports = {
         data: function(){
             return {
-                title: "Results"
             }
         }
     }

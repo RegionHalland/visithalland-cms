@@ -1,6 +1,8 @@
 <template>
 	<div class="card">
-	  <div class="card__content">
+    <Navigation></Navigation>
+
+	    <div class="card__content">
             <div class="date coastal-living">
                 <div class="date-badge date-badge--large inline-block">
                     <span class="date-badge__day">22</span>
