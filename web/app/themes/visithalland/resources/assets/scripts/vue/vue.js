@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Layout from './Layout.vue';
 import Home from './Home.vue';
 import Time from './Time.vue';
 import Activities from './Activities.vue';
@@ -14,10 +15,18 @@ Vue.use(VueRouter);
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/', component: Home, name: "home", props: true },
-    { path: '/time', component: Time, name: "time", props: true },
-    { path: '/activities', component: Activities, name: "activities", props: true },
-    { path: '/results', component: Results, name: "results", props: true }
+    {
+        path: '/',
+        component: Layout,
+        name: "layout",
+        props: true,
+        children: [
+            { path: '/home', component: Home, name: "home", meta: { title: "Få inspiration" }, props: true },
+            { path: '/time', component: Time, name: "time", meta: { title: "När vill du göra något?" }, props: true },
+            { path: '/activities', component: Activities, name: "activities", meta: { title: "Få inspiration" }, props: true },
+            { path: '/results', component: Results, name: "results", meta: { title: "Få inspiration" }, props: true }
+        ]
+    },
 ]
 
 // 3. Create the router instance and pass the `routes` option

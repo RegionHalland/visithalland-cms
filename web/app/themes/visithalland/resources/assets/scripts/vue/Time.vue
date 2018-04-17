@@ -35,12 +35,6 @@ import en from 'date-fns/locale/en';
         props: [
             "date"
         ],
-        data(){
-            return {
-                title: "När vill du göra något?",
-                routeBefore: "Time"
-            }
-        },
         created(){
             var currentLang = window.navigator.language == "sv" ? "sv" : "en";
             console.log(currentLang);

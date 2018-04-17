@@ -6,12 +6,8 @@
 import axios from 'axios';
 
     export default {
-        data: function(){
-            return {
-                title: "Få inspiration"
-            }
-        },
         created(){
+            console.log("homes")
             // Make a request for a user with a given ID
             /*axios.get('/')
                 .then(function (response) {
