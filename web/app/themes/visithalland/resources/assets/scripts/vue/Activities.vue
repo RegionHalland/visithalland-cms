@@ -8,6 +8,10 @@
 	     <h2 class="card__title">{{ title }}</h2>
 	  </header>
 	  <div class="card__content">
+        
+
+        
+
         <ul id="example-1">
             <li v-for="item in items">
                 <img :src="item.img">

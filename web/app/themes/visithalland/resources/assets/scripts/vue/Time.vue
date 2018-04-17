@@ -7,14 +7,14 @@
 	     <h2 class="card__title">{{ title }}</h2>
 	  </header>
 	  <div class="card__content">
-            <div class="date">
-                <div class="date-badge date-badge--large coastal-living inline-block">
+            <div class="date coastal-living">
+                <div class="date-badge date-badge--large inline-block">
                     <span class="date-badge__day">22</span>
                     <span class="date-badge__month">Mar</span>
                 </div>
                 <div class="date__content inline-block">
                     <h2 class="date__title mt0 p0">Idag</h2>
-                    <div class="read-more mt2">
+                    <div class="read-more mt1">
                         <span class="read-more__text">
                             Välj alternativ
                         </span>

@@ -75,6 +75,11 @@
 
 
 
+.date {
+	display:inline-flex;
+	align-items:center;
+}
+
 .date__content {
 	text-align:top;
 	padding-left:$space-2;
