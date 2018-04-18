@@ -28,12 +28,12 @@
                             <picture>
                                 <source
                                     media="(min-width: 40em)"
-                                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_large@2x' ) . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url($thumbnail_id, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($thumbnail_id, 'vh_large@2x' ) . " 2x" }}" />
                                 <source
-                                    data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url($thumbnail_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($thumbnail_id, 'vh_medium@2x' ) . " 2x" }}" />
                                 <img
                                     class="image-blurb__img lazyload"
-                                    data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
+                                    data-src="{{ get_the_post_thumbnail_url($thumbnail_id, 'vh_medium' )}}"
                                     alt="{{ $alt }}" />
                             </picture>
                             <div class="image-blurb__content">

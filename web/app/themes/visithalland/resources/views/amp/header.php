@@ -9,7 +9,7 @@
 
     <?php
     // TODO: Add asset_path function
-        if (file_exists("app/themes/visithalland/dist/styles/amp.css")) {
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "app/themes/visithalland/dist/styles/amp.css")) {
             echo "<style amp-custom>" . file_get_contents(\App\asset_path('styles/amp.css')) . "</style>";
         }
     ?>
