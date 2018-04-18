@@ -1,4 +1,7 @@
 .landing-header {
+	@media (max-width:$breakpoint-sm) {
+		margin-top:$space-4;
+	}
 	&__img-container {
 		padding-bottom:125%;
 		position:relative;
