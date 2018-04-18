@@ -9,10 +9,11 @@
 
 <script>
     export default {
+        props: ["input", "prev-route"],
         name: "Navigation",
         methods: {
             goBack() {
-                console.log(this.$router.go(-1))
+                this.$router.push({ name: this.prevRoute, params: {input: this.input }})
             }
         }
     }

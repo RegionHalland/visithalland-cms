@@ -1,7 +1,12 @@
 <template>
 	<div class="card">
-	  <Navigation></Navigation>
+	  <Navigation :input="input" prev-route="activities"></Navigation>
 	  <div class="card__content">
+
+        <div v-if="loading">
+            <h1>Loading...</h1>
+        </div>
+
 	  	<header class="result-header">
 	  		Nära dig
 	  	</header>
@@ -30,10 +35,15 @@
 </template>
 
 <script>
-    module.exports = {
+    export default {
+        props: [ "input" ],
         data: function(){
             return {
+                loading: true
             }
+        },
+        created() {
+            console.log("user input", this.input)
         }
     }
 </script>
