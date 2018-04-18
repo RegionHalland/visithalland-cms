@@ -3,7 +3,6 @@ var Flickity = require('flickity');
 
 export default {
   init() {
-  	console.log("This is the Archive Page");
     var grid = $('.featured-grid')[0];
 
     var pckry = new Packery(grid, {

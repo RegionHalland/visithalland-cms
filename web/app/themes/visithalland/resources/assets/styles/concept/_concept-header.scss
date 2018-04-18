@@ -1,4 +1,7 @@
 .concept-header {
+	@media (max-width:$breakpoint-sm) {
+		margin-top:$space-4;
+	}
 	&::before {
 		content:'';
 		position:absolute;

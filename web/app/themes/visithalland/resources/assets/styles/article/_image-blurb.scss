@@ -28,7 +28,7 @@
  	}
 	&__img {
 		position:absolute;
-		top:49.95%;
+		top:49%;
 		left:50%;
 		height:100%;
 		width:auto;
@@ -44,5 +44,6 @@
 	&__title {
 		color:$white;
 		width:80%;
+		line-height:1.2;
 	}
 }
