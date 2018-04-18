@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <?php
-    // TODO: Add asset_path function
-        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "app/themes/visithalland/dist/styles/amp.css")) {
+        $path = explode("/", \App\asset_path('styles/amp.css'));
+        $myString = $path[3] . "/" . $path[4] . "/" . $path[5] . "/" . $path[6] . "/" . $path[7] . "/" . $path[8];
+
+        if (file_exists($myString)) {
             echo "<style amp-custom>" . file_get_contents(\App\asset_path('styles/amp.css')) . "</style>";
         }
     ?>
@@ -39,7 +41,7 @@
         <nav class="navigation center topographic-pattern">
             <div class="navigation__inner">
                 <?php
-                    $primary_navigation_items = App::getPrimaryNavigation() 
+                    $primary_navigation_items = App::getPrimaryNavigation()
                 ?>
                 <?php if(is_array($primary_navigation_items)) : ?>
                     <?php foreach($primary_navigation_items as $key => $navigation_item) : ?>
