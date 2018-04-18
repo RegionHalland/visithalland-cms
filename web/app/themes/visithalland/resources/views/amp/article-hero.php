@@ -12,7 +12,7 @@
             <div>
                 <amp-img
                     class="article-hero__img"
-                    src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_medium' ) ?>"
+                    src="<?php echo get_the_post_thumbnail_url( $post_id, 'vh_medium_square' ) ?>"
                     alt="<?php $alt ?>"
                     width="1"
                     height="1"
