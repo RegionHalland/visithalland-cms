@@ -7,9 +7,9 @@
                 <h1>Loading...</h1>
             </div>
 
-            <router-link v-if="activities && activities.length" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity}}}">
+            <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity}}}">
                 <div class="activity inline-flex hiking-biking">
-                    <img src="" class="activity__img mr2" />
+                    <img :src="activity.imgUrl" class="activity__img mr2" />
                     <div class="activity__content">
                         <h2 class="activity__title">{{ activity.title.rendered }}</h2>
                         <div class="read-more mt1">
@@ -40,22 +40,40 @@ import axios from 'axios';
             }
         },
         created () {
+            // If we are missing date redirect the user back to the first page
+            if(!this.input) return this.$router.push({ name: "time"})
             this.fetchData()
         },
         methods: {
             fetchData () {
                 var vm = this;
-                // Make a request for a user with a given ID
+                // Fetch all activites
                 axios.get('/wp-json/wp/v2/activity')
                     .then(function (response) {
                         console.log(response.data);
-                        // TODO: fetch images
                         vm.activities = response.data;
+                        vm.activities.map((element, index) => {
+                            vm.fetchImage(index, element.featured_media)
+                        })
                         vm.loading = false;
                     })
                     .catch(function (error) {
                         console.log(error);
                         vm.loading = false;
+                    });
+            },
+            fetchImage(activityIndex, imageId){
+                var vm = this;
+                axios.get('/wp-json/wp/v2/media/'+imageId)
+                    .then(function (response) {
+                        var imgUrl = response.data.media_details.sizes["vh_medium_square@2x"].source_url;
+                        vm.activities[activityIndex].imgUrl = imgUrl;
+
+                        // TODO: This should not be needed
+                        vm.$forceUpdate()
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                     });
             }
         }

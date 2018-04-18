@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import axios from "axios";
     export default {
         props: [ "input" ],
         data: function(){
@@ -44,6 +45,21 @@
         },
         created() {
             console.log("user input", this.input)
+            this.fetchPost();
+        },
+        methods: {
+            fetchPost(){
+                var vm = this;
+                axios.get('/wp-json/wp/v2/activity')
+                    .then(function (response) {
+                        console.log(response.data);
+                        vm.loading = false;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        vm.loading = false;
+                    });
+            }
         }
     }
 </script>

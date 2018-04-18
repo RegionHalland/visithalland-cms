@@ -48,6 +48,7 @@ import { format, addDays } from 'date-fns';
                     day: format(addDays(this.today, index), 'DD'),
                 };
             });
+            console.log(format(this.dates[2].date))
         }
     }
 </script>
