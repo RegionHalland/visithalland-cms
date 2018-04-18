@@ -22,7 +22,7 @@
                         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
                     @endphp
                     <div class="col col-12 sm-col-4 px2 mt3">
-                        <a href="{{ the_permalink($post_id) }}" title="{{ the_permalink($post_id) }}">
+                        <a href="{{ the_permalink($post_id) }}" title="{{ $happening->post_title }}">
                             <article class="image-blurb image-blurb--fixed-height {{ $happening->terms["terms_default_lang"]->slug }}">
 
                             <div class="date-badge absolute top-0 left-0 mt2 ml2 z3">
@@ -41,7 +41,7 @@
                                         alt="{{ $alt }}" />
                                 </picture>
                                 <div class="image-blurb__content">
-                                    <h3 class="image-blurb__title">{{ $happening->post_title}}</h3>
+                                    <h3 class="image-blurb__title">{{ $happening->post_title }}</h3>
                                     <div class="read-more my3">
                                         <span class="read-more__text light">
                                             @php _e( 'Läs mer', 'visithalland' ) @endphp

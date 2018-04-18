@@ -32,6 +32,7 @@
 @import 'components/preamble';
 @import 'components/scroll-indicator';
 @import 'components/date-badge';
+@import 'components/read-more';
 
 @import './article/article-hero';
 @import './article/article';
@@ -40,6 +41,9 @@
 
 @import 'amp/header';
 @import 'amp/footer';
+@import 'amp/author';
+@import 'amp/section-header';
+@import 'amp/mentions';
 
 @import url('https://use.typekit.net/vzi2bvt.css');
 
