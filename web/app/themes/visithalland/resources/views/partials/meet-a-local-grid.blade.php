@@ -16,7 +16,7 @@
                 while( have_rows('tips') ) : the_row();
                 $value = get_sub_field('tip');
                 $post_id = $value[0]->ID;
-                $thumbnail_id = get_post_thumbnail_id( $value[0]->ID );
+                $thumbnail_id = get_post_thumbnail_id( $post_id );
                 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
                 $current_index = get_row_index();
             @endphp
