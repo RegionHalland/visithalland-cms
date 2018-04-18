@@ -72,17 +72,7 @@
                 <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
                 <ul class="footer__list">
                 	<?php $secondary_menu_items = App::getSecondaryNavigation() ?>
-                    
-                    <!-- <?php if(is_array($non_active_langs)) : ?>
-                        <?php foreach ($non_active_langs as $key => $lang) : ?>
-                            <li class="footer__list-item mt1 light">
-                                <a href="<?php echo $lang["url"] ?>" class="footer__link link-reset"">
-                                    <span><?php echo $lang["native_name"] ?></span>
-                                </a>
-                            </li>
-                        <?php endforeach ?>
-                    <?php endif ?> -->
-
+                    <?php //TODO: Add languages to footer ?>
                     <?php if(is_array($secondary_menu_items)) : ?>
                         <?php foreach ($secondary_menu_items as $key => $secondary_menu_item) : ?>
                             <li class="footer__list-item mt1 light">

@@ -17,9 +17,9 @@
 		            <h1 class="page-happening-header__title mt0 mb3 light">
 		                <span>{{ the_title() }}</span>
 		            </h1>
-		            <p class="page-happening-header__p light mt3">
-		                {{ the_field("excerpt") }}
-		            </p>
+		            <div class="page-happening-header__p light mt3">
+		                {!! the_content() !!}
+		            </div>
 		        </div>
 
 		        {{-- Scroll Indicator Start --}}

@@ -9,7 +9,7 @@
 
 @if(isset($featured_article))
     <article class="article-full relative my5 {{ App::getTermClassName() }}">
-        <a href="{{ get_permalink($featured_article->ID) }}" title="{{ get_permalink($featured_article->ID) }}" class="link-reset article-full__link link light">
+        <a href="{{ get_permalink($featured_article->ID) }}" title="{{ $featured_article->post_title }}" class="link-reset article-full__link link light">
             <div class="article-full__img-container topographic-pattern">
                 <picture>
                     <source
