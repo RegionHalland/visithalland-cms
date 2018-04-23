@@ -1,0 +1,39 @@
+.article-hero {
+	&__backdrop {
+		background-color:palette(black, light);
+		position:relative;
+		height:235px;
+	}
+	
+	&__inner {
+		margin-top:-150px;
+		z-index:$z3;
+	}
+
+	&__title {
+		font-size:2rem;
+		color:$white;
+	}
+
+	&__content {
+		position:absolute;
+		z-index:$z3;
+		text-align:center;
+	}
+
+	&__img-container {
+		position:relative;
+		padding-bottom:100%;
+		background-color:palette(black, base);
+		overflow: hidden;
+		border-radius: $border-radius;
+	}
+
+	&__img {
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		z-index:$z1;
+	}
+}

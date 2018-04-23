@@ -1,50 +1,239 @@
 //Import scss used
-
-
 @import 'settings/settings';
 
 // Mixins
 @import 'mixins/spacing';
 @import 'mixins/palette';
-@import 'mixins/scrim';
-@import 'mixins/fade-text';
 @import 'mixins/themes';
 
 // Base
 @import 'base/reset';
-@import 'base/base';
 
 // Config - Uses variables from settings.scss
 @import 'config/type-scale';
 @import 'config/typography';
-@import 'config/layout';
 @import 'config/align';
 @import 'config/margin';
 @import 'config/padding';
-@import 'config/grid';
-@import 'config/flexbox';
 @import 'config/position';
 
-@import 'components/icons';
-@import 'components/button';
-@import 'components/button-primary';
 @import 'components/image-credit';
-@import 'components/preamble';
-@import 'components/scroll-indicator';
 @import 'components/date-badge';
 @import 'components/read-more';
 
-@import './article/article-hero';
-@import './article/article';
-
-@import './happening/happening';
-
+@import 'amp/article-hero';
+@import 'amp/scroll-indicator';
+@import 'amp/google-details';
 @import 'amp/header';
 @import 'amp/footer';
 @import 'amp/author';
 @import 'amp/section-header';
+@import 'amp/article';
 @import 'amp/mentions';
+@import 'amp/happening';
+@import 'amp/grid';
 
-@import url('https://use.typekit.net/vzi2bvt.css');
+
+.image-blurb {
+	display:flex;
+	position:relative;
+	overflow:hidden;
+	height:100%;
+	width:100%;
+	align-items:flex-end;
+	background:palette(black, base);
+	border-radius:$border-radius;
+	padding:$space-2 $space-3;
+	&--fixed-height {
+		height:300px;
+	}
+	&::after {
+ 		content:'';
+ 		position:absolute;
+ 		bottom:0;
+ 		left:0;
+ 		right:0;
+ 		z-index:1;
+ 		height:100%;
+ 		background:$darken-3;
+ 		width:100%;
+ 	}
+	&__img {
+		position:absolute;
+		top:49%;
+		left:50%;
+		height:100%;
+		width:auto;
+		transform:translate(-50%, -50%);
+	}
+
+	&__content {
+		position:relative;
+		z-index:$z3;
+		width:100%;
+	}
+
+	&__title {
+		color:$white;
+		line-height:1.2;
+	}
+}
+
+.inline        { display: inline }
+.block         { display: block }
+.inline-block  { display: inline-block }
+.display-none  { display: none }
+
+.flex { display: flex }
+.inline-flex { display: inline-flex }
+
+.flex-column  { flex-direction: column }
+.flex-wrap    { flex-wrap: wrap }
+
+.items-start    { align-items: flex-start }
+.items-end      { align-items: flex-end }
+.items-center   { align-items: center }
+.items-baseline { align-items: baseline }
+.items-stretch  { align-items: stretch }
+
+.justify-start   { justify-content: flex-start }
+.justify-end     { justify-content: flex-end }
+.justify-center  { justify-content: center }
+.justify-between { justify-content: space-between }
+.justify-around  { justify-content: space-around }
+
+.overflow-hidden { overflow: hidden }
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table
+}
+.clearfix:after { clear: both }
+
+.left  { float: left }
+.right { float: right }
 
 
+.preamble {
+	font-size:1.2em;
+    font-weight:400;
+    line-height: 1.6;
+    color:palette(black,dark);
+    &.light {
+    	color:palette(grey, x-light);
+    }
+}
+
+.btn {
+	font-family: inherit;
+	font-size: 1em;
+	text-decoration: none;
+	line-height: 1.125rem;
+	font-family:$rift-font-family;
+	font-weight:bold;
+	padding: 0.9em $space-3;
+	height: auto;
+	border: 1px solid transparent;
+	border-radius: $border-radius;
+	vertical-align: middle;
+	-webkit-appearance: none;
+	transition:transform 0.25s;
+	background:palette(black, base);
+	color:$white;
+	&__icon {
+		fill:$white;
+		margin-right:$space-1;
+	}
+	&--primary {
+		@include themify {
+			background-color:$color-primary;
+			background-repeat:repeat;
+			background-size:100%;
+			color:$white;
+		}
+	}
+}
+
+.icon {
+	display: inline-block;
+	height: 16px;
+	width:  16px;
+	vertical-align: middle;
+}
+
+
+html {
+	box-sizing: border-box;
+	text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: $fira-font-family;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $paragraph-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $rift-font-family;
+	font-weight: 800;
+	color: $black;
+}
+
+p {
+	line-height: 1.5;
+}
+
+strong,
+.strong { font-weight: $bold-font-weight }
+
+em, .em,
+i, .i { font-style: italic }
+
+a {
+	text-decoration: none;
+	color: palette(black, dark);
+}
+
+
+th { 
+	font-weight: $bold-font-weight;
+	vertical-align: bottom; 
+	text-align: left;
+}	
+
+img {
+	vertical-align: middle;
+}
+
+figcaption {
+	font-size: $h5;
+	font-style: italic;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: palette(grey, light)
+}
+
+input {
+	font-family: inherit;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1;
+	background: none;
+	appearance: none;
+	border: 0;
+	padding: 0;
+	border-radius: 0;
+}

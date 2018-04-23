@@ -6,7 +6,7 @@
 
     <!-- <link rel="canonical" href="./regular-html-version.html"> -->
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-
+    <link rel="stylesheet" href="https://use.typekit.net/vzi2bvt.css">
     <?php
         $path = explode("/", \App\asset_path('styles/amp.css'));
         $myString = $path[3] . "/" . $path[4] . "/" . $path[5] . "/" . $path[6] . "/" . $path[7] . "/" . $path[8];

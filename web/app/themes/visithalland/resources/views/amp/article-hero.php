@@ -27,7 +27,7 @@
                 </figcaption>
             <?php endif ?>
 
-            <div class="article-hero__content col-11 md-col-10">
+            <div class="article-hero__content left-0 right-0 mx-auto mb4 bottom-0 center col-11 md-col-10">
                 <h1 class="article-hero__title light h1 mb3 center mt2"><?php the_title() ?></h1>
             </div>
         </div>
