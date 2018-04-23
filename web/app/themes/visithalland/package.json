@@ -114,6 +114,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-preset-es2017": "^6.24.1",
     "date-fns": "^1.29.0",
     "flickity": "^2.1.0",
     "infinite-scroll": "^3.0.3",
@@ -122,6 +123,7 @@
     "lazysizes": "^4.0.2",
     "packery": "^2.1.1",
     "vue": "^2.5.16",
+    "vue-browser-geolocation": "^1.0.1",
     "vue-router": "^3.0.1",
     "webpack-svgstore-plugin": "^4.0.1"
   }

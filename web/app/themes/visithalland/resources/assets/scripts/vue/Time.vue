@@ -12,7 +12,7 @@
                 <h2 class="date__title mt0 p0">{{date.title}}</h2>
                 <div class="read-more mt1">
                     <span class="read-more__text">
-                        <router-link :to="{name: 'activities', params: { input: {date: dates[date.id].date} }}">Välj alternativ</router-link>
+                        <router-link :to="{name: 'activities', params: { input: {date: dates[date.id].date, userLocation: input.userLocation} }}">Välj alternativ</router-link>
                     </span>
                     <div class="read-more__button">
                         <svg class="icon read-more__icon">
@@ -39,6 +39,7 @@ import { format, addDays } from 'date-fns';
             }
         },
         created() {
+            console.log("loc", this.input);
             this.dates = this.days.map((item, index) => {
                 return {
                     id: index,

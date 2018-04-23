@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueGeolocation from 'vue-browser-geolocation';
 
 import Home from './Home.vue';
+import Loc from './Location.vue';
 import Time from './Time.vue';
 import Activities from './Activities.vue';
 import Results from './Results.vue';
 import Navigation from './Navigation.vue';
 
 Vue.component('Navigation', Navigation)
-
 Vue.use(VueRouter);
+Vue.use(VueGeolocation);
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -18,6 +20,7 @@ Vue.use(VueRouter);
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', component: Home, name: "home", meta: { title: "Få inspiration" }, props: true },
+    { path: '/location', component: Loc, name: "location", meta: { title: "Vi behöver din plats för att skapa en så bra användarupplevelse som möjligt." }, props: true },
     { path: '/time', component: Time, name: "time", meta: { title: "När vill du göra något?" }, props: true },
     { path: '/activities', component: Activities, name: "activities", meta: { title: "Våra rekommendationer" }, props: true },
     { path: '/results', component: Results, name: "results", meta: { title: "Få inspiration" }, props: true }

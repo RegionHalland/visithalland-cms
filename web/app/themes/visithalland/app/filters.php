@@ -10,73 +10,107 @@ add_action( 'rest_api_init', function () {
 		'methods' => 'GET',
 		'callback' => function(\WP_REST_Request $request){
             $activityId = $request['activityId'];
-            //$date = $request['date'];
+            $date = $request['date'];
             // TODO: Use location from client
-            // $location = $request['location']
+            $user_location_lat = $request['user_location_lat'];
+            $user_location_lng = $request['user_location_lng'];
+            $user_location = array($user_location_lat, $user_location_lng);
+
+            $activitiy_links = get_field("links", $activityId);
+            foreach ($activitiy_links as $key => $activity) {
+                $activity["link"]->meta_fields = get_fields($activity["link"]->ID);
+            }
 
             // TODO: use $date varible from client below
-            $date = Carbon::parse("2018-04-17T14:32:00.218+02:00");
+            $date = Carbon::parse($date);
+            $date = $date->addHour();
+            $weatherForcast = json_decode(getWeather("56.9452822, 11.6488989", $date->timestamp));
 
-            //$date = $date->addHour();
+            // We use weather in one hour because it takes some time to arrive at the location
+            $rainOneHourFromNow = $weatherForcast->currently->icon === "rain" ? true : false;
 
+            // 1. Group happenings
+            $happenings = array_filter($activitiy_links, function ($a) {
+                return $a['link']->post_type === "happening";
+            });
 
-            die($date->timestamp);
+            // 2. Group activities close to the user. Disregarding weather conditions and happenings are included
+            //$distance_between_user_and_activity = vincentyGreatCircleDistance($user_location[0], $user_location[1], "56.671814", "12.8511821", $earthRadius = 6371000);
+            $close_activities = array_filter($activitiy_links, function ($a) use ($user_location) {
+                if (isset($a['link']->meta_fields["location"])) {
+                    return vincentyGreatCircleDistance($user_location[0], $user_location[1], $a['link']->meta_fields["location"]["lat"], $a['link']->meta_fields["location"]["lng"], $earthRadius = 6371000)
+                        < 5000;
+                }
+            });
 
-            $weatherForcast = json_decode(getWeather("56.9452822,11.6488989", $date));
+            // 3. Filter out activities and happenings if we have rain in one hour
+            $activitiy_links = array_filter($activitiy_links, function ($a) use ($rainOneHourFromNow) {
+                // TODO: loose the if's
+                if($a['weather_dependent'] === true){
+                    if($rainOneHourFromNow === true){
+                        return;
+                    }
+                }
+                return $a;
+            });
 
-            var_dump($weatherForcast);
-            //$rain =
+            $posts_array = array(
+                "happenings" => $happenings,
+                "near_you" => $close_activities,
+                "all_activities" => $activitiy_links
+            );
 
-            //var_dump($weatherForcast);
-
-            /*printf("Now: %s", $dtToronto);
-            echo '<br>';
-            print($date->isToday());*/
-
-            /*if ($date->isToday()) {
-                // TODO: get todays weather check for rain
-                die('We have a date today date');
+            $controller = new \WP_REST_Posts_Controller('post');
+            foreach ($posts_array["happenings"] as $post) {
+                $data = $controller->prepare_item_for_response($post["link"], $request);
+                $posts["happenings"][] = $controller->prepare_response_for_collection($data);
             }
-            if ($date->isTomorrow()) {
-                // TODO: get tomorrows weather check for rain
-                die('We have a tomorrow date');
+            foreach ($posts_array["near_you"] as $post) {
+                $data = $controller->prepare_item_for_response($post["link"], $request);
+                $posts["near_you"][] = $controller->prepare_response_for_collection($data);
             }
-            if(!$date->isToday() && !$date->isTomorrow()){
-                die('not today or tomorrow :/');
-            }*/
+            foreach ($posts_array["all_activities"] as $post) {
+                $data = $controller->prepare_item_for_response($post["link"], $request);
+                $posts["all_activities"][] = $controller->prepare_response_for_collection($data);
+            }
 
+            if($posts){
+                return rest_ensure_response($posts);
+            }
 
+            return rest_ensure_response("error");
 
-            /*switch ($date) {
-                case 'value':
-                    # code...
-                    break;
-
-                default:
-                    # code...
-                    break;
-            }*/
-
-            //var_dump($param);
-            die();
-            /*$post = \get_post($param);
-            $post->meta_fields = get_fields($post->ID);
-
-            $wt = getWeather(null, "56.9452822,11.6488989");
-            $wearher = json_decode($wt);
-
-            var_dump($wearher->daily->icon !== "rain");
-            die();
-
-
-           /* var_dump($wt);
-            die();*/
-
-
-            return rest_ensure_response();
         },
 	) );
 } );
+
+/**
+ * Calculates the great-circle distance between two points, with
+ * the Vincenty formula.
+ * @param float $latitudeFrom Latitude of start point in [deg decimal]
+ * @param float $longitudeFrom Longitude of start point in [deg decimal]
+ * @param float $latitudeTo Latitude of target point in [deg decimal]
+ * @param float $longitudeTo Longitude of target point in [deg decimal]
+ * @param float $earthRadius Mean earth radius in [m]
+ * @return float Distance between points in [m] (same as earthRadius)
+ */
+function vincentyGreatCircleDistance(
+  $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000)
+{
+  // convert from degrees to radians
+  $latFrom = deg2rad($latitudeFrom);
+  $lonFrom = deg2rad($longitudeFrom);
+  $latTo = deg2rad($latitudeTo);
+  $lonTo = deg2rad($longitudeTo);
+
+  $lonDelta = $lonTo - $lonFrom;
+  $a = pow(cos($latTo) * sin($lonDelta), 2) +
+    pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+  $b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+
+  $angle = atan2(sqrt($a), $b);
+  return $angle * $earthRadius;
+}
 
 
 function getWeather($location, $date)

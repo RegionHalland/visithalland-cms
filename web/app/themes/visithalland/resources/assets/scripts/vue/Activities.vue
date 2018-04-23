@@ -7,7 +7,7 @@
                 <h1>Loading...</h1>
             </div>
 
-            <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity}}}">
+            <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
                 <div class="activity inline-flex hiking-biking">
                     <img :src="activity.imgUrl" class="activity__img mr2" />
                     <div class="activity__content">
@@ -41,7 +41,7 @@ import axios from 'axios';
         },
         created () {
             // If we are missing date redirect the user back to the first page
-            if(!this.input) return this.$router.push({ name: "time"})
+            if(!this.input) return this.$router.push({ name: "location"})
             this.fetchData()
         },
         methods: {
