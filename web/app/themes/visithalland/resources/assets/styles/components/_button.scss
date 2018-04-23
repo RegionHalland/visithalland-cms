@@ -7,10 +7,6 @@
 	font-family:$rift-font-family;
 	font-weight:bold;
 	padding: 0.9em $space-3;
-	@media (min-width:$breakpoint-md) {
-		padding: 1em $space-3;
-		font-size: 0.9em;
-	}
 	height: auto;
 	border: 1px solid transparent;
 	border-radius: $border-radius;
@@ -19,7 +15,10 @@
 	transition:transform 0.25s;
 	background:palette(black, base);
 	color:$white;
-
+	@media (min-width:$breakpoint-md) {
+		padding: 1em $space-3;
+		font-size: 0.9em;
+	}
 
 	&__icon {
 		fill:$white;

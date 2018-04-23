@@ -17,7 +17,6 @@
                     @include('partials.author-horizontal')
                 </div>
             </div>
-
             @include('partials.spotlight-grid')
             @include('partials.share')
             </article>
