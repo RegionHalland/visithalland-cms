@@ -1,13 +1,5 @@
 .article-tag {
 	color:$black;
-	&--light {
-		color:$white;
-	}
-	&__type {
-	    line-height: 1.3;
-	    font-size: 1.5em;
-	    font-family: $shelby-font-family;
-	}
 	&__icon-wrapper {
 		display: inline-block;
 	    position:relative;

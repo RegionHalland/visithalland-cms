@@ -16,7 +16,7 @@
 	                </div>
                 <p class="footer__intro light mt1"><?php echo bloginfo('description') ?></p>
                 <div class="footer-contact mt4">
-                    <a href="mailto:info@visithalland.com" target="_blank" class="footer-contact__a light">
+                    <a href="mailto:info@visithalland.com" class="footer-contact__a light">
                         <div class="footer-contact__icon-wrapper">
                             <svg class="footer-contact__icon">
                                 <use xlink:href="#mail-icon"/>
@@ -24,7 +24,7 @@
                         </div>
                         <span class="footer-contact__span">Email</span>
                     </a>
-                    <a href="https://www.facebook.com/visithalland.se/" target="_blank" class="footer-contact__a light">
+                    <a href="https://www.facebook.com/visithalland.se/" class="footer-contact__a light">
                         <div class="footer-contact__icon-wrapper facebook">
                             <svg class="footer-contact__icon">
                                 <use xlink:href="#facebook-icon"/>
@@ -32,7 +32,7 @@
                         </div>
                         <span class="footer-contact__span">Facebook</span>
                     </a>
-                    <a href="https://www.instagram.com/visithalland/" target="_blank" class="footer-contact__a light">
+                    <a href="https://www.instagram.com/visithalland/" class="footer-contact__a light">
                         <div class="footer-contact__icon-wrapper instagram">
                             <svg class="footer-contact__icon">
                                 <use xlink:href="#instagram-icon"/>
@@ -71,17 +71,7 @@
             <div class="footer__column  col col-6 mt2">
                 <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
                 <ul class="footer__list">
-                	<?php $secondary_menu_items = App::getSecondaryNavigation() ?>
-                    <?php //TODO: Add languages to footer ?>
-                    <?php if(is_array($secondary_menu_items)) : ?>
-                        <?php foreach ($secondary_menu_items as $key => $secondary_menu_item) : ?>
-                            <li class="footer__list-item mt1 light">
-                                <a href="<?php echo $secondary_menu_item->url ?>" class="footer__link link-reset"">
-                                    <span><?php echo $secondary_menu_item->title ?></span>
-                                </a>
-                            </li>
-                        <?php endforeach ?>
-                    <?php endif ?>
+                    <?php //TODO: Add secondary links and languages to footer ?>
                 </ul>
             </div>
 

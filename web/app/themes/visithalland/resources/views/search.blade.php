@@ -7,6 +7,9 @@
     @endphp
 	
     {{ get_search_form() }}
+
+
+    {{ /* Split up into partial */ }}
     <article role="main" id="main-content">
 	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
 	        	@if(isset($wp_query))

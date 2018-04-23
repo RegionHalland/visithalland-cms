@@ -8,7 +8,8 @@
 	}
 
 	&__icon {
-		@include mx(2);
+		margin-left:$space-2;
+		margin-right:$space-2;
 		height:15px;
 		width:15px;
 		vertical-align: middle;

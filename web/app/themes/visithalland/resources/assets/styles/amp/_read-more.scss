@@ -1,0 +1,32 @@
+.read-more {
+	&__text {
+		font-family:$rift-font-family;
+		font-weight:bold;
+		font-size:1rem;
+		position:relative;
+		vertical-align:middle;
+		color:palette(grey, xx-dark);
+		&.light {
+			color:palette(grey, x-light);
+		}
+	}
+	&__button {
+		display:inline-flex;
+		justify-content:center;
+		align-items:center;
+		height:20px;
+		margin-left:$space-2;
+		width:20px;
+		vertical-align:middle;
+		border-radius:$border-radius;
+		@include themify {
+        	background:$color-primary;
+        }
+	}
+
+	&__icon {
+		height:10px;
+		width:10px;
+		display:inline-block;
+	}
+}

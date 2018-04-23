@@ -3,7 +3,6 @@
     </div>
     <div class="article-hero__inner container relative col-11 md-col-10 lg-col-10 mx-auto">
         <div class="article-hero__img-container topographic-pattern">
-            
             @if(get_field("start_date"))
                 <div class="date-badge absolute top-0 left-0 ml2 mt2 z3">
                     <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date"))); ?></span>

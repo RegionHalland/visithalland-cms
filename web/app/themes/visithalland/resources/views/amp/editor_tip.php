@@ -17,10 +17,9 @@
 	</p>
 	<?php include('author.php'); ?>
 	<div class="article-body mt3">
-		<?php the_content(); ?>
+		<?php //the_content(); ?>
 	</div>
 	<?php include('mentions.php'); ?>
-	
 </article>
 
 <?php include('footer.php'); ?>
