@@ -14,9 +14,9 @@
                 <div class="page-header__inner container col-11 md-col-10 lg-col-10 mx-auto">
                     <div class="clearfix">
                         <div class="col col-12 sm-col-6">
-                            <h1 class="light mt3"> {{ get_the_title() }} </h1>
+                            <h1 class="page-header__title light mt3"> {{ get_the_title() }} </h1>
                         </div>
-                        <div class="col col-12 sm-col-6">
+                        <div class="page-header__excerpt col col-12 sm-col-6">
                             <p class="preamble light mt3">{{ get_field('excerpt') }}</p>
                         </div>
                         <div class="page-header__img-container col-12">
@@ -24,7 +24,7 @@
                                 <source media="(min-width: 40em)"
                                     data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_large@2x' ) . " 2x" }}" />
                                 <source
-                                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_medium@2x' ) . " 2x" }}" />
+                                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_medium_square' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_medium_square@2x' ) . " 2x" }}" />
                                 <img class="page-header__img lazyload"
                                     data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_large' ) }}"
                                     alt="{{ $alt }}"
@@ -70,7 +70,7 @@
                     @endif
                 </div>
                 <div class="col col-12 sm-col-3 md-col-4 page__sidebar">
-                    <address class="author-horizontal mt4 mb4">
+                    <address class="author-horizontal mt3 mb4">
                         <div class="author-horizontal__img-container">
                             <img
                                 data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"] }}"

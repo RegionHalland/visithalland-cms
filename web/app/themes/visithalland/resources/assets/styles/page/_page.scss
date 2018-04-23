@@ -16,6 +16,13 @@
 }
 
 .page-header {
+
+	&__title {
+		font-size:2rem;
+		@media(min-width:$breakpoint-sm) {
+			font-size:$h1;
+		}
+	}
 	&__backdrop {
 		background-color:palette(black, dark);
 	}
@@ -35,7 +42,10 @@
 		position: relative;
 		overflow: hidden;
 		border-radius:$border-radius;
-		padding-bottom:56.25%;
+		padding-bottom:100%;
+		@media(min-width:$breakpoint-sm) {
+			padding-bottom:56.25%;
+		}
 		background-color:palette(black, dark);
 	}
 
