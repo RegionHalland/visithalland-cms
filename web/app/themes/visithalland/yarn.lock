@@ -9188,6 +9188,10 @@ vue-hot-reload-api@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
 
+vue-isoffline@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-isoffline/-/vue-isoffline-1.0.2.tgz#e2c5759f518b30d62c82d4ebe7da6d8ab0227103"
+
 vue-loader@^14.2.2:
   version "14.2.2"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-14.2.2.tgz#c8cf3c2e29b6fb2ee595248a2aa6005038a125b3"

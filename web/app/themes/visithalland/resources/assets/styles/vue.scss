@@ -249,3 +249,10 @@
 	padding:$space-3;
 }
 
+.offline-bar{
+    background:red;
+    position:fixed;
+    top:0;
+    height:20px;
+    width:100%;
+}

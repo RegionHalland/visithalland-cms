@@ -24,6 +24,9 @@
 
 {{-- Vue below --}}
 <div id="app" class="wizard">
+    {{-- TODO: Remove ! before isOffline --}}
+    <div class="offline-bar" v-if="!isOffLine">Ingen internetanslutning 😢</div>
+
     <div class="card-container relative">
         <transition>
             <router-view routeBefore="asd"></router-view>
@@ -34,6 +37,7 @@
     </div>
     <div class="ful-router relative z4">
         <router-link to="/">Hem</router-link>
+        <router-link to="/location">Location</router-link>
         <router-link to="/time">Få inspiration</router-link>
         <router-link to="/activities">Activities</router-link>
         <router-link to="/results">Results</router-link>

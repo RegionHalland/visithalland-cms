@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueGeolocation from 'vue-browser-geolocation';
+import VueisOffLine from 'vue-isoffline';
 
 import Home from './Home.vue';
 import Loc from './Location.vue';
@@ -9,9 +10,10 @@ import Activities from './Activities.vue';
 import Results from './Results.vue';
 import Navigation from './Navigation.vue';
 
-Vue.component('Navigation', Navigation)
+Vue.component('Navigation', Navigation);
 Vue.use(VueRouter);
 Vue.use(VueGeolocation);
+Vue.use(VueisOffLine);
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can

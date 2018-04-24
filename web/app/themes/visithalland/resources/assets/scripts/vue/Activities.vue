@@ -40,8 +40,10 @@ import axios from 'axios';
             }
         },
         created () {
-            // If we are missing date redirect the user back to the first page
+            // If we are missing user input redirect the user back to the first page
             if(!this.input) return this.$router.push({ name: "location"})
+
+            // Fetch activities
             this.fetchData()
         },
         methods: {
@@ -50,7 +52,6 @@ import axios from 'axios';
                 // Fetch all activites
                 axios.get('/wp-json/wp/v2/activity')
                     .then(function (response) {
-                        console.log(response.data);
                         vm.activities = response.data;
                         vm.activities.map((element, index) => {
                             vm.fetchImage(index, element.featured_media)
