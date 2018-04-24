@@ -1,5 +1,5 @@
 <template>
-    <header class="card__header">
+    <header class="card__header topographic-pattern">
         <button class="card__button" v-on:click="goBack()">
             Gå bakåt
         </button>
