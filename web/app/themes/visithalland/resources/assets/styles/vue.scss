@@ -323,14 +323,20 @@
 }
 
 .offline-bar{
-    background:palette(black, base);
-    padding:$space-2;
-    display:block;
+    background:#e01842;
     font-family:$rift-font-family;
     position:fixed;
+    font-weight:bold;
     top:0;
     left:0;
     right:0;
-    height:20px;
     width:100%;
+}
+
+.offline-bar__inner {
+	padding:$space-2;
+	display:flex;
+	color:$white;
+	justify-content:center;
+	align-items:center;
 }

@@ -25,7 +25,9 @@
 {{-- Vue below --}}
 <div id="app" class="wizard">
     {{-- TODO: Remove ! before isOffline --}}
-    <div class="offline-bar" v-if="!isOffLine">Ingen internetanslutning 😢</div>
+    <div class="offline-bar" v-if="!isOffLine">
+        <div class="offline-bar__inner">Ingen internetanslutning</div>
+    </div>
 
     <div class="card-container relative">
         <transition>
