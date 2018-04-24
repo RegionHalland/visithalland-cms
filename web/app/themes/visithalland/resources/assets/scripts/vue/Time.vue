@@ -3,7 +3,7 @@
     <Navigation prev-route="home"></Navigation>
     <div class="card__content">
 
-        <div v-for="date in dates" :key="date.id" class="date coastal-living pt3">
+        <div v-for="date in dates" :key="date.id" class="date coastal-living">
             <div class="date-badge date-badge--large inline-block">
                 <span class="date-badge__day">{{date.day}}</span>
                 <span class="date-badge__month">{{date.month}}</span>

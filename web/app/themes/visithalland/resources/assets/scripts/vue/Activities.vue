@@ -3,12 +3,52 @@
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content">
-            <div v-if="loading">
-                <h1>Loading...</h1>
+            
+            <div v-if="loading" class="block mb3">
+                <div class="shimmer inline-flex">
+                    <div class="shimmer__img mr2"></div>
+                    <div class="shimmer__content">
+                        <div class="shimmer__title mb1"></div>
+                        <div class="shimmer__link mt1"></div>
+                        <div class="shimmer__button mt1"></div>
+                    </div>
+                </div>
+                <div class="shimmer inline-flex">
+                    <div class="shimmer__img mr2"></div>
+                    <div class="shimmer__content">
+                        <div class="shimmer__title mb1"></div>
+                        <div class="shimmer__link mt1"></div>
+                        <div class="shimmer__button mt1"></div>
+                    </div>
+                </div>
+                <div class="shimmer inline-flex">
+                    <div class="shimmer__img mr2"></div>
+                    <div class="shimmer__content">
+                        <div class="shimmer__title mb1"></div>
+                        <div class="shimmer__link mt1"></div>
+                        <div class="shimmer__button mt1"></div>
+                    </div>
+                </div>
+                <div class="shimmer inline-flex">
+                    <div class="shimmer__img mr2"></div>
+                    <div class="shimmer__content">
+                        <div class="shimmer__title mb1"></div>
+                        <div class="shimmer__link mt1"></div>
+                        <div class="shimmer__button mt1"></div>
+                    </div>
+                </div>
+                <div class="shimmer inline-flex">
+                    <div class="shimmer__img mr2"></div>
+                    <div class="shimmer__content">
+                        <div class="shimmer__title mb1"></div>
+                        <div class="shimmer__link mt1"></div>
+                        <div class="shimmer__button mt1"></div>
+                    </div>
+                </div>
             </div>
 
             <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
-                <div class="activity inline-flex hiking-biking">
+                <div class="activity inline-flex">
                     <img :src="activity.imgUrl" class="activity__img mr2" />
                     <div class="activity__content">
                         <h2 class="activity__title">{{ activity.title.rendered }}</h2>
