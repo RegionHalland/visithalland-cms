@@ -93,7 +93,8 @@
 }
 
 .card {
-  overflow:hidden;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
   border-radius:4px;
   position:absolute;
   bottom:0;
