@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import VueGeolocation from 'vue-browser-geolocation';
 import VueisOffLine from 'vue-isoffline';
 
+import Progress from './Progress.vue';
 import Home from './Home.vue';
 import Loc from './Location.vue';
 import Time from './Time.vue';
@@ -21,11 +22,13 @@ Vue.use(VueisOffLine);
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/', component: Home, name: "home", meta: { title: "Få inspiration" }, props: true },
-    { path: '/location', component: Loc, name: "location", meta: { title: "Vi behöver din plats för att skapa en så bra användarupplevelse som möjligt." }, props: true },
-    { path: '/time', component: Time, name: "time", meta: { title: "När vill du göra något?" }, props: true },
-    { path: '/activities', component: Activities, name: "activities", meta: { title: "Våra rekommendationer" }, props: true },
-    { path: '/results', component: Results, name: "results", meta: { title: "Få inspiration" }, props: true }
+    { path: '/', component: Progress, name: "progress", props: true, children: [
+        { path: 'home', component: Home, name: "home", meta: {order: 2, title: "Få inspiration" }, props: true },
+        { path: 'location', component: Loc, name: "location", meta: {order: 3, title: "Vi behöver din plats för att skapa en så bra användarupplevelse som möjligt." }, props: true },
+        { path: 'time', component: Time, name: "time", meta: {order: 4, title: "När vill du göra något?" }, props: true },
+        { path: 'activities', component: Activities, name: "activities", meta: {order: 5, title: "Våra rekommendationer" }, props: true },
+        { path: 'results', component: Results, name: "results", meta: {order: 6, title: "Få inspiration" }, props: true }
+    ] },
 ]
 
 // 3. Create the router instance and pass the `routes` option

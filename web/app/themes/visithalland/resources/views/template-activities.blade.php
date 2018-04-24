@@ -24,21 +24,14 @@
 
 {{-- Vue below --}}
 <div id="app" class="wizard">
-    {{-- TODO: Remove ! before isOffline --}}
-    <div class="offline-bar" v-if="!isOffLine">
-        <div class="offline-bar__inner">Ingen internetanslutning</div>
-    </div>
-
     <div class="card-container relative">
         <transition>
-            <router-view routeBefore="asd"></router-view>
+            <router-view></router-view>
         </transition>
     </div>
-    <div class="progress-bar mx-auto">
-      <span class="progress-bar__indicator"></span>
-    </div>
+
     <div class="ful-router relative z4">
-        <router-link to="/">Hem</router-link>
+        <router-link to="/home">Hem</router-link>
         <router-link to="/location">Location</router-link>
         <router-link to="/time">Få inspiration</router-link>
         <router-link to="/activities">Activities</router-link>
