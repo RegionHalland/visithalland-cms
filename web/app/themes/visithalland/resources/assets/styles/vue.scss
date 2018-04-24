@@ -240,6 +240,9 @@
 	align-items:center;
 }
 
+.activity__content {
+	flex:2;
+}
 
 .activity__img-container {
 	height:75px;
@@ -324,6 +327,10 @@
 	display:inline-flex;
 	align-items:flex-start;
 	width:100%;
+}
+
+.result__content {
+	flex:2;
 }
 
 
