@@ -5,12 +5,16 @@ class Icons {
     }
 
     getIcons(url) {
-        $.get(url).done(data => {
-            var div = document.createElement('div');
-            div.className = 'display-none';
-            div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
-            document.body.insertBefore(div, document.body.childNodes[0]);
-        })
+        fetch(url)
+            .then(function (response) {
+                response.text().then(function (svgData) {
+                    var div = document.createElement('div');
+
+                    div.className = 'display-none';
+                    div.innerHTML = svgData;
+                    document.body.insertBefore(div, document.body.childNodes[0]);
+                });
+            })
     }
 }
 
