@@ -240,6 +240,7 @@
 .activity__img {
 	height:75px;
 	width:75px;
+	flex:1;
 	border-radius:$border-radius;
 	background-color:palette(grey, light);
 }
@@ -314,6 +315,7 @@
 .result__img {
 	height:90px;
 	width:90px;
+	flex:1;
 	border-radius:$border-radius;
 	background-color:palette(grey, light);
 }
