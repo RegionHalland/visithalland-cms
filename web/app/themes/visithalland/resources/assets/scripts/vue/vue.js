@@ -22,10 +22,10 @@ Vue.use(VueisOffLine);
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', component: Home, name: "home", meta: { title: "Få inspiration" }, props: true },
-    { path: '/location', component: Loc, name: "location", meta: { title: "Vi behöver din plats för att skapa en så bra användarupplevelse som möjligt." }, props: true },
+    { path: '/location', component: Loc, name: "location", meta: { title: "Platsinformation" }, props: true },
     { path: '/time', component: Time, name: "time", meta: { title: "När vill du göra något?" }, props: true },
-    { path: '/activities', component: Activities, name: "activities", meta: { title: "Våra rekommendationer" }, props: true },
-    { path: '/results', component: Results, name: "results", meta: { title: "Få inspiration" }, props: true }
+    { path: '/activities', component: Activities, name: "activities", meta: { title: "Vad är du intresserad av?" }, props: true },
+    { path: '/results', component: Results, name: "results", meta: { title: "Våra rekommendationer" }, props: true }
 ]
 
 // 3. Create the router instance and pass the `routes` option

@@ -19,6 +19,7 @@
 		width:20px;
 		vertical-align:middle;
 		border-radius:$border-radius;
+		background:palette(black, base);
 		@include themify {
         	background:$color-primary;
         }
