@@ -49,7 +49,9 @@
 
             <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
                 <div class="activity inline-flex">
-                    <img :src="activity.imgUrl" class="activity__img mr2" />
+                    <div class="activity__img-container mr2">
+                        <img :src="activity.imgUrl" class="activity__img" />
+                    </div>
                     <div class="activity__content">
                         <h2 class="activity__title">{{ activity.title.rendered }}</h2>
                         <div class="read-more mt1">
