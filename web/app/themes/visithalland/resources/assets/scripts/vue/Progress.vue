@@ -9,7 +9,7 @@
     </transition>
 
     <div class="progress-bar mx-auto" style="z-index: 9;">
-        <span class="progress-bar__indicator" :style="{ width: (100/6) * this.currentRouteCount + '%'}"></span>
+        <span class="progress-bar__indicator" :style="{ width: (100/5) * this.currentRouteCount + '%'}"></span>
     </div>
   </div>
 </template>

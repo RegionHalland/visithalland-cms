@@ -23,11 +23,11 @@ Vue.use(VueisOffLine);
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', component: Progress, name: "progress", props: true, children: [
-        { path: 'home', component: Home, name: "home", meta: {order: 2, title: "Få inspiration" }, props: true },
-        { path: 'location', component: Loc, name: "location", meta: {order: 3, title: "Vi behöver din plats för att skapa en så bra användarupplevelse som möjligt." }, props: true },
-        { path: 'time', component: Time, name: "time", meta: {order: 4, title: "När vill du göra något?" }, props: true },
-        { path: 'activities', component: Activities, name: "activities", meta: {order: 5, title: "Våra rekommendationer" }, props: true },
-        { path: 'results', component: Results, name: "results", meta: {order: 6, title: "Få inspiration" }, props: true }
+        { path: '', component: Home, name: "home", meta: {order: 1, title: "Få inspiration" }, props: true },
+        { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "Platsinformation" }, props: true },
+        { path: 'time', component: Time, name: "time", meta: {order: 3, title: "När vill du göra något?" }, props: true },
+        { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "Vad är du intresserad av?" }, props: true },
+        { path: 'results', component: Results, name: "results", meta: { order: 5, title: "Våra rekommendationer" }, props: true }
     ] },
 ]
 
