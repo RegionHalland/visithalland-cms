@@ -2,7 +2,7 @@
 
 <div class="card">
     <Navigation prev-route="home"></Navigation>
-    <div class="card__content center flex justify-center align-center flex-column">
+    <div class="card__content center flex justify-center align-center flex-column px3">
         <h3 class="weather__title mt3 mb3">Om platstjänster</h3>
         <p class="weather__p mb4">Med din platsinformation kan vi ge bättre tips baserat på väder och avstånd </p>
         <button class="btn center btn--primary mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">

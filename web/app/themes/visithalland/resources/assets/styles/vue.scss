@@ -28,6 +28,7 @@
 @import 'components/read-more';
 @import 'components/icons';
 @import 'components/icon-button';
+@import 'components/topographic-pattern';
 
 @import url('https://use.typekit.net/vzi2bvt.css');
 
@@ -68,6 +69,7 @@
 
 .ful-router a{
     color:white;
+    display:none;
     padding:0.5rem;
     background:red;
     border:1px solid black;
@@ -97,10 +99,11 @@
   left:0;
   right:0;
   background:$white;
+  margin-bottom:$space-3;
 }
 
 .card__header {
-	background:palette(black, base);
+	background-color:palette(black, base);
 	padding:1.25rem 1rem;
 }
 
@@ -373,6 +376,7 @@
 	color:$white;
 	text-align:center;
 	width:100%;
+	white-space:nowrap;
 }
 
 
