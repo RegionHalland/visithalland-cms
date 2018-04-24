@@ -3,7 +3,7 @@
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content">
-            
+
             <div v-if="loading" class="block mb3">
                 <div class="shimmer inline-flex">
                     <div class="shimmer__img mr2"></div>
@@ -107,7 +107,7 @@ import axios from 'axios';
                 var vm = this;
                 axios.get('/wp-json/wp/v2/media/'+imageId)
                     .then(function (response) {
-                        var imgUrl = response.data.media_details.sizes["vh_medium_square@2x"].source_url;
+                        var imgUrl = response.data.media_details.sizes["vh_thumbnail"].source_url;
                         vm.activities[activityIndex].imgUrl = imgUrl;
 
                         // TODO: This should not be needed
