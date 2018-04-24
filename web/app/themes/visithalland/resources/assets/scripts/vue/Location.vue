@@ -14,7 +14,7 @@
                     Gå vidare utan plats
                 </span>
                 <div class="read-more__button">
-                    <svg class="icon read-more__icon">
+                    <svg class="read-more__icon">
                         <use xlink:href="#arrow-right-icon"/>
                     </svg>
                 </div>
