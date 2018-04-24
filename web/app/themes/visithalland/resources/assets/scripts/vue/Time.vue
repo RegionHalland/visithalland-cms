@@ -1,6 +1,6 @@
 <template>
 	<div class="card">
-    <Navigation prev-route="home"></Navigation>
+    <Navigation prev-route="location"></Navigation>
     <div class="card__content">
 
         <div v-for="date in dates" :key="date.id" class="date coastal-living">

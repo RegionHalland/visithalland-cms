@@ -4,11 +4,11 @@
         <div class="offline-bar__inner">Ingen internetanslutning</div>
     </div>
 
-    <transition>
+    <transition :name="transitionName">
         <router-view></router-view>
     </transition>
 
-    <div class="progress-bar mx-auto" style="z-index: 9;">
+    <div class="progress-bar mx-auto">
         <span class="progress-bar__indicator" :style="{ width: (100/5) * this.currentRouteCount + '%'}"></span>
     </div>
   </div>
@@ -19,7 +19,8 @@
         props: ["input"],
         data () {
             return {
-                currentRouteCount: 1
+                currentRouteCount: 1,
+                transitionName: ""
             }
         },
         created () {
@@ -28,6 +29,12 @@
         beforeRouteUpdate (to, from, next) {
             console.log(to.meta.order);
             this.currentRouteCount = to.meta.order
+
+            const toDepth = to.meta.order || 0;
+            const fromDepth = from.meta.order || 0;
+
+            this.transitionName = toDepth >= fromDepth ? 'fade' : 'fade-right';
+            console.log(this.transitionName);
 
             next();
         }

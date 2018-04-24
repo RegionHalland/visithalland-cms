@@ -22,13 +22,16 @@ Vue.use(VueisOffLine);
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/', component: Progress, name: "progress", props: true, children: [
-        { path: '', component: Home, name: "home", meta: {order: 1, title: "Få inspiration" }, props: true },
-        { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "Platsinformation" }, props: true },
-        { path: 'time', component: Time, name: "time", meta: {order: 3, title: "När vill du göra något?" }, props: true },
-        { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "Vad är du intresserad av?" }, props: true },
-        { path: 'results', component: Results, name: "results", meta: { order: 5, title: "Våra rekommendationer" }, props: true }
-    ] },
+    {
+        path: '/', component: Progress, name: "progress", props: true, children:
+        [
+            { path: '', component: Home, name: "home", meta: {order: 1, title: "Få inspiration" }, props: true },
+            { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "Platsinformation" }, props: true },
+            { path: 'time', component: Time, name: "time", meta: {order: 3, title: "När vill du göra något?" }, props: true },
+            { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "Vad är du intresserad av?" }, props: true },
+            { path: 'results', component: Results, name: "results", meta: { order: 5, title: "Våra rekommendationer" }, props: true }
+        ]
+    },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -45,7 +48,7 @@ const router = new VueRouter({
 const app = new Vue({
     router,
     data: {
-        message: "loooo"
+        transitionName: "fade"
     }
 }).$mount('#app')
 

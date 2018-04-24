@@ -25,7 +25,7 @@
 {{-- Vue below --}}
 <div id="app" class="wizard">
     <div class="card-container relative">
-        <transition>
+        <transition :name="transitionName">
             <router-view></router-view>
         </transition>
     </div>
