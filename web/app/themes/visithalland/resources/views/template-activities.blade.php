@@ -31,7 +31,7 @@
     </div>
 
     <div class="ful-router relative z4">
-        <router-link to="/home">Hem</router-link>
+        <router-link to="/">Hem</router-link>
         <router-link to="/location">Location</router-link>
         <router-link to="/time">Få inspiration</router-link>
         <router-link to="/activities">Activities</router-link>
