@@ -193,7 +193,7 @@ import axios from "axios";
                 var vm = this;
                 axios.get('/wp-json/wp/v2/media/'+imageId)
                     .then(function (response) {
-                        var imgUrl = response.data.media_details.sizes["vh_medium_square@2x"].source_url;
+                        var imgUrl = response.data.media_details.sizes["vh_thumbnail"].source_url;
                         element.imgUrl = imgUrl;
 
                         // TODO: This should not be needed
