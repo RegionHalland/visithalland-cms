@@ -52,7 +52,9 @@
             </header>
             <a :href="nearYou.link" class="block mb3" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
-                    <img src="http://visithalland.test/app/uploads/2018/02/vandring_skogen_RonJohansson-12-200x200.jpg" class="result__img mr2" />
+                    <div class="result__img-container mr2">
+                        <img :src="nearYou.imgUrl" class="result__img" />
+                    </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="nearYou.title.rendered"></h2>
                         <div class="read-more mt1">
@@ -76,7 +78,9 @@
             </header>
             <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">
-                    <img src="http://visithalland.test/app/uploads/2018/02/vandring_skogen_RonJohansson-12-200x200.jpg" class="result__img mr2" />
+                    <div class="result__img-container mr2">
+                        <img :src="happening.imgUrl" class="result__img" />
+                    </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="happening.title.rendered"></h2>
                         <div class="read-more mt1">
@@ -101,7 +105,9 @@
             </header>
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">
-                    <img src="http://visithalland.test/app/uploads/2018/02/vandring_skogen_RonJohansson-12-200x200.jpg" class="result__img mr2" />
+                    <div class="result__img-container mr2">
+                        <img :src="link.imgUrl" class="result__img" />
+                    </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="link.title.rendered"></h2>
                         <div class="read-more mt1">
