@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="offline-bar" v-if="!isOffLine">
+    <div class="offline-bar" v-if="isOffLine">
         <div class="offline-bar__inner">Ingen internetanslutning</div>
     </div>
 
@@ -27,15 +27,12 @@
             console.log(this.$router.history.current.meta.order);
         },
         beforeRouteUpdate (to, from, next) {
-            console.log(to.meta.order);
             this.currentRouteCount = to.meta.order
 
             const toDepth = to.meta.order || 0;
             const fromDepth = from.meta.order || 0;
 
             this.transitionName = toDepth >= fromDepth ? 'fade' : 'fade-right';
-            console.log(this.transitionName);
-
             next();
         }
     }

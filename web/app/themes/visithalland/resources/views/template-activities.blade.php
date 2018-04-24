@@ -10,7 +10,7 @@
 <div class="dh-landing flex items-center justify-center flex-column">
     {{-- PHP/html content starts --}}
     <div class="dh-landing__inner col-11 mx-auto px3">
-        <h1 class="dh-landing__title z3 relative">{{ get_the_title() }}</h1>
+    <h1 class="dh-landing__title z3 relative">{{ get_the_title() }}</h1>
         <p class="dh-landing__p light z3 relative center mt3">{{ get_the_content() }}</p>
     </div>
     <picture>
