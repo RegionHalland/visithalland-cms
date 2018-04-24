@@ -39,7 +39,9 @@ import { format, addDays } from 'date-fns';
             }
         },
         created() {
-            console.log("loc", this.input);
+            // If we are missing user input redirect the user back to the first page
+            if(!this.input) return this.$router.push({ name: "location"})
+
             this.dates = this.days.map((item, index) => {
                 return {
                     id: index,

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueGeolocation from 'vue-browser-geolocation';
 import VueisOffLine from 'vue-isoffline';
+import '../autoload/icons';
 
 import Progress from './Progress.vue';
 import Home from './Home.vue';
