@@ -8,16 +8,18 @@
         <button class="btn center btn--primary mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">
             Tillåt platstjänster
         </button>
-        <div class="read-more mt3">
-            <span class="read-more__text">
-                <router-link :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">Gå vidare utan plats</router-link>
-            </span>
-            <div class="read-more__button">
-                <svg class="icon read-more__icon">
-                    <use xlink:href="#arrow-right-icon"/>
-                </svg>
+        <router-link :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">
+            <div class="read-more mt3">
+                <span class="read-more__text">
+                    Gå vidare utan plats
+                </span>
+                <div class="read-more__button">
+                    <svg class="icon read-more__icon">
+                        <use xlink:href="#arrow-right-icon"/>
+                    </svg>
+                </div>
             </div>
-        </div>
+        </router-link>
     </div>
 </div>
 
