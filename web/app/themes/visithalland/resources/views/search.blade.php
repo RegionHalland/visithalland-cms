@@ -5,11 +5,11 @@
         global $wp_query;
         $total_results = $wp_query->found_posts;
     @endphp
-	
+
     {{ get_search_form() }}
 
-
-    {{ /* Split up into partial */ }}
+    <?php // Split up into partial ?>
+    @if(isset($post))
     <article role="main" id="main-content">
 	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
 	        	@if(isset($wp_query))
@@ -22,7 +22,8 @@
 		            <div class="section-header__title">
 		                @php _e( 'Dina sökresultat', 'visithalland' ) @endphp
 		            </div>
-        		</header>
+                </header>
+
 	        	<div class="search-inner clearfix mxn2 mb4">
 			            @foreach ($wp_query->posts as $key => $post)
 			            	@php
@@ -64,10 +65,14 @@
 									</a>
 								</div>
 					    @endforeach
-				</div>
-				@endif
+                </div>
+                @endif
+
+
+
 	    	</div>
-	    @include('partials.recommended-articles')
+        @include('partials.recommended-articles')
+    @endif
 	</article>
 
 @endsection
