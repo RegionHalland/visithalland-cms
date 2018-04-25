@@ -1,5 +1,6 @@
 .read-more {
 	@media (min-width:$breakpoint-sm){
+		transition: color 0.25s;
 		&:hover {
 			.read-more__text {
 				color:palette(black, base);
