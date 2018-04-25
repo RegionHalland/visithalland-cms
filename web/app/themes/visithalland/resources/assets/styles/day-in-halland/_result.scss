@@ -43,7 +43,7 @@
 	font-weight:bold;
 }
 
-.result {
+.result, .result-header {
 	opacity:0;
 	animation-delay: 0.25s;
 	animation: fadeInUp 0.75s;
