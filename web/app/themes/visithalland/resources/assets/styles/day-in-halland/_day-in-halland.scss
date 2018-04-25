@@ -1,9 +1,9 @@
 .dh-landing {
-	height:100vh;
+	height:100%;
 	width:100%;
+	position:absolute;
 	overflow:hidden;
 	background:palette(black, x-dark);
-	position:relative;
 }
 
 .dh-landing__img {

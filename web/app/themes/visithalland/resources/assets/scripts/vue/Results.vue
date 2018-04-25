@@ -101,7 +101,7 @@
 
         <div v-if="allArray && allArray.length && input">
             <header class="result-header">
-                Alla
+                Värt en resa
             </header>
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">

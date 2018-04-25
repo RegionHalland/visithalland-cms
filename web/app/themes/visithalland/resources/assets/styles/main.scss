@@ -42,7 +42,6 @@
 @import 'components/scroll-indicator';
 @import 'components/search';
 @import 'components/google-place-details';
-@import 'components/author-vertical'; //Se över båda authors
 @import 'components/author-horizontal';
 @import 'components/infinite-scroll';
 
@@ -51,13 +50,13 @@
 @import './landing/campaign'; //Se över denna
 
 // General Page Format
-@import './page/page'; //Se över
+@import './page/page';
 
 // Article Components and Styles
 @import './article/article';
-@import './article/article-full'; //Städa upp
+@import './article/article-full';
 @import './article/article-medium';
-@import './article/article-image'; //Se över denna
+@import './article/article-image';
 @import './article/article-share'; //Se över denna
 @import './article/article-mentions'; //Denna borde inte behöva finnas
 @import './article/article-infinite'; // Se över och dela kanske upp?

@@ -26,6 +26,7 @@
 		left:0;
 		top:0;
 		width:100%;
+		height:auto;
 		z-index:$z1;
 	}
 
@@ -42,30 +43,6 @@
 		}
 		transform:translate(-50%, -50%);
 		z-index: $z3;
-	}
-}
-
-.landing-eu {
-	background:$black;
-	&__inner {
-		padding:$space-3 0;
-		@media (min-width:$breakpoint-sm){
-			padding:$space-3 0;
-		}
-	}
-
-	&__btn {
-		width:100%;
-		@media (min-width:$breakpoint-sm){
-			float:right;
-		}
-	}
-
-	&__paragraph {
-		font-size:1rem;
-		@media (min-width:$breakpoint-sm){
-			font-size:0.9rem;
-		}
 	}
 }
 
