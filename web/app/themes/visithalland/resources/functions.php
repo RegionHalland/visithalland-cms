@@ -61,6 +61,20 @@ array_map(function ($file) use ($sage_error) {
 }, ['helpers', 'setup', 'filters', 'admin', 'images', 'enqueue', 'navigation', 'amp', 'search', 'editor', 'acf']);
 
 /**
+ * Visithalland custom required files
+ *
+ * The mapped array determines the code library included in your theme.
+ * Add or remove files to the array as needed. Supports child theme overrides.
+ */
+array_map(function ($file) use ($sage_error) {
+    $file = "../app/Api/{$file}.php";
+    if (!locate_template($file, true, true)) {
+        $sage_error(sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file), 'File not found');
+    }
+}, ['Routes', 'Callbacks']);
+
+
+/**
  * Here's what's happening with these hooks:
  * 1. WordPress initially detects theme in themes/sage/resources
  * 2. Upon activation, we tell WordPress that the theme is actually in themes/sage/resources/views
