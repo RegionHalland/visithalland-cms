@@ -87,7 +87,7 @@
                     </svg>
                 </div>
                 <div class="section-header__title">
-                    Värt en resa
+                    Spännande resmål
                 </div>
             </header>
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
