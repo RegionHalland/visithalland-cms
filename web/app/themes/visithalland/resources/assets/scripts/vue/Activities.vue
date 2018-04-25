@@ -2,7 +2,7 @@
 <template>
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
-	    <div class="card__content">
+	    <div class="card__content px3">
 
             <div v-if="loading" class="block mb3">
                 <div class="shimmer inline-flex">

@@ -3,7 +3,7 @@
 	  <Navigation :input="input" prev-route="activities"></Navigation>
 	  <div class="card__content">
 
-        <div v-if="loading" class="block mb3">
+        <div v-if="loading" class="block mb3 px3">
             <div class="shimmer inline-flex">
                 <div class="shimmer__img mr2"></div>
                 <div class="shimmer__content">
@@ -46,8 +46,8 @@
             </div>
         </div>
 
-        <div v-if="nearYouArray && nearYouArray.length && input">
-            <header class="section-header inline-block coastal-living">
+        <div class="result-section p3" v-if="nearYouArray && nearYouArray.length && input">
+            <header class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#pin-icon"/>
@@ -79,9 +79,16 @@
             </a>
         </div>
 
-        <div v-if="allArray && allArray.length && input">
-            <header class="result-header">
-                Värt en resa
+        <div class="result-section p3" v-if="allArray && allArray.length && input">
+            <header class="section-header inline-block coastal-living mb3">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#discover-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    Värt en resa
+                </div>
             </header>
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">
@@ -106,9 +113,16 @@
             </a>
         </div>
 
-        <div class="result__happenings" v-if="happeningsArray && happeningsArray.length && input">
-            <header class="result-header">
-                Kommande happenings
+        <div class="result-section result__happenings p3" v-if="happeningsArray && happeningsArray.length && input">
+            <header class="section-header inline-block coastal-living mt2 mb3">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#calendar-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    Kommande happenings
+                </div>
             </header>
             <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">

@@ -1,3 +1,8 @@
+
+.result__happenings {
+	background:palette(grey, xx-light);
+}
+
 .result {
 	display:inline-flex;
 	align-items:flex-start;
@@ -6,11 +11,6 @@
 
 .result__content {
 	flex:2;
-}
-
-.result__happenings {
-	background:blue;
-	padding:$space-3 0;
 }
 
 .result__img-container {
@@ -36,7 +36,8 @@
 
 .result-header {
 	font-size:1.2rem;
-	margin:$space-2 0;
+	margin-top:$space-2;
+	margin-bottom:$space-3;
 	color: palette(black, light);
 	font-family:$rift-font-family;
 	font-weight:bold;
