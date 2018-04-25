@@ -1,7 +1,7 @@
 <!doctype html>
 <html @php(language_attributes())>
 @include('partials.head')
-    <body class="overflow-hidden" @php(body_class())>
+    <body @php(body_class())>
 
 	<!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC8VK82"

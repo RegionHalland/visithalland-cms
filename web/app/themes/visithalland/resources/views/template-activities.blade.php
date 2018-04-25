@@ -26,19 +26,11 @@
 
 
 {{-- Vue below --}}
-<div id="app" class="wizard">
-    <div class="card-container relative">
+<div id="app" class="dh-wizard relative">
+    <div class="dh-wizard__inner relative">
         <transition :name="transitionName">
             <router-view></router-view>
         </transition>
-    </div>
-
-    <div class="ful-router relative z4">
-        <router-link to="/">Hem</router-link>
-        <router-link to="/location">Location</router-link>
-        <router-link to="/time">Få inspiration</router-link>
-        <router-link to="/activities">Activities</router-link>
-        <router-link to="/results">Results</router-link>
     </div>
 </div>
 @endsection
