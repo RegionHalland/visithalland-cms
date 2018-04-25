@@ -47,8 +47,15 @@
         </div>
 
         <div v-if="nearYouArray && nearYouArray.length && input">
-            <header class="result-header">
-                Nära dig
+            <header class="section-header inline-block coastal-living">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#pin-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    Nära dig
+                </div>
             </header>
             <a :href="nearYou.link" class="block mb3" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
@@ -67,33 +74,6 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div v-if="happeningsArray && happeningsArray.length && input">
-            <header class="result-header">
-                Happenings
-            </header>
-            <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
-                <div class="result inline-flex hiking-biking">
-                    <div class="result__img-container mr2">
-                        <img :src="happening.imgUrl" class="result__img" />
-                    </div>
-                    <div class="result__content">
-                        <h2 class="result__title" v-html="happening.title.rendered"></h2>
-                        <div class="read-more mt1">
-                            <span class="read-more__text">
-                                Välj alternativ
-                            </span>
-                            <div class="read-more__button">
-                                <svg class="read-more__icon">
-                                    <use xlink:href="#arrow-right-icon"/>
-                                </svg>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </a>
@@ -125,6 +105,34 @@
                 </div>
             </a>
         </div>
+
+        <div class="result__happenings" v-if="happeningsArray && happeningsArray.length && input">
+            <header class="result-header">
+                Kommande happenings
+            </header>
+            <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
+                <div class="result inline-flex hiking-biking">
+                    <div class="result__img-container mr2">
+                        <img :src="happening.imgUrl" class="result__img" />
+                    </div>
+                    <div class="result__content">
+                        <h2 class="result__title" v-html="happening.title.rendered"></h2>
+                        <div class="read-more mt1">
+                            <span class="read-more__text">
+                                Välj alternativ
+                            </span>
+                            <div class="read-more__button">
+                                <svg class="read-more__icon">
+                                    <use xlink:href="#arrow-right-icon"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
 	  </div>
 	</div>
 </template>
