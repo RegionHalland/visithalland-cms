@@ -161,7 +161,7 @@ import axios from "axios";
                 var vm = this;
                 axios
                     .get(
-                        '/wp-json/myplugin/v1/activity', {
+                        '/wp-json/visit/v1/activity', {
                             params: {
                                 "activityId": this.input.activity.id,
                                 "date": this.input.date,
