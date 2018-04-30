@@ -5,16 +5,14 @@ class Icons {
     }
 
     getIcons(url) {
-        fetch(url)
-            .then(function (response) {
-                response.text().then(function (svgData) {
-                    var div = document.createElement('div');
-
-                    div.className = 'display-none';
-                    div.innerHTML = svgData;
-                    document.body.insertBefore(div, document.body.childNodes[0]);
-                });
-            })
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", this.spriteURL, true);
+        ajax.send();
+        ajax.onload = function (e) {
+            var div = document.createElement("div");
+            div.innerHTML = ajax.responseText;
+            document.body.insertBefore(div, document.body.childNodes[0]);
+        }
     }
 }
 
