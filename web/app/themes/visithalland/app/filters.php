@@ -68,3 +68,9 @@ add_filter('comments_template', function ($comments_template) {
     );
     return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
 }, 10, 1);
+
+add_filter('wpseo_prev_rel_link', '__return_empty_string');
+
+add_filter('wpseo_next_rel_link', '__return_empty_string');
+
+
