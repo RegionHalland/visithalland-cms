@@ -9,6 +9,9 @@
     <div class="happenings__dropdown">
         <div class="happenings__dropdown-inner p3">
             @foreach($header_happenings as $key => $happening)
+                @php 
+                    $thumbnail_id = get_post_thumbnail_id($happening->ID);
+                @endphp
                 <article class="happening-list-item mb3 {{ $happening->terms["terms_default_lang"]->slug }}">
                     <a href="{{ get_permalink($happening->ID) }}" class="link-reset">
                         <div class="clearfix">
@@ -19,7 +22,7 @@
                                             data-srcset="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
                                         <img class="happening-list-item__img lazyload"
                                             data-src="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) }}"
-                                            alt="{{ get_field("cover_image")["alt"] }}"
+                                            alt="{{get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true)}}"
                                         />
                                     </picture>
                                 </div>
