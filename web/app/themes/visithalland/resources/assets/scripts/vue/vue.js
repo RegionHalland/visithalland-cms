@@ -16,7 +16,9 @@ import Time from './Time.vue';
 import Activities from './Activities.vue';
 import Results from './Results.vue';
 import Navigation from './Navigation.vue';
+import Shimmer from './Shimmer.vue';
 
+Vue.component('Shimmer', Shimmer);
 Vue.component('Navigation', Navigation);
 Vue.use(VueRouter);
 Vue.use(VueGeolocation);
@@ -24,7 +26,7 @@ Vue.use(VueisOffLine);
 Vue.use(VueI18Next);
 
 i18next.use(LngDetector);
-i18next.init({
+    i18next.init({
 });
 
 const i18n = new VueI18Next(i18next);

@@ -14,52 +14,13 @@
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content px3">
             <div v-if="loading" class="block mb3">
-                <div class="shimmer inline-flex">
-                    <div class="shimmer__img mr2"></div>
-                    <div class="shimmer__content">
-                        <div class="shimmer__title mb1"></div>
-                        <div class="shimmer__link mt1"></div>
-                        <div class="shimmer__button mt1"></div>
-                    </div>
-                </div>
-                <div class="shimmer inline-flex">
-                    <div class="shimmer__img mr2"></div>
-                    <div class="shimmer__content">
-                        <div class="shimmer__title mb1"></div>
-                        <div class="shimmer__link mt1"></div>
-                        <div class="shimmer__button mt1"></div>
-                    </div>
-                </div>
-                <div class="shimmer inline-flex">
-                    <div class="shimmer__img mr2"></div>
-                    <div class="shimmer__content">
-                        <div class="shimmer__title mb1"></div>
-                        <div class="shimmer__link mt1"></div>
-                        <div class="shimmer__button mt1"></div>
-                    </div>
-                </div>
-                <div class="shimmer inline-flex">
-                    <div class="shimmer__img mr2"></div>
-                    <div class="shimmer__content">
-                        <div class="shimmer__title mb1"></div>
-                        <div class="shimmer__link mt1"></div>
-                        <div class="shimmer__button mt1"></div>
-                    </div>
-                </div>
-                <div class="shimmer inline-flex">
-                    <div class="shimmer__img mr2"></div>
-                    <div class="shimmer__content">
-                        <div class="shimmer__title mb1"></div>
-                        <div class="shimmer__link mt1"></div>
-                        <div class="shimmer__button mt1"></div>
-                    </div>
-                </div>
+                <Shimmer :loading="loading"></Shimmer>
             </div>
 
             <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
                 <div class="activity inline-flex">
                     <div class="activity__img-container mr2">
-                        <img :src="activity.imgUrl" class="activity__img" />
+                        <img :src="activity.featured_image_src" class="activity__img" />
                     </div>
                     <div class="activity__content">
                         <h2 class="activity__title">{{ activity.title.rendered }}</h2>
@@ -107,9 +68,6 @@ import axios from 'axios';
                 axios.get('/wp-json/visit/v1/activities?lang=' + this.currentLang)
                     .then(function (response) {
                         vm.activities = response.data;
-                        vm.activities.map((element, index) => {
-                            vm.fetchImage(index, element.featured_media)
-                        })
                         vm.loading = false;
                     })
                     .catch(function (error) {

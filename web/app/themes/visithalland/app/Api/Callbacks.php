@@ -127,7 +127,8 @@ function vh_get_activity(\WP_REST_Request $request){
     }
 
     if($posts){
-        return rest_ensure_response($posts);
+        $response = rest_ensure_response($posts);
+        return $response;
     }
 
     return rest_ensure_response("error");

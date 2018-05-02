@@ -19,48 +19,9 @@
 	<div class="card">
 	  <Navigation :input="input" prev-route="activities"></Navigation>
 	  <div class="card__content">
-        <div v-if="loading" class="block mb3 px3">
-            <div class="shimmer inline-flex">
-                <div class="shimmer__img mr2"></div>
-                <div class="shimmer__content">
-                    <div class="shimmer__title mb1"></div>
-                    <div class="shimmer__link mt1"></div>
-                    <div class="shimmer__button mt1"></div>
-                </div>
-            </div>
-            <div class="shimmer inline-flex">
-                <div class="shimmer__img mr2"></div>
-                <div class="shimmer__content">
-                    <div class="shimmer__title mb1"></div>
-                    <div class="shimmer__link mt1"></div>
-                    <div class="shimmer__button mt1"></div>
-                </div>
-            </div>
-            <div class="shimmer inline-flex">
-                <div class="shimmer__img mr2"></div>
-                <div class="shimmer__content">
-                    <div class="shimmer__title mb1"></div>
-                    <div class="shimmer__link mt1"></div>
-                    <div class="shimmer__button mt1"></div>
-                </div>
-            </div>
-            <div class="shimmer inline-flex">
-                <div class="shimmer__img mr2"></div>
-                <div class="shimmer__content">
-                    <div class="shimmer__title mb1"></div>
-                    <div class="shimmer__link mt1"></div>
-                    <div class="shimmer__button mt1"></div>
-                </div>
-            </div>
-            <div class="shimmer inline-flex">
-                <div class="shimmer__img mr2"></div>
-                <div class="shimmer__content">
-                    <div class="shimmer__title mb1"></div>
-                    <div class="shimmer__link mt1"></div>
-                    <div class="shimmer__button mt1"></div>
-                </div>
-            </div>
-        </div>
+          <div v-if="loading" class="block mb3 px3">
+            <Shimmer :loading="loading"></Shimmer>
+          </div>
 
         <div class="result-section p3" v-if="nearYouArray && nearYouArray.length && input">
             <header class="section-header inline-block coastal-living mb3">
@@ -76,7 +37,7 @@
             <a :href="nearYou.link" class="block mb3" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
-                        <img :src="nearYou.imgUrl" class="result__img" />
+                        <img :src="nearYou.featured_image_src" class="result__img" />
                     </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="nearYou.title.rendered"></h2>
@@ -109,7 +70,7 @@
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
-                        <img :src="link.imgUrl" class="result__img" />
+                        <img :src="link.featured_image_src" class="result__img" />
                     </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="link.title.rendered"></h2>
@@ -143,7 +104,7 @@
             <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
-                        <img :src="happening.imgUrl" class="result__img" />
+                        <img :src="happening.featured_image_src" class="result__img" />
                     </div>
                     <div class="result__content">
                         <h2 class="result__title" v-html="happening.title.rendered"></h2>
@@ -157,12 +118,10 @@
                                 </svg>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </a>
         </div>
-
 	  </div>
 	</div>
 </template>
@@ -205,41 +164,11 @@ import axios from "axios";
                         vm.nearYouArray = response.data.near_you
                         vm.happeningsArray = response.data.happenings;
                         vm.allArray = response.data.all_activities;
-
-                        if(vm.nearYouArray){
-                            vm.nearYouArray.map((element, index) => {
-                                vm.fetchImage(element, element.featured_media);
-                            })
-                        }
-                        if(vm.happeningsArray){
-                            vm.happeningsArray.map((element, index) => {
-                                vm.fetchImage(element, element.featured_media);
-                            })
-                        }
-                        if(vm.allArray){
-                            vm.allArray.map( (element) => {
-                                vm.fetchImage(element, element.featured_media);
-                            })
-                        }
                         vm.loading = false;
                     })
                     .catch(function (error) {
                         console.log(error);
                         vm.loading = false;
-                    });
-            },
-            fetchImage(element, imageId){
-                var vm = this;
-                axios.get('/wp-json/wp/v2/media/'+imageId)
-                    .then(function (response) {
-                        var imgUrl = response.data.media_details.sizes["vh_thumbnail"].source_url;
-                        element.imgUrl = imgUrl;
-
-                        // TODO: This should not be needed
-                        vm.$forceUpdate()
-                    })
-                    .catch(function (error) {
-                        console.log(error);
                     });
             }
         }
