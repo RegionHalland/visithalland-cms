@@ -8,7 +8,7 @@
     <div class="dh-landing flex items-center justify-center flex-column">
         {{-- PHP/html content starts --}}
         <div class="dh-landing__inner col-8 sm-col-4 mx-auto px3">
-            <svg class="dh-logo z3 relativ block mx-auto" xmlns="http://www.w3.org/2000/svg" width="150" title="{{ get_the_title() }}" height="168" viewBox="0 0 150 168">
+            <svg class="dh-logo z3 relative block mx-auto" xmlns="http://www.w3.org/2000/svg" width="150" title="{{ get_the_title() }}" height="168" viewBox="0 0 150 168">
               <defs>
                 <linearGradient id="a-day-in-halland-logo-a" x1="2.569%" y1="25.578%" y2="75.189%">
                   <stop offset="0%" stop-color="#162E36"/>
