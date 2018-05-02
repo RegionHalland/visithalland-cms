@@ -8,7 +8,6 @@
 
     {{ get_search_form() }}
 
-    <?php // Split up into partial ?>
     @if(isset($post))
     <article role="main" id="main-content">
 	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
@@ -67,12 +66,9 @@
 					    @endforeach
                 </div>
                 @endif
-
-
-
 	    	</div>
         @include('partials.recommended-articles')
+        </article>
     @endif
-	</article>
 
 @endsection
