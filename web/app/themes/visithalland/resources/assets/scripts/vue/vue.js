@@ -4,6 +4,11 @@ import VueGeolocation from 'vue-browser-geolocation';
 import VueisOffLine from 'vue-isoffline';
 import '../autoload/icons';
 
+// Used to detect language
+import i18next from 'i18next';
+import LngDetector from 'i18next-browser-languagedetector';
+import VueI18Next from '@panter/vue-i18next';
+
 import Progress from './Progress.vue';
 import Home from './Home.vue';
 import Loc from './Location.vue';
@@ -16,6 +21,13 @@ Vue.component('Navigation', Navigation);
 Vue.use(VueRouter);
 Vue.use(VueGeolocation);
 Vue.use(VueisOffLine);
+Vue.use(VueI18Next);
+
+i18next.use(LngDetector);
+i18next.init({
+});
+
+const i18n = new VueI18Next(i18next);
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -48,9 +60,10 @@ const router = new VueRouter({
 // whole app router-aware.
 const app = new Vue({
     router,
+    i18n,
     data: {
         transitionName: "fade"
-    }
+    },
 }).$mount('#app')
 
 // Now the app has started!

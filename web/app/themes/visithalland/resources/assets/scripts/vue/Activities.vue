@@ -1,9 +1,18 @@
+<i18n>
+    {
+        "en": {
+            "choose": "Choose alternative"
+        },
+        "sv": {
+            "choose": "Välj alternativ"
+        }
+  }
+</i18n>
 
 <template>
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content px3">
-
             <div v-if="loading" class="block mb3">
                 <div class="shimmer inline-flex">
                     <div class="shimmer__img mr2"></div>
@@ -56,7 +65,7 @@
                         <h2 class="activity__title">{{ activity.title.rendered }}</h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
-                                Välj alternativ
+                                {{ $t('choose') }}
                             </span>
                             <div class="read-more__button">
                                 <svg class="read-more__icon">
@@ -78,13 +87,15 @@ import axios from 'axios';
         data: function(){
             return {
                 loading: true,
-                activities: []
+                activities: [],
+                currentLang: ''
             }
         },
         created () {
             // If we are missing user input redirect the user back to the first page
             if(!this.input) return this.$router.push({ name: "location"})
-
+            this.currentLang = this.$i18n.i18next.language == "sv" ? "" : 'en';
+            console.log(this.currentLang);
             // Fetch activities
             this.fetchData()
         },
@@ -92,7 +103,8 @@ import axios from 'axios';
             fetchData () {
                 var vm = this;
                 // Fetch all activites
-                axios.get('/wp-json/wp/v2/activity')
+                // TODO: add ?lang=en here
+                axios.get('/wp-json/visit/v1/activities?lang=' + this.currentLang)
                     .then(function (response) {
                         vm.activities = response.data;
                         vm.activities.map((element, index) => {

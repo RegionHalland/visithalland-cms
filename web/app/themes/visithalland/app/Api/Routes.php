@@ -13,6 +13,12 @@ add_action('rest_api_init', function () {
         'callback' => 'vh_set_passed_happenings_to_draft_callback'
     ));
 
+    // Register route - get all activites in current language
+    register_rest_route('visit/v1', 'activities', array(
+        'methods' => 'GET',
+        'callback' => 'vh_get_all_activities'
+    ));
+
     // Register route - Get single activity. Used in ”a day in Halland'.
     register_rest_route('visit/v1', 'activity', array(
         'methods' => 'GET',

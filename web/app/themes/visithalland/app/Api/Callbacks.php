@@ -1,13 +1,12 @@
 <?php
 use Carbon\Carbon;
 
-
 function vh_set_passed_happenings_to_draft_callback()
 {
     // get all happenings
     $posts = get_posts(array(
         'post_type'     => 'happening',
-        'posts_per_page'    => -1,
+        'posts_per_page'    => -1
     ));
     $oldHappenings = array();
 
@@ -29,6 +28,35 @@ function vh_set_passed_happenings_to_draft_callback()
 
     // No posts found
     return new WP_Error('unknown-error', __('Unknown error.', 'visithalland'), array( 'status' => 500 ));
+}
+
+function vh_get_all_activities(\WP_REST_Request $request){
+    // get all activities
+    $current_lang = $request['lang'];
+    if($current_lang) {
+        global $sitepress;
+        $sitepress->switch_lang("en");
+    }
+
+    $posts = get_posts(array(
+        'post_type'     => 'activity',
+        'posts_per_page'    => -1,
+        'lang' => 'en',
+        'suppress_filters' => 0
+    ));
+
+    $controller = new \WP_REST_Posts_Controller('post');
+    foreach ($posts as $post) {
+        $data = $controller->prepare_item_for_response($post, $request);
+        $posts_all[] = $controller->prepare_response_for_collection($data);
+    }
+
+    if ($posts_all) {
+        return rest_ensure_response($posts_all);
+    };
+
+    return rest_ensure_response("err");
+
 }
 
 function vh_get_activity(\WP_REST_Request $request){

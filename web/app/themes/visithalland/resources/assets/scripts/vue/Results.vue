@@ -1,8 +1,24 @@
+<i18n>
+    {
+        "en": {
+            "choose": "Choose alternative",
+            "upcomingHappenings": "Upcoming happenings",
+            "nearYou": "Near you",
+            "destinations": "Exciting destinations"
+        },
+        "sv": {
+            "choose": "{{ $t('choose') }}",
+            "upcomingHappenings": "Kommande happenings",
+            "nearYou": "Nära dig",
+            "destinations": "Spännande resmål"
+        }
+  }
+</i18n>
+
 <template>
 	<div class="card">
 	  <Navigation :input="input" prev-route="activities"></Navigation>
 	  <div class="card__content">
-
         <div v-if="loading" class="block mb3 px3">
             <div class="shimmer inline-flex">
                 <div class="shimmer__img mr2"></div>
@@ -54,7 +70,7 @@
                     </svg>
                 </div>
                 <div class="section-header__title">
-                    Nära dig
+                    {{ $t('nearYou') }}
                 </div>
             </header>
             <a :href="nearYou.link" class="block mb3" v-for="nearYou in nearYouArray" :key="nearYou.id">
@@ -66,7 +82,7 @@
                         <h2 class="result__title" v-html="nearYou.title.rendered"></h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
-                                Välj alternativ
+                                {{ $t('choose') }}
                             </span>
                             <div class="read-more__button">
                                 <svg class="read-more__icon">
@@ -87,7 +103,7 @@
                     </svg>
                 </div>
                 <div class="section-header__title">
-                    Spännande resmål
+                    {{ $t('destinations') }}
                 </div>
             </header>
             <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
@@ -99,7 +115,7 @@
                         <h2 class="result__title" v-html="link.title.rendered"></h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
-                                Välj alternativ
+                                {{ $t('choose') }}
                             </span>
                             <div class="read-more__button">
                                 <svg class="read-more__icon">
@@ -121,7 +137,7 @@
                     </svg>
                 </div>
                 <div class="section-header__title">
-                    Kommande happenings
+                    {{ $t('upcomingHappenings') }}
                 </div>
             </header>
             <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
@@ -133,7 +149,7 @@
                         <h2 class="result__title" v-html="happening.title.rendered"></h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
-                                Välj alternativ
+                                {{ $t('choose') }}
                             </span>
                             <div class="read-more__button">
                                 <svg class="read-more__icon">
@@ -153,6 +169,7 @@
 
 <script>
 import axios from "axios";
+
     export default {
         props: [ "input" ],
         data: function(){

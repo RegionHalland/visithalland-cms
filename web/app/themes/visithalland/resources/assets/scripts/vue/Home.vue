@@ -1,5 +1,16 @@
+<i18n>
+  {
+    "en": {
+      "buttonTxt": "Get inspiration"
+    },
+    "sv": {
+      "buttonTxt": "Få inspiration"
+    }
+  }
+</i18n>
+
 <template>
-    <router-link class="btn block center btn--primary" to="location">Få inspiration</router-link>
+    <router-link class="btn block center btn--primary" to="location">{{ $t('buttonTxt') }}</router-link>
 </template>
 
 <script>

@@ -41,7 +41,12 @@ let webpackConfig = {
       //Add Vue support
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue',
+        options: {
+            loaders: {
+                i18n: '@kazupon/vue-i18n-loader'
+            }
+        }
       },
       /*{
         enforce: 'pre',
