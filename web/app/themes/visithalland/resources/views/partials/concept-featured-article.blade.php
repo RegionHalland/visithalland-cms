@@ -59,5 +59,4 @@
             </div>
         </a>
     </article>
-
 @endif

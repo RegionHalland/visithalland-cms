@@ -8,7 +8,6 @@
             $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
             $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
         @endphp
-
         <article role="main" id="main-content" data-posttype="{{get_post_type()}}">
             @include('partials.article-hero')
             <div class="article-content container clearfix mt5 mb4">
@@ -21,7 +20,6 @@
             @include('partials.share')
             </article>
         @endwhile
-
     </div>
     @include('partials.infinite-scroll')
 @endsection
