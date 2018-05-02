@@ -1,7 +1,7 @@
 <i18n>
   {
     "en": {
-      "buttonTxt": "Get inspiration"
+      "buttonTxt": "Get started"
     },
     "sv": {
       "buttonTxt": "Få inspiration"

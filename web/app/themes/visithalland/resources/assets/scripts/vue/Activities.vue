@@ -84,7 +84,7 @@
 import axios from 'axios';
     export default {
         props: [ "input" ],
-        data: function(){
+        data () {
             return {
                 loading: true,
                 activities: [],

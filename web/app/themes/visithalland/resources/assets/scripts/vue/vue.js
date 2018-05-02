@@ -39,10 +39,10 @@ const routes = [
         path: '/', component: Progress, name: "progress", props: true, children:
         [
             { path: '', component: Home, name: "home", meta: {order: 1, title: "Få inspiration" }, props: true },
-            { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "Platsinformation" }, props: true },
-            { path: 'time', component: Time, name: "time", meta: {order: 3, title: "När vill du göra något?" }, props: true },
-            { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "Vad är du intresserad av?" }, props: true },
-            { path: 'results', component: Results, name: "results", meta: { order: 5, title: "Våra rekommendationer" }, props: true }
+            { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "location" }, props: true },
+            { path: 'time', component: Time, name: "time", meta: {order: 3, title: "time" }, props: true },
+            { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "activities" }, props: true },
+            { path: 'results', component: Results, name: "results", meta: { order: 5, title: "results" }, props: true }
         ]
     },
 ]
