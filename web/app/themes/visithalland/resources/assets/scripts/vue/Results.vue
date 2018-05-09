@@ -34,7 +34,7 @@
                     {{ $t('nearYou') }}
                 </div>
             </header>
-            <a :href="nearYou.link" class="block mb3" v-for="nearYou in nearYouArray" :key="nearYou.id">
+            <a :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="nearYou.featured_image_src" class="result__img" />
@@ -67,7 +67,7 @@
                     {{ $t('destinations') }}
                 </div>
             </header>
-            <a :href="link.link" class="block mb3" v-for="link in allArray" :key="link.id">
+            <a :href="link.link" class="block mb3" target="_blank" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="link.featured_image_src" class="result__img" />
@@ -101,7 +101,7 @@
                     {{ $t('upcomingHappenings') }}
                 </div>
             </header>
-            <a :href="happening.link" class="block mb3" v-for="happening in happeningsArray" :key="happening.id">
+            <a :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="happening.featured_image_src" class="result__img" />
