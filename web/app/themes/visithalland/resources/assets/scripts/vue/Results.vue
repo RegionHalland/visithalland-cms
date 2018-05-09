@@ -23,7 +23,7 @@
             <Shimmer :loading="loading"></Shimmer>
           </div>
 
-        <div class="result-section p3" v-if="nearYouArray && nearYouArray.length && input">
+        <div class="result-section px3" v-if="nearYouArray && nearYouArray.length && input">
             <header class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
@@ -56,7 +56,7 @@
             </a>
         </div>
 
-        <div class="result-section p3" v-if="allArray && allArray.length && input">
+        <div class="result-section px3" v-if="allArray && allArray.length && input">
             <header class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
@@ -90,7 +90,7 @@
             </a>
         </div>
 
-        <div class="result-section result__happenings p3" v-if="happeningsArray && happeningsArray.length && input">
+        <div class="result-section result__happenings px3" v-if="happeningsArray && happeningsArray.length && input">
             <header class="section-header inline-block coastal-living mt2 mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
