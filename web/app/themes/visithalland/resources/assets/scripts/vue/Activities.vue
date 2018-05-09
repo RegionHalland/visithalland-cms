@@ -1,10 +1,14 @@
 <i18n>
     {
         "en": {
-            "choose": "Choose alternative"
+            "choose": "Choose alternative",
+            "experiences": "Experiences",
+            "today": "Happening today"
         },
         "sv": {
-            "choose": "Välj alternativ"
+            "choose": "Välj alternativ",
+            "experiences": "Upplevelser",
+            "today": "Händer idag"
         }
   }
 </i18n>
@@ -17,6 +21,28 @@
                 <Shimmer :loading="loading"></Shimmer>
             </div>
 
+
+            <header class="section-header inline-block coastal-living mb3">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#calendar-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    {{ $t('today') }}
+                </div>
+            </header>
+
+            <header class="section-header inline-block coastal-living mb3">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#discover-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    {{ $t('experiences') }}
+                </div>
+            </header>
             <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
                 <div class="activity inline-flex">
                     <div class="activity__img-container mr2">
