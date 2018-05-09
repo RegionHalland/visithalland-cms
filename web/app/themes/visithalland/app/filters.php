@@ -2,26 +2,7 @@
 
 namespace App;
 
-add_action( 'rest_api_init', function() {
-//Add featured image
-register_rest_field(
-    'post', // Where to add the field (Here, blog posts. Could be an array)
-    'featured_image_src', // Name of new field (You can call this anything)
-    array(
-        'get_callback'    =>
-            function ( $object, $field_name, $request ) {
-                $feat_img_array = wp_get_attachment_image_src(
-                $object['featured_media'], // Image attachment ID
-                'vh_thumbnail',  // Size.  Ex. "thumbnail", "large", "full", etc..
-                true // Whether the image should be treated as an icon.
-            );
-            return $feat_img_array[0];
-        },
-            'update_callback' => null,
-            'schema'          => null,
-        )
-    );
-});
+
 /**
  * Add <body> classes
  */
@@ -89,8 +70,50 @@ add_filter('comments_template', function ($comments_template) {
     return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
 }, 10, 1);
 
-add_filter('wpseo_prev_rel_link', '__return_empty_string');
 
+
+
+/**
+ * CUSTOM VISITHALLAND FILTERS
+ */
+
+
+ add_action('wp_loaded', function () {
+    //$cal = new CalendarClient;
+    //var_dump($cal->runRequest());
+    //die();
+ });
+
+ /**
+ * Add thumbnail url as a prop
+ */
+add_action('rest_api_init', function () {
+    //Add featured image
+    register_rest_field(
+    'post', // Where to add the field (Here, blog posts. Could be an array)
+    'featured_image_src', // Name of new field (You can call this anything)
+    array(
+        'get_callback'    =>
+            function ($object, $field_name, $request) {
+                $feat_img_array = wp_get_attachment_image_src(
+                $object['featured_media'], // Image attachment ID
+                'vh_thumbnail',  // Size.  Ex. "thumbnail", "large", "full", etc..
+                true // Whether the image should be treated as an icon.
+            );
+                return $feat_img_array[0];
+            },
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+});
+
+
+/**
+ * Remove prev next link
+ */
+
+add_filter('wpseo_prev_rel_link', '__return_empty_string');
 add_filter('wpseo_next_rel_link', '__return_empty_string');
 
 

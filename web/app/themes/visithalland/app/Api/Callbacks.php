@@ -1,5 +1,17 @@
 <?php
+use App\Visithalland\CalendarClient;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+
+function vh_add_events(WP_REST_Request $request)
+{
+    $municipio = $request['municipio'];
+
+    $c = new CalendarClient();
+    $c->runRequest($municipio);
+
+    return;
+}
 
 function vh_set_passed_happenings_to_draft_callback()
 {
