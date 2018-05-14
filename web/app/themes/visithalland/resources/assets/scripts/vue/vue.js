@@ -29,6 +29,7 @@ i18next.use(LngDetector);
 i18next.init({
     fallbackLng: {
         'nb': ['sv'],
+        'nn': ['sv'],
         'default': ['en']
     }
 });
