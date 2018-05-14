@@ -34,8 +34,7 @@ function vh_get_events_happenings_by_date(WP_REST_Request $request)
         return rest_ensure_response($events_happenings_array);
     };
 
-    return rest_ensure_response("err");
-
+    return new WP_Error('events-missing', __('Events saknas.', 'visithalland'), array( 'status' => 404 ));
 }
 
 function vh_add_events(WP_REST_Request $request)
