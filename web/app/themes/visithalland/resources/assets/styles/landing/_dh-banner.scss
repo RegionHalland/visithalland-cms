@@ -1,17 +1,17 @@
-.day-in-halland {
+.dh-banner {
 	margin-top:$space-5;
 	background-color:palette(black, light);
 	overflow:hidden;
 }
 
 
-.day-in-halland__content {
+.dh-banner__content {
 	padding-top:$space-5;
 	padding-bottom:$space-5;
 }
 
 
-.day-in-halland__mockup-section {
+.dh-banner__mockup-section {
 	padding-top:$space-3;
 	padding-bottom:$space-3;
 	@media (max-width:$breakpoint-sm) {
@@ -20,12 +20,12 @@
 	}
 }
 
-.day-in-halland__mockup {
+.dh-banner__mockup {
 	max-width:90%;
 }
 
 
-.day-in-halland__title {
+.dh-banner__title {
 	font-size:$h1;
 	color:$white;
 	margin-top:$space-2;
@@ -33,12 +33,12 @@
 	line-height:1.1;
 }
 
-.day-in-halland__desc {
+.dh-banner__desc {
 	max-width:80%;
 }
 
 
-.day-in-halland__badge {
+.dh-banner__badge {
 	border-radius:20px;
 	background:$darken-3;
 	font-family:$rift-font-family;
