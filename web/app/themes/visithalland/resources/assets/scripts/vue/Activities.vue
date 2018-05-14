@@ -21,7 +21,7 @@
                 <Shimmer :loading="loading"></Shimmer>
             </div>
 
-            <header class="section-header inline-block coastal-living mb3">
+            <header v-if="events_happenings && events_happenings.length && input" class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#calendar-icon"/>
@@ -53,9 +53,7 @@
             </a>
 
 
-
-
-            <header class="section-header inline-block coastal-living mb3">
+            <header  v-if="activities && activities.length && input" class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#discover-icon"/>
