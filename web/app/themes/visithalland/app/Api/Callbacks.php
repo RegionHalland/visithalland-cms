@@ -3,6 +3,30 @@ use App\Visithalland\CalendarClient;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+function vh_get_events_happenings_by_date(WP_REST_Request $request)
+{
+    $date = $request['date'];
+    if(!isset($date)) return new WP_Error('unknown-error', __('Unknown error.', 'visithalland'), array( 'status' => 400 ));
+    $compareDate = date("Y-m-d", strtotime($date));
+
+    $pageExists = get_posts(array(
+        'numberposts'	=> 10,
+        'post_type'     => array('event', 'happening'),
+        'meta_query' => [
+            [
+                'key' => 'start_date',
+                'value' => $compareDate,
+                'compare' => '==',
+                'type' => 'DATE'
+            ],
+        ],
+        'post_status'   => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash')
+    ));
+
+
+    return rest_ensure_response($pageExists);
+}
+
 function vh_add_events(WP_REST_Request $request)
 {
     $municipio = $request['municipio'];
@@ -51,10 +75,10 @@ function vh_get_all_activities(\WP_REST_Request $request){
     }
 
     $posts = get_posts(array(
-        'post_type'     => 'activity',
+        'post_type'         => 'activity',
         'posts_per_page'    => -1,
-        'lang' => 'en',
-        'suppress_filters' => 0
+        'lang'              => 'en',
+        'suppress_filters'  => 0
     ));
 
     $controller = new \WP_REST_Posts_Controller('post');
