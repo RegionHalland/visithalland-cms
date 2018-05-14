@@ -7,7 +7,7 @@
             "destinations": "Exciting destinations"
         },
         "sv": {
-            "choose": "{{ $t('choose') }}",
+            "choose": "Välj alternativ",
             "upcomingHappenings": "Kommande happenings",
             "nearYou": "Nära dig",
             "destinations": "Spännande resmål"
