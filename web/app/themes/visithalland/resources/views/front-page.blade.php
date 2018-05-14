@@ -8,5 +8,6 @@
 		@include('partials.front-page-hero')
     @endif
     @include('partials.front-page-concepts')
+    @include('partials.front-page-ad')
     @include('partials.front-page-happenings')   
 @endsection
