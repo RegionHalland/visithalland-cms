@@ -21,7 +21,7 @@ function vh_get_events_happenings_by_date(WP_REST_Request $request)
                 'type' => 'DATE'
             ],
         ],
-        'post_status'   => array('publish')
+        'post_status'   => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash')
     ));
 
     $controller = new \WP_REST_Posts_Controller('post');
