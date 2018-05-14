@@ -46,9 +46,9 @@
 @import 'components/infinite-scroll';
 
 // Landing
-@import './landing/landing'; //Se över denna
-@import './landing/campaign'; //Se över denna
-@import './landing/dh-banner';
+@import './front-page/front-page'; //Se över denna -- Jobbas med nu
+@import './front-page/campaign'; //Se över denna -- Jobbas med nu
+@import './front-page/dh-banner';
 
 // General Page Format
 @import './page/page';

@@ -1,4 +1,4 @@
-// Spacing
+// Spacing Measurements
 $space-1: .25rem;
 $space-2: .5rem;
 $space-3: 1rem;
@@ -18,6 +18,7 @@ $h6: .75rem;
 $fira-font-family:   "fira-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $rift-font-family: "rift-soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $shelby-font-family: "shelby", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 $line-height-1: 1;
 $line-height-2: 1.125;
 $line-height-3: 1.25;
@@ -26,6 +27,8 @@ $letter-spacing: 1;
 $caps-letter-spacing: .2em;
 $bold-font-weight: bold;
 
+
+// Brand Styles
 $border-radius: 4px;
 
 // Colors
@@ -64,12 +67,11 @@ $darken-1: rgba(0, 0, 0, .0625);
 $darken-2: rgba(0, 0, 0, .125);
 $darken-3: rgba(0, 0, 0, .25);
 
-
 // Widths
-$width-1: 24rem;
-$width-2: 32rem;
-$width-3: 48rem;
-$width-4: 64rem;
+$width-1: 20%;
+$width-2: 40%;
+$width-3: 60%;
+$width-4: 80%;
 
 // Container
 $container-max-width: 1440px;

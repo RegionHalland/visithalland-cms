@@ -11,7 +11,7 @@
 	border: 1px solid transparent;
 	border-radius: $border-radius;
 	vertical-align: middle;
-	-webkit-appearance: none;
+	appearance: none;
 	transition:transform 0.25s;
 	background:palette(black, base);
 	color:$white;

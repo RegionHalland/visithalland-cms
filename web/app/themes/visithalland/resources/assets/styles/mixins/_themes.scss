@@ -26,15 +26,10 @@ $themes: (
 
 ) !default;
 
-// Initialize our variables as `null` so that when used outside of `themify`,
-// they actually output nothing.
 $color-primary: null;
 $color-secondary: null;
 $icon: null;
 
-/// Themify mixin
-/// @author Hugo Giraudel
-/// @param {Map} $themes [$themes] - Map of themes to use
 @mixin themify($themes: $themes) {
   // Iterate over the themes
   @each $theme, $colors in $themes {

@@ -1,8 +1,8 @@
 @php $header_happenings = App::getHappenings(3) @endphp
 
     @if(is_array($header_happenings))
-    <section class="landing-happenings container clearfix mt3 col-11 md-col-10 lg-col-10 mx-auto">
-            <div class="landing-happenings__header py3 flex justify-between items-center ">
+    <section class="front-page-happenings container clearfix mt3 col-11 md-col-10 lg-col-10 mx-auto">
+            <div class="front-page-happenings__header py3 flex justify-between items-center ">
                 <header class="section-header inline-block coastal-living">
                     <div class="section-header__icon-wrapper">
                         <svg class="section-header__icon icon">
