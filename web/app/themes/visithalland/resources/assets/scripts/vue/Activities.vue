@@ -37,7 +37,7 @@
                         <img :src="event.featured_image_src" class="activity__img" />
                     </div>
                     <div class="activity__content">
-                        <h2 class="activity__title">{{ event.title.rendered }}</h2>
+                        <h2 class="activity__title" v-html="event.title.rendered"></h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
