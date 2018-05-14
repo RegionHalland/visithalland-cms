@@ -21,7 +21,6 @@
                 <Shimmer :loading="loading"></Shimmer>
             </div>
 
-
             <header class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
@@ -32,6 +31,29 @@
                     {{ $t('today') }}
                 </div>
             </header>
+            <a :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
+                <div class="activity inline-flex">
+                    <div class="activity__img-container mr2">
+                        <img :src="event.featured_image_src" class="activity__img" />
+                    </div>
+                    <div class="activity__content">
+                        <h2 class="activity__title">{{ event.title.rendered }}</h2>
+                        <div class="read-more mt1">
+                            <span class="read-more__text">
+                                {{ $t('choose') }}
+                            </span>
+                            <div class="read-more__button">
+                                <svg class="read-more__icon">
+                                    <use xlink:href="#arrow-right-icon"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+
+
 
             <header class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
@@ -75,6 +97,7 @@ import axios from 'axios';
             return {
                 loading: true,
                 activities: [],
+                events_happenings: [],
                 currentLang: ''
             }
         },
@@ -88,10 +111,33 @@ import axios from 'axios';
         },
         methods: {
             fetchData () {
+                console.log(this.input.date);
                 var vm = this;
+                // Fetch all events happenings
+                axios.get(
+                        '/wp-json/visit/v1/events_happenings', {
+                            params: {
+                                "date": this.input.date,
+                            }
+                        }
+                    )
+                    .then(function (response) {
+                        vm.events_happenings = response.data;
+                        vm.loading = false;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        vm.loading = false;
+                    });
+
                 // Fetch all activites
-                // TODO: add ?lang=en here
-                axios.get('/wp-json/visit/v1/activities?lang=' + this.currentLang)
+                axios.get(
+                        '/wp-json/visit/v1/activities', {
+                            params: {
+                                "lang": this.currentLang,
+                            }
+                        }
+                    )
                     .then(function (response) {
                         vm.activities = response.data;
                         vm.loading = false;

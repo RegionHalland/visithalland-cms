@@ -8,9 +8,10 @@ function vh_get_events_happenings_by_date(WP_REST_Request $request)
     $date = $request['date'];
     if(!isset($date)) return new WP_Error('unknown-error', __('Unknown error.', 'visithalland'), array( 'status' => 400 ));
     $compareDate = date("Y-m-d", strtotime($date));
+    $events_happenings_array = array();
 
-    $pageExists = get_posts(array(
-        'numberposts'	=> 10,
+    $events_happenings = get_posts(array(
+        'numberposts'	=> 20,
         'post_type'     => array('event', 'happening'),
         'meta_query' => [
             [
@@ -23,8 +24,18 @@ function vh_get_events_happenings_by_date(WP_REST_Request $request)
         'post_status'   => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash')
     ));
 
+    $controller = new \WP_REST_Posts_Controller('post');
+    foreach ($events_happenings as $post) {
+        $data = $controller->prepare_item_for_response($post, $request);
+        $events_happenings_array[] = $controller->prepare_response_for_collection($data);
+    }
 
-    return rest_ensure_response($pageExists);
+    if ($events_happenings_array) {
+        return rest_ensure_response($events_happenings_array);
+    };
+
+    return rest_ensure_response("err");
+
 }
 
 function vh_add_events(WP_REST_Request $request)
