@@ -26,7 +26,11 @@ Vue.use(VueisOffLine);
 Vue.use(VueI18Next);
 
 i18next.use(LngDetector);
-    i18next.init({
+i18next.init({
+    fallbackLng: {
+        'nb': ['sv'],
+        'default': ['en']
+    }
 });
 
 const i18n = new VueI18Next(i18next);
