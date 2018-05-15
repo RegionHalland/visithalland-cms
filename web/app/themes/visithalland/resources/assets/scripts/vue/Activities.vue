@@ -20,7 +20,6 @@
             <div v-if="loading" class="block mb3">
                 <Shimmer :loading="loading"></Shimmer>
             </div>
-
             <header v-if="events_happenings && events_happenings.length && input" class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
@@ -31,7 +30,7 @@
                     {{ $t('today') }}
                 </div>
             </header>
-            <a :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
+            <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
                 <div class="activity inline-flex">
                     <div class="activity__img-container mr2">
                         <img :src="event.featured_image_src" class="activity__img" />
@@ -52,8 +51,7 @@
                 </div>
             </a>
 
-
-            <header  v-if="activities && activities.length && input" class="section-header inline-block coastal-living mb3">
+            <header v-if="activities && activities.length && input" class="section-header inline-block coastal-living mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#discover-icon"/>
@@ -63,7 +61,7 @@
                     {{ $t('experiences') }}
                 </div>
             </header>
-            <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
+            <router-link @click.native="gaTrack(activity)" v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
                 <div class="activity inline-flex">
                     <div class="activity__img-container mr2">
                         <img :src="activity.featured_image_src" class="activity__img" />
@@ -109,7 +107,6 @@ import axios from 'axios';
         },
         methods: {
             fetchData () {
-                console.log(this.input.date);
                 var vm = this;
                 // Fetch all events happenings
                 axios.get(
@@ -145,19 +142,13 @@ import axios from 'axios';
                         vm.loading = false;
                     });
             },
-            fetchImage(activityIndex, imageId){
-                var vm = this;
-                axios.get('/wp-json/wp/v2/media/'+imageId)
-                    .then(function (response) {
-                        var imgUrl = response.data.media_details.sizes["vh_thumbnail"].source_url;
-                        vm.activities[activityIndex].imgUrl = imgUrl;
-
-                        // TODO: This should not be needed
-                        vm.$forceUpdate()
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+            gaTrack(activity) {
+                this.$ga.event({
+                    eventCategory: 'Aktivitet | Event | Happening',
+                    eventAction: activity.type,
+                    eventLabel: activity.title.rendered,
+                    eventValue: activity.id
+                })
             }
         }
     }

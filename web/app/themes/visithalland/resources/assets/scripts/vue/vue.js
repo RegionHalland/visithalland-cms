@@ -69,7 +69,6 @@ Vue.use(VueAnalytics, {
     router,
     autoTracking: {
         pageviewTemplate(route) {
-            console.log(route);
             return {
                 page: "coastal-living/a-day-in-halland" + route.path,
                 title: document.name,
