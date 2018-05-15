@@ -34,7 +34,7 @@
                     {{ $t('nearYou') }}
                 </div>
             </header>
-            <a :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
+            <a v-on:click.capture="gaTrack(nearYou)" :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="nearYou.featured_image_src" class="result__img" />
@@ -101,7 +101,7 @@
                     {{ $t('upcomingHappenings') }}
                 </div>
             </header>
-            <a :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
+            <a v-on:click.capture="gaTrack(happening)" :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="happening.featured_image_src" class="result__img" />
