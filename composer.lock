@@ -946,15 +946,15 @@
         },
         {
             "name": "wpackagist-plugin/search-by-algolia-instant-relevant-results",
-            "version": "2.10.2",
+            "version": "2.11.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/search-by-algolia-instant-relevant-results/",
-                "reference": "tags/2.10.2"
+                "reference": "tags/2.11.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/search-by-algolia-instant-relevant-results.2.10.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/search-by-algolia-instant-relevant-results.2.11.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -980,7 +980,7 @@
             "version": "2.3.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807",
+                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3",
                 "reference": null,
                 "shasum": null
             },
@@ -991,7 +991,7 @@
             "version": "2.7.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6",
+                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3",
                 "reference": null,
                 "shasum": null
             },

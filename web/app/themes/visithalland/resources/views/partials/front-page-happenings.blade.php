@@ -17,6 +17,11 @@
             </div>
 
             @foreach($header_happenings as $key => $happening)
+
+                @php 
+                    $thumbnail_id = get_post_thumbnail_id($happening->ID);
+                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); 
+                @endphp
                 <div class="col col-12 sm-col-4 mt3">
                     <article class="happening-list-item {{ App::getTerms($happening)["terms_default_lang"]->slug }}">
                         <a href="{{ get_permalink($happening->ID) }}" title="{{ $happening->post_title }}" class="link-reset">
@@ -28,7 +33,7 @@
                                                 data-srcset="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
                                             <img class="happening-list-item__img lazyload"
                                                 data-src="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) }}"
-                                                alt="{{ get_field("cover_image")["alt"] }}"
+                                                alt="{{ $alt }}"
                                             />
                                         </picture>
                                     </div>
