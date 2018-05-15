@@ -980,7 +980,7 @@
             "version": "2.3.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3",
+                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807",
                 "reference": null,
                 "shasum": null
             },
@@ -991,7 +991,7 @@
             "version": "2.7.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3",
+                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6",
                 "reference": null,
                 "shasum": null
             },
@@ -1193,16 +1193,16 @@
         },
         {
             "name": "yoast/wordpress-seo",
-            "version": "7.4.2",
+            "version": "7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/wordpress-seo.git",
-                "reference": "df6774b5c2372e638c93cb175a44d190a9f7b15e"
+                "reference": "686bb4bdd108cc4dc51cf0ffc282607c984c0c4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/wordpress-seo/zipball/df6774b5c2372e638c93cb175a44d190a9f7b15e",
-                "reference": "df6774b5c2372e638c93cb175a44d190a9f7b15e",
+                "url": "https://api.github.com/repos/Yoast/wordpress-seo/zipball/686bb4bdd108cc4dc51cf0ffc282607c984c0c4d",
+                "reference": "686bb4bdd108cc4dc51cf0ffc282607c984c0c4d",
                 "shasum": ""
             },
             "require": {
@@ -1244,7 +1244,7 @@
                 "seo",
                 "wordpress"
             ],
-            "time": "2018-05-03T13:13:06+00:00"
+            "time": "2018-05-15T10:52:07+00:00"
         }
     ],
     "packages-dev": [
