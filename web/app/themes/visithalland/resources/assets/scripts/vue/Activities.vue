@@ -19,11 +19,11 @@
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content">
-            <div class="event-section px3 pb3">
-                <div v-if="loading" class="block mb3">
-                    <Shimmer :loading="loading"></Shimmer>
-                </div>
-                <header v-if="events_happenings && events_happenings.length && input" class="section-header inline-block coastal-living mb3">
+            <div v-if="loading" class="block px3 mb3">
+                <Shimmer :loading="loading"></Shimmer>
+            </div>
+            <div class="event-section px3 pb3" v-if="events_happenings && events_happenings.length && input">
+                <header class="section-header inline-block coastal-living mb3">
                     <div class="section-header__icon-wrapper">
                         <svg class="section-header__icon icon">
                             <use xlink:href="#calendar-icon"/>
@@ -54,8 +54,8 @@
                     </div>
                 </a>
             </div>
-            <div class="activity-section pb2 pt3 px3">
-                <header v-if="activities && activities.length && input" class="section-header inline-block coastal-living mb3">
+            <div class="activity-section pb2 px3" v-if="activities && activities.length && input">
+                <header class="section-header inline-block coastal-living mb3">
                     <div class="section-header__icon-wrapper">
                         <svg class="section-header__icon icon">
                             <use xlink:href="#discover-icon"/>
