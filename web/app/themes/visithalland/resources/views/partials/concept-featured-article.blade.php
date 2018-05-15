@@ -36,9 +36,9 @@
                                 <use xlink:href="#recommend-icon"/>
                             </svg>
                         </div>
-                        <div class="section-header__title">
+                        <span class="section-header__title light">
                             @php _e( 'Populärt just nu', 'visithalland' ); @endphp
-                        </div>
+                        </span>
                     </header>
                     {{-- Section Header End --}}
 

@@ -22,6 +22,7 @@
 
 .dh-banner__mockup {
 	max-width:90%;
+	max-height:500px;
 }
 
 
@@ -32,7 +33,7 @@
 	margin-bottom:$space-3;
 	line-height:1.1;
 	@media (min-width:$breakpoint-sm) {
-		font-size:$h1;
+		font-size:2.25rem;
 	}
 }
 
@@ -47,5 +48,5 @@
 	font-family:$rift-font-family;
 	font-size:0.8rem;
 	display:inline-block;
-	padding:$space-1 0.875rem;
+	padding:$space-1 0.75rem;
 }
