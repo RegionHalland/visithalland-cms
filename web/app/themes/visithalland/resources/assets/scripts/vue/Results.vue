@@ -90,7 +90,7 @@
             </a>
         </div>
 
-        <div class="result-section result__happenings px3" v-if="happeningsArray && happeningsArray.length && input">
+        <div class="result-section result__happenings px3 pt3" v-if="happeningsArray && happeningsArray.length && input">
             <header class="section-header inline-block coastal-living mt2 mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">

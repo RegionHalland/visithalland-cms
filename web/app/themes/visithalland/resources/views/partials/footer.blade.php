@@ -7,7 +7,7 @@
 
             <!-- Footer Site Info Start -->
             <div class="footer__column col col-12 sm-col-9 md-col-5">
-                <img src="@asset('images/logo.svg')" />
+                <img class="mb2" src="@asset('images/logo-horizontal.svg')" />
                 <p class="footer__intro light mt1">{{ bloginfo('description') }}</p>
                 <div class="footer-contact mt4">
                     <a href="mailto:info@visithalland.com" target="_blank" class="footer-contact__a light">
