@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	
 	@if (get_field('campaign_toggle'))
-		@include('partials.front-page-campaign')
+		@include('partials.campaign')
     @else 
 		@include('partials.front-page-hero')
     @endif

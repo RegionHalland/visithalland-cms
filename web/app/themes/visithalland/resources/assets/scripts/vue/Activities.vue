@@ -2,11 +2,13 @@
     {
         "en": {
             "choose": "Choose alternative",
+            "visit": "Go to site",
             "experiences": "Experiences",
             "today": "Happening today"
         },
         "sv": {
             "choose": "Välj alternativ",
+            "visit": "Gå till webbplats",
             "experiences": "Upplevelser",
             "today": "Händer idag"
         }
@@ -16,73 +18,74 @@
 <template>
     <div class="card">
 	    <Navigation :input="input" prev-route="time"></Navigation>
-	    <div class="card__content px3">
-            <div v-if="loading" class="block mb3">
+	    <div class="card__content">
+            <div v-if="loading" class="block px3 mb3">
                 <Shimmer :loading="loading"></Shimmer>
             </div>
-
-            <header v-if="events_happenings && events_happenings.length && input" class="section-header inline-block coastal-living mb3">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#calendar-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
-                    {{ $t('today') }}
-                </div>
-            </header>
-            <a :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
-                <div class="activity inline-flex">
-                    <div class="activity__img-container mr2">
-                        <img :src="event.featured_image_src" class="activity__img" />
+            <div class="event-section px3 pb3" v-if="events_happenings && events_happenings.length && input">
+                <header class="section-header inline-block coastal-living mb3">
+                    <div class="section-header__icon-wrapper">
+                        <svg class="section-header__icon icon">
+                            <use xlink:href="#calendar-icon"/>
+                        </svg>
                     </div>
-                    <div class="activity__content">
-                        <h2 class="activity__title" v-html="event.title.rendered"></h2>
-                        <div class="read-more mt1">
-                            <span class="read-more__text">
-                                {{ $t('choose') }}
-                            </span>
-                            <div class="read-more__button">
-                                <svg class="read-more__icon">
-                                    <use xlink:href="#arrow-right-icon"/>
-                                </svg>
+                    <div class="section-header__title">
+                        {{ $t('today') }}
+                    </div>
+                </header>
+                <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
+                    <div class="activity inline-flex">
+                        <div class="activity__img-container mr2">
+                            <img :src="event.featured_image_src" class="activity__img" />
+                        </div>
+                        <div class="activity__content">
+                            <h2 class="activity__title" v-html="event.title.rendered"></h2>
+                            <div class="read-more mt1">
+                                <span class="read-more__text">
+                                    {{ $t('visit') }}
+                                </span>
+                                <div class="read-more__button">
+                                    <svg class="read-more__icon">
+                                        <use xlink:href="#arrow-right-icon"/>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-
-
-            <header  v-if="activities && activities.length && input" class="section-header inline-block coastal-living mb3">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#discover-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
-                    {{ $t('experiences') }}
-                </div>
-            </header>
-            <router-link v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
-                <div class="activity inline-flex">
-                    <div class="activity__img-container mr2">
-                        <img :src="activity.featured_image_src" class="activity__img" />
+                </a>
+            </div>
+            <div class="activity-section pb2 px3" v-if="activities && activities.length && input">
+                <header class="section-header inline-block coastal-living mb3">
+                    <div class="section-header__icon-wrapper">
+                        <svg class="section-header__icon icon">
+                            <use xlink:href="#discover-icon"/>
+                        </svg>
                     </div>
-                    <div class="activity__content">
-                        <h2 class="activity__title">{{ activity.title.rendered }}</h2>
-                        <div class="read-more mt1">
-                            <span class="read-more__text">
-                                {{ $t('choose') }}
-                            </span>
-                            <div class="read-more__button">
-                                <svg class="read-more__icon">
-                                    <use xlink:href="#arrow-right-icon"/>
-                                </svg>
+                    <div class="section-header__title">
+                        {{ $t('experiences') }}
+                    </div>
+                </header>
+                <router-link @click.native="gaTrack(activity)" v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
+                    <div class="activity inline-flex">
+                        <div class="activity__img-container mr2">
+                            <img :src="activity.featured_image_src" class="activity__img" />
+                        </div>
+                        <div class="activity__content">
+                            <h2 class="activity__title">{{ activity.title.rendered }}</h2>
+                            <div class="read-more mt1">
+                                <span class="read-more__text">
+                                    {{ $t('choose') }}
+                                </span>
+                                <div class="read-more__button">
+                                    <svg class="read-more__icon">
+                                        <use xlink:href="#arrow-right-icon"/>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </router-link>
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -109,7 +112,6 @@ import axios from 'axios';
         },
         methods: {
             fetchData () {
-                console.log(this.input.date);
                 var vm = this;
                 // Fetch all events happenings
                 axios.get(
@@ -145,19 +147,13 @@ import axios from 'axios';
                         vm.loading = false;
                     });
             },
-            fetchImage(activityIndex, imageId){
-                var vm = this;
-                axios.get('/wp-json/wp/v2/media/'+imageId)
-                    .then(function (response) {
-                        var imgUrl = response.data.media_details.sizes["vh_thumbnail"].source_url;
-                        vm.activities[activityIndex].imgUrl = imgUrl;
-
-                        // TODO: This should not be needed
-                        vm.$forceUpdate()
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+            gaTrack(activity) {
+                this.$ga.event({
+                    eventCategory: 'Aktivitet | Event | Happening',
+                    eventAction: activity.type,
+                    eventLabel: activity.title.rendered,
+                    eventValue: activity.id
+                })
             }
         }
     }

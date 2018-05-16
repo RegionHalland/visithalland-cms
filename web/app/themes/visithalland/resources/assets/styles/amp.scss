@@ -4,6 +4,8 @@
 // Mixins
 @import 'mixins/spacing';
 @import 'mixins/palette';
+
+//View for optimization as probably file shrinks considerably when removed
 @import 'mixins/themes';
 
 // Base

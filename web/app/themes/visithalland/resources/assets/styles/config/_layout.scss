@@ -1,4 +1,3 @@
-
 .inline        { display: inline }
 .block         { display: block }
 .inline-block  { display: inline-block }
@@ -33,7 +32,6 @@
 	@media print { display: none; }
 }
 
-// Screen Reader only
 .sr-only {
     clip: rect(0px, 0px, 0px, 0px);
     position: absolute;

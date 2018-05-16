@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueGeolocation from 'vue-browser-geolocation';
 import VueisOffLine from 'vue-isoffline';
+import VueAnalytics from 'vue-analytics'
 import '../autoload/icons';
 
 // Used to detect language
@@ -24,9 +25,13 @@ Vue.use(VueRouter);
 Vue.use(VueGeolocation);
 Vue.use(VueisOffLine);
 Vue.use(VueI18Next);
-
 i18next.use(LngDetector);
-    i18next.init({
+i18next.init({
+    fallbackLng: {
+        'nb': ['sv'],
+        'nn': ['sv'],
+        'default': ['en']
+    }
 });
 
 const i18n = new VueI18Next(i18next);
@@ -55,6 +60,22 @@ const routes = [
 const router = new VueRouter({
     routes, // short for `routes: routes`
     //mode: 'history'
+})
+
+// Add analytics page tracking
+Vue.use(VueAnalytics, {
+    id: 'UA-89278649-4',
+    checkDuplicatedScript: true,
+    router,
+    autoTracking: {
+        pageviewTemplate(route) {
+            return {
+                page: "coastal-living/a-day-in-halland" + route.path,
+                title: document.name,
+                location: "coastal-living/a-day-in-halland" + route.path
+            }
+        }
+    }
 })
 
 // 4. Create and mount the root instance.

@@ -1,8 +1,8 @@
 @php $header_happenings = App::getHappenings(3) @endphp
 
     @if(is_array($header_happenings))
-    <section class="landing-happenings container clearfix mt3 col-11 md-col-10 lg-col-10 mx-auto">
-            <div class="landing-happenings__header py3 flex justify-between items-center ">
+    <section class="front-page-happenings container clearfix mt3 col-11 md-col-10 lg-col-10 mx-auto">
+            <div class="front-page-happenings__header py3 flex justify-between items-center ">
                 <header class="section-header inline-block coastal-living">
                     <div class="section-header__icon-wrapper">
                         <svg class="section-header__icon icon">
@@ -17,6 +17,11 @@
             </div>
 
             @foreach($header_happenings as $key => $happening)
+
+                @php 
+                    $thumbnail_id = get_post_thumbnail_id($happening->ID);
+                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); 
+                @endphp
                 <div class="col col-12 sm-col-4 mt3">
                     <article class="happening-list-item {{ App::getTerms($happening)["terms_default_lang"]->slug }}">
                         <a href="{{ get_permalink($happening->ID) }}" title="{{ $happening->post_title }}" class="link-reset">
@@ -28,7 +33,7 @@
                                                 data-srcset="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
                                             <img class="happening-list-item__img lazyload"
                                                 data-src="{{ get_the_post_thumbnail_url( $happening->ID, 'vh_thumbnail' ) }}"
-                                                alt="{{ get_field("cover_image")["alt"] }}"
+                                                alt="{{ $alt }}"
                                             />
                                         </picture>
                                     </div>

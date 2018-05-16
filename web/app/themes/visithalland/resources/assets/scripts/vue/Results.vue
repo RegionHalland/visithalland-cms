@@ -34,7 +34,7 @@
                     {{ $t('nearYou') }}
                 </div>
             </header>
-            <a :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
+            <a v-on:click.capture="gaTrack(nearYou)" :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="nearYou.featured_image_src" class="result__img" />
@@ -67,7 +67,7 @@
                     {{ $t('destinations') }}
                 </div>
             </header>
-            <a :href="link.link" class="block mb3" target="_blank" v-for="link in allArray" :key="link.id">
+            <a v-on:click.capture="gaTrack(link)" :href="link.link" class="block mb3" target="_blank" v-for="link in allArray" :key="link.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="link.featured_image_src" class="result__img" />
@@ -90,7 +90,7 @@
             </a>
         </div>
 
-        <div class="result-section result__happenings px3" v-if="happeningsArray && happeningsArray.length && input">
+        <div class="result-section result__happenings px3 pt3" v-if="happeningsArray && happeningsArray.length && input">
             <header class="section-header inline-block coastal-living mt2 mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
@@ -101,7 +101,7 @@
                     {{ $t('upcomingHappenings') }}
                 </div>
             </header>
-            <a :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
+            <a v-on:click.capture="gaTrack(happening)" :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
                 <div class="result inline-flex hiking-biking">
                     <div class="result__img-container mr2">
                         <img :src="happening.featured_image_src" class="result__img" />
@@ -149,9 +149,7 @@ import axios from "axios";
         methods: {
             fetchPost(){
                 var vm = this;
-                axios
-                    .get(
-                        '/wp-json/visit/v1/activity', {
+                axios.get('/wp-json/visit/v1/activity', {
                             params: {
                                 "activityId": this.input.activity.id,
                                 "date": this.input.date,
@@ -170,6 +168,15 @@ import axios from "axios";
                         console.log(error);
                         vm.loading = false;
                     });
+            },
+            gaTrack(link) {
+                console.log("link track", link, this)
+                this.$ga.event({
+                    eventCategory: 'ResultClick',
+                    eventAction: "Click",
+                    eventLabel: link.title.rendered,
+                    eventValue: link.id
+                })
             }
         }
     }

@@ -24,7 +24,7 @@
             <button class="btn center mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">
                 {{ $t('allowBtn') }}
             </button>
-            <router-link :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">
+            <router-link @click.native="gaTrack()" :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">
                 <div class="read-more mt3">
                     <span class="read-more__text">
                         {{ $t('continueWithoutLocationButton') }}
@@ -49,13 +49,26 @@
             }
         },
         methods: {
+            gaTrack() {
+                this.$ga.event({
+                    eventCategory: 'Button',
+                    eventAction: 'Användning av platsinformation',
+                    eventLabel: 'Blockera',
+                    eventValue: 0
+                })
+            },
             askForLocation () {
                 this.loading = true;
                 this.$getLocation()
                     .then(coordinates => {
-                        console.log(coordinates);
-                        // TODO: replace object below with coordinates var
+                        // TODO: Send to analytics and our location api
                         this.loading = false;
+                        this.$ga.event({
+                            eventCategory: 'Button',
+                            eventAction: 'Användning av platsinformation',
+                            eventLabel: 'Tillåt',
+                            eventValue: 1
+                        })
                         return this.$router.push({ name: "time", params: {input: {userLocation: {lat: coordinates.lat, lng: coordinates.lng }} }});
                     });
             }

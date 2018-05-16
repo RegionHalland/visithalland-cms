@@ -136,4 +136,22 @@ add_action('rest_api_init', function () {
 add_filter('wpseo_prev_rel_link', '__return_empty_string');
 add_filter('wpseo_next_rel_link', '__return_empty_string');
 
+/* Only show certain search results */
+add_filter('pre_get_posts', function ($query)
+{
+    if ($query->is_search && !is_admin()) {
+        $query->set('post_type', array(
+            'places',
+            'meet_local',
+            'editor_tip',
+            'trip',
+            'happening',
+            'places',
+            'companies',
+        ));
+    }
 
+    return $query;
+});
+
+//add_filter('pre_get_posts', 'searchfilter');
