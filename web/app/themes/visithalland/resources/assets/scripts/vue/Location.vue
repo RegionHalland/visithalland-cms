@@ -82,7 +82,7 @@ import axios from 'axios';
                                 return obj.types == "postal_town"
                             });
 
-                            //Save to analytics
+                            //Save to ga
                             vm.$ga.event({
                                 eventCategory: 'Location',
                                 eventAction: postal_town[0].long_name,
