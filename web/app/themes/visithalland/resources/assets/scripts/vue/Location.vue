@@ -53,8 +53,7 @@
                 this.$ga.event({
                     eventCategory: 'Button',
                     eventAction: 'Användning av platsinformation',
-                    eventLabel: 'Blockera',
-                    eventValue: 0
+                    eventLabel: 'Blockera'
                 })
             },
             askForLocation () {
@@ -66,8 +65,7 @@
                         this.$ga.event({
                             eventCategory: 'Button',
                             eventAction: 'Användning av platsinformation',
-                            eventLabel: 'Tillåt',
-                            eventValue: 1
+                            eventLabel: 'Tillåt'
                         })
                         return this.$router.push({ name: "time", params: {input: {userLocation: {lat: coordinates.lat, lng: coordinates.lng }} }});
                     });

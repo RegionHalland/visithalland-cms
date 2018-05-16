@@ -100,8 +100,7 @@ import { format, addDays } from 'date-fns';
                 this.$ga.event({
                     eventCategory: 'Button',
                     eventAction: 'Tid',
-                    eventLabel: trackDay,
-                    eventValue: date.id
+                    eventLabel: trackDay
                 })
             },
         }
