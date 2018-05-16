@@ -3,6 +3,18 @@ use App\Visithalland\CalendarClient;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+function vh_get_location_by_coordinates(WP_REST_Request $request)
+{
+    $lat = $request['lat'];
+    $lng = $request['lng'];
+
+    $c = new CalendarClient();
+    return $c->getAdressComponentsByCoordinates(array(
+        "lat" => $lat,
+        "lng" => $lng
+    ));
+}
+
 function vh_get_events_happenings_by_date(WP_REST_Request $request)
 {
     $date = $request['date'];

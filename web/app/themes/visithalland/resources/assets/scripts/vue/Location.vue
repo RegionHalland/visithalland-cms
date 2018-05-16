@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import axios from 'axios';
     export default {
         props: ["input"],
         data: () => {
@@ -57,7 +58,9 @@
                 })
             },
             askForLocation () {
+                var vm = this;
                 this.loading = true;
+
                 this.$getLocation()
                     .then(coordinates => {
                         // TODO: Send to analytics and our location api
@@ -67,7 +70,31 @@
                             eventAction: 'Användning av platsinformation',
                             eventLabel: 'Tillåt'
                         })
-                        return this.$router.push({ name: "time", params: {input: {userLocation: {lat: coordinates.lat, lng: coordinates.lng }} }});
+
+                        axios.post('/wp-json/visit/v1/location_by_coordinates', {
+                                "lat": coordinates.lat,
+                                "lng": coordinates.lng
+                            }
+                        )
+                        .then(function (response) {
+                            console.log(response.data.address_components);
+                            var address_components = response.data.address_components;
+                            var postal_town = address_components.filter(function( obj, k ) {
+                                return obj.types == "postal_town"
+                            });
+
+                            //Save to analytics
+                            console.log("postal_town", postal_town[0].long_name)
+                            vm.$ga.event({
+                                eventCategory: 'Location',
+                                eventAction: postal_town[0].long_name,
+                                eventLabel: coordinates.lat + ":" + coordinates.lng
+                            })
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
                     });
             }
         }
