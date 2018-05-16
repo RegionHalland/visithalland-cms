@@ -44,13 +44,13 @@ const i18n = new VueI18Next(i18next);
 const routes = [
     {
         path: '/', component: Progress, name: "progress", props: true, children:
-        [
-            { path: '', component: Home, name: "home", meta: {order: 1, title: "Få inspiration" }, props: true },
-            { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "location" }, props: true },
-            { path: 'time', component: Time, name: "time", meta: {order: 3, title: "time" }, props: true },
-            { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "activities" }, props: true },
-            { path: 'results', component: Results, name: "results", meta: { order: 5, title: "results" }, props: true }
-        ]
+            [
+                { path: '', component: Home, name: "home", meta: { order: 1, title: "Få inspiration" }, props: true },
+                { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "location" }, props: true },
+                { path: 'time', component: Time, name: "time", meta: { order: 3, title: "time" }, props: true },
+                { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "activities" }, props: true },
+                { path: 'results', component: Results, name: "results", meta: { order: 5, title: "results" }, props: true }
+            ]
     },
 ]
 
@@ -59,7 +59,8 @@ const routes = [
 // keep it simple for now.
 const router = new VueRouter({
     routes, // short for `routes: routes`
-    //mode: 'history'
+    base: "/coastal-living/a-day-in-halland",
+    mode: 'history'
 })
 
 // Add analytics page tracking
@@ -69,9 +70,12 @@ Vue.use(VueAnalytics, {
     router,
     autoTracking: {
         pageviewTemplate(route) {
+            console.log("page:", router.options.base + route.path);
+            console.log("title:", route.name);
+            console.log("location:", router.options.base + route.path);
             return {
                 page: "coastal-living/a-day-in-halland" + route.path,
-                title: document.name,
+                title: route.name,
                 location: "coastal-living/a-day-in-halland" + route.path
             }
         }
