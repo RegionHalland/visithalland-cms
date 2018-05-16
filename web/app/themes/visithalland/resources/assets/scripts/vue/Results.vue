@@ -174,8 +174,7 @@ import axios from "axios";
                 this.$ga.event({
                     eventCategory: 'ResultClick',
                     eventAction: "Click",
-                    eventLabel: link.title.rendered,
-                    eventValue: link.id
+                    eventLabel: link.title.rendered
                 })
             }
         }

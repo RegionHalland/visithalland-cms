@@ -151,8 +151,7 @@ import axios from 'axios';
                 this.$ga.event({
                     eventCategory: 'Aktivitet | Event | Happening',
                     eventAction: activity.type,
-                    eventLabel: activity.title.rendered,
-                    eventValue: activity.id
+                    eventLabel: activity.title.rendered
                 })
             }
         }
