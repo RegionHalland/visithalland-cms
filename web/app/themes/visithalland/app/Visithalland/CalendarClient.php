@@ -196,8 +196,23 @@ class CalendarClient
         }
 
         return null;
+    }
 
+    public function getAdressComponentsByCoordinates(Array $coordinates)
+    {
+        if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
+        $client = new Client();
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=AIzaSyDat-2hNlZNccIJfnXPqPmzsxzXb0ZjYd0');
+        $responseArray = json_decode($response->getBody());
+
+        if (isset($responseArray->results[0])) {
+            return array(
+                "address_components" => $responseArray->results[0]->address_components,
+            );
+        }
+
+        return null;
     }
 }
 

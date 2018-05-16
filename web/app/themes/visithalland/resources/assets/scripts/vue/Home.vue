@@ -15,6 +15,6 @@
 
 <script>
     export default {
-        props: ["input"],
+        props: ["input"]
     }
 </script>
