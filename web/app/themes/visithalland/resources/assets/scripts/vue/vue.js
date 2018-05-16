@@ -76,7 +76,7 @@ Vue.use(VueAnalytics, {
             return {
                 page: "coastal-living/a-day-in-halland" + route.path,
                 title: route.name,
-                location: "coastal-living/a-day-in-halland" + route.path
+                location: window.location.href
             }
         }
     }
