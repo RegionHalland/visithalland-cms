@@ -64,7 +64,6 @@ import axios from 'axios';
                 this.$getLocation()
                     .then(coordinates => {
                         // TODO: Send to analytics and our location api
-                        this.loading = false;
                         this.$ga.event({
                             eventCategory: 'Button',
                             eventAction: 'Användning av platsinformation',
@@ -77,14 +76,13 @@ import axios from 'axios';
                             }
                         )
                         .then(function (response) {
-                            console.log(response.data.address_components);
+                            this.loading = false;
                             var address_components = response.data.address_components;
                             var postal_town = address_components.filter(function( obj, k ) {
                                 return obj.types == "postal_town"
                             });
 
                             //Save to analytics
-                            console.log("postal_town", postal_town[0].long_name)
                             vm.$ga.event({
                                 eventCategory: 'Location',
                                 eventAction: postal_town[0].long_name,

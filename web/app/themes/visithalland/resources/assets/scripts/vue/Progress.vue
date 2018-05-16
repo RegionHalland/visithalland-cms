@@ -24,9 +24,6 @@
                 transitionName: ""
             }
         },
-        created () {
-            console.log(this.$router.history.current.meta.order);
-        },
         beforeRouteUpdate (to, from, next) {
             this.currentRouteCount = to.meta.order
 

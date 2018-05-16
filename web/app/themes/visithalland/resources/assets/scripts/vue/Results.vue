@@ -170,7 +170,6 @@ import axios from "axios";
                     });
             },
             gaTrack(link) {
-                console.log("link track", link, this)
                 this.$ga.event({
                     eventCategory: 'ResultClick',
                     eventAction: "Click",
