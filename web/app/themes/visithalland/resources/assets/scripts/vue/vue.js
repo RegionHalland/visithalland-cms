@@ -67,12 +67,9 @@ const router = new VueRouter({
 Vue.use(VueAnalytics, {
     id: 'UA-89278649-4',
     checkDuplicatedScript: true,
-    router,
+    router, 
     autoTracking: {
         pageviewTemplate(route) {
-            console.log("page:", router.options.base + route.path);
-            console.log("title:", route.name);
-            console.log("location:", router.options.base + route.path);
             return {
                 page: "coastal-living/a-day-in-halland" + route.path,
                 title: route.name,
