@@ -76,7 +76,7 @@ import axios from 'axios';
                             }
                         )
                         .then(function (response) {
-                            this.loading = false;
+                            vm.loading = false;
                             var address_components = response.data.address_components;
                             var postal_town = address_components.filter(function( obj, k ) {
                                 return obj.types == "postal_town"
@@ -88,6 +88,8 @@ import axios from 'axios';
                                 eventAction: postal_town[0].long_name,
                                 eventLabel: coordinates.lat + ":" + coordinates.lng
                             })
+
+                            return vm.$router.push({ name: "time", params: {input: {userLocation: {lat: coordinates.lat, lng: coordinates.lng }} }});
 
                         })
                         .catch(function (error) {
