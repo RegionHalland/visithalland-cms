@@ -25,6 +25,11 @@ add_action('rest_api_init', function () {
         'callback' => 'vh_get_events_happenings_by_date'
     ));
 
+    // Register route - get municipio events and happenings to our event post
+    register_rest_route('visit/v1', 'location_by_coordinates', array(
+        'methods' => 'POST',
+        'callback' => 'vh_get_location_by_coordinates'
+    ));
 
     // Register route - get all activites in current language
     register_rest_route('visit/v1', 'activities', array(
