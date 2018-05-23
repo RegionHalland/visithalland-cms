@@ -9204,9 +9204,9 @@ vue-analytics@^5.10.6:
   version "5.10.6"
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.10.6.tgz#49b1a1de634ea9ca6be573dde88028124bbdcad8"
 
-vue-browser-geolocation@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vue-browser-geolocation/-/vue-browser-geolocation-1.0.1.tgz#2d9aa21c0bf787a61144cad340b0fd57ae4762cf"
+vue-browser-geolocation@^1.0.3:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vue-browser-geolocation/-/vue-browser-geolocation-1.1.1.tgz#cecfdfbbb9a0132ce87f341f20c66c0d7e082d1e"
   dependencies:
     vue "^2.0.1"
 

@@ -60,9 +60,12 @@ import axios from 'axios';
             askForLocation () {
                 var vm = this;
                 this.loading = true;
-
-                this.$getLocation()
+                
+                    this.$getLocation({
+                        timeout: 5000, //defaults to 0
+                    })
                     .then(coordinates => {
+                        console.log(coordinates);
                         // TODO: Send to analytics and our location api
                         this.$ga.event({
                             eventCategory: 'Button',
@@ -78,6 +81,10 @@ import axios from 'axios';
                         .then(function (response) {
                             vm.loading = false;
                             var address_components = response.data.address_components;
+                            
+                            // If we get no adress we use default coords
+                            if(!address_components) return vm.$router.push({ name: "time", params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}} });
+                            
                             var postal_town = address_components.filter(function( obj, k ) {
                                 return obj.types == "postal_town"
                             });
@@ -93,9 +100,19 @@ import axios from 'axios';
 
                         })
                         .catch(function (error) {
-                            console.log(error);
+                            console.log("err", error);
                         });
-                    });
+
+                    })
+                    .catch(function(error){
+                        console.log("myerr", error)
+                        vm.$ga.event({
+                            eventCategory: 'Button',
+                            eventAction: 'Användning av platsinformation',
+                            eventLabel: 'Kunde inte hämta information '
+                        })
+                        return vm.$router.push({ name: "time", params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}} });
+                    });;
             }
         }
     }
