@@ -11,6 +11,8 @@ web/app/uploads/*
 # Cache
 web/app/cache
 web/app/ewww
+web/app/cache/*
+!web/app/cache/.gitkeep
 
 # WordPress
 web/wp

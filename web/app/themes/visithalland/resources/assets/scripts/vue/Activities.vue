@@ -105,6 +105,7 @@ import axios from 'axios';
         created () {
             // If we are missing user input redirect the user back to the first page
             if(!this.input) return this.$router.push({ name: "location"})
+                
             this.currentLang = this.$i18n.i18next.language == "sv" ? "" : 'en';
             // Fetch activities
             this.fetchData()
