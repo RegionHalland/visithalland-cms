@@ -13,6 +13,9 @@
             <div class="section-header__title">
                 @php _e( 'Upptäck det bästa av Halland', 'visithalland' ); @endphp
             </div>
+            <div class="section-header__title">
+                @php _e( 'Upptäck det bästa av Halland', 'visithalland' ); @endphp
+            </div>
         </header>
         <div class="featured-grid clearfix">
             @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
