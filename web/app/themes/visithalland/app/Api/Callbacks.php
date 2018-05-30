@@ -3,6 +3,21 @@ use App\Visithalland\CalendarClient;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+function vh_get_cookie_policy(WP_REST_Request $request) {
+    $current_lang = $request['lang'];
+    if($current_lang) {
+        global $sitepress;
+        $sitepress->switch_lang("en");
+    }
+
+    return rest_ensure_response(array(
+        "cookie_policy" => get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID,'page' )),
+        "cookie_page_url" => get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )),
+        "cookie_user_agreement_text" => __( 'Se användningsvillkor', 'visithalland' ),
+        "cookie_close_button_text" => __( 'Stäng', 'visithalland' )
+    ));
+}
+
 function vh_get_location_by_coordinates(WP_REST_Request $request)
 {
     $lat = $request['lat'];

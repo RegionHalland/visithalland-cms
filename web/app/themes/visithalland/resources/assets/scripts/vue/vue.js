@@ -18,9 +18,11 @@ import Activities from './Activities.vue';
 import Results from './Results.vue';
 import Navigation from './Navigation.vue';
 import Shimmer from './Shimmer.vue';
+import CookieNotice from './CookieNotice.vue';
 
 Vue.component('Shimmer', Shimmer);
 Vue.component('Navigation', Navigation);
+Vue.component('CookieNotice', CookieNotice);
 Vue.use(VueRouter);
 Vue.use(VueGeolocation);
 Vue.use(VueisOffLine);

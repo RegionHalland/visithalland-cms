@@ -30,6 +30,7 @@
 @import 'components/icon-button';
 @import 'components/topographic-pattern';
 @import 'components/section-header';
+@import 'cookies/cookies';
 
 
 //Components used for a day in halland only
@@ -55,4 +56,11 @@ html {
 body {
     height: 100%;
     overflow: auto;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
