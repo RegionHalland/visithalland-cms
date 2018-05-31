@@ -10,7 +10,7 @@ use Roots\Sage\Template\BladeProvider;
 /**
  * Import ACF-fields
  */
-//new \App\Acf\Import();
+new \App\Acf\Import();
 
 /**
  * Theme assets
