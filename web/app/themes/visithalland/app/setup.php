@@ -8,9 +8,9 @@ use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
 /**
- * Import ACF-fields
+ * TODO: Import ACF-fields
  */
-new \App\Acf\Import();
+//new \App\Acf\Import();
 
 /**
  * Theme assets
