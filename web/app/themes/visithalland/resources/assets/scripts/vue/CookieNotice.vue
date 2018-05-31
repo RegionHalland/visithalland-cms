@@ -40,7 +40,6 @@
         	if (!Cookies.get('cookie_consent')) {
         		// Wait for language detection to init before we continue
         		this.$i18n.i18next.on('initialized', () => {
-        			console.log("current lang", this.$i18n.i18next.isInitialized);
         			this.currentLang = this.$i18n.i18next.language == "sv" ? "" : "en";
         			return this.getCookieString();
         		})
@@ -56,7 +55,6 @@
         		// Fetch the cookie policy string and meta-data from the API
         		axios.get('/wp-json/visit/v1/cookie_policy?lang='+this.currentLang)
 				.then((response) => {
-					console.log(response);
 					var cookieData = response.data;
 
 					this.cookiePolicy = cookieData.cookie_policy;

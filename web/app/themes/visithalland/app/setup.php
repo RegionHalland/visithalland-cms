@@ -8,6 +8,11 @@ use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
 /**
+ * Import ACF-fields
+ */
+//new \App\Acf\Import();
+
+/**
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
