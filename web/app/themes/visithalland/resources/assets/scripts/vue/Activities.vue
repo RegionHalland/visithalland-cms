@@ -30,6 +30,7 @@
                         </svg>
                     </div>
                     <div class="section-header__title">
+                        {{event.meta_fields.external_link}}
                         {{ $t('today') }}
                     </div>
                 </header>
@@ -135,6 +136,9 @@ import axios from 'axios';
                         '/wp-json/visit/v1/activities', {
                             params: {
                                 "lang": this.currentLang,
+                                "user_location_lat": this.input.userLocation.lat,
+                                "user_location_lng": this.input.userLocation.lng,
+                                "date": this.input.date
                             }
                         }
                     )
