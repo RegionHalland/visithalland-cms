@@ -172,7 +172,7 @@
             0 => array(
                 'param' => 'post_template',
                 'operator' => '==',
-                'value' => 'default',
+                'value' => 'views/all-weekend-activites.blade.php',
             ),
         ),
     ),
