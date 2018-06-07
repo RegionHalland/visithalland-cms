@@ -34,8 +34,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "d\/m\/Y",
+                    "display_format": "Ymd",
+                    "return_format": "Ymd",
                     "first_day": 1
                 },
                 {
@@ -51,8 +51,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "d\/m\/Y",
+                    "display_format": "Ymd",
+                    "return_format": "Ymd",
                     "first_day": 1
                 },
                 {
@@ -88,12 +88,38 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "post_type": [],
+                                    "post_type": [
+                                        "companies",
+                                        "happening",
+                                        "meet_local",
+                                        "trip",
+                                        "editor_tip",
+                                        "places"
+                                    ],
                                     "taxonomy": [],
-                                    "allow_null": 0,
+                                    "allow_null": 1,
                                     "multiple": 0,
                                     "return_format": "object",
                                     "ui": 1
+                                },
+                                {
+                                    "key": "field_5b192f64bebdd",
+                                    "label": "Fullbred",
+                                    "name": "fullsize",
+                                    "type": "true_false",
+                                    "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Fullbred",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
                                 }
                             ],
                             "min": "",
@@ -106,10 +132,29 @@
                             "display": "row",
                             "sub_fields": [
                                 {
-                                    "key": "field_5b18e66ce782c",
-                                    "label": "L\u00e4nk",
-                                    "name": "link",
-                                    "type": "group",
+                                    "key": "field_5b192fd0bebde",
+                                    "label": "Fullbred",
+                                    "name": "fullsize",
+                                    "type": "true_false",
+                                    "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Fullbred",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_5b1936bea4606",
+                                    "label": "Titel",
+                                    "name": "title",
+                                    "type": "text",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -118,87 +163,70 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "layout": "block",
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_5b18e6a2e782d",
-                                            "label": "Titel",
-                                            "name": "title",
-                                            "type": "text",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "placeholder": "",
-                                            "prepend": "",
-                                            "append": "",
-                                            "maxlength": ""
-                                        },
-                                        {
-                                            "key": "field_5b18e6d7e782e",
-                                            "label": "Beskrivning",
-                                            "name": "description",
-                                            "type": "textarea",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "placeholder": "",
-                                            "maxlength": "",
-                                            "rows": -12,
-                                            "new_lines": ""
-                                        },
-                                        {
-                                            "key": "field_5b18e752e782f",
-                                            "label": "Bild",
-                                            "name": "image",
-                                            "type": "image",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "return_format": "array",
-                                            "preview_size": "thumbnail",
-                                            "library": "all",
-                                            "min_width": "",
-                                            "min_height": "",
-                                            "min_size": "",
-                                            "max_width": "",
-                                            "max_height": "",
-                                            "max_size": "",
-                                            "mime_types": ""
-                                        },
-                                        {
-                                            "key": "field_5b18e761e7830",
-                                            "label": "L\u00e4nk",
-                                            "name": "link",
-                                            "type": "url",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "placeholder": ""
-                                        }
-                                    ]
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5b1936c6a4607",
+                                    "label": "Beskrivning",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": 2,
+                                    "new_lines": ""
+                                },
+                                {
+                                    "key": "field_5b1936d9a4608",
+                                    "label": "Bild",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                },
+                                {
+                                    "key": "field_5b1936e9a4609",
+                                    "label": "L\u00e4nk",
+                                    "name": "url",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
                                 }
                             ],
                             "min": "",
