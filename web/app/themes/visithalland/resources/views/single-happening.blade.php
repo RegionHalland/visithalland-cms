@@ -29,7 +29,7 @@
                                 </section>
                                 <section class="happening-info__section col col-12 sm-col-4">
                                     <span class="happening-info__section-label">@php _e( 'Plats', 'visithalland' ) @endphp</span>
-                                    <a href="http://www.google.com/maps/place/{{ get_field("location")['lat'] . "," . get_field("location")['lng'] }}" class="happening-info__a inline-block">
+                                    <a target="_blank" href="http://www.google.com/maps/place/{{ get_field("location")['lat'] . "," . get_field("location")['lng'] }}" class="happening-info__a inline-block">
                                         <svg class="icon happening-info__icon">
                                             <use xlink:href="#pin-icon"/>
                                         </svg>
@@ -38,7 +38,7 @@
                                 </section>
                                 <section class="happening-info__section col col-12 sm-col-4">
                                     @if(get_field("external_link"))
-                                        <a href="{{ get_field("external_link") }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
+                                        <a target="_blank" href="{{ get_field("external_link") }}" class="btn btn--primary inline-block">{{ _e('Gå till webbplats', 'visithalland') }}</a>
                                     @endif
                                 </section>
                             </div>

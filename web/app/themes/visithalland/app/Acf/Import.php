@@ -28,23 +28,10 @@ class Import
 				    'group_58ca966c25a5a',
 				    'group_58aeb92ed11fa',
 				    'group_58aebbeb1d5a1',
-				    // Eng fields below
-				    'group_5add79aeb25ec',
-				    'group_5aaf622228eac',
-				    'group_5a841970c7a65',
-				    'group_5acb5974b41d4',
-				    'group_5a841975e2e00',
-				    'group_5a84197347045',
-				    'group_5a8418857ce98',
-				    'group_5a84196e0fec1',
-				    'group_5acb5855bcfcf',
-				    'group_5a8419580ca7d',
-				    'group_5a841960a9a8b',
-				    'group_5a841978e8c09',
+				    'group_5b0ffc9a39c66'
 				));
 				$acfExportManager->import();
 			}
 		});
 	}
 }
-

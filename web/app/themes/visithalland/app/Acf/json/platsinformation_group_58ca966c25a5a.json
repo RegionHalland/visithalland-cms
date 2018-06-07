@@ -1,0 +1,130 @@
+[{
+    "key": "group_58ca966c25a5a",
+    "title": "Platsinformation",
+    "fields": [
+        {
+            "key": "field_58ca985930f32",
+            "label": "Inspirerande rubrik",
+            "name": "title",
+            "type": "text",
+            "instructions": "Detta f\u00e4lt anv\u00e4nds f\u00f6r att skapa mer inspirerande rubriker f\u00f6r att undvika k\u00e4nslan av platslistning.\r\nEx: Bullar & B\u00e5ng p\u00e5 St\u00e5lboms konditori ist\u00e4llet f\u00f6r St\u00e5lboms Konditori",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58cba566c98e1",
+            "label": "Utdrag",
+            "name": "excerpt",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_58cba488bc794",
+            "label": "Plats",
+            "name": "location",
+            "type": "google_map",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "56.946725",
+            "center_lng": "12.2354168",
+            "zoom": 8,
+            "height": ""
+        },
+        {
+            "key": "field_5a815c415aacf",
+            "label": "Google information",
+            "name": "google_information",
+            "type": "true_false",
+            "instructions": "Kryssa i den h\u00e4r rutan om du vill anv\u00e4nda Googles information baserat p\u00e5 platsdata. Om du hellre fyller i l\u00e4nkar sj\u00e4lv s\u00e5 kryssar du helt enkelt ur den h\u00e4r rutan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Ska automatisk information fr\u00e5n Google anv\u00e4ndas?",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_58ca988230f33",
+            "label": "Extern l\u00e4nk",
+            "name": "external_link",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a815c415aacf",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "companies"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "places"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Platsinformation f\u00f6r bes\u00f6ksm\u00e5l och n\u00e4ringslivsakt\u00f6rer runt om i Halland"
+}]
+
