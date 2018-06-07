@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5b0ffc9a39c66',
-    'title' => 'Skördetids-aktiviteter',
+    'title' => __('Skördetids-aktiviteter', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b1001b2bea79',
@@ -172,7 +172,7 @@
             0 => array(
                 'param' => 'post_template',
                 'operator' => '==',
-                'value' => 'default',
+                'value' => 'views/all-weekend-activites.blade.php',
             ),
         ),
     ),
