@@ -33,10 +33,8 @@ function vh_get_location_by_coordinates(WP_REST_Request $request)
 function vh_get_events_happenings_by_date(\WP_REST_Request $request)
 {
     $date = $request['date'];
-    var_dump($date);
-    var_dump($request);
-    //var_dump($request->get_param( 'date' ));
-    if(!isset($date)) return new WP_Error('unknown-errorsss', __('Unknown errorsss.', 'visithalland'), array( 'status' => 400 ));
+    if(!isset($date)) return new WP_Error('unknown-error', __('Unknown error.', 'visithalland'), array( 'status' => 400 ));
+    
     $compareDate = date("Y-m-d", strtotime($date));
     $events_happenings_array = array();
 
