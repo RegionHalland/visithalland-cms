@@ -1,10 +1,10 @@
 [{
     "key": "group_5b0ffc9a39c66",
-    "title": "Sk\u00f6rdetids-aktiviteter",
+    "title": "Aktiviteter",
     "fields": [
         {
             "key": "field_5b1001b2bea79",
-            "label": "Kategori",
+            "label": "Kategorier",
             "name": "category",
             "type": "repeater",
             "instructions": "L\u00e4gg till en kategori f\u00f6r varje omr\u00e5de s\u00e5som: boende, g\u00e5rdsbutiker och sk\u00f6rdefester.",
@@ -206,6 +206,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
-    "description": ""
+    "description": "Anv\u00e4nds f\u00f6r att skapa \"Sk\u00f6rdetids\"-aktiviteter under \u201dalla aktiviteter\u201d."
 }]
 

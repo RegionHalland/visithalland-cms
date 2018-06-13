@@ -15,6 +15,7 @@ import singleMeetLocal from './routes/singleMeetLocal';
 import singleEditorTip from './routes/singleEditorTip';
 import singlePlaces from './routes/singlePlaces';
 import singleCompanies from './routes/singleCompanies';
+import allWeekendActivites from './routes/allWeekendActivites';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
@@ -36,6 +37,8 @@ const routes = new Router({
     singleEditorTip,
     // Home page
     home,
+    // allWeekendActivities page
+    allWeekendActivites
 });
 
 

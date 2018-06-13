@@ -119,6 +119,7 @@
     "babel-preset-es2017": "^6.24.1",
     "date-fns": "^1.29.0",
     "flickity": "^2.1.0",
+    "flickity-imagesloaded": "^2.0.0",
     "i18next": "^11.2.3",
     "i18next-browser-languagedetector": "^2.2.0",
     "infinite-scroll": "^3.0.3",
