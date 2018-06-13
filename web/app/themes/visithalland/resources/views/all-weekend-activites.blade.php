@@ -11,7 +11,7 @@
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
 		<div class="clearfix">
-			<div class="col col-4">
+			<div class="category--gallery col col-4 overflow-hidden">
 				{{-- Image Gallery TODO: Add js plugin --}}
 				@foreach($object->gallery as $key => $gallery_image)
 					<picture>
@@ -26,16 +26,20 @@
                     </picture>
 				@endforeach
 			</div>
+
+			{{-- Category name and description --}}
 			<div class="col col-8">
 				<h3>{{ $object->name }}</h3>
 				<p>{{ $object->description }}</p>
 			</div>
-			<ul>
-				{{-- List of places mentioned --}}
+			
+			{{-- List of companies mentioned --}}
+			<ul>			
 				@foreach($object->links as $key => $link)
 					<li><a href="{{$link["link"]}}">{{ $link["name"] }}</a></li>
 				@endforeach
 			</ul>
+
 		</div>
 	@endforeach
 
@@ -51,7 +55,8 @@
 					{{ $object->icon }}
 					<div class="marker" data-lat="{{$location["lat"]}}" data-lng="{{ $location["lng"] }}" data-icon="{{ $object->icon }}">
 						<h4>{{ $link["name"] }}</h4>
-						<p class="address">{{ $location["address"] }}</p>
+						<p>Adress: {{ $location["address"] }}</p>
+						<a href="{{ $link["link"] }}">Gå till hemsida</a>
 					</div>
 				@endforeach
 			@endforeach

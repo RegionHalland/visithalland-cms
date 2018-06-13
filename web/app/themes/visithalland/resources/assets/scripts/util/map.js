@@ -15,7 +15,6 @@ class Map {
         var vm = this;
         // var
         var $markers = $el.find('.marker');
-        console.log($markers);
         // vars
         var args = {
             zoom: 16,
