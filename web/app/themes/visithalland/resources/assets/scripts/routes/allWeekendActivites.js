@@ -1,5 +1,5 @@
 import Map from '../util/map';
-var Flickity = require('flickity');
+var Flickity = require('flickity-imagesloaded');
 
 export default {
     init() {
@@ -14,7 +14,7 @@ export default {
         var galleries = $('.category--gallery');
 
         galleries.each(function(key, el) {
-        	new Flickity(el, {
+        	el.flickity = new Flickity(el, {
 		        cellAlign: 'left',
 		        contain: true,
 		        prevNextButtons: false,
@@ -22,7 +22,6 @@ export default {
 		        imagesLoaded: true
 		    });
         })
-
     }
 };
 

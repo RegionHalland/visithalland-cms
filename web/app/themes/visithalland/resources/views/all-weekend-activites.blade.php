@@ -1,5 +1,5 @@
 {{--
-  Template Name: All activities
+  Template Name: All activities Skördetider
 --}}
 
 @extends('layouts.landing')
@@ -14,6 +14,7 @@
 			<div class="category--gallery col col-4 overflow-hidden">
 				{{-- Image Gallery TODO: Add js plugin --}}
 				@foreach($object->gallery as $key => $gallery_image)
+				<div style="width: 100%; margin-right: 10px;">
 					<picture>
                         <source media="(min-width:40em)"
                             data-srcset="{{ $gallery_image["sizes"]["vh_large"] . " 1x," . $gallery_image["sizes"]["vh_large@2x"] . " 2x" }}" />
@@ -24,6 +25,7 @@
                             alt="{{ $gallery_image["alt"] }}"
                         />
                     </picture>
+                </div>
 				@endforeach
 			</div>
 
@@ -56,7 +58,7 @@
 					<div class="marker" data-lat="{{$location["lat"]}}" data-lng="{{ $location["lng"] }}" data-icon="{{ $object->icon }}">
 						<h4>{{ $link["name"] }}</h4>
 						<p>Adress: {{ $location["address"] }}</p>
-						<a href="{{ $link["link"] }}">Gå till hemsida</a>
+						<a href="{{ $link["link"] }}" target="_blank">Gå till hemsida</a>
 					</div>
 				@endforeach
 			@endforeach
