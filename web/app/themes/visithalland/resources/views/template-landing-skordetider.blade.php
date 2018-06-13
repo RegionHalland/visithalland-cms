@@ -1,3 +1,7 @@
+{{--
+  Template Name: Landing Skordetider
+--}}
+
 @extends('layouts.landing')
 
 @section('content')
