@@ -3,11 +3,11 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5b0ffc9a39c66',
-    'title' => __('Skördetids-aktiviteter', 'visithalland'),
+    'title' => __('Aktiviteter', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b1001b2bea79',
-            'label' => __('Kategori', 'visithalland'),
+            'label' => __('Kategorier', 'visithalland'),
             'name' => 'category',
             'type' => 'repeater',
             'instructions' => __('Lägg till en kategori för varje område såsom: boende, gårdsbutiker och skördefester.', 'visithalland'),
@@ -210,6 +210,6 @@
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
     'active' => 1,
-    'description' => '',
+    'description' => 'Används för att skapa "Skördetids"-aktiviteter under ”alla aktiviteter”.',
 ));
 }

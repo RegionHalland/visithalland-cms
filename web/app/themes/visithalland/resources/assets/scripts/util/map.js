@@ -1,7 +1,6 @@
 class Map {
     constructor() {
         var map = null;
-        //this.bind();
     }
 
     bind(){
@@ -16,6 +15,7 @@ class Map {
         var vm = this;
         // var
         var $markers = $el.find('.marker');
+        console.log($markers);
         // vars
         var args = {
             zoom: 16,
@@ -57,11 +57,13 @@ class Map {
     add_marker($marker, map) {
         // var
         var latlng = new google.maps.LatLng($marker.attr('data-lat'), $marker.attr('data-lng'));
+        var icon = $marker.attr('data-icon');
 
         // create marker
         var marker = new google.maps.Marker({
             position: latlng,
-            map: map
+            map: map,
+            icon: icon
         });
 
         // add to array
