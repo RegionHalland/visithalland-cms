@@ -5,7 +5,9 @@
 @extends('layouts.landing')
 
 @section('content')
-	<h1>{{ the_title() }}</h1>
+	<header>
+		<h1>{{ the_title() }}</h1>
+	</header>
 
 	@php($fields = get_field('category'))
 	@foreach($fields as $key => $field)
@@ -30,17 +32,18 @@
 			</div>
 
 			{{-- Category name and description --}}
-			<div class="col col-8">
+			<div class="col col-8 pl4">
 				<h3>{{ $object->name }}</h3>
 				<p>{{ $object->description }}</p>
+					
+				{{-- List of companies mentioned --}}
+				<ul>			
+					@foreach($object->links as $key => $link)
+						<li><a href="{{$link["link"]}}" target="_blank">{{ $link["name"] }}</a></li>
+					@endforeach
+				</ul>
+
 			</div>
-			
-			{{-- List of companies mentioned --}}
-			<ul>			
-				@foreach($object->links as $key => $link)
-					<li><a href="{{$link["link"]}}">{{ $link["name"] }}</a></li>
-				@endforeach
-			</ul>
 
 		</div>
 	@endforeach
