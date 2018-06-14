@@ -1,3 +1,52 @@
-.st-week__header {
-	background: silver;
+.st-week-header {
+	background: #F8F8F8;
+	padding-top: $space-5;
+}
+
+.st-week-header__content {
+	margin-bottom: $space-5;
+
+	@media screen and (min-width: $breakpoint-sm) {
+		margin-bottom: $space-6;
+	}
+}
+
+.st-timeline {
+	position: relative;
+}
+
+.st-timeline__badge {
+	margin-bottom: $space-3;
+	position: relative;
+	display: inline-block;
+	background: #F25252;
+	width: 4rem;
+	text-align: center;
+	border-radius: 4px;
+	z-index: $z2;
+}
+
+.st-timeline__line {
+	display: none;
+
+	@media screen and (min-width: $breakpoint-sm) {
+		display: block;
+		position: absolute;
+		top: -$space-5;
+		height: calc(100% + #{$space-5});
+		background: #cdcdcd;
+		width: 2px;
+		z-index: $z1;
+		margin-left: 35px;
+		
+		&.first {
+			top: 0;
+			height: 100%;
+		}
+	}
+}
+
+.st-week-grid {
+	margin-top: -$space-4;
+	padding-bottom: $space-5;
 }
