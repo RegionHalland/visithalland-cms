@@ -1,9 +1,7 @@
-import Map from '../util/map';
 var Flickity = require('flickity-imagesloaded');
 
 export default {
     init() {
-        initMap();
         $(document).ready( () => {
         	this.initFlickity();
         });
@@ -23,8 +21,4 @@ export default {
 		    });
         })
     }
-};
-
-export function initMap() {
-    Map.bind();
 };
