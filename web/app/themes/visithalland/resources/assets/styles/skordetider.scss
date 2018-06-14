@@ -1,0 +1,49 @@
+// Project Settings
+// This is used for setting color variables, spacing, fonts and more.
+@import 'settings/settings';
+
+// Mixins
+@import 'mixins/spacing';
+@import 'mixins/palette';
+@import 'mixins/scrim';
+@import 'mixins/fade-text';
+@import 'mixins/themes';
+
+// Base
+@import 'base/reset';
+@import 'base/base';
+
+// Config - Uses variables from settings.scss
+@import 'config/type-scale';
+@import 'config/typography';
+@import 'config/layout';
+@import 'config/align';
+@import 'config/margin';
+@import 'config/padding';
+@import 'config/grid';
+@import 'config/flexbox';
+@import 'config/position';
+
+// Generic and Reusable Components
+@import 'components/container';
+@import 'components/button';
+@import 'components/image-credit';
+@import 'components/lazy-load';
+@import 'components/topographic-pattern';
+@import 'components/icons';
+@import 'components/icon-button';
+@import 'components/date-badge';
+@import 'components/read-more';
+
+// Skördetider
+@import './skordetider/image-container';
+@import './skordetider/week';
+
+// Footer Styles
+@import './footer/footer'; //Se över
+
+// Cookies Page Format
+@import './cookies/cookies'; //Byt namn till cookie-banner?
+
+// Typekit
+@import url('https://use.typekit.net/vzi2bvt.css');
