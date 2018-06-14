@@ -195,7 +195,7 @@
             {
                 "param": "post_template",
                 "operator": "==",
-                "value": "views\/all-weekend-activites.blade.php"
+                "value": "views\/template-all-activities.blade.php"
             }
         ]
     ],

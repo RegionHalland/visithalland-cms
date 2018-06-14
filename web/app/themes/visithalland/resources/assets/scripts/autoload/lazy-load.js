@@ -4,7 +4,6 @@ class LazyLoad {
     constructor() {
         // Lazysizes already inited
     }
-
 }
 
 export default new LazyLoad();
