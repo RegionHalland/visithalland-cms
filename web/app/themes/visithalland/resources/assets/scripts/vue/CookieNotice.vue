@@ -40,7 +40,17 @@
         	if (!Cookies.get('cookie_consent')) {
         		// Wait for language detection to init before we continue
         		this.$i18n.i18next.on('initialized', () => {
-        			this.currentLang = this.$i18n.i18next.language == "sv" ? "" : "en";
+                    // TODO: make this better, temporary... <-- Hahaha.
+                    if(this.$i18n.i18next.language == "sv") {
+                        this.currentLang = "";
+                    }
+                    if(this.$i18n.i18next.language == "sv-SE") {
+                        this.currentLang = "";
+                    }
+                    if(this.$i18n.i18next.language != "sv" && this.$i18n.i18next.language != "sv-SE") {
+                        this.currentLang = "en";
+                    }
+                    
         			return this.getCookieString();
         		})
         	}

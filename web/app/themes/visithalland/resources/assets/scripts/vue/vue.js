@@ -30,6 +30,7 @@ Vue.use(VueI18Next);
 i18next.use(LngDetector);
 i18next.init({
     fallbackLng: {
+        'sv-SE': ['sv'],
         'nb': ['sv'],
         'nn': ['sv'],
         'default': ['en']
