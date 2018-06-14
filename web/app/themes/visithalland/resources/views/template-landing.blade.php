@@ -2,7 +2,7 @@
   Template Name: Landing Page
 --}}
 
-@extends('layouts.landing')
+@extends('layouts.skordetider')
 
 @section('content')
     <h2>{{the_title()}}</h2>

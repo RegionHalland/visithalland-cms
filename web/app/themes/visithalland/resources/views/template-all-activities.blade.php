@@ -2,7 +2,7 @@
   Template Name: All activities Skördetider
 --}}
 
-@extends('layouts.landing')
+@extends('layouts.skordetider')
 
 @section('content')
 
