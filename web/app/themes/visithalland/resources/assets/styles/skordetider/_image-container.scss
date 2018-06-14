@@ -1,0 +1,17 @@
+.weekend__img-container {
+	padding-bottom: 75%;	
+	overflow: hidden;
+	height: 0;
+	position: relative;
+
+	picture {
+		top: 0;
+		left: 0;
+		width: 100%;
+		position: absolute;
+	}
+
+	img {
+		width: 100%;
+	}
+}
