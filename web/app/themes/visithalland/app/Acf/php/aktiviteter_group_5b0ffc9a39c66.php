@@ -210,6 +210,6 @@
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
     'active' => 1,
-    'description' => 'Används för att skapa "Skördetids"-aktiviteter under ”alla aktiviteter”.',
+    'description' => 'Används för att skapa aktiviteter under Skördetid i Halland.',
 ));
 }
