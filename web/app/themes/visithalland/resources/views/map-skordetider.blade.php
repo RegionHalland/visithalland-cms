@@ -2,7 +2,7 @@
   Template Name: Map Skördetider
 --}}
 
-@extends('layouts.landing')
+@extends('layouts.skordetider')
 
 @section('content')
 
