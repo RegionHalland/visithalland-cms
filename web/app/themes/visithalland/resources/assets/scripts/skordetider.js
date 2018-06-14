@@ -1,0 +1,31 @@
+// import external dependencies
+import 'jquery';
+
+// Import everything from autoload
+import "./autoload/**/*";
+
+// import local dependencies
+import Router from './util/Router';
+import common from './routes/common';
+import templateAllActivities from './routes/templateAllActivities';
+import mapSkordetider from './routes/mapSkordetider';
+
+/** Populate Router instance with DOM routes */
+const routes = new Router({
+    // allWeekendActivities page
+    templateAllActivities,
+    // mapSkordetider page
+    mapSkordetider
+});
+
+
+// Load Events
+jQuery(document).ready(() =>
+    routes.loadEvents()
+);
+
+// Build SVG sprite
+var __svg__ = {
+	path: '../icons/**/*.svg',
+	name: 'icons/sprite.svg'
+};

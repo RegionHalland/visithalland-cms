@@ -2,7 +2,7 @@
   Template Name: Landing Skordetider
 --}}
 
-@extends('layouts.landing')
+@extends('layouts.skordetider')
 
 @section('content')
 

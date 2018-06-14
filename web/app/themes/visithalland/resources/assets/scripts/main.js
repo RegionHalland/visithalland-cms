@@ -15,7 +15,7 @@ import singleMeetLocal from './routes/singleMeetLocal';
 import singleEditorTip from './routes/singleEditorTip';
 import singlePlaces from './routes/singlePlaces';
 import singleCompanies from './routes/singleCompanies';
-import allWeekendActivites from './routes/allWeekendActivites';
+import templateAllActivities from './routes/templateAllActivities';
 import mapSkordetider from './routes/mapSkordetider';
 
 /** Populate Router instance with DOM routes */
@@ -39,7 +39,7 @@ const routes = new Router({
     // Home page
     home,
     // allWeekendActivities page
-    allWeekendActivites,
+    templateAllActivities,
     // mapSkordetider page
     mapSkordetider
 });

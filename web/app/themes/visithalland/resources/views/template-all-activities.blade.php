@@ -2,19 +2,23 @@
   Template Name: All activities Skördetider
 --}}
 
-@extends('layouts.landing')
+@extends('layouts.skordetider')
 
 @section('content')
-	<header>
-		<h1>{{ the_title() }}</h1>
-	</header>	
 
-	@php($fields = get_field('category'))
+
+	<header class="st-list__header container py4 col-11 md-col-10 lg-col-10 mx-auto relative">
+		<h1>{{ the_title() }}</h1>
+	</header>
+
+	@include('partials.all-activities-carousel')
+
+	{{-- @php($fields = get_field('category'))
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
 		<div class="clearfix">
 			<div class="category--gallery col col-4 overflow-hidden">
-				{{-- Image Gallery TODO: Add js plugin --}}
+
 				@foreach($object->gallery as $key => $gallery_image)
 				<div style="width: 100%; margin-right: 10px;">
 					<picture>
@@ -31,12 +35,12 @@
 				@endforeach
 			</div>
 
-			{{-- Category name and description --}}
+
 			<div class="col col-8 pl4">
 				<h3>{{ $object->name }}</h3>
 				<p>{{ $object->description }}</p>
 					
-				{{-- List of companies mentioned --}}
+
 				<ul>			
 					@foreach($object->links as $key => $link)
 						<li><a href="{{$link["link"]}}" target="_blank">{{ $link["name"] }}</a></li>
@@ -46,6 +50,6 @@
 			</div>
 
 		</div>
-	@endforeach
+	@endforeach --}}
 
 @endsection
