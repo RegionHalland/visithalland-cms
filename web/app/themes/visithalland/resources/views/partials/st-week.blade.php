@@ -245,10 +245,32 @@
 
 						{{-- CAROUSEL --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
-						<div class="col col-12 px3 mb5">
+						<div class="st-week-carousel col col-12 px3 mb5">
 							{{ $content['description'] }}
-							@foreach ($content as $item)
-								@php(var_dump($item))
+							@foreach ($content['content'] as $item)
+				  			<article class="image-blurb image-blurb--fixed-height mt2"> --}}
+								<picture>
+									<source
+										data-srcset="{{ get_the_post_thumbnail_url( $item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $item->ID, 'vh_large@2x' ) . " 2x" }}" />
+									<img class="lazyload"
+										 data-src="{{ get_the_post_thumbnail_url( $item->ID, 'vh_large' ) }}"
+										 alt="{{ get_field("cover_image")["alt"] }}"
+									/>
+								</picture>
+ 								<div class="image-blurb__content">
+								    <h3 class="image-blurb__title">{{ $item->post_title }}</h3>
+								    <div class="read-more my3">
+								        <span class="read-more__text light">
+								            <?php _e( 'Läs mer', 'visithalland' ); ?>
+								        </span>
+								        <div class="read-more__button">
+								            <svg class="icon read-more__icon">
+								                <use xlink:href="#arrow-right-icon"/>
+								            </svg>
+								        </div>
+								    </div>
+								</div>
+							</article>
 							@endforeach
 						</div>
 						@endif
