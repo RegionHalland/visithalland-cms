@@ -60,6 +60,17 @@
 	flex-wrap: wrap;
 	margin-top: -$space-5;
 	padding-bottom: $space-5;
+	@media(min-width:$breakpoint-sm) {
+		margin-left:-$space-3;
+		margin-right:-$space-3;
+	}
+}
+
+.st-week-grid__item {
+	@media(min-width:$breakpoint-sm) {
+		padding-left:$space-3;
+		padding-right:$space-3;
+	}
 }
 
 .st-week-post__img-container {

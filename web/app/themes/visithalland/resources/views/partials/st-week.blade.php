@@ -36,7 +36,7 @@
 						{{-- POST --}}
 						@if ($content['acf_fc_layout'] === 'post' && $content['fullsize'] != true)
 						
-						<div class="col col-12 sm-col-6 mb5">
+						<div class="st-week-grid__item col col-12 sm-col-6 mb5">
 							<a href="{{ get_permalink($content['post']->ID) }}" title="{{ $content['post']->post_title }}" class="link-reset">
 	                            <article class="article-medium relative {{ App::getTermClassName() }}">
 	                                    <div class="article-medium__img-container relative topographic-pattern">
@@ -81,7 +81,7 @@
 
 						{{-- POST FULLSIZE --}}
 						@if ($content['acf_fc_layout'] === 'post' && $content['fullsize'] === true)
-						<div class="col col-12 mb5">
+						<div class="st-week-grid__item col col-12 mb5">
 							<a href="{{ get_permalink($content['post']->ID) }}" title="{{ $content['post']->post_title }}" class="link-reset">
 	                            <article class="article-medium relative mxn3 {{ App::getTermClassName() }}">
 	                            	<div class="col col-12 sm-col-6 px3">
@@ -129,7 +129,7 @@
 
 						{{-- LINK --}}
 						@if ($content['acf_fc_layout'] === 'link' && $content['fullsize'] != true)
-						<div class="col col-12 {{ $content['fullsize'] === true ? '' : 'sm-col-6' }} mb5">
+						<div class="st-week-grid__item col col-12 {{ $content['fullsize'] === true ? '' : 'sm-col-6' }} mb5">
 						    <a href="{{ $content['url'] }}" title="{{ $content['title']}}" class="link-reset">
 						        <article class="article-medium relative {{ App::getTermClassName() }}">
 						                <div class="article-medium__img-container relative topographic-pattern">
@@ -173,7 +173,7 @@
 
 						{{-- LINK FULLSIZE --}}
 						@if ($content['acf_fc_layout'] === 'link' && $content['fullsize'] === true)
-						<div class="col col-12 mb5">
+						<div class="st-week-grid__item col col-12 mb5">
 							<a href="{{ $content['url'] }}" title="{{ $content['title']}}" class="link-reset">
 						        <article class="article-medium relative {{ App::getTermClassName() }} mxn3">
 						        	<div class="col col-12 sm-col-6 px3">
@@ -221,7 +221,7 @@
 
 						{{-- QUOTE --}}
 						@if ($content['acf_fc_layout'] === 'quote')
-						<div class="col col-12 px3 mb5">
+						<div class="st-week-grid__item col col-12 mb5">
 							<div class="st-week-quote">
 								<div class="st-week-quote__img-container">
 									<picture>
