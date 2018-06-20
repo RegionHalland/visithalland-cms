@@ -157,13 +157,16 @@
 						{{-- QUOTE [END] --}}
 
 
-						{{-- QUOTE --}}
+						{{-- CAROUSEL --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
+						<div class="col col-12 px3 mb5">
+							{{ $content['description'] }}
 							@foreach ($content as $item)
 								@php(var_dump($item))
 							@endforeach
+						</div>
 						@endif
-						{{-- QUOTE [END] --}}
+						{{-- CAROUSEL [END] --}}
 
 					@endforeach
 				</div>
