@@ -199,7 +199,7 @@
             0 => array(
                 'param' => 'post_template',
                 'operator' => '==',
-                'value' => 'views/template-all-activities.blade.php',
+                'value' => 'views/template-all-activities-skordetider.blade.php',
             ),
         ),
     ),

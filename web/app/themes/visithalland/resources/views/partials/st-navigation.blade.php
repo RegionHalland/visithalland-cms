@@ -1,6 +1,6 @@
 @php($sh_navigation_items = App::getStNavigation())
 
-<a href="/" class="link-reset">
+{{-- <a href="/" class="link-reset">
 	<picture>
 		<source
 	        media="(min-width: 60em)"
@@ -23,4 +23,4 @@
 			<li>{{$sh_navigation_item->post_title }}</li>
 		@endforeach
 	</ul>
-</nav>
+</nav> --}}

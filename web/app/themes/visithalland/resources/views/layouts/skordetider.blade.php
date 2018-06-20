@@ -7,6 +7,7 @@
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC8VK82"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+	<link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet">
 
 	@include('partials.st-navigation')
 
