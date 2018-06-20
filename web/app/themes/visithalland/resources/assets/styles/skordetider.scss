@@ -34,6 +34,10 @@
 @import 'components/icon-button';
 @import 'components/date-badge';
 @import 'components/read-more';
+@import 'components/article-tag';
+
+@import './article/article-medium';
+@import './article/image-blurb';
 
 // Skördetider
 @import './skordetider/image-container';
