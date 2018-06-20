@@ -62,10 +62,9 @@ trait Navigation
     */
     public static function getStNavigation() {
         $nav_menus = get_nav_menu_locations();
-        $nav_menus["primary_navigation"];
 
-        if(isset($nav_menus["primary_navigation"])){
-            return wp_get_nav_menu_items($nav_menus["primary_navigation"]);
+        if(isset($nav_menus["skordetider_navigation"])){
+            return wp_get_nav_menu_items($nav_menus["skordetider_navigation"]);
         }
 
         return ["Error"];

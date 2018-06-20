@@ -20,7 +20,7 @@
 					<a href="" class="mr3">
 						<div class="st-thumbnail">
 						  <div class="st-thumbnail__img-container">
-						  	<img class="st-category-thumbnail__img" src="{{ $object->gallery[0]['sizes']['vh_small@2x'] }}" alt="">
+						  	<img class="st-category-thumbnail__img lazyload" src="{{ $object->gallery[0]['sizes']['vh_small@2x'] }}" alt="">
 						  </div>
 						  <div class="st-thumbnail__content">
 						    <h4 class="st-thumbnail__title">{{ $object->name }}</h4>

@@ -35,7 +35,8 @@ add_action('wp_enqueue_scripts', function () {
         }
 
         if (basename(get_page_template()) == "template-landing-skordetider.blade.php" ||
-            basename(get_page_template()) == "template-all-activities-skordetider.blade.php") {
+            basename(get_page_template()) == "template-all-activities-skordetider.blade.php" ||
+            basename(get_page_template()) == "map-skordetider.blade.php") {
             wp_enqueue_script('sage/skordetider.js', asset_path('scripts/skordetider.js'), ['jquery'], null, true);
             wp_enqueue_style('sage/skordetider.css', asset_path('styles/skordetider.css'), false, null);
         }
@@ -85,7 +86,8 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'visithalland'),
-        'secondary_navigation' => __('Secondary Navigation', 'visithalland')
+        'secondary_navigation' => __('Secondary Navigation', 'visithalland'),
+        'skordetider_navigation' => __('Skördetider Navigation', 'visithalland')
     ]);
 
     /**

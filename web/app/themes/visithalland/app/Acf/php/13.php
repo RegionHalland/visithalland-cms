@@ -25,6 +25,23 @@
             'button_label' => __('Lägg till kategori', 'visithalland'),
             'sub_fields' => array(
                 0 => array(
+                    'key' => 'field_5b2a521b26240',
+                    'label' => __('Kategori', 'visithalland'),
+                    'name' => '',
+                    'type' => 'accordion',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'open' => 0,
+                    'multi_expand' => 0,
+                    'endpoint' => 0,
+                ),
+                1 => array(
                     'key' => 'field_5b1001e3bea7a',
                     'label' => __('Namn på kategori', 'visithalland'),
                     'name' => 'name',
@@ -43,7 +60,7 @@
                     'append' => '',
                     'maxlength' => '',
                 ),
-                1 => array(
+                2 => array(
                     'key' => 'field_5b1004391b711',
                     'label' => __('Beskrivning', 'visithalland'),
                     'name' => 'description',
@@ -62,7 +79,7 @@
                     'rows' => 4,
                     'new_lines' => '',
                 ),
-                2 => array(
+                3 => array(
                     'key' => 'field_5b10020bbea7b',
                     'label' => __('Bildspel', 'visithalland'),
                     'name' => 'gallery',
@@ -87,7 +104,7 @@
                     'max_size' => '',
                     'mime_types' => '',
                 ),
-                3 => array(
+                4 => array(
                     'key' => 'field_5b20d7c96cb74',
                     'label' => __('Ikon', 'visithalland'),
                     'name' => 'icon',
@@ -101,9 +118,7 @@
                         'id' => '',
                     ),
                     'choices' => array(
-                        'https://image.flaticon.com/icons/png/128/123/123236.png' => __('Mat', 'visithalland'),
-                        'https://d30y9cdsu7xlg0.cloudfront.net/png/23890-200.png' => __('Boende', 'visithalland'),
-                        'http://mannaorganicstore.ie/wp-content/uploads/2014/08/shop_icon5.png' => __('Gårdsbutik', 'visithalland'),
+                        '/images/map-pin.svg' => __('Gårdsbutik', 'visithalland'),
                     ),
                     'default_value' => array(
                     ),
@@ -114,7 +129,7 @@
                     'return_format' => 'value',
                     'placeholder' => '',
                 ),
-                4 => array(
+                5 => array(
                     'key' => 'field_5b1002b1bea7c',
                     'label' => __('Länkar till näringslivsaktörer', 'visithalland'),
                     'name' => 'links',
