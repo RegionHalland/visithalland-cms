@@ -18,7 +18,7 @@
 					<div class="st-timeline__line first"></div>
 				</div>
 				<div class="st-week-header__content  col col-12 sm-col-5">
-					<h2 class="h1 mb4">{{ $week['title'] }}</h2>
+					<h2 class="st-week-header__title mb4">{{ $week['title'] }}</h2>
 					<p class="st-week-header__description mb3">{{ $week['description'] }}</p>
 				</div>
 			</div>
