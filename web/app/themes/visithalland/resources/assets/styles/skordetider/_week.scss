@@ -47,6 +47,28 @@
 }
 
 .st-week-grid {
+	display: flex;
+	flex-wrap: wrap;
 	margin-top: -$space-4;
 	padding-bottom: $space-5;
+}
+
+.st-week-post__img-container {
+	width: 100%;
+	height: 0;
+	padding-bottom: 75%;
+	overflow: hidden;
+	border-radius: 4px;
+	margin-bottom: $space-3;
+}
+
+.st-week-quote {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.st-week-quote__img-container {
+	width: 100%;
+	max-width: 14rem;
+	padding-bottom: 100%;
 }
