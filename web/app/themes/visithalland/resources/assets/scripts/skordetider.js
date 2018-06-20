@@ -9,7 +9,7 @@ import Router from './util/Router';
 import common from './routes/common';
 import templateAllActivitiesSkordetider from './routes/templateAllActivitiesSkordetider';
 import mapSkordetider from './routes/mapSkordetider';
-import templateLandingSkordetider from './routes/templateLandingSkordetider';
+//import templateLandingSkordetider from './routes/templateLandingSkordetider';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
@@ -18,7 +18,7 @@ const routes = new Router({
     // mapSkordetider page
     mapSkordetider,
     // templateLandingSkordetider page
-    templateLandingSkordetider
+    //templateLandingSkordetider
 });
 
 

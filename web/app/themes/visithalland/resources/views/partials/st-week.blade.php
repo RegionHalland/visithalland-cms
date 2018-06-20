@@ -1,7 +1,8 @@
 @if(isset($week))
+
 <div class="st-week">
 	<header class="st-week-header">
-		<div class="container">
+		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
 				<div class="st-timeline col col-12 sm-col-2">
 					<div class="st-timeline__badge">
@@ -23,11 +24,8 @@
 			</div>
 		</div>
 	</header>
-	<section>
-		@include('partials.st-carousel')
-	</section>
 	<div>
-		<div class="container">
+		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
 				<div class="st-timeline col col-12 sm-col-2">
 					<div class="st-timeline__line"></div>
