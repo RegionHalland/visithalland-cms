@@ -1,26 +1,24 @@
 @php($sh_navigation_items = App::getStNavigation())
 
-{{-- <a href="/" class="link-reset">
-	<picture>
-		<source
-	        media="(min-width: 60em)"
-			srcset="@asset('images/logo-horizontal.svg')"/>
-		<source
-			media="(min-width: 40em)"
-			srcset="@asset('images/logo-vertical.svg')"/>
-	    <source
-	        srcset="@asset('images/logo-small.svg')"/>
-		<img
-			class="header__logo center"
-			src="@asset('images/logo-horizontal.svg')"
-			alt="Visithalland.com" />
-	</picture>
-</a>
 
-<nav>
-	<ul>
-		@foreach($sh_navigation_items as $sh_navigation_item)
-			<li>{{$sh_navigation_item->post_title }}</li>
-		@endforeach
-	</ul>
-</nav> --}}
+
+<div class="st-navigation">
+	<div class="st-navigation__inner container col-11 md-col-10 lg-col-10 mx-auto">
+		<div class="st-navigation__logo">
+			<a href="{{ get_the_permalink(7609) }}" class="link-reset">
+				<img
+					class="header__logo center"
+					src="@asset('images/logo-dark.svg')"
+					alt="Visithalland.com" />
+			</a>
+		</div>
+		<nav class="st-navigation__links">
+			@foreach($sh_navigation_items as $sh_navigation_item)
+				<a href="{{ $sh_navigation_item->url }}" class="st-navigation__link {{ array_walk($sh_navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
+					{{$sh_navigation_item->title }}
+				</a>
+				
+			@endforeach
+		</nav>
+	</div>
+</div>
