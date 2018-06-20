@@ -1,6 +1,7 @@
 .st-week-header {
-	background: #F8F8F8;
 	padding-top: $space-6;
+	background: palette(grey, xx-light);
+	border-bottom:1px solid palette(grey, x-light);
 }
 
 .st-week-header__content {
@@ -58,9 +59,10 @@
 .st-week-grid {
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: -$space-5;
+	margin-top: -$space-3;
 	padding-bottom: $space-5;
 	@media(min-width:$breakpoint-sm) {
+		margin-top: -$space-5;
 		margin-left:-$space-3;
 		margin-right:-$space-3;
 	}
