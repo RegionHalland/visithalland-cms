@@ -13,7 +13,11 @@
 
 .st-week-header__description {
 	font-family: 'La Belle Aurore', cursive;
-	font-size: 1.75rem;
+	font-size: 1.35rem;
+}
+
+.st-week-header__title {
+	font-size: 2.125rem;
 }
 
 .st-timeline {
@@ -40,7 +44,7 @@
 		top: -$space-5;
 		height: calc(100% + #{$space-5});
 		background: #cdcdcd;
-		width: 2px;
+		width: 1px;
 		z-index: $z1;
 		margin-left: 35px;
 		
