@@ -1,4 +1,4 @@
-@php($fields = get_field('category'))
+@php($fields = get_field('category'), 7611)
 
 <section class="overflow-hidden st-carousel-section">
 	<div class="container py5 col-11 md-col-10 lg-col-10 mx-auto relative">

@@ -9,13 +9,16 @@ import Router from './util/Router';
 import common from './routes/common';
 import templateAllActivitiesSkordetider from './routes/templateAllActivitiesSkordetider';
 import mapSkordetider from './routes/mapSkordetider';
+import templateLandingSkordetider from './routes/templateLandingSkordetider';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
     // allWeekendActivities page
     templateAllActivitiesSkordetider,
     // mapSkordetider page
-    mapSkordetider
+    mapSkordetider,
+    // templateLandingSkordetider page
+    templateLandingSkordetider
 });
 
 

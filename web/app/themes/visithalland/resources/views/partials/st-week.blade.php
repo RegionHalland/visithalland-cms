@@ -23,6 +23,9 @@
 			</div>
 		</div>
 	</header>
+	<section>
+		@include('partials.st-carousel')
+	</section>
 	<div>
 		<div class="container">
 			<div class="clearfix flex flex-wrap">
@@ -158,8 +161,8 @@
 
 						{{-- QUOTE --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
-							@php(var_dump($content))
-							@foreach()
+							@foreach ($content as $item)
+								@php(var_dump($item))
 							@endforeach
 						@endif
 						{{-- QUOTE [END] --}}
