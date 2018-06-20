@@ -7,13 +7,13 @@ import "./autoload/**/*";
 // import local dependencies
 import Router from './util/Router';
 import common from './routes/common';
-import templateAllActivities from './routes/templateAllActivities';
+import templateAllActivitiesSkordetider from './routes/templateAllActivitiesSkordetider';
 import mapSkordetider from './routes/mapSkordetider';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
     // allWeekendActivities page
-    templateAllActivities,
+    templateAllActivitiesSkordetider,
     // mapSkordetider page
     mapSkordetider
 });
