@@ -18,9 +18,11 @@ import Activities from './Activities.vue';
 import Results from './Results.vue';
 import Navigation from './Navigation.vue';
 import Shimmer from './Shimmer.vue';
+import CookieNotice from './CookieNotice.vue';
 
 Vue.component('Shimmer', Shimmer);
 Vue.component('Navigation', Navigation);
+Vue.component('CookieNotice', CookieNotice);
 Vue.use(VueRouter);
 Vue.use(VueGeolocation);
 Vue.use(VueisOffLine);
@@ -28,6 +30,7 @@ Vue.use(VueI18Next);
 i18next.use(LngDetector);
 i18next.init({
     fallbackLng: {
+        'sv-SE': ['sv'],
         'nb': ['sv'],
         'nn': ['sv'],
         'default': ['en']

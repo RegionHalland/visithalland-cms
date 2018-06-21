@@ -4,13 +4,13 @@
             "choose": "Choose alternative",
             "visit": "Go to site",
             "experiences": "Experiences",
-            "today": "Happening today"
+            "happens": "Happening"
         },
         "sv": {
             "choose": "Välj alternativ",
             "visit": "Gå till webbplats",
             "experiences": "Upplevelser",
-            "today": "Händer idag"
+            "happens": "Händer"
         }
   }
 </i18n>
@@ -30,10 +30,10 @@
                         </svg>
                     </div>
                     <div class="section-header__title">
-                        {{ $t('today') }}
+                        {{$t('happens')}} {{ this.currentDay }}
                     </div>
                 </header>
-                <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input" class="block mb3" v-for="event in events_happenings" :key="event.id">
+                <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input && event.meta_fields && event.meta_fields.external_link" class="block mb3" v-for="event in events_happenings" :key="event.id">
                     <div class="activity inline-flex">
                         <div class="activity__img-container mr2">
                             <img :src="event.featured_image_src" class="activity__img" />
@@ -105,7 +105,19 @@ import axios from 'axios';
         created () {
             // If we are missing user input redirect the user back to the first page
             if(!this.input) return this.$router.push({ name: "location"})
-            this.currentLang = this.$i18n.i18next.language == "sv" ? "" : 'en';
+
+            // TODO: make this better, temporary... <-- Hahaha.
+            if(this.$i18n.i18next.language == "sv") {
+                this.currentLang = "";
+            }
+            if(this.$i18n.i18next.language == "sv-SE") {
+                this.currentLang = "";
+            }
+            if(this.$i18n.i18next.language != "sv" && this.$i18n.i18next.language != "sv-SE") {
+                this.currentLang = "en";
+            }
+
+            this.currentDay = this.input.day
             // Fetch activities
             this.fetchData()
         },
@@ -134,6 +146,9 @@ import axios from 'axios';
                         '/wp-json/visit/v1/activities', {
                             params: {
                                 "lang": this.currentLang,
+                                "user_location_lat": this.input.userLocation.lat,
+                                "user_location_lng": this.input.userLocation.lng,
+                                "date": this.input.date
                             }
                         }
                     )

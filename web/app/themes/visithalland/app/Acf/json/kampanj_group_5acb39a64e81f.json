@@ -1,0 +1,160 @@
+[{
+    "key": "group_5acb39a64e81f",
+    "title": "Kampanj",
+    "fields": [
+        {
+            "key": "field_5acb39aadaa4f",
+            "label": "Kampanjv\u00e4ljare",
+            "name": "campaign_toggle",
+            "type": "true_false",
+            "instructions": "Klicka i den h\u00e4r om du vill aktivera kampanjl\u00e4get",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Visa kampanj",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5acb4ba928783",
+            "label": "Kampanj",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5acb39aadaa4f",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5acb39e6f1116",
+            "label": "Kampanjbild",
+            "name": "campaign_img",
+            "type": "image",
+            "instructions": "V\u00e4lj bild f\u00f6r kampanjen",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5acb39fef1117",
+            "label": "Kampantitel",
+            "name": "campaign_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5acb4bda28784",
+            "label": "Kampanjutdrag",
+            "name": "campaign_excerpt",
+            "type": "text",
+            "instructions": "Fyll i utdrag f\u00f6r kampanjen",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Skriv h\u00e4r",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5acb4bf328785",
+            "label": "Internl\u00e4nk",
+            "name": "internal_link",
+            "type": "link",
+            "instructions": "V\u00e4lj intern l\u00e4nk till f\u00f6r kampanjen",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url"
+        },
+        {
+            "key": "field_5acb4c0728786",
+            "label": "Extern l\u00e4nk",
+            "name": "external_link",
+            "type": "url",
+            "instructions": "Fyll i URL till extern site",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "F\u00e4lt som anv\u00e4nds f\u00f6r att visa tillf\u00e4lliga kampanjer"
+}]
+

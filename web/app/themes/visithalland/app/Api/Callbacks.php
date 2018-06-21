@@ -3,6 +3,21 @@ use App\Visithalland\CalendarClient;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+function vh_get_cookie_policy(WP_REST_Request $request) {
+    $current_lang = $request['lang'];
+    if($current_lang) {
+        global $sitepress;
+        $sitepress->switch_lang("en");
+    }
+
+    return rest_ensure_response(array(
+        "cookie_policy" => get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID,'page' )),
+        "cookie_page_url" => get_permalink( apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )),
+        "cookie_user_agreement_text" => __( 'Se användningsvillkor', 'visithalland' ),
+        "cookie_close_button_text" => __( 'Stäng', 'visithalland' )
+    ));
+}
+
 function vh_get_location_by_coordinates(WP_REST_Request $request)
 {
     $lat = $request['lat'];
@@ -15,10 +30,11 @@ function vh_get_location_by_coordinates(WP_REST_Request $request)
     ));
 }
 
-function vh_get_events_happenings_by_date(WP_REST_Request $request)
+function vh_get_events_happenings_by_date(\WP_REST_Request $request)
 {
     $date = $request['date'];
     if(!isset($date)) return new WP_Error('unknown-error', __('Unknown error.', 'visithalland'), array( 'status' => 400 ));
+    
     $compareDate = date("Y-m-d", strtotime($date));
     $events_happenings_array = array();
 
@@ -90,11 +106,26 @@ function vh_set_passed_happenings_to_draft_callback()
 
 function vh_get_all_activities(\WP_REST_Request $request){
     // get all activities
+    // Use the location from the user
+    $user_location_lat = $request['user_location_lat'];
+    $user_location_lng = $request['user_location_lng'];
+    $user_location = array($user_location_lat, $user_location_lng);
+    $date = $request['date'];
+    // TODO: use $date varible from client below
+
     $current_lang = $request['lang'];
     if($current_lang) {
         global $sitepress;
         $sitepress->switch_lang("en");
     }
+
+    $date = Carbon::parse($date);
+    $date = $date->addHour();
+
+    $weatherForcast = json_decode(getWeather($user_location[0], $user_location[1], $date->timestamp));
+
+    // We use weather in one hour because it takes some time to arrive at the location
+    $rainOneHourFromNow = $weatherForcast->currently->icon === "rain" ? true : false;
 
     $posts = get_posts(array(
         'post_type'         => 'activity',
@@ -102,6 +133,16 @@ function vh_get_all_activities(\WP_REST_Request $request){
         'lang'              => 'en',
         'suppress_filters'  => 0
     ));
+
+    foreach ($posts as $key => $post) {
+        $list_weather_dependent = get_field("list_weather_dependent", $post->ID);
+        if (isset($list_weather_dependent)) {
+            if ($list_weather_dependent && $rainOneHourFromNow === true) {
+                // Remove acitivty if it's gonna rain in one hour & the whole list is weather dependent
+                unset($posts[$key]);
+            }
+        }
+    }
 
     $controller = new \WP_REST_Posts_Controller('post');
     foreach ($posts as $post) {
@@ -145,7 +186,6 @@ function vh_get_activity(\WP_REST_Request $request){
     });
 
     // 2. Group activities close to the user. Disregarding weather conditions and happenings are included
-    //$distance_between_user_and_activity = vincentyGreatCircleDistance($user_location[0], $user_location[1], "56.671814", "12.8511821", $earthRadius = 6371000);
     $close_activities = array_filter($activitiy_links, function ($a) use ($user_location) {
         if (isset($a['link']->meta_fields["location"])) {
             return vincentyGreatCircleDistance($user_location[0], $user_location[1], $a['link']->meta_fields["location"]["lat"], $a['link']->meta_fields["location"]["lng"], $earthRadius = 6371000)

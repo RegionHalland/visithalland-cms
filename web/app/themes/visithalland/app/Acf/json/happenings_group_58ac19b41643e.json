@@ -1,0 +1,111 @@
+[{
+    "key": "group_58ac19b41643e",
+    "title": "Happenings",
+    "fields": [
+        {
+            "key": "field_58ac19daf5381",
+            "label": "Utdrag",
+            "name": "excerpt",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_58ac19e6f5382",
+            "label": "Startdatum",
+            "name": "start_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j F, Y",
+            "return_format": "Y\/m\/d",
+            "first_day": 1
+        },
+        {
+            "key": "field_58ac1a17f5384",
+            "label": "Slutddatum",
+            "name": "end_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j F, Y",
+            "return_format": "Y\/m\/d",
+            "first_day": 1
+        },
+        {
+            "key": "field_58c6d7694d1ac",
+            "label": "Extern l\u00e4nk",
+            "name": "external_link",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_58c96103a894f",
+            "label": "Plats",
+            "name": "location",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "happening"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "H\u00e4r fyller vi i information om v\u00e5r happening"
+}]
+

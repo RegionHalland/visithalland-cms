@@ -43,5 +43,11 @@ add_action('rest_api_init', function () {
         'callback' => 'vh_get_activity'
     ));
 
+    // Register route - Get single activity. Used in ”a day in Halland'.
+    register_rest_route('visit/v1', 'cookie_policy', array(
+        'methods' => 'GET',
+        'callback' => 'vh_get_cookie_policy'
+    ));
+
 });
 

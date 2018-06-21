@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69c0c819185f3fde6d7b3d1006d9db75",
+    "content-hash": "ee1c372321452a43fa894a8b6897b803",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -596,16 +596,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.2",
+            "version": "v1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "c457e282ed4a82fc2d73dd3316e9d4d1f3eca4c1"
+                "reference": "6f45adac8d7199d829498d9c6dc5504a39af9ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/c457e282ed4a82fc2d73dd3316e9d4d1f3eca4c1",
-                "reference": "c457e282ed4a82fc2d73dd3316e9d4d1f3eca4c1",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/6f45adac8d7199d829498d9c6dc5504a39af9ac0",
+                "reference": "6f45adac8d7199d829498d9c6dc5504a39af9ac0",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-05-07T11:10:00+00:00"
+            "time": "2018-06-13T14:33:11+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
@@ -844,26 +844,6 @@
             "homepage": "https://wordpress.org/plugins/better-search-replace/"
         },
         {
-            "name": "wpackagist-plugin/cache-enabler",
-            "version": "1.2.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/cache-enabler/",
-                "reference": "tags/1.2.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cache-enabler.1.2.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/cache-enabler/"
-        },
-        {
             "name": "wpackagist-plugin/ewww-image-optimizer",
             "version": "4.2.1",
             "source": {
@@ -965,6 +945,26 @@
             "homepage": "https://wordpress.org/plugins/the-seo-framework-extension-manager/"
         },
         {
+            "name": "wpackagist-plugin/wp-super-cache",
+            "version": "1.6.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
+                "reference": "tags/1.6.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-super-cache/"
+        },
+        {
             "name": "wpml/sitepress-multilingual-cms",
             "version": "3.9.4",
             "dist": {
@@ -980,7 +980,7 @@
             "version": "2.3.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807&version=2.2.3",
+                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&t=1520321807",
                 "reference": null,
                 "shasum": null
             },
@@ -991,7 +991,7 @@
             "version": "2.7.3",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6&version=2.7.3",
+                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=a3484c13ba484b0fc8e9d14c7aa5e7c6",
                 "reference": null,
                 "shasum": null
             },
@@ -1001,16 +1001,16 @@
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.2.3",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27"
+                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/4842476c434e375f9d3182ff7b89059583aa8b27",
-                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
+                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
                 "shasum": ""
             },
             "require": {
@@ -1048,7 +1048,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-02-20T21:35:23+00:00"
+            "time": "2018-06-06T23:58:19+00:00"
         }
     ],
     "aliases": [],

@@ -3,6 +3,18 @@
 namespace App;
 
 
+add_filter('wp', function () { 
+    global $wp_query;
+
+    if(!isset($wp_query->query["post_type"])) return;
+    if(is_user_logged_in()) return;
+    if($wp_query->query["post_type"] !== 'happening' && !$wp_query->is_404) return;
+
+    if($wp_query->query["post_type"] == 'happening' && !$wp_query->is_404) return;
+
+    wp_redirect( '/coastal-living/happenings', 301 );
+}, 10, 0);
+
 /**
  * Add <body> classes
  */

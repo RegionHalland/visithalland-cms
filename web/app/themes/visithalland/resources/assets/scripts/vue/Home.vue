@@ -10,7 +10,11 @@
 </i18n>
 
 <template>
-    <router-link class="btn block center btn--primary" to="location">{{ $t('buttonTxt') }}</router-link>
+    <div>
+        <router-link class="btn block center btn--primary" to="location">{{ $t('buttonTxt') }}</router-link>
+
+        <CookieNotice />
+    </div>
 </template>
 
 <script>
