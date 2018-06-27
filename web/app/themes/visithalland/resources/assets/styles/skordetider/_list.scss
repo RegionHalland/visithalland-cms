@@ -1,0 +1,18 @@
+.st-list__header {
+	height:65vh;
+	background:palette(grey, x-light);
+}
+
+
+.plant-img {
+	width:90px;
+	@media (min-width:$breakpoint-sm) {
+		width:200px;
+	}
+}
+
+.st-list__title {
+	font-family: 'La Belle Aurore', cursive;
+	font-weight:200;
+}
+

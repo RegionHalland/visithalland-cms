@@ -1,7 +1,12 @@
-.article-large {
+.article {
+	border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    box-shadow: 0px 1.66756px 8.33779px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    background-color:$white;
 	&__excerpt {
 		position:relative;
-		max-height:100px;
+		max-height:45px;
 		overflow:hidden;
 		margin-top:$space-3;
 		font-size:.95rem;
@@ -21,11 +26,14 @@
 		
 	}
 
+	&__content {
+		padding:$space-3 $space-3 $space-2 $space-3;
+	}
+
 	&__img-container {
 		overflow: hidden;
 		position:relative;
 		background-color:palette(black, base);
-		border-radius:$border-radius;
 		padding-bottom:66%;
 	}
 
