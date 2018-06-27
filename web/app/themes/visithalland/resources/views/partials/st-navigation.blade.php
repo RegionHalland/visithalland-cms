@@ -1,4 +1,5 @@
 @php($sh_navigation_items = App::getStNavigation())
+@php($page_id = get_page_by_path('skordetid-i-halland')->ID)
 
 <div class="st-navigation">
 	<div class="support-header topographic-pattern py2">
@@ -13,7 +14,7 @@
 	</div>
 	<div class="st-navigation__inner container col-11 md-col-10 lg-col-10 mx-auto">
 		<div class="st-navigation__logo">
-			<a href="{{ get_the_permalink(7609) }}" class="link-reset">
+			<a href="{{ get_the_permalink($page_id) }}" class="link-reset">
 				<img
 					class="header__logo center"
 					src="@asset('images/logo-dark.svg')"
