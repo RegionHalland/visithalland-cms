@@ -183,8 +183,8 @@
 						@if ($content['acf_fc_layout'] === 'link' && $content['fullsize'] === true)
 						<div class="st-week-grid__item col col-12 mb4">
 							<a href="{{ $content['url'] }}" title="{{ $content['title']}}" class="link-reset">
-								<div class="mxn2">
-							        <article class="article relative {{ App::getTermClassName() }}">
+						        <article class="article relative {{ App::getTermClassName() }}">
+						        	<div class="mxn2">
 							        	<div class="col col-12 sm-col-6 px2">
 							                <div class="article__img-container relative topographic-pattern">
 							                    <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
@@ -222,8 +222,8 @@
 							                    </div>
 							                </div>
 							            </div>
-							        </article>
-						    	</div>
+						            </div>
+						        </article>
 						    </a>
 						</div>
 						@endif
