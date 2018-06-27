@@ -91,43 +91,43 @@
 							<a href="{{ get_permalink($content['post']->ID) }}" title="{{ $content['post']->post_title }}" class="link-reset">
 	                            <article class="article relative {{ App::getTermClassName() }}">
 	                            	<div class="mxn2">
-	                            	<div class="col col-12 sm-col-6 px2">
-	                                    <div class="article__img-container relative topographic-pattern">
-	                                        <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
-	                                            <div class="article-tag__icon-wrapper">
-	                                                <div class="article-tag__icon"></div>
-	                                            </div>
-	                                        </div>
-	                                        @php
-	                                            $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
-	                                            $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-	                                        @endphp
-	                                        <picture>
-	                                            <source
-	                                                data-srcset="{{ get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium@2x' ) . " 2x" }}" />
-	                                            <img class="article__img lazyload"
-	                                                data-src="{{ get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium' ) }}"
-	                                                alt="{{ $alt }}"
-	                                            />
-	                                        </picture>
-	                                    </div>
-	                                </div>
-	                                <div class="col col-12 sm-col-6 px2">
-	                                    <div class="article__content {{ App::getTermClassName() }}">
-	                                        <h3 class="article__title mb1 pt0">{{ $content['post']->post_title }}</h3>
-	                                        <p class="article__excerpt mt2">@php the_field("excerpt", $content['post']->ID) @endphp</p>
-	                                        <div class="read-more my3">
-	                                            <span class="read-more__text">
-	                                                @php _e( 'Läs mer', 'visithalland' ); @endphp
-	                                            </span>
-	                                            <div class="read-more__button">
-	                                                <svg class="icon read-more__icon">
-	                                                    <use xlink:href="#arrow-right-icon"/>
-	                                                </svg>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
+		                            	<div class="col col-12 sm-col-6 px2">
+		                                    <div class="article__img-container relative topographic-pattern">
+		                                        <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
+		                                            <div class="article-tag__icon-wrapper">
+		                                                <div class="article-tag__icon"></div>
+		                                            </div>
+		                                        </div>
+		                                        @php
+		                                            $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+		                                            $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+		                                        @endphp
+		                                        <picture>
+		                                            <source
+		                                                data-srcset="{{ get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium@2x' ) . " 2x" }}" />
+		                                            <img class="article__img lazyload"
+		                                                data-src="{{ get_the_post_thumbnail_url( $content['post']->ID, 'vh_medium' ) }}"
+		                                                alt="{{ $alt }}"
+		                                            />
+		                                        </picture>
+		                                    </div>
+		                                </div>
+		                                <div class="col col-12 sm-col-6 px2">
+		                                    <div class="article__content {{ App::getTermClassName() }}">
+		                                        <h3 class="article__title mb1 pt0">{{ $content['post']->post_title }}</h3>
+		                                        <p class="article__excerpt mt2">@php the_field("excerpt", $content['post']->ID) @endphp</p>
+		                                        <div class="read-more my3">
+		                                            <span class="read-more__text">
+		                                                @php _e( 'Läs mer', 'visithalland' ); @endphp
+		                                            </span>
+		                                            <div class="read-more__button">
+		                                                <svg class="icon read-more__icon">
+		                                                    <use xlink:href="#arrow-right-icon"/>
+		                                                </svg>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
 	                                </div>
 	                            </article>
 	                        </a>
@@ -183,45 +183,47 @@
 						@if ($content['acf_fc_layout'] === 'link' && $content['fullsize'] === true)
 						<div class="st-week-grid__item col col-12 mb4">
 							<a href="{{ $content['url'] }}" title="{{ $content['title']}}" class="link-reset">
-						        <article class="article relative {{ App::getTermClassName() }} mxn3">
-						        	<div class="col col-12 sm-col-6 px3">
-						                <div class="article__img-container relative topographic-pattern">
-						                    <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
-						                        <div class="article-tag__icon-wrapper">
-						                            <div class="article-tag__icon"></div>
-						                        </div>
-						                    </div>
-						                    @php
-						                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
-						                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-						                    @endphp
-						                    <picture>
-						                        <source
-						                            data-srcset="{{ $content['image']['sizes']['vh_medium'] . " 1x," . $content['image']['sizes']['vh_medium@2x'] . " 2x" }}" />
-						                        <img class="article__img lazyload"
-						                            data-src="{{ $content['image']['sizes']['vh_medium'] }}"
-						                            alt="{{ get_field("cover_image")["alt"] }}"
-						                        />
-						                    </picture>
-						                </div>
-						            </div>
-						            <div class="col col-12 sm-col-6 px3">
-						                <div class="article__content mt3 {{ App::getTermClassName() }}">
-						                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }}</h3>
-						                    <p class="article__excerpt mt2">{{ $content['description'] }}</p>
-						                    <div class="read-more my3">
-						                        <span class="read-more__text">
-						                            @php _e( 'Läs mer', 'visithalland' ); @endphp
-						                        </span>
-						                        <div class="read-more__button">
-						                            <svg class="icon read-more__icon">
-						                                <use xlink:href="#arrow-right-icon"/>
-						                            </svg>
-						                        </div>
-						                    </div>
-						                </div>
-						            </div>
-						        </article>
+								<div class="mxn2">
+							        <article class="article relative {{ App::getTermClassName() }}">
+							        	<div class="col col-12 sm-col-6 px2">
+							                <div class="article__img-container relative topographic-pattern">
+							                    <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
+							                        <div class="article-tag__icon-wrapper">
+							                            <div class="article-tag__icon"></div>
+							                        </div>
+							                    </div>
+							                    @php
+							                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+							                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+							                    @endphp
+							                    <picture>
+							                        <source
+							                            data-srcset="{{ $content['image']['sizes']['vh_medium'] . " 1x," . $content['image']['sizes']['vh_medium@2x'] . " 2x" }}" />
+							                        <img class="article__img lazyload"
+							                            data-src="{{ $content['image']['sizes']['vh_medium'] }}"
+							                            alt="{{ get_field("cover_image")["alt"] }}"
+							                        />
+							                    </picture>
+							                </div>
+							            </div>
+							            <div class="col col-12 sm-col-6 px2">
+							                <div class="article__content mt3 {{ App::getTermClassName() }}">
+							                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }}</h3>
+							                    <p class="article__excerpt mt2">{{ $content['description'] }}</p>
+							                    <div class="read-more my3">
+							                        <span class="read-more__text">
+							                            @php _e( 'Läs mer', 'visithalland' ); @endphp
+							                        </span>
+							                        <div class="read-more__button">
+							                            <svg class="icon read-more__icon">
+							                                <use xlink:href="#arrow-right-icon"/>
+							                            </svg>
+							                        </div>
+							                    </div>
+							                </div>
+							            </div>
+							        </article>
+						    	</div>
 						    </a>
 						</div>
 						@endif
