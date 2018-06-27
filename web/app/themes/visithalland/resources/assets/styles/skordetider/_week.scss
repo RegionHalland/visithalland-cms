@@ -153,6 +153,29 @@
 	outline:none;
 }
 
+.st-week-carousel-next, .st-week-carousel-previous {
+	position:absolute;
+	z-index:$z4;
+	right:0;
+	top:50%;
+	transform:translateY(-50%);
+	outline:none;
+}
+
+.st-week-carousel-previous {
+	left:-$space-2;
+	@media (min-width:$breakpoint-sm) {
+		left:-$space-3;
+	}
+}
+
+.st-week-carousel-next {
+	right:-$space-2;
+	@media (min-width:$breakpoint-sm) {
+		right:-$space-3;
+	}
+}
+
 .st-week-carousel__title {
 	font-family: 'La Belle Aurore', cursive;
 	font-size: 1.725rem;

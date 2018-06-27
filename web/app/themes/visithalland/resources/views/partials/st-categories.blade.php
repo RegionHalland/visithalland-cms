@@ -3,7 +3,19 @@
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
 		<div id="{{sanitize_title( $object->name) }}" class="st-category mb4 mt3 clearfix mxn3">
-			<div class="col col-12 sm-col-5 md-col-5 px3">
+			<div class="col col-12 sm-col-5 md-col-5 px3 relative">
+				<div class="absolute bottom-0 mb4 right-0 mr4 z4">
+					<button class="icon-button">
+						<svg class="icon--sm icon-button__icon">
+							<use xlink:href="#arrow-left-icon"/>
+						</svg>
+					</button>
+					<button class="icon-button">
+						<svg class="icon--sm icon-button__icon">
+							<use xlink:href="#arrow-right-icon"/>
+						</svg>
+					</button>
+				</div>
 				<div class="st-category__carousel overflow-hidden">
 					@foreach($object->gallery as $key => $gallery_image)
 					<div class="st-category__img-container">
