@@ -1,6 +1,6 @@
 @if(isset($week))
 
-<div class="st-week">
+<div class="st-week overflow-hidden">
 	<header class="st-week-header">
 		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
@@ -17,14 +17,13 @@
 					</div>
 					<div class="st-timeline__line first"></div>
 				</div>
-				<div class="st-week-header__content  col col-12 sm-col-5">
+				<div class="st-week-header__content  col col-12 sm-col-8 lg-col-5">
 					<h2 class="st-week-header__title mb3">{{ $week['title'] }}</h2>
 					<p class="st-week-header__description mb3">{{ $week['description'] }}</p>
 				</div>
 			</div>
 		</div>
 	</header>
-	<div>
 		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
 				<div class="st-timeline col col-12 sm-col-2">
@@ -245,11 +244,56 @@
 
 						{{-- CAROUSEL --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
-						<div class="col col-12 px3 mb5">
-							{{ $content['description'] }}
-							@foreach ($content as $item)
-								@php(var_dump($item))
-							@endforeach
+						<div class="st-week-grid__item col col-12 mb5">
+							<h2 class="st-week-carousel__title mb3">{{ $content['description'] }}</h2>
+							<div class="relative">
+								<button class="st-carousel-previous icon-button">
+									<svg class="icon--sm icon-button__icon">
+										<use xlink:href="#arrow-left-icon"/>
+									</svg>
+								</button>
+								<button class="st-carousel-next icon-button">
+									<svg class="icon--sm icon-button__icon">
+										<use xlink:href="#arrow-right-icon"/>
+									</svg>
+								</button>
+								@foreach ($content as $items)
+									<div class="st-week-carousel">
+										@foreach ($items as $item)
+											<div class="col col-10 sm-col-8 md-col-5 mr3">
+												<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
+													<article class="image-blurb image-blurb--fixed-height">
+														<picture>
+															<source
+																media="(min-width: 40em)"
+																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_large@2x' ) . " 2x" }}" />
+															<source
+																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_medium@2x' ) . " 2x" }}" />
+															<img
+																class="image-blurb__img lazyload"
+																data-src="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' )}}"
+																alt="{{ $alt }}" />
+														</picture>
+														<div class="image-blurb__content">
+															<h3 class="image-blurb__title">{!! $item->post_title !!}</h3>
+															<div class="read-more my3">
+											                    <span class="read-more__text light">
+											                        @php _e( 'Läs mer', 'visithalland' ); @endphp
+											                    </span>
+											                    <div class="read-more__button">
+											                        <svg class="icon read-more__icon">
+											                            <use xlink:href="#arrow-right-icon"/>
+											                        </svg>
+											                    </div>
+											                </div>
+										                </div>
+													</article>
+												</a>
+											</div>
+										@endforeach
+									</div>
+								@endforeach
+							</div>
 						</div>
 						@endif
 						{{-- CAROUSEL [END] --}}
@@ -258,6 +302,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 @endif
