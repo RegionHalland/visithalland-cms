@@ -113,7 +113,7 @@
 	                                    </div>
 	                                </div>
 	                                <div class="col col-12 sm-col-6 px2">
-	                                    <div class="article__content mt3 {{ App::getTermClassName() }}">
+	                                    <div class="article__content {{ App::getTermClassName() }}">
 	                                        <h3 class="article__title mb1 pt0">{{ $content['post']->post_title }}</h3>
 	                                        <p class="article__excerpt mt2">@php the_field("excerpt", $content['post']->ID) @endphp</p>
 	                                        <div class="read-more my3">
@@ -253,7 +253,7 @@
 
 						{{-- CAROUSEL --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
-						<div class="st-week-grid__item col col-12 mb4">
+						<div class="st-week-grid__item col col-12 mb4 py4">
 							<h2 class="st-week-carousel__title mb3">{{ $content['description'] }}</h2>
 							<div class="relative">
 								<button class="st-carousel-previous icon-button">
