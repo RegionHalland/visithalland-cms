@@ -1,4 +1,5 @@
-@php($fields = get_field('category', 7611))
+@php($page_id = get_page_by_path('allt-som-skordetid-i-halland-har-att-erbjuda')->ID)
+@php($fields = get_field('category', $page_id))
 
 <section class="overflow-hidden st-carousel-section">
 	<div class="container py5 col-11 md-col-10 lg-col-10 mx-auto relative">
@@ -17,7 +18,7 @@
 			<div class="st-carousel">
 				@foreach($fields as $key => $field)
 					@php($object = (object) $field)
-					<a href="{{ get_permalink(7611) . '#' . sanitize_title($object->name) }}" class="mr3">
+					<a href="{{ get_permalink($page_id) . '#' . sanitize_title($object->name) }}" class="mr3">
 						<div class="st-thumbnail">
 						  <div class="st-thumbnail__img-container">
 						  	<img class="st-category-thumbnail__img lazyload" src="{{ $object->gallery[0]['sizes']['vh_small@2x'] }}" alt="">
