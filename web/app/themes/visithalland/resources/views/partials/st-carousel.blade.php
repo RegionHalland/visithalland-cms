@@ -1,4 +1,4 @@
-@php($page_id = get_page_by_path('allt-som-skordetid-i-halland-har-att-erbjuda')->ID)
+@php($page_id = get_page_by_path('skordetid-i-halland/allt-som-skordetid-i-halland-har-att-erbjuda')->ID)
 @php($fields = get_field('category', $page_id))
 
 <section class="overflow-hidden st-carousel-section">
