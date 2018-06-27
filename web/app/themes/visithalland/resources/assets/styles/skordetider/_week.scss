@@ -62,6 +62,7 @@
 	flex-wrap: wrap;
 	margin-top: -$space-3;
 	padding-bottom: $space-5;
+	z-index:$z4;
 	@media(min-width:$breakpoint-sm) {
 		margin-top: -$space-5;
 		margin-left:-$space-3;
@@ -87,7 +88,7 @@
 .st-week-quote {
 	display: flex;
 	flex-wrap: wrap;
-	padding:2rem 0;
+	padding:$space-4 0;
 
 	@media screen and (min-width: $breakpoint-sm) {
 		flex-wrap: nowrap;	
