@@ -17,7 +17,7 @@
 			<div class="st-carousel">
 				@foreach($fields as $key => $field)
 					@php($object = (object) $field)
-					<a href="" class="mr3">
+					<a href="{{ get_permalink(7611) . '#' . sanitize_title($object->name) }}" class="mr3">
 						<div class="st-thumbnail">
 						  <div class="st-thumbnail__img-container">
 						  	<img class="st-category-thumbnail__img lazyload" src="{{ $object->gallery[0]['sizes']['vh_small@2x'] }}" alt="">

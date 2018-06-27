@@ -2,7 +2,7 @@
 	@php($fields = get_field('category'))
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
-		<div class="st-category mb4 mt3 clearfix mxn3">
+		<div id="{{sanitize_title( $object->name) }}" class="st-category mb4 mt3 clearfix mxn3">
 			<div class="col col-12 sm-col-5 md-col-5 px3">
 				<div class="st-category__carousel overflow-hidden">
 					@foreach($object->gallery as $key => $gallery_image)
