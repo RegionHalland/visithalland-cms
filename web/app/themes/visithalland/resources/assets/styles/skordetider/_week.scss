@@ -16,10 +16,10 @@
 }
 
 .st-week-header__description {
-	font-family: 'La Belle Aurore', cursive;
-	font-size: 1.35rem;
-	font-weight:200;
-	color:palette(grey, x-dark);
+	font-family: $fira-font-family;
+	font-size: 1.1rem;
+	font-weight:300;
+	color:palette(grey, xx-dark);
 }
 
 .st-week-header__title {
@@ -183,7 +183,14 @@
 }
 
 .st-week-carousel__title {
+	font-family: $rift-font-family;
+	font-size: 1.375rem;
+}
+
+
+.st-week-carousel__header {
 	font-family: 'La Belle Aurore', cursive;
-	font-size: 1.725rem;
+	font-size: 1rem;
 	font-weight:200;
+	line-height:1.25;
 }
