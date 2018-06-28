@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5b0ffb0a49efc',
-    'title' => __('Skördetider', 'visithalland'),
+    'title' => __('Skördetider - Landningssida', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b0ffb9f0501c',
@@ -420,7 +420,7 @@
             0 => array(
                 'param' => 'page_template',
                 'operator' => '==',
-                'value' => 'views/template-landing-skordetider.blade.php',
+                'value' => 'views/st-template-landing.blade.php',
             ),
         ),
     ),
