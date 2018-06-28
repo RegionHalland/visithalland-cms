@@ -4,14 +4,15 @@
 		@php($object = (object) $field)
 		<div id="{{sanitize_title( $object->name) }}" class="st-category mb5 clearfix mxn3">
 			<div class="col col-12 sm-col-5 md-col-5 px3 relative">
-				<div class="relative">
+				@if(!empty($object->gallery))
+				<div class="relative js-carousel-parent">
 					<div class="absolute bottom-0 mb4 right-0 mr4 z4">
-						<button class="icon-button">
+						<button class="icon-button js-carousel-previous">
 							<svg class="icon--sm icon-button__icon">
 								<use xlink:href="#arrow-left-icon"/>
 							</svg>
 						</button>
-						<button class="icon-button">
+						<button class="icon-button js-carousel-next">
 							<svg class="icon--sm icon-button__icon">
 								<use xlink:href="#arrow-right-icon"/>
 							</svg>
@@ -32,11 +33,13 @@
 						@endforeach
 					</div>
 				</div>
+				@endif
 			</div>
 			<div class="col col-12 sm-col-7 md-col-7 px3">
 				<h2 class="st-category__title mb3 mt3">{{ $object->name }}</h2>
 				<p class="st-category__description">{{ $object->description }}</p>
 				<hr class="st-category__divider my3">
+				@if(!empty($object->gallery))
 				<ul class="st-category__list clearfix mxn2">			
 					@foreach($object->links as $key => $link)
 						<li class="st-category__list-item col col-6 sm-col-6 md-col-4 px2">
@@ -49,6 +52,7 @@
 						</li>
 					@endforeach
 				</ul>
+				@endif
 			</div>
 		</div>
 	@endforeach

@@ -4,13 +4,13 @@
 <section class="overflow-hidden st-carousel-section">
 	<div class="container py5 col-11 md-col-10 lg-col-10 mx-auto relative">
 		<h2 class="mb3 h3">Upptäck Halland i skördetid</h2>
-		<div class="relative">
-			<button class="st-carousel-previous icon-button">
+		<div class="relative js-carousel-parent">
+			<button class="st-carousel-previous js-carousel-previous icon-button">
 				<svg class="icon--sm icon-button__icon">
 					<use xlink:href="#arrow-left-icon"/>
 				</svg>
 			</button>
-			<button class="st-carousel-next icon-button">
+			<button class="st-carousel-next js-carousel-next icon-button">
 				<svg class="icon--sm icon-button__icon">
 					<use xlink:href="#arrow-right-icon"/>
 				</svg>

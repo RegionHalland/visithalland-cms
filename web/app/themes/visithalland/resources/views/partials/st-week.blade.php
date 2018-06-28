@@ -257,13 +257,13 @@
 						@if ($content['acf_fc_layout'] === 'carousel')
 						<div class="st-week-grid__item col col-12 mb4 py4">
 							<h2 class="st-week-carousel__title mb3">{{ $content['description'] }}</h2>
-							<div class="relative">
-								<button class="st-week-carousel-previous icon-button">
+							<div class="relative js-carousel-parent">
+								<button class="st-week-carousel-previous js-carousel-previous icon-button">
 									<svg class="icon--sm icon-button__icon">
 										<use xlink:href="#arrow-left-icon"/>
 									</svg>
 								</button>
-								<button class="st-week-carousel-next icon-button">
+								<button class="st-week-carousel-next js-carousel-next icon-button">
 									<svg class="icon--sm icon-button__icon">
 										<use xlink:href="#arrow-right-icon"/>
 									</svg>

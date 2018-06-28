@@ -1,9 +1,9 @@
 var Flickity = require('flickity-imagesloaded');
+import bindNavigation from '../util/bindFlickityNavigation';
 
 export default {
     init() {
         $(document).ready( () => {
-            console.log("test");
         	this.initFlickity();
         });
     },
@@ -21,6 +21,8 @@ export default {
 		        pageDots: false,
 		        imagesLoaded: true
 		    });
+
+            bindNavigation(el)
         })
 
         carousel.flickity = new Flickity(carousel, {
@@ -30,5 +32,7 @@ export default {
             pageDots: false,
             imagesLoaded: true
         });
-    }
+
+        bindNavigation(carousel)
+    },
 };
