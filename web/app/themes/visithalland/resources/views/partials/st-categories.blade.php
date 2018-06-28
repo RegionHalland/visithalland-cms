@@ -39,7 +39,7 @@
 				<h2 class="st-category__title mb3 mt3">{{ $object->name }}</h2>
 				<p class="st-category__description">{{ $object->description }}</p>
 				<hr class="st-category__divider my3">
-				@if(!empty($object->gallery))
+				@if(!empty($object->links))
 				<ul class="st-category__list clearfix mxn2">			
 					@foreach($object->links as $key => $link)
 						<li class="st-category__list-item col col-6 sm-col-6 md-col-4 px2">
