@@ -26,7 +26,6 @@
 				<a href="{{ $sh_navigation_item->url }}" class="st-navigation__link {{ array_walk($sh_navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
 					{{$sh_navigation_item->title }}
 				</a>
-				
 			@endforeach
 		</nav>
 	</div>

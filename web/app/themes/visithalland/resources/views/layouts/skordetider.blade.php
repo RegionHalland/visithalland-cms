@@ -9,7 +9,7 @@
 	<!-- End Google Tag Manager (noscript) -->
 	<link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet">
 
-	@include('partials.st-navigation')
+	@include('partials.st-header')
 
 	<div role="document">
 		<main role="main" class="" id="main-content">
@@ -18,7 +18,7 @@
 	</div>
 
 	@php(do_action('get_footer'))
-	    @include('partials.footer')
+	@include('partials.footer')
 	@php(wp_footer())
 
 	</body>

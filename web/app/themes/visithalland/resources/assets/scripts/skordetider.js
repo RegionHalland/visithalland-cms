@@ -7,18 +7,18 @@ import "./autoload/**/*";
 // import local dependencies
 import Router from './util/Router';
 import common from './routes/common';
-import templateAllActivitiesSkordetider from './routes/templateAllActivitiesSkordetider';
-import mapSkordetider from './routes/mapSkordetider';
-import templateLandingSkordetider from './routes/templateLandingSkordetider';
+import stTemplateAllActivities from './routes/stTemplateAllActivities';
+import stTemplateMap from './routes/stTemplateMap';
+import stTemplateLanding from './routes/stTemplateLanding';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
     // allWeekendActivities page
-    templateAllActivitiesSkordetider,
+    stTemplateAllActivities,
     // mapSkordetider page
-    mapSkordetider,
+    stTemplateMap,
     // templateLandingSkordetider page
-    templateLandingSkordetider
+    stTemplateLanding
 });
 
 
