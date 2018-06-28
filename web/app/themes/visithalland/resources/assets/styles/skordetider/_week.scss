@@ -1,7 +1,10 @@
 .st-week-header {
-	padding-top: $space-6;
+	padding-top: $space-5;
 	background: palette(grey, xx-light);
 	border-bottom:1px solid palette(grey, x-light);
+	@media screen and (min-width: $breakpoint-sm) {
+		padding-top: $space-6;
+	}
 }
 
 .st-week-header__content {
@@ -36,6 +39,9 @@
 	text-align: center;
 	border-radius: 4px;
 	z-index: $z2;
+	@media (max-width:$breakpoint-sm) {
+		margin-bottom:$space-4;
+	}
 }
 
 .st-timeline__line {
