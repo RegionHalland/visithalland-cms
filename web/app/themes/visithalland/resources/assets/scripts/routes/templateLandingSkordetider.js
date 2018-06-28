@@ -1,4 +1,5 @@
 var Flickity = require('flickity-imagesloaded');
+import bindNavigation from '../util/bindFlickityNavigation';
 
 export default {
     init() {
@@ -14,13 +15,15 @@ export default {
         var weekCarousel = $('.st-week-carousel');
 
         galleries.each(function(key, el) {
-        	el.flickity = new Flickity(el, {
-		        cellAlign: 'left',
-		        contain: true,
-		        prevNextButtons: false,
-		        pageDots: false,
-		        imagesLoaded: true
-		    });
+            el.flickity = new Flickity(el, {
+                cellAlign: 'left',
+                contain: true,
+                prevNextButtons: false,
+                pageDots: false,
+                imagesLoaded: true
+            });
+
+            bindNavigation(el);
         })
 
         carousel.flickity = new Flickity(carousel, {
@@ -31,7 +34,9 @@ export default {
             imagesLoaded: true
         });
 
-        weekCarousel.each(function(key, el) {
+        bindNavigation(carousel);
+
+        weekCarousel.each((key, el) => {
             el.flickity = new Flickity(el, {
                 cellAlign: 'left',
                 contain: true,
@@ -39,6 +44,20 @@ export default {
                 pageDots: false,
                 imagesLoaded: true
             });
+
+            bindNavigation(el);
         });
+    },
+
+    bindNavigation(el) {
+        let previous = $(el).siblings('.js-carousel-previous');
+        let next = $(el).siblings('.js-carousel-next');
+
+        if (previous.length <= 0 && next.length <= 0) {
+            return false;
+        }
+
+        previous.on('click', () => el.flickity.previous())
+        next.on('click', () => el.flickity.next())
     }
 };
