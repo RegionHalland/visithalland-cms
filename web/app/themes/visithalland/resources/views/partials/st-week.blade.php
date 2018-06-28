@@ -256,6 +256,7 @@
 						{{-- CAROUSEL --}}
 						@if ($content['acf_fc_layout'] === 'carousel')
 						<div class="st-week-grid__item col col-12 mb4 py4">
+							<span class="st-week-carousel__header">Top tips</span>
 							<h2 class="st-week-carousel__title mb3">{{ $content['description'] }}</h2>
 							<div class="relative js-carousel-parent">
 								<button class="st-week-carousel-previous js-carousel-previous icon-button">
