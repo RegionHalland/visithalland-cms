@@ -7,7 +7,7 @@
 @section('content')
 
 	{{-- Google Map --}}
-	@php($fields = get_field('category', get_page_by_path('skordetider-listvy')->ID))
+	@php($fields = get_field('category', get_page_by_path('skordetid-i-halland/allt-som-skordetid-i-halland-har-att-erbjuda')->ID))
 		<div id="map"></div>
 		<div class="acf-map" style="height:100vh;width:100%;">
 			@foreach($fields as $key => $field)
