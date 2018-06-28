@@ -1,6 +1,6 @@
 .st-list__header {
 	height:65vh;
-	background:palette(grey, x-light);
+	background:$st-primary-color;
 }
 
 
@@ -12,8 +12,6 @@
 }
 
 .st-list__title {
-	font-family: 'La Belle Aurore', cursive;
-	font-weight:200;
-	line-height:1.5;
+	
 }
 

@@ -17,7 +17,7 @@
 			<a href="{{ get_the_permalink($page_id) }}" class="link-reset">
 				<img
 					class="header__logo center"
-					src="@asset('images/logo-dark.svg')"
+					src="@asset('images/st-logo.svg')"
 					alt="Visithalland.com" />
 			</a>
 		</div>

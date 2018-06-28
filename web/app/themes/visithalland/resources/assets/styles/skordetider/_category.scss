@@ -16,14 +16,16 @@
 }
 
 .st-category__title {
-	font-family: 'La Belle Aurore', cursive;
-	font-weight:200;
+	font-family: $rift-font-family;
+	font-weight:bold;
 	font-size:2rem;
 }
 
 .st-category__description {
 	max-width:550px;
 	font-size:1rem;
+	font-weight:300;
+	padding-bottom:$space-3;
 }
 
 
@@ -78,7 +80,7 @@
 	height:22.5px;
 	width:22.5px;
 	flex:0 0 22.5px;
-	background:#F25252;
+	background:$st-secondary-color;
 	border-radius:50%;
 	display:inline-block;
 	opacity:0;
@@ -99,6 +101,6 @@
 	opacity:0.75;
 	transition:opacity 0.25s;
 	font-size:1rem;
-	font-weight:500;
+	font-weight:bold;
 	font-family:$rift-font-family;
 }

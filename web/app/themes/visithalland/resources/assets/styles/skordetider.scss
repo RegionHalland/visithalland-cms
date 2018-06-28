@@ -2,6 +2,10 @@
 // This is used for setting color variables, spacing, fonts and more.
 @import 'settings/settings';
 
+
+$st-primary-color : #6A7B7B;
+$st-secondary-color : #CF9E23;
+
 // Mixins
 @import 'mixins/spacing';
 @import 'mixins/palette';
@@ -38,13 +42,7 @@
 
 @import './header/support-header';
 
-@import './article/article-medium';
-
-
 @import './skordetider/article';
-
-
-
 @import './article/image-blurb';
 
 // Skördetider
