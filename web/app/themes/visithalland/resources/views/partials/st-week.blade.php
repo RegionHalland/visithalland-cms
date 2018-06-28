@@ -1,6 +1,6 @@
 @if(isset($week))
 
-<div class="st-week overflow-hidden">
+<section class="st-week overflow-hidden">
 	<header class="st-week-header">
 		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
@@ -312,5 +312,5 @@
 				</div>
 			</div>
 		</div>
-</div>
+</section>
 @endif
