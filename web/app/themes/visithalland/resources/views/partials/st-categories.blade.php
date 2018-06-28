@@ -18,7 +18,7 @@
 							</svg>
 						</button>
 					</div>
-					<div class="st-category__carousel overflow-hidden">
+					<div class="st-category__carousel js-carousel overflow-hidden">
 						@foreach($object->gallery as $key => $gallery_image)
 						<div class="st-category__img-container">
 							<picture>

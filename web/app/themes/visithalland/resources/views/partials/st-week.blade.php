@@ -269,7 +269,7 @@
 										<use xlink:href="#arrow-right-icon"/>
 									</svg>
 								</button>
-								<div class="st-week-carousel">
+								<div class="st-week-carousel js-carousel">
 									@foreach ($content['content'] as $item)
 										<div class="col col-10 sm-col-8 md-col-5 mr3">
 											<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">

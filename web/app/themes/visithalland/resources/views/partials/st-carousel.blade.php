@@ -15,7 +15,7 @@
 					<use xlink:href="#arrow-right-icon"/>
 				</svg>
 			</button>
-			<div class="st-carousel">
+			<div class="st-carousel js-carousel">
 				@foreach($fields as $key => $field)
 					@php($object = (object) $field)
 					<a href="{{ get_permalink($page_id) . '#' . sanitize_title($object->name) }}" class="mr3">
