@@ -147,7 +147,7 @@
 						                        </div>
 						                    </div>
 						                    @php
-						                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+						                        $thumbnail_id = get_post_thumbnail_id( $content['image']['ID'] );
 						                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 						                    @endphp
 						                    <picture>
@@ -193,7 +193,7 @@
 							                        </div>
 							                    </div>
 							                    @php
-							                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+							                        $thumbnail_id = get_post_thumbnail_id( $content['image']['ID'] );
 							                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 							                    @endphp
 							                    <picture>
@@ -268,42 +268,40 @@
 										<use xlink:href="#arrow-right-icon"/>
 									</svg>
 								</button>
-								@foreach ($content as $items)
-									<div class="st-week-carousel">
-										@foreach ($items as $item)
-											<div class="col col-10 sm-col-8 md-col-5 mr3">
-												<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
-													<article class="image-blurb image-blurb--fixed-height">
-														<picture>
-															<source
-																media="(min-width: 40em)"
-																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_large@2x' ) . " 2x" }}" />
-															<source
-																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_medium@2x' ) . " 2x" }}" />
-															<img
-																class="image-blurb__img lazyload"
-																data-src="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' )}}"
-																alt="{{ $alt }}" />
-														</picture>
-														<div class="image-blurb__content">
-															<h3 class="image-blurb__title">{!! $item->post_title !!}</h3>
-															<div class="read-more my3">
-											                    <span class="read-more__text light">
-											                        @php _e( 'Läs mer', 'visithalland' ); @endphp
-											                    </span>
-											                    <div class="read-more__button">
-											                        <svg class="icon read-more__icon">
-											                            <use xlink:href="#arrow-right-icon"/>
-											                        </svg>
-											                    </div>
-											                </div>
+								<div class="st-week-carousel">
+									@foreach ($content['content'] as $item)
+										<div class="col col-10 sm-col-8 md-col-5 mr3">
+											<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
+												<article class="image-blurb image-blurb--fixed-height">
+													<picture>
+														<source
+															media="(min-width: 40em)"
+															data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_large@2x' ) . " 2x" }}" />
+														<source
+															data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_medium@2x' ) . " 2x" }}" />
+														<img
+															class="image-blurb__img lazyload"
+															data-src="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' )}}"
+															alt="{{ $alt }}" />
+													</picture>
+													<div class="image-blurb__content">
+														<h3 class="image-blurb__title">{!! $item->post_title !!}</h3>
+														<div class="read-more my3">
+										                    <span class="read-more__text light">
+										                        @php _e( 'Läs mer', 'visithalland' ); @endphp
+										                    </span>
+										                    <div class="read-more__button">
+										                        <svg class="icon read-more__icon">
+										                            <use xlink:href="#arrow-right-icon"/>
+										                        </svg>
+										                    </div>
 										                </div>
-													</article>
-												</a>
-											</div>
-										@endforeach
-									</div>
-								@endforeach
+									                </div>
+												</article>
+											</a>
+										</div>
+									@endforeach
+								</div>
 							</div>
 						</div>
 						@endif
