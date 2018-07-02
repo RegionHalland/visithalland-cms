@@ -24,9 +24,10 @@
 
 .card__content {
   padding-top:$space-3;
-  min-height:400px;
-  max-height:400px;
+  min-height:60vh;
+  max-height:60vh;
   overflow:scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 
@@ -37,6 +38,6 @@
   font-family:$rift-font-family;
   opacity:0.8;
   &:active {
-	opacity:1;
+	 opacity:1;
   }
 }
