@@ -5,6 +5,16 @@
 @extends('layouts.day-in-halland')
 
 @section('content')
+    <div class="support-header topographic-pattern py2 fixed top-0 left-0 right-0 z4">
+        <div class="support-header__inner container col-11 md-col-10 lg-col-10 mx-auto">
+            <a class="support-header__link" href="/">
+                <svg class="support-header__icon mr1">
+                     <use xlink:href="#arrow-left-icon"/>
+                </svg>
+                Tillbaka till visithalland.com
+            </a>
+        </div>
+    </div>
     <div class="dh-landing flex items-center justify-center flex-column">
         {{-- PHP/html content starts --}}
         <picture>
