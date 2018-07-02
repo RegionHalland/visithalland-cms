@@ -1,9 +1,13 @@
 @php($page_id = get_page_by_path('skordetid-i-halland/allt-som-skordetid-i-halland-har-att-erbjuda')->ID)
 @php($fields = get_field('category', $page_id))
 
-<section class="overflow-hidden st-carousel-section">
+<section class="overflow-hidden st-carousel-section relative">
+	<img
+	class="st-beet"
+	src="@asset('images/st-beet.svg')"
+	alt="Visithalland.com" />
 	<div class="container py5 col-11 md-col-10 lg-col-10 mx-auto relative">
-		<h2 class="mb3 h3">Upptäck Halland i skördetid</h2>
+		<h2 class="mb3 h3 st-carousel__title">Upptäck Halland i skördetid</h2>
 		<div class="relative js-carousel-parent">
 			<button class="st-carousel-previous js-carousel-previous icon-button">
 				<svg class="icon--sm icon-button__icon">

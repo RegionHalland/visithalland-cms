@@ -13,6 +13,7 @@
 	</div>
 </header>
 
+
 @include('partials.st-carousel')
 
 @include('partials.st-categories')

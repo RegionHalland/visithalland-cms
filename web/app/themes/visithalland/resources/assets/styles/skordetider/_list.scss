@@ -12,6 +12,11 @@
 }
 
 .st-list__title {
-	
+	font-family:$st-font;
+	line-height:1.25;
+	@media (min-width:$breakpoint-sm) {
+		font-size:3.25rem;
+	}
+
 }
 

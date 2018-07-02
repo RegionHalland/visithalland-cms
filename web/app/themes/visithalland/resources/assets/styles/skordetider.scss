@@ -5,6 +5,7 @@
 
 $st-primary-color : #6A7B7B;
 $st-secondary-color : #CF9E23;
+$st-font: 'Mindset-Slim';
 
 // Mixins
 @import 'mixins/spacing';
@@ -54,6 +55,7 @@ $st-secondary-color : #CF9E23;
 @import './skordetider/thumbnail';
 @import './skordetider/category';
 @import './skordetider/navigation';
+@import './skordetider/vegetables';
 
 // Footer Styles
 @import './footer/footer'; //Se över
@@ -63,3 +65,6 @@ $st-secondary-color : #CF9E23;
 
 // Typekit
 @import url('https://use.typekit.net/vzi2bvt.css');
+@import url("//hello.myfonts.net/count/36fd5f");
+
+@font-face {font-family: 'Mindset-Slim';src: url('fonts/36FD5F_1_0.eot');src: url('fonts/36FD5F_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/36FD5F_1_0.woff2') format('woff2'),url('fonts/36FD5F_1_0.woff') format('woff'),url('fonts/36FD5F_1_0.ttf') format('truetype');}

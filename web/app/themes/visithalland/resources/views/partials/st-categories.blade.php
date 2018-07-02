@@ -36,7 +36,7 @@
 				@endif
 			</div>
 			<div class="col col-12 sm-col-7 md-col-7 px3">
-				<h2 class="st-category__title mb3 mt3">{{ $object->name }}</h2>
+				<h2 class="st-category__title mb3">{{ $object->name }}</h2>
 				<p class="st-category__description">{{ $object->description }}</p>
 				<hr class="st-category__divider my3">
 				@if(!empty($object->links))
