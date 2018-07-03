@@ -160,7 +160,7 @@
 						                    </picture>
 						                </div>
 						                <div class="article__content {{ App::getTermClassName() }}">
-						                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }}</h3>
+						                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }} {{ $content['url'] }}</h3>
 						                    <p class="article__excerpt mt2">{{ $content['description'] }}</p>
 						                    <div class="read-more my3">
 						                        <span class="read-more__text">

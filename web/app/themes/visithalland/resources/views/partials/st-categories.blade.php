@@ -42,7 +42,7 @@
 				@if(!empty($object->links))
 				<ul class="st-category__list clearfix mxn2">			
 					@foreach($object->links as $key => $link)
-						<li class="st-category__list-item col col-6 sm-col-6 md-col-4 px2">
+						<li class="st-category__list-item col col-12 sm-col-6 md-col-6 px2">
 							<a class="st-category__link" href="{{$link["link"]}}" target="_blank">{{ $link["name"] }}</a>
 							<div class="st-category__btn">
 								<svg class="icon--sm st-category__btn-icon">
