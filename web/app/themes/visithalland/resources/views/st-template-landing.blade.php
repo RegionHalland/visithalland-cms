@@ -16,7 +16,7 @@
 			alt="Visithalland.com" />
 			<div class="col-12 sm-col-8 md-col-6 flex items-center mx-auto mt5">
 				<div class="col col-12 md-col-6">
-					<a href="" class="btn block">Se höstens highligts</a>
+					<button class="btn block st-cta-button">Se höstens highligts</button>
 				</div>
 				<div class="col col-12 md-col-6">
 					<a href="{{the_permalink($page_id)}}" class="block">
