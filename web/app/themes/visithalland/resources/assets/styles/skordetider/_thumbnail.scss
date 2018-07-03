@@ -8,6 +8,7 @@
   max-width: 225px;
   width:225px;
   overflow:hidden;
+  background:$white;
   @media screen and (min-width: $breakpoint-sm) {
     display: inline-flex;
     max-width:none;
@@ -57,7 +58,7 @@
 	width:22.5px;
 	height:22.5px;
   flex: 0 0 22.5px;
-	background:#F25252;
+	background:$st-secondary-color;
 	display:flex;
 	align-items:center;
 	justify-content:center;

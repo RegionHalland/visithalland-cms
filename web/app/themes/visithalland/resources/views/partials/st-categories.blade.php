@@ -1,43 +1,48 @@
-<section class="container py4 col-11 md-col-10 lg-col-10 mx-auto relative">
+<section class="container pt5 col-11 md-col-10 lg-col-10 mx-auto relative">
 	@php($fields = get_field('category'))
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
-		<div id="{{sanitize_title( $object->name) }}" class="st-category mb4 mt3 clearfix mxn3">
+		<div id="{{sanitize_title( $object->name) }}" class="st-category mb5 clearfix mxn3">
 			<div class="col col-12 sm-col-5 md-col-5 px3 relative">
-				<div class="absolute bottom-0 mb4 right-0 mr4 z4">
-					<button class="icon-button">
-						<svg class="icon--sm icon-button__icon">
-							<use xlink:href="#arrow-left-icon"/>
-						</svg>
-					</button>
-					<button class="icon-button">
-						<svg class="icon--sm icon-button__icon">
-							<use xlink:href="#arrow-right-icon"/>
-						</svg>
-					</button>
+				@if(!empty($object->gallery))
+				<div class="relative js-carousel-parent">
+					<div class="absolute bottom-0 mb4 right-0 mr4 z4">
+						<button class="icon-button js-carousel-previous">
+							<svg class="icon--sm icon-button__icon">
+								<use xlink:href="#arrow-left-icon"/>
+							</svg>
+						</button>
+						<button class="icon-button js-carousel-next">
+							<svg class="icon--sm icon-button__icon">
+								<use xlink:href="#arrow-right-icon"/>
+							</svg>
+						</button>
+					</div>
+					<div class="st-category__carousel js-carousel overflow-hidden">
+						@foreach($object->gallery as $key => $gallery_image)
+						<div class="st-category__img-container">
+							<picture>
+		                        <source
+		                            data-srcset="{{ $gallery_image["sizes"]["vh_hero_tall"] . " 1x," . $gallery_image["sizes"]["vh_hero_tall@2x"] . " 2x" }}" />
+		                        <img class="st-category__img lazyload"
+		                            data-src="{{ $gallery_image["sizes"]["vh_hero_tall"] }}"
+		                            alt="{{ $gallery_image["alt"] }}"
+		                        />
+		                    </picture>
+		                </div>
+						@endforeach
+					</div>
 				</div>
-				<div class="st-category__carousel overflow-hidden">
-					@foreach($object->gallery as $key => $gallery_image)
-					<div class="st-category__img-container">
-						<picture>
-	                        <source
-	                            data-srcset="{{ $gallery_image["sizes"]["vh_hero_tall"] . " 1x," . $gallery_image["sizes"]["vh_hero_tall@2x"] . " 2x" }}" />
-	                        <img class="st-category__img lazyload"
-	                            data-src="{{ $gallery_image["sizes"]["vh_hero_tall"] }}"
-	                            alt="{{ $gallery_image["alt"] }}"
-	                        />
-	                    </picture>
-	                </div>
-					@endforeach
-				</div>
+				@endif
 			</div>
 			<div class="col col-12 sm-col-7 md-col-7 px3">
-				<h2 class="st-category__title mb3 mt3">{{ $object->name }}</h2>
+				<h2 class="st-category__title mb3">{{ $object->name }}</h2>
 				<p class="st-category__description">{{ $object->description }}</p>
 				<hr class="st-category__divider my3">
+				@if(!empty($object->links))
 				<ul class="st-category__list clearfix mxn2">			
 					@foreach($object->links as $key => $link)
-						<li class="st-category__list-item col col-12 sm-col-6 px2">
+						<li class="st-category__list-item col col-6 sm-col-6 md-col-4 px2">
 							<a class="st-category__link" href="{{$link["link"]}}" target="_blank">{{ $link["name"] }}</a>
 							<div class="st-category__btn">
 								<svg class="icon--sm st-category__btn-icon">
@@ -47,6 +52,7 @@
 						</li>
 					@endforeach
 				</ul>
+				@endif
 			</div>
 		</div>
 	@endforeach

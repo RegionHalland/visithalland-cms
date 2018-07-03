@@ -1,8 +1,12 @@
 .st-week-header {
-	padding-top: $space-6;
+	padding-top: $space-5;
 	background: palette(grey, xx-light);
 	border-bottom:1px solid palette(grey, x-light);
+	@media screen and (min-width: $breakpoint-sm) {
+		padding-top: $space-6;
+	}
 }
+
 
 .st-week-header__content {
 	margin-bottom: $space-4;
@@ -13,14 +17,15 @@
 }
 
 .st-week-header__description {
-	font-family: 'La Belle Aurore', cursive;
-	font-size: 1.35rem;
-	font-weight:200;
-	color:palette(grey, x-dark);
+	font-family: $fira-font-family;
+	font-size: 1.1rem;
+	font-weight:300;
+	color:palette(grey, xx-dark);
 }
 
 .st-week-header__title {
 	font-size: 2.125rem;
+	font-family:$st-font;
 }
 
 .st-timeline {
@@ -31,11 +36,14 @@
 	margin-bottom: $space-3;
 	position: relative;
 	display: inline-block;
-	background: #F25252;
+	background: $st-secondary-color;
 	width: 4rem;
 	text-align: center;
 	border-radius: 4px;
 	z-index: $z2;
+	@media (max-width:$breakpoint-sm) {
+		margin-bottom:$space-4;
+	}
 }
 
 .st-timeline__line {
@@ -134,15 +142,17 @@
 }
 
 .st-week-quote__quote {
-	font-family: 'La Belle Aurore', cursive;
-	font-size: 2rem;
+	font-family: $fira-font-family;
+	font-style:italic;
+	font-size: 1.5rem;
 	font-weight:200;
-	line-height:1.2;
+	line-height:1.5;
 	margin-bottom: $space-3;
 }
 
 .st-week-quote__quoted {
 	font-style: italic;
+	font-weight:200;
 	color: palette(grey, x-dark);
 }
 
@@ -177,7 +187,7 @@
 }
 
 .st-week-carousel__title {
-	font-family: 'La Belle Aurore', cursive;
-	font-size: 1.725rem;
-	font-weight:200;
+	font-family: $rift-font-family;
+	font-size: 1.5rem;
+	font-family:$st-font;
 }

@@ -17,8 +17,8 @@ class Map {
         var $markers = $el.find('.marker');
         // vars
         var args = {
-            zoom: 16,
-            center: new google.maps.LatLng(0, 0),
+            zoom: 9,
+            center: new google.maps.LatLng(56.8966805, 12.803399300000024),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 

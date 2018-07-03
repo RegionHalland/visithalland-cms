@@ -17,7 +17,7 @@
 			<a href="{{ get_the_permalink($page_id) }}" class="link-reset">
 				<img
 					class="header__logo center"
-					src="@asset('images/logo-dark.svg')"
+					src="@asset('images/st-logo.svg')"
 					alt="Visithalland.com" />
 			</a>
 		</div>
@@ -26,7 +26,6 @@
 				<a href="{{ $sh_navigation_item->url }}" class="st-navigation__link {{ array_walk($sh_navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
 					{{$sh_navigation_item->title }}
 				</a>
-				
 			@endforeach
 		</nav>
 	</div>

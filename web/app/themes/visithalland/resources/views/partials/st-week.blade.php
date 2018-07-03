@@ -1,6 +1,6 @@
 @if(isset($week))
 
-<div class="st-week overflow-hidden">
+<section class="st-week overflow-hidden">
 	<header class="st-week-header">
 		<div class="container col-11 md-col-10 lg-col-10 mx-auto relative">
 			<div class="clearfix flex flex-wrap">
@@ -147,7 +147,7 @@
 						                        </div>
 						                    </div>
 						                    @php
-						                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+						                        $thumbnail_id = get_post_thumbnail_id( $content['image']['ID'] );
 						                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 						                    @endphp
 						                    <picture>
@@ -193,7 +193,7 @@
 							                        </div>
 							                    </div>
 							                    @php
-							                        $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
+							                        $thumbnail_id = get_post_thumbnail_id( $content['image']['ID'] );
 							                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 							                    @endphp
 							                    <picture>
@@ -257,53 +257,51 @@
 						@if ($content['acf_fc_layout'] === 'carousel')
 						<div class="st-week-grid__item col col-12 mb4 py4">
 							<h2 class="st-week-carousel__title mb3">{{ $content['description'] }}</h2>
-							<div class="relative">
-								<button class="st-week-carousel-previous icon-button">
+							<div class="relative js-carousel-parent">
+								<button class="st-week-carousel-previous js-carousel-previous icon-button">
 									<svg class="icon--sm icon-button__icon">
 										<use xlink:href="#arrow-left-icon"/>
 									</svg>
 								</button>
-								<button class="st-week-carousel-next icon-button">
+								<button class="st-week-carousel-next js-carousel-next icon-button">
 									<svg class="icon--sm icon-button__icon">
 										<use xlink:href="#arrow-right-icon"/>
 									</svg>
 								</button>
-								@foreach ($content as $items)
-									<div class="st-week-carousel">
-										@foreach ($items as $item)
-											<div class="col col-10 sm-col-8 md-col-5 mr3">
-												<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
-													<article class="image-blurb image-blurb--fixed-height">
-														<picture>
-															<source
-																media="(min-width: 40em)"
-																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_large@2x' ) . " 2x" }}" />
-															<source
-																data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_medium@2x' ) . " 2x" }}" />
-															<img
-																class="image-blurb__img lazyload"
-																data-src="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' )}}"
-																alt="{{ $alt }}" />
-														</picture>
-														<div class="image-blurb__content">
-															<h3 class="image-blurb__title">{!! $item->post_title !!}</h3>
-															<div class="read-more my3">
-											                    <span class="read-more__text light">
-											                        @php _e( 'Läs mer', 'visithalland' ); @endphp
-											                    </span>
-											                    <div class="read-more__button">
-											                        <svg class="icon read-more__icon">
-											                            <use xlink:href="#arrow-right-icon"/>
-											                        </svg>
-											                    </div>
-											                </div>
+								<div class="st-week-carousel js-carousel">
+									@foreach ($content['content'] as $item)
+										<div class="col col-10 sm-col-8 md-col-5 mr3">
+											<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
+												<article class="image-blurb image-blurb--fixed-height">
+													<picture>
+														<source
+															media="(min-width: 40em)"
+															data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_large@2x' ) . " 2x" }}" />
+														<source
+															data-srcset="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($item->ID, 'vh_medium@2x' ) . " 2x" }}" />
+														<img
+															class="image-blurb__img lazyload"
+															data-src="{{ get_the_post_thumbnail_url($item->ID, 'vh_medium' )}}"
+															alt="{{ $alt }}" />
+													</picture>
+													<div class="image-blurb__content">
+														<h3 class="image-blurb__title">{!! $item->post_title !!}</h3>
+														<div class="read-more my3">
+										                    <span class="read-more__text light">
+										                        @php _e( 'Läs mer', 'visithalland' ); @endphp
+										                    </span>
+										                    <div class="read-more__button">
+										                        <svg class="icon read-more__icon">
+										                            <use xlink:href="#arrow-right-icon"/>
+										                        </svg>
+										                    </div>
 										                </div>
-													</article>
-												</a>
-											</div>
-										@endforeach
-									</div>
-								@endforeach
+									                </div>
+												</article>
+											</a>
+										</div>
+									@endforeach
+								</div>
 							</div>
 						</div>
 						@endif
@@ -313,5 +311,5 @@
 				</div>
 			</div>
 		</div>
-</div>
+</section>
 @endif

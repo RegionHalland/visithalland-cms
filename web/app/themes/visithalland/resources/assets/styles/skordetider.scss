@@ -2,6 +2,11 @@
 // This is used for setting color variables, spacing, fonts and more.
 @import 'settings/settings';
 
+
+$st-primary-color : #6A7B7B;
+$st-secondary-color : #CF9E23;
+$st-font: 'Mindset-Slim';
+
 // Mixins
 @import 'mixins/spacing';
 @import 'mixins/palette';
@@ -38,23 +43,19 @@
 
 @import './header/support-header';
 
-@import './article/article-medium';
-
-
 @import './skordetider/article';
-
-
-
 @import './article/image-blurb';
 
 // Skördetider
 @import './skordetider/image-container';
 @import './skordetider/week';
+@import './skordetider/map';
 @import './skordetider/list';
 @import './skordetider/carousel';
 @import './skordetider/thumbnail';
 @import './skordetider/category';
 @import './skordetider/navigation';
+@import './skordetider/vegetables';
 
 // Footer Styles
 @import './footer/footer'; //Se över
@@ -64,3 +65,6 @@
 
 // Typekit
 @import url('https://use.typekit.net/vzi2bvt.css');
+@import url("//hello.myfonts.net/count/36fd5f");
+
+@font-face {font-family: 'Mindset-Slim';src: url('fonts/36FD5F_1_0.eot');src: url('fonts/36FD5F_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/36FD5F_1_0.woff2') format('woff2'),url('fonts/36FD5F_1_0.woff') format('woff'),url('fonts/36FD5F_1_0.ttf') format('truetype');}

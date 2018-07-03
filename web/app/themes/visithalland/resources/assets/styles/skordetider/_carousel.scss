@@ -2,9 +2,12 @@
 	border-bottom:1px solid palette(grey, x-light);
 }
 
-
 .st-carousel {
 	outline:none;
+}
+
+.st-carousel__title {
+	font-family:$st-font;
 }
 
 .st-carousel-next, .st-carousel-previous {
