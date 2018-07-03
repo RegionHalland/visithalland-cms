@@ -46,11 +46,18 @@
 							<a href="{{ get_permalink($content['post']->ID) }}" title="{{ $content['post']->post_title }}" class="link-reset">
 	                            <article class="article relative {{ App::getTermClassName() }}">
 	                                    <div class="article__img-container relative topographic-pattern">
-	                                        <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
-	                                            <div class="article-tag__icon-wrapper">
-	                                                <div class="article-tag__icon"></div>
-	                                            </div>
-	                                        </div>
+	                                        @if (get_field("start_date", $content['post']->ID))
+		                                        <div class="date-badge absolute top-0 left-0 z4 mt2 ml2">
+					                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+					                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+					                            </div>
+				                            @else
+					                            <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
+		                                            <div class="article-tag__icon-wrapper">
+		                                                <div class="article-tag__icon"></div>
+		                                            </div>
+		                                        </div>
+				                            @endif
 	                                        @php
 	                                            $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
 	                                            $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
@@ -93,11 +100,18 @@
 	                            	<div class="mxn2">
 		                            	<div class="col col-12 sm-col-6 px2">
 		                                    <div class="article__img-container relative topographic-pattern">
-		                                        <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
-		                                            <div class="article-tag__icon-wrapper">
-		                                                <div class="article-tag__icon"></div>
-		                                            </div>
-		                                        </div>
+		                                        @if (get_field("start_date", $content['post']->ID))
+			                                        <div class="date-badge absolute top-0 left-0 z4 mt2 ml2">
+						                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+						                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+						                            </div>
+					                            @else
+						                            <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
+			                                            <div class="article-tag__icon-wrapper">
+			                                                <div class="article-tag__icon"></div>
+			                                            </div>
+			                                        </div>
+					                            @endif
 		                                        @php
 		                                            $thumbnail_id = get_post_thumbnail_id( $content['post']->ID );
 		                                            $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
@@ -160,7 +174,7 @@
 						                    </picture>
 						                </div>
 						                <div class="article__content {{ App::getTermClassName() }}">
-						                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }} {{ $content['url'] }}</h3>
+						                    <h3 class="article__title mb1 mt1 pt0">{{ $content['title'] }}</h3>
 						                    <p class="article__excerpt mt2">{{ $content['description'] }}</p>
 						                    <div class="read-more my3">
 						                        <span class="read-more__text">
