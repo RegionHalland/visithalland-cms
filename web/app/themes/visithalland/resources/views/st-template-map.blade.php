@@ -15,7 +15,7 @@
 		@foreach($object->links as $key => $link)
 			@php($location = $link["location"]);
 			{{ $object->icon }}
-			<div class="marker" data-lat="{{$location["lat"]}}" data-lng="{{ $location["lng"] }}" data-icon="@asset($object->icon)">
+			<div class="marker" data-lat="{{$location["lat"]}}" data-lng="{{ $location["lng"] }}" data-icon="@asset('images/map-pin.svg')">
 				<h4>{{ $link["name"] }}</h4>
 				<p>Adress: {{ $location["address"] }}</p>
 				<a href="{{ $link["link"] }}" target="_blank">
