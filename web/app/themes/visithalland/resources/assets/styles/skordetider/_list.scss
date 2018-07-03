@@ -1,5 +1,5 @@
 .st-list__header {
-	height:65vh;
+	padding:$space-5 0;
 	background:$st-primary-color;
 }
 
@@ -13,6 +13,7 @@
 
 .st-list__title {
 	font-family:$st-font;
+	font-weight:200;
 	line-height:1.25;
 	@media (min-width:$breakpoint-sm) {
 		font-size:3.25rem;
