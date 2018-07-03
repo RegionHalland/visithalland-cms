@@ -4,13 +4,15 @@
             "choose": "Choose alternative",
             "upcomingHappenings": "Upcoming happenings",
             "nearYou": "Near you",
-            "destinations": "Exciting destinations"
+            "destinations": "Exciting destinations",
+            "opening_hours": "Keep in mind that opening hours may vary during the season, so please check the opening hours before leaving."
         },
         "sv": {
             "choose": "Välj alternativ",
             "upcomingHappenings": "Kommande happenings",
             "nearYou": "Nära dig",
-            "destinations": "Spännande resmål"
+            "destinations": "Spännande resmål",
+            "opening_hours": "Tänk på att öppettiderna kan variera under säsongen, så kolla gärna öppettiderna innan du ger dig iväg."
         }
   }
 </i18n>
@@ -22,6 +24,8 @@
           <div v-if="loading" class="block mb3 px3">
             <Shimmer :loading="loading"></Shimmer>
           </div>
+
+          <p class="px3 pb3"><i> {{ $t('opening_hours') }}</i></p>
 
         <div class="result-section px3" v-if="nearYouArray && nearYouArray.length && input">
             <header class="section-header inline-block coastal-living mb3">
