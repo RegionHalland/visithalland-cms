@@ -13,7 +13,7 @@ $cache_time_interval = 600;
 if ( ! defined('WPCACHEHOME') )
 	define( 'WPCACHEHOME', WP_CONTENT_DIR . "/plugins/wp-super-cache/" );
 
-$cache_compression = 0;
+$cache_compression = 1;
 $cache_enabled = true;
 $super_cache_enabled = true;
 $cache_max_time = 1800;
@@ -79,7 +79,7 @@ $wp_cache_pages[ "pages" ] = 0;
 $wp_cache_pages[ "single" ] = 0;
 $wp_cache_pages[ "author" ] = 0;
 $wp_cache_hide_donation = 0;
-$wp_cache_not_logged_in = 1;
+$wp_cache_not_logged_in = 0;
 $wp_cache_clear_on_post_edit = 0;
 $wp_cache_hello_world = 0;
 $wp_cache_mobile_enabled = 1;
@@ -87,8 +87,8 @@ $wp_cache_cron_check = 1;
 $wp_cache_mfunc_enabled = 0;
 $wp_cache_make_known_anon = 0;
 $wp_cache_refresh_single_only = 0;
-$wp_cache_mod_rewrite = 1;
-$wp_supercache_304 = 0;
+$wp_cache_mod_rewrite = 0;
+$wp_supercache_304 = 1;
 $wp_cache_front_page_checks = 0;
 $wp_cache_disable_utf8 = 0;
 $wp_cache_no_cache_for_get = 0;
