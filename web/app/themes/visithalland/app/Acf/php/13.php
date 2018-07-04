@@ -1,7 +1,7 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5b0ffc9a39c66',
     'title' => __('Skördetider - Aktiviteter', 'visithalland'),
     'fields' => array(
@@ -171,7 +171,7 @@
                             'key' => 'field_5b100300bea7e',
                             'label' => __('Länk', 'visithalland'),
                             'name' => 'link',
-                            'type' => 'text',
+                            'type' => 'url',
                             'instructions' => __('Länk till näringslivsaktörs hemsida, Facebook-sida eller liknande.', 'visithalland'),
                             'required' => 0,
                             'conditional_logic' => 0,
@@ -227,4 +227,4 @@
     'active' => 1,
     'description' => 'Används för att skapa aktiviteter under Skördetid i Halland.',
 ));
-}
+}
