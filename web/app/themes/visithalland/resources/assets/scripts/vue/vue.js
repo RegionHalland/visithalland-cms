@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueGeolocation from 'vue-browser-geolocation';
@@ -46,7 +47,7 @@ const i18n = new VueI18Next(i18next);
 // We'll talk about nested routes later.
 const routes = [
     {
-        path: '/', component: Progress, name: "progress", props: true, children:
+        path: '/', component: Progress, props: true, children:
             [
                 { path: '', component: Home, name: "home", meta: { order: 1, title: "Få inspiration" }, props: true },
                 { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "location" }, props: true },

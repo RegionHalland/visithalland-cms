@@ -1,0 +1,18 @@
+.st__img-container {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 75%;	
+	overflow: hidden;
+
+	picture {
+		top: 0;
+		left: 0;
+		bottom: 0;
+		position: absolute;
+	}
+
+	img {
+		height: 100%;
+	}
+}

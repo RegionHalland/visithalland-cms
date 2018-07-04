@@ -1,0 +1,71 @@
+// Project Settings
+// This is used for setting color variables, spacing, fonts and more.
+@import 'settings/settings';
+
+
+$st-primary-color : #6A7B7B;
+$st-secondary-color : #CF9E23;
+$st-font: 'Mindset-Slim';
+
+// Mixins
+@import 'mixins/spacing';
+@import 'mixins/palette';
+@import 'mixins/scrim';
+@import 'mixins/fade-text';
+@import 'mixins/themes';
+
+// Base
+@import 'base/reset';
+@import 'base/base';
+
+// Config - Uses variables from settings.scss
+@import 'config/type-scale';
+@import 'config/typography';
+@import 'config/layout';
+@import 'config/align';
+@import 'config/margin';
+@import 'config/padding';
+@import 'config/grid';
+@import 'config/flexbox';
+@import 'config/position';
+
+// Generic and Reusable Components
+@import 'components/container';
+@import 'components/button';
+@import 'components/image-credit';
+@import 'components/lazy-load';
+@import 'components/topographic-pattern';
+@import 'components/icons';
+@import 'components/icon-button';
+@import 'components/date-badge';
+@import 'components/read-more';
+@import 'components/article-tag';
+
+@import './header/support-header';
+
+@import './skordetider/article';
+@import './article/image-blurb';
+
+// Skördetider
+@import './skordetider/image-container';
+@import './skordetider/week';
+@import './skordetider/map';
+@import './skordetider/list';
+@import './skordetider/carousel';
+@import './skordetider/thumbnail';
+@import './skordetider/category';
+@import './skordetider/navigation';
+@import './skordetider/vegetables';
+@import './skordetider/st-partners';
+
+// Footer Styles
+@import './footer/footer'; //Se över
+
+// Cookies Page Format
+@import './cookies/cookies'; //Byt namn till cookie-banner?
+
+// Typekit
+@import url('https://use.typekit.net/vzi2bvt.css');
+@import url("//hello.myfonts.net/count/36fd5f");
+
+@font-face {font-family: 'Mindset-Slim';src: url('../fonts/36FD5F_1_0.woff2') format('woff2'),url('../fonts/36FD5F_1_0.woff') format('woff'),url('../fonts/36FD5F_1_0.ttf') format('truetype');}

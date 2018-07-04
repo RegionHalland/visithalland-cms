@@ -22,7 +22,9 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('sage/amp.js', asset_path('scripts/amp.js'), [], null, true);
         //wp_enqueue_style('sage/amp.css', asset_path('styles/amp.css'), false, null);
     } else{
-        if (basename(get_page_template()) != "template-activities.blade.php") {
+        if (basename(get_page_template()) != "template-activities.blade.php" && 
+            basename(get_page_template()) != "st-template-landing.blade.php" &&
+            basename(get_page_template()) != "st-template-all-activities.blade.php") {
             wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
             wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
         }
@@ -30,6 +32,13 @@ add_action('wp_enqueue_scripts', function () {
         if(basename(get_page_template()) == "template-activities.blade.php") {
             wp_enqueue_script('sage/vue.js', asset_path('scripts/vue.js'), null, null, true);
             wp_enqueue_style('sage/vue.css', asset_path('styles/vue.css'), false, null);
+        }
+
+        if (basename(get_page_template()) == "st-template-landing.blade.php" ||
+            basename(get_page_template()) == "st-template-all-activities.blade.php" ||
+            basename(get_page_template()) == "st-template-map.blade.php") {
+            wp_enqueue_script('sage/skordetider.js', asset_path('scripts/skordetider.js'), ['jquery'], null, true);
+            wp_enqueue_style('sage/skordetider.css', asset_path('styles/skordetider.css'), false, null);
         }
     }
 
@@ -77,7 +86,8 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'visithalland'),
-        'secondary_navigation' => __('Secondary Navigation', 'visithalland')
+        'secondary_navigation' => __('Secondary Navigation', 'visithalland'),
+        'skordetider_navigation' => __('Skördetider Navigation', 'visithalland')
     ]);
 
     /**

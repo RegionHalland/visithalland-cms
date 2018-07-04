@@ -3,6 +3,7 @@
 	width:100%;
 	position:absolute;
 	overflow:hidden;
+	top:0;
 	background:palette(black, x-dark);
 }
 
@@ -45,5 +46,24 @@
 	padding:$space-3;
 	@media (min-width:$breakpoint-md) {
 		overflow:visible;
+		width:500px;
 	}
+}
+
+
+.dh-wizard__inner {
+	min-height:100%;
+}
+
+
+.dh-intro {
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+}
+
+.dh-button {
+	max-width:300px;
+	margin-left:auto;
+	margin-right:auto;
 }

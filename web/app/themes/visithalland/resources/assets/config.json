@@ -12,6 +12,10 @@
         "./scripts/amp.js",
         "./styles/amp.scss"
     ],
+    "skordetider": [
+        "./scripts/skordetider.js",
+        "./styles/skordetider.scss"
+    ],
     "editor": [
         "./styles/editor.scss"
     ],

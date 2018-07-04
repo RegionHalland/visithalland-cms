@@ -1,6 +1,6 @@
 [{
     "key": "group_5b0ffb0a49efc",
-    "title": "Sk\u00f6rdetider",
+    "title": "Sk\u00f6rdetider - Landningssida",
     "fields": [
         {
             "key": "field_5b0ffb9f0501c",
@@ -415,7 +415,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "views\/template-landing-skordetider.blade.php"
+                "value": "views\/st-template-landing.blade.php"
             }
         ]
     ],

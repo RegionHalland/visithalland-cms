@@ -118,6 +118,7 @@
     "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
     "date-fns": "^1.29.0",
+    "es6-promise": "^4.2.4",
     "flickity": "^2.1.0",
     "flickity-imagesloaded": "^2.0.0",
     "i18next": "^11.2.3",
