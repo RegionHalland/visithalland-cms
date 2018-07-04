@@ -167,7 +167,7 @@
                             "key": "field_5b100300bea7e",
                             "label": "L\u00e4nk",
                             "name": "link",
-                            "type": "text",
+                            "type": "url",
                             "instructions": "L\u00e4nk till n\u00e4ringslivsakt\u00f6rs hemsida, Facebook-sida eller liknande.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -223,4 +223,3 @@
     "active": 1,
     "description": "Anv\u00e4nds f\u00f6r att skapa aktiviteter under Sk\u00f6rdetid i Halland."
 }]
-
