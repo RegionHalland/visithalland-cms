@@ -5,6 +5,7 @@
             "upcomingHappenings": "Upcoming happenings",
             "nearYou": "Near you",
             "destinations": "Exciting destinations",
+            "notice": "Important notice",
             "opening_hours": "Keep in mind that opening hours may vary during the season, so please check the opening hours before leaving."
         },
         "sv": {
@@ -12,6 +13,7 @@
             "upcomingHappenings": "Kommande happenings",
             "nearYou": "Nära dig",
             "destinations": "Spännande resmål",
+            "notice": "Viktig information",
             "opening_hours": "Tänk på att öppettiderna kan variera under säsongen, så kolla gärna öppettiderna innan du ger dig iväg."
         }
   }
@@ -24,8 +26,19 @@
           <div v-if="loading" class="block mb3 px3">
             <Shimmer :loading="loading"></Shimmer>
           </div>
-
-          <p class="px3 pb3"><i> {{ $t('opening_hours') }}</i></p>
+        <div class="result-section px3">
+            <header class="section-header inline-block coastal-living mb2">
+                <div class="section-header__icon-wrapper">
+                    <svg class="section-header__icon icon">
+                        <use xlink:href="#calendar-icon"/>
+                    </svg>
+                </div>
+                <div class="section-header__title">
+                    {{ $t('notice') }}
+                </div>
+            </header>
+            <p class="pb3"><i> {{ $t('opening_hours') }}</i></p>
+        </div>
 
         <div class="result-section px3" v-if="nearYouArray && nearYouArray.length && input">
             <header class="section-header inline-block coastal-living mb3">
