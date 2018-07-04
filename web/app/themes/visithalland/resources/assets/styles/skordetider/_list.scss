@@ -3,7 +3,6 @@
 	background:$st-primary-color;
 }
 
-
 .plant-img {
 	width:90px;
 	@media (min-width:$breakpoint-sm) {
@@ -21,3 +20,9 @@
 
 }
 
+.st-list__img {
+	max-width:80%;
+	@media (min-width:$breakpoint-sm) {
+		max-width:50%;
+	}
+}
