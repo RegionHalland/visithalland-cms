@@ -1,4 +1,5 @@
 import Flickity from 'flickity-imagesloaded';
+import objectAssign from 'object-assign';
 
 const defaultOptions = {
 	cellAlign: 'left',
@@ -12,7 +13,7 @@ export default ($elements, options) => {
     
 	return $elements.each((index, element) => {
 		
-		options = Object.assign(defaultOptions, options);
+		options = objectAssign(defaultOptions, options);
 
     	element.flickity = new Flickity(element, options);
 
