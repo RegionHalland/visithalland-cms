@@ -16,8 +16,6 @@
         <h1 class="light">A Day in Halland</h1>
         <p class="light my3">{{ $t('introTxt') }}</p>
         <router-link class="btn block center btn--primary dh-button" to="location">{{ $t('buttonTxt') }}</router-link>
-
-        <CookieNotice />
     </div>
 </template>
 

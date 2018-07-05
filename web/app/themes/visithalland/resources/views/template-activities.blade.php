@@ -34,6 +34,7 @@
             <transition :name="transitionName">
                 <router-view></router-view>
             </transition>
+            <cookie-notice />
         </div>
     </div>
 @endsection
