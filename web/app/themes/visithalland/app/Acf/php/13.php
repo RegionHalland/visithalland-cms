@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5b0ffc9a39c66',
-    'title' => __('Skördetider - Aktiviteter', 'visithalland'),
+    'title' => __('Aktiviteter', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b1001b2bea79',
@@ -16,7 +16,7 @@
             'wrapper' => array(
                 'width' => '',
                 'class' => '',
-                'id' => '',
+                'id' => 'asd',
             ),
             'collapsed' => '',
             'min' => 0,
@@ -64,7 +64,7 @@
                     'key' => 'field_5b1004391b711',
                     'label' => __('Beskrivning', 'visithalland'),
                     'name' => 'description',
-                    'type' => 'textarea',
+                    'type' => 'text',
                     'instructions' => __('Inspirerande text om kategorin.', 'visithalland'),
                     'required' => 0,
                     'conditional_logic' => 0,
@@ -78,6 +78,8 @@
                     'maxlength' => '',
                     'rows' => 4,
                     'new_lines' => '',
+                    'prepend' => '',
+                    'append' => '',
                 ),
                 3 => array(
                     'key' => 'field_5b10020bbea7b',
@@ -118,7 +120,11 @@
                         'id' => '',
                     ),
                     'choices' => array(
-                        '/images/map-pin.svg' => __('Gårdsbutik', 'visithalland'),
+                        '/images/map-pin-green.svg' => __('Grön Kartnål', 'visithalland'),
+                        '/images/map-pin-purple.svg' => __('Lila Kartnål', 'visithalland'),
+                        '/images/map-pin-red.svg' => __('Röd Kartnål', 'visithalland'),
+                        '/images/map-pin-yellow.svg' => __('Gul Kartnål', 'visithalland'),
+                        '/images/map-pin-blue.svg' => __('Blå Kartnål', 'visithalland'),
                     ),
                     'default_value' => array(
                     ),

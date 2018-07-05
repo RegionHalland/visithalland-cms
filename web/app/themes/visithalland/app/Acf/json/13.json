@@ -1,6 +1,6 @@
 [{
     "key": "group_5b0ffc9a39c66",
-    "title": "Sk\u00f6rdetider - Aktiviteter",
+    "title": "Aktiviteter",
     "fields": [
         {
             "key": "field_5b1001b2bea79",
@@ -13,7 +13,7 @@
             "wrapper": {
                 "width": "",
                 "class": "",
-                "id": ""
+                "id": "asd"
             },
             "collapsed": "",
             "min": 0,
@@ -61,7 +61,7 @@
                     "key": "field_5b1004391b711",
                     "label": "Beskrivning",
                     "name": "description",
-                    "type": "textarea",
+                    "type": "text",
                     "instructions": "Inspirerande text om kategorin.",
                     "required": 0,
                     "conditional_logic": 0,
@@ -74,7 +74,9 @@
                     "placeholder": "T.ex. Det \u00e4r verkligen n\u00e5got speciellt med att bo i Halland...",
                     "maxlength": "",
                     "rows": 4,
-                    "new_lines": ""
+                    "new_lines": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_5b10020bbea7b",
@@ -115,7 +117,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "\/images\/map-pin.svg": "G\u00e5rdsbutik"
+                        "\/images\/map-pin-green.svg": "Gr\u00f6n Kartn\u00e5l",
+                        "\/images\/map-pin-purple.svg": "Lila Kartn\u00e5l",
+                        "\/images\/map-pin-red.svg": "R\u00f6d Kartn\u00e5l",
+                        "\/images\/map-pin-yellow.svg": "Gul Kartn\u00e5l",
+                        "\/images\/map-pin-blue.svg": "Bl\u00e5 Kartn\u00e5l"
                     },
                     "default_value": [],
                     "allow_null": 0,
