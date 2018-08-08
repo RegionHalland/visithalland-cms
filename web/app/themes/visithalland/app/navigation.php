@@ -40,8 +40,8 @@ if (class_exists("VisithallandCustomPostTypes") || class_exists("VisithallandCus
     }*/
 }
 
-add_filter('init', function ()
+/*add_filter('init', function ()
 {
     global $wp_rewrite;
     $wp_rewrite->page_structure = $wp_rewrite->root . 'coastal-living/%pagename%';
-});
+});*/
