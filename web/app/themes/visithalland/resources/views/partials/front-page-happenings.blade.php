@@ -23,7 +23,7 @@
                     $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); 
                 @endphp
                 <div class="col col-12 sm-col-4 mt3">
-                    <article class="happening-list-item {{ App::getTerms($happening)["terms_default_lang"]->slug }}">
+                    <article class="happening-list-item {{ App::getTerms($happening)["terms_default_lang"] ? App::getTerms($happening)["terms_default_lang"]->slug : "" }}">
                         <a href="{{ get_permalink($happening->ID) }}" title="{{ $happening->post_title }}" class="link-reset">
                             <div class="clearfix">
                                 <div class="col col-5 sm-col-4 ">
