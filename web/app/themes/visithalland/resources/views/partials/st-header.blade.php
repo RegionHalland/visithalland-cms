@@ -23,7 +23,7 @@
 		</div>
 		<nav class="st-navigation__links">
 			@foreach($sh_navigation_items as $sh_navigation_item)
-				<a href="{{ $sh_navigation_item->url }}" class="st-navigation__link {{ array_walk($sh_navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
+				<a href="{{ $sh_navigation_item->url }}" class="st-navigation__link {{ App::classNameGenerator($sh_navigation_item->classes) }}">
 					{{$sh_navigation_item->title }}
 				</a>
 			@endforeach

@@ -68,7 +68,7 @@
                 @if(is_array($primary_navigation_items))
                     @foreach($primary_navigation_items as $key => $navigation_item)
                         <div class="navigation__item {{ $navigation_item->meta_fields['class_name'] }}">
-                            <a href="{{ $navigation_item->url }}" class="navigation__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
+                            <a href="{{ $navigation_item->url }}" class="navigation__link link-reset {{ App::classNameGenerator($navigation_item->classes) }}">
                                 <div class="navigation__icon-wrapper">
                                     <div class="navigation__icon"></div>
                                 </div>
@@ -88,7 +88,7 @@
                         @if(is_array($primary_navigation_items))
                             @foreach($primary_navigation_items as $key => $navigation_item)
                                 <div class="mobile-navigation__item {{ $navigation_item->meta_fields['class_name'] }}">
-                                    <a href="{{ $navigation_item->url }}" class="mobile-navigation__link link-reset {{ array_walk($navigation_item->classes, create_function('$a', 'echo $a . " ";')) }}">
+                                    <a href="{{ $navigation_item->url }}" class="mobile-navigation__link link-reset {{ App::classNameGenerator($navigation_item->classes) }}">
                                         <div class="mobile-navigation__icon-wrapper">
                                             <div class="mobile-navigation__icon"></div>
                                         </div>

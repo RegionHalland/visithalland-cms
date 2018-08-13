@@ -925,15 +925,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.6.2"
+                "reference": "tags/1.6.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.3.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -46,4 +46,14 @@ class App extends Controller
 
 		return $non_active_langs;
 	}
+
+    public static function classNameGenerator(Array $classes)
+    {
+        $classString = "";
+        foreach ($classes as $key => $value) {
+            $classString .= $value . " ";
+        }
+
+        return $classString; 
+    }
 }
