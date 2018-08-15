@@ -28,6 +28,7 @@ $st-font: 'Mindset-Slim';
 @import 'config/grid';
 @import 'config/flexbox';
 @import 'config/position';
+@import 'config/border-radi';
 
 // Generic and Reusable Components
 @import 'components/container';
@@ -41,7 +42,7 @@ $st-font: 'Mindset-Slim';
 @import 'components/read-more';
 @import 'components/article-tag';
 
-@import './header/support-header';
+@import './header/external-header';
 
 @import './skordetider/article';
 @import './article/image-blurb';

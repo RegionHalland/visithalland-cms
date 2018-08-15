@@ -23,6 +23,9 @@
 @import 'config/grid';
 @import 'config/flexbox';
 @import 'config/position';
+@import 'config/background';
+@import 'config/border-radi';
+@import 'config/box-shadow';
 
 // Generic and Reusable Components
 @import 'components/container';
@@ -32,6 +35,7 @@
 @import 'components/lazy-load';
 @import 'components/topographic-pattern';
 @import 'components/icons';
+@import 'components/theme-icon';
 @import 'components/icon-button';
 @import 'components/contact';
 @import 'components/article-tag';
@@ -65,8 +69,12 @@
 @import './article/image-blurb'; // Se över denna
 
 // Header Styles
-@import './header/header'; // Se över denna
+@import './header/header';
 @import './header/support-header';
+@import './header/navigation';
+@import './header/navigation-dropdown';
+@import './header/header-search';
+@import './header/external-header';
 
 
 // Taxonomy/Concept Page Styles
