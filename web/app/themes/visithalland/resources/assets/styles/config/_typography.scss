@@ -1,19 +1,14 @@
-//
-// @name Typography
-// @page Config/Typography
-//
-// @description 
-// Change typographic weights, styles, and alignment with these utility styles.
-// 
-// @markup
-//   <span>TBA</span>
-// 
-
 .font-family-inherit { font-family: inherit }
 .font-size-inherit { font-size: inherit }
 .text-decoration-none { text-decoration: none }
 
+.rift-font { font-family:$rift-font-family; }
+.fira-font { font-family:$fira-font-family; }
+
 .regular { font-weight: normal }
+.bold  { font-weight: bold }
+.light { font-weight: light; }
+.lighter { font-weight: lighter; }
 .italic  { font-style: italic }
 .caps    { text-transform: uppercase; }
 
@@ -22,6 +17,8 @@
 .right-align  { text-align: right }
 .justify      { text-align: justify }
 
+.text-light { color:$white; }
+.text-dark { color:$black; }
 
 .vertical-middle { vertical-align: middle }
 

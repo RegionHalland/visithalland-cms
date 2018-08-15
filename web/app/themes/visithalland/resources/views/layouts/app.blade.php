@@ -9,7 +9,7 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	@php(do_action('get_header'))
-	@include('partials.header')
+	@include('partials.header.header')
 
 	<div role="document">
 		<main role="main" class="" id="main-content">

@@ -20,6 +20,7 @@
 @import 'config/grid';
 @import 'config/flexbox';
 @import 'config/position';
+@import 'config/border-radi';
 
 
 //General components
@@ -33,7 +34,7 @@
 @import 'cookies/cookies';
 
 //Header
-@import './header/support-header';
+@import './header/external-header';
 
 
 //Components used for a day in halland only
