@@ -11,34 +11,7 @@ trait Navigation
     * @return array Output menu items in current language
     */
     public static function getPrimaryNavigation() {
-        $nav_menus = get_nav_menu_locations();
-        if(isset($nav_menus["primary_navigation"])){
-            $primary_menu_id = $nav_menus["primary_navigation"];
-            $current_language_menu_id = apply_filters('wpml_object_id', $primary_menu_id, 'nav_menu', true);
-            $primary_navigation_items = wp_get_nav_menu_items($current_language_menu_id);
-            $newArr = array();
-            foreach ($primary_navigation_items as $key => $value) {
-                // Get term object of navigation item
-                /*if($value->menu_item_parent != "0") {
-                    //$value->children = "$value";
-                    //$primary_navigation_items[$key] .= $value;
-                    //unset($primary_navigation_items[$key]);
-                    //array_push($newArr, $value);
-                    //$newArr .= $value;
-                }*/
-
-                $term = get_term(get_post_meta( $value->ID, '_menu_item_object_id', true ));
-                $value->meta_fields = get_fields($term);
-            }
-
-            return $newArr;
-        }
-
-        //return ["Error"];
-
-        //$menuItems = self::getMenuItemsFromLocation('primary_navigation');
-        //var_dump($menuItems);
-        return;
+        return [];
     }
 
     static function get_navbar_items () {
@@ -58,6 +31,9 @@ trait Navigation
             foreach ($child_items as $key => $child)
                 if ($child->menu_item_parent == $item->ID) {
                     if (!$item->children) $item->children = [];
+                    $term = get_term(get_post_meta( $child->ID, '_menu_item_object_id', true ));
+                    $child->meta_fields = get_fields($term);
+                    //$child->meta_fields = get_fields($child);
                     array_push($item->children, $child);
                     unset($child_items[$key]);
                 }

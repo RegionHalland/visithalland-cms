@@ -6,8 +6,8 @@
 				<!-- Repeat ---> 
 				@foreach($primary_navigation_item->children as $child)
                     <div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-						<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-							<div class="theme-icon hiking-biking">
+						<a class="nav-dropdown__link text-light bold text-lg truncate" href="{{ $child->url }}">
+							<div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
 								<div class="theme-icon__inner">
 								</div>
 							</div>
