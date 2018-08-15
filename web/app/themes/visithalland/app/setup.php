@@ -78,7 +78,7 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'visithalland'),
-        'secondary_navigation' => __('Secondary Navigation', 'visithalland'),
+        'support_navigation' => __('Support Navigation', 'visithalland'),
         'skordetider_navigation' => __('Skördetider Navigation', 'visithalland')
     ]);
 

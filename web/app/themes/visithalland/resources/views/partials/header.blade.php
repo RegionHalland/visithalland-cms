@@ -1,4 +1,3 @@
-
 <header>
 
     <!-- Support Header Start -->
@@ -15,34 +14,26 @@
     <!-- Top Header Start -->
     <section class="top-header">
         <img class="logo" src="" alt="">
-
         <!-- Navigation Start -->
         <nav>
             <ul>
-                <!-- if (dropdown === true) -->
-                <li>
-                    <button class="button">Upplevelser</button>
-                    <ul class="dropdown">
-                        <li>Upplevelse</li>
-                        <li>Upplevelse</li>
-                        <li>Upplevelse</li>
-                        <li>Upplevelse</li>
-                        <li>Upplevelse</li>
-
-                    </ul>
-                </li>
-
-                <!-- else -->
-                <li>
-                    <a href="">Event</a>
-                </li>
-                <li>
-                    <a href="">Tips & Guider</a>
-                </li>
+                @foreach(App::get_navbar_items() as $primary_navigation_item)
+                    @if(is_array($primary_navigation_item->children) && count($primary_navigation_item->children) > 0)
+                        <li>
+                            <button class="button">{{ $primary_navigation_item->post_title }}</button>
+                            <ul class="dropdown">
+                                @foreach($primary_navigation_item->children as $child)
+                                    <li>{{ $child->post_title }}</li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
+                        <li>{{ $primary_navigation_item->post_title ? $primary_navigation_item->post_title : $primary_navigation_item->title }}</li>
+                    @endif
+                @endforeach
             </ul>
         </nav>
         <!-- Navigation End -->
-
         
         <input type="text" type="search">
 
