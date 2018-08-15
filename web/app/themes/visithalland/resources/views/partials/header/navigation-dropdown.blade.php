@@ -4,55 +4,17 @@
 			<nav class="clearfix">
 				
 				<!-- Repeat ---> 
-				<div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-					<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-						<div class="theme-icon hiking-biking">
-							<div class="theme-icon__inner">
+				@foreach($primary_navigation_item->children as $child)
+                    <div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
+						<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
+							<div class="theme-icon hiking-biking">
+								<div class="theme-icon__inner">
+								</div>
 							</div>
-						</div>
-						<span class="ml2">Kultur & sevärdheter</span>
-					</a>
-				</div>
-
-				<div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-					<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-						<div class="theme-icon camping-friends">
-							<div class="theme-icon__inner">
-							</div>
-						</div>
-						<span class="ml2">Camping & Familjesemester</span>
-					</a>
-				</div>
-
-				<div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-					<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-						<div class="theme-icon food-culture">
-							<div class="theme-icon__inner">
-							</div>
-						</div>
-						<span class="ml2">Shopping & Stadsliv</span>
-					</a>
-				</div>
-
-				<div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-					<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-						<div class="theme-icon hiking-biking">
-							<div class="theme-icon__inner">
-							</div>
-						</div>
-						<span class="ml2">Cykel & Friluftsliv</span>
-					</a>
-				</div>
-
-				<div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 px3 pb3">
-					<a class="nav-dropdown__link text-light bold text-lg truncate" href="">
-						<div class="theme-icon beach-coast">
-							<div class="theme-icon__inner">
-							</div>
-						</div>
-						<span class="ml2">Surf & Kustliv</span>
-					</a>
-				</div>
+							<span class="ml2">{{ $child->post_title }}</span>
+						</a>
+					</div>
+                @endforeach
 				<!-- End Repeat -->
 
 			</nav>
