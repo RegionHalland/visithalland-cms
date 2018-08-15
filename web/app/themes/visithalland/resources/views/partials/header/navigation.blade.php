@@ -17,7 +17,7 @@
             </li>
             @else
                 <li class="nav__item">
-                    <a href="" class="nav__link rift-font text-light inline-flex items-center nowrap text-base bold">
+                    <a href="{{$primary_navigation_item->url}}" class="nav__link rift-font text-light inline-flex items-center nowrap text-base bold">
                         <span>{{ $primary_navigation_item->post_title ? $primary_navigation_item->post_title : $primary_navigation_item->title }}</span>
                         <span class="nav__icon inline-flex justify-center items-center bg-blue-xlight rounded-full ml2">
                             <svg class="icon--sm">
@@ -28,6 +28,6 @@
                 </li>
             @endif
         @endforeach
-        
+
     </ul>
 </nav>
