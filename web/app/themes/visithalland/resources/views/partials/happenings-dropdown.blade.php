@@ -12,7 +12,7 @@
                 @php 
                     $thumbnail_id = get_post_thumbnail_id($happening->ID);
                 @endphp
-                <article class="happening-list-item mb3 {{ $happening->terms["terms_default_lang"]->slug }}">
+                <article class="happening-list-item mb3 {{ $happening->terms["terms_default_lang"] ? $happening->terms["terms_default_lang"]->slug : "" }}">
                     <a href="{{ get_permalink($happening->ID) }}" class="link-reset">
                         <div class="clearfix">
                             <div class="col col-5 sm-col-4 ">
