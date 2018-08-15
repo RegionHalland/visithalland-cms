@@ -1,115 +1,107 @@
 
 <!-- Footer Start -->
 
-<footer class="footer topographic-pattern">
-    <div class="footer__content relative container col-11 md-col-10 lg-col-10 mx-auto">
-        <div class="clearfix">
+<footer class="footer bg-blue topographic-pattern pt5">
+    <div class="container col-11 md-col-10 lg-col-10 mx-auto">
+        <div class="clearfix mxn3">
 
             <!-- Footer Site Info Start -->
-            <div class="footer__column col col-12 sm-col-9 md-col-5">
+            <div class="col col-12 sm-col-6 md-col-4 px3">
                 <img class="mb2" src="@asset('images/logo-horizontal.svg')" />
-                <p class="footer__intro light mt1">{{ bloginfo('description') }}</p>
-                <div class="footer-contact mt4">
-                    <a href="mailto:info@visithalland.com" target="_blank" class="footer-contact__a light">
-                        <div class="footer-contact__icon-wrapper">
-                            <svg class="footer-contact__icon">
-                                <use xlink:href="#mail-icon"/>
-                            </svg>
-                        </div>
-                        <span class="footer-contact__span">Email</span>
-                    </a>
-                    <a href="https://www.facebook.com/visithalland/" target="_blank" class="footer-contact__a light">
-                        <div class="footer-contact__icon-wrapper facebook">
-                            <svg class="footer-contact__icon">
-                                <use xlink:href="#facebook-icon"/>
-                            </svg>
-                        </div>
-                        <span class="footer-contact__span">Facebook</span>
-                    </a>
-                    <a href="https://www.instagram.com/visithalland/" target="_blank" class="footer-contact__a light">
-                        <div class="footer-contact__icon-wrapper instagram">
-                            <svg class="footer-contact__icon">
-                                <use xlink:href="#instagram-icon"/>
-                            </svg>
-                        </div>
-                        <span class="footer-contact__span">Instagram</span>
-                    </a>
-                </div>
+                <p class="fira-font italic text-sm light mb4">{{ bloginfo('description') }}</p>
             </div>
-            <!-- Footer Site Info End -->
 
 
-            <!-- Footer Navigation Start -->
-            <div class="footer__column col col-6 sm-col-4 md-col-3 mt2">
-                <span class="footer__column-header"><?php _e( 'Upplevelser', 'visithalland' ); ?></span>
-                <nav class="footer__list footer-nav">
-                    @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
-                    @if(is_array($primary_navigation_items))
-                        @foreach($primary_navigation_items as $key => $navigation_item)
-                            <div class="footer-nav__item footer__nav-item {{ $navigation_item->meta_fields['class_name'] }}">
-                                <a href="{{ $navigation_item->url }}" class="footer-nav__link link-reset">
-                                    <div class="footer-nav__icon-wrapper">
-                                        <div class="footer-nav__icon"></div>
+            <!-- Social Icon -->
+            <div class="footer__social col col-12 sm-col-6 md-col-8 flex px3">
+                <a href="mailto:info@visithalland.com" target="_blank" class="link-reset inline-block">
+                    <div class="social-icon bg-blue-xlight rounded-full flex items-center justify-center">
+                        <svg class="icon-sm">
+                            <use xlink:href="#mail-icon"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/visithalland/" target="_blank" class="link-reset inline-block ml3">
+                    <div class="social-icon bg-blue-xlight rounded-full flex items-center justify-center">
+                        <svg class="icon-sm">
+                            <use xlink:href="#facebook-icon"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/visithalland/" target="_blank" class="link-reset inline-block ml3">
+                    <div class="social-icon bg-blue-xlight rounded-full flex items-center justify-center">
+                        <svg class="icon-sm">
+                            <use xlink:href="#instagram-icon"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col col-12 mb5 px3">
+                @foreach(App::get_navbar_items() as $primary_navigation_item)
+                    @if(is_array($primary_navigation_item->children) && count($primary_navigation_item->children) > 0)
+                            <div class="col col-12 md-col-6 mt4">
+                                <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
+                                @foreach($primary_navigation_item->children as $child)
+                                    <div class="col col-12 md-col-6">
+                                        <div class="nav-dropdown__li truncate text-light rift-font pb3">
+                                            <a class="nav-dropdown__link text-light bold text-lg truncate" href="{{ $child->url }}">
+                                                <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
+                                                    <div class="theme-icon__inner">
+                                                    </div>
+                                                </div>
+                                                <span class="ml2">{{ $child->post_title }}</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <span>{{ $navigation_item->title }}</span>
-                                </a>
+                                @endforeach
                             </div>
-                        @endforeach
-                    @endif
-                </nav>
-            </div>
-            <!-- Footer Navigation End -->
 
-            <!-- Footer Secondary Menu, Partner Menu and Language Settings Start -->
-
-            <div class="footer__column  col col-6 sm-col-3 md-col-3 mt2">
-                <span class="footer__column-header"><?php _e( 'Fler alternativ', 'visithalland' ); ?></span>
-                <ul class="footer__list">
-                    @if(is_array($non_active_langs))
-                        @foreach ($non_active_langs as $key => $lang)
-                            <li class="footer__list-item mt1 light">
-                                <a href="{{ $lang["url"] }}" class="footer__link link-reset"">
-                                    <span>{{ $lang["native_name"] }}</span>
-                                </a>
-                            </li>
-                        @endforeach
+                    @else
+                        <div class="col col-12 md-col-3 mt4">
+                            <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title ? $primary_navigation_item->post_title : $primary_navigation_item->title }}</h4>
+                        </div>
                     @endif
-
-                    @if(is_array($secondary_menu_items))
-                        @foreach ($secondary_menu_items as $key => $secondary_menu_item)
-                            <li class="footer__list-item mt1 light">
-                                <a href="{{ $secondary_menu_item->url }}" class="footer__link link-reset"">
-                                    <span>{{ $secondary_menu_item->title }}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
+                @endforeach
             </div>
 
-
-            <!-- Footer Secondary Menu, Partner Menu and Language Settings End -->
-
-            <!-- Footer European Union Credit Start -->
-            <div class="footer__eu col col-12">
-                <div class="clearfix">
-                    <div class="col col-5 sm-col-3 md-col-2 pr4 mt2">
-                        <a href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
-                            <img class="footer__eu-logo" src="@asset('images/eu-logo.svg')" />
-                        </a>
-                    </div>
-                    <div class="col col-12 sm-col-9 md-col-6 mt2">
-                        <p class="light footer__eu-paragraph mt0">
-                            <!-- TODO: Make dynamic -->
-                            {{ get_field("eu_excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )) }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer European Union Credit End -->
 
         </div>
+
     </div>
+
+    
+    <!-- Footer European Union Credit Start -->
+    <div class="clearfix bg-blue-light py3">
+        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
+            <div class="mxn3">
+            <div class="col col-6 sm-col-3 md-col-2 px3 pt3 mt1">
+                <img class="max-width-4" src="@asset('images/eu-logo.svg')" />
+            </div>
+            <div class="col col-12 sm-col-10 md-col-8 px3 py3">
+                <p class="italic text-light text-sm max-width-4">
+                    <!-- TODO: Make dynamic -->
+                    {{ get_field("eu_excerpt", apply_filters( 'wpml_object_id', get_page_by_path("destination-halland-2020")->ID, 'page' )) }}
+                </p>
+                <a class="mt3 inline-block" href="https://tillvaxtverket.se/om-tillvaxtverket/organisation/logotyper/logotyp-for-eu-finansierat-stod.html">
+                    <div class="read-more">
+                        <span class="read-more__text light">
+                            @php _e('Läs mer om projektet', 'visithalland') @endphp
+                        </span>
+                        <div class="read-more__button bg-orange-gradient">
+                            <svg class="icon read-more__icon">
+                                <use xlink:href="#arrow-right-icon"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer European Union Credit End -->
 
     <!-- Cookie Banner Start -->
 

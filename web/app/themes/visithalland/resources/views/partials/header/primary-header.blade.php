@@ -1,6 +1,6 @@
 <section class="primary-header topographic-pattern bg-blue box-shadow">
-    <div class="primary-header__inner container col-12 md-col-11 lg-col-10">
-        <div class="primary-header__logo-container flex items-center px3">
+    <div class="primary-header__inner container col-11 md-col-10 lg-col-10">
+        <div class="primary-header__logo-container flex items-center">
             <a href="/" class="link-reset">
                 <picture>
                     <source
