@@ -11,7 +11,7 @@ $page_id = get_page_by_path('skordetid-i-halland/allt-som-skordetid-i-halland-ha
 $videoUrl = array(
 	'webm' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetid_i_halland.webm',
 	'mp4' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetid_i_halland.mp4',
-	'ogg' => ''
+	'ogg' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetid_i_halland.ogg'
 );
 @endphp
 
@@ -21,7 +21,7 @@ $videoUrl = array(
 			<div class="st-video-container col-12 overflow-hidden">
 				<video controls class="col-12"> 
 				   <source src="{{ $videoUrl['webm'] }}" type="video/webm"> 
-				   	<source src="{{ $videoUrl['ogg'] }}" type="video/ogg">
+				   <source src="{{ $videoUrl['ogg'] }}" type="video/ogg">
 				   <source src="{{ $videoUrl['mp4'] }}" type="video/mp4">  
 				</video>
 			</div>
