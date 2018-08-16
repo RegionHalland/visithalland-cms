@@ -9,8 +9,8 @@
 @php
 $page_id = get_page_by_path('skordetid-i-halland/allt-som-skordetid-i-halland-har-att-erbjuda')->ID;
 $videoUrl = array(
-	'webm' => '',
-	'mp4' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordertid_i_halland.mp4',
+	'webm' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetid_i_halland.webm',
+	'mp4' => 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetid_i_halland.mp4',
 	'ogg' => ''
 );
 @endphp
