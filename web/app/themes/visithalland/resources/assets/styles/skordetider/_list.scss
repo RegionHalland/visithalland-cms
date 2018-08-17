@@ -3,6 +3,16 @@
 	background:$st-primary-color;
 }
 
+.st-video-outer {
+	max-width: 960px;
+}
+
+.st-video-container {
+	height: 0;
+	padding-bottom: 56.25%;
+	border-radius: $border-radius;
+}
+
 .plant-img {
 	width:90px;
 	@media (min-width:$breakpoint-sm) {
