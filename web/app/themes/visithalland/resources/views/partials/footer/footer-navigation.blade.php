@@ -23,8 +23,6 @@
             </div>
         @endif
     @endforeach
-
-
     <div class="col col-12 sm-col-4 md-col-3 mt4">
         <h4 class="text-light mb3 text-lg">
             @php 
@@ -33,7 +31,7 @@
         </h4>
         @foreach($navbar_items as $test)
             @if(!is_array($test->children))
-                <a href="{{ $test->url }}" class="rift-font bold text-grey-light mb3 block">{{ $test->title }}</a>
+                <a href="{{ $test->url }}" class="rift-font bold text-grey hover mb3 block">{{ $test->title }}</a>
             @endif
         @endforeach
     </div>
@@ -45,11 +43,11 @@
             @endphp
         </h4>
         @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
-            <a class="rift-font text-grey-light bold mb3 block" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>
+            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>
         @endforeach 
         @if(is_array($non_active_langs))
             @foreach ($non_active_langs as $key => $lang)
-                <a class="rift-font text-grey-light bold mb3 block" href="{{ $lang["url"] }}">{{ $lang["native_name"] }}</a>
+                <a class="rift-font text-grey hover bold mb3 block" href="{{ $lang["url"] }}">{{ $lang["native_name"] }}</a>
             @endforeach
         @endif
     </div>

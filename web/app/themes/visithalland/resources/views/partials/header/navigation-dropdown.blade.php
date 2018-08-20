@@ -3,8 +3,6 @@
 		<div class="mxn3">
 			<div class="col col-12 sm-col-11 md-col-6 pt3 px3 pb2">
 				<nav class="clearfix">
-					
-					<!-- Repeat ---> 
 					@foreach($primary_navigation_item->children as $child)
 	                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
 							<a class="text-light bold text-lg truncate" href="{{ $child->url }}">
@@ -16,8 +14,6 @@
 							</a>
 						</div>
 	                @endforeach
-					<!-- End Repeat -->
-
 				</nav>
 			</div>
 			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt3 pb3">

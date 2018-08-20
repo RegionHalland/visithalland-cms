@@ -43,10 +43,4 @@
 
 .nav__link, .nav__button {
     outline:none;
-    opacity:0.8;
-    transition: opacity 0.25s;
-    &:hover, &:focus {
-        opacity:1;
-        cursor:pointer;
-    }
 }
