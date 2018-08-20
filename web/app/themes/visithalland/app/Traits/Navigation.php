@@ -41,11 +41,6 @@ trait Navigation
         return $navbar_items;
     }
 
-
-    /*public static function getSecondaryNavigation() {
-        return Navigation->secondaryMenuItems();
-    }*/
-
     /**
     * Returns navigation items located at the menu of theme_location secondary_navigation
     *
