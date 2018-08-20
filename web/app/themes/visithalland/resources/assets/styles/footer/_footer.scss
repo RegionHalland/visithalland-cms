@@ -1,21 +1,5 @@
-.footer {
-	
-}
-
-
 .footer__social {
 	@media (min-width:$breakpoint-sm){
 		justify-content:flex-end;
-	}
-}
-
-.social-icon {
-	height:36px;
-	width:36px;
-
-	svg {
-		width:18px;
-		height:18px;
-		fill:palette(grey, x-light);
 	}
 }

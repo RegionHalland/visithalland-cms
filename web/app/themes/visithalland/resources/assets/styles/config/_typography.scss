@@ -18,6 +18,9 @@
 .justify      { text-align: justify }
 
 .text-light { color:$white; }
+.text-grey { color:palette(grey, base); }
+.text-grey-light { color:palette(grey, light); }
+.text-grey-dark { color:palette(grey, dark); }
 .text-dark { color:$black; }
 
 .vertical-middle { vertical-align: middle }
