@@ -1,4 +1,4 @@
-<section class="support-header bg-blue-light">
+<section class="support-header bg-blue-light box-shadow z4 relative">
     <div class="support-header__inner container col-11 md-col-10 lg-col-10 flex items-center justify-end">
     	@foreach(App::secondaryMenuItems() as $secondary_navigation_item)
         	<a class="support-header__link rift-font text-sm text-grey hover ml3" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>

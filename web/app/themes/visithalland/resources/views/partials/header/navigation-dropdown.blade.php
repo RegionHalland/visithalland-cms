@@ -1,4 +1,4 @@
-<section class="nav-dropdown block absolute left-0 right-0 fill bg-blue box-shadow z5">
+<section class="nav-dropdown block fixed left-0 right-0 fill bg-blue box-shadow-lg z5">
 	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2">
 		<div class="mxn3">
 			<div class="col col-12 sm-col-11 md-col-6 pt3 px3 pb2">
