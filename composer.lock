@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ba9ef4131fa69d0f1a1f39f4c5711d1",
+    "content-hash": "86ce81e6cc64190c4a7502c5fb5418b0",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
-            "version": "5.7.2",
+            "version": "5.6.10",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=5.7.2",
+                "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=5.6.10",
                 "reference": null,
                 "shasum": null
             },
@@ -596,16 +596,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.4",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "6f45adac8d7199d829498d9c6dc5504a39af9ac0"
+                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/6f45adac8d7199d829498d9c6dc5504a39af9ac0",
-                "reference": "6f45adac8d7199d829498d9c6dc5504a39af9ac0",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/10d014eb59cc43b387a3b7e603539c0a02e2c960",
+                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960",
                 "shasum": ""
             },
             "require": {
@@ -623,20 +623,20 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-06-13T14:33:11+00:00"
+            "time": "2018-08-21T08:04:32+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-taxonomies.git",
-                "reference": "2a4f03f5e4a931f676c10ffdddef5038c91367ab"
+                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/2a4f03f5e4a931f676c10ffdddef5038c91367ab",
-                "reference": "2a4f03f5e4a931f676c10ffdddef5038c91367ab",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/b5fbd368262ade04ececc1257c7b968bb3918d83",
+                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83",
                 "shasum": ""
             },
             "require": {
@@ -654,7 +654,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom taxonomies used on https://www.visithalland.com.",
-            "time": "2018-03-19T12:38:20+00:00"
+            "time": "2018-08-21T08:05:23+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",
@@ -825,15 +825,15 @@
         },
         {
             "name": "wpackagist-plugin/ewww-image-optimizer",
-            "version": "4.2.3",
+            "version": "4.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/ewww-image-optimizer/",
-                "reference": "tags/4.2.3"
+                "reference": "tags/4.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.2.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.3.1.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -1,13 +1,11 @@
-<section class="nav-dropdown block absolute left-0 right-0 fill bg-blue box-shadow z5">
+<section class="nav-dropdown block fixed left-0 right-0 fill bg-blue box-shadow-lg z5">
 	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2">
 		<div class="mxn3">
 			<div class="col col-12 sm-col-11 md-col-6 pt3 px3 pb2">
 				<nav class="clearfix">
-					
-					<!-- Repeat ---> 
 					@foreach($primary_navigation_item->children as $child)
-	                    <div class="nav-dropdown__li truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-							<a class="nav-dropdown__link text-light bold text-lg truncate" href="{{ $child->url }}">
+	                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+							<a class="text-light bold text-lg truncate" href="{{ $child->url }}">
 								<div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
 									<div class="theme-icon__inner">
 									</div>
@@ -16,8 +14,6 @@
 							</a>
 						</div>
 	                @endforeach
-					<!-- End Repeat -->
-
 				</nav>
 			</div>
 			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt3 pb3">
