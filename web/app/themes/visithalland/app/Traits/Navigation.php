@@ -45,10 +45,21 @@ trait Navigation
         // return navbar object where child items are grouped with parents
         return $navbar_items;
     }
-
+ 
     public static function getPrimaryNavigationChildren()
     {
-        var_dump($getPrimaryNavigationItems);
+        $children = array();
+        $primaryNavigationItems = self::getPrimaryNavigationItems();
+        foreach ($primaryNavigationItems as $key => $value) {
+            if (is_array($value->children)){
+                foreach ($value->children as $k => $v) {
+                    array_push($children, $v);
+                }
+            }
+        }
+
+        //Return all children from all primary navigation items
+        return $children;
     }
 
     /**
