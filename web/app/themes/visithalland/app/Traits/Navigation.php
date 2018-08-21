@@ -7,25 +7,29 @@ trait Navigation
 
     /**
     * Returns navigation items located at the menu of theme_location primary_navigation
-    *
+    * NOTICE: DEPRECATED IN FAVOR OF get_navbar_items()
     * @return array Output menu items in current language
     */
     public static function getPrimaryNavigation() {
         return [];
     }
 
-    static function get_navbar_items () {
+    public static function getPrimaryNavigationItems()
+    {
         $nav_menus = get_nav_menu_locations();
         $primary_menu_id = $nav_menus["primary_navigation"];
         $current_language_menu_id = apply_filters('wpml_object_id', $primary_menu_id, 'nav_menu', true);
+        
         // wordpress does not group child menu items with parent menu items
         $navbar_items = wp_get_nav_menu_items($current_language_menu_id);
         $child_items = [];
+        
         // pull all child menu items into separate object
         foreach ($navbar_items as $key => $item) if ($item->menu_item_parent) {
             array_push($child_items, $item);
             unset($navbar_items[$key]);
         }
+        
         // push child items into their parent item in the original object
         foreach ($navbar_items as $item)
             foreach ($child_items as $key => $child)
@@ -37,8 +41,14 @@ trait Navigation
                     array_push($item->children, $child);
                     unset($child_items[$key]);
                 }
+        
         // return navbar object where child items are grouped with parents
         return $navbar_items;
+    }
+
+    public static function getPrimaryNavigationChildren()
+    {
+        var_dump($getPrimaryNavigationItems);
     }
 
     /**

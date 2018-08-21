@@ -39,7 +39,7 @@
 
 
             <div class="col col-12 mb5 px3">
-                @foreach(App::get_navbar_items() as $primary_navigation_item)
+                @foreach(App::getPrimaryNavigationItems() as $primary_navigation_item)
                     @if(is_array($primary_navigation_item->children) && count($primary_navigation_item->children) > 0)
                             <div class="col col-12 md-col-6 mt4">
                                 <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
