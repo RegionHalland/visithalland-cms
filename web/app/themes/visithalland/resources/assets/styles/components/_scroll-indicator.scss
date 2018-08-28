@@ -1,7 +1,7 @@
 .scroll-indicator {
     height:40px;
     width:40px;
-    background:palette(black, base);
+    background:palette(black, light);
     position:absolute;
     bottom:-15px;
     z-index:$z3;
@@ -21,7 +21,6 @@
 .scroll-indicator__icon {
     height:15px;
     width:15px;
-    background:palette(black, dark);
     border-radius:50%;
     animation: scroll-indicator-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
 }

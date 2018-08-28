@@ -15,7 +15,7 @@
                                     <div class="theme-icon__inner">
                                     </div>
                                 </div>
-                                <span class="ml2">{{ $child->post_title }}</span>
+                                <span class="ml2">{!! $child->post_title !!}</span>
                             </a>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                 _e('Sidor', 'visithalland') 
             @endphp
         </h4>
-        @foreach($navbar_items as $test)
-            @if(!is_array($test->children))
-                <a href="{{ $test->url }}" class="rift-font bold text-grey hover mb3 block">{{ $test->title }}</a>
+        @foreach($navbar_items as $primary_navigation_item)
+            @if(!is_array($primary_navigation_item->children))
+                <a href="{{ $primary_navigation_item->url }}" class="rift-font bold text-grey hover mb3 block">{!! $primary_navigation_item->title !!}</a>
             @endif
         @endforeach
     </div>
@@ -43,7 +43,7 @@
             @endphp
         </h4>
         @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
-            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>
+            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
         @endforeach 
         @if(is_array($non_active_langs))
             @foreach ($non_active_langs as $key => $lang)

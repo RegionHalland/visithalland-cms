@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="article-medium__content mt3 {{ App::getTermClassName() }}">
                                         <h3 class="article-medium__title mb1 mt1 pt0">{{ $post->post_title }}</h3>
-                                        <p class="article-medium__excerpt mt2">@php the_field("excerpt", $post->ID) @endphp</p>
+                                        <p class="article-medium__excerpt fade-text mt2">@php the_field("excerpt", $post->ID) @endphp</p>
                                         <div class="read-more my3">
                                             <span class="read-more__text">
                                                 @php _e( 'Läs mer', 'visithalland' ); @endphp

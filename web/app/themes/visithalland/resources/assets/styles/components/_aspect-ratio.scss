@@ -1,0 +1,57 @@
+//Aspect Ratios
+
+.aspect-container {
+	position:relative;
+}
+
+
+.aspect-5x4 {
+	padding-bottom:125%;
+}
+
+.aspect-1 {
+	padding-bottom:100%;
+}
+
+.aspect-4x3 {
+	padding-bottom:75%;
+}
+
+.aspect-3x2 {
+	padding-bottom:66.66%;
+}
+
+.aspect-16x9 {
+	padding-bottom:56.25%;
+}
+
+
+.md-aspect-5x4 {
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:125%;
+	}
+}
+
+.md-aspect-1 {
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:100%;
+	}
+}
+
+.md-aspect-4x3 {
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:75%;
+	}
+}
+
+.md-aspect-3x2 {
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:66.66%;
+	}
+}
+
+.md-aspect-16x9 {
+	@media(min-width:$breakpoint-md) {
+		padding-bottom:56.25%;
+	}
+}

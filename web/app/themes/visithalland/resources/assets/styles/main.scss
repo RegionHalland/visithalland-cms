@@ -33,9 +33,11 @@
 @import 'components/button';
 @import 'components/section-header';
 @import 'components/image-credit';
+@import 'components/aspect-ratio';
 @import 'components/lazy-load';
 @import 'components/topographic-pattern';
 @import 'components/icons';
+@import 'components/editor-picks';
 @import 'components/theme-icon';
 @import 'components/social-icon';
 @import 'components/icon-button';
@@ -45,19 +47,24 @@
 @import 'components/read-more';
 @import 'components/breadcrumbs';
 @import 'components/preamble';
+@import 'components/scrim-gradient';
 @import 'components/scroll-indicator';
 @import 'components/search';
 @import 'components/google-place-details';
 @import 'components/author-horizontal';
 @import 'components/infinite-scroll';
 
+// General Page Format
+@import './page/page';
+
+// Grid Layouts
+@import './layouts/content-grid';
+
 // Landing
 @import './front-page/front-page'; //Se över denna -- Jobbas med nu
 @import './front-page/campaign'; //Se över denna -- Jobbas med nu
 @import './front-page/dh-banner';
 
-// General Page Format
-@import './page/page';
 
 // Article Components and Styles
 @import './article/article';
