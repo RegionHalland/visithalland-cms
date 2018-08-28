@@ -1,6 +1,6 @@
 <section class="topographic-pattern bg-blue box-shadow">
     <div class="container flex justify-between items-center flex-wrap md-flex-nowrap col-11 md-col-10 lg-col-10">
-        <div class="flex items-center">
+        <div class="flex items-center md-pr4">
             <a href="/" class="link-reset py2">
                 <picture>
                     <source
@@ -9,7 +9,7 @@
                     <source
                         srcset="@asset('images/logo-small.svg')"/>
                     <img
-                        class="max-height-4 max-width-4 mt1"
+                        class="max-height-4 fit mt1"
                         src="@asset('images/logo-horizontal.svg')"
                         alt="Visithalland.com" />
                 </picture>

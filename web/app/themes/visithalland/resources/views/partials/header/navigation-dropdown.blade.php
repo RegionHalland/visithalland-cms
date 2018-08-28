@@ -1,10 +1,8 @@
 <section class="nav-dropdown block fixed left-0 right-0 fill bg-blue box-shadow-lg z5">
 	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2 flex flex-column md-flex-row">
 		<div class="mxn3">
-			<div class="col col-12 sm-col-11 md-col-6 pt3 px3 pb2">
+			<div class="col col-12 sm-col-11 md-col-6 pt4 px3 pb2">
 				<nav class="clearfix">
-					<header class="text-light rift-font text-lg pb1 mt2 bold">@php _e('Upplev Halland', 'visithalland') @endphp</header>
-					<hr class="border-none bg-blue-dark mb3 block">
 					@foreach($primary_navigation_item->children as $child)
 						@if($child->type === 'taxonomy')
 		                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
@@ -30,7 +28,7 @@
 	                @endforeach
 				</nav>
 			</div>
-			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt3 pb3">
+			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt4 pb4">
 				<div class="nav-dropdown__background rounded p3 bg-blue-xlight topographic-pattern">
 					<div class="col col-5 sm-col-4 md-col-6 flex items-center justify-center">
 						<img class="feature__img fit mr3 max-width-4" src="@asset('images/test.png')" alt="">
