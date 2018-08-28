@@ -1,5 +1,5 @@
 @php
-    $navbar_items = App::get_navbar_items();
+    $navbar_items = App::getPrimaryNavigationItems();
 @endphp
 
 <div class="col col-12 mb5 px3">

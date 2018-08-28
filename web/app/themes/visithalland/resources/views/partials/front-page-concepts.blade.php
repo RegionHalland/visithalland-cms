@@ -1,5 +1,5 @@
 {{-- Get Concepts for grid --}}
-@php $primary_navigation_items = App::getPrimaryNavigation() @endphp
+@php $primary_navigation_items = App::getPrimaryNavigationChildren() @endphp
 
 @if(is_array($primary_navigation_items))
 
@@ -15,7 +15,6 @@
             </div>
         </header>
         <div class="featured-grid clearfix">
-            @php $primary_navigation_items = App::getPrimaryNavigation() @endphp
             @foreach($primary_navigation_items as $key => $navigation_item)
                 {{-- Gets first item in array --}}
                 @if($loop->iteration == 1)
