@@ -8,17 +8,27 @@
             <div class="col col-12 sm-col-4 md-col-6 mt4">
                 <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
                 @foreach($primary_navigation_item->children as $child)
-                    <div class="col col-12 md-col-6">
-                        <div class="truncate text-light rift-font pb3">
-                            <a class="text-light bold text-lg truncate" href="{{ $child->url }}">
+                    @if($child->type === 'taxonomy')
+                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
                                 <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
                                     <div class="theme-icon__inner">
                                     </div>
                                 </div>
-                                <span class="ml2">{!! $child->post_title !!}</span>
+                                <span class="ml2">{{ $child->post_title }}</span>
                             </a>
                         </div>
-                    </div>
+                    @else 
+                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+                                <div class="theme-icon coastal-living">
+                                    <div class="theme-icon__inner">
+                                    </div>
+                                </div>
+                                <span class="ml2">{{ $child->title }}</span>
+                            </a>
+                        </div>
+                    @endif
                 @endforeach
             </div>
         @endif

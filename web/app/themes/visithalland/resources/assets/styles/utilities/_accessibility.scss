@@ -1,0 +1,40 @@
+.print-hide {
+	@media print { display: none; }
+}
+
+
+.outline-none {
+	outline:none;
+}
+
+.sr-only {
+    clip: rect(0px, 0px, 0px, 0px);
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0 none;
+}
+
+
+.skip-link {
+    left:-999px;
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+}
+
+.skip-link:focus, .skip-link:active {
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    overflow:auto;
+    position:relative;
+    z-index:999;
+}

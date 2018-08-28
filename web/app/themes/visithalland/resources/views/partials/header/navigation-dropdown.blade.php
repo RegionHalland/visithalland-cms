@@ -1,18 +1,32 @@
 <section class="nav-dropdown block fixed left-0 right-0 fill bg-blue box-shadow-lg z5">
-	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2">
+	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2 flex flex-column md-flex-row">
 		<div class="mxn3">
 			<div class="col col-12 sm-col-11 md-col-6 pt3 px3 pb2">
 				<nav class="clearfix">
+					<header class="text-light rift-font text-lg pb1 mt2 bold">@php _e('Upplev Halland', 'visithalland') @endphp</header>
+					<hr class="border-none bg-blue-dark mb3 block">
 					@foreach($primary_navigation_item->children as $child)
-	                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-							<a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
-								<div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
-									<div class="theme-icon__inner">
+						@if($child->type === 'taxonomy')
+		                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+								<a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+									<div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
+										<div class="theme-icon__inner">
+										</div>
 									</div>
-								</div>
-								<span class="ml2">{{ $child->post_title }}</span>
-							</a>
-						</div>
+									<span class="ml2">{{ $child->post_title }}</span>
+								</a>
+							</div>
+						@else 
+							<div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+								<a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+									<div class="theme-icon coastal-living">
+										<div class="theme-icon__inner">
+										</div>
+									</div>
+									<span class="ml2">{{ $child->title }}</span>
+								</a>
+							</div>
+						@endif
 	                @endforeach
 				</nav>
 			</div>

@@ -74,62 +74,6 @@
         </div>
         
 
-
-
-        {{-- <div class="container col-11 md-col-10 lg-col-10 mx-auto pb5">
-            <div class="clearfix">
-                <div class="col col-12 sm-col-9 md-col-8 page__body">
-                    <div class="article-body">
-                        {{ the_content() }}
-                    </div>
-                    @if( have_rows('contact') )
-                        <div class="contacts mt4 clearfix">
-                            <div class="contacts__header">
-                                <h3>@php _e( 'Kontaktpersoner', 'visithalland' ) @endphp</h3>
-                            </div>
-                            @php while ( have_rows('contact') ) : the_row();
-                                $user_id = get_sub_field('contact_person')['ID'];
-                            @endphp
-                            <address class="contact mb2">
-                                <div class="contact__img-container">
-                                    <img
-                                        data-src="{{ get_field('profile_image', 'user_'. $user_id)["sizes"]["vh_profile@2x"] }}"
-                                        alt="'Skrivet av: ' + {{ get_sub_field('contact_person')['user_firstname'] }}"
-                                        class="contact__img lazyload"
-                                    />
-                                </div>
-                                <div class="contact__bio">
-                                    <span class="block contact__name">{{ get_sub_field('contact_person')['display_name'] }}</span>
-                                    <span class="block contact__title">{{ get_field('role', 'user_'. $user_id) }}</span>
-                                    <a class="contact__email" href="mailto:{{ get_sub_field('contact_person')['user_email'] }}">
-                                        {{ get_sub_field('contact_person')['user_email'] }}
-                                    </a>
-                                </div>
-                            </address>
-                            @endwhile
-                        </div>
-                    @endif
-                </div>
-                <div class="col col-12 sm-col-3 md-col-4 page__sidebar">
-                    <address class="author-horizontal mt3 mb4">
-                        <div class="author-horizontal__img-container">
-                            <img
-                                data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"] }}"
-                                alt="'Skrivet av: ' + {{ the_author_meta('display_name') }}"
-                                class="author-horizontal__img lazyload"
-                            />
-                        </div>
-                        <div class="author-horizontal__bio">
-                            <span class="block author-horizontal__name">{{ the_author_meta('display_name') }}</span>
-                            <span class="block author-horizontal__title">{{ get_field('role', 'user_'. $author_id) }}</span>
-                        </div>
-                    </address>
-                </div>
-            </div>
-        </div> --}}
-
-
-
     </article>
     @endwhile
 @endsection

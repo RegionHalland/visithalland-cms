@@ -30,19 +30,22 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	line-height: 1.5;
+
+	//Se över den här skiten
 	&.light {
 		color:$white;
 	}
 }
 
 span {
+	//Se över
 	&.light {
 		color:$white;
 	}
 }
 
 strong,
-.strong { font-weight: $bold-font-weight }
+.strong { font-weight: bold }
 
 em, .em,
 i, .i { font-style: italic }
@@ -58,7 +61,7 @@ table {
 }
 
 th { 
-	font-weight: $bold-font-weight;
+	font-weight: bold;
 	vertical-align: bottom; 
 	text-align: left;
 }	

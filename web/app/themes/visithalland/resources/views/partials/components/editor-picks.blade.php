@@ -11,7 +11,7 @@
 	<ol class="px2 flex flex-wrap">
 		<li class="inline-flex mt3">
 
-            <div class="flex justify-center items-center bg-blue p2 mr3 rounded square-30x30 text-light fira-font italic">
+            <div class="flex justify-center items-center bg-blue p2 mr3 rounded height-3 width-3 text-light fira-font italic">
                 2
             </div>
 			<div class="">

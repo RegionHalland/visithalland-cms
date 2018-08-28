@@ -1,0 +1,95 @@
+//Aspect Ratios
+
+.aspect-container {
+	position:relative;
+	background:palette(grey, base);
+}
+
+
+.aspect-5x4 {
+	padding-bottom:125%;
+}
+
+.aspect-1 {
+	padding-bottom:100%;
+}
+
+.aspect-4x3 {
+	padding-bottom:75%;
+}
+
+.aspect-3x2 {
+	padding-bottom:66.66%;
+}
+
+.aspect-16x9 {
+	padding-bottom:56.25%;
+}
+
+
+@media(min-width:$breakpoint-sm) {
+	.sm-aspect-5x4 {
+		padding-bottom:125%;
+	}
+
+	.sm-aspect-1 {
+		padding-bottom:100%;
+	}
+
+	.sm-aspect-4x3 {
+		padding-bottom:75%;
+	}
+
+	.sm-aspect-3x2 {
+		padding-bottom:66.66%;
+	}
+
+	.sm-aspect-16x9 {
+		padding-bottom:56.25%;
+	}
+}
+
+
+@media(min-width:$breakpoint-md) {
+	.md-aspect-5x4 {
+		padding-bottom:125%;
+	}
+
+	.md-aspect-1 {
+		padding-bottom:100%;
+	}
+
+	.md-aspect-4x3 {
+		padding-bottom:75%;
+	}
+
+	.md-aspect-3x2 {
+		padding-bottom:66.66%;
+	}
+
+	.md-aspect-16x9 {
+		padding-bottom:56.25%;
+	}
+}
+
+@media(min-width:$breakpoint-lg) {
+	.lg-aspect-5x4 {
+		padding-bottom:125%;
+	}
+
+	.lg-aspect-1 {
+		padding-bottom:100%;
+	}
+
+	.lg-aspect-4x3 {
+		padding-bottom:75%;
+	}
+
+	.lg-aspect-3x2 {
+		padding-bottom:66.66%;
+	}
+
+	.lg-aspect-16x9 {
+		padding-bottom:56.25%;
+	}
+}
