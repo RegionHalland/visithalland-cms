@@ -1,5 +1,5 @@
-<nav class="nav fill items-center md-justify-end md-flex-1 flex height-5 md-pr3">
-    <ul class="fill flex justify-between sm-justify-start lg-justify-end">
+<nav class="nav w-fill items-center md-justify-end md-flex-1 flex height-5 md-pr3">
+    <ul class="w-fill flex justify-between sm-justify-start lg-justify-end">
         @foreach(App::getPrimaryNavigationItems() as $primary_navigation_item)
             @if(is_array($primary_navigation_item->children))
             <li class="sm-mr4 md-ml2 md-mr0 lg-ml4">

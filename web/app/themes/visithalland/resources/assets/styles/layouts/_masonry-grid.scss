@@ -1,0 +1,40 @@
+.masonry-grid {
+    display: grid;
+    grid-gap: $space-3;
+}
+
+.masonry-grid__large {
+    grid-column: span 1;
+    @media (min-width:$breakpoint-sm) { 
+        grid-column: span 6;
+        grid-row: 1 / 5;
+    }
+    @media (min-width:$breakpoint-md) {
+        grid-column: 1/3;
+        grid-row: 1 / 5;
+    }
+}
+
+.masonry-grid__medium {
+    grid-column: span 1;
+    @media (min-width:$breakpoint-sm) { 
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+    @media (min-width:$breakpoint-md) {
+        grid-column: 3;
+        grid-row: span 3;
+    }
+}
+
+.masonry-grid__small {
+    grid-column: span 1;
+    @media (min-width:$breakpoint-sm) { 
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+    @media (min-width:$breakpoint-md) {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+}

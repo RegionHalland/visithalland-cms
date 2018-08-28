@@ -1,5 +1,5 @@
 @if(!isset($_COOKIE["cookie_consent"]))
-    <div class="cookie-banner fixed fill display-none left-0 right-0 bottom-0 z5 p3 text-light col-12">
+    <div class="cookie-banner fixed w-fill display-none left-0 right-0 bottom-0 z5 p3 text-light col-12">
         <div class="cookie-banner__inner bg-blue topographic-pattern p4 relative rounded col-12 sm-col-6 md-col-4" tabindex="1">
             <p class="cookie-banner__policy text-grey-light text-sm">
                 <?php echo get_field("cookie_accept_message", apply_filters( 'wpml_object_id', get_page_by_path("kakor")->ID, 'page' )); ?>

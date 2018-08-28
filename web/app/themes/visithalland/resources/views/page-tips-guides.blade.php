@@ -26,7 +26,7 @@
                                 data-srcset="https://www.visithalland.com/app/uploads/2018/08/B9064260-1920x1080.jpg 1x, https://www.visithalland.com/app/uploads/2018/08/B9064260-1920x1080.jpg 2x"" />
                             <source
                                 data-srcset="https://www.visithalland.com/app/uploads/2018/08/B9064260-800x800.jpg 1x, https://www.visithalland.com/app/uploads/2018/08/B9064260-800x800.jpg 2x"" />
-                            <img class="absolute left-0 top-0 fill lazyload"
+                            <img class="absolute left-0 top-0 w-fill lazyload"
                                 data-src="https://www.visithalland.com/app/uploads/2018/08/B9064260-1920x1080.jpg"
                             />
                         </picture>
@@ -77,7 +77,7 @@
 			                                data-srcset="https://www.visithalland.com/app/uploads/2018/08/B9064260-900x600.jpg 1x, https://www.visithalland.com/app/uploads/2018/08/B9064260-900x600.jpg 2x"" />
 			                            <source
 			                                data-srcset="https://www.visithalland.com/app/uploads/2018/08/B9064260-400x350.jpg 1x, https://www.visithalland.com/app/uploads/2018/08/B9064260-900x600.jpg 2x"" />
-			                            <img class="absolute left-0 top-0 fill lazyload"
+			                            <img class="absolute left-0 top-0 w-fill lazyload"
 			                                data-src="https://www.visithalland.com/app/uploads/2018/08/B9064260-900x600.jpg"
 			                            />
 			                        </picture>

@@ -1,5 +1,11 @@
-.fit { max-width: 100% }
-.fill { width: 100% }
+.w-fit { max-width: 100% }
+.w-fill { width: 100% }
+.w-auto { width: auto }
+
+.h-fit { max-width: 100% }
+.h-fill { height: 100% }
+.h-auto { height: auto }
+
 
 .height-1 { height:$size-1; }
 .height-2 { height:$size-2; }

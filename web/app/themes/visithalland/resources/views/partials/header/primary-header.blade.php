@@ -9,7 +9,7 @@
                     <source
                         srcset="@asset('images/logo-small.svg')"/>
                     <img
-                        class="max-height-4 fit mt1"
+                        class="max-height-4 w-fit mt1"
                         src="@asset('images/logo-horizontal.svg')"
                         alt="Visithalland.com" />
                 </picture>
