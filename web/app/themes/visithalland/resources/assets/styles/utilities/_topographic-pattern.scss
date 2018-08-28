@@ -6,3 +6,13 @@
 		background-size:25%;
 	}
 }
+
+
+.topographic-pattern-dark {
+	background-image: url("../images/pattern-dark.svg");
+	background-repeat:repeat;
+	background-size:80%;
+	@media (min-width:$breakpoint-sm) {
+		background-size:75%;
+	}
+}

@@ -10,9 +10,44 @@
 	</header>
 	<ol class="px2 flex flex-wrap">
 		<li class="inline-flex mt3">
-
+            <div class="flex justify-center items-center bg-blue p2 mr3 rounded height-3 width-3 text-light fira-font italic">
+                1
+            </div>
+			<div class="">
+				<a class="rift-font text-xl bold" href="">Gröna skogarna i Hylte</a>
+				<div class="read-more mt2">
+                    <span class="read-more__text">
+                        @php _e( 'Läs mer', 'visithalland' ) @endphp
+                    </span>
+                    <div class="read-more__button">
+                        <svg class="icon read-more__icon">
+                            <use xlink:href="#arrow-right-icon"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+		</li>
+		<li class="inline-flex mt3">
             <div class="flex justify-center items-center bg-blue p2 mr3 rounded height-3 width-3 text-light fira-font italic">
                 2
+            </div>
+			<div class="">
+				<a class="rift-font text-xl bold" href="">Gröna skogarna i Hylte</a>
+				<div class="read-more mt2">
+                    <span class="read-more__text">
+                        @php _e( 'Läs mer', 'visithalland' ) @endphp
+                    </span>
+                    <div class="read-more__button">
+                        <svg class="icon read-more__icon">
+                            <use xlink:href="#arrow-right-icon"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+		</li>
+		<li class="inline-flex mt3">
+            <div class="flex justify-center items-center bg-blue p2 mr3 rounded height-3 width-3 text-light fira-font italic">
+                3
             </div>
 			<div class="">
 				<a class="rift-font text-xl bold" href="">Gröna skogarna i Hylte</a>

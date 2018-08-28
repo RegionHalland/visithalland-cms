@@ -4,7 +4,7 @@
 
 	<section class="mt5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
 
-		<header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+		<header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
 			@php _e( 'Populära artiklar', 'visithalland' ) @endphp
 		</header>
 		<div class="masonry-grid">

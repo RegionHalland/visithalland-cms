@@ -1,32 +1,17 @@
-.bg-blue-xlight {
-	background-color:palette(black, x-light);
-}
-
-.bg-blue-light {
-	background-color:palette(black, light);
-}
-
-.bg-blue {
-	background-color:palette(black, base);
-}
-
-.bg-blue-dark {
-	background-color:palette(black, dark);
-}
+.bg-blue-xlight { background-color:palette(black, x-light);}
+.bg-blue-light {background-color:palette(black, light);}
+.bg-blue {background-color:palette(black, base);}
+.bg-blue-dark {background-color:palette(black, dark);}
 
 
-.bg-grey-dark {
-	background-color:palette(grey, dark);
-}
+.bg-grey-dark { background-color:palette(grey, dark); }
+.bg-grey { background-color:palette(grey, base);}
+.bg-grey-light { background-color:palette(grey, light);}
 
-.bg-grey {
-	background-color:palette(grey, base);
-}
+.bg-orange-gradient { background: linear-gradient(111.48deg, #F06E08 0%, #FF8F37 100%);}
 
-.bg-grey-light {
-	background-color:palette(grey, light);
-}
-
-.bg-orange-gradient {
-	background: linear-gradient(111.48deg, #F06E08 0%, #FF8F37 100%);
+.bg-theme {
+    @include themify {
+		background-color: $color-primary;
+    }
 }

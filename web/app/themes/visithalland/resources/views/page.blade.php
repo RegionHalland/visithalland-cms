@@ -36,16 +36,17 @@
 
                 </div>
 
-                <div class="content-grid__sidebar">
+                <div class="content-grid__sidebar mxn3">
+
                     @if( have_rows('contact') )
-                        <div class="contacts clearfix">
-                            <div class="contacts__header">
-                                <h3>@php _e( 'Kontaktpersoner', 'visithalland' ) @endphp</h3>
-                            </div>
+                        <div class="contacts clearfix px3 mb4">
+                            <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+                                @php _e( 'Kontaktpersoner', 'visithalland' ) @endphp
+                            </header>
                             @php while ( have_rows('contact') ) : the_row();
                                 $user_id = get_sub_field('contact_person')['ID'];
                             @endphp
-                            <address class="contact mb2">
+                            <address class="contact mb2 block mt3">
                                 <div class="contact__img-container">
                                     <img
                                         data-src="{{ get_field('profile_image', 'user_'. $user_id)["sizes"]["vh_profile@2x"] }}"
@@ -64,12 +65,17 @@
                             @endwhile
                         </div>
                     @endif
+
+                    <div class="col-12 px3">
+                        <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+                            @php _e( 'Redaktionens tips', 'visithalland' ) @endphp
+                        </header>
+                    </div>
+                    <div class="col col-12 sm-col-6 md-col-12 mt3 mb3 px3">
+                        @include('partials.components.editor-picks')
+                    </div>
                     
                 </div>
-
-                
-
-
             </div>
         </div>
         
