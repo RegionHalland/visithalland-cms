@@ -1,5 +1,17 @@
 <div class="concept-sidebar col col-12 lg-col-4 mb4">
     {{-- Gets And Loops Happenings Date Descending --}}
+
+    
+    
+    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt2 rounded-pill inline-block text-light">
+        @php _e( 'Våra tips', 'visithalland' ) @endphp
+    </header>
+    <div class="">
+        @include('partials.components.editor-picks')
+    </div>
+
+
+
     @php $concept_happenings = App::getHappenings(10, $term) @endphp
     @if(is_array($concept_happenings))
         <div class="concept-sidebar__happenings mxn2 mt1 mb3 clearfix">

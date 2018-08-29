@@ -65,7 +65,8 @@ trait Posts
         // Get our post types and remove those included inside $excludeTypes
         $postTypesDiff = array_diff(self::$post_types, $exludeTypes);
         //return $postTypesDiff;
-
+        $tax_query = array();
+        
         if($term !== null) {
             $tax_query = array(
                 array(

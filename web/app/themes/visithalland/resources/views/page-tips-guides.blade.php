@@ -62,7 +62,7 @@
 			<div class="content-grid__bottom-content">
 				
 				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
-					@php _e( 'Mer innehåll', 'visithalland' ) @endphp
+					@php _e( 'Fler artiklar', 'visithalland' ) @endphp
 				</header>
 
 				
@@ -101,8 +101,4 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 @endsection
