@@ -68,11 +68,9 @@ function vh_get_events_happenings_by_date(\WP_REST_Request $request)
 function vh_add_events(WP_REST_Request $request)
 {
     $municipio = $request['municipio'];
-
     $c = new CalendarClient();
-    $c->runRequest($municipio);
-
-    return;
+    
+    return rest_ensure_response($c->runRequest($municipio));
 }
 
 function vh_set_passed_happenings_to_draft_callback()

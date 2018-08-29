@@ -115,7 +115,7 @@
     "wpml/sitepress-multilingual-cms": "*",
     "wpml/wpml-string-translation": "*",
     "wpml/wpml-media-translation": "*",
-    "regionhalland/visithalland-custom-post-types": "^1.4",
+    "regionhalland/visithalland-custom-post-types": "dev-dev",
     "regionhalland/visithalland-custom-taxonomies": "^1.0",
     "guzzlehttp/guzzle": "^6.3",
     "wpackagist-plugin/wp-super-cache":"^1.6.1"
