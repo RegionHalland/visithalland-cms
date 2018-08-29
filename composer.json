@@ -103,7 +103,6 @@
     "oscarotero/env": "^1.1.0",
     "roots/wp-password-bcrypt": "^1.0.0",
     "philippbaschke/acf-pro-installer": "^1.0",
-    "wpackagist-plugin/amp": "^0.6.2",
     "wpackagist-plugin/autoptimize": "^2.3.2",
     "wpackagist-plugin/better-search-replace": "^1.3.2",
     "wpackagist-plugin/ewww-image-optimizer": "^4.1.0",
