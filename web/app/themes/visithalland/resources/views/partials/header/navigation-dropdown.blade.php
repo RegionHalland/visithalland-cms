@@ -34,7 +34,7 @@
 						<img class="feature__img w-fit mr3 max-width-4" src="@asset('images/test.png')" alt="">
 					</div>
 					<div class="feature__content col col-7 sm-col-4 md-col-6 ">
-						<span class="rounded py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>
+						<span class="rounded-pill py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>
 						<h4 class="text-light mb3 line-height-3">Upptäck Hallands hemligheter med vår nya mobilguide</h4>
 						<a href="#">
 							<div class="read-more">
