@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "86ce81e6cc64190c4a7502c5fb5418b0",
+    "content-hash": "c71fff3efcf85f41c0f91ddd8386b930",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -596,16 +596,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.4.1",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960"
+                "reference": "7393a317ce4238e22cfc1c11e88010b9e3c2c0e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/10d014eb59cc43b387a3b7e603539c0a02e2c960",
-                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/7393a317ce4238e22cfc1c11e88010b9e3c2c0e1",
+                "reference": "7393a317ce4238e22cfc1c11e88010b9e3c2c0e1",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-08-21T08:04:32+00:00"
+            "time": "2018-08-29T07:11:24+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
@@ -825,15 +825,15 @@
         },
         {
             "name": "wpackagist-plugin/ewww-image-optimizer",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/ewww-image-optimizer/",
-                "reference": "tags/4.3.1"
+                "reference": "tags/4.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.3.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.3.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -925,15 +925,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.6.3"
+                "reference": "tags/1.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1032,7 +1032,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "regionhalland/visithalland-custom-post-types": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
