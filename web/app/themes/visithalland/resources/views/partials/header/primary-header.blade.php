@@ -1,7 +1,7 @@
-<section class="primary-header topographic-pattern bg-blue box-shadow">
-    <div class="primary-header__inner container col-11 md-col-10 lg-col-10">
-        <div class="primary-header__logo-container flex items-center">
-            <a href="/" class="link-reset">
+<section class="topographic-pattern bg-blue box-shadow">
+    <div class="container flex justify-between items-center flex-wrap md-flex-nowrap col-11 md-col-10 lg-col-10">
+        <div class="flex items-center md-pr4">
+            <a href="/" class="link-reset py2">
                 <picture>
                     <source
                         media="(min-width: 40em)"
@@ -9,7 +9,7 @@
                     <source
                         srcset="@asset('images/logo-small.svg')"/>
                     <img
-                        class="primary-header__logo"
+                        class="max-height-4 w-fit mt1"
                         src="@asset('images/logo-horizontal.svg')"
                         alt="Visithalland.com" />
                 </picture>
@@ -19,3 +19,4 @@
         @include('partials.header.navigation')
     </div>
 </section>
+

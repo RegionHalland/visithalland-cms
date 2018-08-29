@@ -5,33 +5,10 @@
 @extends('layouts.app')
 
 @section('content')
-		<header class="page-happening-header relative" role="heading">
-		    <div class="page-happening-header__img-container topographic-pattern">
-		    </div>
-		    <div class="page-happening-header__content container clearfix col-11 sm-col-11 md-col-10 lg-col-10 absolute mx-auto bottom-0 left-0 right-0">
-		        <div class="col col-12 sm-col-7 md-col-6 lg-col-5">
-		            
-		            {{-- Breadcrumbs Start --}}
-		            @include('partials.breadcrumbs')
 
-		            <h1 class="page-happening-header__title mt0 mb3 light">
-		                <span>{{ the_title() }}</span>
-		            </h1>
-		            <div class="page-happening-header__p light mt3">
-		                {!! the_content() !!}
-		            </div>
-		        </div>
 
-		        {{-- Scroll Indicator Start --}}
-		        <div class="scroll-indicator">
-		            <svg class="scroll-indicator__icon">
-		                <use xlink:href="#arrow-down-icon"/>
-		            </svg>
-		        </div>
-		        {{-- Scroll Indicator End --}}
+		@include('partials.page.page-header')
 
-		    </div>
-		</header>
 		<div class="container col-11 md-col-10 lg-col-10 mx-auto pt2 pb4">
 			@php $happenings = App::getHappenings(100) @endphp
 			<div class="pb4 pt3 clearfix mxn2">

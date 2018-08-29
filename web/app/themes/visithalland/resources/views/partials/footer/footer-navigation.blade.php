@@ -8,9 +8,9 @@
             <div class="col col-12 sm-col-4 md-col-6 mt4">
                 <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
                 @foreach($primary_navigation_item->children as $child)
-                    <div class="col col-12 md-col-6">
-                        <div class="truncate text-light rift-font pb3">
-                            <a class="text-light bold text-lg truncate" href="{{ $child->url }}">
+                    @if($child->type === 'taxonomy')
+                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
                                 <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
                                     <div class="theme-icon__inner">
                                     </div>
@@ -18,7 +18,17 @@
                                 <span class="ml2">{{ $child->post_title }}</span>
                             </a>
                         </div>
-                    </div>
+                    @else 
+                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
+                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+                                <div class="theme-icon coastal-living">
+                                    <div class="theme-icon__inner">
+                                    </div>
+                                </div>
+                                <span class="ml2">{{ $child->title }}</span>
+                            </a>
+                        </div>
+                    @endif
                 @endforeach
             </div>
         @endif
@@ -29,9 +39,9 @@
                 _e('Sidor', 'visithalland') 
             @endphp
         </h4>
-        @foreach($navbar_items as $test)
-            @if(!is_array($test->children))
-                <a href="{{ $test->url }}" class="rift-font bold text-grey hover mb3 block">{{ $test->title }}</a>
+        @foreach($navbar_items as $primary_navigation_item)
+            @if(!is_array($primary_navigation_item->children))
+                <a href="{{ $primary_navigation_item->url }}" class="rift-font bold text-grey hover mb3 block">{!! $primary_navigation_item->title !!}</a>
             @endif
         @endforeach
     </div>
@@ -43,7 +53,7 @@
             @endphp
         </h4>
         @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
-            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>
+            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
         @endforeach 
         @if(is_array($non_active_langs))
             @foreach ($non_active_langs as $key => $lang)

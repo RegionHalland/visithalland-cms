@@ -20,14 +20,6 @@
     }
 }
 
-.nav-dropdown__inner {
-    display:flex;
-    flex-direction:column;
-    @media(min-width:$breakpoint-md) {
-        flex-direction:row;
-    }
-}
-
 .nav-dropdown__background {
     z-index:-1;
     width:100%;

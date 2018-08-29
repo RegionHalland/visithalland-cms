@@ -5,14 +5,13 @@ class Navigation {
 
     bindNavigation(){
         //Toggle menu on mobile
-        $('.nav__button').on('click', function () {
-            console.log("Navigation Toggle");
+        $('#dropdown-button').on('click', function () {
             $('.nav-dropdown').toggleClass('open');
-            if ($('.has-popup').attr('aria-expanded') === "true") {
-              $('.has-popup').attr('aria-expanded', 'false')
+            if ($('.has-dropdown').attr('aria-expanded') === "true") {
+              $('.has-dropdown').attr('aria-expanded', 'false')
             }
             else {
-              $('.has-popup').attr('aria-expanded', 'true')
+              $('.has-dropdown').attr('aria-expanded', 'true')
             }
         });
     }
