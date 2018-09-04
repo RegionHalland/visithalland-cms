@@ -64,8 +64,8 @@ trait Posts
 
         // Get our post types and remove those included inside $excludeTypes
         $postTypesDiff = array_diff(self::$post_types, $exludeTypes);
-        //return $postTypesDiff;
 
+        $tax_query = array();
         if($term !== null) {
             $tax_query = array(
                 array(
@@ -82,6 +82,40 @@ trait Posts
             'numberposts' => $numberposts,
             'tax_query'   => $tax_query ? $tax_query : null,
             'exclude' 	 => $post->ID,
+        ));
+
+        foreach ($posts as $key => $value) {
+            $value->terms = self::getTerms($value);
+            $value->post_type_label = get_post_type_object($value->post_type)->labels->name;
+        }
+
+        return $posts;
+    }
+
+    public static function getPostsConceptGridTemp(array $exludeTypes = array("happening"), \WP_Term $term = null, int $numberposts = 10)
+    {
+        // Get the global $post object
+        global $post;
+
+        // Get our post types and remove those included inside $excludeTypes
+        $postTypesDiff = self::$post_types;
+
+        $tax_query = array();
+        if($term !== null) {
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'taxonomy_concept',
+                    'field'      => 'id',
+                    'terms'  => $term->term_id, // Where term_id of Term 1 is "1".
+                    'include_children' => false
+                )
+            );
+        }
+
+        $posts = get_posts(array(
+            'post_type'   => $postTypesDiff,
+            'numberposts' => $numberposts,
+            'tax_query'   => $tax_query ? $tax_query : null
         ));
 
         foreach ($posts as $key => $value) {
