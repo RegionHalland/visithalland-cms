@@ -72,7 +72,7 @@
                         </header>
                     </div>
                     <div class="col col-12 sm-col-6 md-col-12 mt3 mb3 px3">
-                        @include('partials.components.editor-picks')
+                        @include('partials.components.top-list')
                     </div>
                     
                 </div>

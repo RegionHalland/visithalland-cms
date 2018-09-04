@@ -600,12 +600,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "7393a317ce4238e22cfc1c11e88010b9e3c2c0e1"
+                "reference": "0485c1611a8dc94feb07db10346c76be2d892e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/7393a317ce4238e22cfc1c11e88010b9e3c2c0e1",
-                "reference": "7393a317ce4238e22cfc1c11e88010b9e3c2c0e1",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/0485c1611a8dc94feb07db10346c76be2d892e66",
+                "reference": "0485c1611a8dc94feb07db10346c76be2d892e66",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-08-29T07:11:24+00:00"
+            "time": "2018-09-04T06:52:09+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
@@ -631,12 +631,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-taxonomies.git",
-                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83"
+                "reference": "fe86249a96acf15ac0e84f13cfc51d26d52e8201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/b5fbd368262ade04ececc1257c7b968bb3918d83",
-                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/fe86249a96acf15ac0e84f13cfc51d26d52e8201",
+                "reference": "fe86249a96acf15ac0e84f13cfc51d26d52e8201",
                 "shasum": ""
             },
             "require": {
@@ -654,7 +654,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom taxonomies used on https://www.visithalland.com.",
-            "time": "2018-08-21T08:05:23+00:00"
+            "time": "2018-08-29T14:42:04+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",
