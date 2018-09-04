@@ -11,7 +11,7 @@
 	</section>
 	@include('partials.dh-banner')
 	<section class="mt2 container col-11 md-col-10 lg-col-10 mx-auto pt3 pb4">
-		<div class="clearfix mxn3 flex mt4">
+		<div class="clearfix mxn3 mt4">
 			<div class="col col-12 md-col-8 px3">
 				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
 					@php _e( 'Populära artiklar', 'visithalland' ) @endphp
@@ -29,13 +29,10 @@
 			        @php _e( 'Kommande events', 'visithalland' ) @endphp
 			    </header>
 			    @include('partials.front-page-happenings')
-
 			    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt4 rounded-pill inline-block text-light">
 			        @php _e( 'Våra tips', 'visithalland' ) @endphp
 			    </header>
-			    <div class="sticky">
-			    	@include('partials.components.editor-picks')
-			    </div>
+			   	@include('partials.components.top-list')
 			</div>
 		</div>
 	</section>

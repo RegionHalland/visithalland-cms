@@ -7,7 +7,7 @@
         @php _e( 'Våra tips', 'visithalland' ) @endphp
     </header>
     <div class="">
-        @include('partials.components.editor-picks')
+        @include('partials.components.top-list')
     </div>
 
 
