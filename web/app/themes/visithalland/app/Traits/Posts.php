@@ -78,6 +78,7 @@ trait Posts
             );
         }
 
+        // TODO: Remove this to remove bug where latest post do not show 'exclude' => $post->ID
         $posts = get_posts(array(
             'post_type'   => $postTypesDiff,
             'numberposts' => $numberposts,
