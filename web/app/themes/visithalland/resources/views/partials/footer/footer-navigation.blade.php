@@ -5,7 +5,7 @@
 <div class="col col-12 mb5 px3">
     @foreach($navbar_items as $primary_navigation_item)
         @if(is_array($primary_navigation_item->children))
-            <div class="col col-12 sm-col-4 md-col-6 mt4">
+            <div class="col col-12 sm-col-12 md-col-6 mt4">
                 <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
                 @foreach($primary_navigation_item->children as $child)
                     @if($child->type === 'taxonomy')
@@ -33,7 +33,7 @@
             </div>
         @endif
     @endforeach
-    <div class="col col-12 sm-col-4 md-col-3 mt4">
+    <div class="col col-12 sm-col-6 md-col-3 mt4">
         <h4 class="text-light mb3 text-lg">
             @php 
                 _e('Sidor', 'visithalland') 

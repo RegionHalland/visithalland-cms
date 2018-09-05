@@ -1,16 +1,16 @@
 <div class="concept-sidebar col col-12 lg-col-4 mb4">
     {{-- Gets And Loops Happenings Date Descending --}}
 
-    
-    
-    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt2 rounded-pill inline-block text-light">
-        @php _e( 'Våra tips', 'visithalland' ) @endphp
-    </header>
-    <div class="">
-        @include('partials.components.top-list')
-    </div>
-
-
+    @if(isset($top_lists))
+        <header class="bg-blue rift-font text-sm bold px3 py2 mt2 rounded-pill inline-block text-light">
+            @php _e( 'Våra tips', 'visithalland' ) @endphp
+        </header>
+        @foreach($top_lists as $top_list)
+            <div class="col col-12 sm-col-6 md-col-12 mt3 mb3">
+                @include('partials.components.top-list')
+            </div>
+        @endforeach
+    @endif
 
     @php $concept_happenings = App::getHappenings(10, $term) @endphp
     @if(is_array($concept_happenings))

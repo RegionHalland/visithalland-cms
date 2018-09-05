@@ -32,7 +32,15 @@
 			    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt4 rounded-pill inline-block text-light">
 			        @php _e( 'Våra tips', 'visithalland' ) @endphp
 			    </header>
-			   	@include('partials.components.top-list')
+			    <div class="clearfix">
+				    @if(isset($top_lists))
+	                    @foreach($top_lists as $top_list)
+	                        <div class="col col-12 sm-col-6 md-col-12 mt3 mb3">
+	                            @include('partials.components.top-list')
+	                        </div>
+	                    @endforeach
+	                @endif
+                </div>
 			</div>
 		</div>
 	</section>

@@ -1,7 +1,8 @@
 .content-grid__container {
     display: grid;
     grid-gap: $space-4;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:max-content;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
 }
 
 .content-grid__content {
@@ -16,7 +17,7 @@
     grid-column: span 3;
     grid-row: 2;
     @media (min-width:$breakpoint-md) {
-        grid-column: 3;
+        grid-column: 3 / 3;
         grid-row: 1 / 3;
     }
 }

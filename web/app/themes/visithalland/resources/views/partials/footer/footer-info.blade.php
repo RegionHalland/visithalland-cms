@@ -3,7 +3,7 @@
     <p class="fira-font italic text-sm text-grey-light mb4">{{ bloginfo('description') }}</p>
 </div>
 
-<div class="footer__social col col-12 sm-col-6 md-col-8 flex px3 mb3 md-justify-end">
+<div class="footer__social col col-12 sm-col-6 md-col-8 flex px3 mb3 sm-justify-end">
     <a href="mailto:info@visithalland.com" target="_blank" class="link-reset inline-block">
         <div class="height-4 width-4 bg-blue-xlight rounded-full flex items-center justify-center">
             <svg class="icon icon-white">

@@ -6,6 +6,9 @@ use Sober\Controller\Controller;
 
 class FrontPage extends Controller
 {
+
+	use \App\Traits\TopLists;
+
 	public function navigationItems() {
 		return \App::getPrimaryNavigationChildren();
 	}

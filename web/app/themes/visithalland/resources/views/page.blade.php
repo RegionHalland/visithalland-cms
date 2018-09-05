@@ -65,15 +65,6 @@
                             @endwhile
                         </div>
                     @endif
-
-                    <div class="col-12 px3">
-                        <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
-                            @php _e( 'Redaktionens tips', 'visithalland' ) @endphp
-                        </header>
-                    </div>
-                    <div class="col col-12 sm-col-6 md-col-12 mt3 mb3 px3">
-                        @include('partials.components.top-list')
-                    </div>
                     
                 </div>
             </div>
