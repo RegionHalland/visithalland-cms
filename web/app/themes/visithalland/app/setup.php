@@ -112,12 +112,17 @@ add_action('after_setup_theme', function () {
 
 add_action( 'admin_menu', function() {
 
+
+    // Adds menu group for Custom Post Types
     add_menu_page('Skapa innehåll','Skapa innehåll', 'administrator' , 'create_content', '', 'dashicons-welcome-write-blog' , 10 );
 
     if (!function_exists('acf_add_options_page')) {
         return false;
     }
     
+
+    // Adds Theme Options Page 
+
     $themeOptionsCapability = 'administrator';
     $themeOptionsParent = 'themes.php';
 
