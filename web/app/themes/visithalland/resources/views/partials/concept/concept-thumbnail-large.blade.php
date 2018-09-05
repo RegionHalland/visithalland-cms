@@ -1,12 +1,15 @@
 <div class="mb3 col col-12 md-col-6 px2">
-    <article class="scrim overflow-hidden aspect-container aspect-1 sm-aspect-1 relative rounded {{ $navigation_item->meta_fields['class_name'] }}">
+    <article class="scrim overflow-hidden aspect-container aspect-1 sm-aspect-16x9 md-aspect-1 relative rounded {{ $navigation_item->meta_fields['class_name'] }}">
         <picture>
-            <source media="(min-width:40em)"
+            <source media="(min-width:60em)"
                 data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square@2x"] . " 2x" }}" />
+            <source
+            <source media="(min-width:40em)"
+                data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_hero_wide"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_hero_wide"] . " 2x" }}" />
             <source
                 data-srcset="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"] . " 1x," . $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square@2x"] . " 2x" }}" />
             <img class="absolute left-0 top-0 w-fill lazyload"
-                data-src="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"] }}" alt="{{ $navigation_item->meta_fields["cover_image"]["alt"] }}"
+                data-src="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square@2x"] }}" alt="{{ $navigation_item->meta_fields["cover_image"]["alt"] }}"
             />
         </picture>
         <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">

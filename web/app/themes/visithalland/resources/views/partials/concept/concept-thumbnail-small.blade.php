@@ -1,4 +1,4 @@
-<div class="mb3 col col-12 sm-col-4 px2">
+<div class="mb3 col col-12 sm-col-6 md-col-4 px2">
     <article class="scrim overflow-hidden aspect-container aspect-1 relative rounded {{ $navigation_item->meta_fields['class_name'] }}">
         <picture>
             <source

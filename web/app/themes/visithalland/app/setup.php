@@ -107,6 +107,39 @@ add_action('after_setup_theme', function () {
     add_editor_style(asset_path('styles/main.css'));
 }, 20);
 
+
+
+
+add_action( 'admin_menu', function() {
+
+    add_menu_page('Skapa innehåll','Skapa innehåll', 'administrator' , 'create_content', '', 'dashicons-welcome-write-blog' , 10 );
+
+    if (!function_exists('acf_add_options_page')) {
+        return false;
+    }
+    
+    $themeOptionsCapability = 'administrator';
+    $themeOptionsParent = 'themes.php';
+
+    global $submenu;
+    
+    $submenu[$themeOptionsParent][] = array( 
+        '', 
+        'read', 
+        '', 
+        '', 
+        'wp-menu-separator'
+    );
+
+    acf_add_options_sub_page(array(
+        'page_title'    => __('Temainställningar', 'visithalland'),
+        'menu_title'    => __('Temainställningar', 'visithalland'),
+        'parent_slug'   => $themeOptionsParent,
+        'capability'    => $themeOptionsCapability,
+        'redirect'      => false
+    ));
+});
+
 /**
  * Register sidebars
  */
