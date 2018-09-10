@@ -30,7 +30,7 @@
             @endif
 
             <div class="article-hero__content col-11 md-col-10">
-                @include('partials.breadcrumbs')
+                @include('partials.components.breadcrumbs')
                 <h1 class="article-hero__title light h1 mb3 center mt2">{{ the_title() }}</h1>
             </div>
         </div>

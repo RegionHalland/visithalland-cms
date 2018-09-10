@@ -600,12 +600,11 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "0485c1611a8dc94feb07db10346c76be2d892e66"
+                "reference": "c8a8dd86064ffa8e07d8b363794771fe4d2c75c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/0485c1611a8dc94feb07db10346c76be2d892e66",
-                "reference": "0485c1611a8dc94feb07db10346c76be2d892e66",
+                "reference": "c8a8dd86064ffa8e07d8b363794771fe4d2c75c3",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +622,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-09-04T06:52:09+00:00"
+            "time": "2018-09-05T10:07:44+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",

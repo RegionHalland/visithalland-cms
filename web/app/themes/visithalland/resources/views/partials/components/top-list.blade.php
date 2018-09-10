@@ -20,17 +20,19 @@
                     {{ $index + 1 }}
                 </div>
                 <div class="truncate">
-                    <a class="rift-font text-xl bold" title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">{{ $current_list_item->post_title }}</a>
-                    <div class="read-more mt2">
-                        <span class="read-more__text">
-                            @php _e( 'Läs mer', 'visithalland' ) @endphp
-                        </span>
-                        <div class="read-more__button">
-                            <svg class="icon read-more__icon">
-                                <use xlink:href="#arrow-right-icon"/>
-                            </svg>
+                    <span class="rift-font text-xl bold"">{{ $current_list_item->post_title }}</span>
+                    <a title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">
+                        <div class="read-more mt2">
+                            <span class="read-more__text">
+                                @php _e( 'Läs mer', 'visithalland' ) @endphp
+                            </span>
+                            <div class="read-more__button">
+                                <svg class="icon read-more__icon">
+                                    <use xlink:href="#arrow-right-icon"/>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
         @endforeach

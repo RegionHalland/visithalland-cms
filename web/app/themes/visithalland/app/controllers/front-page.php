@@ -6,7 +6,6 @@ use Sober\Controller\Controller;
 
 class FrontPage extends Controller
 {
-
 	use \App\Traits\TopLists;
 
 	public function navigationItems() {
@@ -14,8 +13,11 @@ class FrontPage extends Controller
 	}
 
 	public function recentPosts() {
-		return \App::getPosts(array('event', 'happening', 'activity', 'companies', 'place'), null, 10);
+		return \App::getPosts(array('event', 'happening', 'activity', 'companies', 'place', 'top_list'), null, 10);
+	}
 
+	public function happenings() {
+		return \App::getHappenings(4);
 	}
 
 }

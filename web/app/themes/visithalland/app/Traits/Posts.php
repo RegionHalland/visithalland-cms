@@ -41,12 +41,22 @@ trait Posts
             'suppress_filters' => false
         ));
 
+        $image_sizes = get_intermediate_image_sizes();
+        $arr = array();
+
         foreach ($posts as $key => $value) {
             // Self here actually refers to our trait Authors. See ”use Authors;” Above.
             $value->author = self::getAuthor($value->post_author);
+            $value->link = get_permalink($value->ID);
             // Get all ACF meta_fields of the WP_post
             $value->meta_fields = get_fields($value->ID);
             $value->terms = self::getTerms($value);
+
+            $value->cover_image = [];
+            $value->cover_image = array_fill_keys($image_sizes, '');
+            foreach ($image_sizes as $key => $image_size) {
+                $value->cover_image[$image_size] = get_the_post_thumbnail_url($value, $image_size);
+            }
         }
 
         // Sort happenings by start date asc.

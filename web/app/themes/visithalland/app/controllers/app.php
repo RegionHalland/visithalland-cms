@@ -9,6 +9,8 @@ class App extends Controller
     use Traits\Posts;
     use Traits\Navigation;
     use Traits\Breadcrumbs;
+    use Traits\Banner;
+    use Traits\EuropeanUnion;
 
     public function siteName()
     {
