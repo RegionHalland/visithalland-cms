@@ -32,7 +32,7 @@
 			                @php _e( 'Kommande events', 'visithalland' ) @endphp
 			            </header>
 			        </div>
-			        <div class="clearfix mxn2">
+			        <div class="clearfix mxn2 mb3">
 			            @foreach($happenings as $key => $happening)
 			            	<div class="col col-12 sm-col-6 md-col-12 px2">
 			                	@include('partials.happening-list-item')
@@ -42,12 +42,12 @@
 			    @endif
 				
 				@if(isset($top_lists))
-			        <div class="col-12 mt3">
+			        <div class="col-12">
 			            <header class="bg-blue rift-font text-sm bold px3 py2 mt2 mb3 rounded-pill inline-block text-light">
 			                @php _e( 'Våra tips', 'visithalland' ) @endphp
 			            </header>
 			        </div>
-			        <div class="clearfix mxn2">
+			        <div class="clearfix mxn2 mb3">
 			            @foreach($top_lists as $top_list)
 			                <div class="col col-12 sm-col-6 md-col-12 mb3 px2">
 			                    @include('partials.components.top-list')

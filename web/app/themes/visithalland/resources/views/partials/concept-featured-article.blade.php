@@ -29,18 +29,9 @@
             <div class="article-full__inner container col-11 md-col-10 mx-auto">
                 <div class="article-full__header">
 
-                    {{-- Section Header Start --}}
-                    <header class="section-header">
-                        <div class="section-header__icon-wrapper">
-                            <svg class="section-header__icon icon">
-                                <use xlink:href="#recommend-icon"/>
-                            </svg>
-                        </div>
-                        <span class="section-header__title light">
-                            @php _e( 'Populärt just nu', 'visithalland' ); @endphp
-                        </span>
+                    <header class="bg-blue rift-font text-sm bold px3 py2 mb2 rounded-pill inline-block text-light">
+                        @php _e( 'Populär just nu', 'visithalland' ) @endphp
                     </header>
-                    {{-- Section Header End --}}
 
                 </div>
                 <div class="article-full__content col-10 sm-col-8 lg-col-5">
