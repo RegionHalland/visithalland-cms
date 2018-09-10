@@ -20,7 +20,9 @@
                     {{ $index + 1 }}
                 </div>
                 <div class="truncate">
-                    <span class="rift-font text-xl bold"">{{ $current_list_item->post_title }}</span>
+                    <a title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">
+                        <span class="rift-font text-xl bold"">{{ $current_list_item->post_title }}</span>
+                    </a>
                     <a title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">
                         <div class="read-more mt2">
                             <span class="read-more__text">

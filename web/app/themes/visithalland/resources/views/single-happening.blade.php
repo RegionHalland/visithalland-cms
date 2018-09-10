@@ -10,7 +10,7 @@
     	<article class="{{ App::getTermClassName() }}" role="main" id="main-content"  data-posttype="{{get_post_type()}}">
             @include('partials.article-hero')
             <div class="clearfix container mt4 mb5">
-                <div class="col-11 sm-col-9 md-col-10 mx-auto clearfix">
+                <div class="col-11 sm-col-9 md-col-11 mx-auto clearfix">
                     <div class="happening__content col col-12 md-col-6 mt2">
                         <p class="preamble">{{ get_field("excerpt") }}</p>
                     </div>

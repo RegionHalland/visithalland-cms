@@ -5,10 +5,14 @@
     <div class="clearfix mxn2">
         @foreach($navigation_items as $key => $navigation_item)
             @if($loop->iteration === 2 || $loop->iteration === 3)
-                @include('partials.concept.concept-thumbnail-large')
+                <div class="mb3 col col-12 md-col-6 px2">
+                    @include('partials.concept.concept-thumbnail-large')
+                </div>
             @endif
             @if($loop->iteration > 3)
-                @include('partials.concept.concept-thumbnail-small')
+                <div class="mb3 col col-12 sm-col-6 md-col-4 px2">
+                    @include('partials.concept.concept-thumbnail-small')
+                </div>
             @endif
         @endforeach
     </div>

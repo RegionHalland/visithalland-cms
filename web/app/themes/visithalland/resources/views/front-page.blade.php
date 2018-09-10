@@ -26,21 +26,21 @@
 			</div>
 			<div class="col col-12 md-col-4 mt4 md-mt0 md-pb4 px3">
 				
-
-				<header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
-			        @php _e( 'Kommande events', 'visithalland' ) @endphp
-			    </header>
-			    @if(is_array($happenings))
+				@if(is_array($happenings))
+					<header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+				        @php _e( 'Kommande events', 'visithalland' ) @endphp
+				    </header>
     				@foreach($happenings as $key => $happening)
 			    		@include('partials.happening-list-item')
 			        @endforeach
 				@endif
+				
 
-
-
-			    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt4 rounded-pill inline-block text-light">
-			        @php _e( 'Våra tips', 'visithalland' ) @endphp
-			    </header>
+				@if(isset($top_lists))
+				    <header class="bg-blue rift-font text-sm bold px3 py2 mb3 mt4 rounded-pill inline-block text-light">
+				        @php _e( 'Våra tips', 'visithalland' ) @endphp
+				    </header>
+			    @endif
 			    <div class="clearfix">
 				    @if(isset($top_lists))
 	                    @foreach($top_lists as $top_list)

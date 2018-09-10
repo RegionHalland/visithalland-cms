@@ -13,4 +13,12 @@ class TaxonomyTaxonomyConcept extends Controller
     {
         return get_queried_object();
     }
+
+    public function navigationItems() {
+		return \App::getPrimaryNavigationChildren();
+	}
+
+    public function happenings() {
+		return \App::getHappenings(4, $this->term());
+	}
 }
