@@ -15,7 +15,7 @@ class Admin
 	public function addTaxonomyMenuItem()
 	{
 		// Add a new top-level menu (ill-advised):
-    	add_menu_page(__('Koncept', 'visithalland'), __('Koncept', 'visithalland'), 'manage_options', 'edit-tags.php?taxonomy=taxonomy_concept', '', 'dashicons-tag', 11);
+    	add_menu_page(__('Upplevelser', 'visithalland'), __('Upplevelser', 'visithalland'), 'manage_options', 'edit-tags.php?taxonomy=experience', '', 'dashicons-tag', 11);
 	}
 
 	public function highlightTaxonomyMenuItem($file)
@@ -24,8 +24,8 @@ class Admin
 	    global $current_screen;
 
 	    $taxonomy = $current_screen->taxonomy;
-	    if ( $taxonomy == 'taxonomy_concept' ) {
-	        $file = 'edit-tags.php?taxonomy=taxonomy_concept';
+	    if ( $taxonomy == 'experience' ) {
+	        $file = 'edit-tags.php?taxonomy=experience';
 	    }
 
 	    return $file;

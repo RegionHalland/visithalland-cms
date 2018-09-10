@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait Taxonomies
 {
-    public static function getTerms(\WP_Post $post, string $taxonomy = "taxonomy_concept")
+    public static function getTerms(\WP_Post $post, string $taxonomy = "experience")
     {
         global $sitepress;
         global $icl_adjust_id_url_filter_off;
@@ -35,7 +35,7 @@ trait Taxonomies
         );
     }
 
-    public static function getTermClassName(string $taxonomy = "taxonomy_concept")
+    public static function getTermClassName(string $taxonomy = "experience")
     {
         global $post;
         if(wp_get_post_terms($post->ID, $taxonomy)) {

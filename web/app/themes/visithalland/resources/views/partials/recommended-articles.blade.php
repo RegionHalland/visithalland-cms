@@ -11,8 +11,8 @@
             </div>
         </header>
         @php
-            $terms = get_the_terms($post->ID, 'taxonomy_concept');
-            $featuredArticles = App::getPosts(array(), $terms[0], 3);
+            $terms = get_the_terms($post->ID, 'experience');
+            $featuredArticles = App::getPosts(array(), $terms[0], 3, true);
         @endphp
         <div class="pb4 pt3 clearfix">
             @foreach($featuredArticles as $key => $value)

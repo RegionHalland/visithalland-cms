@@ -13,7 +13,7 @@ class FrontPage extends Controller
 	}
 
 	public function recentPosts() {
-		return \App::getPosts(array('event', 'happening', 'activity', 'companies', 'place', 'top_list'), null, 10);
+		return \App::getPosts(array('event', 'happening', 'activity', 'companies', 'places', 'top_list'), null, 10);
 	}
 
 	public function happenings() {

@@ -162,7 +162,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "taxonomy_concept"
+                "value": "experience"
             }
         ]
     ],
@@ -175,4 +175,3 @@
     "active": 1,
     "description": "H\u00e4r v\u00e4ljer vi ut vilka artiklar som ska synas h\u00f6gst upp samt ingress och bakgrundsbild f\u00f6r varje koncept"
 }]
-

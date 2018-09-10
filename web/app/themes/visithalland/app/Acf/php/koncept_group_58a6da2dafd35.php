@@ -1,7 +1,7 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_58a6da2dafd35',
     'title' => 'Koncept',
     'fields' => array(
@@ -167,7 +167,7 @@
             0 => array(
                 'param' => 'taxonomy',
                 'operator' => '==',
-                'value' => 'taxonomy_concept',
+                'value' => 'experience',
             ),
         ),
     ),
@@ -180,4 +180,4 @@
     'active' => 1,
     'description' => 'Här väljer vi ut vilka artiklar som ska synas högst upp samt ingress och bakgrundsbild för varje koncept',
 ));
-}
+}

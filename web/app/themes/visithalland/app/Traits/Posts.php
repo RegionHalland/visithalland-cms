@@ -22,7 +22,7 @@ trait Posts
         if($term !== null) {
             $tax_query = array(
                 array(
-                    'taxonomy' => 'taxonomy_concept',
+                    'taxonomy' => 'experience',
                     'field'      => 'id',
                     'terms'  => $term->term_id, // Where term_id of Term 1 is "1".
                     'include_children' => false
@@ -67,20 +67,20 @@ trait Posts
         return $posts;
     }
 
-    public static function getPosts(array $exludeTypes = array("happening"), \WP_Term $term = null, int $numberposts = 10)
+    public static function getPosts(array $exludeTypes = array("happening"), \WP_Term $term = null, int $numberposts = 10, Bool $excludeSelf = false)
     {
         // Get the global $post object
         global $post;
-
+        
         // Get our post types and remove those included inside $excludeTypes
         $postTypesDiff = array_diff(self::$post_types, $exludeTypes);
-        //return $postTypesDiff;
         $tax_query = array();
+        $exclude = null;
         
         if($term !== null) {
             $tax_query = array(
                 array(
-                    'taxonomy' => 'taxonomy_concept',
+                    'taxonomy' => 'experience',
                     'field' 	 => 'id',
                     'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
                     'include_children' => false
@@ -88,12 +88,17 @@ trait Posts
             );
         }
 
+        // If we should self Post object. Used in Recommended Articles
+        if($excludeSelf) {
+            $exclude = $post->ID;
+        }
+
         // TODO: Remove this to remove bug where latest post do not show 'exclude' => $post->ID
         $posts = get_posts(array(
             'post_type'   => $postTypesDiff,
             'numberposts' => $numberposts,
             'tax_query'   => $tax_query ? $tax_query : null,
-            'exclude' 	 => $post->ID,
+            'exclude' 	 => $exclude
         ));
 
         foreach ($posts as $key => $value) {
@@ -108,7 +113,7 @@ trait Posts
     {
         global $post;
         // Get terms for post
-        $terms = get_the_terms($post->ID, 'taxonomy_concept');
+        $terms = get_the_terms($post->ID, 'experience');
         // Loop over each item since it's an array
         if ($terms != null) {
             foreach ($terms as $term) {
@@ -132,7 +137,7 @@ trait Posts
                 "trip",
                 "happening"
             ),
-            'taxonomy_concept' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
+            'experience' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
         );
         $postlist = get_posts($postlist_args);
 

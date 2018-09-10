@@ -6,7 +6,7 @@
 
 add_filter('acf/fields/google_map/api', function($api)
 {
-    $api['key'] = 'AIzaSyDat-2hNlZNccIJfnXPqPmzsxzXb0ZjYd0';
+    $api['key'] = 'AIzaSyBzfYgyGwvbQi9oq1ydDRfNbLm5LZ9qVHw';
 
     return $api;
 });
