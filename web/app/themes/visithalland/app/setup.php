@@ -11,6 +11,7 @@ use Roots\Sage\Template\BladeProvider;
  * TODO: Import ACF-fields
  */
 new \App\Acf\Import();
+new \App\Visithalland\Admin();
 
 /**
  * Theme assets
@@ -107,43 +108,6 @@ add_action('after_setup_theme', function () {
     add_editor_style(asset_path('styles/main.css'));
 }, 20);
 
-
-
-
-add_action( 'admin_menu', function() {
-
-
-    // Adds menu group for Custom Post Types
-    add_menu_page('Skapa innehåll','Skapa innehåll', 'administrator' , 'create_content', '', 'dashicons-welcome-write-blog' , 10 );
-
-    if (!function_exists('acf_add_options_page')) {
-        return false;
-    }
-    
-
-    // Adds Theme Options Page 
-
-    $themeOptionsCapability = 'administrator';
-    $themeOptionsParent = 'themes.php';
-
-    global $submenu;
-    
-    $submenu[$themeOptionsParent][] = array( 
-        '', 
-        'read', 
-        '', 
-        '', 
-        'wp-menu-separator'
-    );
-
-    acf_add_options_sub_page(array(
-        'page_title'    => __('Temainställningar', 'visithalland'),
-        'menu_title'    => __('Temainställningar', 'visithalland'),
-        'parent_slug'   => $themeOptionsParent,
-        'capability'    => $themeOptionsCapability,
-        'redirect'      => false
-    ));
-});
 
 /**
  * Register sidebars
