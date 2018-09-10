@@ -71,9 +71,7 @@ trait Posts
     {
         // Get the global $post object
         global $post;
-
-        var_dump($exclude);
-
+        
         // Get our post types and remove those included inside $excludeTypes
         $postTypesDiff = array_diff(self::$post_types, $exludeTypes);
         $tax_query = array();
