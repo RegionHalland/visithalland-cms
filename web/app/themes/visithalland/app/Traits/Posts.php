@@ -80,15 +80,15 @@ trait Posts
         if($term !== null) {
             $tax_query = array(
                 array(
-                    'taxonomy' => 'experience',
-                    'field' 	 => 'id',
-                    'terms'	 => $term->term_id, // Where term_id of Term 1 is "1".
-                    'include_children' => false
+                    'taxonomy'          => 'experience',
+                    'field'             => 'id',
+                    'terms'	            => $term->term_id, // Where term_id of Term 1 is "1".
+                    'include_children'  => false
                 )
             );
         }
 
-        // If we should self Post object. Used in Recommended Articles
+        // Should we exclude the current Post? Used in recommended articles
         if($excludeSelf) {
             $exclude = $post->ID;
         }
@@ -98,7 +98,8 @@ trait Posts
             'post_type'   => $postTypesDiff,
             'numberposts' => $numberposts,
             'tax_query'   => $tax_query ? $tax_query : null,
-            'exclude' 	 => $exclude
+            'exclude' 	 => $exclude,
+            'suppress_filters' => false
         ));
 
         foreach ($posts as $key => $value) {
