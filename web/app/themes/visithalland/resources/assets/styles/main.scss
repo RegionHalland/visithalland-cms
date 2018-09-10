@@ -87,16 +87,16 @@
 // Taxonomy/Concept Page Styles
 @import './concept/concept-header'; //Se över
 @import './concept/concept-grid';
-@import './concept/concept-sidebar';
+@import './concept/concept-sidebar'; //Ta bort
 @import './concept/featured-grid'; //Se över
 @import './concept/spotlight-carousel'; //Dela upp i två filer
-@import './concept/concept-thumbnail';
+@import './concept/concept-thumbnail'; //Ta bort?
 
 
 // Happening Article Format
 @import './happening/happening-page'; //Se över
 @import './happening/happening'; // Se om det finns något vi kan göra här (generell box med info i typ);
-@import './happening/happening-list-item'; //Se över och gör om till article list item
+@import './happening/happening-list-item'; //Går ta bort?
 
 
 // Typekit

@@ -1,4 +1,8 @@
-<div class="concept-grid col col-12 md-col-12 lg-col-8 no-gutter pb5">
+
+
+    <header class="bg-blue rift-font text-sm bold px3 py2 mt2 mb2 rounded-pill inline-block text-light">
+        @php _e( 'Fler artiklar', 'visithalland' ) @endphp
+    </header>
     <div class="clearfix mxn2">
             @php $posts = App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1); @endphp
             @foreach($posts as $key => $post)
@@ -90,4 +94,3 @@
                     @endif
             @endforeach
     </div>
-</div>

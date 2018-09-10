@@ -26,7 +26,7 @@
                         alt="{{ $alt }}" />
                 </picture>
             </div>
-            <div class="article-full__inner container col-11 lg-col-10 mx-auto">
+            <div class="article-full__inner container col-11 md-col-10 mx-auto">
                 <div class="article-full__header">
 
                     {{-- Section Header Start --}}
@@ -45,7 +45,7 @@
                 </div>
                 <div class="article-full__content col-10 sm-col-8 lg-col-5">
                     <h2 class="article-full__title light mt1">{{ $featured_article->post_title }}</h2>
-                    <div class="read-more mt4 inline-block">
+                    <div class="read-more mt3 inline-block">
                         <span class="read-more__text light">
                             @php _e( 'Läs mer', 'visithalland' ); @endphp
                         </span>
