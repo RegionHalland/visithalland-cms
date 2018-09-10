@@ -5,7 +5,7 @@
     @php
         $author_id = get_the_author_meta('ID');
         $post_id = get_the_id();
-        $currentTerm = count(get_the_terms($post, "taxonomy_concept")) ? get_the_terms($post, "taxonomy_concept")[0] : "";
+        $currentTerm = count(get_the_terms($post, "experience")) ? get_the_terms($post, "experience")[0] : "";
         $thumbnail_id = get_post_thumbnail_id();
         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));

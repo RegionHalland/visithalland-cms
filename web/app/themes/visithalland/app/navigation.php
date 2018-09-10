@@ -20,11 +20,11 @@ if (class_exists("VisithallandCustomPostTypes") || class_exists("VisithallandCus
     // Prefix all links to our custom posts using our taxnomy tags
     add_filter('post_type_link', function ($post_link, $post) {
         if (is_object($post) && in_array($post->post_type, VISITHALLAND_POST_TYPES)) {
-            $terms = wp_get_object_terms($post->ID, 'taxonomy_concept');
+            $terms = wp_get_object_terms($post->ID, 'experience');
             if ($terms) {
-                return str_replace('%taxonomy_concept%', $terms[0]->slug, $post_link);
+                return str_replace('%experience%', $terms[0]->slug, $post_link);
             } else {
-                return str_replace('%taxonomy_concept%', 'coastal-living', $post_link);
+                return str_replace('%experience%', 'coastal-living', $post_link);
             }
         }
         return $post_link;
