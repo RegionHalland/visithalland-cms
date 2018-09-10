@@ -14,7 +14,7 @@ export default {
     },
 };
 
-export function initTrip() {
+export function initSpotlight() {
     initGrid();
 };
 

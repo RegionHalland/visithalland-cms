@@ -1,7 +1,8 @@
 import inf from 'infinite-scroll';
-import { initTrip } from '../routes/singleTrip';
+import { initSpotlight } from '../routes/singleSpotlight';
 import { initHappening } from '../routes/singleHappening';
 import { initMeetLocal } from '../routes/singleMeetLocal';
+import { initTipsGuides } from '../routes/singleTipsGuides';
 
 class InfiniteScroll {
     constructor(){

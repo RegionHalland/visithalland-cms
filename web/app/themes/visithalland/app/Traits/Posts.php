@@ -135,8 +135,9 @@ trait Posts
             'post_type' => array(
                 "meet_local",
                 "editor_tip",
-                "trip",
-                "happening"
+                "spotlight",
+                "happening",
+                "tips_guides"
             ),
             'experience' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
         );

@@ -1,4 +1,4 @@
-<a href="{{ $happening->link }}" title="{{ $happening->post_title }}" class="mb3 block {{ $happening->terms["terms_default_lang"]->slug }}">
+<a href="{{ $happening->link }}" title="{{ $happening->post_title }}" class="mb3 block {{ $happening->terms["terms_default_lang"] ? $happening->terms["terms_default_lang"]->slug : "visithalland" }}">
     <article class="scrim overflow-hidden aspect-container aspect-1 relative rounded">
         <picture>
             <source
