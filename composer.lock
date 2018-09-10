@@ -604,6 +604,7 @@
             },
             "dist": {
                 "type": "zip",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/c8a8dd86064ffa8e07d8b363794771fe4d2c75c3",
                 "reference": "c8a8dd86064ffa8e07d8b363794771fe4d2c75c3",
                 "shasum": ""
             },
