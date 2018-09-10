@@ -38,14 +38,16 @@ trait Taxonomies
     public static function getTermClassName(string $taxonomy = "experience")
     {
         global $post;
+
+        //xif(wp_get_post_terms($post->ID, $taxonomy) && !is_archive()) {
         if(wp_get_post_terms($post->ID, $taxonomy)) {
             $terms = wp_get_post_terms($post->ID, $taxonomy);
             if(is_array($terms)){
                 $term = $terms[0];
-                return get_field("class_name", $term);
+                //return get_field("class_name", $term);
             }
         } else {
-            return "coastal-living";
+            return "visithalland";
         }
     }
 }
