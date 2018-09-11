@@ -11,7 +11,7 @@
 										<div class="theme-icon__inner">
 										</div>
 									</div>
-									<span class="ml2">{{ $child->post_title }}</span>
+									<span class="ml2">{{ $child->post_title ? $child->post_title : $child->title }}</span>
 								</a>
 							</div>
 						@else 
@@ -21,7 +21,7 @@
 										<div class="theme-icon__inner">
 										</div>
 									</div>
-									<span class="ml2">{{ $child->title }}</span>
+									<span class="ml2">{{ $child->title ? $child->post_title : $child->title }}</span>
 								</a>
 							</div>
 						@endif
