@@ -29,7 +29,11 @@ class Import
 				    'group_58aeb92ed11fa',
 				    'group_58aebbeb1d5a1',
 				    'group_5b0ffc9a39c66',
-				    'group_5b0ffb0a49efc'
+				    'group_5b0ffb0a49efc',
+				    'group_5b8ed0f35a305',
+				    'group_5b8cd59ba21a0',
+				    'group_5b8d243c8b8bf',
+				    'group_5b8d2920d729a'
 				));
 				$acfExportManager->import();
 			}
