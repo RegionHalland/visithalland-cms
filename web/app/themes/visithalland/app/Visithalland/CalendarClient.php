@@ -10,11 +10,15 @@ class CalendarClient
     const municipios = array(
         "varberg" => array(
             "resultObject" => "resultList",
-            "apiUrl" => "https://www.visitvarberg.se/4.52a9a2e615abe2be36cab481/12.52a9a2e615abe2be36cab4a3.json?enddate=1538428980000&maxhit=500&path=4.52a9a2e615abe2be36c96755&query&sort=date&startdate=1523484000000&starthit=0",
+            "apiUrl" => "https://www.visitvarberg.se/4.52a9a2e615abe2be36cab481/12.52a9a2e615abe2be36cab4a3.json?enddate=1538428980000&maxhit=500&path=4.52a9a2e615abe2be36c96755&query&sort=date&startdate=1523484000000&starthit=0"
         ),
         "kungsbacka" => array(
             "resultObject" => "Result",
-            "apiUrl" => "https://www.visitkungsbacka.se/umbraco/surface/basetool/events?Areas=146&Categories=5&Channel=1006&ChannelKey=1&DateFrom=2018-04-25%2B16:33&DateInterval=365&DateTo=2019-04-25&Facets=true&Lang=sv&OrderBy=relevance&Page=0&PageSize=200&Subjects=1151&Type=2&geo=0&s=1",
+            "apiUrl" => "https://www.visitkungsbacka.se/umbraco/surface/basetool/events?Areas=146&Categories=5&Channel=1006&ChannelKey=1&DateFrom=2018-04-25%2B16:33&DateInterval=365&DateTo=2019-04-25&Facets=true&Lang=sv&OrderBy=relevance&Page=0&PageSize=200&Subjects=1151&Type=2&geo=0&s=1"
+        ),
+        "falkenberg" => array(
+            "resultObject" => "events",
+            "apiUrl" => "https://www.falkenberg.se/4.6f45c23415674cef4142d3d9/12.12caa5581576962b51a31a6.portlet?getjson=true"
         )
     );
 
@@ -28,9 +32,7 @@ class CalendarClient
         $response = $client->request('GET', self::municipios[$municipio]["apiUrl"]);
         $resultObject = self::municipios[$municipio]["resultObject"];
 
-        //print_r(
-            $responseArray = json_decode($response->getBody())->$resultObject;
-        //);
+        $responseArray = json_decode($response->getBody())->$resultObject;
 
         return self::saveEvent($responseArray, $municipio);
     }
@@ -73,6 +75,34 @@ class CalendarClient
                             "unique_id" => $event->Id ? $event->Id : uniqid(),
                             "img_url" => isset($event->ImageLarge->Path) ? "https://media.basetool.se/" . $event->ImageLarge->Path : "",
                             "excerpt" => $event->Description ? $event->Description : "",
+                            "municipio" => ucfirst($municipio)
+                        )
+                    );
+                    break;
+                case 'falkenberg':
+                    // The format we get (googleMapCordinate) is 56.902966, 12.493640
+                    $coordinate_string = $event->googleMapCordinate ? $event->googleMapCordinate : null;
+                    if($coordinate_string !== null) {
+                        $exploredcoordinates = explode(", ", $coordinate_string);
+                        $lat = $exploredcoordinates[0];
+                        $lng = $exploredcoordinates[1];
+                        $location = self::getAdressByCoordinates(array(
+                                "lng" => $lng,
+                                "lat" => $lat
+                        ));
+                    }
+
+                    self::programmatically_create_post(array(
+                            "post_title" => $event->title ? $event->title : "Titel saknas",
+                            "post_name" => $event->title ? urlencode($event->title): "namn-saknas".$key,
+                            "post_content" => $event->description ? $event->description : "",
+                            "location" => $location,
+                            "start_date" => isset($event->startdate) ? date("Y-m-d H:i:s", strtotime($event->startdate)) : "",
+                            "end_date" => isset($event->enddate) ? date("Y-m-d H:i:s", strtotime($event->enddate)) : "",
+                            "url" => $event->link ? $event->link : "missing_url_" . uniqid(),
+                            "unique_id" => $event->uuid ? $event->uuid : uniqid(),
+                            "img_url" => $event->heroimg ? "https://www.falkenberg.se" . $event->heroimg : "",
+                            "excerpt" => $event->description ? $event->description : "",
                             "municipio" => ucfirst($municipio)
                         )
                     );
@@ -124,7 +154,7 @@ class CalendarClient
                     'post_name'		    =>	$post["post_name"],
                     'post_content'      =>  $post["post_content"],
                     'post_title'		=>	$post["post_title"],
-                    'post_status'		=>	'draft',
+                    'post_status'		=>	'publish',
                     'post_type'		    =>	'event'
                 )
             );
@@ -165,7 +195,7 @@ class CalendarClient
     public function getCoordinatesByAdress($address)
     {
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.google.com/maps/api/geocode/json?address='.$address . '&key=AIzaSyDat-2hNlZNccIJfnXPqPmzsxzXb0ZjYd0');
+        $response = $client->request('GET', 'https://maps.google.com/maps/api/geocode/json?address='.$address . '&key=KEY');
         $responseArray = json_decode($response->getBody());
 
         if(isset($responseArray->results[0])) {
@@ -184,7 +214,38 @@ class CalendarClient
         if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=AIzaSyDat-2hNlZNccIJfnXPqPmzsxzXb0ZjYd0');
+        $response = $client->request('GET', 'https://nominatim.openstreetmap.org/reverse', [
+            'query' => array(
+                'lat' => $coordinates["lat"],
+                'lon' => $coordinates["lng"],
+                'format' => 'json'
+            )
+        ]);
+        $responseArray = json_decode($response->getBody());
+
+
+        return array(
+            "address" => $responseArray->display_name,
+            "lat" => $coordinates["lat"],
+            "lng" => $coordinates["lng"]
+        );
+
+
+        /*return;
+
+        if (isset($responseArray->results[0])) {
+        
+            /*return array(
+                "address" => $responseArray->results[0]->formatted_address,
+                "lat" => $coordinates["lat"],
+                "lng" => $coordinates["lng"]
+            );
+        }
+
+        return null;*/
+
+        /*$client = new Client();
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=KEY');
         $responseArray = json_decode($response->getBody());
 
         if (isset($responseArray->results[0])) {
@@ -195,7 +256,7 @@ class CalendarClient
             );
         }
 
-        return null;
+        return null;*/
     }
 
     public function getAdressComponentsByCoordinates(Array $coordinates)
@@ -203,7 +264,7 @@ class CalendarClient
         if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=AIzaSyDat-2hNlZNccIJfnXPqPmzsxzXb0ZjYd0');
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=KEY');
         $responseArray = json_decode($response->getBody());
 
         if (isset($responseArray->results[0])) {

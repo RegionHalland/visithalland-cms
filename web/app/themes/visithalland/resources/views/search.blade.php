@@ -29,7 +29,7 @@
 				            	$post_id = $post->ID;
 								$thumbnail_id = get_post_thumbnail_id($post_id);
 								$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-								$terms = get_the_terms($post_id, 'taxonomy_concept');
+								$terms = get_the_terms($post_id, 'experience');
 
 								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp

@@ -63,32 +63,6 @@ add_action('the_content', function ($content)
             return $html;
         }
     } 
-    // else {
-
-    //     $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-    //     // TODO: Change the img tag to amp-img 
-    //     if ($content) {
-    //         $document = new \DOMDocument();
-    //         libxml_use_internal_errors(true);
-    //         $document->loadHTML(utf8_decode($content));
-    //         libxml_use_internal_errors(false);
-    //         libxml_clear_errors();
-            
-    //         $imgs = $document->getElementsByTagName('img');
-    //         foreach ($imgs as $key=>$value) {
-    //             $img_src = $value->getAttribute('src');
-    //             $link= $document->createElement('amp-img');
-    //             $link->setAttribute('src', $img_src);
-    //             $link->setAttribute('class', 'amp-image-yao');
-    //             $value->parentNode->replaceChild($link, $value);
-    //             // var_dump($value);
-    //             // var_dump($value->parentNode);
-    //             // var_dump($link);
-    //         }
-    //         $html = $document->saveHTML();
-    //         return $html;
-    //     }
-    // }
 });
 
 /*

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5218b38803bf14982437a5c391ada6f7",
+    "content-hash": "4d1dcad0a46dd6856cc7fed1b4023ddb",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -596,16 +596,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.4.1",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960"
+                "reference": "2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/10d014eb59cc43b387a3b7e603539c0a02e2c960",
-                "reference": "10d014eb59cc43b387a3b7e603539c0a02e2c960",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c",
+                "reference": "2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c",
                 "shasum": ""
             },
             "require": {
@@ -623,20 +623,20 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-08-21T08:04:32+00:00"
+            "time": "2018-09-10T12:27:41+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-taxonomies.git",
-                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83"
+                "reference": "31588a3dca402b66c5828218395f047fd969f1f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/b5fbd368262ade04ececc1257c7b968bb3918d83",
-                "reference": "b5fbd368262ade04ececc1257c7b968bb3918d83",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-taxonomies/zipball/31588a3dca402b66c5828218395f047fd969f1f7",
+                "reference": "31588a3dca402b66c5828218395f047fd969f1f7",
                 "shasum": ""
             },
             "require": {
@@ -654,7 +654,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom taxonomies used on https://www.visithalland.com.",
-            "time": "2018-08-21T08:05:23+00:00"
+            "time": "2018-09-10T12:45:43+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",
@@ -845,15 +845,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.4",
+            "version": "3.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.4"
+                "reference": "tags/3.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -885,7 +885,7 @@
         },
         {
             "name": "wpackagist-plugin/schema",
-            "version": "dev-trunk",
+            "version": "1.7.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/schema/",
@@ -901,8 +901,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/schema/",
-            "time": "2018-07-16T17:56:23+00:00"
+            "homepage": "https://wordpress.org/plugins/schema/"
         },
         {
             "name": "wpackagist-plugin/the-seo-framework-extension-manager",
@@ -926,15 +925,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.6.1",
+            "version": "1.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.6.1"
+                "reference": "tags/1.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1033,9 +1032,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "wpackagist-plugin/schema": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

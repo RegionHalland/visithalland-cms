@@ -9,7 +9,7 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	@php(do_action('get_header'))
-	@include('partials.header')
+	@include('partials.header.header')
 
 	<div role="document">
 		<main role="main" class="" id="main-content">
@@ -18,7 +18,7 @@
 	</div>
 
 	@php(do_action('get_footer'))
-	    @include('partials.footer')
+	    @include('partials.footer.footer')
 	@php(wp_footer())
 
 	</body>

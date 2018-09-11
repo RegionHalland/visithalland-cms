@@ -1,9 +1,0 @@
-
-.topographic-pattern {
-	background-image: url("../images/pattern.svg");
-	background-repeat:repeat;
-	background-size:80%;
-	@media (min-width:$breakpoint-sm) {
-		background-size:25%;
-	}
-}

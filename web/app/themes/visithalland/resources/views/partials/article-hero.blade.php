@@ -4,9 +4,16 @@
     <div class="article-hero__inner container relative col-11 md-col-10 lg-col-10 mx-auto">
         <div class="article-hero__img-container topographic-pattern">
             @if(get_field("start_date"))
-                <div class="date-badge absolute top-0 left-0 ml2 mt2 z3">
-                    <span class="date-badge__day"><?php echo $dateobj = date("j", strtotime(get_field("start_date"))); ?></span>
-                    <span class="date-badge__month"><?php echo $dateobj = date("M", strtotime(get_field("start_date"))); ?></span>
+                <div class="bg-theme inline-flex px2 py1 mb2 rounded absolute top-0 left-0 ml2 mt2 z3">
+                    <div class="">
+                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("j", strtotime(get_field("start_date"))) }}</span>
+                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("M", strtotime(get_field("start_date"))) }}</span>
+                    </div>
+                    <span class="mx1 text-light rift-soft">-</span>
+                    <div class="">
+                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("j", strtotime(get_field("end_date"))) }}</span>
+                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("M", strtotime(get_field("end_date"))) }}</span>
+                    </div>
                 </div>
             @endif
             <picture>
@@ -30,7 +37,7 @@
             @endif
 
             <div class="article-hero__content col-11 md-col-10">
-                @include('partials.breadcrumbs')
+                @include('partials.components.breadcrumbs')
                 <h1 class="article-hero__title light h1 mb3 center mt2">{{ the_title() }}</h1>
             </div>
         </div>

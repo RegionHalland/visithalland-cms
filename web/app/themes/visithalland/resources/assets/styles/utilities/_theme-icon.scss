@@ -1,0 +1,28 @@
+.theme-icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    height: 32px;
+    width: 32px;
+    transition: background-color 0.2s;
+    border-radius: $border-radius-full;
+    @include themify {
+		background-color: $color-primary;
+    }
+}
+
+.theme-icon__inner {
+	position:absolute;
+    height: 24px;
+    width: 24px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include themify {
+        background-image: $icon;
+    }
+} 

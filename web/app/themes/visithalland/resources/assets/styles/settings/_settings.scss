@@ -14,22 +14,29 @@ $h4: 1.4rem;
 $h5: .875rem;
 $h6: .75rem;
 
+
+// Sizing
+$size-1: 10px;
+$size-2: 20px;
+$size-3: 30px;
+$size-4: 40px;
+$size-5: 50px;
+
 // Typography
 $fira-font-family:   "fira-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $rift-font-family: "rift-soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$shelby-font-family: "shelby", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 $line-height-1: 1;
 $line-height-2: 1.125;
 $line-height-3: 1.25;
 $line-height-4: 1.5;
 $letter-spacing: 1;
-$caps-letter-spacing: .2em;
-$bold-font-weight: bold;
 
 
 // Brand Styles
 $border-radius: 4px;
+$border-radius-pill: 100px;
+$border-radius-full: 100%;
 
 // Colors
 $brand-primary-color: #ee4340;
@@ -55,7 +62,7 @@ $palettes: (
 	black: (
 		xx-light  : lighten($black, 10%),
 		x-light  : lighten($black, 5%),
-		light    : lighten($black, 1%),
+		light    : lighten($black, 3%),
 		base     : $black,
 		dark     : darken($black, 2%),
 		x-dark     : darken($black, 5%)
@@ -74,10 +81,9 @@ $width-3: 60%;
 $width-4: 80%;
 
 // Container
-$container-max-width: 1440px;
+$container-max-width: 1140px;
 
 // Breakpoints
-
 //Small Tablets (portrait)
 $breakpoint-sm: 40em;
 //Tablet (Landscape)
@@ -90,4 +96,5 @@ $z1: 1;
 $z2: 2;
 $z3: 3;
 $z4: 4;
+$z5: 5;
 
