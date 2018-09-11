@@ -1,0 +1,76 @@
+[{
+    "key": "group_5b8d243c8b8bf",
+    "title": "Topplista",
+    "fields": [
+        {
+            "key": "field_5b8d47cdcf55a",
+            "label": "Topplista",
+            "name": "top_list",
+            "type": "relationship",
+            "instructions": "V\u00e4lj ut tips",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "tips_guides",
+                "editor_tip",
+                "spotlight",
+                "places",
+                "companies",
+                "happening"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": 1,
+            "max": 7,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5b8d4807cf55b",
+            "label": "F\u00f6rfattare",
+            "name": "top_list_author",
+            "type": "user",
+            "instructions": "V\u00e4lj anv\u00e4ndare",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "top_list"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Anv\u00e4nds f\u00f6r att skapa och redigera enskilda topplistor"
+}]
+
