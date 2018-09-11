@@ -1,7 +1,7 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5b8d2920d729a',
     'title' => __('Topplistor', 'visithalland'),
     'fields' => array(
@@ -46,7 +46,7 @@
             0 => array(
                 'param' => 'options_page',
                 'operator' => '==',
-                'value' => 'acf-options-utvalda-guider',
+                'value' => 'acf-options-tips-guider',
             ),
         ),
         2 => array(
@@ -66,4 +66,4 @@
     'active' => 1,
     'description' => 'Används för att välja ut topplistor som ska visas på respektive sida',
 ));
-}
+}

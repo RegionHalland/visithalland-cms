@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d1dcad0a46dd6856cc7fed1b4023ddb",
+    "content-hash": "bb64b3fa6c04559691eeca16518aba54",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -596,16 +596,16 @@
         },
         {
             "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.4.2",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c"
+                "reference": "71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c",
-                "reference": "2e3712b1bb3bc1d20d54cf33ad48f6fd26dd2d1c",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9",
+                "reference": "71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-09-10T12:27:41+00:00"
+            "time": "2018-09-11T11:43:28+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",

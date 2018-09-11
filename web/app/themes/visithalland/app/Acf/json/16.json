@@ -35,7 +35,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-utvalda-guider"
+                "value": "acf-options-tips-guider"
             }
         ]
     ],
@@ -48,4 +48,3 @@
     "active": 1,
     "description": "Anv\u00e4nds f\u00f6r att justera inneh\u00e5llet i Tips & Guider"
 }]
-
