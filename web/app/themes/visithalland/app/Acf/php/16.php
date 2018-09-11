@@ -29,7 +29,7 @@
             'elements' => array(
                 0 => 'featured_image',
             ),
-            'min' => 1,
+            'min' => '',
             'max' => 10,
             'return_format' => 'object',
         ),
