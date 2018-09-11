@@ -39,11 +39,13 @@
                 _e('Sidor', 'visithalland') 
             @endphp
         </h4>
+        @if(is_array($navbar_items))
         @foreach($navbar_items as $primary_navigation_item)
             @if(!is_array($primary_navigation_item->children))
                 <a href="{{ $primary_navigation_item->url }}" class="rift-font bold text-grey hover mb3 block">{!! $primary_navigation_item->title !!}</a>
             @endif
         @endforeach
+        @endif
     </div>
 
     <div class="col col-12 sm-col-4 md-col-3 mt4">
@@ -52,9 +54,11 @@
                 _e('Om webbplatsen', 'visithalland') 
             @endphp
         </h4>
-        @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
-            <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
-        @endforeach 
+        @if(is_array(App::secondaryMenuItems()))
+            @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
+                <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
+            @endforeach
+        @endif
         @if(is_array($non_active_langs))
             @foreach ($non_active_langs as $key => $lang)
                 <a class="rift-font text-grey hover bold mb3 block" href="{{ $lang["url"] }}">{{ $lang["native_name"] }}</a>

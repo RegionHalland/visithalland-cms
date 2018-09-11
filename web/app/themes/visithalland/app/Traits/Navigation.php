@@ -4,16 +4,6 @@ namespace App\Traits;
 
 trait Navigation
 {
-
-    /**
-    * Returns navigation items located at the menu of theme_location primary_navigation
-    * NOTICE: DEPRECATED IN FAVOR OF get_navbar_items()
-    * @return array Output menu items in current language
-    */
-    public static function getPrimaryNavigation() {
-        return [];
-    }
-
     public static function getPrimaryNavigationItems()
     {
         $nav_menus = get_nav_menu_locations();
