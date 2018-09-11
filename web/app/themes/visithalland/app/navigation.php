@@ -24,7 +24,7 @@ if (class_exists("VisithallandCustomPostTypes") || class_exists("VisithallandCus
             if ($terms) {
                 return str_replace('%experience%', $terms[0]->slug, $post_link);
             } else {
-                return str_replace('%experience%', null, $post_link);
+                return str_replace('%experience%/', null, $post_link);
             }
         }
         return $post_link;

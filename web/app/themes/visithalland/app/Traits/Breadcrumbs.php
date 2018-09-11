@@ -46,7 +46,6 @@ trait Breadcrumbs
 
                     foreach ($anc as $ancestor) {
                         if (get_post_status($ancestor) != 'private') {
-
                             $breadcrumbs = self::addBreadcrumb($breadcrumbs, get_the_title($ancestor), get_permalink($ancestor));
                         }
                     }
