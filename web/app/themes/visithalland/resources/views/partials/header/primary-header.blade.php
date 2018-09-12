@@ -1,7 +1,7 @@
 <section class="topographic-pattern bg-blue box-shadow">
     <div class="container flex justify-between items-center flex-wrap md-flex-nowrap col-11 md-col-10 lg-col-10">
         <div class="flex items-center md-pr4">
-            <a href="/" class="link-reset py2">
+            <a href="{{ home_url() }}" class="link-reset py2">
                 <picture>
                     <source
                         media="(min-width: 40em)"
