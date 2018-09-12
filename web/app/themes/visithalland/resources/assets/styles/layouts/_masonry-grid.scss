@@ -1,10 +1,14 @@
 .masonry-grid {
-    display: grid;
-    grid-gap: $space-3;
+    display: flex;
+    flex-wrap:wrap;
+    @media (min-width:$breakpoint-sm) { 
+        display: grid;
+        grid-gap: $space-3;  
+    }
 }
 
 .masonry-grid__large {
-    grid-column: span 1;
+    width:100%;
     @media (min-width:$breakpoint-sm) { 
         grid-column: span 6;
         grid-row: 1 / 5;
@@ -16,7 +20,7 @@
 }
 
 .masonry-grid__medium {
-    grid-column: span 1;
+    width:100%;
     @media (min-width:$breakpoint-sm) { 
         grid-column: span 3;
         grid-row: span 3;
@@ -28,7 +32,7 @@
 }
 
 .masonry-grid__small {
-    grid-column: span 1;
+    width:100%;
     @media (min-width:$breakpoint-sm) { 
         grid-column: span 3;
         grid-row: span 2;

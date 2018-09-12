@@ -19,7 +19,7 @@
 				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1)
 					
-					<a class="masonry-grid__large masonry-grid__item scrim overflow-hidden aspect-container aspect-1 sm-aspect-16x9 md-aspect-3x2 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
+					<a class="mt2 sm-mt0 masonry-grid__large masonry-grid__item scrim overflow-hidden aspect-container aspect-1 sm-aspect-16x9 md-aspect-3x2 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
 						<article>
 	                        <picture>
 	                        	<source media="(min-width:60em)"
@@ -52,7 +52,7 @@
 				{{-- Gets second and third item in array --}}
 				@elseif($loop->iteration > 1 && $loop->iteration <= 3)
 
-					<a class="masonry-grid__medium masonry-grid__item scrim overflow-hidden aspect-container aspect-1 md-aspect-5x4 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
+					<a class="mt2 sm-mt0 masonry-grid__medium masonry-grid__item scrim overflow-hidden aspect-container aspect-1 md-aspect-5x4 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
 						<article>
 	                        <picture>
 	                            <source media="(min-width:60em)"
@@ -83,7 +83,7 @@
 				{{-- Loops remaining items as small --}}
 				@else
 
-					<a class="masonry-grid__small masonry-grid__item scrim overflow-hidden aspect-container aspect-1 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
+					<a class="mt2 sm-mt0 masonry-grid__small masonry-grid__item scrim overflow-hidden aspect-container aspect-1 relative rounded" href="{{ the_permalink($post->ID) }}" title="{!! $post->post_title !!}">
 						<article>
 	                        <picture>
 	                            <source
