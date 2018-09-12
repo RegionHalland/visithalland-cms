@@ -11,7 +11,7 @@
                     @if($child->type === 'taxonomy')
                         <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
                             <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
-                                <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "coastal-living"}}">
+                                <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "visithalland"}}">
                                     <div class="theme-icon__inner">
                                     </div>
                                 </div>
@@ -21,7 +21,7 @@
                     @else 
                         <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
                             <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
-                                <div class="theme-icon coastal-living">
+                                <div class="theme-icon visithalland">
                                     <div class="theme-icon__inner">
                                     </div>
                                 </div>

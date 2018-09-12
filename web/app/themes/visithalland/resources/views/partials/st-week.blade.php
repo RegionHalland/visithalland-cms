@@ -288,7 +288,7 @@
 											<a href="{{ the_permalink($item->ID) }}" title="{!! $item->post_title !!}">
 												<article class="image-blurb image-blurb--fixed-height">
 													@if (get_field("start_date", $item->ID))
-				                                        <div class="date-badge coastal-living absolute top-0 left-0 z4 mt2 ml2">
+				                                        <div class="date-badge visithalland absolute top-0 left-0 z4 mt2 ml2">
 							                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $item->ID))) }}</span>
 							                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $item->ID))) }}</span>
 							                            </div>

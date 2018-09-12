@@ -12,7 +12,7 @@
     <article role="main" id="main-content">
 	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
 	        	@if(isset($wp_query))
-	        	<header class="section-header block mb2 mt4 coastal-living">
+	        	<header class="section-header block mb2 mt4 visithalland">
 		            <div class="section-header__icon-wrapper">
 		                <svg class="section-header__icon icon">
 		                    <use xlink:href="#search-icon"/>

@@ -19,7 +19,7 @@
 				<h4>{{ $link["name"] }}</h4>
 				<p>Adress: {{ $location["address"] }}</p>
 				<a href="{{ $link["link"] }}" target="_blank">
-					<div class="read-more mt3 coastal-living">
+					<div class="read-more mt3 visithalland">
                         <span class="read-more__text">Gå till hemsida</span>
                         <div class="read-more__button">
                             <svg class="icon read-more__icon">
