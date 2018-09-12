@@ -11,7 +11,7 @@
 			<div class="pb4 pt3 clearfix mxn2">
 			    @if(is_array($happenings))
 	                @foreach($happenings as $key => $happening)
-	                    <div class="col col-12 sm-col-4 px2 mt2">
+	                    <div class="col col-12 sm-col-6 md-col-4 px2 mt2">
 	                        @include('partials.happening-thumbnail')
 	                    </div>
 	                @endforeach
