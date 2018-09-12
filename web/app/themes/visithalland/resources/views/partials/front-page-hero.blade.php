@@ -12,7 +12,7 @@
                     data-src="{{ $navigation_item->meta_fields["cover_image"]["sizes"]["vh_hero_wide"] }}" alt="{{ $navigation_item->meta_fields["cover_image"]["alt"] }}"
                 />
             </picture>
-            <div class="z4 absolute container col-12 sm-col-11 md-col-10 flex justify-end flex-column top-0 mx-auto bottom-0 right-0 left-0 px3 sm-px0 pb6">
+            <div class="z4 absolute container col-12 sm-col-11 md-col-10 flex justify-end flex-column top-0 mx-auto bottom-0 right-0 left-0 px3 sm-px0 pb4 sm-pb6">
                 <div class="">
                     <header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
                         @php _e( 'Populärt just nu', 'visithalland' ) @endphp
