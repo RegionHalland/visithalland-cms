@@ -1,16 +1,7 @@
-var Packery = require('packery');
 var Flickity = require('flickity');
 
 export default {
   init() {
-    var grid = $('.featured-grid')[0];
-
-    var pckry = new Packery(grid, {
-      itemSelector: '.featured-grid__item',
-      percentPosition: true,
-      transitionDuration: 0
-    });
-
     //Adds the spotlight carousel
     var spotlightCarousel = new Flickity('.spotlight-carousel', {
         cellAlign: 'left',

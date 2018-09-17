@@ -7,10 +7,11 @@
 	    $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
 	@endphp
 	<div id="infinite-container">
-	    <article class="{{ App::getTermClassName() }}" role="main" id="main-content">
+	    <article class="{{ App::getTermClassName() }} infinite-item" data-posttype="{{get_post_type()}}">
 	        @include('partials.article-hero')
 	        @include('partials.article-content')
 	        @include('partials.share')
+	        @include('partials.components.next-article')
 	    </article>
 	</div>
 @endwhile

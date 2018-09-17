@@ -65,7 +65,7 @@ import axios from 'axios';
                         timeout: 5000, //defaults to 0
                     })
                     .then(coordinates => {
-                        console.log(coordinates);
+                        //console.log(coordinates);
                         // TODO: Send to analytics and our location api
                         this.$ga.event({
                             eventCategory: 'Button',
@@ -100,12 +100,12 @@ import axios from 'axios';
 
                         })
                         .catch(function (error) {
-                            console.log("err", error);
+                            //console.log("err", error);
                         });
 
                     })
                     .catch(function(error){
-                        console.log("myerr", error)
+                        //console.log("myerr", error)
                         vm.$ga.event({
                             eventCategory: 'Button',
                             eventAction: 'Användning av platsinformation',

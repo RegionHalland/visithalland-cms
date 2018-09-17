@@ -137,7 +137,7 @@ import axios from 'axios';
                         vm.loading = false;
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        //console.log(error);
                         vm.loading = false;
                     });
 
@@ -157,7 +157,7 @@ import axios from 'axios';
                         vm.loading = false;
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        //console.log(error);
                         vm.loading = false;
                     });
             },

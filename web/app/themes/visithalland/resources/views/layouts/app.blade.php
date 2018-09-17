@@ -12,7 +12,7 @@
 	@include('partials.header.header')
 
 	<div role="document">
-		<main role="main" class="" id="main-content">
+		<main role="main" id="main-content">
 			@yield('content')
 		</main>
 	</div>

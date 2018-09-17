@@ -7,7 +7,7 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <div id="infinite-container">
-    	<article class="{{ App::getTermClassName() }}" role="main" id="main-content"  data-posttype="{{get_post_type()}}">
+    	<article class="{{ App::getTermClassName() }} infinite-item" data-posttype="{{get_post_type()}}">
             @include('partials.article-hero')
             <div class="clearfix container mt4 mb5">
                 <div class="col-11 sm-col-9 md-col-11 mx-auto clearfix">
@@ -48,8 +48,10 @@
             </div>
             @include('partials.recommended-happenings')
             @include('partials.share')
+            @include('partials.components.next-article')
         </article>
         @endwhile
     </div>
+    
 @include('partials.infinite-scroll')
 @endsection

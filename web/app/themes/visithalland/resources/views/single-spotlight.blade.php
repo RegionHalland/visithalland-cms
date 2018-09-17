@@ -8,16 +8,17 @@
             $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
             $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
         @endphp
-        <article role="main" id="main-content" data-posttype="{{get_post_type()}}">
-            @include('partials.article-hero')
-            <div class="article-content container clearfix mt5 mb4">
-                <div class="col-11 md-col-10 lg-col-8 mx-auto">
-                    <p class="preamble">{{ get_field("excerpt") }}</p>
-                    @include('partials.author-horizontal')
+            <article class="{{ App::getTermClassName() }} infinite-item" data-posttype="{{get_post_type()}}">
+                @include('partials.article-hero')
+                <div class="article-content container clearfix mt5 mb4">
+                    <div class="col-11 md-col-10 lg-col-8 mx-auto">
+                        <p class="preamble">{{ get_field("excerpt") }}</p>
+                        @include('partials.author-horizontal')
+                    </div>
                 </div>
-            </div>
-            @include('partials.spotlight-grid')
-            @include('partials.share')
+                @include('partials.spotlight-grid')
+                @include('partials.share')
+                @include('partials.components.next-article')
             </article>
         @endwhile
     </div>

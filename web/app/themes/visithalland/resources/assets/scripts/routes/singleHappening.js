@@ -1,5 +1,4 @@
 import InfiniteScroll from '../util/infiniteScroll';
-import Packery from 'packery';
 import Map from '../util/map';
 
 export default {
