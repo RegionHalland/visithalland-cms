@@ -8,6 +8,14 @@
 }
 
 
+.topographic-pattern-theme {
+	background: url("../images/pattern.svg"), linear-gradient(92.43deg, #086042 0%, #228153 100%);
+	@media (min-width:$breakpoint-sm) {
+
+	}
+}
+
+
 .topographic-pattern-dark {
 	background-image: url("../images/pattern-dark.svg");
 	background-repeat:repeat;

@@ -28,7 +28,6 @@
 	&--primary {
 		@include themify {
 			background-color:$color-primary;
-			
 			background-repeat:repeat;
 			background-size:100%;
 			color:$white;
