@@ -33,7 +33,7 @@
 
 								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp
-			            	<div class="col col-12 sm-col-4 search-result px2 mt3">
+			            	<div class="col col-12 sm-col-6 md-col-4 search-result px2 mt3">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 										<article class="image-blurb {{ $terms[0]->slug }}">
 											<picture>
