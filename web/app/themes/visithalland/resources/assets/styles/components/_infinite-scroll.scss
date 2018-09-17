@@ -1,3 +1,18 @@
+.page-load-status {
+	background-color:palette(black, light);
+	border-bottom:1px solid palette(black, dark);
+	font-family:$rift-font-family;
+	font-weight:bold;
+	z-index:999;
+	.infinite-scroll-last, .infinite-scroll-error {
+		display:none;
+		text-align:center;
+		color:palette(grey, light);
+		padding:$space-3 0;
+	}
+}
+
+
 .next-article {
 	display:inline-flex;
 	vertical-align:top;
