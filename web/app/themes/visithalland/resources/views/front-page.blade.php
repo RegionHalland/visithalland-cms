@@ -6,7 +6,7 @@
     @else
 		@include('partials.front-page-hero')
     @endif
-    <section class="container col-11 md-col-10 lg-col-10 mx-auto mtn5 relative pb4">
+    <section class="container col-11 md-col-10 lg-col-10 mx-auto mt3 sm-mtn5 relative pb4">
 		@include('partials.front-page-concepts')
 	</section>
 	@include('partials.components.banner')

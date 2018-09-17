@@ -34,13 +34,13 @@
                 <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
                     @php _e( 'Fler artiklar', 'visithalland' ) @endphp
                 </header>
-                <div class="clearfix mxn3">
+                <div class="clearfix mxn2">
                     @if (have_posts())
                         @while (have_posts())
                             @php 
                                 $post = the_post(); 
                             @endphp
-                            <div class="col col-12 sm-col-6 px3 mt3">
+                            <div class="col col-12 sm-col-6 px2 mt3">
                                 @include('partials.tips-guides.tips-guides-small')
                             </div>          
                        @endwhile

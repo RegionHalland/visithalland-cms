@@ -20,7 +20,7 @@
         <Navigation prev-route="location"></Navigation>
         <div class="card__content px3">
             <router-link @click.native="gaTrack(date)" v-for="date in dates" :key="date.id" :to="{name: 'activities', params: { input: {day: days[date.id], date: dates[date.id].date, userLocation: input.userLocation} }}">
-                <div class="date coastal-living">
+                <div class="date visithalland">
                     <div class="date-badge date-badge--large inline-block">
                         <span class="date-badge__day">{{date.day}}</span>
                         <span class="date-badge__month">{{date.month}}</span>

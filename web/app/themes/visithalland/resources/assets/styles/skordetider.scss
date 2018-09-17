@@ -28,8 +28,12 @@ $st-font: 'Mindset-Slim';
 @import 'utilities/grid';
 @import 'utilities/flexbox';
 @import 'utilities/position';
+@import 'utilities/sizing';
+@import 'utilities/background';
 @import 'utilities/border-radi';
-@import 'utilities/container';
+@import 'utilities/accessibility';
+@import 'utilities/box-shadow';
+
 @import 'utilities/container';
 @import 'utilities/aspect-ratio';
 @import 'utilities/lazy-load';
