@@ -8,9 +8,9 @@
             />
         </picture>
         <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-            <h2 class="text-light">{{ $navigation_item->post_title }}</h2>
+            <h2 class="text-light">{{ $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title }}</h2>
             <div>
-                <a class="" href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title }}">
+                <a class="" href="{{ $navigation_item->url }}" title="{{ $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title }}">
                     <div class="px2 py2 bg-theme topographic-pattern-dark rounded items-center inline-flex mt3">
                         <span class="rift-font my2 ml2 bold text-base light">
                             @php _e( 'Gå till', 'visithalland' ); @endphp
