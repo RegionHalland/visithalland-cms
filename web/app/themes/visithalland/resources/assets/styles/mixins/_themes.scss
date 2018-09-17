@@ -1,26 +1,32 @@
 $themes: (
   'visithalland': (
     'primary': #083644,
+    'secondary': #083644,
     'icon': url("../images/coastal-living.svg")
   ),
   'spa-wellness': (
     'primary': #48A5AA,
+    'secondary': #083644,
     'icon': url("../images/spa-wellness.svg")
   ),
   'beach-coast': (
     'primary': #3976A2,
+    'secondary': #083644,
     'icon': url("../images/beach-coast.svg")
   ),
   'food-culture': (
     'primary': #D95757,
+    'secondary': #083644,
     'icon': url("../images/food-culture.svg")
   ),
   'hiking-biking': (
     'primary': #308669,
+    'secondary': #228153,
     'icon': url("../images/hiking-biking.svg")
   ),
   'camping-friends': (
     'primary': #6394B8,
+    'secondary': #5598D6,
     'icon': url("../images/camping-friends.svg")
   )
 
@@ -38,7 +44,7 @@ $icon: null;
     .#{$theme} & {
       // Set the theme variables with `!global`
       $color-primary: map-get($colors, 'primary') !global;
-      //$color-secondary: map-get($colors, 'secondary') !global;
+      $color-secondary: map-get($colors, 'secondary') !global;
       $icon: map-get($colors, 'icon') !global;
 
       // Output user content

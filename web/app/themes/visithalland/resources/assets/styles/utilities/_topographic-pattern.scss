@@ -9,9 +9,8 @@
 
 
 .topographic-pattern-theme {
-	background: url("../images/pattern.svg"), linear-gradient(92.43deg, #086042 0%, #228153 100%);
-	@media (min-width:$breakpoint-sm) {
-
+	@include themify {
+		background: url("../images/pattern.svg"), linear-gradient(92.43deg, $color-primary 0%, $color-secondary 100%);
 	}
 }
 
