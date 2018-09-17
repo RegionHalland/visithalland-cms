@@ -17,7 +17,7 @@
             <div class="px2 py2 bg-theme topographic-pattern-dark rounded items-center inline-flex mt3">
                 <span class="rift-font my2 ml2 bold text-base light">
                     @php _e( 'Gå till', 'visithalland' ); @endphp
-                    {{ $navigation_item->post_title }}
+                    {{ $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title }}
                 </span>
                 <svg class="icon--sm mx2">
                     <use xlink:href="#arrow-right-icon"/>
