@@ -6,8 +6,8 @@
 					<img class="next-article__img" src="" alt="">
 				</div>
 	    		<div class="next-article__content inline-block">
-	    			<span class="next-article__heading h5 black">Nästa artikel</span>
-	    			<h3 class="next-article__title black"></h3>
+	    			<span class="next-article__heading h5">Nästa artikel</span>
+	    			<h3 class="next-article__title"></h3>
 	    		</div>
 	    	</div>
 	    	<div class="loading-indicator">
