@@ -14,24 +14,34 @@
 @import 'base/base';
 
 // Config - Uses variables from settings.scss
-@import 'config/type-scale';
-@import 'config/typography';
-@import 'config/layout';
-@import 'config/align';
-@import 'config/margin';
-@import 'config/padding';
-@import 'config/grid';
-@import 'config/flexbox';
-@import 'config/position';
+@import 'utilities/type-scale';
+@import 'utilities/typography';
+@import 'utilities/layout';
+@import 'utilities/align';
+@import 'utilities/margin';
+@import 'utilities/padding';
+@import 'utilities/grid';
+@import 'utilities/flexbox';
+@import 'utilities/position';
+@import 'utilities/sizing';
+@import 'utilities/background';
+@import 'utilities/border-radi';
+@import 'utilities/accessibility';
+@import 'utilities/box-shadow';
+
+@import 'utilities/container';
+@import 'utilities/aspect-ratio';
+@import 'utilities/lazy-load';
+@import 'utilities/topographic-pattern';
+@import 'utilities/icons';
+@import 'utilities/theme-icon';
+@import 'utilities/scrim-gradient';
 
 // Generic and Reusable Components
-@import 'components/container';
+@import 'utilities/hover';
 @import 'components/button';
 @import 'components/section-header';
 @import 'components/image-credit';
-@import 'components/lazy-load';
-@import 'components/topographic-pattern';
-@import 'components/icons';
 @import 'components/icon-button';
 @import 'components/contact';
 @import 'components/article-tag';
@@ -45,13 +55,15 @@
 @import 'components/author-horizontal';
 @import 'components/infinite-scroll';
 
+// Grid Layouts
+@import './layouts/content-grid';
+@import './layouts/masonry-grid';
+
 // Landing
 @import './front-page/front-page'; //Se över denna -- Jobbas med nu
 @import './front-page/campaign'; //Se över denna -- Jobbas med nu
 @import './front-page/dh-banner';
 
-// General Page Format
-@import './page/page';
 
 // Article Components and Styles
 @import './article/article';
@@ -65,32 +77,27 @@
 @import './article/image-blurb'; // Se över denna
 
 // Header Styles
-@import './header/header'; // Se över denna
-@import './header/support-header';
+@import './header/header';
+@import './header/navigation';
+@import './header/navigation-dropdown';
+@import './header/header-search';
+@import './header/external-header';
 
 
 // Taxonomy/Concept Page Styles
 @import './concept/concept-header'; //Se över
 @import './concept/concept-grid';
-@import './concept/concept-sidebar';
+@import './concept/concept-sidebar'; //Ta bort
 @import './concept/featured-grid'; //Se över
 @import './concept/spotlight-carousel'; //Dela upp i två filer
-@import './concept/concept-thumbnail';
+@import './concept/concept-thumbnail'; //Ta bort?
 
 
 // Happening Article Format
 @import './happening/happening-page'; //Se över
 @import './happening/happening'; // Se om det finns något vi kan göra här (generell box med info i typ);
-@import './happening/happening-list-item'; //Se över och gör om till article list item
+@import './happening/happening-list-item'; //Går ta bort?
 
-// Skördetider
-@import './skordetider/image-container';
-
-// Footer Styles
-@import './footer/footer'; //Se över
-
-// Cookies Page Format
-@import './cookies/cookies'; //Byt namn till cookie-banner?
 
 // Typekit
 @import url('https://use.typekit.net/vzi2bvt.css');

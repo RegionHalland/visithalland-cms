@@ -1,0 +1,10 @@
+.hover {
+	@media (min-width:$breakpoint-md) {
+	    transition: opacity 0.15s;
+	    opacity:0.8;
+	    &:hover, &:focus {
+	        opacity:1;
+	        cursor:pointer;
+	    }
+    }
+}

@@ -1,6 +1,6 @@
 <div class="container col-11 md-col-10 lg-col-10 mx-auto pb5">
     <div class="clearfix mxn2">
-        <header class="section-header mb2 px2 coastal-living">
+        <header class="section-header mb2 px2 visithalland">
             <div class="section-header__icon-wrapper">
                 <svg class="section-header__icon icon">
                     <use xlink:href="#recommend-icon"/>
@@ -11,8 +11,8 @@
             </div>
         </header>
         @php
-            $terms = get_the_terms($post->ID, 'taxonomy_concept');
-            $featuredArticles = App::getPosts(array(), $terms[0], 3);
+            $terms = get_the_terms($post->ID, 'experience');
+            $featuredArticles = App::getPosts(array(), $terms[0], 3, true);
         @endphp
         <div class="pb4 pt3 clearfix">
             @foreach($featuredArticles as $key => $value)

@@ -12,10 +12,11 @@
 
 // Config
 // Uses variables from settings.scss
-@import 'config/type-scale';
-@import 'config/typography';
-@import 'config/margin';
-@import 'config/padding';
+@import 'utilities/type-scale';
+@import 'utilities/typography';
+@import 'utilities/margin';
+@import 'utilities/padding';
+@import 'utilities/border-radi';
 
 
 html, body {
@@ -28,6 +29,7 @@ html, body {
 	max-width:90%;
 	height:auto;
 }
+
 .image-credit {
 	margin-top:$space-1;
 	display:block;
@@ -36,6 +38,7 @@ html, body {
 	font-style: italic;
 	color:palette(grey, x-dark);
 }
+
 .wp-caption-text, .image-description{
 	display:block;
 	text-align:left;
@@ -44,9 +47,11 @@ html, body {
 	font-style: italic;
 	color:palette(grey, xx-dark);
 }
+
 figure {
 	margin:$space-3 0;
 }
+
 img {
 	width:100%;
 	height:auto;

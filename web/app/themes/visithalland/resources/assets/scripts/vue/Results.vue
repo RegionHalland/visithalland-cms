@@ -27,7 +27,7 @@
             <Shimmer :loading="loading"></Shimmer>
           </div>
         <div class="result-section px3">
-            <header class="section-header inline-block coastal-living mb2">
+            <header class="section-header inline-block visithalland mb2">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#calendar-icon"/>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="result-section px3" v-if="nearYouArray && nearYouArray.length && input">
-            <header class="section-header inline-block coastal-living mb3">
+            <header class="section-header inline-block visithalland mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#pin-icon"/>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="result-section px3" v-if="allArray && allArray.length && input">
-            <header class="section-header inline-block coastal-living mb3">
+            <header class="section-header inline-block visithalland mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#discover-icon"/>
@@ -108,7 +108,7 @@
         </div>
 
         <div class="result-section result__happenings px3 pt3" v-if="happeningsArray && happeningsArray.length && input">
-            <header class="section-header inline-block coastal-living mt2 mb3">
+            <header class="section-header inline-block visithalland mt2 mb3">
                 <div class="section-header__icon-wrapper">
                     <svg class="section-header__icon icon">
                         <use xlink:href="#calendar-icon"/>
@@ -182,7 +182,7 @@ import axios from "axios";
                         vm.loading = false;
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        //console.log(error);
                         vm.loading = false;
                     });
             },

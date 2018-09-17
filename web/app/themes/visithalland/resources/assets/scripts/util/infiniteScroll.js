@@ -1,7 +1,5 @@
 import inf from 'infinite-scroll';
-import { initTrip } from '../routes/singleTrip';
-import { initHappening } from '../routes/singleHappening';
-import { initMeetLocal } from '../routes/singleMeetLocal';
+import { initSpotlight } from '../routes/singleSpotlight';
 
 class InfiniteScroll {
     constructor(){
@@ -14,16 +12,16 @@ export function initInfiniteScroll() {
 
     var infScroll = new inf('#infinite-container', {
         path: function () {
-            return nextPages[this.loadCount].permalink
+            if(this.loadCount < nextPages.length){
+                return nextPages[this.loadCount].permalink
+            }
         },
-        append: '#main-content',
+        append: '.infinite-item',
+        responseType: 'document',
         status: '.page-load-status',
-        scrollThreshold: 800,
-        history: 'replace',
-        debug: true
+        scrollThreshold: 1000,
+        history: 'replace'
     });
-
-    var nextPostTitle = nextPages[infScroll.loadCount].post_title;
 
     // Add history event listener for logging pageviews to Analytics.
     infScroll.on('history', function (title, path) {
@@ -34,38 +32,33 @@ export function initInfiniteScroll() {
         });
     });
 
-    $(".next-article__img").last().attr("src", nextPages[infScroll.loadCount].thumbnailUrl);
-    $(".next-article__title").last().html(nextPages[infScroll.loadCount].post_title);
-    $(".next-article__img").last().attr("alt", nextPages[infScroll.loadCount].thumbnailAlt);
+    // Set the first next-article__title to the first element
+    document.querySelector('.next-article__title').innerHTML = nextPages[0].post_title;
+    document.querySelector('.next-article__img').src = nextPages[0].thumbnailUrl;
+    document.querySelector('.next-article__img').alt = nextPages[0].thumbnailAlt;   
 
     // Add history event listener for logging pageviews to Analytics.
     infScroll.on('append', function (title, path, items) {
-        var now = infScroll.loadCount;
-        var nmr = infScroll.loadCount - 1;
-        var x = nmr;
+        var item = items[0];
+        if(this.loadCount == nextPages.length) return item.querySelector('.next-article__container').remove();
 
-        // TODO: Improve this, only replace if we got a new title/image/alt
-        $($(".next-article__title")[x]).html(nextPages[nmr].post_title);
-        $(".next-article__title").last().html(nextPages[now].post_title);
-
-        $($(".next-article__img")[x]).attr("src", nextPages[nmr].thumbnailUrl);
-        $(".next-article__img").last().attr("src", nextPages[now].thumbnailUrl);
-
-        $($(".next-article__img")[x]).attr("alt", nextPages[nmr].thumbnailAlt);
-        $(".next-article__img").last().attr("alt", nextPages[now].thumbnailAlt);
-
-        var postType = $(items[1]).data("posttype");
+        var postType = $(item).data("posttype");
+        var articleTitle = item.querySelector('.next-article__title');
+        var articleImg = item.querySelector('.next-article__img');
+        articleTitle.innerHTML = nextPages[this.loadCount].post_title;
+        articleImg.src = nextPages[this.loadCount].thumbnailUrl;
+        articleImg.alt = nextPages[this.loadCount].thumbnailAlt;    
 
         // Se what post type we got and run that post types init javascript
         switch (postType) {
-            case "trip":
-                initTrip();
+            case "spotlight":
+                initSpotlight();
                 break;
             case "happening":
-                initHappening();
+                //initHappening();
                 break;
             case "meet_local":
-                initMeetLocal();
+                //initMeetLocal();
                 break;
 
             default:

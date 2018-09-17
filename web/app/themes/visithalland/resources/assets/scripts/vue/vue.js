@@ -63,7 +63,7 @@ const routes = [
 // keep it simple for now.
 const router = new VueRouter({
     routes, // short for `routes: routes`
-    base: "/coastal-living/a-day-in-halland",
+    base: "/a-day-in-halland",
     mode: 'history'
 })
 
@@ -75,7 +75,7 @@ Vue.use(VueAnalytics, {
     autoTracking: {
         pageviewTemplate(route) {
             return {
-                page: "coastal-living/a-day-in-halland" + route.path,
+                page: "a-day-in-halland" + route.path,
                 title: route.name,
                 location: window.location.href
             }

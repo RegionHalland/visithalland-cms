@@ -26,26 +26,17 @@
                         alt="{{ $alt }}" />
                 </picture>
             </div>
-            <div class="article-full__inner container col-11 lg-col-10 mx-auto">
+            <div class="article-full__inner container col-11 md-col-10 mx-auto">
                 <div class="article-full__header">
 
-                    {{-- Section Header Start --}}
-                    <header class="section-header">
-                        <div class="section-header__icon-wrapper">
-                            <svg class="section-header__icon icon">
-                                <use xlink:href="#recommend-icon"/>
-                            </svg>
-                        </div>
-                        <span class="section-header__title light">
-                            @php _e( 'Populärt just nu', 'visithalland' ); @endphp
-                        </span>
+                    <header class="bg-blue rift-font text-sm bold px3 py2 mb2 rounded-pill inline-block text-light">
+                        @php _e( 'Populär just nu', 'visithalland' ) @endphp
                     </header>
-                    {{-- Section Header End --}}
 
                 </div>
                 <div class="article-full__content col-10 sm-col-8 lg-col-5">
                     <h2 class="article-full__title light mt1">{{ $featured_article->post_title }}</h2>
-                    <div class="read-more mt4 inline-block">
+                    <div class="read-more mt3 inline-block">
                         <span class="read-more__text light">
                             @php _e( 'Läs mer', 'visithalland' ); @endphp
                         </span>

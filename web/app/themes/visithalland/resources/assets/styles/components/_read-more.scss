@@ -25,11 +25,11 @@
 		display:inline-flex;
 		justify-content:center;
 		align-items:center;
-		height:20px;
-		margin-left:$space-2;
-		width:20px;
+		height:22px;
+		margin-left:$space-1;
+		width:22px;
 		vertical-align:middle;
-		border-radius:$border-radius;
+		border-radius:$border-radius-full;
 		background:palette(black, base);
 		@include themify {
         	background:$color-primary;

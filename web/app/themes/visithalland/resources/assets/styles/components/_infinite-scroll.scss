@@ -1,6 +1,6 @@
 .page-load-status {
 	background-color:palette(black, light);
-	border-bottom:1px solid palette(black, base);
+	border-bottom:1px solid palette(black, dark);
 	font-family:$rift-font-family;
 	font-weight:bold;
 	z-index:999;
@@ -12,9 +12,14 @@
 	}
 }
 
+
 .next-article {
 	display:inline-flex;
 	vertical-align:top;
+
+	&__container {
+		border-bottom:1px solid palette(black, base);
+	}
 	&__heading {
 		font-size:0.85rem;
 		color:palette(grey, light);

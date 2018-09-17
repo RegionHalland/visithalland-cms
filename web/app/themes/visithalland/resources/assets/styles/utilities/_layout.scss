@@ -1,0 +1,53 @@
+.inline        { display: inline }
+.block         { display: block }
+.inline-block  { display: inline-block }
+.display-table { display: table }
+.table-cell    { display: table-cell }
+.display-none  { display: none }
+
+
+@media (min-width:$breakpoint-sm) {
+	.sm-inline        { display: inline }
+	.sm-block         { display: block }
+	.sm-inline-block  { display: inline-block }
+	.sm-display-table { display: table }
+	.sm-table-cell    { display: table-cell }
+	.sm-display-none  { display: none }
+}
+
+@media (min-width:$breakpoint-md) {
+	.md-inline        { display: inline }
+	.md-block         { display: block }
+	.md-inline-block  { display: inline-block }
+	.md-display-table { display: table }
+	.md-table-cell    { display: table-cell }
+	.md-display-none  { display: none }
+}
+
+@media (min-width:$breakpoint-lg) {
+	.lg-inline        { display: inline }
+	.lg-block         { display: block }
+	.lg-inline-block  { display: inline-block }
+	.lg-display-table { display: table }
+	.lg-table-cell    { display: table-cell }
+	.lg-display-none  { display: none }
+}
+
+
+.overflow-hidden { overflow: hidden }
+.overflow-scroll { overflow: scroll }
+.overflow-auto   { overflow: auto }
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table
+}
+
+.clearfix:after { clear: both }
+
+.left  { float: left }
+.right { float: right }
+
+
+.border-box { box-sizing: border-box }

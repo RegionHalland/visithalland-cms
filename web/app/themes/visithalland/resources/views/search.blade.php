@@ -12,7 +12,7 @@
     <article role="main" id="main-content">
 	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
 	        	@if(isset($wp_query))
-	        	<header class="section-header block mb2 mt4 coastal-living">
+	        	<header class="section-header block mb2 mt4 visithalland">
 		            <div class="section-header__icon-wrapper">
 		                <svg class="section-header__icon icon">
 		                    <use xlink:href="#search-icon"/>
@@ -29,11 +29,11 @@
 				            	$post_id = $post->ID;
 								$thumbnail_id = get_post_thumbnail_id($post_id);
 								$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-								$terms = get_the_terms($post_id, 'taxonomy_concept');
+								$terms = get_the_terms($post_id, 'experience');
 
 								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp
-			            	<div class="col col-12 sm-col-4 search-result px2 mt3">
+			            	<div class="col col-12 sm-col-6 md-col-4 search-result px2 mt3">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 										<article class="image-blurb {{ $terms[0]->slug }}">
 											<picture>

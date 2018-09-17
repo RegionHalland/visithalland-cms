@@ -1,7 +1,7 @@
 @php $mentions = get_field("mentioned"); @endphp
 @if(isset($mentions) && is_array($mentions))
     <div class="article-mentions mt3 clearfix">
-         <header class="section-header inline-block mb2 coastal-living">
+         <header class="section-header inline-block mb2 visithalland">
             <div class="section-header__icon-wrapper">
                 <svg class="section-header__icon icon">
                     <use xlink:href="#recommend-icon"/>

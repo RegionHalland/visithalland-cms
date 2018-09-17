@@ -9,6 +9,8 @@ class App extends Controller
     use Traits\Posts;
     use Traits\Navigation;
     use Traits\Breadcrumbs;
+    use Traits\Banner;
+    use Traits\EuropeanUnion;
 
     public function siteName()
     {
@@ -46,4 +48,14 @@ class App extends Controller
 
 		return $non_active_langs;
 	}
+
+    public static function classNameGenerator(Array $classes)
+    {
+        $classString = "";
+        foreach ($classes as $key => $value) {
+            $classString .= $value . " ";
+        }
+
+        return $classString; 
+    }
 }

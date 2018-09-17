@@ -7,7 +7,6 @@
 		font-size:.95rem;
 		font-style:italic;
 		color:palette(black, x-light);
-		@include fade-text();
 		@media (min-width:$breakpoint-md){
 			max-height:50px;
 		}
