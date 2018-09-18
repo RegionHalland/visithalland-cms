@@ -19,10 +19,11 @@ class Admin
 
 	public function filter_the_posts($posts)
 	{
+		//Don't filter posts on admin pages
+		if(is_admin()) return $posts;
+
 		$image_sizes = get_intermediate_image_sizes();
-
         foreach ($posts as $key => $post) {
-
         	$thumbnail_id = get_post_thumbnail_id($post->ID);
         	$thumbnail = get_post($thumbnail_id);
             $post->featured_image = [];
@@ -46,10 +47,11 @@ class Admin
 
 	public function my_acf_load_value($value, $post_id, $field)
 	{
+		if(!is_array($value)) return $value;
+		
 		$image_sizes = get_intermediate_image_sizes();
 
         foreach ($value as $key => $current_value) {
-
         	$thumbnail_id = get_post_thumbnail_id($current_value->ID);
         	$thumbnail = get_post($thumbnail_id);
             $current_value->featured_image = [];
