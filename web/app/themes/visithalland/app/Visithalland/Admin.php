@@ -47,8 +47,7 @@ class Admin
 
 	public function my_acf_load_value($value, $post_id, $field)
 	{
-		//Don't filter posts on admin pages
-		if(is_admin()) return $posts;
+		if(!is_array($value)) return $value;
 		
 		$image_sizes = get_intermediate_image_sizes();
 
