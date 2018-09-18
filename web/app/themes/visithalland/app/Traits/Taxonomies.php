@@ -58,4 +58,5 @@ trait Taxonomies
             return "visithalland";
         }
     }
+
 }

@@ -3,10 +3,10 @@
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">
             <picture>
                 <source
-                    data-srcset="{{ get_the_post_thumbnail_url( $recent_post->ID, 'vh_large' ) . " 1x," . get_the_post_thumbnail_url( $recent_post->ID, 'vh_large@2x' ) . " 2x" }}" />
+                    data-srcset="{{ $recent_post->featured_image['vh_medium'] . " 1x," . $recent_post->featured_image['vh_medium@2x'] . " 2x" }}" />
                 <img class="absolute left-0 top-0 w-fill lazyload"
-                    data-src="{{ get_the_post_thumbnail_url( $recent_post->ID, 'vh_large' ) }}"
-                    alt="{{ get_post_meta(get_post_thumbnail_id( $recent_post->ID ), '_wp_attachment_image_alt', true) }}"
+                    data-src="{{ $recent_post->featured_image['vh_medium@2x'] }}"
+                    alt="{{ $recent_post->alt }}"
                 />
             </picture>
         </div>

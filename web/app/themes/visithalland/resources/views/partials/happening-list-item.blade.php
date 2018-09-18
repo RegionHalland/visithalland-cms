@@ -4,11 +4,11 @@
             <div class="aspect-container aspect-1 rounded overflow-hidden">
                 <picture>
                     <source media="(min-width:40em)"
-                        data-srcset="{{ $happening->cover_image['vh_thumbnail'] . " 1x," . $happening->cover_image['vh_thumbnail'] . " 2x" }}" />
+                        data-srcset="{{ $happening->featured_image['vh_thumbnail'] . " 1x," . $happening->featured_image['vh_thumbnail@2x'] . " 2x" }}" />
                     <source
-                        data-srcset="{{ $happening->cover_image['vh_thumbnail'] . " 1x," . $happening->cover_image['vh_thumbnail'] . " 2x" }}" />
+                        data-srcset="{{ $happening->featured_image['vh_thumbnail'] . " 1x," . $happening->featured_image['vh_thumbnail@2x'] . " 2x" }}" />
                     <img class="absolute left-0 top-0 h-fill w-auto lazyload"
-                        data-src="{{ $happening->cover_image['vh_thumbnail'] }}"
+                        data-src="{{ $happening->featured_image['vh_thumbnail@2x'] }}"
                     />
                 </picture>
             </div>

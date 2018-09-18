@@ -24,15 +24,10 @@
 					</div>
 					<div class="spotlight-thumbnail__content">
 						<h4 class="spotlight-thumbnail__title">
-
 							@if (get_field("title", $spotlight->ID) != '')
-
 								{{ the_field("title", $spotlight->ID) }}
-
 							@else
-
 								{{ $spotlight->post_title }}
-
 							@endif
 						</h4>
 						<div class="read-more mt2">
