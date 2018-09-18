@@ -80,10 +80,16 @@ class CalendarClient
                     );
                     break;
                 case 'falkenberg':
+                    // Only add posts with images
+                    if($event->heroimg == "/images/18.14f66b78164d4721a21e561/1533197878079/defaultevent.jpg") continue;
+
                     // The format we get (googleMapCordinate) is 56.902966, 12.493640
-                    $coordinate_string = $event->googleMapCordinate ? $event->googleMapCordinate : null;
-                    if($coordinate_string !== null) {
-                        $exploredcoordinates = explode(", ", $coordinate_string);
+                    $coordinate_string = empty($event->googleMapCordinate) ? null : $event->googleMapCordinate;
+                    $coordinate_string = str_replace(' ', '', $coordinate_string);
+                    $location = null;
+
+                    if(!empty($coordinate_string)) {
+                        $exploredcoordinates = explode(",", $coordinate_string);
                         $lat = $exploredcoordinates[0];
                         $lng = $exploredcoordinates[1];
                         $location = self::getAdressByCoordinates(array(
@@ -222,7 +228,6 @@ class CalendarClient
             )
         ]);
         $responseArray = json_decode($response->getBody());
-
 
         return array(
             "address" => $responseArray->display_name,
