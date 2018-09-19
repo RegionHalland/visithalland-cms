@@ -1,4 +1,4 @@
-<header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+<header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
     @php _e( 'Fler artiklar', 'visithalland' ) @endphp
 </header>
 <div class="clearfix flex flex-wrap mxn2">

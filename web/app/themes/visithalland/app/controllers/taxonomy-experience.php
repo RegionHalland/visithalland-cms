@@ -9,6 +9,7 @@ class TaxonomyTaxonomyConcept extends Controller
 
 	use \App\Traits\TopLists;
 	use \App\Traits\FeaturedExperiences;
+    use \App\Traits\FeaturedArticle;
 	
     public function term()
     {

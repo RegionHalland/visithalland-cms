@@ -42,9 +42,7 @@ trait Taxonomies
         // For taxonomy-experience
         if(is_archive() && is_tax()) {
             $post = get_queried_object();
-            //var_dump($post->slug);
-            //$terms = wp_get_post_terms($post->ID, $taxonomy);
-            return $post->slug;
+            return get_field("class_name", $post);
         }
 
         // For general places where $post actually is a single post and not a post type archive
