@@ -22,7 +22,7 @@ class CalendarClient
 
     public function __construct()
     {
-        $this->google_api_key = "AIzaSyBzfYgyGwvbQi9oq1ydDRfNbLm5LZ9qVHw";
+        $this->server_google_api_key = "AIzaSyCNmC2-2XUoygVKXNYikn0e8pVOWVczjmQ";
     }
 
     public function runRequest(String $municipio)
@@ -272,8 +272,7 @@ class CalendarClient
         if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=' . $this->google_api_key);
-        $responseArray = json_decode($response->getBody());
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=' . $this->server_google_api_key);
 
         if (isset($responseArray->results[0])) {
             return array(
