@@ -1,5 +1,5 @@
 import InfiniteScroll from '../util/infiniteScroll';
-import Map from '../util/map';
+import MapBox from '../util/mapBox';
 
 export default {
     init() {
@@ -19,5 +19,5 @@ export function initHappening() {
 };
 
 export function initMap() {
-    Map.bind();
+    MapBox.bind();
 };

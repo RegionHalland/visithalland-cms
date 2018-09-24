@@ -3,7 +3,7 @@ var Flickity = require('flickity');
 export default {
   init() {
     //Adds the spotlight carousel
-    var spotlightCarousel = new Flickity('.spotlight-carousel', {
+    /*var spotlightCarousel = new Flickity('.spotlight-carousel', {
         cellAlign: 'left',
         contain: true,
         prevNextButtons: false,
@@ -17,7 +17,7 @@ export default {
 
     $('.spotlight-carousel--previous').on('click', function () {
         spotlightCarousel.previous();
-    });
+    });*/
 
   },
   finalize() {

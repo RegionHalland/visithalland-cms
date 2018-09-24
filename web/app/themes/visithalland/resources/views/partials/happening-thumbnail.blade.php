@@ -2,9 +2,9 @@
     <article class="scrim overflow-hidden aspect-container aspect-1 relative rounded">
         <picture>
             <source
-                data-srcset="{{ $happening->featured_image['vh_medium_square'] . " 1x," . $happening->featured_image['vh_medium_square@2x'] . " 2x" }}" />
+                data-srcset="{{ $happening->featured_image["sizes"]['vh_medium_square'] . " 1x," . $happening->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
             <img class="absolute left-0 top-0 w-fill lazyload"
-                data-src="{{ $happening->featured_image['vh_medium_square@2x'] }}"
+                data-src="{{ $happening->featured_image["sizes"]['vh_medium_square@2x'] }}"
             />
         </picture>
         <div class="bg-theme inline-flex px2 py1 mb2 rounded absolute top-0 left-0 ml2 mt2">

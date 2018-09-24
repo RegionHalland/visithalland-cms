@@ -13,13 +13,13 @@
 						<article>
 	                        <picture>
 	                        	<source media="(min-width:60em)"
-	                                data-srcset="{{ $post->featured_image['vh_large'] . " 1x," . $post->featured_image['vh_large@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
 	                            <source media="(min-width:40em)"
-	                                data-srcset="{{ $post->featured_image['vh_hero_wide'] . " 1x," . $post->featured_image['vh_hero_wide@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
 	                            <source
-	                                data-srcset="{{ $post->featured_image['vh_medium_square'] . " 1x," . $post->featured_image['vh_medium_square@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
 	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
-	                                data-src="{{ $post->featured_image['vh_medium_square@2x'] }}"
+	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 									alt="{{ $post->alt }}"
 	                            />
 	                        </picture>
@@ -46,11 +46,11 @@
 						<article>
 							<picture>
 	                        	<source media="(min-width:60em)"
-	                                data-srcset="{{ $post->featured_image['vh_hero_tall'] . " 1x," . $post->featured_image['vh_hero_tall@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_tall'] . " 1x," . $post->featured_image["sizes"]['vh_hero_tall@2x'] . " 2x" }}" />
 	                            <source
-	                                data-srcset="{{ $post->featured_image['vh_medium_square'] . " 1x," . $post->featured_image['vh_medium_square@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
 	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
-	                                data-src="{{ $post->featured_image['vh_hero_tall@2x'] }}"
+	                                data-src="{{ $post->featured_image["sizes"]['vh_hero_tall@2x'] }}"
 									alt="{{ $post->alt }}"
 	                            />
 	                        </picture>
@@ -77,9 +77,9 @@
 						<article>
 							<picture>
 	                            <source
-	                                data-srcset="{{ $post->featured_image['vh_medium_square'] . " 1x," . $post->featured_image['vh_medium_square@2x'] . " 2x" }}" />
+	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
 	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
-	                                data-src="{{ $post->featured_image['vh_medium_square@2x'] }}"
+	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 									alt="{{ $post->alt }}"
 	                            />
 	                        </picture>

@@ -12,6 +12,7 @@ use Roots\Sage\Template\BladeProvider;
  */
 new \App\Acf\Import();
 new \App\Visithalland\Admin();
+new \App\Visithalland\Filters();
 
 /**
  * Theme assets

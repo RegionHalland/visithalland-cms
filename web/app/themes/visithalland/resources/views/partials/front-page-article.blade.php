@@ -3,9 +3,9 @@
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">
             <picture>
                 <source
-                    data-srcset="{{ $recent_post->featured_image['vh_medium'] . " 1x," . $recent_post->featured_image['vh_medium@2x'] . " 2x" }}" />
+                    data-srcset="{{ $recent_post->featured_image["sizes"]['vh_medium'] . " 1x," . $recent_post->featured_image["sizes"]['vh_medium@2x'] . " 2x" }}" />
                 <img class="absolute left-0 top-0 w-fill lazyload"
-                    data-src="{{ $recent_post->featured_image['vh_medium@2x'] }}"
+                    data-src="{{ $recent_post->featured_image["sizes"]['vh_medium@2x'] }}"
                     alt="{{ $recent_post->alt }}"
                 />
             </picture>
