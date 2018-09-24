@@ -8,8 +8,10 @@ class Filters
 
 	public function __construct()
 	{
-		//Adds filter for adding properties to post object
+		//Adds filter for adding properties to acf post object
 		add_filter('acf/format_value/type=relationship', array($this, 'my_acf_load_value'), 11, 3);
+
+		//Adds filter for adding properties to post object
 		add_filter('the_posts', array($this, 'filter_the_posts'), 10, 1 );
 	}
 
