@@ -5,8 +5,6 @@ use GuzzleHttp\Client;
 
 class CalendarClient
 {
-    private $currentMunicipio = "";
-
     const municipios = array(
         "varberg" => array(
             "resultObject" => "resultList",
@@ -21,6 +19,11 @@ class CalendarClient
             "apiUrl" => "https://www.falkenberg.se/4.6f45c23415674cef4142d3d9/12.12caa5581576962b51a31a6.portlet?getjson=true"
         )
     );
+
+    public function __construct()
+    {
+        $this->server_google_api_key = "AIzaSyCNmC2-2XUoygVKXNYikn0e8pVOWVczjmQ";
+    }
 
     public function runRequest(String $municipio)
     {
@@ -80,10 +83,16 @@ class CalendarClient
                     );
                     break;
                 case 'falkenberg':
+                    // Only add posts with images
+                    if($event->heroimg == "/images/18.14f66b78164d4721a21e561/1533197878079/defaultevent.jpg") continue;
+
                     // The format we get (googleMapCordinate) is 56.902966, 12.493640
-                    $coordinate_string = $event->googleMapCordinate ? $event->googleMapCordinate : null;
-                    if($coordinate_string !== null) {
-                        $exploredcoordinates = explode(", ", $coordinate_string);
+                    $coordinate_string = empty($event->googleMapCordinate) ? null : $event->googleMapCordinate;
+                    $coordinate_string = str_replace(' ', '', $coordinate_string);
+                    $location = null;
+
+                    if(!empty($coordinate_string)) {
+                        $exploredcoordinates = explode(",", $coordinate_string);
                         $lat = $exploredcoordinates[0];
                         $lng = $exploredcoordinates[1];
                         $location = self::getAdressByCoordinates(array(
@@ -223,7 +232,6 @@ class CalendarClient
         ]);
         $responseArray = json_decode($response->getBody());
 
-
         return array(
             "address" => $responseArray->display_name,
             "lat" => $coordinates["lat"],
@@ -264,7 +272,7 @@ class CalendarClient
         if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=KEY');
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=' . $this->server_google_api_key);
         $responseArray = json_decode($response->getBody());
 
         if (isset($responseArray->results[0])) {
