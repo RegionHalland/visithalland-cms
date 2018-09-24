@@ -5,8 +5,6 @@ use GuzzleHttp\Client;
 
 class CalendarClient
 {
-    private $currentMunicipio = "";
-
     const municipios = array(
         "varberg" => array(
             "resultObject" => "resultList",
@@ -21,6 +19,11 @@ class CalendarClient
             "apiUrl" => "https://www.falkenberg.se/4.6f45c23415674cef4142d3d9/12.12caa5581576962b51a31a6.portlet?getjson=true"
         )
     );
+
+    public function __construct()
+    {
+        $this->server_google_api_key = "AIzaSyCNmC2-2XUoygVKXNYikn0e8pVOWVczjmQ";
+    }
 
     public function runRequest(String $municipio)
     {
@@ -269,7 +272,7 @@ class CalendarClient
         if($coordinates["lat"] == "" && $coordinates["lng"] == "") return false;
 
         $client = new Client();
-        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=KEY');
+        $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=' . $this->server_google_api_key);
         $responseArray = json_decode($response->getBody());
 
         if (isset($responseArray->results[0])) {
