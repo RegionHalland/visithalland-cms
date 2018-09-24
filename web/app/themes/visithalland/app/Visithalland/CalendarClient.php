@@ -273,6 +273,7 @@ class CalendarClient
 
         $client = new Client();
         $response = $client->request('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng='. $coordinates["lat"] .','. $coordinates["lng"] . '&key=' . $this->server_google_api_key);
+        $responseArray = json_decode($response->getBody());
 
         if (isset($responseArray->results[0])) {
             return array(
