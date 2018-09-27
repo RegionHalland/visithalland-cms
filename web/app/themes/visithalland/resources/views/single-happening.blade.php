@@ -13,7 +13,7 @@
                     </div>
                     <aside class="col col-12 md-col-6 mt3">
                         <div class="happening-info topographic-pattern">
-                            <div class="happening-info__map acf-map">
+                            <div id="mymap" class="happening-info__map acf-map">
                                 <div class="marker" data-lat="{{ get_field("location")['lat']}}" data-lng="{{ get_field("location")['lng']}}"></div>
                             </div>
                             <div class="happening-info__inner clearfix">

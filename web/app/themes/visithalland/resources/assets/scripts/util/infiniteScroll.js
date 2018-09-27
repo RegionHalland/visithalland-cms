@@ -1,6 +1,6 @@
 import inf from 'infinite-scroll';
 import { initSpotlight } from '../routes/singleSpotlight';
-import { initHappening } from '../routes/singleHappening';
+//import { initHappening } from '../routes/singleHappening';
 
 class InfiniteScroll {
     constructor(){
@@ -56,7 +56,7 @@ export function initInfiniteScroll() {
                 initSpotlight();
                 break;
             case "happening":
-                initHappening();
+                //initHappening();
                 break;
             case "meet_local":
                 //initMeetLocal();
