@@ -1,7 +1,7 @@
 <section class="{{ App::getTermClassName() }} relative" role="heading" id="page-content">
     <div class="height-5 py6 bg-blue-light absolute top-0 left-0 w-fill topographic-pattern">
     </div>
-    <div class="relative container col-11 md-col-10 pt6 mt3 sm-mt5 lg-mt3">
+    <div class="relative container col-11 md-col-10 pt6">
         <div class="aspect-container relative scrim aspect-1 sm-aspect-3x2 md-aspect-16x9 topographic-pattern rounded">
             <picture>
                 <source media="(min-width: 60em)"
