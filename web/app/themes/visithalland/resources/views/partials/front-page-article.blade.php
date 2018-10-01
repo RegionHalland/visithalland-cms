@@ -1,12 +1,12 @@
 <a href="{{ get_permalink($recent_post->ID) }}" title="{{ $recent_post->post_title }}" class="mb3">
-    <article class="">
+    <article>
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">
             <picture>
                 <source
                     data-srcset="{{ $recent_post->featured_image["sizes"]['vh_medium'] . " 1x," . $recent_post->featured_image["sizes"]['vh_medium@2x'] . " 2x" }}" />
                 <img class="absolute left-0 top-0 w-fill lazyload"
                     data-src="{{ $recent_post->featured_image["sizes"]['vh_medium@2x'] }}"
-                    alt="{{ $recent_post->alt }}"
+                    alt="{{ $recent_post->featured_image["alt"] }}"
                 />
             </picture>
         </div>

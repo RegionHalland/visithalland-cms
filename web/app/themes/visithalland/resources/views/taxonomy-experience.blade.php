@@ -36,7 +36,7 @@
                                             data-srcset="{{ $post->featured_image['vh_medium_square'] . " 1x," . $post->featured_image['vh_medium_square@2x'] . " 2x" }}" />
                                         <img class="absolute left-0 top-0 h-fill w-auto lazyload"
                                             data-src="{{ $post->featured_image['vh_medium_square@2x'] }}"
-                                            alt="{{ $post->alt }}"
+                                            alt="{{ $post->featured_image["alt"] }}"
                                         />
                                     </picture>
                                     <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">

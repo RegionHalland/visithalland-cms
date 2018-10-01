@@ -19,7 +19,7 @@ trait FeaturedImage
     	if( ! has_post_thumbnail($post)) {
     		return array(
 	    		"sizes" => $sizes,
-	    		"alt_text" => "",
+	    		"alt" => "",
 	    		"title" => "",
 	    		"image_caption" => ""
 	    	);
@@ -37,7 +37,7 @@ trait FeaturedImage
 
     	$featured_image = array(
     		"sizes" => $sizes,
-    		"alt_text" => $alt,
+    		"alt" => $alt,
     		"title" => $thumbnail_post->post_content,
     		"image_caption" => $thumbnail_post->post_excerpt
     	);
