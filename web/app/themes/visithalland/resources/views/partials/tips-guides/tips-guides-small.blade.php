@@ -6,6 +6,7 @@
             />
         </div>
         <h3 class="mt3">{{ the_title() }}</h3>
+        <p class="fade-text mt2">{{ the_field('excerpt') }}</p>
         <div class="read-more mt3">
             <span class="read-more__text">
                 @php _e( 'Läs mer', 'visithalland' ); @endphp
