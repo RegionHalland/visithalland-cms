@@ -2,7 +2,6 @@ import mapboxgl from 'mapbox-gl';
 
 class MapBox {
     constructor() {
-        console.log("gola")
     }
 
     bind() {
