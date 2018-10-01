@@ -1,5 +1,5 @@
 
-@if(isset($top_lists))
+@if(is_array($top_lists))
     <div class="col-12">
         <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
             @php _e( 'Våra tips', 'visithalland' ) @endphp

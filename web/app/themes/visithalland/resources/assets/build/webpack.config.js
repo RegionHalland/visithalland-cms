@@ -8,6 +8,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
+const SvgStore = require('webpack-svgstore-plugin');
 const desire = require('./util/desire');
 const config = require('./config');
 
@@ -44,6 +45,16 @@ let webpackConfig = {
         include: config.paths.assets,
         use: 'eslint',
       },*/
+      //Add Vue support
+      {
+        test: /\.vue$/,
+        loader: 'vue',
+        options: {
+            loaders: {
+                i18n: '@kazupon/vue-i18n-loader'
+            }
+        }
+      },
       {
         enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
@@ -125,6 +136,9 @@ let webpackConfig = {
       config.paths.assets,
       'node_modules',
     ],
+    alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+    },
     enforceExtension: false,
   },
   resolveLoader: {
@@ -143,6 +157,15 @@ let webpackConfig = {
      * unfortunately it doesn't provide a reliable way of
      * tracking the before/after file names
      */
+    new SvgStore({
+      // svgo options
+      svgoOptions: {
+        plugins: [
+          { removeTitle: true }
+        ]
+      },
+      prefix: ''
+    }),
     new CopyGlobsPlugin({
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
