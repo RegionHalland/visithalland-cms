@@ -2,7 +2,7 @@
 	<div class="container col-11 md-col-10 lg-col-10 flex items-center">
 		<div class="clearfix flex items-center">
 			<div class="col col-4 sm-col-3 md-col-2 flex items-center justify-center">
-				<img class="w-fit mr3 max-width-4 lazyload" data-src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
+				<img class="w-fit mr3 max-width-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
 			</div>
 			<div class="feature__content col col-8 sm-col-5 md-col-4 pl2">
 				<span class="rounded-pill py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>

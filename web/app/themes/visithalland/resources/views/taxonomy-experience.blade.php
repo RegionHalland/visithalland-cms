@@ -17,11 +17,11 @@
             </div>
         </div>
     @else
-        <div class="container col-11 md-col-10 pb4 pt4 {{ App::getTermClassName() }}" role="main" id="main-content">
+        <div class="container col-11 md-col-10 pb4 pt4" role="main" id="main-content">
             <div class="content-grid__container pt4">
                 @if(is_array($featured_experiences))
                     <div class="content-grid__content">
-                        <header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+                        <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
                             @php _e( 'Utvalda artiklar', 'visithalland' ) @endphp
                         </header>
                         @foreach($featured_experiences as $post)
@@ -60,7 +60,7 @@
                 @if(is_array($top_lists))
                     <div class="content-grid__sidebar mxn3">
                         <div class="col-12 px3">
-                            <header class="bg-theme rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+                            <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
                                 @php _e( 'Redaktionens tips', 'visithalland' ) @endphp
                             </header>
                         </div>

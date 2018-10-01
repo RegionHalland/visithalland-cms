@@ -1,42 +1,42 @@
 $themes: (
   'visithalland': (
     'primary': #083644,
-    'secondary': #083644,
+    'secondary': lighten(#083644, 5%),
     'icon': url("../images/coastal-living.svg")
   ),
   'spa-wellness': (
     'primary': #48A5AA,
-    'secondary': #083644,
+    'secondary': lighten(#48A5AA, 5%),
     'icon': url("../images/spa-wellness.svg")
   ),
   'golf': (
     'primary': #48A5AA,
-    'secondary': #083644,
+    'secondary': lighten(#48A5AA, 5%),
     'icon': url("../images/golf.svg")
   ),
   'shopping': (
     'primary': #D95757,
-    'secondary': #083644,
+    'secondary': lighten(#D95757, 5%),
     'icon': url("../images/golf.svg")
   ),
   'beach-coast': (
     'primary': #3976A2,
-    'secondary': #083644,
+    'secondary': lighten(#3976A2, 5%),
     'icon': url("../images/beach-coast.svg")
   ),
   'food-culture': (
     'primary': #D95757,
-    'secondary': #083644,
+    'secondary': lighten(#D95757, 5%),
     'icon': url("../images/food-culture.svg")
   ),
   'hiking-biking': (
     'primary': #308669,
-    'secondary': #228153,
+    'secondary': lighten(#308669, 5%),
     'icon': url("../images/hiking-biking.svg")
   ),
   'camping-friends': (
     'primary': #6394B8,
-    'secondary': #5598D6,
+    'secondary': lighten(#6394B8, 5%),
     'icon': url("../images/camping-friends.svg")
   )
 

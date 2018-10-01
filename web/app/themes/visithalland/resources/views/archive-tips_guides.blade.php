@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.page.page-header')
-    <div class="container col-11 md-col-10 pb4" role="main" id="main-content">
+    <div class="container col-11 md-col-10 pb4 {{ App::getTermClassName() }}" role="main" id="main-content">
         <div class="content-grid__container pt4">
             @if(is_array($featured_posts))
                 <div class="content-grid__content">
