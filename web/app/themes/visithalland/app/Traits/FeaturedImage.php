@@ -16,6 +16,10 @@ trait FeaturedImage
     	$sizes = array();
     	$sizes = array_fill_keys($image_sizes, '');
 
+        foreach ($image_sizes as $key => $image_size) {
+            $sizes[$image_size] = "http://localhost:3000/app/uploads/2017/09/Varbergstorg_OskarAlbrektson_1080.jpg";
+        }
+
     	if( ! has_post_thumbnail($post)) {
     		return array(
 	    		"sizes" => $sizes,

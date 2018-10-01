@@ -2,7 +2,6 @@ var Flickity = require('flickity');
 
 export default {
   init() {
-    console.log("Only on tax experience");
     //Adds the spotlight carousel
     var spotlightCarousel = new Flickity('.spotlight-carousel', {
         cellAlign: 'left',
