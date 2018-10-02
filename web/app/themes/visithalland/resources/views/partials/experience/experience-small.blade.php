@@ -60,7 +60,7 @@
             </div>
         @endif
         <div class="content-grid__bottom-content">
-            @include('partials.experience.experience-grid')
+            @include('partials.experience.experience-grid-small')
         </div>
     </div>
 </div>
