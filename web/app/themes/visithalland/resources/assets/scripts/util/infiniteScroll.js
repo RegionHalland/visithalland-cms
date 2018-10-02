@@ -11,6 +11,7 @@ class InfiniteScroll {
 
 export function initInfiniteScroll() {
     var nextPages = $("#nextPages").data("all");
+    if(nextPages.length == 0) return $('.next-article__container').hide();
 
     var infScroll = new inf('#infinite-container', {
         path: function () {
