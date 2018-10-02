@@ -120,11 +120,11 @@ if (function_exists('acf_add_local_field_group')) {
                         'id' => '',
                     ),
                     'choices' => array(
-                        '/images/map-pin-green.svg' => __('Grön Kartnål', 'visithalland'),
-                        '/images/map-pin-purple.svg' => __('Lila Kartnål', 'visithalland'),
-                        '/images/map-pin-red.svg' => __('Röd Kartnål', 'visithalland'),
-                        '/images/map-pin-yellow.svg' => __('Gul Kartnål', 'visithalland'),
-                        '/images/map-pin-blue.svg' => __('Blå Kartnål', 'visithalland'),
+                        'images/map-pin-green.svg' => __('Grön Kartnål', 'visithalland'),
+                        'images/map-pin-purple.svg' => __('Lila Kartnål', 'visithalland'),
+                        'images/map-pin-red.svg' => __('Röd Kartnål', 'visithalland'),
+                        'images/map-pin-yellow.svg' => __('Gul Kartnål', 'visithalland'),
+                        'images/map-pin-blue.svg' => __('Blå Kartnål', 'visithalland'),
                     ),
                     'default_value' => array(
                     ),

@@ -117,11 +117,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "\/images\/map-pin-green.svg": "Gr\u00f6n Kartn\u00e5l",
-                        "\/images\/map-pin-purple.svg": "Lila Kartn\u00e5l",
-                        "\/images\/map-pin-red.svg": "R\u00f6d Kartn\u00e5l",
-                        "\/images\/map-pin-yellow.svg": "Gul Kartn\u00e5l",
-                        "\/images\/map-pin-blue.svg": "Bl\u00e5 Kartn\u00e5l"
+                        "images\/map-pin-green.svg": "Gr\u00f6n Kartn\u00e5l",
+                        "images\/map-pin-purple.svg": "Lila Kartn\u00e5l",
+                        "images\/map-pin-red.svg": "R\u00f6d Kartn\u00e5l",
+                        "images\/map-pin-yellow.svg": "Gul Kartn\u00e5l",
+                        "images\/map-pin-blue.svg": "Bl\u00e5 Kartn\u00e5l"
                     },
                     "default_value": [],
                     "allow_null": 0,
