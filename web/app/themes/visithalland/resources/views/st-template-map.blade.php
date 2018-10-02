@@ -13,8 +13,7 @@
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
 		@foreach($object->links as $key => $link)
-			@php($location = $link["location"]);
-			{{ $object->icon }}
+			@php($location = $link["location"])
 			<div class="marker" data-lat="{{$location["lat"]}}" data-lng="{{ $location["lng"] }}" data-icon="@asset($object->icon)">
 				<h4>{{ $link["name"] }}</h4>
 				<p>Adress: {{ $location["address"] }}</p>
