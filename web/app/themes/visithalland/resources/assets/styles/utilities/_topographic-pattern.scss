@@ -8,6 +8,13 @@
 }
 
 
+.topographic-pattern-theme {
+	@include themify {
+		background: url("../images/pattern.svg"), linear-gradient(92.43deg, $color-primary 0%, $color-secondary 100%);
+	}
+}
+
+
 .topographic-pattern-dark {
 	background-image: url("../images/pattern-dark.svg");
 	background-repeat:repeat;

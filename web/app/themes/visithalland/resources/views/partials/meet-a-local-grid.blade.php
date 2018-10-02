@@ -17,7 +17,6 @@
                 <div class="col col-12 sm-col-6 md-col-4 px2">
                     <a href="{{ the_permalink($current_tip->ID) }}" title="{!! $current_tip->post_title !!}" class="mb3 block">
                         <article class="scrim overflow-hidden aspect-container aspect-1 relative rounded">
-
                             <picture>
                                 <source
                                     data-srcset="{{ get_the_post_thumbnail_url($current_tip->ID, 'vh_medium_square' ) . " 1x," . get_the_post_thumbnail_url($current_tip->ID, 'vh_medium_square@2x' ) . " 2x" }}" />

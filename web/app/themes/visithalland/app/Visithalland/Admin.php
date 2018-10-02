@@ -4,7 +4,6 @@ namespace App\Visithalland;
 
 class Admin
 {
-
 	public function __construct()
 	{
 		add_action('admin_menu', array($this, 'addTaxonomyMenuItem'));

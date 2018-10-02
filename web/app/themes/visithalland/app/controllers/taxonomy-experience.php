@@ -8,10 +8,16 @@ class TaxonomyTaxonomyConcept extends Controller
 {
 
 	use \App\Traits\TopLists;
+	use \App\Traits\FeaturedExperiences;
+    use \App\Traits\FeaturedArticle;
 	
     public function term()
     {
         return get_queried_object();
+    }
+
+    public function posts() {
+    	return \App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1);
     }
 
     public function navigationItems() {
@@ -21,4 +27,5 @@ class TaxonomyTaxonomyConcept extends Controller
     public function happenings() {
 		return \App::getHappenings(4, $this->term());
 	}
+
 }

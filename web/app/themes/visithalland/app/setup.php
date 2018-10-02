@@ -12,12 +12,12 @@ use Roots\Sage\Template\BladeProvider;
  */
 new \App\Acf\Import();
 new \App\Visithalland\Admin();
+new \App\Visithalland\Filters();
 
 /**
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    
     if (basename(get_page_template()) != "template-activities.blade.php" && 
         basename(get_page_template()) != "st-template-landing.blade.php" &&
         basename(get_page_template()) != "st-template-all-activities.blade.php") {

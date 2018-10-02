@@ -1,6 +1,6 @@
 [{
     "key": "group_5b8cd59ba21a0",
-    "title": "Tips & Guider",
+    "title": "Tips & Guider Arkiv",
     "fields": [
         {
             "key": "field_5b8cd5a0a2667",
@@ -35,7 +35,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-tips-guider"
+                "value": "acf-options-utvalda-guider"
             }
         ]
     ],
@@ -48,3 +48,4 @@
     "active": 1,
     "description": "Anv\u00e4nds f\u00f6r att justera inneh\u00e5llet i Tips & Guider"
 }]
+

@@ -2,13 +2,14 @@
 import 'jquery';
 
 // Import everything from autoload
-import "./autoload/**/*";
+import "./autoload/**/*"
 
 // import local dependencies
 import Router from './util/Router';
 import common from './routes/common';
+
 import archive from './routes/archive';
-import home from './routes/home';
+import taxExperience from './routes/taxExperience';
 import singleSpotlight from './routes/singleSpotlight';
 import singleHappening from './routes/singleHappening';
 import singleMeetLocal from './routes/singleMeetLocal';
@@ -37,15 +38,12 @@ const routes = new Router({
     singleEditorTip,
     // Single Tips Guides
     singleTipsGuides,
-    // Home page
-    home
+    // Taxonomy Experience
+    taxExperience
 });
 
-
 // Load Events
-jQuery(document).ready(() =>
-    routes.loadEvents()
-);
+jQuery(document).ready(() => routes.loadEvents());
 
 // Build SVG sprite
 var __svg__ = {

@@ -1,23 +1,22 @@
+import MapBox from '../util/mapBox';
 import InfiniteScroll from '../util/infiniteScroll';
-import Map from '../util/map';
 
 export default {
     init() {
         // Init Infinite scroll
         new InfiniteScroll();
 
-        initMap();
+        MapBox.bind();
     },
     finalize() {
         // JavaScript to be fired on the home page, after the init JS
     },
 };
 
-export function initHappening() {
-    //Init Map
-    initMap();
+export function initMap() {
+    MapBox.bind();
 };
 
-export function initMap() {
-    Map.bind();
+export function initHappening() {
+	initMap();
 };

@@ -31,7 +31,7 @@
 			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt4 pb4">
 				<div class="nav-dropdown__background rounded p3 bg-blue-xlight topographic-pattern">
 					<div class="col col-5 sm-col-4 md-col-4 flex items-center justify-center">
-						<img class="feature__img w-fit mr3 max-width-4 lazyload" data-src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
+						<img class="feature__img w-fit mr3 max-width-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
 					</div>
 					<div class="feature__content col col-7 sm-col-4 md-col-7 ">
 						<span class="rounded-pill py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>

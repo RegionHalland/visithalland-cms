@@ -1,44 +1,27 @@
-<section class="article-hero relative clearfix {{ App::getTermClassName() }}" role="heading" id="page-content">
-    <div class="article-hero__backdrop topographic-pattern">
+<section class="{{ App::getTermClassName() }} relative" role="heading" id="page-content">
+    <div class="height-5 py6 bg-blue-light absolute top-0 left-0 w-fill topographic-pattern">
     </div>
-    <div class="article-hero__inner container relative col-11 md-col-10 lg-col-10 mx-auto">
-        <div class="article-hero__img-container topographic-pattern">
-            @if(get_field("start_date"))
-                <div class="bg-theme inline-flex px2 py1 mb2 rounded absolute top-0 left-0 ml2 mt2 z3">
-                    <div>
-                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("j", strtotime(get_field("start_date"))) }}</span>
-                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("M", strtotime(get_field("start_date"))) }}</span>
-                    </div>
-                    <span class="mx1 text-light rift-soft">-</span>
-                    <div>
-                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("j", strtotime(get_field("end_date"))) }}</span>
-                        <span class="text-light rift-font text-base bold">{{ $dateobj = date("M", strtotime(get_field("end_date"))) }}</span>
-                    </div>
-                </div>
-            @endif
+    <div class="relative container col-11 md-col-10 pt6">
+        <div class="aspect-container relative scrim aspect-1 sm-aspect-3x2 md-aspect-16x9 topographic-pattern rounded">
             <picture>
+                <source media="(min-width: 60em)"
+                    data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
                 <source media="(min-width: 40em)"
-                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide@2x' ) . " 2x" }}" />
+                    data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
                 <source
-                    data-srcset="{{ get_the_post_thumbnail_url( $post->ID, 'vh_medium_square' ) . " 1x," . get_the_post_thumbnail_url( $post->ID, 'vh_medium_square@2x' ) . " 2x" }}" />
-                <img class="article-hero__img lazyload"
-                    data-src="{{ get_the_post_thumbnail_url( $post->ID, 'vh_hero_wide' ) }}"
-                    alt="{{ $alt }}"
+                    data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
+                <img class="absolute w-fill top-0 left-0 lazyload"
+                    data-src="{{ $post->featured_image["sizes"]['vh_hero_wide@2x'] }}"
+                    alt="{{ $post->featured_image["alt"] }}"
                 />
             </picture>
-            
-            @if(isset($thumbnail_image) && is_array($thumbnail_image) && $thumbnail_image[0]->post_content)
-                <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z3">
-                    <svg class="icon image-credit--large__icon">
-                        <use xlink:href="#camera-icon"/>
-                    </svg>
-                    <span class="image-credit--large__author">{{ $thumbnail_image[0]->post_content }}</span>
-                </figcaption>
-            @endif
 
-            <div class="article-hero__content col-11 md-col-10">
+            @include('partials.components.image-credit')
+            @include('partials.components.date-badge')
+
+            <div class="absolute bottom-0 left-0 right-0 mx-auto center pb4 md-pb4 col-11 sm-col-8 z3">
                 @include('partials.components.breadcrumbs')
-                <h1 class="article-hero__title light h1 mb3 center mt2">{{ the_title() }}</h1>
+                <h1 class="text-light text-225 md-text-275 line-height-2 mb3 center mt2">{{ $post->post_title }}</h1>
             </div>
         </div>
         <div class="scroll-indicator mx-auto left-0 right-0">

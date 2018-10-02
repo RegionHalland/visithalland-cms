@@ -1,9 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5b8cd59ba21a0',
-    'title' => __('Tips & Guider', 'visithalland'),
+    'title' => __('Tips & Guider Arkiv', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b8cd5a0a2667',
@@ -39,7 +39,7 @@ if (function_exists('acf_add_local_field_group')) {
             0 => array(
                 'param' => 'options_page',
                 'operator' => '==',
-                'value' => 'acf-options-tips-guider',
+                'value' => 'acf-options-utvalda-guider',
             ),
         ),
     ),
@@ -52,4 +52,4 @@ if (function_exists('acf_add_local_field_group')) {
     'active' => 1,
     'description' => 'Används för att justera innehållet i Tips & Guider',
 ));
-}
+}

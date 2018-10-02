@@ -7,8 +7,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const SvgStore = require('webpack-svgstore-plugin');
 
+const SvgStore = require('webpack-svgstore-plugin');
+const desire = require('./util/desire');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -38,6 +39,12 @@ let webpackConfig = {
   },
   module: {
     rules: [
+      /*{
+        enforce: 'pre',
+        test: /\.js$/,
+        include: config.paths.assets,
+        use: 'eslint',
+      },*/
       //Add Vue support
       {
         test: /\.vue$/,
@@ -48,12 +55,6 @@ let webpackConfig = {
             }
         }
       },
-      /*{
-        enforce: 'pre',
-        test: /\.js$/,
-        include: config.paths.assets,
-        use: 'eslint',
-      },*/
       {
         enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
@@ -85,7 +86,7 @@ let webpackConfig = {
           ],
         }),
       },
-      {
+      /*{
         test: /\.scss$/,
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
@@ -100,12 +101,17 @@ let webpackConfig = {
               },
             },
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
+            {
+              loader: 'sass', options: {
+                sourceMap: config.enabled.sourceMaps,
+                sourceComments: true,
+              },
+            },
           ],
         }),
-      },
+      },*/
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
         loader: 'url',
         options: {
@@ -114,7 +120,7 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: /node_modules/,
         loader: 'url',
         options: {
@@ -151,6 +157,15 @@ let webpackConfig = {
      * unfortunately it doesn't provide a reliable way of
      * tracking the before/after file names
      */
+    new SvgStore({
+      // svgo options
+      svgoOptions: {
+        plugins: [
+          { removeTitle: true }
+        ]
+      },
+      prefix: ''
+    }),
     new CopyGlobsPlugin({
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
@@ -179,25 +194,12 @@ let webpackConfig = {
         context: config.paths.assets,
       },
     }),
-    new SvgStore({
-      // svgo options
-      svgoOptions: {
-        plugins: [
-          { removeTitle: true }
-        ]
-      },
-      prefix: ''
-    }),
-    /*new webpack.LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
       test: /\.js$/,
       options: {
-        eslint: { failOnWarning: false, failOnError: false },
+        eslint: { failOnWarning: false, failOnError: true },
       },
-    }),*/
-    /*new StyleLintPlugin({
-      failOnError: !config.enabled.watcher,
-      syntax: 'scss',
-    }),*/
+    }),
     new FriendlyErrorsWebpackPlugin(),
   ],
 };
@@ -231,4 +233,6 @@ if (config.enabled.watcher) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
-module.exports = webpackConfig;
+module.exports = merge.smartStrategy({
+  'module.loaders': 'replace',
+})(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
