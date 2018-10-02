@@ -1,7 +1,3 @@
-.breadcrumbs {
-
-}
-
 .breadcrumbs__icon {
 	display:inline-block;
 	margin-right:$space-1;
@@ -19,13 +15,15 @@
 }
 
 .breadcrumbs__divider {
-	color:palette(grey, base);
+	color:$white;
+	opacity:0.75;
 }
 
 .breadcrumbs__link {
 	font-weight:300;
 	font-family:$rift-font-family;
-	color:palette(grey, base);
+	color:$white;
+	opacity:0.75;
 	vertical-align: middle;
 	font-size:0.9rem;
 	max-width: 100px;
@@ -39,5 +37,6 @@
 	}
 	&--current {
 		color:$white;
+		opacity:1;
 	}
 }
