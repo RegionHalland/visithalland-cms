@@ -34,7 +34,7 @@
                 <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
                     @php _e( 'Fler artiklar', 'visithalland' ) @endphp
                 </header>
-                <div class="clearfix mxn2">
+                <div class="clearfix flex flex-wrap mxn2">
                     @if (have_posts())
                         @while (have_posts())
                             @php 
