@@ -43,24 +43,13 @@
                 @endforeach
             </div>
         @endif
-        @if(is_array($top_lists))
-            <div class="content-grid__sidebar mxn3">
-                <div class="col-12 px3">
-                    <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
-                        @php _e( 'Redaktionens tips', 'visithalland' ) @endphp
-                    </header>
-                </div>
-                @if(isset($top_lists))
-                    @foreach($top_lists as $top_list)
-                        <div class="col col-12 sm-col-6 md-col-12 mt3 mb3 px3">
-                            @include('partials.components.top-list')
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        @endif
+
+        <div class="content-grid__sidebar">
+            @include('partials.experience.experience-sidebar')
+        </div>
+
         <div class="content-grid__bottom-content">
-            @include('partials.experience.experience-grid')
+            @include('partials.experience.experience-grid-small')
         </div>
     </div>
 </div>

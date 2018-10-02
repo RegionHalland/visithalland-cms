@@ -20,6 +20,10 @@ class TaxonomyTaxonomyConcept extends Controller
     	return \App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1);
     }
 
+    public function postsWithPlacesCompanies() {
+        return \App::getPosts(array("happening"), get_queried_object(), -1);
+    }
+
     public function navigationItems() {
 		return \App::getPrimaryNavigationChildren();
 	}
