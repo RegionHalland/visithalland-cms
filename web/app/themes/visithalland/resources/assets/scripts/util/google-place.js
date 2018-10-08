@@ -1,10 +1,9 @@
 class GooglePlace {
-    // TODO: Test if it works
     constructor() {
-        this.map;
+        this.map = document.createElement("div");
         this.service;
 
-        if (document.getElementById('map')){
+        if ($('.acf-map').last()){
             var lat = $('.acf-map').find(".marker").data('lat');
             var lng = $('.acf-map').find(".marker").data('lng');
 
@@ -15,15 +14,10 @@ class GooglePlace {
     initMap(lat, lng) {
         var locationToSearch = { lat: Number(lat), lng: Number(lng) };
 
-        this.map = new google.maps.Map(document.getElementById('map'), {
-            center: locationToSearch,
-            zoom: 15
-        });
-
-        this.service = new google.maps.places.PlacesService(map);
+        this.service = new google.maps.places.PlacesService(this.map);
         this.service.nearbySearch({
             location: locationToSearch,
-            radius: 50,
+            radius: 80,
             keyword: $(".article-hero__title").text(),
         }, this.callback.bind(this));
     }
@@ -31,9 +25,14 @@ class GooglePlace {
     callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             if (results.length > 0) {
-                var place = results[0];
+                // We select the first object in the result array which has a opening hour
+                var firstResultWithOpeningHours = results.find(function(element) {
+                    return element.opening_hours;
+                });
 
-                // TODO - make this.service to be defined here...
+                if(!firstResultWithOpeningHours) return;
+
+                var place = firstResultWithOpeningHours;
                 this.service.getDetails({ placeId: place.place_id }, this.detailCallback);
             }
         }

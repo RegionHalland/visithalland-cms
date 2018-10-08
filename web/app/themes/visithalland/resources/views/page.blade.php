@@ -9,13 +9,9 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <article role="main" id="main-content">
-
-
         @include('partials.page.page-header')
         <div class="container col-11 md-col-10 pb4">
-
             <div class="content-grid__container">
-
                 <div class="content-grid__content">
                     <div class="article-body col-10">
                         {{ the_content() }}
@@ -23,7 +19,7 @@
                     <address class="author-horizontal mt3 mb4">
                         <div class="author-horizontal__img-container">
                             <img
-                                data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"] }}"
+                                data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_thumbnail@2x"] }}"
                                 alt="'Skrivet av: ' + {{ the_author_meta('display_name') }}"
                                 class="author-horizontal__img lazyload"
                             />
@@ -33,44 +29,13 @@
                             <span class="block author-horizontal__title">{{ get_field('role', 'user_'. $author_id) }}</span>
                         </div>
                     </address>
-
                 </div>
-
                 <div class="content-grid__sidebar mxn3">
-
-                    @if( have_rows('contact') )
-                        <div class="contacts clearfix px3 mb4">
-                            <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
-                                @php _e( 'Kontaktpersoner', 'visithalland' ) @endphp
-                            </header>
-                            @php while ( have_rows('contact') ) : the_row();
-                                $user_id = get_sub_field('contact_person')['ID'];
-                            @endphp
-                            <address class="contact mb2 block mt3">
-                                <div class="contact__img-container">
-                                    <img
-                                        data-src="{{ get_field('profile_image', 'user_'. $user_id)["sizes"]["vh_profile@2x"] }}"
-                                        alt="'Skrivet av: ' + {{ get_sub_field('contact_person')['user_firstname'] }}"
-                                        class="contact__img lazyload"
-                                    />
-                                </div>
-                                <div class="contact__bio">
-                                    <span class="block contact__name">{{ get_sub_field('contact_person')['display_name'] }}</span>
-                                    <span class="block contact__title">{{ get_field('role', 'user_'. $user_id) }}</span>
-                                    <a class="contact__email" href="mailto:{{ get_sub_field('contact_person')['user_email'] }}">
-                                        {{ get_sub_field('contact_person')['user_email'] }}
-                                    </a>
-                                </div>
-                            </address>
-                            @endwhile
-                        </div>
-                    @endif
                     
+
                 </div>
             </div>
         </div>
-        
-
     </article>
     @endwhile
 @endsection

@@ -17,13 +17,16 @@ $videoUrl = array(
 
 <header class="st-list__header flex items-center">
 	<div class="container col-11 sm-col-8 md-col-7 lg-col-6 mx-auto center relative">
-		<div class="st-video-outer col-12 mx-auto">
-			<div class="st-video-container col-12 overflow-hidden">
+		<div class="st-video-outer col-12 mx-auto overflow-hidden rounded">
+			<div class="st-video-container col-12">
 				<video controls class="col-12"> 
 				   <source src="{{ $videoUrl['webm'] }}" type="video/webm"> 
 				   <source src="{{ $videoUrl['ogg'] }}" type="video/ogg">
 				   <source src="{{ $videoUrl['mp4'] }}" type="video/mp4">  
 				</video>
+			</div>
+			<div class="p3 bg-white">
+				<img class="max-width-1 z9" src="@asset('images/eu-jordbruksfonden.jpg')" alt="">
 			</div>
 		</div>
 		<div class="col-12 sm-col-8 md-col-6 flex items-center mx-auto mt5">
