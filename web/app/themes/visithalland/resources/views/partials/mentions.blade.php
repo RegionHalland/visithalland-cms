@@ -1,58 +1,53 @@
 @php $mentions = get_field("mentioned"); @endphp
 @if(isset($mentions) && is_array($mentions))
-    <div class="article-mentions mt3 clearfix">
-         <header class="section-header inline-block mb2 visithalland">
-            <div class="section-header__icon-wrapper">
-                <svg class="section-header__icon icon">
-                    <use xlink:href="#recommend-icon"/>
-                </svg>
-            </div>
-            <div class="section-header__title">
-                @php _e( 'Tips från artikeln', 'visithalland' ) @endphp
-            </div>
+    <div class="mt5 clearfix">
+        <header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+            @php _e( 'Tips från artikeln', 'visithalland' ) @endphp
         </header>
-        @foreach ($mentions as $key => $mention)
-            <a href="{{ get_permalink($mention->ID) }}" class="link-reset">
-                <article class="article-mention col col-12 sm-col-6 mt3">
-                    <div class="clearfix">
-                        <div class="col col-4 sm-col-4 ">
-                            <div class="article-mention__img-container relative">
-                                @php
-                                    $thumbnail_id = get_post_thumbnail_id( $mention->ID );
-                                    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-                                @endphp
-                                <picture>
-                                    <source
-                                        data-srcset="{{ get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
-                                    <img class="article-mention__img lazyload"
-                                        data-src="{{ get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail' ) }}"
-                                        alt="{{ $alt }}"
-                                    />
-                                </picture>
+        <div class="clearfix flex flex-wrap mxn2">
+            @foreach ($mentions as $key => $mention)
+                <a href="{{ get_permalink($mention->ID) }}" class="link-reset col col-12 sm-col-6 px2">
+                    <article class="mt3">
+                        <div class="clearfix">
+                            <div class="col col-4 sm-col-4 ">
+                                <div class="aspect-container aspect-1 rounded overflow-hidden">
+                                    @php
+                                        $thumbnail_id = get_post_thumbnail_id( $mention->ID );
+                                        $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+                                    @endphp
+                                    <picture>
+                                        <source
+                                            data-srcset="{{ get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail' ) . " 1x," . get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail@2x' ) . " 2x" }}" />
+                                        <img class="absolute left-0 top-0 h-fill w-auto lazyload"
+                                            data-src="{{ get_the_post_thumbnail_url( $mention->ID, 'vh_thumbnail' ) }}"
+                                            alt="{{ $alt }}"
+                                        />
+                                    </picture>
+                                </div>
                             </div>
-                        </div>
-                        <div class="article-mention__content col col-7 sm-col-8">
-                            <h4 class="article-mention__title">
-                                @if(get_field("title", $mention->ID) != '')
-                                    {{ the_field("title", $mention->ID) }}
-                                @else
-                                    {{ $mention->post_title }}
-                                @endif
-                            </h4>
-                            <div class="read-more mt2">
-                                <span class="read-more__text">
-                                    @php _e( 'Läs mer', 'visithalland' ) @endphp
-                                </span>
-                                <div class="read-more__button">
-                                    <svg class="icon read-more__icon">
-                                        <use xlink:href="#arrow-right-icon"/>
-                                    </svg>
+                            <div class="col col-7 sm-col-8 px3">
+                                <h4 class="">
+                                    @if(get_field("title", $mention->ID) != '')
+                                        {{ the_field("title", $mention->ID) }}
+                                    @else
+                                        {{ $mention->post_title }}
+                                    @endif
+                                </h4>
+                                <div class="read-more mt2">
+                                    <span class="read-more__text">
+                                        @php _e( 'Läs mer', 'visithalland' ) @endphp
+                                    </span>
+                                    <div class="read-more__button">
+                                        <svg class="icon read-more__icon">
+                                            <use xlink:href="#arrow-right-icon"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </article>
-            </a>
-        @endforeach
+                    </article>
+                </a>
+            @endforeach
+        </div>
     </div>
 @endif

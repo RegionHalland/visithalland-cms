@@ -37,16 +37,16 @@
 @import 'utilities/theme-icon';
 @import 'utilities/opacity';
 @import 'utilities/scrim-gradient';
+@import 'utilities/hover';
 
 // Generic and Reusable Components
-@import 'utilities/hover';
 @import 'components/button';
 @import 'components/section-header';
 @import 'components/image-credit';
 @import 'components/icon-button';
-@import 'components/contact';
+@import 'components/contact'; //Denna ska tas bort
 @import 'components/article-tag';
-@import 'components/date-badge';
+@import 'components/date-badge'; //Denna borde kunna tas bort, används på Skordetider
 @import 'components/read-more';
 @import 'components/breadcrumbs';
 @import 'components/preamble';
@@ -54,7 +54,7 @@
 @import 'components/search';
 @import 'components/google-place-details';
 @import 'components/author-horizontal';
-@import 'components/infinite-scroll';
+@import 'components/infinite-scroll'; //Borde kunna skrivas med utilities
 
 // Grid Layouts
 @import './layouts/content-grid';
@@ -67,9 +67,6 @@
 // Article Components and Styles
 @import './article/article';
 @import './article/article-share'; //Se över denna
-@import './article/article-mentions'; //Denna borde inte behöva finnas
-@import './article/article-infinite'; // Se över och dela kanske upp?
-@import './article/article-hero';
 @import './article/image-blurb'; // Se över denna
 
 // Header Styles
@@ -77,7 +74,7 @@
 @import './header/navigation';
 @import './header/navigation-dropdown';
 @import './header/header-search';
-@import './header/external-header';
+@import './header/external-header'; //Ta bort denna
 
 
 // Taxonomy/Concept Page Styles
