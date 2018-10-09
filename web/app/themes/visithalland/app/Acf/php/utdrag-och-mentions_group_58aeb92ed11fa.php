@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_58aeb92ed11fa',
-    'title' => __('Utdrag och mentions', 'visithalland'),
+    'title' => 'Utdrag och mentions',
     'fields' => array(
         0 => array(
             'key' => 'field_58aeb94788cd3',

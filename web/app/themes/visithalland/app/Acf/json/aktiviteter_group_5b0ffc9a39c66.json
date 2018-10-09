@@ -13,7 +13,7 @@
             "wrapper": {
                 "width": "",
                 "class": "",
-                "id": ""
+                "id": "asd"
             },
             "collapsed": "",
             "min": 0,
@@ -21,6 +21,23 @@
             "layout": "row",
             "button_label": "L\u00e4gg till kategori",
             "sub_fields": [
+                {
+                    "key": "field_5b2a521b26240",
+                    "label": "Kategori",
+                    "name": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
                 {
                     "key": "field_5b1001e3bea7a",
                     "label": "Namn p\u00e5 kategori",
@@ -44,7 +61,7 @@
                     "key": "field_5b1004391b711",
                     "label": "Beskrivning",
                     "name": "description",
-                    "type": "textarea",
+                    "type": "text",
                     "instructions": "Inspirerande text om kategorin.",
                     "required": 0,
                     "conditional_logic": 0,
@@ -57,7 +74,9 @@
                     "placeholder": "T.ex. Det \u00e4r verkligen n\u00e5got speciellt med att bo i Halland...",
                     "maxlength": "",
                     "rows": 4,
-                    "new_lines": ""
+                    "new_lines": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_5b10020bbea7b",
@@ -98,9 +117,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "https:\/\/image.flaticon.com\/icons\/png\/128\/123\/123236.png": "Mat",
-                        "https:\/\/d30y9cdsu7xlg0.cloudfront.net\/png\/23890-200.png": "Boende",
-                        "http:\/\/mannaorganicstore.ie\/wp-content\/uploads\/2014\/08\/shop_icon5.png": "G\u00e5rdsbutik"
+                        "images\/map-pin-green.svg": "Gr\u00f6n Kartn\u00e5l",
+                        "images\/map-pin-purple.svg": "Lila Kartn\u00e5l",
+                        "images\/map-pin-red.svg": "R\u00f6d Kartn\u00e5l",
+                        "images\/map-pin-yellow.svg": "Gul Kartn\u00e5l",
+                        "images\/map-pin-blue.svg": "Bl\u00e5 Kartn\u00e5l"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -152,7 +173,7 @@
                             "key": "field_5b100300bea7e",
                             "label": "L\u00e4nk",
                             "name": "link",
-                            "type": "text",
+                            "type": "url",
                             "instructions": "L\u00e4nk till n\u00e4ringslivsakt\u00f6rs hemsida, Facebook-sida eller liknande.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -195,7 +216,7 @@
             {
                 "param": "post_template",
                 "operator": "==",
-                "value": "views\/all-weekend-activites.blade.php"
+                "value": "views\/st-template-all-activities.blade.php"
             }
         ]
     ],

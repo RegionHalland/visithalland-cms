@@ -40,10 +40,9 @@
                 2 => 'happening',
                 3 => 'places',
                 4 => 'companies',
-                5 => 'trip',
+                5 => 'tips_guides',
             ),
-            'taxonomy' => array(
-            ),
+            'taxonomy' => '',
             'allow_null' => 0,
             'multiple' => 0,
             'return_format' => 'object',
@@ -69,9 +68,9 @@
                 3 => 'happening',
                 4 => 'places',
                 5 => 'spotlight',
+                6 => 'tips_guides',
             ),
-            'taxonomy' => array(
-            ),
+            'taxonomy' => '',
             'filters' => array(
                 0 => 'search',
                 1 => 'taxonomy',
