@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_58a6da2dafd35',
-    'title' => 'Upplevelse',
+    'title' => __('Upplevelse', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5ba24f32bbb41',
@@ -40,10 +40,9 @@
                 2 => 'happening',
                 3 => 'places',
                 4 => 'companies',
-                5 => 'trip',
+                5 => 'tips_guides',
             ),
-            'taxonomy' => array(
-            ),
+            'taxonomy' => '',
             'allow_null' => 0,
             'multiple' => 0,
             'return_format' => 'object',
@@ -69,9 +68,9 @@
                 3 => 'happening',
                 4 => 'places',
                 5 => 'spotlight',
+                6 => 'tips_guides',
             ),
-            'taxonomy' => array(
-            ),
+            'taxonomy' => '',
             'filters' => array(
                 0 => 'search',
                 1 => 'taxonomy',

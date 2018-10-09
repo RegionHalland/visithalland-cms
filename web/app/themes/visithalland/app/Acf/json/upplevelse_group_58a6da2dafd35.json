@@ -37,9 +37,9 @@
                 "happening",
                 "places",
                 "companies",
-                "trip"
+                "tips_guides"
             ],
-            "taxonomy": [],
+            "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
             "return_format": "object",
@@ -64,9 +64,10 @@
                 "companies",
                 "happening",
                 "places",
-                "spotlight"
+                "spotlight",
+                "tips_guides"
             ],
-            "taxonomy": [],
+            "taxonomy": "",
             "filters": [
                 "search",
                 "taxonomy"
