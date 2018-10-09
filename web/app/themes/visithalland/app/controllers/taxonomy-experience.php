@@ -17,7 +17,21 @@ class TaxonomyTaxonomyConcept extends Controller
     }
 
     public function posts() {
-    	return \App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1);
+    	$posts = \App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1);
+        $featured_posts = $this->featuredExperiences();
+    
+        foreach ($posts as $key => $value) {
+            foreach ($featured_posts as $k => $v) {
+                if($value->ID == $v->ID) {
+                    unset($posts[$key]);
+                }
+            }
+        }
+
+        $posts = array_values($posts);
+        \Kint::dump($posts);
+
+        return $posts;
     }
 
     public function postsWithPlacesCompanies() {
