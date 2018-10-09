@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_58a6da2dafd35',
-    'title' => __('Upplevelse', 'visithalland'),
+    'title' => 'Upplevelse',
     'fields' => array(
         0 => array(
             'key' => 'field_5ba24f32bbb41',
