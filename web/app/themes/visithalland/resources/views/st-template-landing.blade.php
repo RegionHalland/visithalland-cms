@@ -25,9 +25,6 @@ $videoUrl = array(
 				   <source src="{{ $videoUrl['mp4'] }}" type="video/mp4">  
 				</video>
 			</div>
-			<div class="p3 bg-white">
-				<img class="max-width-1 z9" src="@asset('images/eu-jordbruksfonden.jpg')" alt="">
-			</div>
 		</div>
 		<div class="col-12 sm-col-8 md-col-6 flex items-center mx-auto mt5">
 			<div class="col col-12 md-col-6">
