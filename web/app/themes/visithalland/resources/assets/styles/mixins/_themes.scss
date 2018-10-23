@@ -9,6 +9,11 @@ $themes: (
     'secondary': lighten(#48A5AA, 5%),
     'icon': url("../images/spa-wellness.svg")
   ),
+  'winter': (
+    'primary': #D95757,
+    'secondary': lighten(#D95757, 5%),
+    'icon': url("../images/winter.svg")
+  ),
   'golf': (
     'primary': #308669,
     'secondary': lighten(#308669, 5%),
