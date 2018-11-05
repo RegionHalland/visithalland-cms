@@ -11,8 +11,8 @@
     <article role="main" id="main-content">
         @include('partials.page.page-header')
         <div class="container col-11 md-col-10 pb4">
-            <div class="content-grid__container">
-                <div class="content-grid__content">
+            <div class="flex flex-wrap mxn3">
+                <div class="col-12 md-col-8 px3">
                     <div class="article-body col-10">
                         {{ the_content() }}
                     </div>
@@ -30,7 +30,7 @@
                         </div>
                     </address>
                 </div>
-                <div class="content-grid__sidebar mxn3">
+                <div class="col-12 md-col-4 px3">
                     
 
                 </div>

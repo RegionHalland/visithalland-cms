@@ -3,47 +3,48 @@
 		<header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
 			@php _e( 'Populära artiklar', 'visithalland' ) @endphp
 		</header>
-		<div class="masonry-grid">
+		<div class="masonry-grid featured-grid">
 		    @foreach ($featured_experiences as $post)
 
 				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1)
-					
-					<a class="mt2 sm-mt0 masonry-grid__large masonry-grid__item scrim overflow-hidden aspect-container aspect-1 sm-aspect-16x9 md-aspect-3x2 relative rounded" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-						<article>
-	                        <picture>
-	                        	<source media="(min-width:60em)"
-	                                data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
-	                            <source media="(min-width:40em)"
-	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
-	                            <source
-	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
-	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
-									alt="{{ $post->featured_image["alt"] }}"
-	                            />
-	                        </picture>
-	                        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-	                            <h2 class="text-light">{!! $post->post_title !!}</h2>
-	                            <div class="read-more mt3">
-	                                <span class="read-more__text light">
-	                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
-	                                </span>
-	                                <div class="read-more__button">
-	                                    <svg class="icon read-more__icon">
-	                                        <use xlink:href="#arrow-right-icon"/>
-	                                    </svg>
-	                                </div>
-	                            </div>
-	                        </div>
-			            </article>
-		            </a>
+					<div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8 ">
+						<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
+							<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
+		                        <picture>
+		                        	<source media="(min-width:60em)"
+		                                data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
+		                            <source media="(min-width:40em)"
+		                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
+		                            <source
+		                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
+		                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
+		                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
+										alt="{{ $post->featured_image["alt"] }}"
+		                            />
+		                        </picture>
+		                        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
+		                            <h2 class="text-light">{!! $post->post_title !!}</h2>
+		                            <div class="read-more mt3">
+		                                <span class="read-more__text light">
+		                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
+		                                </span>
+		                                <div class="read-more__button">
+		                                    <svg class="icon read-more__icon">
+		                                        <use xlink:href="#arrow-right-icon"/>
+		                                    </svg>
+		                                </div>
+		                            </div>
+		                        </div>
+				            </article>
+			            </a>
+		            </div>
 
 				{{-- Gets second and third item in array --}}
 				@elseif($loop->iteration > 1 && $loop->iteration <= 3)
-
-					<a class="mt2 sm-mt0 masonry-grid__medium masonry-grid__item scrim overflow-hidden aspect-container aspect-1 md-aspect-5x4 relative rounded" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-						<article>
+					<div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4 ">
+					<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
+						<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
 							<picture>
 	                        	<source media="(min-width:60em)"
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_tall'] . " 1x," . $post->featured_image["sizes"]['vh_hero_tall@2x'] . " 2x" }}" />
@@ -69,16 +70,17 @@
 	                        </div>
 			            </article>
 		            </a>
+		            </div>
 
 				{{-- Loops remaining items as small --}}
 				@else
-
-					<a class="mt2 sm-mt0 masonry-grid__small masonry-grid__item scrim overflow-hidden aspect-container aspect-1 relative rounded" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-						<article>
+					<div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
+					<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
+						<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
 							<picture>
 	                            <source
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
+	                            <img class="absolute left-0 top-0 h-auto w-fill lazyload"
 	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 									alt="{{ $post->featured_image["alt"] }}"
 	                            />
@@ -98,7 +100,7 @@
 	                        </div>
 			            </article>
 		            </a>
-
+					</div>
 				@endif
 		    @endforeach
 		</div>

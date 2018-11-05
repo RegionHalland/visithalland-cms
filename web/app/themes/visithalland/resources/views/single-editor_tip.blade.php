@@ -8,9 +8,7 @@
 		        @include('partials.article-hero')
 		        @include('partials.article-content')
 		        @include('partials.share')
-
 		        @include('partials.components.next-article')
-
 		    </article>
 		</div>
 	@endwhile
