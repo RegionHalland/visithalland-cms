@@ -3,7 +3,6 @@
     flex-wrap:wrap;
     @media (min-width:$breakpoint-sm) { 
         display: grid;
-        grid-template-rows: repeat(6, 1fr);
         grid-gap: $space-3;  
     }
 }
