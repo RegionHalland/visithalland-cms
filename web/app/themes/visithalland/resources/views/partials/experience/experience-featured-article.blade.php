@@ -7,7 +7,7 @@
     }
 @endphp
 
-@if($featured_article)
+@if(isset($featured_article))
     <a href="{{ the_permalink($featured_article->ID) }}" title="{{$featured_article->post_title}}" class="block my5 {{ App::getTermClassName() }}">
         <article class="scrim overflow-hidden aspect-container aspect-5x4 sm-aspect-1 md-aspect-16x9 relative">
             <picture>

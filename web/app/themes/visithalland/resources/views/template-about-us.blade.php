@@ -22,7 +22,7 @@
 				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
                     @php _e( 'Kontaktpersoner', 'visithalland' ) @endphp
                 </header>
-                <div class="mxn3 flex flex-wrap mt3">
+                <div class="clearfix mxn3 flex flex-wrap mt3">
                     @if( have_rows('contact') )
                         @php while ( have_rows('contact') ) : the_row();
                             $user_id = get_sub_field('contact_person')['ID'];

@@ -16,7 +16,7 @@
 				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
 					@php _e( 'Populära artiklar', 'visithalland' ) @endphp
 				</header>
-				<div class="flex flex-wrap mxn2">
+				<div class="clearfix flex flex-wrap mxn2">
 					@foreach($recent_posts as $key => $recent_post)
 						<div class="col col-12 sm-col-6 px2 mt3 mb2">
 							@include('partials.front-page-article')

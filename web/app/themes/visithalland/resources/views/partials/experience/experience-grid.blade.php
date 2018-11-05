@@ -1,7 +1,7 @@
 <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
     @php _e( 'Fler artiklar', 'visithalland' ) @endphp
 </header>
-<div class="flex flex-wrap mxn2">
+<div class="clearfix flex flex-wrap mxn2">
     @foreach($posts as $key => $post)
         @php
             $current_index = $key + 1
