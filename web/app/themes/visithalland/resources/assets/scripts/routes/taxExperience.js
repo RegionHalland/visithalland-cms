@@ -1,4 +1,5 @@
 var Flickity = require('flickity');
+import DynamicGrid from '../util/dynamicGrid';
 
 export default {
   init() {
@@ -18,6 +19,8 @@ export default {
     $('.spotlight-carousel--previous').on('click', function () {
         spotlightCarousel.previous();
     });
+
+    new DynamicGrid();
 
   },
   finalize() {

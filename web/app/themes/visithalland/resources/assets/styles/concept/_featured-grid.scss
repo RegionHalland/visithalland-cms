@@ -1,9 +1,9 @@
 //Spotlights depends on this //
 
 .featured-grid {
-    margin:-$space-1;
+    margin:-$space-2;
     &__item {
-        padding:$space-1;
+        padding:$space-2;
         &--large {
             height:400px;
             @media (min-width:$breakpoint-sm) {

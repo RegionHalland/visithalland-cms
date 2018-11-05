@@ -1,44 +1,44 @@
-.masonry-grid {
-    display: flex;
-    flex-wrap:wrap;
-    @media (min-width:$breakpoint-sm) { 
-        display: grid;
-        grid-gap: $space-3;  
-    }
-}
+// .masonry-grid {
+//     display: flex;
+//     flex-wrap:wrap;
+//     @media (min-width:$breakpoint-sm) { 
+//         display: grid;
+//         grid-gap: $space-3;  
+//     }
+// }
 
-.masonry-grid__large {
-    width:100%;
-    @media (min-width:$breakpoint-sm) { 
-        grid-column: span 6;
-        grid-row: 1 / 5;
-    }
-    @media (min-width:$breakpoint-md) {
-        grid-column: 1/3;
-        grid-row: 1 / 5;
-    }
-}
+// .masonry-grid__large {
+//     width:100%;
+//     @media (min-width:$breakpoint-sm) { 
+//         grid-column: span 6;
+//         grid-row: 1 / 5;
+//     }
+//     @media (min-width:$breakpoint-md) {
+//         grid-column: 1/3;
+//         grid-row: 1 / 5;
+//     }
+// }
 
-.masonry-grid__medium {
-    width:100%;
-    @media (min-width:$breakpoint-sm) { 
-        grid-column: span 3;
-        grid-row: span 3;
-    }
-    @media (min-width:$breakpoint-md) {
-        grid-column: 3;
-        grid-row: span 3;
-    }
-}
+// .masonry-grid__medium {
+//     width:100%;
+//     @media (min-width:$breakpoint-sm) { 
+//         grid-column: span 3;
+//         grid-row: span 3;
+//     }
+//     @media (min-width:$breakpoint-md) {
+//         grid-column: 3;
+//         grid-row: span 3;
+//     }
+// }
 
-.masonry-grid__small {
-    width:100%;
-    @media (min-width:$breakpoint-sm) { 
-        grid-column: span 3;
-        grid-row: span 2;
-    }
-    @media (min-width:$breakpoint-md) {
-        grid-column: span 1;
-        grid-row: span 2;
-    }
-}
+// .masonry-grid__small {
+//     width:100%;
+//     @media (min-width:$breakpoint-sm) { 
+//         grid-column: span 3;
+//         grid-row: span 2;
+//     }
+//     @media (min-width:$breakpoint-md) {
+//         grid-column: span 1;
+//         grid-row: span 2;
+//     }
+// }

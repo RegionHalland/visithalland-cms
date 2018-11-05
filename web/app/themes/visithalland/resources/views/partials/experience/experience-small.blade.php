@@ -1,7 +1,7 @@
 <div class="container col-11 md-col-10 pb4 pt4" role="main" id="main-content">
-    <div class="content-grid__container pt4">
-        @if(is_array($featured_experiences))
-            <div class="content-grid__content {{ App::getTermClassName() }}">
+    <div class="flex flex-wrap mxn3 pt4">
+        <div class="col-12 md-col-8 px3 {{ App::getTermClassName() }}">
+            @if(is_array($featured_experiences))
                 <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
                     @php _e( 'Utvalda artiklar', 'visithalland' ) @endphp
                 </header>
@@ -41,15 +41,14 @@
                         </article>
                     </a>
                 @endforeach
+            @endif
+            <div class="mt4">
+                @include('partials.experience.experience-grid-small')
             </div>
-        @endif
-
-        <div class="content-grid__sidebar">
-            @include('partials.experience.experience-sidebar')
         </div>
 
-        <div class="content-grid__bottom-content">
-            @include('partials.experience.experience-grid-small')
+        <div class="col-12 md-col-4 px3 mt4 md-mt0">
+            @include('partials.experience.experience-sidebar')
         </div>
     </div>
 </div>
