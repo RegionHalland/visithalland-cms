@@ -1,5 +1,5 @@
 <a href="{{ $happening->link }}" class="mb3 block">
-    <article class="clearfix mxn2 {{ $happening->terms["terms_default_lang"] ? $happening->terms["terms_default_lang"]->slug : "visithalland" }}">
+    <article class="clearfix mxn2  {{ get_field('class_name', $happening->terms['terms_default_lang'])}}">
         <div class="col col-4 px2">
             <div class="aspect-container aspect-1 rounded overflow-hidden">
                 <picture>
