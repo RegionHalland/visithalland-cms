@@ -1,41 +1,41 @@
-<section class="nav-dropdown block fixed left-0 right-0 w-fill bg-blue box-shadow-lg z5">
-	<div class="nav-dropdown__inner clearfix container col-11 md-col-10 lg-col-10 mxn3 py2 flex flex-column md-flex-row">
-		<div class="mxn3">
-			<div class="col col-12 sm-col-11 md-col-6 pt4 px3 pb2">
+<section class="nav-dropdown block fixed pin-l pin-r w-full bg-blue box-shadow-lg">
+	<div class="nav-dropdown__inner clearfix container w-11/12  md:w-10/12  lg:w-10/12  mx-auto py-2 flex flex-col md:flex-row">
+		<div class="-mx-3">
+			<div class="col w-full sm:w-11/12  md:w-6/12  pt-4 px-3 pb-2">
 				<nav class="clearfix">
 					@foreach($primary_navigation_item->children as $child)
 						@if($child->type === 'taxonomy')
-		                    <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-								<a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+		                    <div class="truncate text-white font-rift col w-full sm:w-4/12 md:w-6/12  pb-3">
+								<a class="text-white font-font-bold text-lg truncate inline-block" href="{{ $child->url }}">
 									<div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "visithalland"}}">
 										<div class="theme-icon__inner">
 										</div>
 									</div>
-									<span class="ml2">{{ $child->post_title ? $child->post_title : $child->title }}</span>
+									<span class="ml-2">{{ $child->post_title ? $child->post_title : $child->title }}</span>
 								</a>
 							</div>
 						@else 
-							<div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-								<a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
+							<div class="truncate text-white font-rift col w-full sm:w-4/12 md:w-6/12  pb-3">
+								<a class="text-white font-font-bold text-lg truncate inline-block" href="{{ $child->url }}">
 									<div class="theme-icon visithalland">
 										<div class="theme-icon__inner">
 										</div>
 									</div>
-									<span class="ml2">{{ $child->title ? $child->post_title : $child->title }}</span>
+									<span class="ml-2">{{ $child->title ? $child->post_title : $child->title }}</span>
 								</a>
 							</div>
 						@endif
 	                @endforeach
 				</nav>
 			</div>
-			<div class="nav-dropdown__feature col col-12 sm-col-12 md-col-6 relative px3 mt1 pt4 pb4">
-				<div class="nav-dropdown__background rounded p3 bg-blue-xlight topographic-pattern">
-					<div class="col col-5 sm-col-4 md-col-4 flex items-center justify-center">
-						<img class="feature__img w-fit mr3 max-width-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
+			<div class="nav-dropdown__feature col w-full sm:w-full md:w-6/12 relative px-3 mt-1 pt-4 pb-4">
+				<div class="nav-dropdown__background rounded p-3 bg-blue-light topographic-pattern">
+					<div class="col w-5/12 sm:w-4/12 md:w-4/12 flex items-center justify-center">
+						<img class="feature__img w-fit mr-3 max-w-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
 					</div>
-					<div class="feature__content col col-7 sm-col-4 md-col-7 ">
-						<span class="rounded-pill py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>
-						<h4 class="text-light mb3 line-height-3">{{ $banner['title'] }}</h4>
+					<div class="feature__content col w-7/12 sm:w-4/12 md:w-7/12  ">
+						<span class="rounded-full py-1 text-sm font-rift text-white px-2 mb-2 bg-orange inline-block">Nyhet</span>
+						<h4 class="text-white mb-3 line-h-3">{{ $banner['title'] }}</h4>
 						<a href="{{ $banner['link'] }}" title="{{ $banner['title'] }}">
 							<div class="read-more">
 				                <span class="read-more__text light">

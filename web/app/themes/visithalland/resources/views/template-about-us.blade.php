@@ -14,30 +14,30 @@
     @endphp
     <article role="main" id="main-content">
         @include('partials.page.page-header')
-        <div class="container col-11 md-col-10 pb4">
-            <div class="article-body col-12 md-col-8">
+        <div class="container w-11/12  md:w-10/12  pb-4">
+            <div class="article-body w-full md:w-8/12 ">
                 {{ the_content() }}
             </div>
-			<div class="col-12 mt4">
-				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+			<div class="w-full mt-4">
+				<header class="bg-blue font-rift text-sm font-bold px-3 py-2 rounded-full inline-block text-white">
                     @php _e( 'Kontaktpersoner', 'visithalland' ) @endphp
                 </header>
-                <div class="mxn3 flex flex-wrap mt3">
+                <div class=" -mx-3 flex flex-wrap mt-3">
                     @if( have_rows('contact') )
                         @php while ( have_rows('contact') ) : the_row();
                             $user_id = get_sub_field('contact_person')['ID'];
                         @endphp
-                            <address class="col col-12 sm-col-6 md-col-3 block mb4 px3">
+                            <address class="col w-full sm:w-6/12  md:w-3/12 block mb-4 px-3">
                                 <div class="overflow-hidden aspect-container aspect-1 relative rounded">
                                     <img
                                         data-src="{{ get_field('profile_image', 'user_'. $user_id)["sizes"]["vh_medium_square"] }}"
                                         alt="'Skrivet av: ' + {{ get_sub_field('contact_person')['user_firstname'] }}"
-                                        class="absolute left-0 top-0 w-fill lazyload"
+                                        class="absolute pin-l pin-t w-full lazyload"
                                     />
                                 </div>
                                 <div class="">
-                                    <h3 class="rift-font bold block mt2">{{ get_sub_field('contact_person')['display_name'] }}</h3>
-                                    <span class="fira-font block text-sm italic text-grey-dark mt2">{{ get_field('role', 'user_'. $user_id) }}</span>
+                                    <h3 class="font-rift font-bold block mt-2">{{ get_sub_field('contact_person')['display_name'] }}</h3>
+                                    <span class="font-fira block text-sm italic text-grey-dark mt-2">{{ get_field('role', 'user_'. $user_id) }}</span>
                                     <a class="mt2 text-sm block underline" href="mailto:{{ get_sub_field('contact_person')['user_email'] }}">
                                         {{ get_sub_field('contact_person')['user_email'] }}
                                     </a>

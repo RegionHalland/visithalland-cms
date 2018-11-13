@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+var tailwindcss = require('tailwindcss');
+
 const cssnanoConfig = {
   preset: ['default', { discardComments: { removeAll: true } }]
 };

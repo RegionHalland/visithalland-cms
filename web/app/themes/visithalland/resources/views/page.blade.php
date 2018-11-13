@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,13 +11,13 @@
     @endphp
     <article role="main" id="main-content">
         @include('partials.page.page-header')
-        <div class="container col-11 md-col-10 pb4">
-            <div class="flex flex-wrap mxn3">
-                <div class="col-12 md-col-8 px3">
-                    <div class="article-body col-10">
+        <div class="container w-11/12  md:w-10/12  pb-4">
+            <div class="flex flex-wrap  -mx-3">
+                <div class="w-full md:w-8/12  px-3">
+                    <div class="article-body w-10/12 ">
                         {{ the_content() }}
                     </div>
-                    <address class="author-horizontal mt3 mb4">
+                    <address class="author-horizontal mt-3 mb-4">
                         <div class="author-horizontal__img-container">
                             <img
                                 data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_thumbnail@2x"] }}"
@@ -30,7 +31,7 @@
                         </div>
                     </address>
                 </div>
-                <div class="col-12 md-col-4 px3">
+                <div class="w-full md:w-4/12 px-3">
                     
 
                 </div>

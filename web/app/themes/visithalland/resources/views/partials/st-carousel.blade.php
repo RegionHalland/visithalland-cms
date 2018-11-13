@@ -6,7 +6,7 @@
 	class="st-beet"
 	src="@asset('images/st-beet.svg')"
 	alt="Visithalland.com" />
-	<div class="container py5 col-11 md-col-10 lg-col-10 mx-auto relative">
+	<div class="container py-5 w-11/12  md:w-10/12  lg:w-10/12  mx-auto relative">
 		<h2 class="mb3 h3 st-carousel__title">Mer av skördetid i Halland</h2>
 		<div class="relative js-carousel-parent">
 			<button class="st-carousel-previous js-carousel-previous icon-button">
@@ -29,7 +29,7 @@
 						  </div>
 						  <div class="st-thumbnail__content">
 						    <h4 class="st-thumbnail__title">{{ $object->name }}</h4>
-						    <div class="ml3 st-thumbnail__btn">
+						    <div class="ml-3 st-thumbnail__btn">
 								<svg class="icon--sm st-thumbnail__btn-icon">
 									<use xlink:href="#arrow-right-icon"/>
 								</svg>

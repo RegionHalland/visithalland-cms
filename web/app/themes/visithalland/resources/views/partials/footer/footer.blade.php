@@ -1,7 +1,7 @@
-<footer class="footer bg-blue topographic-pattern pt5">
+<footer class="footer bg-blue topographic-pattern pt-16">
 	<div class="relative">
-	    <div class="container col-11 md-col-10 lg-col-10 mx-auto">
-	        <div class="clearfix mxn3">
+	    <div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
+	        <div class="clearfix  -mx-3">
 	            @include('partials.footer.footer-info')
 	            @include('partials.footer.footer-navigation')
 	        </div>

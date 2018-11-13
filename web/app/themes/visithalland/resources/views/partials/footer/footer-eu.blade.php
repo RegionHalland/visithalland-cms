@@ -1,14 +1,14 @@
-<div class="clearfix bg-blue-light py3">
-    <div class="container col-11 md-col-10 lg-col-10 mx-auto">
-        <div class="mxn3">
-        <div class="col col-6 sm-col-3 md-col-2 px3 pt3 mt1">
-            <img class="max-width-4" src="{{ $european_union['logo']['url'] }}" />
+<div class="clearfix bg-blue-light py-3">
+    <div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
+        <div class=" -mx-3">
+        <div class="col w-6/12  sm:w-3/12 md:w-2/12 px-3 pt-3 mt-1">
+            <img class="max-w-4" src="{{ $european_union['logo']['url'] }}" />
         </div>
-        <div class="col col-12 sm-col-10 md-col-8 px3 py3">
-            <p class="italic text-light text-sm max-width-4">
+        <div class="col w-full sm:w-10/12  md:w-8/12  px-3 py-3">
+            <p class="italic text-white text-sm max-w-4">
                 {{ $european_union['disclaimer'] }}
             </p>
-            <a class="mt3 inline-block" href="{{ $european_union['link'] }}">
+            <a class="mt-3 inline-block" href="{{ $european_union['link'] }}">
                 <div class="read-more">
                     <span class="read-more__text light">
                         @php _e('Läs mer om projektet', 'visithalland') @endphp

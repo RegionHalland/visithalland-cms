@@ -6,7 +6,7 @@ const config = require('./config');
 
 /** Default PostCSS plugins */
 let postcssPlugins = [
-  //require('tailwindcss')(`${config.paths.assets}/styles/tailwind.config.js`),
+  require('tailwindcss')(`${config.paths.assets}/styles/tailwind.config.js`),
   require('autoprefixer')(),
 ];
 

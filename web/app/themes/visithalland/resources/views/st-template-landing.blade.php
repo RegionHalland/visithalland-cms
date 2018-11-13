@@ -16,21 +16,21 @@ $videoUrl = array(
 @endphp
 
 <header class="st-list__header flex items-center">
-	<div class="container col-11 sm-col-8 md-col-7 lg-col-6 mx-auto center relative">
-		<div class="st-video-outer col-12 mx-auto overflow-hidden rounded">
-			<div class="st-video-container col-12">
-				<video controls class="col-12"> 
+	<div class="container w-11/12  sm:w-8/12  md:w-7/12  lg:w-6/12  mx-auto center relative">
+		<div class="st-video-outer w-full mx-auto overflow-hidden rounded">
+			<div class="st-video-container w-full">
+				<video controls class="w-full"> 
 				   <source src="{{ $videoUrl['webm'] }}" type="video/webm"> 
 				   <source src="{{ $videoUrl['ogg'] }}" type="video/ogg">
 				   <source src="{{ $videoUrl['mp4'] }}" type="video/mp4">  
 				</video>
 			</div>
 		</div>
-		<div class="col-12 sm-col-8 md-col-6 flex items-center mx-auto mt5">
-			<div class="col col-12 md-col-6">
+		<div class="w-full sm:w-8/12  md:w-6/12  flex items-center mx-auto mt-5">
+			<div class="col w-full md:w-6/12 ">
 				<button class="btn block st-cta-button mx-auto">Se våra bästa tips</button>
 			</div>
-			<div class="col col-12 md-col-6">
+			<div class="col w-full md:w-6/12 ">
 				<a href="{{the_permalink($page_id)}}" class="block">
 					<div class="read-more my3">
 						 <span class="read-more__text light">

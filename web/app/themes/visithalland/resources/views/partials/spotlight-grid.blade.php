@@ -1,6 +1,6 @@
 @php $spotlights = get_field("stops"); @endphp
 @if(isset($spotlights))
-    <section class="mt5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
+    <section class="mt5 container w-11/12  md:w-10/12  lg:w-10/12  mx-auto {{ App::getTermClassName() }}">
         <div class="featured-grid clearfix">
             @foreach ($spotlights as $post)
                 <?php setup_postdata($post);
@@ -10,7 +10,7 @@
                 ?>
                 {{-- Gets first item in array --}}
                 @if($loop->iteration === 2 || $loop->iteration % 4 === 0)
-                    <div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8">
+                    <div class="featured-grid__item featured-grid__item--large col w-full sm:w-full lg:w-8/12 ">
                         <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
                             <article class="image-blurb">
                                 <picture>
@@ -42,7 +42,7 @@
                     </div>
                 {{-- Loops remaining items as small --}}
                 @else
-                    <div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
+                    <div class="featured-grid__item featured-grid__item--small col w-full sm:w-6/12  lg:w-4/12">
                         <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
                             <article class="image-blurb">
                                 <picture>

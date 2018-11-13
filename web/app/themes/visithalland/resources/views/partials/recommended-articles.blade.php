@@ -1,6 +1,6 @@
-<div class="container col-11 md-col-10 lg-col-10 mx-auto pb5">
-    <div class="clearfix mxn2">
-        <header class="section-header mb2 px2 visithalland">
+<div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto pb-5">
+    <div class="clearfix  -mx-2">
+        <header class="section-header mb-2 px-2 visithalland">
             <div class="section-header__icon-wrapper">
                 <svg class="section-header__icon icon">
                     <use xlink:href="#recommend-icon"/>
@@ -14,14 +14,14 @@
             $terms = get_the_terms($post->ID, 'experience');
             $featuredArticles = App::getPosts(array(), $terms[0], 3, true);
         @endphp
-        <div class="pb4 pt3 clearfix">
+        <div class="pb4 pt-3 clearfix">
             @foreach($featuredArticles as $key => $value)
                 @php
                     $post_id = $value->ID;
                     $thumbnail_id = get_post_thumbnail_id($post_id);
                     $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
                 @endphp
-                <div class="col col-12 sm-col-4 px2 mt3">
+                <div class="col w-full sm:w-4/12 px-2 mt-3">
                     <a href="{{ the_permalink($post_id) }}" title="{{ $value->post_title }}">
                         <article class="image-blurb image-blurb--fixed-height {{ $value->terms["terms_default_lang"]->slug }}">
                             <picture>

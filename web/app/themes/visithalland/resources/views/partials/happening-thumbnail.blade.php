@@ -3,24 +3,24 @@
         <picture>
             <source
                 data-srcset="{{ $happening->featured_image["sizes"]['vh_medium_square'] . " 1x," . $happening->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-            <img class="absolute left-0 top-0 w-fill lazyload"
+            <img class="absolute pin-l pin-t w-full lazyload"
                 data-src="{{ $happening->featured_image["sizes"]['vh_medium_square@2x'] }}"
             />
         </picture>
-        <div class="bg-theme inline-flex px2 py1 mb2 rounded absolute top-0 left-0 ml2 mt2">
+        <div class="bg-theme inline-flex px-2 py-1 mb-2 rounded absolute pin-t pin-l ml-2 mt-2">
             <div class="">
-                <span class="text-light rift-font text-sm bold">{{ $dateobj = date("j", strtotime($happening->meta_fields['start_date'])) }}</span>
-                <span class="text-light rift-font text-sm bold">{{ $dateobj = date("M", strtotime($happening->meta_fields['start_date'])) }}</span>
+                <span class="text-white font-rift text-sm font-bold">{{ $dateobj = date("j", strtotime($happening->meta_fields['start_date'])) }}</span>
+                <span class="text-white font-rift text-sm font-bold">{{ $dateobj = date("M", strtotime($happening->meta_fields['start_date'])) }}</span>
             </div>
-            <span class="mx1 text-light rift-soft">-</span>
+            <span class="mx1 text-white rift-soft">-</span>
             <div class="">
-                <span class="text-light rift-font text-sm bold">{{ $dateobj = date("j", strtotime($happening->meta_fields['end_date'])) }}</span>
-                <span class="text-light rift-font text-sm bold">{{ $dateobj = date("M", strtotime($happening->meta_fields['end_date'])) }}</span>
+                <span class="text-white font-rift text-sm font-bold">{{ $dateobj = date("j", strtotime($happening->meta_fields['end_date'])) }}</span>
+                <span class="text-white font-rift text-sm font-bold">{{ $dateobj = date("M", strtotime($happening->meta_fields['end_date'])) }}</span>
             </div>
         </div>
-        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-            <h3 class="text-light h2">{{ $happening->post_title }}</h3>
-            <div class="read-more mt3">
+        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+            <h3 class="text-white h2">{{ $happening->post_title }}</h3>
+            <div class="read-more mt-3">
                 <span class="read-more__text light">
                     @php _e( 'Läs mer', 'visithalland' ); @endphp
                 </span>

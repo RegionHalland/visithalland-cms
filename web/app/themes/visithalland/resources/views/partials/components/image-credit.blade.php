@@ -1,5 +1,5 @@
 @if(isset($post->photographer))
-    <figcaption class="image-credit--large absolute top-0 right-0 mr2 mt2 z3">
+    <figcaption class="image-credit--large absolute pin-t pin-r mr-2 mt-2 z-30">
         <svg class="icon image-credit--large__icon">
             <use xlink:href="#camera-icon"/>
         </svg>

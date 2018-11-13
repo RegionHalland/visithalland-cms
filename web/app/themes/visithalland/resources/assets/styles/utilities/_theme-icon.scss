@@ -8,7 +8,7 @@
     transition: background-color 0.2s;
     border-radius: $border-radius-full;
     @include themify {
-		background-color: $color-primary;
+		background-color:$color-primary;
     }
 }
 

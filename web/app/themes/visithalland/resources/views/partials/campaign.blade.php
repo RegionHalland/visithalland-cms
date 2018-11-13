@@ -1,11 +1,11 @@
 <div class="campaign relative">
     <div class="campaign__img-container">
-        <div class="campaign__content container col-11 md-col-10 lg-col-10 mx-auto">
+        <div class="campaign__content container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
             <h1 class="campaign__title">{{ get_field('campaign_title') }}</h1>
             <p class="campaign__excerpt">{{ get_field('campaign_excerpt') }}</p>
-            <div class="campaign__buttons flex items-center mt3 mb2">
+            <div class="campaign__buttons flex items-center mt-3 mb-2">
                 @if(get_field('external_link'))
-                    <a class="btn btn--primary inline-block mr3" href="{{ get_field('external_link') }}">@php _e( 'Gå till webbplats', 'visithalland' ) @endphp</a>
+                    <a class="btn btn--primary inline-block mr-3" href="{{ get_field('external_link') }}">@php _e( 'Gå till webbplats', 'visithalland' ) @endphp</a>
                 @endif
                 @if(get_field('internal_link'))
                     <a class="inline-block vertical-middle" href="{{ get_field('internal_link') }}">

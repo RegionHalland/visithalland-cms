@@ -1,6 +1,6 @@
 @if(isset($featured_experiences))
-	<section class="mt5 container col-11 md-col-10 lg-col-10 mx-auto {{ App::getTermClassName() }}">
-		<header class="bg-theme rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+	<section class="mt5 container w-11/12  md:w-10/12  lg:w-10/12  mx-auto {{ App::getTermClassName() }}">
+		<header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
 			@php _e( 'Populära artiklar', 'visithalland' ) @endphp
 		</header>
 		<div class="masonry-grid featured-grid">
@@ -8,9 +8,9 @@
 
 				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1)
-					<div class="featured-grid__item featured-grid__item--large col col-12 sm-col-12 lg-col-8 ">
+					<div class="featured-grid__item featured-grid__item--large col w-full sm:w-full lg:w-8/12  ">
 						<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-							<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
+							<article class="scrim overflow-hidden relative h-fill w-full rounded flex">
 		                        <picture>
 		                        	<source media="(min-width:60em)"
 		                                data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
@@ -18,14 +18,14 @@
 		                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
 		                            <source
 		                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-		                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
+		                            <img class="absolute pin-l pin-t h-fill w-auto lazyload"
 		                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 										alt="{{ $post->featured_image["alt"] }}"
 		                            />
 		                        </picture>
-		                        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-		                            <h2 class="text-light">{!! $post->post_title !!}</h2>
-		                            <div class="read-more mt3">
+		                        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+		                            <h2 class="text-white">{!! $post->post_title !!}</h2>
+		                            <div class="read-more mt-3">
 		                                <span class="read-more__text light">
 		                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
 		                                </span>
@@ -42,22 +42,22 @@
 
 				{{-- Gets second and third item in array --}}
 				@elseif($loop->iteration > 1 && $loop->iteration <= 3)
-					<div class="featured-grid__item featured-grid__item--medium col col-12 sm-col-6 lg-col-4 ">
+					<div class="featured-grid__item featured-grid__item--medium col w-full sm:w-6/12  lg:w-4/12 ">
 					<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-						<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
+						<article class="scrim overflow-hidden relative h-fill w-full rounded flex">
 							<picture>
 	                        	<source media="(min-width:60em)"
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_tall'] . " 1x," . $post->featured_image["sizes"]['vh_hero_tall@2x'] . " 2x" }}" />
 	                            <source
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute left-0 top-0 h-fill w-auto lazyload"
+	                            <img class="absolute pin-l pin-t h-fill w-auto lazyload"
 	                                data-src="{{ $post->featured_image["sizes"]['vh_hero_tall@2x'] }}"
 									alt="{{ $post->featured_image["alt"] }}"
 	                            />
 	                        </picture>
-	                        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-	                            <h2 class="text-light">{!! $post->post_title !!}</h2>
-	                            <div class="read-more mt3">
+	                        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+	                            <h2 class="text-white">{!! $post->post_title !!}</h2>
+	                            <div class="read-more mt-3">
 	                                <span class="read-more__text light">
 	                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
 	                                </span>
@@ -74,20 +74,20 @@
 
 				{{-- Loops remaining items as small --}}
 				@else
-					<div class="featured-grid__item featured-grid__item--small col col-12 sm-col-6 lg-col-4">
+					<div class="featured-grid__item featured-grid__item--small col w-full sm:w-6/12  lg:w-4/12">
 					<a class="" href="{{ $post->url }}" title="{!! $post->post_title !!}">
-						<article class="scrim overflow-hidden relative h-fill w-fill rounded flex">
+						<article class="scrim overflow-hidden relative h-fill w-full rounded flex">
 							<picture>
 	                            <source
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute left-0 top-0 h-auto w-fill lazyload"
+	                            <img class="absolute pin-l pin-t h-auto w-full lazyload"
 	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 									alt="{{ $post->featured_image["alt"] }}"
 	                            />
 	                        </picture>
-	                        <div class="z4 absolute flex justify-end flex-column top-0 bottom-0 right-0 left-0 p3">
-	                            <h2 class="text-light">{!! $post->post_title !!}</h2>
-	                            <div class="read-more mt3">
+	                        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+	                            <h2 class="text-white">{!! $post->post_title !!}</h2>
+	                            <div class="read-more mt-3">
 	                                <span class="read-more__text light">
 	                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
 	                                </span>

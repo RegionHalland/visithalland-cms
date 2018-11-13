@@ -7,8 +7,8 @@
         <div id="infinite-container">
             <article class="{{ App::getTermClassName() }} infinite-item" data-posttype="{{get_post_type()}}">
                 @include('partials.article-hero')
-                <div class="article-content container clearfix mt5 mb4">
-                    <div class="col-11 md-col-10 lg-col-8 mx-auto">
+                <div class="article-content container clearfix mt-5 mb-4">
+                    <div class="w-11/12  md:w-10/12  lg:w-8/12  mx-auto">
                         <p class="preamble">{{ get_field("excerpt") }}</p>
                         @include('partials.author-horizontal')
                     </div>

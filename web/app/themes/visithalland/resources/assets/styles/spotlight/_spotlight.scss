@@ -3,10 +3,10 @@
 	z-index:$z3;
 	position:relative;
 	margin-top:-$space-4;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		margin-top:-$space-5;
 	}
-	@media(min-width:$breakpoint-lg) {
+	@screen lg {
 	}
 }
 
@@ -38,7 +38,7 @@
 		background-color:palette(black, base);
 		padding-bottom:125%;
 		background-color:palette(black, base);
-		@media(min-width:$breakpoint-md) {
+		@screen md {
 			padding-bottom:56.25%;
 		}
 		&::after {
@@ -70,13 +70,13 @@
 		padding-left:$space-3; 
 		padding-right:$space-3;
 		padding-bottom:$space-5;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding-left:$space-5; 
 			padding-right:$space-5; 
 			padding-bottom:$space-5;
 			margin-bottom:$space-5;
 		}
-		@media(min-width:$breakpoint-lg) {
+		@screen lg {
 			padding-left:$space-6;
 			padding-right:$space-6;
 			padding-bottom:$space-5;
@@ -87,7 +87,7 @@
 		color:palette(grey, light);
 		display:none;
 		margin-top:$space-3;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			display:block;
 		}
 	}
@@ -128,7 +128,7 @@
 			max-height:35.5px;
 			height:35.5px;
 			width:35.5px;
-			@media(min-width:$breakpoint-lg) {
+			@screen lg {
 				height:42.5px;
 				width:42.5px;
 				max-width:42.5px;

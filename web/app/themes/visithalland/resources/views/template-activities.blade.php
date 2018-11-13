@@ -5,22 +5,22 @@
 @extends('layouts.day-in-halland')
 
 @section('content')
-    <div class="external-header topographic-pattern py2 fixed top-0 left-0 right-0 z4">
-        <div class="external-header__inner container col-11 md-col-10 lg-col-10 mx-auto">
+    <div class="external-header topographic-pattern py-2 fixed pin-t pin-l pin-r z-40">
+        <div class="external-header__inner container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
             <a class="external-header__link" href="/">
-                <svg class="external-header__icon mr1">
+                <svg class="external-header__icon mr-1">
                      <use xlink:href="#arrow-left-icon"/>
                 </svg>
                 Tillbaka till visithalland.com
             </a>
         </div>
     </div>
-    <div class="dh-landing flex items-center justify-center flex-column">
+    <div class="dh-landing flex items-center justify-center flex-col">
         {{-- PHP/html content starts --}}
         <picture>
             <source media="(min-width: 60em)" srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_wide@2x' ) . " 2x"  }}" />
             <source srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_tall') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_tall@2x') . " 2x"  }}" />
-            <img class="dh-landing__img lazyload z2"
+            <img class="dh-landing__img lazyload z-20"
                 src="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') }}"
                 alt="{{ get_field("cover_image", $post->ID)["alt"] }}" />
         </picture>

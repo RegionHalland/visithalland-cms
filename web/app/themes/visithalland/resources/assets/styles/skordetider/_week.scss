@@ -73,7 +73,7 @@
 	margin-top: -$space-3;
 
 	z-index:$z4;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		margin-top: -$space-5;
 		margin-left:-$space-3;
 		margin-right:-$space-3;
@@ -81,7 +81,7 @@
 }
 
 .st-week-grid__item {
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		padding-left:$space-3;
 		padding-right:$space-3;
 	}

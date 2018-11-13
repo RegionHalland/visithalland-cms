@@ -6,35 +6,35 @@
     @else
 		@include('partials.front-page-hero')
     @endif
-    <section class="container col-11 md-col-10 lg-col-10 mx-auto mt3 sm-mtn5 relative pb4">
+    <section class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto mt-3 sm:mtn5 relative pb-4">
 		@include('partials.front-page-concepts')
 	</section>
 	@include('partials.components.banner')
-	<section class="mt2 container col-11 md-col-10 lg-col-10 mx-auto pt3 pb4">
-		<div class="clearfix mxn3 mt4">
-			<div class="col col-12 md-col-8 px3">
-				<header class="bg-blue rift-font text-sm bold px3 py2 rounded-pill inline-block text-light">
+	<section class="mt2 container w-11/12  md:w-10/12  lg:w-10/12  mx-auto pt-3 pb-4">
+		<div class="clearfix  -mx-3 mt-4">
+			<div class="col w-full md:w-8/12  px-3">
+				<header class="bg-blue font-rift text-sm font-bold px-3 py-2 rounded-full inline-block text-white">
 					@php _e( 'Populära artiklar', 'visithalland' ) @endphp
 				</header>
-				<div class="flex flex-wrap mxn2">
+				<div class="flex flex-wrap  -mx-2">
 					@foreach($recent_posts as $key => $recent_post)
-						<div class="col col-12 sm-col-6 px2 mt3 mb2">
+						<div class="col w-full sm:w-6/12  px-2 mt-3 mb-2">
 							@include('partials.front-page-article')
 						</div>
 		            @endforeach
 		        </div>
 			</div>
-			<div class="col col-12 md-col-4 mt4 md-mt0 md-pb4 px3">
+			<div class="col w-full md:w-4/12 mt-4 md:mt0 md:pb4 px-3">
 				
 				@if(is_array($happenings))
-			        <div class="col-12">
-			            <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+			        <div class="w-full">
+			            <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
 			                @php _e( 'Kommande events', 'visithalland' ) @endphp
 			            </header>
 			        </div>
-			        <div class="clearfix mxn2 mb3">
+			        <div class="clearfix  -mx-2 mb-3">
 			            @foreach($happenings as $key => $happening)
-			            	<div class="col col-12 sm-col-6 md-col-12 px2">
+			            	<div class="col w-full sm:w-6/12  md:w-full px-2">
 			                	@include('partials.happening-list-item')
 			                </div>
 			            @endforeach
@@ -42,14 +42,14 @@
 			    @endif
 				
 				@if(is_array($top_lists))
-			        <div class="col-12">
-			            <header class="bg-blue rift-font text-sm bold px3 py2 mt2 mb3 rounded-pill inline-block text-light">
+			        <div class="w-full">
+			            <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mt-2 mb-3 rounded-full inline-block text-white">
 			                @php _e( 'Våra tips', 'visithalland' ) @endphp
 			            </header>
 			        </div>
-			        <div class="clearfix mxn2 mb3">
+			        <div class="clearfix  -mx-2 mb-3">
 			            @foreach($top_lists as $top_list)
-			                <div class="col col-12 sm-col-6 md-col-12 mb3 px2">
+			                <div class="col w-full sm:w-6/12  md:w-full mb-3 px-2">
 			                    @include('partials.components.top-list')
 			                </div>
 			            @endforeach

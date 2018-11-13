@@ -32,7 +32,7 @@
 		position:absolute;
 		z-index: $z3;
 		padding:$space-4 $space-3;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding:$space-4;
 		}
 		bottom:0;
@@ -52,7 +52,7 @@
 		}
 		display: inline-block;
 		margin:$space-2 0 0 0;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			&:nth-child(1) {
 				margin:0;
 			}
@@ -63,7 +63,7 @@
 		position:relative;
 		display:none;
 		color:palette(grey, x-light);
-		@media(min-width:$breakpoint-md) {
+		@screen md {
 			display:block;
 		}
 	}

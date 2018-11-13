@@ -1,12 +1,13 @@
-<div class="relative px3 pt4 pb4 bg-blue-xlight topographic-pattern">
-	<div class="container col-11 md-col-10 lg-col-10 flex items-center">
+
+<div class="relative px-3 pt-4 pb-4 bg-blue-light topographic-pattern">
+	<div class="container w-11/12  md:w-10/12  lg:w-10/12  flex items-center">
 		<div class="clearfix flex items-center">
-			<div class="col col-4 sm-col-3 md-col-2 flex items-center justify-center">
-				<img class="w-fit mr3 max-width-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
+			<div class="col w-4/12 sm:w-3/12 md:w-2/12 flex items-center justify-center">
+				<img class="w-fit mr-3 max-w-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
 			</div>
-			<div class="feature__content col col-8 sm-col-5 md-col-4 pl2">
-				<span class="rounded-pill py1 text-sm rift-font text-light px2 mb2 bg-orange-gradient inline-block">Nyhet</span>
-				<h3 class="text-light mb3 line-height-3 h2">{{ $banner['title'] }}</h3>
+			<div class="feature__content col w-8/12  sm:w-5/12 md:w-4/12 pl2">
+				<span class="rounded-full py-1 text-sm font-rift text-white px-2 mb-2 bg-orange-gradient inline-block">Nyhet</span>
+				<h3 class="text-white mb-3 line-h-3 h2">{{ $banner['title'] }}</h3>
 				<a href="{{ $banner['link'] }}" title="{{ $banner['title'] }}">
 					<div class="read-more">
 		                <span class="read-more__text light">

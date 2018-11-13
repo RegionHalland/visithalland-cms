@@ -1,13 +1,13 @@
 
 @if(is_array($top_lists))
-    <div class="col-12">
-        <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+    <div class="w-full">
+        <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
             @php _e( 'Våra tips', 'visithalland' ) @endphp
         </header>
     </div>
-    <div class="clearfix mxn2 mb3">
+    <div class="clearfix  -mx-2 mb-3">
         @foreach($top_lists as $top_list)
-            <div class="col col-12 sm-col-6 md-col-12 mb3 px2">
+            <div class="col w-full sm:w-6/12  md:w-full mb-3 px-2">
                 @include('partials.components.top-list')
             </div>
         @endforeach
@@ -15,14 +15,14 @@
 @endif
 
 @if(!empty($happenings))
-    <div class="col-12">
-        <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+    <div class="w-full">
+        <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
             @php _e( 'Kommande events', 'visithalland' ) @endphp
         </header>
     </div>
-    <div class="clearfix mxn2 mb3">
+    <div class="clearfix  -mx-2 mb-3">
         @foreach($happenings as $key => $happening)
-            <div class="col col-12 sm-col-6 md-col-12 px2">
+            <div class="col w-full sm:w-6/12  md:w-full px-2">
                 @include('partials.happening-list-item')
             </div>
         @endforeach
@@ -31,14 +31,14 @@
 
 
 @if(is_array($navigation_items))
-    <div class="col-12">
-        <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+    <div class="w-full">
+        <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
             @php _e( 'Fler upplevelser', 'visithalland' ) @endphp
         </header>
     </div>
-    <div class="clearfix mxn2 mb3">
+    <div class="clearfix  -mx-2 mb-3">
         @foreach($navigation_items as $key => $navigation_item)
-            <div class="col col-12 sm-col-6 md-col-12 px2 mb2">
+            <div class="col w-full sm:w-6/12  md:w-full px-2 mb-2">
                 @include('partials.concept.concept-thumbnail-small')
             </div>
         @endforeach

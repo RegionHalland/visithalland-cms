@@ -1,4 +1,4 @@
-<header class="header fixed top-0 left-0 right-0 z5">
+<header class="header fixed pin-t pin-l pin-r z-50">
 	@include('partials.components.skip-link')
     @include('partials.header.support-header')
     @include('partials.header.primary-header')

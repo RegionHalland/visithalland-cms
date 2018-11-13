@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,9 +11,9 @@
 
     @if(isset($post))
     <article role="main" id="main-content">
-	        <div class="container col-11 md-col-10 lg-col-10 mx-auto">
+	        <div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
 	        	@if(isset($wp_query))
-	        	<header class="section-header block mb2 mt4 visithalland">
+	        	<header class="section-header block mb-2 mt-4 visithalland">
 		            <div class="section-header__icon-wrapper">
 		                <svg class="section-header__icon icon">
 		                    <use xlink:href="#search-icon"/>
@@ -23,7 +24,7 @@
 		            </div>
                 </header>
 
-	        	<div class="search-inner clearfix mxn2 mb4">
+	        	<div class="search-inner clearfix  -mx-2 mb-4">
 			            @foreach ($wp_query->posts as $key => $post)
 			            	@php
 				            	$post_id = $post->ID;
@@ -33,7 +34,7 @@
 
 								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp
-			            	<div class="col col-12 sm-col-6 md-col-4 search-result px2 mt3">
+			            	<div class="col w-full sm:w-6/12  md:w-4/12 search-result px-2 mt-3">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 										<article class="image-blurb {{ $terms[0]->slug }}">
 											<picture>

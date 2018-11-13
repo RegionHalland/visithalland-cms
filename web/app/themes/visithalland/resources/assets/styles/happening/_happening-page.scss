@@ -3,20 +3,20 @@
 	position:relative;
 	overflow: hidden;
 	background-color:palette(black, base);
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		height:500px;
 	}
 }
 
 .page-happening-header__title {
 	font-size:2.55em;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		font-size:3.15em;
 	}
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		font-size:2.8em;
 	}
-	@media(min-width:$breakpoint-lg) {
+	@screen lg {
 		font-size:3.15em;
 	}
 }
@@ -26,10 +26,10 @@
 	display:none;
 	font-size:0.95rem;
 	font-style:italic;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		display:block;
 	}
-	@media(min-width:$breakpoint-lg) {
+	@screen lg {
 		width:80%;
 	}
 }
@@ -37,10 +37,10 @@
 .page-happening-header__content {
 	z-index:$z2;
 	padding-bottom:$space-5;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		padding-bottom:$space-5;
 	}
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		padding-bottom:$space-5;
 	}
 }

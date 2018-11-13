@@ -1,7 +1,7 @@
 <section class="topographic-pattern bg-blue box-shadow">
-    <div class="container flex justify-between items-center flex-wrap md-flex-nowrap col-11 md-col-10 lg-col-10">
-        <div class="flex items-center md-pr4">
-            <a href="{{ home_url() }}" class="link-reset py2">
+    <div class="container flex justify-between items-center flex-wrap md:flex-nowrap w-11/12 md:w-11/12 lg:w-10/12 ">
+        <div class="flex items-center md:pr-4">
+            <a href="{{ home_url() }}" class="link-reset py-2">
                 <picture>
                     <source
                         media="(min-width: 40em)"
@@ -9,7 +9,7 @@
                     <source
                         srcset="@asset('images/logo-small.svg')"/>
                     <img
-                        class="max-height-4 w-fit mt1"
+                        class="max-h-4 w-fit mt-1"
                         src="@asset('images/logo-horizontal.svg')"
                         alt="Visithalland.com" />
                 </picture>

@@ -1,9 +1,19 @@
+@tailwind preflight;
+
+
+/**
+ * This injects any component classes registered by Tailwind plugins.
+ */
+@tailwind components;
+
+
+
 // Project Settings
 // This is used for setting color variables, spacing, fonts and more.
 @import 'settings/settings';
 
 // Mixins
-@import 'mixins/spacing';
+//@import 'mixins/spacing';
 @import 'mixins/palette';
 @import 'mixins/scrim';
 @import 'mixins/fade-text';
@@ -13,19 +23,24 @@
 @import 'base/reset';
 @import 'base/base';
 
+@import 'settings/old';
+
 // Config - Uses variables from settings.scss
-@import 'utilities/type-scale';
-@import 'utilities/typography';
-@import 'utilities/layout';
-@import 'utilities/align';
-@import 'utilities/margin';
-@import 'utilities/padding';
+//@import 'utilities/type-scale';
+//@import 'utilities/typography';
+//@import 'utilities/layout';
+//@import 'utilities/align';
+//@import 'utilities/margin';
+//@import 'utilities/padding';
 @import 'utilities/grid';
-@import 'utilities/flexbox';
-@import 'utilities/position';
-@import 'utilities/sizing';
+//@import 'utilities/flexbox';
+//@import 'utilities/position';
+//@import 'utilities/sizing';
+
+//Uses BG-theme
 @import 'utilities/background';
-@import 'utilities/border-radi';
+
+//@import 'utilities/border-radi';
 @import 'utilities/accessibility';
 @import 'utilities/box-shadow';
 
@@ -91,3 +106,12 @@
 
 // Typekit
 @import url('https://use.typekit.net/vzi2bvt.css');
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+ 
+

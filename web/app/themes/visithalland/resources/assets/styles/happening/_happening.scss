@@ -1,5 +1,5 @@
 .happening__content {
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		padding-right:$space-4;
 	}
 }
@@ -10,13 +10,13 @@
 	background-color:palette(black, light);
 	overflow:hidden;
 	margin-top:$space-3;
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		margin-top:0;
 	}
 	&__inner {
 		display:block;
 		padding:$space-3;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding:$space-3 $space-4;
 		}
 	}

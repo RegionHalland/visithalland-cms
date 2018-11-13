@@ -1,9 +1,9 @@
 .article-share {
 	padding:$space-5 $space-3;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		padding:$space-5 0;
 	}
-	@media(min-width:$breakpoint-lg) {
+	@screen lg {
 		padding:$space-5 0;
 	}
 
@@ -19,7 +19,7 @@
 
 	&__title {
 		font-size:1.75rem;
-		@media(min-width:$breakpoint-md) {
+		@screen md {
 			font-size:2rem;
 		}
 	}
@@ -37,7 +37,7 @@
 	&__button {
 		display:inline-block;
 		margin:$space-2 $space-2;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			margin:0 $space-2;
 		}
 		&.facebook {

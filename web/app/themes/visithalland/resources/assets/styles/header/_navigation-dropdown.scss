@@ -1,7 +1,7 @@
 .nav-dropdown {
     transform:translateY(-100%);
     z-index:-1;
-    top:calc(25px + 50px + 40px);
+    top:calc(20px + 50px + 40px);
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
     max-height:calc(100vh - 115px);
@@ -9,11 +9,11 @@
     &.open {
         transform:translateY(0%);
     }
-    @media(min-width:$breakpoint-sm) {
+    @screen sm {
         top:calc(25px + 60px + 60px);
         max-height:calc(100vh - 100px);
     }
-    @media(min-width:$breakpoint-md) {
+    @screen md {
         overflow:hidden;
         top:calc(30px + 60px);
         max-height:calc(100vh - 100px);
@@ -28,10 +28,10 @@
     align-items:center;
     justify-content:flex-start;
     flex-direction:row;
-    @media(min-width:$breakpoint-sm) {
+    @screen sm {
         justify-content:flex-start;
     }
-    @media(min-width:$breakpoint-md) {
+    @screen md {
         justify-content:center;
     }
 }

@@ -1,6 +1,6 @@
 @php $author_id = get_the_author_meta('ID'); @endphp
 
-<address class="author-horizontal mt4 mb4">
+<address class="author-horizontal mt-4 mb-4">
     <div class="author-horizontal__img-container">
         <img 
             data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_profile@2x"] }}"

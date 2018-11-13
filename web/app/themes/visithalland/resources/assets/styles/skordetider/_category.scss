@@ -1,5 +1,5 @@
 .st-category {
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		display:flex;
 		&:nth-child(even) {
 			flex-direction:row-reverse;
@@ -60,7 +60,7 @@
 
 .st-category__list-item {
 	margin-top:$space-2;
-	@media(min-width:$breakpoint-md) {
+	@screen md {
 		margin-top:$space-3;
 	}
 	&:hover {

@@ -1,11 +1,11 @@
-<div class="container col-11 md-col-10 lg-col-10 mx-auto pb3">
+<div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto pb-3">
     @if(is_array($happenings))
-        <header class="bg-blue rift-font text-sm bold px3 py2 mb3 rounded-pill inline-block text-light">
+        <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
             @php _e( 'Kommande events', 'visithalland' ) @endphp
         </header>
-        <div class="clearfix mxn2">
+        <div class="clearfix  -mx-2">
             @foreach($happenings as $key => $happening)
-                <div class="col col-12 sm-col-4 px2">
+                <div class="col w-full sm:w-4/12 px-2">
                     @include('partials.happening-thumbnail')
                 </div>
             @endforeach

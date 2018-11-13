@@ -11,7 +11,7 @@
 		background-color:palette(black, base);
 		padding-bottom:125%;
 		background-color:palette(black, base);
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding-bottom:56.25%;
 		}
 		&::after {
@@ -31,10 +31,10 @@
 	}
 	&__inner {
 		padding:0 $space-3;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding:0 $space-5;
 		}
-		@media(min-width:$breakpoint-lg) {
+		@screen lg {
 			padding:0 $space-6;
 		}
 		z-index:$z4;
@@ -66,11 +66,11 @@
 	&__content {
 		padding:$space-2 0;
 		margin-top:$space-2;
-		@media(min-width:$breakpoint-sm) {
+		@screen sm {
 			padding:$space-2 $space-4;
 			margin-top:$space-3;
 		}
-		@media(min-width:$breakpoint-lg) {
+		@screen lg {
 			padding:$space-2 $space-5;
 		}
 	}

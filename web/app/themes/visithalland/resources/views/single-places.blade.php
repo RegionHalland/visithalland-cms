@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,10 +6,10 @@
     {!! the_post() !!}
         <article role="main" id="main-content">
             @include('partials.article-hero')
-            <div class="article-content container clearfix mt4">
-                <div class="col-11 md-col-10 lg-col-9 mx-auto">
+            <div class="article-content container clearfix mt-4">
+                <div class="w-11/12  md:w-10/12  lg:w-9/12  mx-auto">
                     <p class="preamble">{{ $post->excerpt }}</p>
-                    <div class="article-body mt4">
+                    <div class="article-body mt-4">
                         {{ the_content() }}
                     </div>
                     @include('partials.google-details')

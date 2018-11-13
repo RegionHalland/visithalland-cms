@@ -1,8 +1,8 @@
 <section class="{{ App::getTermClassName() }} relative" role="heading" id="page-content">
-    <div class="height-5 py6 bg-blue-light absolute top-0 left-0 w-fill topographic-pattern">
+    <div class="h-5 py-6 bg-blue-light absolute pin-t pin-l w-full topographic-pattern">
     </div>
-    <div class="relative container col-11 md-col-10 pt6">
-        <div class="aspect-container relative scrim aspect-1 sm-aspect-3x2 md-aspect-16x9 topographic-pattern rounded">
+    <div class="relative container w-11/12  md:w-10/12  pt-6">
+        <div class="aspect-container relative scrim aspect-1 sm:aspect-3x2 md:aspect-16x9 topographic-pattern rounded">
             <picture>
                 <source media="(min-width: 60em)"
                     data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
@@ -10,7 +10,7 @@
                     data-srcset="{{ $post->featured_image["sizes"]['vh_large'] . " 1x," . $post->featured_image["sizes"]['vh_large@2x'] . " 2x" }}" />
                 <source
                     data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-                <img class="absolute w-fill top-0 left-0 lazyload"
+                <img class="absolute w-full pin-t pin-l lazyload"
                     data-src="{{ $post->featured_image["sizes"]['vh_hero_wide@2x'] }}"
                     alt="{{ $post->featured_image["alt"] }}"
                 />
@@ -19,12 +19,12 @@
             @include('partials.components.image-credit')
             @include('partials.components.date-badge')
 
-            <div class="absolute bottom-0 left-0 right-0 mx-auto center pb4 md-pb4 col-11 sm-col-8 z3">
+            <div class="absolute pin-b pin-l pin-r mx-auto center pb-4 md:pb4 w-11/12  sm:w-8/12  z-30">
                 @include('partials.components.breadcrumbs')
-                <h1 class="text-light text-225 md-text-275 line-height-2 mb3 center mt2">{{ $post->post_title }}</h1>
+                <h1 class="text-white text-225 md:text-275 line-h-2 mb-3 center mt-2">{{ $post->post_title }}</h1>
             </div>
         </div>
-        <div class="scroll-indicator mx-auto left-0 right-0">
+        <div class="scroll-indicator mx-auto pin-l pin-r">
             <svg class="scroll-indicator__icon">
                 <use xlink:href="#arrow-down-icon"/>
             </svg>

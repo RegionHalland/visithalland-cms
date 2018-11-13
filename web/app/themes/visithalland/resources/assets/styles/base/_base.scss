@@ -1,8 +1,7 @@
 html {
 	box-sizing: border-box;
 	text-size-adjust: 100%;
-	
-	@media (min-width: $breakpoint-lg) {
+	@screen lg {
 		font-size: 112.5%; /* 18px */
 	}
 }
@@ -12,40 +11,28 @@ html {
 }
 
 body {
-	font-family: $fira-font-family;
-	line-height: 1;
+	@apply font-fira text-black;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: $paragraph-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $rift-font-family;
-	font-weight: 800;
-	color: $black;
+	@apply font-rift font-bold text-black;
 	&.light {
-		color:$white;
+		@apply text-white;
 	}
 }
 
 p {
-	line-height: 1.5;
-
+	@apply leading-normal;
 	//Se över den här skiten
 	&.light {
-		color:$white;
-	}
-}
-
-span {
-	//Se över
-	&.light {
-		color:$white;
+		@apply text-white;
 	}
 }
 
 strong,
-.strong { font-weight: bold }
+.strong { @apply font-bold; }
 
 em, .em,
 i, .i { font-style: italic }
@@ -104,7 +91,7 @@ hr {
 }
 
 input {
-	font-family: inherit;
+	@apply font-fira;
 }
 
 button {

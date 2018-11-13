@@ -1,9 +1,9 @@
 .article-content {
 	padding:0;
-	@media(min-width:$breakpoint-sm) {
+	@screen sm {
 		padding:0 $space-5;
 	}
-	@media(min-width:$breakpoint-lg) {
+	@screen lg {
 		padding:0 $space-6;
 	}
 }
