@@ -20,7 +20,7 @@
                 </div>
                 <div class="w-full sm:w-7/12 md:w-5/12 lg:w-5/12 my-2 px-3">
                     <span class="font-rift text-white opacity-75">Om {!! $term->name !!}</span>
-                    <div class="font-fira text-white mt-3">
+                    <div class="font-fira text-white mt-3 mb-4 sm:mb-0">
                         {!! term_description( $term->ID, $term ) !!}
                     </div>
                 </div>

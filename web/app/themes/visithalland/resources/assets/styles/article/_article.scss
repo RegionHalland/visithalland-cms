@@ -19,16 +19,15 @@
 		font-size:0.9em;
 		font-weight:300;
 		font-style: italic;
-		@apply text-grey-dark mt-1;
+		@apply text-grey-dark mt-2;
 	}
 	.wp-caption-text, .image-description{
 		display:block;
 		text-align:left;
 		font-weight:400;
 		font-size:1em;
-		line-height: 1.5;
 		font-style: italic;
-		@apply text-grey-darker mt-2;
+		@apply text-grey-darker mt-2 leading-tight;
 		//color:palette(grey, xx-dark);
 	}
 	figure {

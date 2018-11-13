@@ -1,14 +1,14 @@
 <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
     @php _e( 'Fler artiklar', 'visithalland' ) @endphp
 </header>
-<div class="clearfix flex flex-wrap  -mx-2">
+<div class="flex flex-wrap -mx-2">
     @foreach($posts_with_places_companies as $key => $post)
         @php
             $current_index = $key + 1
         @endphp
 
         @if($current_index % 3 === 0)
-            <div class="col w-full px-2 mb-3">
+            <div class="w-full px-2 mb-3">
                 <a href="{{ the_permalink($post->ID) }}" title="{{$post->post_title}}" class="block {{ App::getTermClassName() }}">
                     <article class="scrim overflow-hidden aspect-container aspect-1 sm:aspect-3x2 relative rounded">
                         <div class="article-tag mt-3 ml-3 absolute z-30 pin-l pin-t">
@@ -42,7 +42,7 @@
                 </a>
             </div>
         @else
-            <div class="col w-full sm:w-6/12  px-2 mb-3">
+            <div class="w-full sm:w-6/12 px-2 mb-3">
                 <a href="{{ get_permalink($post->ID) }}" title="{{ $post->post_title }}" class="{{ App::getTermClassName() }}">
                     <article class="">
                         <div class="overflow-hidden aspect-container aspect-3x2 relative rounded">
@@ -63,7 +63,7 @@
                                 />
                             </picture>
                         </div>
-                        <h3 class="mt3">{{ $post->post_title }}</h3>
+                        <h3 class="mt-4">{{ $post->post_title }}</h3>
                         <p class="fade-text mt-2">{{ $post->excerpt }}</p>
                         <div class="read-more mt-3">
                             <span class="read-more__text">

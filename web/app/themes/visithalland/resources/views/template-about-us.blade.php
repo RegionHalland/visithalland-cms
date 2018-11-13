@@ -14,20 +14,20 @@
     @endphp
     <article role="main" id="main-content">
         @include('partials.page.page-header')
-        <div class="container w-11/12  md:w-10/12  pb-4">
+        <div class="container w-11/12  md:w-10/12 pb-8">
             <div class="article-body w-full md:w-8/12 ">
                 {{ the_content() }}
             </div>
-			<div class="w-full mt-4">
+			<div class="w-full mt-8">
 				<header class="bg-blue font-rift text-sm font-bold px-3 py-2 rounded-full inline-block text-white">
                     @php _e( 'Kontaktpersoner', 'visithalland' ) @endphp
                 </header>
-                <div class=" -mx-3 flex flex-wrap mt-3">
+                <div class="-mx-3 flex flex-wrap mt-3">
                     @if( have_rows('contact') )
                         @php while ( have_rows('contact') ) : the_row();
                             $user_id = get_sub_field('contact_person')['ID'];
                         @endphp
-                            <address class="col w-full sm:w-6/12  md:w-3/12 block mb-4 px-3">
+                            <address class="w-full sm:w-6/12 md:w-3/12 block mb-4 px-3">
                                 <div class="overflow-hidden aspect-container aspect-1 relative rounded">
                                     <img
                                         data-src="{{ get_field('profile_image', 'user_'. $user_id)["sizes"]["vh_medium_square"] }}"

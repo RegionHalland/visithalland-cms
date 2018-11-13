@@ -17,13 +17,13 @@
 		                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_wide'] . " 1x," . $post->featured_image["sizes"]['vh_hero_wide@2x'] . " 2x" }}" />
 		                            <source
 		                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-		                            <img class="absolute pin-l pin-t h-full w-auto lazyload"
+		                            <img class="absolute pin-l pin-t h-full w-auto max-w-none lazyload"
 		                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 										alt="{{ $post->featured_image["alt"] }}"
 		                            />
 		                        </picture>
 		                        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
-		                            <h2 class="text-white">{!! $post->post_title !!}</h2>
+		                            <h2 class="text-white text-3xl">{!! $post->post_title !!}</h2>
 		                            <div class="read-more mt-3">
 		                                <span class="read-more__text light">
 		                                    @php _e( 'Läs mer', 'visithalland' ); @endphp
@@ -49,7 +49,7 @@
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_hero_tall'] . " 1x," . $post->featured_image["sizes"]['vh_hero_tall@2x'] . " 2x" }}" />
 	                            <source
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute pin-l pin-t h-full w-auto lazyload"
+	                            <img class="absolute pin-l pin-t h-full w-auto max-w-none lazyload"
 	                                data-src="{{ $post->featured_image["sizes"]['vh_hero_tall@2x'] }}"
 									alt="{{ $post->featured_image["alt"] }}"
 	                            />
@@ -79,7 +79,7 @@
 							<picture>
 	                            <source
 	                                data-srcset="{{ $post->featured_image["sizes"]['vh_medium_square'] . " 1x," . $post->featured_image["sizes"]['vh_medium_square@2x'] . " 2x" }}" />
-	                            <img class="absolute pin-l pin-t h-auto w-full lazyload"
+	                            <img class="absolute pin-l pin-t h-auto w-full max-w-none lazyload"
 	                                data-src="{{ $post->featured_image["sizes"]['vh_medium_square@2x'] }}"
 									alt="{{ $post->featured_image["alt"] }}"
 	                            />
