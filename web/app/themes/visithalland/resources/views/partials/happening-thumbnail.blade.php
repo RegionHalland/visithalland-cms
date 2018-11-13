@@ -18,7 +18,7 @@
                 <span class="text-white font-rift text-sm font-bold">{{ $dateobj = date("M", strtotime($happening->meta_fields['end_date'])) }}</span>
             </div>
         </div>
-        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
             <h3 class="text-white h2">{{ $happening->post_title }}</h3>
             <div class="read-more mt-3">
                 <span class="read-more__text light">

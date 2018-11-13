@@ -1,5 +1,5 @@
 <section class="topographic-pattern bg-blue box-shadow">
-    <div class="container flex justify-between items-center flex-wrap md:flex-nowrap w-11/12 md:w-11/12 lg:w-10/12 ">
+    <div class="container flex justify-between items-center flex-wrap md:flex-no-wrap w-11/12 lg:w-10/12 ">
         <div class="flex items-center md:pr-4">
             <a href="{{ home_url() }}" class="link-reset py-2">
                 <picture>

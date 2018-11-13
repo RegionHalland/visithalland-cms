@@ -23,7 +23,7 @@
         outline:none;
         box-shadow: 0 0 0px 2px rgba(255,255,255,0.2);
     }
-    @screen lg {
+    @screen xl {
         @apply block;
         width:275px;
     }
@@ -41,7 +41,7 @@
         outline:none;
         box-shadow: 0 0 0px 2px rgba(255,255,255,0.2);
     }
-    @screen md {
+    @screen lg {
         position:absolute;
         top:50%;
         right:$space-2;

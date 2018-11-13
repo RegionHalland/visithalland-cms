@@ -1,6 +1,6 @@
 <div class="google-google-details block mt-2">
     @if (get_field("google_information")) 
-        <section class="google-details clearfix">
+        <section class="google-details flex flex-wrap">
             <div id="map"></div>
              <section id="opening-hours" class="google-details__section google-details__open-hours col w-full sm:w-3/12 list-style-none p0">
                 <span class="google-details__section-label block">{{ _e( 'Öppettider', 'visithalland'  )}}</span>
@@ -21,8 +21,8 @@
         </section>
 
         @else
-        <section class="google-details clearfix">
-            <section class="google-details__section col w-6/12  sm:w-3/12">
+        <section class="google-details flex flex-wrap">
+            <section class="google-details__section col w-6/12 sm:w-3/12">
                 <span class="google-details__section-label block">{{ _e('Hitta hit', 'visithalland') }}</span>
                 <a href="http://www.google.com/maps/place/{{ get_field("location")['lat'] . "," . get_field("location")['lng'] }}" 
                 target="_blank" class="btn inline-block">

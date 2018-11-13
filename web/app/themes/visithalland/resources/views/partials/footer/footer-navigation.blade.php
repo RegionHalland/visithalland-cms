@@ -5,13 +5,13 @@
 <div class="flex flex-wrap w-full mb-5 px-3">
     @foreach($navbar_items as $primary_navigation_item)
         @if(is_array($primary_navigation_item->children))
-            <div class=" w-full sm:w-full md:w-6/12  mt-4">
+            <div class=" w-full sm:w-full lg:w-6/12  mt-4">
                 <h4 class="text-white mb-4 text-lg">{{ $primary_navigation_item->post_title }}</h4>
 
                 <div class="flex flex-wrap">
                 @foreach($primary_navigation_item->children as $child)
                     @if($child->type === 'taxonomy')
-                        <div class="truncate text-white font-rift  w-full sm:w-4/12 md:w-6/12  pb-3">
+                        <div class="truncate text-white font-rift  w-full sm:w-4/12 lg:w-6/12  pb-3">
                             <a class="text-white font-bold text-lg truncate inline-block" href="{{ $child->url }}">
                                 <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "visithalland"}}">
                                     <div class="theme-icon__inner">
@@ -21,7 +21,7 @@
                             </a>
                         </div>
                     @else 
-                        <div class="truncate text-white font-rift  w-full sm:w-4/12 md:w-6/12  pb-3">
+                        <div class="truncate text-white font-rift  w-full sm:w-4/12 lg:w-6/12  pb-3">
                             <a class="text-white font-bold text-lg truncate inline-block" href="{{ $child->url }}">
                                 <div class="theme-icon visithalland">
                                     <div class="theme-icon__inner">
@@ -38,7 +38,7 @@
             </div>
         @endif
     @endforeach
-    <div class=" w-full sm:w-6/12  md:w-3/12 mt-4">
+    <div class=" w-full sm:w-6/12  lg:w-3/12 mt-4">
         <h4 class="text-white mb-4 text-lg">
             @php 
                 _e('Sidor', 'visithalland') 
@@ -53,7 +53,7 @@
         @endif
     </div>
 
-    <div class=" w-full sm:w-4/12 md:w-3/12 mt-4">
+    <div class=" w-full sm:w-4/12 lg:w-3/12 mt-4">
         <h4 class="text-white mb-4 text-lg">
             @php 
                 _e('Om webbplatsen', 'visithalland') 

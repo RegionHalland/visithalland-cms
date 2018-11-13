@@ -14,7 +14,7 @@
     @endphp
     <article role="main" id="main-content">
         @include('partials.page.page-header')
-        <div class="container w-11/12  md:w-10/12 pb-8">
+        <div class="container w-11/12 md:w-10/12 mt-8 pb-8">
             <div class="article-body w-full md:w-8/12 ">
                 {{ the_content() }}
             </div>
@@ -38,7 +38,7 @@
                                 <div class="">
                                     <h3 class="font-rift font-bold block mt-2">{{ get_sub_field('contact_person')['display_name'] }}</h3>
                                     <span class="font-fira block text-sm italic text-grey-dark mt-2">{{ get_field('role', 'user_'. $user_id) }}</span>
-                                    <a class="mt2 text-sm block underline" href="mailto:{{ get_sub_field('contact_person')['user_email'] }}">
+                                    <a class="mt-2 text-sm block underline" href="mailto:{{ get_sub_field('contact_person')['user_email'] }}">
                                         {{ get_sub_field('contact_person')['user_email'] }}
                                     </a>
                                 </div>

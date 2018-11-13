@@ -20,13 +20,13 @@
                                     <source
                                         data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
                                     <img
-                                        class="image-blurb__img lazyload"
+                                        class="image-blurb__img max-w-none lazyload"
                                         data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
                                         alt="{{ $alt }}" />
                                 </picture>
                                 <div class="image-blurb__content">
                                     <h2 class="image-blurb__title">{!! $post->post_title !!}</h2>
-                                    <div class="read-more my3">
+                                    <div class="read-more my-3">
                                         <span class="read-more__text light">
                                             @php _e( 'Läs mer', 'visithalland' ); @endphp
                                         </span>
@@ -52,13 +52,13 @@
                                     <source
                                         data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
                                     <img
-                                        class="image-blurb__img lazyload"
+                                        class="image-blurb__img max-w-none lazyload"
                                         data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
                                         alt="{{ $alt }}" />
                                 </picture>
                                 <div class="image-blurb__content">
                                     <h3 class="image-blurb__title">{!! $post->post_title !!}</h3>
-                                    <div class="read-more my3">
+                                    <div class="read-more my-3">
                                         <span class="read-more__text light">
                                             @php _e( 'Läs mer', 'visithalland' ); @endphp
                                         </span>

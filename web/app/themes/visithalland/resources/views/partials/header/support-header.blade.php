@@ -1,5 +1,5 @@
 <section class="bg-blue-light box-shadow z-40 relative">
-    <div class="container w-11/12  md:w-10/12  lg:w-10/12  flex items-center justify-end h-6 relative">
+    <div class="container w-11/12 lg:w-10/12  flex items-center justify-end h-6 relative">
         @if(is_array(App::secondaryMenuItems()))
         	@foreach(App::secondaryMenuItems() as $secondary_navigation_item)
             	<a class="font-rift text-sm text-grey hover ml-3" href="{{ $secondary_navigation_item->url }}">{{ $secondary_navigation_item->title }}</a>
