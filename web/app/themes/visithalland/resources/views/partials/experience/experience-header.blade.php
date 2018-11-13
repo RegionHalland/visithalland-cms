@@ -10,16 +10,15 @@
         </picture>
     </div>
     <div class="topographic-pattern-theme relative">
-        <div class="container py-4 relative clearfix w-11/12  sm:w-11/12  md:w-10/12  lg:w-10/12  mx-auto pin-b pin-l pin-r">
-
-            <div class=" -mx-3">
-                <div class="col w-full sm:w-5/12 md:w-5/12 lg:w-5/12 my2 px-3">
+        <div class="container py-6 relative clearfix w-11/12 sm:w-11/12 md:w-10/12 lg:w-10/12 mx-auto pin-b pin-l pin-r">
+            <div class="-mx-3 flex flex-wrap">
+                <div class="w-full sm:w-5/12 md:w-5/12 lg:w-5/12 my-2 px-3">
                     @include('partials.components.breadcrumbs')
                     <h1 class="mt0 mb-3 light">
                         <span>{!! $term->name !!}</span>
                     </h1>
                 </div>
-                <div class="col w-full sm:w-7/12  md:w-5/12 lg:w-5/12 my2 px-3">
+                <div class="w-full sm:w-7/12 md:w-5/12 lg:w-5/12 my-2 px-3">
                     <span class="font-rift text-white opacity-75">Om {!! $term->name !!}</span>
                     <div class="font-fira text-white mt-3">
                         {!! term_description( $term->ID, $term ) !!}

@@ -1,8 +1,8 @@
-<section class="article-share clearfix px-2">
-    <div class="center mx-auto">
+<section class="article-share px-2 py-24 container">
+    <div class="mx-auto text-center">
         <h2 class="article-share__title mt-1 mb-0">@php _e( 'Dela artikeln med en vän.', 'visithalland' ) @endphp</h2>
     </div>
-    <div class="article-share__buttons center mt-4">
+    <div class="article-share__buttons text-center mt-4">
         <a href="http://www.facebook.com/share.php?u={{ the_permalink() }}&title={{ the_title() }}" class="btn article-share__button facebook">
             <svg class="article-share__icon">
                 <use xlink:href="#facebook-icon"/>

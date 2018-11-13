@@ -1,5 +1,5 @@
 
-<a href="{{ get_permalink($recent_post->ID) }}" title="{{ $recent_post->post_title }}" class="mb3">
+<a href="{{ get_permalink($recent_post->ID) }}" title="{{ $recent_post->post_title }}" class="mb-3">
     <article>
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">
             <picture>
@@ -11,7 +11,7 @@
                 />
             </picture>
         </div>
-        <h3 class="mt3">{{ $recent_post->post_title }}</h3>
+        <h3 class="mt-3">{{ $recent_post->post_title }}</h3>
         <div class="read-more mt-3">
             <span class="read-more__text">
                 @php _e( 'Läs mer', 'visithalland' ); @endphp

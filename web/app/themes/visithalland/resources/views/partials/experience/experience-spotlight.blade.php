@@ -2,7 +2,7 @@
 @php $concept_spotlights = App::getPosts(array("happening", "places", "tips_guides", "companies", "editor_tip", "meet_local"), get_queried_object()) @endphp
 
 @if(is_array($concept_spotlights))
-	<section class="spotlight-section container mt-5 mb-5 w-full md:w-10/12  lg:w-10/12  mx-auto {{ App::getTermClassName() }}">
+	<section class="spotlight-section container mt-8 mb-8 w-full md:w-10/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
 		<button class="icon-button spotlight-carousel--previous">
 			<svg class="icon--sm icon-button__icon">
 				<use xlink:href="#arrow-left-icon"/>
@@ -30,7 +30,7 @@
 								{{ $spotlight->post_title }}
 							@endif
 						</h4>
-						<div class="read-more mt-2">
+						<div class="read-more mt-4">
 		                    <span class="read-more__text">
 		                        @php _e( 'Läs mer', 'visithalland' ); @endphp
 		                    </span>

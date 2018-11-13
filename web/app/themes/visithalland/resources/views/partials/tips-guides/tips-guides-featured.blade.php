@@ -9,7 +9,7 @@
                 data-src="{{ get_the_post_thumbnail_url( $featured_post->ID, 'vh_hero_wide' ) }}"
             />
         </picture>
-        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-3">
+        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
             <h2 class="text-white">{{$featured_post->post_title}}</h2>
             <div class="read-more mt-3">
                 <span class="read-more__text light">

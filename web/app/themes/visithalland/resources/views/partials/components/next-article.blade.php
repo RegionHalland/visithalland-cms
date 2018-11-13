@@ -1,7 +1,7 @@
 <div class="next-article__container topographic-pattern bg-blue-light">
 	<div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
 	    <div class="infinite-scroll-request relative">
-	    	<div class="next-article clearfix">
+	    	<div class="next-article">
 				<div class="next-article__img-container inline-block">
 					<img class="next-article__img" src="" alt="">
 				</div>

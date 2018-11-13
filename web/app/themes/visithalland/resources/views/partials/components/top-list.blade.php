@@ -4,20 +4,20 @@
     $current_list_author = get_field('top_list_author', $top_list->ID);
     $current_list_author_meta = App::getAuthor($current_list_author['ID']);
 @endphp
-<div class="mb4">
-    <header class="bg-blue-light py-3 line-h-3 topographic-pattern rounded overflow-hidden clearfix relative">
-        <div class="col w-10/12 px-3">
-            <div class="bg-blue-blue font-rift text-xs font-bold px-2 py-1 rounded-full inline-block text-white mb-2">{{ $current_list_author_meta['name'] }} tipsar</div>
-            <h3 class="text-white text-xl">{{ $top_list->post_title }}</h3>
+<div class="mb-4">
+    <header class="bg-blue-light py-4 topographic-pattern rounded overflow-hidden flex flex-wrap relative">
+        <div class="w-10/12 px-3">
+            <div class="bg-blue font-rift text-xs font-bold px-3 py-2 rounded-full inline-block text-white mb-2">{{ $current_list_author_meta['name'] }} tipsar</div>
+            <h3 class="text-white text-2xl">{{ $top_list->post_title }}</h3>
         </div>
-        <div class="col w-2/12 px-3">
-            <img class="absolute pin-r pin-b max-w-4 max-h-4 lazyload" src="{{$current_list_author_meta['byline_image']}}" alt="">
+        <div class="w-2/12 px-3">
+            <img class="absolute pin-r pin-b max-w-full max-h-9 lazyload" src="{{$current_list_author_meta['byline_image']}}" alt="">
         </div>
     </header>
-    <ol class="px2 flex flex-wrap">
+    <ol class="px-2 flex flex-wrap">
         @foreach($current_list as $index => $current_list_item)
             <li class="inline-flex w-full mt-3">
-                <div class="flex justify-center items-center bg-blue p-2 mr-3 rounded h-5 w-5 text-white font-fira italic">
+                <div class="flex justify-center items-center bg-blue p-2 mr-3 rounded h-6 w-6 text-white font-fira italic">
                     {{ $index + 1 }}
                 </div>
                 <div class="truncate">

@@ -3,10 +3,10 @@
 	<div class="container w-11/12  md:w-10/12  lg:w-10/12  flex items-center">
 		<div class="clearfix flex items-center">
 			<div class="col w-4/12 sm:w-3/12 md:w-2/12 flex items-center justify-center">
-				<img class="w-fit mr-3 max-w-4" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
+				<img class="w-fit mr-3 max-w-8" src="{{ $banner['image']['url'] }}" alt="{{ $banner['image']['alt'] }}">
 			</div>
-			<div class="feature__content col w-8/12  sm:w-5/12 md:w-4/12 pl2">
-				<span class="rounded-full py-1 text-sm font-rift text-white px-2 mb-2 bg-orange-gradient inline-block">Nyhet</span>
+			<div class="feature__content col w-8/12 sm:w-5/12 md:w-4/12 pl-6">
+				<span class="rounded-full py-1 text-sm font-rift text-white px-2 mb-2 bg-orange inline-block">Nyhet</span>
 				<h3 class="text-white mb-3 line-h-3 h2">{{ $banner['title'] }}</h3>
 				<a href="{{ $banner['link'] }}" title="{{ $banner['title'] }}">
 					<div class="read-more">

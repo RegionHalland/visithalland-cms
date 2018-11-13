@@ -15,7 +15,7 @@
                                     data-srcset="{{ $post->featured_image['sizes']['vh_hero_wide'] . " 1x," . $post->featured_image['sizes']['vh_hero_wide@2x'] . " 2x" }}" />
                                 <source
                                     data-srcset="{{ $post->featured_image['sizes']['vh_medium_square'] . " 1x," . $post->featured_image['sizes']['vh_medium_square@2x'] . " 2x" }}" />
-                                <img class="absolute pin-l pin-t h-fill w-auto lazyload"
+                                <img class="absolute pin-l pin-t h-full w-auto lazyload"
                                     data-src="{{ $post->featured_image['sizes']['vh_medium_square@2x'] }}"
                                     alt="{{ $post->featured_image["alt"] }}"
                                 />
