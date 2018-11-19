@@ -13,18 +13,12 @@
     <article role="main" id="main-content">
 	        <div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
 	        	@if(isset($wp_query))
-	        	<header class="section-header block mb-2 mt-4 visithalland">
-		            <div class="section-header__icon-wrapper">
-		                <svg class="section-header__icon icon">
-		                    <use xlink:href="#search-icon"/>
-		                </svg>
-		            </div>
-		            <div class="section-header__title">
-		                @php _e( 'Dina sökresultat', 'visithalland' ) @endphp
-		            </div>
-                </header>
 
-	        	<div class="search-inner clearfix  -mx-2 mb-4">
+	        	<header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 mt-6 rounded-full inline-block text-white">
+		            @php _e( 'Dina sökresultat', 'visithalland' ) @endphp
+		        </header>
+
+	        	<div class="search-inner flex flex-wrap -mx-2 mb-4">
 			            @foreach ($wp_query->posts as $key => $post)
 			            	@php
 				            	$post_id = $post->ID;
@@ -34,7 +28,7 @@
 
 								// TODO: Add a secure way of adding slug-classes to search results
 							@endphp
-			            	<div class="col w-full sm:w-6/12  md:w-4/12 search-result px-2 mt-3">
+			            	<div class="w-full sm:w-6/12 lg:w-4/12 search-result px-2 mt-4">
 						        <a href="{{ the_permalink($post->ID) }}" title="{{ the_permalink($post->ID) }}">
 										<article class="image-blurb {{ $terms[0]->slug }}">
 											<picture>
@@ -44,13 +38,13 @@
 												<source
 													data-srcset="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' ) . " 1x," . get_the_post_thumbnail_url($post_id, 'vh_medium@2x' ) . " 2x" }}" />
 												<img
-													class="image-blurb__img lazyload"
+													class="image-blurb__img  max-w-none lazyload"
 													data-src="{{ get_the_post_thumbnail_url($post_id, 'vh_medium' )}}"
 													alt="{{ $alt }}" />
 											</picture>
 											<div class="image-blurb__content">
 												<h3 class="image-blurb__title">{{ $post->post_title}}</h3>
-												<div class="read-more my3">
+												<div class="read-more my-3">
 								                    <span class="read-more__text light">
 								                        @php _e( 'Läs mer', 'visithalland' ); @endphp
 								                    </span>

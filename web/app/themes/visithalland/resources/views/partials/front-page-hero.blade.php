@@ -26,7 +26,7 @@
                                 @php _e( 'Gå till', 'visithalland' ); @endphp
                                 {{ $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title }}
                             </span>
-                            <svg class="icon--sm mx-2">
+                            <svg class="icon mx-2">
                                 <use xlink:href="#arrow-right-icon"/>
                             </svg>
                         </div>

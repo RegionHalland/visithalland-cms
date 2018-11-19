@@ -11,8 +11,6 @@
 
 // .bg-orange-gradient { background: linear-gradient(111.48deg, #F06E08 0%, #FF8F37 100%);}
 
-.bg-theme {
-    @include themify {
-		background-color:$color-primary;
-    }
-}
+
+
+// TODO: Se över denna och lägg i themes.scss;

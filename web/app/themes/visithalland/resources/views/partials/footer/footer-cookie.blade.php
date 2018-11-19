@@ -8,7 +8,7 @@
                 </a>
             </p>
             <button class="h-4 w-4 rounded-full bg-blue-light flex items-center justify-center absolute outline-none pin-t pin-r mr-3 mt-3" id="cookie-accept" title="<?php _e( 'Stäng', 'visithalland' ); ?>" tabindex="2">
-                <svg class="icon icon-white">
+                <svg class="icon fill-current text-white">
                     <use xlink:href="#close-icon"/>
                 </svg>
             </button>

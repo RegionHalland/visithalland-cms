@@ -72,3 +72,33 @@ $icon: null;
     }
   }
 }
+
+
+
+//Theme Utilities
+.bg-theme {
+    @include themify {
+    background-color:$color-primary;
+    }
+}
+
+.theme-icon {
+    @apply inline-block align-middle relative overflow-hidden h-6 w-6 rounded-full;
+    transition: background-color 0.2s;
+    @include themify {
+    background-color:$color-primary;
+    }
+}
+
+.theme-icon__inner {
+    @apply absolute h-5 w-5;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include themify {
+        background-image: $icon;
+    }
+}

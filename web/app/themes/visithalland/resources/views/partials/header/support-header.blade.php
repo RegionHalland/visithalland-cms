@@ -1,4 +1,4 @@
-<section class="bg-blue-light box-shadow z-40 relative">
+<section class="bg-blue-light shadow z-40 relative">
     <div class="container w-11/12 lg:w-10/12  flex items-center justify-end h-6 relative">
         @if(is_array(App::secondaryMenuItems()))
         	@foreach(App::secondaryMenuItems() as $secondary_navigation_item)

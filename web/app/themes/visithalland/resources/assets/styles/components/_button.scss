@@ -1,28 +1,9 @@
 .btn {
-	font-family: inherit;
-	font-size: 1em;
-	text-decoration: none;
-	cursor: pointer;
-	line-height: 1.125rem;
-	font-family:$rift-font-family;
-	font-weight:bold;
-	padding: 0.9em $space-3;
-	height: auto;
-	border: 1px solid transparent;
-	border-radius: $border-radius;
-	vertical-align: middle;
-	appearance: none;
+	@apply px-4 py-3 text-base font-rift no-underline leading-normal font-bold h-auto rounded align-middle appearance-none bg-black text-white;
 	transition:transform 0.25s;
-	background:palette(black, base);
-	color:$white;
-	@media (min-width:$breakpoint-md) {
-		padding: 1em $space-3;
-		font-size: 0.9em;
-	}
-
+	
 	&__icon {
-		fill:$white;
-		margin-right:$space-1;
+		@apply fill-current mr-1;
 	}
 
 	&--primary {
@@ -30,25 +11,10 @@
 			background-color:$color-primary;
 			background-repeat:repeat;
 			background-size:100%;
-			color:$white;
 		}
 	}
 
-	&--dark {
-		border:1px solid palette(grey, x-dark);
-		background-color:none;
-		color:palette(grey, xx-dark);
-	}
-
-	&--light {
-		border:1px solid palette(grey, x-dark);
-		background-color:none;
-		color:$white;
-	}
-
 	&:hover {
-		text-decoration: none;
-		cursor:pointer;
 		transform:translateY(-2px);
 	}
 
@@ -60,6 +26,5 @@
 		outline: none;
 		transform:translateY(-2px);
 		border-color: rgba(0, 0, 0, .125);
-		box-shadow: 0 0 0 3px rgba(0, 0, 0, .25);
 	}
 }

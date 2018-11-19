@@ -1,20 +1,13 @@
 <div class="container w-11/12 md:w-10/12 lg:w-10/12 mx-auto pb-8 mt-8">
     <div class="-mx-2">
-        <header class="section-header mb-2 px-2 visithalland">
-            <div class="section-header__icon-wrapper">
-                <svg class="section-header__icon icon">
-                    <use xlink:href="#recommend-icon"/>
-                </svg>
-            </div>
-            <div class="section-header__title">
-                @php _e( 'Fler liknande artiklar', 'visithalland' ) @endphp
-            </div>
+        <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
+            @php _e( 'Fler liknande artiklar', 'visithalland' ) @endphp
         </header>
         @php
             $terms = get_the_terms($post->ID, 'experience');
             $featuredArticles = App::getPosts(array(), $terms[0], 3, true);
         @endphp
-        <div class="pb4 pt-3 flex flex-wrap">
+        <div class="pb-4 pt-3 flex flex-wrap">
             @foreach($featuredArticles as $key => $value)
                 @php
                     $post_id = $value->ID;

@@ -6,6 +6,13 @@ html {
 	}
 }
 
+h1, .h1 { font-size: 2.65rem }
+h2, .h2 { font-size: 1.75rem }
+h3, .h3 { font-size: 1.5rem }
+h4, .h4 { font-size: 1.4rem }
+h5, .h5 { font-size: .875rem }
+h6, .h6 { font-size: .75rem }
+
 *, *:before, *:after {
 	box-sizing: inherit;
 }
@@ -35,59 +42,52 @@ strong,
 .strong { @apply font-bold; }
 
 em, .em,
-i, .i { font-style: italic }
+i, .i { 
+	@apply italic;
+}
 
 a {
-	text-decoration: none;
-	color: palette(black, dark);
+	@apply no-underline text-black;
 }
 
 table {
-	width: 100%;
-	max-width: 100%;
+	@apply w-full max-w-full;
 }
 
 th { 
-	font-weight: bold;
-	vertical-align: bottom; 
-	text-align: left;
+	@apply font-bold align-bottom text-center;
 }	
 
 img {
-	vertical-align: middle;
+	@apply align-middle;
+}
+
+ul, ol {
+	@apply p-0;
 }
 
 pre,
 code,
 kbd,
 samp {
-	font-size: 1rem;
+	@apply text-base;
 }
 
 pre {
-	margin-top: 0;
-	overflow: auto;
+	@apply mt-0 overflow-auto;
 }
 
 sub,
 sup {
-	position: relative;
-	font-size: 75%;
-	line-height: 0;
+	@apply relative text-sm leading-none;
 }
 
-sub { bottom: -0.25em }
-sup { top: -0.5em }
-
 figcaption {
-	font-size: $h5;
-	font-style: italic;
+	@apply text-sm italic;
 }
 
 hr {
-	border: 0;
-	height: 1px;
-	background: palette(grey, light)
+	@apply h-px border-none bg-grey-light;
 }
 
 input {
@@ -95,12 +95,5 @@ input {
 }
 
 button {
-	font-family: inherit;
-	font-size: inherit;
-	line-height: 1;
-	background: none;
-	appearance: none;
-	border: 0;
-	padding: 0;
-	border-radius: 0;
+	@apply leading-none appearance-none text-base p-0 rounded-none;
 }
