@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	@if (get_field('campaign_toggle'))
+<div class="mt-24"></div>
+	{{-- @if (get_field('campaign_toggle'))
 		@include('partials.campaign')
     @else
 		@include('partials.front-page-hero')
@@ -56,5 +57,5 @@
 			    @endif
 			</div>
 		</div>
-	</section>
+	</section> --}}
 @endsection

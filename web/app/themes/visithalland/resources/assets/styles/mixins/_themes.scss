@@ -83,15 +83,15 @@ $icon: null;
 }
 
 .theme-icon {
-    @apply inline-block align-middle relative overflow-hidden h-6 w-6 rounded-full;
+    @apply inline-block align-middle relative overflow-hidden h-8 w-8 rounded-full;
     transition: background-color 0.2s;
     @include themify {
-    background-color:$color-primary;
+      background-color:$color-primary;
     }
 }
 
 .theme-icon__inner {
-    @apply absolute h-5 w-5;
+    @apply absolute h-6 w-6;
     top:50%;
     left:50%;
     transform:translate(-50%, -50%);

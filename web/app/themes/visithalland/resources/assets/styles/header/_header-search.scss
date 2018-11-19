@@ -1,11 +1,8 @@
 .header-search {
-    height:40px;
+    @apply mt-2;
     @screen md {
-        height:70px;
-        order:2;
-    }
-    @screen md {
-        height:70px;
+        @apply mt-0;
+        @apply h-16;
     }
 }
 

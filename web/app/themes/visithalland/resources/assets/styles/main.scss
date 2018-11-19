@@ -25,6 +25,7 @@
 @import 'utilities/accessibility';
 @import 'utilities/container';
 @import 'utilities/aspect-ratio';
+@import 'utilities/order';
 @import 'utilities/lazy-load';
 @import 'utilities/topographic-pattern';
 @import 'utilities/icons';
@@ -64,7 +65,6 @@
 @import './article/image-blurb'; // Se över denna
 
 // Header Styles
-@import './header/header';
 @import './header/navigation';
 @import './header/navigation-dropdown';
 @import './header/header-search';
