@@ -1,22 +1,8 @@
 .nav-dropdown {
-    @apply mt-2 overflow-scroll max-h-screen;
     transition:transform 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
     transform:translateY(-100%);
     z-index:-1;
-    @screen sm {
-        @apply mt-4;
-    }
-    @screen md {
-        @apply overflow-hidden;
-    }
     &.open {
         transform:translateY(0%);
-    }
-}
-
-.nav-dropdown__background {
-    @apply w-full h-full flex items-center justify-start flex-row;
-    @screen md {
-        @apply justify-start;
     }
 }

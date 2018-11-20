@@ -13,6 +13,16 @@
     border: 0 none;
 }
 
+@responsive {
+    .focus {
+        transition:box-shadow 0.25s;
+        &:focus {
+            @apply outline-none;
+            box-shadow: 0 0 0px 2px rgba(255,255,255,0.2);
+        }
+    }
+}
+
 .skip-link {
     left:-999px;
     position:absolute;

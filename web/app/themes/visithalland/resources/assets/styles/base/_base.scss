@@ -25,9 +25,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	@apply font-rift font-bold text-black;
-	&.light {
-		@apply text-white;
-	}
 }
 
 p {
@@ -92,6 +89,14 @@ hr {
 
 input {
 	@apply font-fira;
+	transition:box-shadow 0.25s;
+    &::placeholder {
+        @apply text-grey-light opacity-75;
+    }
+    &:focus {
+        @apply outline-none;
+        box-shadow: 0 0 0px 2px rgba(255,255,255,0.2);
+    }
 }
 
 button {

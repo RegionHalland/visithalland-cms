@@ -5,16 +5,7 @@
 @extends('layouts.day-in-halland')
 
 @section('content')
-    <div class="external-header topographic-pattern py-2 fixed pin-t pin-l pin-r z-40">
-        <div class="external-header__inner container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
-            <a class="external-header__link" href="/">
-                <svg class="external-header__icon mr-1">
-                     <use xlink:href="#arrow-left-icon"/>
-                </svg>
-                Tillbaka till visithalland.com
-            </a>
-        </div>
-    </div>
+    @include('partials.header.external-header')
     <div class="dh-landing flex items-center justify-center flex-col">
         {{-- PHP/html content starts --}}
         <picture>

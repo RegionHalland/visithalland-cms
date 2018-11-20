@@ -2,16 +2,7 @@
 @php($page_id = get_page_by_path('skordetid-i-halland')->ID)
 
 <div class="st-navigation">
-	<div class="external-header topographic-pattern py-2">
-		<div class="external-header__inner container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
-			<a class="external-header__link" href="/">
-				<svg class="external-header__icon mr-1">
-	           		 <use xlink:href="#arrow-left-icon"/>
-	        	</svg>
-	        	Tillbaka till visithalland.com
-	        </a>
-		</div>
-	</div>
+	@include('partials.header.external-header')
 	<div class="st-navigation__inner container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
 		<div class="st-navigation__logo">
 			<a href="{{ get_the_permalink($page_id) }}" class="link-reset">

@@ -1,5 +1,5 @@
 <div class="bg-blue-light py-3">
-    <div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
+    <div class="container w-11/12 md:w-10/12 lg:w-10/12 mx-auto">
         <div class="flex flex-wrap -mx-3">
         <div class="w-6/12  sm:w-3/12 md:w-2/12 px-3 pt-3 mt-1">
             <img class="max-w-8" src="{{ $european_union['logo']['url'] }}" />
