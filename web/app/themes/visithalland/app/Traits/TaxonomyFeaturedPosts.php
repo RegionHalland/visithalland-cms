@@ -2,17 +2,17 @@
 
 namespace App\Traits;
 
-trait FeaturedExperiences
+trait TaxonomyFeaturedPosts
 {
 
     /**
     * Returns content from theme options page for site banner
     * @return array Output banner content
     */
-    public function featuredExperiences() {
+    public function taxonomyFeaturedPosts() {
     	$term = get_queried_object();
-    	$featured_experiences = get_field('featured', $term);
+    	$taxonomy_featured_posts = get_field('featured', $term);
 
-        return $featured_experiences;
+        return $taxonomy_featured_posts;
     }
 }

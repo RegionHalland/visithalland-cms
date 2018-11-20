@@ -1,5 +1,5 @@
 @if(isset($get_breadcrumbs))
-	<div class="breadcrumbs inline-block mb-2">
+	<div class="breadcrumbs inline-block mb-2 p-2 bg-alpha rounded">
 		<div class="breadcrumbs__icon {{ App::getTermClassName() }}"></div>
 		@foreach ($get_breadcrumbs as $breadcrumb)
 		    @if ($breadcrumb['url'])

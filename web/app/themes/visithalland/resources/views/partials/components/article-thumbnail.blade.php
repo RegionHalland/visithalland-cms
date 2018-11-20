@@ -1,3 +1,14 @@
+{{-- Article Thumbnail --}}
+{{-- A component designed to show a preview of an article --}}
+{{-- @parameters 
+     - url
+     - title
+     - classes
+     - theme
+     - image sizes
+     - excerpt
+--}}
+
 <a href="{{ $url }}" title="{{ $title }}" class="{{ isset($classes) ? $classes : '' }}">
     <article>
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">

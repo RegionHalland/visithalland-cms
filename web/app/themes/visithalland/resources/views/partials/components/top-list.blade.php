@@ -1,4 +1,3 @@
-
 @php 
     $current_list = get_field('top_list', $top_list->ID);
     $current_list_author = get_field('top_list_author', $top_list->ID);

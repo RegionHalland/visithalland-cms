@@ -8,7 +8,7 @@ class TaxonomyTaxonomyConcept extends Controller
 {
 
 	use \App\Traits\TopLists;
-	use \App\Traits\FeaturedExperiences;
+	use \App\Traits\TaxonomyFeaturedPosts;
     use \App\Traits\FeaturedArticle;
 	
     public function term()
@@ -19,7 +19,7 @@ class TaxonomyTaxonomyConcept extends Controller
     public function posts() {
     	$posts = \App::getPosts(array("happening", "places", "companies"), get_queried_object(), -1);
         // Get featured posts so we can remove them from the array. We only want to show every post one time
-        $featured_posts = $this->featuredExperiences();
+        $featured_posts = $this->taxonomyFeaturedPosts();
         
         // Remove featured posts from the $posts array
         foreach ($posts as $key => $value) {

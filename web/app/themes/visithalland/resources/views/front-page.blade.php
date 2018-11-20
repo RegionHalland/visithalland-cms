@@ -1,14 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+	{{-- Hero Start --}}
 	@include('partials.front-page-hero')
-    <div class="container w-11/12 lg:w-10/12 mx-auto mt-4 sm:-mt-16 relative pb-4">
+	{{-- Hero End --}}
+	{{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+	{{-- Concept Grid Start --}}
+    <div class="container w-11/12 lg:w-10/12 mx-auto mt-4 sm:-mt-16 relative mb-8">
 		@include('partials.front-page-concepts')
 	</div>
-	<div class="mt-2 container w-11/12 lg:w-10/12 mx-auto pt-3 pb-8">
+	{{-- Concept Grid End --}}
+	<div class="mt-2 container w-11/12 lg:w-10/12 mx-auto pt-3 mb-8">
 		<div class="flex flex-wrap -mx-3 mt-4">
-			
-			<div class="w-full lg:w-8/12 mt-4 md:mt-0 md:pb-4 px-3">
+			{{-- Article Grid Start --}}
+			<div class="w-full lg:w-8/12 mt-4 md:mt-0 md:mb-4 px-3">
 				@include(
                     'partials.components.header', [
                     'title' => "Populära artiklar"]
@@ -32,9 +37,11 @@
 		            @endforeach
 		        </div>
 			</div>
-
+			{{-- Article Grid End --}}
+			{{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
 			{{-- Sidebar Start --}}
-			<aside class="w-full lg:w-4/12 mt-4 md:mt-0 md:pb-4 px-3">
+			<aside class="w-full lg:w-4/12 mt-4 md:mt-0 md:mb-4 px-3">
+				{{-- Events Start --}}
 				@if(is_array($happenings) && !empty($happenings))
 		            @include(
 	                    'partials.components.header', [
@@ -61,7 +68,9 @@
 			            @endforeach
 			        </div>
 			    @endif
-				
+			    {{-- Events End --}}
+				{{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+				{{-- Top Lists Start --}}
 				@if(is_array($top_lists))
 					<div class="mt-8">
 			            @include(
@@ -77,7 +86,9 @@
 			            @endforeach
 			        </div>
 			    @endif
+			    {{-- Top Lists End --}}
 			</aside>
+			{{-- Sidebar End --}}
 		</div>
 	</div> 
 @endsection

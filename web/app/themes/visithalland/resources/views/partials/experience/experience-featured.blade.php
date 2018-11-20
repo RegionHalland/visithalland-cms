@@ -1,10 +1,11 @@
-@if(isset($featured_experiences))
-	<section class="mt-12 container w-11/12 md:w-10/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
-		<header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
-			@php _e( 'Populära artiklar', 'visithalland' ) @endphp
-		</header>
+@if(isset($taxonomy_featured_posts))
+	<section class="mt-12 mb-8 container w-11/12 md:w-10/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
+		@include(
+            'partials.components.header', [
+            'title' => "Utvalda artiklar"]
+        )
 		<div class="masonry-grid featured-grid">
-		    @foreach ($featured_experiences as $post)
+		    @foreach ($taxonomy_featured_posts as $post)
 				{{-- Gets first item in array --}}
 				@if($loop->iteration == 1)
 					<div class="featured-grid__item featured-grid__item--large col w-full sm:w-full lg:w-8/12  ">
@@ -104,9 +105,6 @@
 		    @endforeach
 		</div>
 	</section>
-
-    <?php wp_reset_postdata(); ?>
-
 @endif
 
 

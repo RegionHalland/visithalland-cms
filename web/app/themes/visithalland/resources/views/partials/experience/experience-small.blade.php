@@ -1,11 +1,11 @@
 <div class="container w-11/12  md:w-10/12  pb-4 pt-4" role="main" id="main-content">
     <div class="flex flex-wrap -mx-3 pt-4">
         <div class="w-full md:w-8/12 px-3 {{ App::getTermClassName() }}">
-            @if(is_array($featured_experiences))
+            @if(is_array($taxonomy_featured_posts))
                 <header class="bg-blue font-rift text-sm font-bold px-3 py-2 mb-3 mt-4 rounded-full inline-block text-white">
                     @php _e( 'Utvalda artiklar', 'visithalland' ) @endphp
                 </header>
-                @foreach($featured_experiences as $post)
+                @foreach($taxonomy_featured_posts as $post)
                     <a class="mb-4 block scrim overflow-hidden aspect-container aspect-1 sm:aspect-16x9 md:aspect-3x2 relative rounded" href="{{ $post->url }}" title="{!! $post->post_title !!}">
                         <article>
                             <picture>
