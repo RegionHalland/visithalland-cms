@@ -1,16 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="mt-24"></div>
-	{{-- @if (get_field('campaign_toggle'))
-		@include('partials.campaign')
-    @else
-		@include('partials.front-page-hero')
-    @endif
-    <section class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto mt-3 sm:-mt-16 relative pb-4">
+	@include('partials.front-page-hero')
+
+    <section class="container w-11/12 lg:w-10/12 mx-auto mt-4 sm:-mt-16 relative pb-4">
 		@include('partials.front-page-concepts')
 	</section>
-	@include('partials.components.banner')
+	{{-- @include('partials.components.banner')
 	<section class="mt2 container w-11/12 md:w-10/12 lg:w-10/12  mx-auto pt-3 pb-8">
 		<div class="flex flex-wrap -mx-3 mt-4">
 			<div class="w-full md:w-8/12  px-3">

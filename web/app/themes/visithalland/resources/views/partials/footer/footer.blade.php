@@ -7,7 +7,7 @@
 	        </div>
 	    </div>
     </div>
-    @include('partials.footer.footer-eu')
+    @include('partials.footer.footer-secondary')
     @include('partials.footer.footer-cookie')
 </footer>
 

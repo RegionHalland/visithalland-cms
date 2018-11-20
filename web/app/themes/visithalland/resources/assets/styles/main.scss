@@ -30,6 +30,9 @@
 @import 'utilities/topographic-pattern';
 @import 'utilities/icons';
 @import 'utilities/scrim-gradient';
+
+
+//TODO: Ta bort och ersätt med utilities 
 @import 'utilities/hover';
 
 // Generic and Reusable Components
@@ -93,5 +96,3 @@
  * config file.
  */
 @tailwind utilities;
- 
-

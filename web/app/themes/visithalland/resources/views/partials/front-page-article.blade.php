@@ -1,4 +1,3 @@
-
 <a href="{{ get_permalink($recent_post->ID) }}" title="{{ $recent_post->post_title }}" class="mb-3">
     <article>
     	<div class="overflow-hidden aspect-container aspect-3x2 relative rounded">

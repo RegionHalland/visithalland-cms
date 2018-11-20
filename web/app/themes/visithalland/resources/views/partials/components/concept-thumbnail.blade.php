@@ -1,4 +1,4 @@
-<article class="scrim overflow-hidden aspect-container aspect-1 sm:aspect-16x9 lg:aspect-1 relative rounded {{ $theme }}">
+<article class="scrim overflow-hidden aspect-container aspect-1 sm:aspect-16x9 lg:aspect-1 relative rounded {{ isset($classes) ? $classes : '' }} {{ $theme }}">
     @include(
         'partials.components.picture-element', 
         [

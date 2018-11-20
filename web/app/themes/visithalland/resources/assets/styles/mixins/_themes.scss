@@ -77,8 +77,9 @@ $icon: null;
 
 //Theme Utilities
 .bg-theme {
+    @apply bg-blue-light;
     @include themify {
-    background-color:$color-primary;
+      background-color:$color-primary;
     }
 }
 
