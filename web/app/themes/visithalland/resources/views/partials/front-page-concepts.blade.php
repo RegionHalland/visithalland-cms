@@ -10,7 +10,6 @@
                     @include('partials.components.concept-thumbnail', [
                         'title' => $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title,
                         'url' => $navigation_item->url,
-                        'text_size' => "text-4xl",
                         'classes' => "",
                         'theme' => $navigation_item->meta_fields['class_name'] ? $navigation_item->meta_fields['class_name'] : 'visithalland']
                     )
@@ -18,11 +17,10 @@
             @endif
             @if($loop->iteration > 3)
                 <div class="mb-3 w-full sm:w-6/12 lg:w-4/12 px-2">
-                    @include('partials.components.concept-thumbnail', [
+                    @include('partials.components.concept-thumbnail-small', [
                         'title' => $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title,
                         'url' => $navigation_item->url,
-                        'text_size' => "text-3xl",
-                        'classes' => "opacity-25",
+                        'classes' => "",
                         'theme' => $navigation_item->meta_fields['class_name'] ? $navigation_item->meta_fields['class_name'] : 'visithalland']
                     )
                 </div>

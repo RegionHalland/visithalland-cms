@@ -9,6 +9,6 @@
         <source data-srcset="{{ $img_sm . " 1x," . $img_sm_retina . " 2x" }}" />
     @endif
     <img class="lazyload {{ $classes }}"
-        data-src="{{ $img }}" alt="{{ $img_alt }}"
+        data-src="{{ $img }}" alt="{{ isset($img_alt) ? $img_alt : '' }}"
     />
 </picture>

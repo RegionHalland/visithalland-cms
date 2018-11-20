@@ -1,9 +1,10 @@
 .fade-text {
 
 	//TODO: Fix max-height
-	@apply relative max-h-4 overflow-hidden;
+	@apply relative overflow-hidden;
+	max-height:50px;
 	@screen md {
-		@apply max-h-5;
+		max-height:55px;
 	}
 	&::after{
 		content:'';
@@ -13,6 +14,6 @@
 		left:0;
 		right:0;
 		bottom:0;
-		background:linear-gradient(rgba(255, 255, 255, 0), $white);
+		background:linear-gradient(rgba(255, 255, 255, 0), #fff);
 	}
 }

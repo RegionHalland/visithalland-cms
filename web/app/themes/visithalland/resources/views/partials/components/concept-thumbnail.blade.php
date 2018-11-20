@@ -14,7 +14,7 @@
         ]
     )
     <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
-        <h2 class="text-white {{ isset($text_size) ? $text_size : 'text-4xl' }}">{{ $title }}</h2>
+        <h2 class="text-white text-4xl">{{ $title }}</h2>
         @include(
             'partials.components.button', [
             'title' => $title, 
