@@ -1,5 +1,5 @@
 @if(isset($taxonomy_featured_posts))
-	<section class="mt-12 mb-8 container w-11/12 md:w-10/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
+	<section class="mt-12 mb-8 container w-11/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
 		@include(
             'partials.components.header', [
             'title' => "Utvalda artiklar"]
