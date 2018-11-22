@@ -8,8 +8,8 @@
      - image sizes
 --}}
 
-<a href="{{ $url }}" title="{{ $title }}" class="inline-block {{ isset($classes) ? $classes : '' }}">
-    <article class="scrim overflow-hidden bg-blue relative h-full w-full rounded flex {{ isset($aspect_ratio) ? $aspect_ratio : '' }}">
+<a href="{{ $url }}" title="{{ $title }}" class="{{ isset($classes) ? $classes : 'inline-block' }}">
+    <article class="scrim overflow-hidden bg-blue relative h-full w-full rounded flex {{ isset($aspect_ratio) ? $aspect_ratio : '' }} {{ isset($theme) ? $theme : 'visithalland' }}">
         @include(
             'partials.components.picture-element', 
             [   
@@ -24,13 +24,26 @@
                 'img_alt' => isset($img_alt) ? $img_alt : ''
             ]
         )
-        @if(isset($theme))
-            <div class="theme-icon {{ $theme }} absolute pin-l pin-t ml-2 mt-2 z-20">
+        @if(isset($start_date_day))
+            <div class="absolute pin-t pin-l ml-3 mt-3 z-20">
+                @include(
+                    'partials.components.date', 
+                    [
+                        'start_date_day' => $start_date_day,
+                        'start_date_month' => $start_date_month,
+                        'end_date_day' => $end_date_day,
+                        'end_date_month' => $end_date_month,
+                    ]
+                )
+            </div>
+        @endif
+        @if(isset($theme) && !isset($start_date_day))
+            <div class="theme-icon {{ $theme }} absolute pin-l pin-t ml-3 mt-3 z-20">
                 <div class="theme-icon__inner">
                 </div>
             </div>
         @endif
-        <div class="z-40 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
+        <div class="z-30 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l p-4">
             <h2 class="text-white text-3xl">{{ $title }}</h2>
             @include(
                 'partials.components.read-more', [

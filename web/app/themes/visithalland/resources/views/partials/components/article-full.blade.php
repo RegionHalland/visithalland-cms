@@ -14,8 +14,8 @@
                 'img_alt' => isset($img_alt) ? $img_alt : ''
             ]
         )
-        <div class="z-20 container w-11/12 md:w-10/12 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l mx-auto pb-8">
-            <div class="absolute pin-t pin-l">
+        <div class="z-20 container w-11/12 md:w-10/12 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l mx-auto pb-8 lg:pb-10">
+            <div class="absolute pin-t mt-8 md:mt-10 pin-l">
                 @include(
                     'partials.components.header', 
                     [
@@ -23,12 +23,12 @@
                     ]
                 )
             </div>
-            <h2 class="text-white text-4xl">{{ $title }}</h2>
+            <h2 class="text-white text-3xl lg:text-4xl">{{ $title }}</h2>
             @include(
                 'partials.components.read-more', 
                 [
                     'title' => "Läs mer", 
-                    'classes' => "mt-2 inline-block text-white"
+                    'classes' => "mt-4 inline-block text-white"
                 ]
             )
         </div>

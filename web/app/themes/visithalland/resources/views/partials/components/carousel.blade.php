@@ -1,4 +1,4 @@
-<section class="js-carousel-parent relative">
+<section class="js-carousel-parent focus:outline-none relative">
 	<button class="h-10 w-10 z-20 inline-flex absolute pin-l -mr-3 lg:-ml-5 focus:outline-none vertical-center justify-center items-center bg-blue-light rounded-full js-carousel-previous">
 		<svg class="h-3 w-3 align-center">
 			<use xlink:href="#arrow-left-icon"/>
@@ -9,7 +9,7 @@
 			<use xlink:href="#arrow-right-icon"/>
 		</svg>
 	</button>
-	<div class="js-carousel">
+	<div class="js-carousel focus:outline-none">
 		@foreach($posts as $post)
 			<div class="w-11/12 lg:w-5/12">
 				@include('partials.components.article-thumbnail-small', 

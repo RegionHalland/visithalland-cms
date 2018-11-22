@@ -1,5 +1,5 @@
-<a href="{{ $url }}" class="block {{ $classes }}">
-    <article class="flex flex-wrap -mx-2 {{ $theme }}">
+<a href="{{ $url }}" class="block {{ isset($classes) ? $classes : '' }}">
+    <article class="flex flex-wrap -mx-2 {{ isset($theme) ? $theme : 'visithalland' }}">
         <div class="w-4/12 px-2">
             <div class="aspect-container aspect-1 rounded overflow-hidden">
                 @include(
