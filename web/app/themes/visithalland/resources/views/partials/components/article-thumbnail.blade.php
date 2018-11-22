@@ -20,12 +20,16 @@
             @endif
             @include(
                 'partials.components.picture-element', 
-                [
-                    'img_sm' => $img_sm,
-                    'img_sm_retina' => $img_sm_retina,
-                    'img' => $img,
+                [   
+                    'img_lg' => isset($img_lg) ? $img_lg : '',
+                    'img_lg_retina' => isset($img_lg_retina) ? $img_lg_retina : '',
+                    'img_md' => isset($img_md) ? $img_md : '',
+                    'img_md_retina' => isset($img_md_retina) ? $img_md_retina : '',
+                    'img_sm' => isset($img_sm) ? $img_sm : '',
+                    'img_sm_retina' => isset($img_sm_retina) ? $img_sm_retina : '',
+                    'img' => isset($img) ? $img : '',
                     'classes' => "absolute pin-l pin-t w-full", 
-                    'img_alt' => $img_alt
+                    'img_alt' => isset($img_alt) ? $img_alt : ''
                 ]
             )
         </div>
@@ -34,8 +38,7 @@
         @include(
             'partials.components.read-more', [
             'title' => "Läs mer", 
-            'url' => $url, 
-            'classes' => "mt-2 mb-4 inline-block"]
+            'classes' => "mt-3 mb-2 inline-block"]
         )
     </article>
 </a>

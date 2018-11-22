@@ -1,5 +1,5 @@
 
-@php $concept_spotlights = App::getPosts(array("happening", "places", "tips_guides", "companies", "editor_tip", "meet_local"), get_queried_object()) @endphp
+{{-- @php $concept_spotlights = App::getPosts(array("happening", "places", "tips_guides", "companies", "editor_tip", "meet_local"), get_queried_object()) @endphp
 
 @if(is_array($concept_spotlights))
 	<section class="spotlight-section container mt-8 mb-8 w-full md:w-10/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
@@ -45,4 +45,4 @@
 		    @endforeach
 	    </div>
 	</section>
-@endif
+@endif --}}

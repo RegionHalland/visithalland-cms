@@ -1,4 +1,4 @@
-<a class="read-more {{ isset($classes) ? $classes : '' }}" href="{{ $url }}">
+<span class="read-more {{ isset($classes) ? $classes : '' }}">
     <span class="read-more__text">
     	@if(isset($title))
     		@php _e( $title, 'visithalland' ); @endphp
@@ -11,4 +11,4 @@
             <use xlink:href="#arrow-right-icon"/>
         </svg>
     </div>
-</a>
+</span>

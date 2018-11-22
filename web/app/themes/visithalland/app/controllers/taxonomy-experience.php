@@ -38,6 +38,10 @@ class TaxonomyTaxonomyConcept extends Controller
         return \App::getPosts(array("happening"), get_queried_object(), -1);
     }
 
+    public function taxonomyCarouselPosts() {
+        return \App::getPosts(array("happening", "places", "tips_guides", "companies", "editor_tip", "meet_local"), get_queried_object());
+    }
+
     public function navigationItems() {
 		return \App::getPrimaryNavigationChildren();
 	}

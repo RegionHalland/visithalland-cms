@@ -1,5 +1,7 @@
 var Packery = require('packery');
 
+
+//TODO: Change to more generic
 class DynamicGrid {
     constructor() {
         var grid = $('.featured-grid')[0];
