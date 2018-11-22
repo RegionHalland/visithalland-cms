@@ -9,7 +9,7 @@
 {{-- Month Header End --}}
 <div class="mt-2 container w-11/12 lg:w-10/12 mx-auto -mt-8 mb-8 z-10" id="{{ $month_name }}">
 	<div class="flex flex-wrap -mx-3 mb-4">
-		<div class="w-full lg:w-8/12 px-3">
+		<div class="w-full md:w-8/12 px-3">
 			{{-- Happenings Start --}}
 			@foreach($posts as $post)
 				@include('partials.components.article-image-thumbnail', 
@@ -36,7 +36,7 @@
 			@endforeach
 			{{-- Happenings End --}}
 		</div>
-		<aside class="w-full lg:w-4/12 mt-4 md:mt-0 md:mb-4 px-3">
+		<aside class="w-full md:w-4/12 mt-4 md:mt-0 md:mb-4 px-3">
 			{{-- Events Start --}}
 			@foreach($posts as $post)
 				@include('partials.happening-list-item', [

@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-wrap -mx-2 mb-3">
         @foreach($top_lists as $top_list)
-            <div class="w-full sm:w-6/12 md:w-full mb-3 px-2">
+            <div class="w-full sm:w-6/12 lg:w-full mb-3 px-2">
                 @include('partials.components.top-list')
             </div>
         @endforeach
@@ -28,7 +28,7 @@
     </div>
     <div class="flex flex-wrap -mx-2 mb-3">
         @foreach($happenings as $key => $happening)
-            <div class="w-full sm:w-6/12 md:w-full px-2">
+            <div class="w-full sm:w-6/12 lg:w-full px-2">
                 @include('partials.happening-list-item', [
                     'title' => $happening->post_title,
                     'url' => $happening->link,
@@ -61,7 +61,7 @@
     </div>
     <div class="flex flex-wrap -mx-2 mb-3">
         @foreach($navigation_items as $key => $navigation_item)
-            <div class="w-full sm:w-6/12 md:w-full px-2 mb-2">
+            <div class="w-full sm:w-6/12 lg:w-full px-2 mb-2">
                 @include('partials.components.concept-thumbnail-small', [
                     'title' => $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title,
                     'url' => $navigation_item->url,

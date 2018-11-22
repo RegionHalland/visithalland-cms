@@ -14,7 +14,7 @@
                 'img_alt' => isset($img_alt) ? $img_alt : ''
             ]
         )
-        <div class="z-20 container w-11/12 md:w-10/12 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l mx-auto pb-8 lg:pb-10">
+        <div class="z-20 container w-11/12 lg:w-10/12 absolute flex justify-end flex-col pin-t pin-b pin-r pin-l mx-auto pb-8 lg:pb-10">
             <div class="absolute pin-t mt-8 md:mt-10 pin-l">
                 @include(
                     'partials.components.header', 

@@ -55,12 +55,12 @@
 {{-- Grid Start --}}
 <div class="mt-2 container w-11/12 lg:w-10/12 mx-auto">
     <div class="flex flex-wrap mt-8 -mx-3">
-        <div class="w-full md:w-8/12 px-3 pb-5">
+        <div class="w-full lg:w-8/12 px-3 pb-5">
             {{-- Post Grid Start --}}
             @include('partials.experience.experience-grid')
             {{-- Post Grid End --}}
         </div>
-        <aside class="w-full md:w-4/12 px-3 mb-6">
+        <aside class="w-full lg:w-4/12 px-3 mb-6">
             {{-- Sidebar Start --}}
             @include('partials.experience.experience-sidebar')
             {{-- Sidebar End --}}
