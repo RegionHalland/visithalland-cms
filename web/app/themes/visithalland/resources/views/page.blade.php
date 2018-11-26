@@ -11,28 +11,15 @@
     @endphp
     <article role="main" id="main-content">
         @include('partials.page.page-header')
-        <div class="container w-11/12  md:w-10/12  pb-4">
-            <div class="flex flex-wrap  -mx-3">
-                <div class="w-full md:w-8/12  px-3">
-                    <div class="article-body w-10/12 ">
+        <div class="container w-11/12  md:w-10/12 pt-8 pb-4">
+            <div class="flex flex-wrap -mx-3">
+                <div class="w-full md:w-8/12 px-3">
+                    <div class="article-body w-10/12">
                         {{ the_content() }}
                     </div>
-                    <address class="author-horizontal mt-3 mb-4">
-                        <div class="author-horizontal__img-container">
-                            <img
-                                data-src="{{ get_field('profile_image', 'user_'. $author_id)["sizes"]["vh_thumbnail@2x"] }}"
-                                alt="'Skrivet av: ' + {{ the_author_meta('display_name') }}"
-                                class="author-horizontal__img lazyload"
-                            />
-                        </div>
-                        <div class="author-horizontal__bio">
-                            <span class="block author-horizontal__name">{{ the_author_meta('display_name') }}</span>
-                            <span class="block author-horizontal__title">{{ get_field('role', 'user_'. $author_id) }}</span>
-                        </div>
-                    </address>
+                    @include('partials.author-horizontal')
                 </div>
                 <div class="w-full md:w-4/12 px-3">
-                    
 
                 </div>
             </div>

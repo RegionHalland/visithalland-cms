@@ -3,9 +3,9 @@ class GooglePlace {
         this.map = document.createElement("div");
         this.service;
 
-        if ($('.acf-map').last()){
-            var lat = $('.acf-map').find(".marker").data('lat');
-            var lng = $('.acf-map').find(".marker").data('lng');
+        if ($('.js-map').last()){
+            var lat = $('.js-map').find(".marker").data('lat');
+            var lng = $('.js-map').find(".marker").data('lng');
 
             this.initMap(lat, lng)
         }
@@ -43,20 +43,20 @@ class GooglePlace {
             var opening_hours;
 
             //Add link to shown on map
-            $('#google-details-show-on-map').attr('href', results.url)
+            $('#js-map-link').attr('href', results.url)
 
             //Add link to visit website
-            $('#google-details-visit-website').attr('href', results.website)
+            $('#js-website').attr('href', results.website)
 
             if(results.opening_hours) {
-                $('.google-details__open-hours').show();
+                $('.js-open-hours').show();
 
                 opening_hours = results.opening_hours.weekday_text.map(function (val, key) {
-                    return '<li class="google-details__open-hour">' + val + '</li>';
+                    return '<li class="js-open-hours">' + val + '</li>';
                 });
 
                 //Add opening hours list items to content
-                $('#opening-hours').append(opening_hours);
+                $('#js-open-hours').append(opening_hours);
             }
         }
     }
