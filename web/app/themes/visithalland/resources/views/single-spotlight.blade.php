@@ -12,8 +12,12 @@
                         @include('partials.author-horizontal')
                     </div>
                 </div>
-                @include('partials.spotlight-grid')
-                @include('partials.share')
+                @if(isset($spotlights) && !empty($spotlights)) 
+                    @include('partials.spotlight-grid', [
+                        'posts' => $spotlights,
+                        ]
+                    )
+                @endif
                 @include('partials.components.next-article')
             </article>
         </div>

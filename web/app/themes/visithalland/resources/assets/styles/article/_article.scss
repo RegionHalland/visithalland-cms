@@ -19,7 +19,7 @@
 		font-size:0.9em;
 		font-weight:300;
 		font-style: italic;
-		@apply text-grey-dark mt-2;
+		@apply text-grey-dark mt-1;
 	}
 	.wp-caption-text, .image-description{
 		display:block;
@@ -27,18 +27,16 @@
 		font-weight:400;
 		font-size:1em;
 		font-style: italic;
-		@apply text-grey-darker mt-2 leading-tight;
-		//color:palette(grey, xx-dark);
+		@apply text-grey-darker mt-1 leading-tight;
 	}
 	figure {
-		margin:$space-3 0;
+		@apply my-4;
 	}
 	img {
 		width:100%;
 		height:auto;
 		max-width: 100%;
-		border-radius:$border-radius;
-		//margin:$space-2 0;
+		@apply mt-3 mb-2 rounded;
 	}
 	a {
 		text-decoration: underline;
@@ -49,23 +47,19 @@
 	blockquote {
 		font-size:1.4em;
 		font-style: italic;
-		@apply py-3;
-		//padding:$space-3 $space-2;
+		@apply py-3 my-4 mx-auto;
 		text-align:center;
 		width:100%;
 		font-weight:300;
-		@media (min-width:$breakpoint-sm) {
+		@screen sm {
 			width:80%;
 		}
-		margin:$space-4 auto;
 		&::after, &::before {
 			content:'';
 			display:block;
 			width:20px;
 			height:5px;
-			margin:$space-3 auto;
-			border-radius:$border-radius;
-			background-color:palette(grey, light);
+			@apply my-3 mx-auto rounded bg-grey-light;
 			@include themify {
 	        	background:$color-primary;
 	        }
@@ -74,22 +68,16 @@
 
 	ul {
 		list-style: disc;
-
 		@apply pl-4;
-		//padding-left:$space-3;
 		color:#333;
 
 	}
 	li {
-
 		@apply mt-4;
-		//margin-top:$space-2;
 		line-height: 1.65;
 	}
-
 	p {
-
-		//margin:$space-2 0;
+		@apply my-2;
 		line-height: 1.5;
 		font-weight:400;
 		font-size:1em;
@@ -98,26 +86,23 @@
   		font-kerning: normal;
 	}
 	h2 {
-		margin-top:$space-4;
-		margin-bottom:$space-3;
+
+		@apply mt-4 mb-3;
 		font-size:2.1em;
 		color:palette(black, dark);
 	}
 	h3 {
-		margin-top:$space-4;
-		margin-bottom:$space-3;
+		@apply mt-4 mb-3;
 		font-size:1.65em;
 		color:palette(black, base);
 	}
 	h4 {
-		margin-top:$space-4;
-		margin-bottom:$space-3;
+		@apply mt-4 mb-3;
 		font-size:1.6em;
 		color:palette(black, light);
 	}
 	h5 {
-		margin-top:$space-3;
-		margin-bottom:$space-2;
+		@apply mt-3 mb-2;
 		font-size:1.25em;
 	}
 }

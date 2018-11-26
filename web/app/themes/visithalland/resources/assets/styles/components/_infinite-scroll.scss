@@ -1,95 +1,10 @@
 .page-load-status {
-	background-color:palette(black, light);
-	border-bottom:1px solid palette(black, dark);
-	font-family:$rift-font-family;
-	font-weight:bold;
-	z-index:999;
+	@apply bg-blue font-rift font-bold border-b border-blue z-50;
 	.infinite-scroll-last, .infinite-scroll-error {
-		display:none;
-		text-align:center;
-		color:palette(grey, light);
-		padding:$space-3 0;
+		@apply text-grey-dark py-3 text-center hidden;
 	}
 }
-
-
-.next-article {
-	display:inline-flex;
-	vertical-align:top;
-
-	&__container {
-		border-bottom:1px solid palette(black, base);
-	}
-	&__heading {
-		font-size:0.85rem;
-		color:palette(grey, light);
-		margin-top:$space-3;
-		margin-bottom:$space-1;
-		display:block;
-		font-weight:300;
-	}
-	&__title {
-		font-size:1.4rem;
-		@media(max-width:$breakpoint-sm) {
-			max-width: 180px;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-		display:block;
-	}
-	&__img-container {
-		width:100px;
-		height:100px;
-		transform:translateY(-15%);
-		border-radius:$border-radius;
-		position:relative;
-		background-color:palette(black, light);
-		overflow: hidden;
-	}
-	&__img {
-		position:absolute;
-		left:0;
-		top:0;
-		width:100%;
-		z-index:$z1;
-	}
-	&__content {
-		margin-left:$space-3;
-	}
-}
-
-
-.loading-indicator {
-    height:40px;
-    width:40px;
-    background:palette(black, base);
-    z-index:$z3;
-    display:flex;
-    position:absolute;
-    right:0;
-    top:50%;
-    transform:translateY(-50%);
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    overflow:hidden;
-    @screen md {
-        height:50px;
-        width:50px;
-        bottom:-25px;
-    }
-}
-
-.loading-indicator__icon {
-    height:15px;
-    width:15px;
-    background:palette(black, dark);
-    border-radius:50%;
-    animation: scroll-indicator-animation 2.25s infinite cubic-bezier(0.77, 0, 0.175, 1);
-}
-
 
 .next-post-link {
-	display:none;
+	@apply hidden;
 }

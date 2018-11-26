@@ -1,4 +1,6 @@
-.vertical-center {
-	top:50%;
-	transform:translateY(-50%);
+@responsive {
+	.vertical-center {
+		top:50%;
+		transform:translateY(-50%);
+	}
 }

@@ -14,7 +14,6 @@
                     @include('partials.google-details')
                 </div>
             </div>
-            @include('partials.share')
             @include('partials.recommended-articles')
         </article>
     @endwhile

@@ -5,7 +5,7 @@
     )
     <div class="flex flex-wrap -mx-2 mb-4">
         @foreach ($recommended_articles as $key => $post)
-            <div class="w-full sm:w-6/12 lg:w-4/12 px-2 mt-4">
+            <div class="w-full sm:w-6/12 lg:w-4/12 px-2 mt-3">
                 @include('partials.components.article-image-thumbnail', [
                     'title' => $post->post_title,
                     'url' => get_permalink($post->ID),

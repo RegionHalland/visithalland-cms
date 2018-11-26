@@ -8,7 +8,6 @@
 		        @include('partials.article-hero')
 		        @include('partials.article-content')
 		        @include('partials.meet-a-local-grid')
-		        @include('partials.share')
 		        @include('partials.components.next-article')
 		    </article>
 		</div>

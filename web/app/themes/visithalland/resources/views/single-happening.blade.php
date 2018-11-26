@@ -44,7 +44,6 @@
                 </div>
             </div>
             @include('partials.recommended-happenings')
-            @include('partials.share')
             @include('partials.components.next-article')
         </article>
         @endwhile

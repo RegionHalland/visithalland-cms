@@ -1,19 +1,18 @@
-<div class="next-article__container topographic-pattern bg-blue-light">
-	<div class="container w-11/12  md:w-10/12  lg:w-10/12  mx-auto">
-	    <div class="infinite-scroll-request relative">
-	    	<div class="next-article">
-				<div class="next-article__img-container inline-block">
-					<img class="next-article__img" src="" alt="">
+<div class="topographic-pattern bg-blue-light border-b border-px border-blue">
+	<div class="container w-11/12 lg:w-10/12 mx-auto">
+	    <div class="infinite-scroll-request py-4 relative">
+	    	<div class="next-article w-full inline-flex">
+				<div class="overflow-hidden rounded relative h-24 w-24 -mt-8">
+					<img class="next-article__img absolute pin-l pin-t w-full h-auto" src="" alt="">
 				</div>
-	    		<div class="next-article__content inline-block">
-	    			<span class="next-article__heading font-rift h5">Nästa artikel</span>
-	    			<h3 class="next-article__title text-white"></h3>
+	    		<div class="next-article__content pl-4 flex-1">
+	    			<span class="next-article__heading block font-rift my-1 text-sm text-grey-light">@php _e( 'Nästa artikel', 'visithalland' ); @endphp</span>
+	    			<span class="next-article__title block font-rift font-bold text-white text-2xl max-w-8 whitespace-no-wrap truncate"></span>
 	    		</div>
 	    	</div>
-	    	<div class="loading-indicator">
-	            <svg class="loading-indicator__icon">
-	                <use xlink:href="#arrow-down-icon"/>
-	            </svg>
+
+	    	<div class="absolute vertical-center pin-r">
+	            @include('partials.components.scroll-indicator')
 	        </div>
 	    </div>
 	</div>

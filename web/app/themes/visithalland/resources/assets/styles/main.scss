@@ -33,58 +33,26 @@
 @import 'utilities/scrim-gradient';
 
 
-//TODO: Ta bort och ersätt med utilities 
-@import 'utilities/hover';
-
 // Generic and Reusable Components
 @import 'components/button';
-
-
-
 @import 'components/section-header';
 @import 'components/image-credit';
-@import 'components/icon-button';
-@import 'components/article-tag';
-@import 'components/date-badge'; //Denna borde kunna tas bort, används på Skordetider
 @import 'components/read-more';
 @import 'components/breadcrumbs';
 @import 'components/preamble';
 @import 'components/scroll-indicator';
-// @import 'components/search';
-@import 'components/google-place-details';
-@import 'components/author-horizontal';
-@import 'components/infinite-scroll'; //Borde kunna skrivas med utilities
+@import 'components/infinite-scroll';
 
-// Grid Layouts
-// @import './layouts/content-grid';
-// @import './layouts/masonry-grid';
-
-// Landing
-@import './front-page/campaign'; //Se över denna -- Jobbas med nu
-
-
-// Article Components and Styles
+//Pending
 @import './article/article';
-@import './article/article-share'; //Se över denna
-@import './article/image-blurb'; // Se över denna
-
-// Header Styles
-@import './header/navigation';
 @import './header/navigation-dropdown';
-@import './header/header-search';
-//@import './header/external-header'; //Ta bort denna
+@import './concept/featured-grid';
 
 
-// Taxonomy/Concept Page Styles
-@import './concept/spotlight-carousel'; //Dela upp i två filer
-
-
-//One-offs
-@import './concept/featured-grid'; //Se över
-
-
-// Happening Article Format
-//@import './happening/happening-page'; //Se över
+//Reviewing -------------------------------------------------------------------------
+@import 'components/icon-button';
+@import 'components/article-tag';
+@import 'components/google-place-details'; //Borde kunna skrivas med utilities
 @import './happening/happening'; // Se om det finns något vi kan göra här (generell box med info i typ);
 
 

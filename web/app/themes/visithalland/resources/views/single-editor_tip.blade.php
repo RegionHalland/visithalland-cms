@@ -7,7 +7,6 @@
 		    <article class="{{ App::getTermClassName() }} infinite-item" data-posttype="{{get_post_type()}}">
 		        @include('partials.article-hero')
 		        @include('partials.article-content')
-		        @include('partials.share')
 		        @include('partials.components.next-article')
 		    </article>
 		</div>
