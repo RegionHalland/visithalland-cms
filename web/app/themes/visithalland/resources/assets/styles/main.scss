@@ -21,7 +21,7 @@
 // Base
 @import 'base/base';
 
-//Utilities
+// Utilities
 @import 'utilities/accessibility';
 @import 'utilities/container';
 @import 'utilities/aspect-ratio';
@@ -43,21 +43,18 @@
 @import 'components/scroll-indicator';
 @import 'components/infinite-scroll';
 
-//Pending
+// Pending
 @import './article/article';
 @import './header/navigation-dropdown';
 @import './concept/featured-grid';
 
 
-//Reviewing -------------------------------------------------------------------------
-@import 'components/icon-button';
-@import 'components/article-tag';
-@import 'components/google-place-details'; //Borde kunna skrivas med utilities
-@import './happening/happening'; // Se om det finns något vi kan göra här (generell box med info i typ);
-
-
-// Typekit
+// Webfonts
 @import url('https://use.typekit.net/vzi2bvt.css');
+
+//Reviewing -------------------------------------------------------------------------
+@import 'components/google-place-details';
+
 
 
 /**

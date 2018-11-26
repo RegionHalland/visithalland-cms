@@ -1,5 +1,5 @@
 {{-- Month Header Start --}}
-<div class="pb-16 pt-16 lg:pt-24 bg-blue-light topographic-pattern">
+<div class="pb-16 pt-16 bg-blue-light topographic-pattern">
 	<div class="container w-11/12 lg:w-10/12 mx-auto">
 		<div class="stick pin-t px-4 py-2 rounded-full inline-block bg-blue">
 			<h2 class="text-white text-lg">{{ $month_name }}</h2>

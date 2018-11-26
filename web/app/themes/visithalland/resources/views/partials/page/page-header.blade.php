@@ -4,10 +4,8 @@
 		<h1 class="text-white">
 			{{ post_type_archive_title(null, false) ? post_type_archive_title(null, false) : get_the_title() }}
 		</h1>
-		<div class="scroll-indicator">
-            <svg class="scroll-indicator__icon">
-                <use xlink:href="#arrow-down-icon"/>
-            </svg>
+		<div class="absolute pin-l pin-b -mb-5">
+			@include('partials.components.scroll-indicator')
         </div>
 	</div>
 </div>
