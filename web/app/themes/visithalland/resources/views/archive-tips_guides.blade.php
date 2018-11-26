@@ -97,7 +97,7 @@
 
             {{-- Check for top lists --}}
             @if(is_array($top_lists) && isset($top_lists))
-                <aside class="w-full lg:w-4/12 mt-8 flex flex-wrap">
+                <aside class="w-full lg:w-4/12 mt-8 flex flex-wrap lg:block">
                     <div class="w-full px-3">
                         @include(
                         'partials.components.header', 
