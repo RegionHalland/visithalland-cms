@@ -4,25 +4,30 @@
 </div>
 
 <div class="w-full sm:w-6/12 lg:w-7/12 xl:w-8/12 flex px-3 mb-6 sm:justify-end items-start">
-    @include(
-        'partials.components.icon-link', [
-        'url' => "mailto:info@visithalland.com", 
-        'icon' => "mail-icon",
-        'classes' => "mr-2"
+    @icon_link(
+        [
+            'url' => "mailto:info@visithalland.com", 
+            'icon' => "mail-icon",
+            'classes' => "mr-2" 
         ]
     )
-    @include(
-        'partials.components.icon-link', [
-        'url' => "https://www.facebook.com/visithalland/", 
-        'icon' => "facebook-icon",
-        'classes' => "mr-2"
+    @endicon_link
+
+    @icon_link(
+        [
+          'url' => "https://www.facebook.com/visithalland/", 
+            'icon' => "facebook-icon",
+            'classes' => "mr-2" 
         ]
     )
-    @include(
-        'partials.components.icon-link', [
-        'url' => "https://www.instagram.com/visithalland/", 
-        'icon' => "instagram-icon"
+    @endicon_link
+
+    @icon_link(
+        [
+          'url' => "https://www.instagram.com/visithalland/", 
+            'icon' => "instagram-icon"  
         ]
     )
+    @endicon_link
 </div>
 

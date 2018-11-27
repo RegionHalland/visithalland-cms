@@ -29,7 +29,8 @@
             </div>
             {{-- Scroll Indicator Start --}}
             <div class="absolute pin-b -mb-5 pin-l">
-                @include('partials.components.scroll-indicator')
+                @scroll_indicator()
+                @endscroll_indicator
             </div>
             {{-- Scroll Indicator End --}}
         </div>

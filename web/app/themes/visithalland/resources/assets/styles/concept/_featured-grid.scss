@@ -1,37 +1,34 @@
 //Spotlights depends on this //
 
 .featured-grid {
-    margin:-$space-2;
+    @apply -m-2;
     &__item {
-        padding:$space-2;
+        @apply p-2;
         &--large {
             height:400px;
-            @media (min-width:$breakpoint-sm) {
+            @screen md {
                 height:500px;
             }
-            @media (min-width:$breakpoint-md) {
-                height:600px;
-            }
-            @media (min-width:$breakpoint-lg) {
+            @screen lg {
                 height:700px;
             }
         }
         &--medium {
             height:300px;
-            @media (min-width:$breakpoint-sm) {
+            @screen md {
                 height:450px;
             }
-            @media (min-width:$breakpoint-lg) {
+            @screen lg {
                 height:525px;
             }
         }
 
         &--small {
             height:300px;
-            @media (min-width:$breakpoint-sm) {
+            @screen md {
                 height:300px;
             }
-            @media (min-width:$breakpoint-lg) {
+            @screen lg {
                 height:350px;
             }
         }

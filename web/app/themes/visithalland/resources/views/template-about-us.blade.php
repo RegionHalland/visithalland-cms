@@ -13,7 +13,7 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <article role="main" id="main-content">
-        @include('partials.page.page-header')
+        @include('partials.page-header')
         <div class="container w-11/12 md:w-10/12 mt-8 pb-8">
             <div class="article-body w-full md:w-8/12 ">
                 {{ the_content() }}

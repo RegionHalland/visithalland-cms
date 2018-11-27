@@ -13,10 +13,13 @@ use Roots\Sage\Template\BladeProvider;
 new \App\Acf\Import();
 new \App\Visithalland\Admin();
 new \App\Visithalland\Filters();
+new \App\Visithalland\RegisterComponents();
 
 /**
  * Theme assets
  */
+
+
 add_action('wp_enqueue_scripts', function () {
     if (basename(get_page_template()) != "template-activities.blade.php" && 
         basename(get_page_template()) != "st-template-landing.blade.php" &&

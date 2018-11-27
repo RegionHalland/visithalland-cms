@@ -6,7 +6,7 @@
 		left:0;
 		width:100%;
 		height:80%;
-		@include scrimGradient(palette(black, dark), 'to top');
+		@include scrimGradient(#000, 'to top');
 	}
 }
 

@@ -10,7 +10,7 @@
         $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
     @endphp
     <article role="main" id="main-content">
-        @include('partials.page.page-header')
+        @include('partials.page-header')
         <div class="container w-11/12  md:w-10/12 pt-8 pb-4">
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full md:w-8/12 px-3">

@@ -10,9 +10,9 @@
 	    			<span class="next-article__title block font-rift font-bold text-white text-2xl max-w-8 whitespace-no-wrap truncate"></span>
 	    		</div>
 	    	</div>
-
 	    	<div class="absolute vertical-center pin-r">
-	            @include('partials.components.scroll-indicator')
+	            @scroll_indicator()
+            	@endscroll_indicator
 	        </div>
 	    </div>
 	</div>

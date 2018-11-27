@@ -2,10 +2,10 @@
 
 @section('content')
 
-@include('partials.page.page-header')
+@include('partials.navigation.page-header')
 
 @foreach($get_happenings_by_month as $key => $month)
-	@include('partials.happening-month', [
+	@include('partials.collections.happening-month', [
 			'month_name' => $key,
 			'posts' => $month,
 		]

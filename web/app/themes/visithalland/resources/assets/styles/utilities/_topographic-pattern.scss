@@ -1,10 +1,8 @@
-//TODO: Se över den här och lägg den kanske i en Themes.scss ?
-
 .topographic-pattern {
 	background-image: url("../images/pattern.svg");
 	@apply bg-repeat;
 	background-size:80%;
-	@media (min-width:$breakpoint-sm) {
+	@screen sm {
 		background-size:25%;
 	}
 }
@@ -19,7 +17,7 @@
 	background-image: url("../images/pattern-dark.svg");
 	@apply bg-repeat;
 	background-size:80%;
-	@media (min-width:$breakpoint-sm) {
+	@screen sm {
 		background-size:75%;
 	}
 }

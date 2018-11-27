@@ -1,8 +1,7 @@
 .scroll-indicator {
     height:40px;
     width:40px;
-    @apply bg-blue;
-    z-index:$z3;
+    @apply bg-blue z-30;
     display:inline-flex;
     justify-content:center;
     align-items:center;

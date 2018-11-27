@@ -1,10 +1,12 @@
 {{-- Experience Featured Posts Start --}}
 <div class="mt-12 mb-12 container w-11/12 lg:w-10/12 mx-auto {{ App::getTermClassName() }}">
-    @include(
-        'partials.components.header', [
-        'title' => "Utvalda artiklar"]
+    @header(
+        [
+            'title' => "Utvalda artiklar"
+        ]
     )
-    @include('partials.components.masonry-grid', [
+    @endheader
+    @include('partials.grids.masonry-grid', [
     	'posts' => $taxonomy_featured_posts,
     	]
     )
@@ -17,7 +19,7 @@
 @if(isset($taxonomy_carousel_posts) && !empty($taxonomy_carousel_posts))
     <div class="overflow-hidden">
         <div class="mb-12 container w-11/12 lg:w-10/12 mx-auto">
-            @include('partials.components.carousel', [
+            @include('partials.collections.carousel', [
                 'posts' => $taxonomy_carousel_posts,
                 ]
             )
@@ -30,7 +32,7 @@
 
 {{-- Featured Article Start --}}
 @if(isset($featured_article) && !empty($featured_article))
-    @include('partials.components.article-full', 
+    @article_full(
         [
             'title' => $featured_article->post_title,
             'url' => $featured_article->url,
@@ -44,9 +46,10 @@
             'img_sm' => $featured_article->featured_image["sizes"]['vh_hero_tall'],
             'img_sm_retina' => $featured_article->featured_image["sizes"]['vh_hero_tall@2x'],
             'img' => $featured_article->featured_image["sizes"]['vh_hero_wide'],
-            'img_alt' => $featured_article->featured_image["alt"],
+            'img_alt' => $featured_article->featured_image["alt"]
         ]
     )
+    @endarticle_full
 @endif
 {{-- Featured Article End --}}
 

@@ -13,7 +13,6 @@
 @import 'settings/settings';
 
 // Mixins
-@import 'mixins/palette';
 @import 'mixins/scrim';
 @import 'mixins/fade-text';
 @import 'mixins/themes';
@@ -34,12 +33,12 @@
 
 
 // Generic and Reusable Components
-@import 'components/button';
-@import 'components/section-header';
-@import 'components/image-credit';
+// @import 'components/button';
+// @import 'components/section-header';
+// @import 'components/image-credit';
 @import 'components/read-more';
 @import 'components/breadcrumbs';
-@import 'components/preamble';
+//@import 'components/preamble';
 @import 'components/scroll-indicator';
 @import 'components/infinite-scroll';
 
