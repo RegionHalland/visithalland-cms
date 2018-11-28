@@ -6,12 +6,6 @@
  */
 @tailwind components;
 
-
-
-// Project Settings
-// This is used for setting color variables, spacing, fonts and more.
-@import 'settings/settings';
-
 // Mixins
 @import 'mixins/scrim';
 @import 'mixins/fade-text';
@@ -33,12 +27,8 @@
 
 
 // Generic and Reusable Components
-// @import 'components/button';
-// @import 'components/section-header';
-// @import 'components/image-credit';
 @import 'components/read-more';
 @import 'components/breadcrumbs';
-//@import 'components/preamble';
 @import 'components/scroll-indicator';
 @import 'components/infinite-scroll';
 

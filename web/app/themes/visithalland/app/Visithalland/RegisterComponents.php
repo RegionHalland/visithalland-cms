@@ -28,6 +28,7 @@ class RegisterComponents
 		\App\sage('blade')->compiler()->component('components.author');
 		\App\sage('blade')->compiler()->component('components.image_credit');
 		\App\sage('blade')->compiler()->component('components.map');
+		\App\sage('blade')->compiler()->component('components.contact');
 
 	}
 }
