@@ -1,6 +1,6 @@
 .offline-bar{
     background:#ff0036;
-    font-family:$rift-font-family;
+    @apply font-rift;
     position:fixed;
     font-weight:bold;
     top:0;
@@ -10,10 +10,9 @@
 }
 
 .offline-bar__inner {
-	padding:$space-1;
+    @apply p-1 text-white;
 	font-size:0.9rem;
 	display:flex;
-	color:$white;
 	justify-content:center;
 	align-items:center;
 }

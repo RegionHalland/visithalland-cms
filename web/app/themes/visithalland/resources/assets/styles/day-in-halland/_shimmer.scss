@@ -1,10 +1,9 @@
 .shimmer {
 	display:inline-flex;
-	align-items:center;
-	margin-bottom:$space-3;
+	@apply mb-3;
 }
 
-.shimmer__img, .shimmer__title, .shimmer__link, .shimmer__button {
+.shimmer__img, .shimmer__title, .shimmer__link, .shimmer__button, .shimmer__header {
 	background: #f6f7f8;
 	background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
 	background-repeat: no-repeat;
@@ -27,28 +26,25 @@
 }
 
 .shimmer__img {
-	height:75px;
-	width:75px;
-	border-radius:$border-radius;
+	@apply rounded h-24 w-24;
 }
 
 .shimmer__title {
 	height:30px;
 	width:140px;
-	border-radius:$border-radius;
+	@apply rounded;
 }
 
 .shimmer__link {
 	height:20px;
 	width:100px;
-	border-radius:$border-radius;
+	@apply rounded;
 	display:inline-block;
 }
 
 .shimmer__button {
 	height:20px;
 	width:20px;
-	border-radius:$border-radius;
+	@apply rounded ml-1;
 	display:inline-block;
-	margin-left:$space-1;
 }

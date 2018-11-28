@@ -16,31 +16,28 @@
 </i18n>
 
 <template>
-    <div class="card">
+    <div class="card w-11/12 md:w-6/12 lg:w-4/12 mx-auto">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content">
-            <div v-if="loading" class="block px3 mb3">
+            <!-- Show while loading -->
+            <div v-if="loading" class="block px-3 mb-3">
                 <Shimmer :loading="loading"></Shimmer>
             </div>
-            <div class="event-section px3 pb3" v-if="events_happenings && events_happenings.length && input">
-                <header class="section-header inline-block visithalland mb3">
-                    <div class="section-header__icon-wrapper">
-                        <svg class="section-header__icon icon">
-                            <use xlink:href="#calendar-icon"/>
-                        </svg>
-                    </div>
-                    <div class="section-header__title">
+            <!-- Show while loading End -->
+
+            <!-- Loop Events  -->
+            <section class="px-3 pb-3 fade-in" v-if="events_happenings && events_happenings.length && input">
+                <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
                         {{$t('happens')}} {{ this.currentDay }}
-                    </div>
                 </header>
-                <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input && event.meta_fields && event.meta_fields.external_link" class="block mb3" v-for="event in events_happenings" :key="event.id">
-                    <div class="activity inline-flex">
-                        <div class="activity__img-container mr2">
-                            <img :src="event.featured_image_src" class="activity__img" />
+                <a v-on:click.capture="gaTrack(event)" :href="event.meta_fields.external_link" target="_blank" v-if="events_happenings && events_happenings.length && input && event.meta_fields && event.meta_fields.external_link" class="block mb-3" v-for="event in events_happenings" :key="event.id">
+                    <div class="inline-flex w-full">
+                        <div class="h-24 w-24 relative rounded bg-grey-light overflow-hidden">
+                            <img :src="event.featured_image_src" class="absolute pin-l pin-t w-full h-auto" />
                         </div>
-                        <div class="activity__content">
-                            <h2 class="activity__title" v-html="event.title.rendered"></h2>
-                            <div class="read-more mt1">
+                        <div class="ml-2">
+                            <h2 class="text-xl font-bold" v-html="event.title.rendered"></h2>
+                            <div class="read-more mt-1">
                                 <span class="read-more__text">
                                     {{ $t('visit') }}
                                 </span>
@@ -53,26 +50,22 @@
                         </div>
                     </div>
                 </a>
-            </div>
-            <div class="activity-section pb2 px3" v-if="activities && activities.length && input">
-                <header class="section-header inline-block visithalland mb3">
-                    <div class="section-header__icon-wrapper">
-                        <svg class="section-header__icon icon">
-                            <use xlink:href="#discover-icon"/>
-                        </svg>
-                    </div>
-                    <div class="section-header__title">
-                        {{ $t('experiences') }}
-                    </div>
+            </section>
+            <!-- Loop Events End -->
+
+            <!-- Loop Activities -->
+            <section class="pb-3 px-3 fade-in" v-if="activities && activities.length && input">
+                <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
+                    {{ $t('experiences') }}
                 </header>
-                <router-link @click.native="gaTrack(activity)" v-if="activities && activities.length && input" class="block mb3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
-                    <div class="activity inline-flex">
-                        <div class="activity__img-container mr2">
-                            <img :src="activity.featured_image_src" class="activity__img" />
+                <router-link @click.native="gaTrack(activity)" v-if="activities && activities.length && input" class="block mb-3" v-for="activity in activities" :key="activity.id" :to="{name: 'results', params: {input: {date: input.date, activity: activity, userLocation: input.userLocation}}}">
+                    <div class="inline-flex w-full">
+                        <div class="h-24 w-24 relative rounded bg-grey-light overflow-hidden">
+                            <img :src="activity.featured_image_src" class="absolute pin-l pin-t w-full h-auto" />
                         </div>
-                        <div class="activity__content">
-                            <h2 class="activity__title">{{ activity.title.rendered }}</h2>
-                            <div class="read-more mt1">
+                        <div class="ml-2">
+                            <h2 class="text-xl font-bold">{{ activity.title.rendered }}</h2>
+                            <div class="read-more mt-1">
                                 <span class="read-more__text">
                                     {{ $t('choose') }}
                                 </span>
@@ -85,7 +78,8 @@
                         </div>
                     </div>
                 </router-link>
-            </div>
+            </section>
+            <!-- Loop Activities End -->
         </div>
     </div>
 </template>

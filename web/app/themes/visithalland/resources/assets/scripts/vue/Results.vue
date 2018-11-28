@@ -20,45 +20,38 @@
 </i18n>
 
 <template>
-	<div class="card">
+	<div class="card w-11/12 md:w-6/12 lg:w-4/12 mx-auto">
 	  <Navigation :input="input" prev-route="activities"></Navigation>
 	  <div class="card__content">
-          <div v-if="loading" class="block mb3 px3">
+        
+        <!-- Loading State -->
+        <div v-if="loading" class="block mb-3 px-3">
             <Shimmer :loading="loading"></Shimmer>
-          </div>
-        <div class="result-section px3">
-            <header class="section-header inline-block visithalland mb2">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#calendar-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
+        </div>
+        <!-- Loading State End -->
+
+        <!-- Notice -->
+        <div class="result-section px-3 mb-3">
+            <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
                     {{ $t('notice') }}
-                </div>
             </header>
-            <p class="pb3"><i> {{ $t('opening_hours') }}</i></p>
+            <p class="pb-3">{{ $t('opening_hours') }}</p>
         </div>
-
-        <div class="result-section px3" v-if="nearYouArray && nearYouArray.length && input">
-            <header class="section-header inline-block visithalland mb3">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#pin-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
-                    {{ $t('nearYou') }}
-                </div>
+        <!-- Notice End -->
+            
+        <!-- Nära dig -->
+        <section class="pb-3 px-3 fade-in mb-3" v-if="nearYouArray && nearYouArray.length && input">
+            <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
+                {{ $t('nearYou') }}
             </header>
-            <a v-on:click.capture="gaTrack(nearYou)" :href="nearYou.link" class="block mb3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
-                <div class="result inline-flex hiking-biking">
-                    <div class="result__img-container mr2">
-                        <img :src="nearYou.featured_image_src" class="result__img" />
+            <a v-on:click.capture="gaTrack(nearYou)" :href="nearYou.link" class="block mb-3" target="_blank" v-for="nearYou in nearYouArray" :key="nearYou.id">
+                <div class="inline-flex w-full">
+                    <div class="h-24 w-24 relative rounded bg-grey-light overflow-hidden">
+                        <img :src="nearYou.featured_image_src" class="absolute pin-l pin-t w-full h-auto" />
                     </div>
-                    <div class="result__content">
-                        <h2 class="result__title" v-html="nearYou.title.rendered"></h2>
-                        <div class="read-more mt1">
+                    <div class="ml-2">
+                        <h2 class="text-xl font-bold" v-html="nearYou.title.rendered"></h2>
+                        <div class="read-more mt-1">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -71,27 +64,22 @@
                     </div>
                 </div>
             </a>
-        </div>
-
-        <div class="result-section px3" v-if="allArray && allArray.length && input">
-            <header class="section-header inline-block visithalland mb3">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#discover-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
-                    {{ $t('destinations') }}
-                </div>
+        </section>
+        <!-- Nära dig End -->
+            
+        <!-- Att besöka -->
+        <div class="pb-3 px-3 fade-in mb-3" v-if="allArray && allArray.length && input">
+            <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
+                {{ $t('destinations') }}
             </header>
-            <a v-on:click.capture="gaTrack(link)" :href="link.link" class="block mb3" target="_blank" v-for="link in allArray" :key="link.id">
-                <div class="result inline-flex hiking-biking">
-                    <div class="result__img-container mr2">
-                        <img :src="link.featured_image_src" class="result__img" />
+            <a v-on:click.capture="gaTrack(link)" :href="link.link" class="block mb-3" target="_blank" v-for="link in allArray" :key="link.id">
+                <div class="inline-flex w-full">
+                    <div class="h-24 w-24 relative rounded bg-grey-light overflow-hidden">
+                        <img :src="link.featured_image_src" class="absolute pin-l pin-t w-full h-auto" />
                     </div>
-                    <div class="result__content">
-                        <h2 class="result__title" v-html="link.title.rendered"></h2>
-                        <div class="read-more mt1">
+                    <div class="ml-2">
+                        <h2 class="text-xl font-bold" v-html="link.title.rendered"></h2>
+                        <div class="read-more mt-1">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -106,26 +94,21 @@
                 </div>
             </a>
         </div>
+        <!-- Att besöka End -->
 
-        <div class="result-section result__happenings px3 pt3" v-if="happeningsArray && happeningsArray.length && input">
-            <header class="section-header inline-block visithalland mt2 mb3">
-                <div class="section-header__icon-wrapper">
-                    <svg class="section-header__icon icon">
-                        <use xlink:href="#calendar-icon"/>
-                    </svg>
-                </div>
-                <div class="section-header__title">
-                    {{ $t('upcomingHappenings') }}
-                </div>
+        <!-- Event Start -->
+        <div class="pb-3 px-3 fade-in mb-3" v-if="happeningsArray && happeningsArray.length && input">
+            <header class="bg-theme font-rift text-sm font-bold px-3 py-2 mb-3 rounded-full inline-block text-white">
+                {{ $t('upcomingHappenings') }}
             </header>
-            <a v-on:click.capture="gaTrack(happening)" :href="happening.link" class="block mb3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
-                <div class="result inline-flex hiking-biking">
-                    <div class="result__img-container mr2">
+            <a v-on:click.capture="gaTrack(happening)" :href="happening.link" class="block mb-3" target="_blank" v-for="happening in happeningsArray" :key="happening.id">
+                <div class="inline-flex w-full">
+                    <div class="h-24 w-24 relative rounded bg-grey-light overflow-hidden">
                         <img :src="happening.featured_image_src" class="result__img" />
                     </div>
-                    <div class="result__content">
-                        <h2 class="result__title" v-html="happening.title.rendered"></h2>
-                        <div class="read-more mt1">
+                    <div class="ml-2">
+                        <h2 class="text-xl font-bold" v-html="happening.title.rendered"></h2>
+                        <div class="read-more mt-1">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -139,6 +122,7 @@
                 </div>
             </a>
         </div>
+        <!-- Event End -->
 	  </div>
 	</div>
 </template>

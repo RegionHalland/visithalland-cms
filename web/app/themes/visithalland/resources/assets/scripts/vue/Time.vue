@@ -16,17 +16,17 @@
 </i18n>
 
 <template>
-	<div class="card">
+	<div class="card w-11/12 md:w-6/12 lg:w-4/12 mx-auto">
         <Navigation prev-route="location"></Navigation>
-        <div class="card__content px3">
+        <div class="card__content px-3">
             <router-link @click.native="gaTrack(date)" v-for="date in dates" :key="date.id" :to="{name: 'activities', params: { input: {day: days[date.id], date: dates[date.id].date, userLocation: input.userLocation} }}">
-                <div class="date visithalland">
-                    <div class="date-badge date-badge--large inline-block">
-                        <span class="date-badge__day">{{date.day}}</span>
-                        <span class="date-badge__month">{{date.month}}</span>
+                <div class="inline-flex w-full mb-3 items-center fade-in">
+                    <div class="p-3 bg-blue-light rounded">
+                        <span class="font-rift text-white block font-bold text-lg text-center">{{date.day}}</span>
+                        <span class="font-rift text-white block font-bold text-base text-center">{{date.month}}</span>
                     </div>
-                    <div class="date__content inline-block">
-                        <h2 class="date__title mt0 p0">{{date.title}}</h2>
+                    <div class="ml-2">
+                        <h2 class="text-xl">{{date.title}}</h2>
                         <div class="read-more mt1">
                             <span class="read-more__text">
                                {{ $t('choose') }}

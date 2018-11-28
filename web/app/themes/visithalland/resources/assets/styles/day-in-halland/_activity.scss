@@ -13,8 +13,7 @@
 	width:75px;
 	position:relative;
 	overflow:hidden;
-	border-radius:$border-radius;
-	background-color:palette(grey, light);
+	@apply rounded bg-grey-light;
 }
 
 .activity__img {
@@ -26,14 +25,7 @@
 }
 
 .activity__title {
-	font-size:$h3;
-}
-
-.activity {
-	opacity:0;
-	animation-delay: 0.25s;
-	animation: fadeInUp 0.75s;
-	animation-fill-mode:forwards;
+	@apply text-lg;
 }
 
 

@@ -18,14 +18,18 @@
 </i18n>
 
 <template>
-    <header class="card__header topographic-pattern">
-        <button class="card__button" v-on:click="goBack()">
-            <svg class="read-more__icon mr1">
-                <use xlink:href="#arrow-left-icon"/>
-            </svg>
-            {{ $t('goBack') }}
+    <header class="bg-blue py-3 px-3 topographic-pattern">
+        <button class="inline-flex items-center" v-on:click="goBack()">
+            <span class="h-6 w-6 rounded-full bg-blue-light flex items-center justify-center mr-2">
+                <svg class="read-more__icon">
+                    <use xlink:href="#arrow-left-icon"/>
+                </svg>
+            </span>
+            <span class="font-rift text-white">
+                {{ $t('goBack') }}
+            </span>
         </button>
-        <h2 class="card__title">{{ $t(this.$route.meta.title) }}</h2>
+        <h2 class="text-lg text-white mt-2">{{ $t(this.$route.meta.title) }}</h2>
     </header>
 </template>
 
