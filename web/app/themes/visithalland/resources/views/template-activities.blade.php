@@ -7,7 +7,7 @@
 @section('content')
     @include('partials.navigation.external-header')
 
-    {{-- PHP/html content starts --}}
+    {{-- PHP/HTML content starts --}}
     <div class="h-full w-full absolute overflow-hidden pin-t pin-l pin-r flex items-center justify-center flex-col bg-black">
         <picture>
             <source media="(min-width: 60em)" srcset="{{ get_the_post_thumbnail_url($post, 'vh_hero_wide') . " 1x," . get_the_post_thumbnail_url($post, 'vh_hero_wide@2x' ) . " 2x"  }}" />
@@ -17,13 +17,9 @@
                 alt="{{ get_field("cover_image", $post->ID)["alt"] }}" />
         </picture>
     </div>
-    {{-- PHP/html content ends --}}
+    {{-- PHP/HTML content ends --}}
 
-    {{-- Vue below --}}
-    <div id="app" class="app-container p-3 z-40 absolute pin-l pin-r pin-b flex flex-col justify-end h-full">
-        <transition :name="transitionName">
-            <router-view></router-view>
-        </transition>
-        <cookie-notice />
-    </div>
+    {{-- Vue App Start --}}
+    <div id="app"></div>
+    {{-- Vue App End --}}
 @endsection

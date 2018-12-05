@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade">
-        <div class="fixed w-full display-none pin-l pin-r pin-b z-50 p-5 text-white w-full" :style="styleObject" :show="showCookie">
-            <div class="bg-blue topographic-pattern p-4 relative rounded w-full sm:w-6/12 md:w-4/12" tabindex="1">
+        <div class="fixed w-full pin-l pin-r pin-b z-50 p-3 text-white w-full" v-if="showCookie">
+            <div class="bg-blue topographic-pattern p-8 relative rounded w-full sm:w-6/12 md:w-4/12" tabindex="1">
                 <p class="text-grey-light text-sm">
                     {{cookiePolicy}}
                     <a :href="cookiePageLink" class="underline text-white">
@@ -66,7 +66,6 @@
         		axios.get('/wp-json/visit/v1/cookie_policy?lang='+this.currentLang)
 				.then((response) => {
 					var cookieData = response.data;
-
 					this.cookiePolicy = cookieData.cookie_policy;
 					this.cookieUserAgreement = cookieData.cookie_user_agreement_text;
 					this.cookieCloseButtonText = cookieData.cookie_close_button_text;
@@ -75,7 +74,7 @@
 					this.showCookie = true;
 				})
 				.catch((error)=>{
-					//console.log(error);
+					console.log(error);
 				});
         	}
         }

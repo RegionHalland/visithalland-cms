@@ -24,8 +24,8 @@
             <button class="font-rift px-3 py-3 rounded bg-blue font-bold text-base text-white text-center mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">
                 {{ $t('allowBtn') }}
             </button>
-            <router-link @click.native="gaTrack()" :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">
-                <div class="read-more mt-3">
+            <router-link @click.native="gaTrack()" :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}" class="mt-3 py-3 mx-auto inline-block">
+                <div class="read-more">
                     <span class="read-more__text">
                         {{ $t('continueWithoutLocationButton') }}
                     </span>

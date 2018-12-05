@@ -51,7 +51,7 @@
                     </div>
                     <div class="ml-2">
                         <h2 class="text-xl font-bold" v-html="nearYou.title.rendered"></h2>
-                        <div class="read-more mt-1">
+                        <div class="read-more mt-2">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="ml-2">
                         <h2 class="text-xl font-bold" v-html="link.title.rendered"></h2>
-                        <div class="read-more mt-1">
+                        <div class="read-more mt-2">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="ml-2">
                         <h2 class="text-xl font-bold" v-html="happening.title.rendered"></h2>
-                        <div class="read-more mt-1">
+                        <div class="read-more mt-2">
                             <span class="read-more__text">
                                 {{ $t('choose') }}
                             </span>
@@ -123,6 +123,7 @@
             </a>
         </div>
         <!-- Event End -->
+        
 	  </div>
 	</div>
 </template>

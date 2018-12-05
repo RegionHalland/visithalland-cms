@@ -19,6 +19,7 @@
     <div class="card w-11/12 md:w-6/12 lg:w-4/12 mx-auto">
 	    <Navigation :input="input" prev-route="time"></Navigation>
 	    <div class="card__content">
+
             <!-- Show while loading -->
             <div v-if="loading" class="block px-3 mb-3">
                 <Shimmer :loading="loading"></Shimmer>
@@ -37,7 +38,7 @@
                         </div>
                         <div class="ml-2">
                             <h2 class="text-xl font-bold" v-html="event.title.rendered"></h2>
-                            <div class="read-more mt-1">
+                            <div class="read-more mt-2">
                                 <span class="read-more__text">
                                     {{ $t('visit') }}
                                 </span>
