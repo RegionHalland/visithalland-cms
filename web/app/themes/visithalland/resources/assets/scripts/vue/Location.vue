@@ -16,16 +16,16 @@
 </i18n>
 
 <template>
-    <div class="card">
+    <div class="card w-11/12 md:w-6/12 lg:w-4/12 mx-auto">
         <Navigation prev-route="home"></Navigation>
-        <div class="card__content center flex justify-center align-center flex-column px3">
-            <h3 class="mt3 mb3">{{ $t('title') }}</h3>
-            <p class="mb4">{{ $t('paragraph') }}</p>
-            <button class="btn center mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">
+        <div class="card__content text-center flex justify-center align-center flex-col px-3">
+            <h3 class="mt-3 mb-3">{{ $t('title') }}</h3>
+            <p class="mb-4 w-10/12 mx-auto">{{ $t('paragraph') }}</p>
+            <button class="font-rift px-3 py-3 rounded bg-blue font-bold text-base text-white text-center mx-auto" :class="{ loading: loading }" v-on:click="askForLocation()">
                 {{ $t('allowBtn') }}
             </button>
-            <router-link @click.native="gaTrack()" :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}">
-                <div class="read-more mt3">
+            <router-link @click.native="gaTrack()" :to="{name: 'time', params: {input: {userLocation: {lat: 56.973735, lng: 12.582737}}}}" class="mt-3 py-3 mx-auto inline-block">
+                <div class="read-more">
                     <span class="read-more__text">
                         {{ $t('continueWithoutLocationButton') }}
                     </span>

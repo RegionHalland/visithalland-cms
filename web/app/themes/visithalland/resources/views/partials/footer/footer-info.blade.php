@@ -1,29 +1,33 @@
-<div class="col col-12 sm-col-6 md-col-4 px3">
-    <img class="mb2" src="@asset('images/logo-horizontal.svg')" />
-    <p class="fira-font italic text-sm text-grey-light mb4">{{ bloginfo('description') }}</p>
+<div class="w-full sm:w-6/12 lg:w-5/12 xl:w-4/12 px-3 mb-6">
+    <img class="mb-2" src="@asset('images/logo-horizontal.svg')" />
+    <p class="font-fira italic text-sm text-grey-light mb-4">{{ bloginfo('description') }}</p>
 </div>
 
-<div class="footer__social col col-12 sm-col-6 md-col-8 flex px3 mb3 sm-justify-end">
-    <a href="mailto:info@visithalland.com" target="_blank" class="link-reset inline-block">
-        <div class="height-4 width-4 bg-blue-xlight rounded-full flex items-center justify-center">
-            <svg class="icon icon-white">
-                <use xlink:href="#mail-icon"/>
-            </svg>
-        </div>
-    </a>
-    <a href="https://www.facebook.com/visithalland/" target="_blank" class="link-reset inline-block ml3">
-        <div class="height-4 width-4 bg-blue-xlight rounded-full flex items-center justify-center">
-            <svg class="icon icon-white">
-                <use xlink:href="#facebook-icon"/>
-            </svg>
-        </div>
-    </a>
-    <a href="https://www.instagram.com/visithalland/" target="_blank" class="link-reset inline-block ml3">
-        <div class="height-4 width-4 bg-blue-xlight rounded-full flex items-center justify-center">
-            <svg class="icon icon-white">
-                <use xlink:href="#instagram-icon"/>
-            </svg>
-        </div>
-    </a>
+<div class="w-full sm:w-6/12 lg:w-7/12 xl:w-8/12 flex px-3 mb-6 sm:justify-end items-start">
+    @icon_link(
+        [
+            'url' => "mailto:info@visithalland.com", 
+            'icon' => "mail-icon",
+            'classes' => "mr-2" 
+        ]
+    )
+    @endicon_link
+
+    @icon_link(
+        [
+          'url' => "https://www.facebook.com/visithalland/", 
+            'icon' => "facebook-icon",
+            'classes' => "mr-2" 
+        ]
+    )
+    @endicon_link
+
+    @icon_link(
+        [
+          'url' => "https://www.instagram.com/visithalland/", 
+            'icon' => "instagram-icon"  
+        ]
+    )
+    @endicon_link
 </div>
 

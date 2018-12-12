@@ -1,42 +1,17 @@
 .card {
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-  border-radius:4px;
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:$white;
-}
-
-.card__header {
-	background-color:palette(black, base);
-	padding:1.25rem 1rem;
-}
-
-.card__title {
-	color:$white;
-	font-size:1.35rem;
-	margin-top:$space-2;
-	font-family:$rift-font-family;
+  @apply bg-white m-3 pin-l pin-r pin-b absolute rounded overflow-hidden scrolling-touch;
 }
 
 .card__content {
-  padding-top:$space-3;
+  @apply pt-3 scrolling-touch overflow-scroll;
   min-height:60vh;
   max-height:60vh;
-  overflow:scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-.card__button {
-  color:$white;
-  font-size:1rem;
-  transition:opacity 0.25s;
-  font-family:$rift-font-family;
-  opacity:0.8;
-  &:active {
-	 opacity:1;
+  @screen md {
+    min-height:40vh;
+    max-height:40vh;
+  }
+  @screen lg {
+    min-height:60vh;
+    max-height:60vh;
   }
 }

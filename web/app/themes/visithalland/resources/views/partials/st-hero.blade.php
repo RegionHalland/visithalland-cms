@@ -1,5 +1,5 @@
 <header class="st-list__header flex items-center">
-	<div class="container col-11 sm-col-8 md-col-7 lg-col-6 mx-auto center relative">
+	<div class="container w-11/12  sm:w-8/12  md:w-7/12  lg:w-6/12  mx-auto center relative">
 		<img
 			class="st-list__img"
 			src="@asset('images/st-logo-large.svg')"

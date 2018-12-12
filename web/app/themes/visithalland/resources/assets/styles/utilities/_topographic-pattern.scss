@@ -1,12 +1,11 @@
 .topographic-pattern {
 	background-image: url("../images/pattern.svg");
-	background-repeat:repeat;
+	@apply bg-repeat;
 	background-size:80%;
-	@media (min-width:$breakpoint-sm) {
+	@screen sm {
 		background-size:25%;
 	}
 }
-
 
 .topographic-pattern-theme {
 	@include themify {
@@ -14,12 +13,11 @@
 	}
 }
 
-
 .topographic-pattern-dark {
 	background-image: url("../images/pattern-dark.svg");
-	background-repeat:repeat;
+	@apply bg-repeat;
 	background-size:80%;
-	@media (min-width:$breakpoint-sm) {
+	@screen sm {
 		background-size:75%;
 	}
 }

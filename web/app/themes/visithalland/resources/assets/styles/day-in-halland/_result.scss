@@ -1,6 +1,6 @@
 
 .result__happenings {
-	background:palette(grey, xx-light);
+	@apply bg-grey-light;
 }
 
 .result {
@@ -18,8 +18,7 @@
 	width:90px;
 	position:relative;
 	overflow:hidden;
-	border-radius:$border-radius;
-	background-color:palette(grey, light);
+	@apply rounded bg-grey-light;
 }
 
 .result__img {
@@ -31,15 +30,12 @@
 }
 
 .result__title {
-	font-size:$h3;
+	@apply text-lg;
 }
 
 .result-header {
 	font-size:1.2rem;
-	margin-top:$space-2;
-	margin-bottom:$space-3;
-	color: palette(black, light);
-	font-family:$rift-font-family;
+	@apply mt-2 mb-3 font-rift text-blue;
 	font-weight:bold;
 }
 

@@ -1,119 +1,104 @@
 html {
 	box-sizing: border-box;
 	text-size-adjust: 100%;
-	
-	@media (min-width: $breakpoint-lg) {
+	@screen lg {
 		font-size: 112.5%; /* 18px */
 	}
 }
+
+h1, .h1 { font-size: 2.65rem }
+h2, .h2 { font-size: 1.75rem }
+h3, .h3 { font-size: 1.5rem }
+h4, .h4 { font-size: 1.4rem }
+h5, .h5 { font-size: .875rem }
+h6, .h6 { font-size: .75rem }
 
 *, *:before, *:after {
 	box-sizing: inherit;
 }
 
 body {
-	font-family: $fira-font-family;
-	line-height: 1;
+	@apply font-fira text-black;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: $paragraph-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $rift-font-family;
-	font-weight: 800;
-	color: $black;
-	&.light {
-		color:$white;
-	}
+	@apply font-rift font-bold text-black;
 }
 
 p {
-	line-height: 1.5;
-
+	@apply leading-normal;
 	//Se över den här skiten
 	&.light {
-		color:$white;
-	}
-}
-
-span {
-	//Se över
-	&.light {
-		color:$white;
+		@apply text-white;
 	}
 }
 
 strong,
-.strong { font-weight: bold }
+.strong { @apply font-bold; }
 
 em, .em,
-i, .i { font-style: italic }
+i, .i { 
+	@apply italic;
+}
 
 a {
-	text-decoration: none;
-	color: palette(black, dark);
+	@apply no-underline text-black;
 }
 
 table {
-	width: 100%;
-	max-width: 100%;
+	@apply w-full max-w-full;
 }
 
 th { 
-	font-weight: bold;
-	vertical-align: bottom; 
-	text-align: left;
+	@apply font-bold align-bottom text-center;
 }	
 
 img {
-	vertical-align: middle;
+	@apply align-middle;
+}
+
+ul, ol {
+	@apply p-0;
 }
 
 pre,
 code,
 kbd,
 samp {
-	font-size: 1rem;
+	@apply text-base;
 }
 
 pre {
-	margin-top: 0;
-	overflow: auto;
+	@apply mt-0 overflow-auto;
 }
 
 sub,
 sup {
-	position: relative;
-	font-size: 75%;
-	line-height: 0;
+	@apply relative text-sm leading-none;
 }
 
-sub { bottom: -0.25em }
-sup { top: -0.5em }
-
 figcaption {
-	font-size: $h5;
-	font-style: italic;
+	@apply text-sm italic;
 }
 
 hr {
-	border: 0;
-	height: 1px;
-	background: palette(grey, light)
+	@apply h-px border-none bg-grey-light;
 }
 
 input {
-	font-family: inherit;
+	@apply font-fira;
+	transition:box-shadow 0.25s;
+    &::placeholder {
+        @apply text-grey-light opacity-75;
+    }
+    &:focus {
+        @apply outline-none;
+        box-shadow: 0 0 0px 2px rgba(255,255,255,0.2);
+    }
 }
 
 button {
-	font-family: inherit;
-	font-size: inherit;
-	line-height: 1;
-	background: none;
-	appearance: none;
-	border: 0;
-	padding: 0;
-	border-radius: 0;
+	@apply leading-none appearance-none text-base p-0 rounded-none;
 }

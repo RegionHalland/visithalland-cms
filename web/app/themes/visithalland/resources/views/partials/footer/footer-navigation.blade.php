@@ -2,66 +2,56 @@
     $navbar_items = App::getPrimaryNavigationItems();
 @endphp
 
-<div class="col col-12 mb5 px3">
+<div class="flex flex-wrap w-full px-3">
     @foreach($navbar_items as $primary_navigation_item)
         @if(is_array($primary_navigation_item->children))
-            <div class="col col-12 sm-col-12 md-col-6 mt4">
-                <h4 class="text-light mb3 text-lg">{{ $primary_navigation_item->post_title }}</h4>
-                @foreach($primary_navigation_item->children as $child)
-                    @if($child->type === 'taxonomy')
-                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
-                                <div class="theme-icon {{$child->meta_fields["class_name"] ? $child->meta_fields["class_name"] : "visithalland"}}">
-                                    <div class="theme-icon__inner">
-                                    </div>
-                                </div>
-                                <span class="ml2">{{ $child->post_title ? $child->post_title : $child->title }}</span>
-                            </a>
+            <div class=" w-full sm:w-full lg:w-6/12 mb-8">
+                <h4 class="text-white mb-4 text-lg">{{ $primary_navigation_item->post_title }}</h4>
+                <div class="flex flex-wrap">
+                    @foreach($primary_navigation_item->children as $child)
+                        <div class="truncate text-white font-rift w-full sm:w-4/12 lg:w-6/12  pb-3">
+                            @theme_link(
+                                [
+                                    'title' => $child->post_title ? $child->post_title : $child->title, 
+                                    'url' => $child->url, 
+                                    'theme' => isset($child->meta_fields["class_name"]) && !empty($child->meta_fields["class_name"]) ? $child->meta_fields["class_name"] : "visithalland"
+                                ]
+                            )
+                            @endtheme_link
                         </div>
-                    @else 
-                        <div class="truncate text-light rift-font col col-12 sm-col-4 md-col-6 pb3">
-                            <a class="text-light bold text-lg truncate inline-block" href="{{ $child->url }}">
-                                <div class="theme-icon visithalland">
-                                    <div class="theme-icon__inner">
-                                    </div>
-                                </div>
-                                <span class="ml2">{{ $child->post_title ? $child->post_title : $child->title }}</span>
-                            </a>
-                        </div>
-                    @endif
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         @endif
     @endforeach
-    <div class="col col-12 sm-col-6 md-col-3 mt4">
-        <h4 class="text-light mb3 text-lg">
+    <div class=" w-full sm:w-6/12 lg:w-3/12 mb-8">
+        <h4 class="text-white mb-4 text-lg">
             @php 
                 _e('Sidor', 'visithalland') 
             @endphp
         </h4>
         @if(is_array($navbar_items))
-        @foreach($navbar_items as $primary_navigation_item)
-            @if(!is_array($primary_navigation_item->children))
-                <a href="{{ $primary_navigation_item->url }}" class="rift-font bold text-grey hover mb3 block">{!! $primary_navigation_item->title !!}</a>
-            @endif
-        @endforeach
+            @foreach($navbar_items as $primary_navigation_item)
+                @if(!is_array($primary_navigation_item->children))
+                    <a href="{{ $primary_navigation_item->url }}" class="font-rift font-bold text-grey opacity-75 hover:opacity-100 hover:underline focus:underline focus:opacity-100 mb-3 block">{!! $primary_navigation_item->title !!}</a>
+                @endif
+            @endforeach
         @endif
     </div>
-
-    <div class="col col-12 sm-col-4 md-col-3 mt4">
-        <h4 class="text-light mb3 text-lg">
+    <div class=" w-full sm:w-4/12 lg:w-3/12 mb-8">
+        <h4 class="text-white mb-4 text-lg">
             @php 
                 _e('Om webbplatsen', 'visithalland') 
             @endphp
         </h4>
         @if(is_array(App::secondaryMenuItems()))
             @foreach(App::secondaryMenuItems() as $secondary_navigation_item)
-                <a class="rift-font text-grey hover bold mb3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
+                <a class="font-rift text-grey opacity-75 hover:opacity-100 focus:opacity-100 hover:underline focus:underline font-bold mb-3 block" href="{{ $secondary_navigation_item->url }}">{!! $secondary_navigation_item->title !!}</a>
             @endforeach
         @endif
         @if(is_array($non_active_langs))
             @foreach ($non_active_langs as $key => $lang)
-                <a class="rift-font text-grey hover bold mb3 block" href="{{ $lang["url"] }}">{{ $lang["native_name"] }}</a>
+                <a class="font-rift text-grey opacity-75 hover:opacity-100 hover:underline focus:underline focus:opacity-100 font-bold mb-3 block" href="{{ $lang["url"] }}">{{ $lang["native_name"] }}</a>
             @endforeach
         @endif
     </div>
