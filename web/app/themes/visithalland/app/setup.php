@@ -21,9 +21,7 @@ new \App\Visithalland\RegisterComponents();
 
 
 add_action('wp_enqueue_scripts', function () {
-    if (basename(get_page_template()) != "template-activities.blade.php" && 
-        basename(get_page_template()) != "st-template-landing.blade.php" &&
-        basename(get_page_template()) != "st-template-all-activities.blade.php") {
+    if (basename(get_page_template()) != "template-activities.blade.php") {
         wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
         wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
     }
@@ -36,8 +34,8 @@ add_action('wp_enqueue_scripts', function () {
     if (basename(get_page_template()) == "st-template-landing.blade.php" ||
         basename(get_page_template()) == "st-template-all-activities.blade.php" ||
         basename(get_page_template()) == "st-template-map.blade.php") {
-        wp_enqueue_script('sage/skordetider.js', asset_path('scripts/skordetider.js'), ['jquery'], null, true);
-        wp_enqueue_style('sage/skordetider.css', asset_path('styles/skordetider.css'), false, null);
+        wp_enqueue_script('sage/skordetider.js', 'https://visithalland.ams3.cdn.digitaloceanspaces.com/resources/skordetider/skordetider.min.js', ['jquery'], null, true);
+        wp_enqueue_style('sage/skordetider.css', 'https://visithalland.ams3.digitaloceanspaces.com/resources/skordetider/skordetider.min.css', false, null);
     }
 
 }, 100);
