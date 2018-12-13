@@ -9,7 +9,7 @@
                 <div class="article-content container flex flex-wrap mt-8 mb-8">
                     <div class="w-11/12 lg:w-8/12  mx-auto">
                         <p class="py-1 text-black font-normal leading-normal text-lg">{{ get_field("excerpt") }}</p>
-                        @include('partials.author-horizontal')
+                        @include('components.author')
                     </div>
                 </div>
                 @if(isset($spotlights) && !empty($spotlights)) 
