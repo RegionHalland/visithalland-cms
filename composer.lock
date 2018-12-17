@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "346fe1745c736cd010e92995b8266f0d",
+    "content-hash": "d525f6d5517a12f8e7a3673b22cc6624",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -255,32 +255,33 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+                "reference": "9f83dded91781a01c63574e387eaa769be769115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/9f83dded91781a01c63574e387eaa769be769115",
+                "reference": "9f83dded91781a01c63574e387eaa769be769115",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5"
             },
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -310,30 +311,31 @@
             "keywords": [
                 "http",
                 "message",
+                "psr-7",
                 "request",
                 "response",
                 "stream",
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "time": "2018-12-04T20:46:45+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.9.8",
+            "version": "4.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "de02cd79a41e06f36558040724414197cb7f6246"
+                "reference": "9cd9b6d8364860a36fd02b088e2fea270f7f531d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/de02cd79a41e06f36558040724414197cb7f6246",
-                "reference": "de02cd79a41e06f36558040724414197cb7f6246",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/9cd9b6d8364860a36fd02b088e2fea270f7f531d",
+                "reference": "9cd9b6d8364860a36fd02b088e2fea270f7f531d",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "4.9.8",
+                "johnpbloch/wordpress-core": "4.9.9",
                 "johnpbloch/wordpress-core-installer": "^1.0",
                 "php": ">=5.3.2"
             },
@@ -355,27 +357,27 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-08-02T21:48:39+00:00"
+            "time": "2018-12-13T03:42:59+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "4.9.8",
+            "version": "4.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "50323f9b91d7689d615b4af02caf9d80584b1cfc"
+                "reference": "3f6081c514707ad25153b9acb90f022cd122d759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/50323f9b91d7689d615b4af02caf9d80584b1cfc",
-                "reference": "50323f9b91d7689d615b4af02caf9d80584b1cfc",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/3f6081c514707ad25153b9acb90f022cd122d759",
+                "reference": "3f6081c514707ad25153b9acb90f022cd122d759",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "provide": {
-                "wordpress/core-implementation": "4.9.8"
+                "wordpress/core-implementation": "4.9.9"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -395,20 +397,20 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-08-02T21:48:32+00:00"
+            "time": "2018-12-13T03:42:54+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
-            "version": "1.0.0.2",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6"
+                "reference": "fd12f5cfe27223b92b0f4bbc097059eb23cc56c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/7941acd71725710a789daabe0557429da63e7ac6",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/fd12f5cfe27223b92b0f4bbc097059eb23cc56c4",
+                "reference": "fd12f5cfe27223b92b0f4bbc097059eb23cc56c4",
                 "shasum": ""
             },
             "require": {
@@ -432,7 +434,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -444,7 +446,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-29T14:49:29+00:00"
+            "time": "2018-11-09T20:10:38+00:00"
         },
         {
             "name": "oscarotero/env",
@@ -595,17 +597,57 @@
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
-            "name": "regionhalland/visithalland-custom-post-types",
-            "version": "v1.4.3",
+            "name": "ralouphie/getallheaders",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
-                "reference": "71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9"
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9",
-                "reference": "71d0ae6a4b68839d98d8c97b5ac16d8500bd17c9",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.0",
+                "satooshi/php-coveralls": ">=1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "time": "2016-02-11T07:05:27+00:00"
+        },
+        {
+            "name": "regionhalland/visithalland-custom-post-types",
+            "version": "v1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RegionHalland/visithalland-custom-post-types.git",
+                "reference": "7fd97e9a78bb9f1f3808ac0bdf60691757a0b9f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RegionHalland/visithalland-custom-post-types/zipball/7fd97e9a78bb9f1f3808ac0bdf60691757a0b9f8",
+                "reference": "7fd97e9a78bb9f1f3808ac0bdf60691757a0b9f8",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +665,7 @@
                 }
             ],
             "description": "Wordpress plugin for adding custom post types used on https://www.visithalland.com.",
-            "time": "2018-09-11T11:43:28+00:00"
+            "time": "2018-12-17T07:33:46+00:00"
         },
         {
             "name": "regionhalland/visithalland-custom-taxonomies",
@@ -765,7 +807,7 @@
         },
         {
             "name": "wpackagist-plugin/autodescription",
-            "version": "3.1.3",
+            "version": "3.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/autodescription/",
@@ -773,7 +815,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/autodescription.zip?timestamp=1537989908",
+                "url": "https://downloads.wordpress.org/plugin/autodescription.zip?timestamp=1544095852",
                 "reference": null,
                 "shasum": null
             },
@@ -785,15 +827,15 @@
         },
         {
             "name": "wpackagist-plugin/autoptimize",
-            "version": "2.4.0",
+            "version": "2.4.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/autoptimize/",
-                "reference": "tags/2.4.0"
+                "reference": "tags/2.4.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/autoptimize.2.4.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/autoptimize.2.4.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -825,15 +867,15 @@
         },
         {
             "name": "wpackagist-plugin/ewww-image-optimizer",
-            "version": "4.4.1",
+            "version": "4.5.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/ewww-image-optimizer/",
-                "reference": "tags/4.4.1"
+                "reference": "tags/4.5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.4.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.5.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -865,7 +907,7 @@
         },
         {
             "name": "wpackagist-plugin/schema",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/schema/",
@@ -873,7 +915,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/schema.zip?timestamp=1531763783",
+                "url": "https://downloads.wordpress.org/plugin/schema.zip?timestamp=1543103200",
                 "reference": null,
                 "shasum": null
             },
@@ -885,15 +927,15 @@
         },
         {
             "name": "wpackagist-plugin/the-seo-framework-extension-manager",
-            "version": "1.5.2",
+            "version": "1.5.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/the-seo-framework-extension-manager/",
-                "reference": "trunk"
+                "reference": "tags/1.5.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/the-seo-framework-extension-manager.zip?timestamp=1535487376",
+                "url": "https://downloads.wordpress.org/plugin/the-seo-framework-extension-manager.1.5.4.zip",
                 "reference": null,
                 "shasum": null
             },

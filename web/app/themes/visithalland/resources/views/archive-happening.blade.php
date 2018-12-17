@@ -1,7 +1,3 @@
-{{--
-  Template Name: Happening Page
---}}
-
 @extends('layouts.app')
 
 @section('content')
