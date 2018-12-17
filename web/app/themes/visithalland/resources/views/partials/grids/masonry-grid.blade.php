@@ -4,10 +4,12 @@
      - posts
 --}}
 
-<div class="masonry-grid featured-grid">
+
+{{-- This Grid Uses  --}}
+<div class="masonry-grid dynamic-grid">
     @foreach ($posts as $post)
 		@if($loop->iteration == 1)
-			<div class="featured-grid__item featured-grid__item--large w-full sm:w-full lg:w-8/12">
+			<div class="dynamic-grid__item dynamic-grid__item--large w-full sm:w-full lg:w-8/12">
 				@article_image_thumbnail(
 					[
 						'title' => $post->post_title,
@@ -24,7 +26,7 @@
 				@endarticle_image_thumbnail
             </div>
 		@elseif($loop->iteration > 1 && $loop->iteration <= 3)
-			<div class="featured-grid__item featured-grid__item--medium w-full sm:w-6/12 lg:w-4/12 ">
+			<div class="dynamic-grid__item dynamic-grid__item--medium w-full sm:w-6/12 lg:w-4/12 ">
 				@article_image_thumbnail(
 					[
 						'title' => $post->post_title,
@@ -41,7 +43,7 @@
 				@endarticle_image_thumbnail
             </div>
 		@else
-			<div class="featured-grid__item featured-grid__item--small w-full sm:w-6/12 lg:w-4/12">
+			<div class="dynamic-grid__item dynamic-grid__item--small w-full sm:w-6/12 lg:w-4/12">
 				@article_image_thumbnail(
 					[
 						'title' => $post->post_title,

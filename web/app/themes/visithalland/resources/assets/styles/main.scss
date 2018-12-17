@@ -24,17 +24,16 @@
 @import 'utilities/icons';
 @import 'utilities/center';
 @import 'utilities/scrim-gradient';
-
+@import 'utilities/dynamic-grid';
 
 // Generic and Reusable Components
 @import 'components/read-more';
 @import 'components/breadcrumbs';
 @import 'components/scroll-indicator';
 
-// Pending
+// Pending Styles
 @import './article/article';
 @import './header/navigation-dropdown';
-@import './concept/featured-grid';
 
 
 // Webfonts

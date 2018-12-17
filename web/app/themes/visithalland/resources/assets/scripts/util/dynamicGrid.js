@@ -4,10 +4,10 @@ var Packery = require('packery');
 //TODO: Change to more generic
 class DynamicGrid {
     constructor() {
-        var grid = $('.featured-grid')[0];
+        var grid = $('.dynamic-grid')[0];
 
         var pckry = new Packery(grid, {
-            itemSelector: '.featured-grid__item',
+            itemSelector: '.dynamic-grid__item',
             percentPosition: true,
             transitionDuration: 0
         });
