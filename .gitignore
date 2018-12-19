@@ -27,5 +27,5 @@ web/.htaccess
 vendor/*
 !vendor/.gitkeep
 
-# Scannerwork/Sonarcube - used for code quality testing
-.scannerwork
+# phpintel
+.phpintel

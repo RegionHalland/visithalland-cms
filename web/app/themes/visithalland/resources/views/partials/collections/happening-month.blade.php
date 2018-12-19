@@ -37,27 +37,30 @@
 			@endforeach
 			{{-- Happenings End --}}
 		</div>
-		<aside class="w-full md:w-4/12 mt-4 md:mt-0 md:mb-4 px-3">
-			{{-- Events Start --}}
-			@foreach($posts as $post)
-				@event_list_item(
-                    [
-                        'title' => $post->post_title,
-		        		'url' => $post->link,
-		        		'theme' => get_field('class_name', $post->terms['terms_default_lang']),
-		        		'classes' => "mb-3",
-		        		'img' => $post->featured_image["sizes"]['vh_thumbnail'],
-		        		'img_sm' => $post->featured_image["sizes"]['vh_thumbnail'],
-		        		'img_sm_retina' => $post->featured_image["sizes"]['vh_thumbnail@2x'],
-		        		'start_date_day' => $dateobj = date("j", strtotime($post->meta_fields['start_date'])),
-		        		'start_date_month' => $dateobj = date("M", strtotime($post->meta_fields['start_date'])),
-		        		'end_date_day' => $dateobj = date("j", strtotime($post->meta_fields['end_date'])),
-		        		'end_date_month' => $dateobj = date("M", strtotime($post->meta_fields['end_date']))
-                    ]
-                )
-                @endevent_list_item
-    		@endforeach
-    		{{-- Events End --}}
-		</aside>
+
+		@if(isset($events[$month_name]))
+			<aside class="w-full md:w-4/12 mt-4 md:mt-0 md:mb-4 px-3">
+				{{-- Events Start --}}
+				@foreach($events[$month_name] as $post)
+					@event_list_item(
+	                    [
+	                        'title' => $post->title->rendered,
+			        		'url' => $post->link,
+			        		//'theme' => get_field('class_name', $post->terms['terms_default_lang']),
+			        		'classes' => "mb-3",
+			        		'img' => $post->acf->image,
+			        		'img_sm' => $post->acf->image,
+			        		'img_sm_retina' => $post->acf->image,
+			        		'start_date_day' => $dateobj = date("j", strtotime($post->acf->dates[0]->start_date)),
+			        		'start_date_month' => $dateobj = date("M", strtotime($post->acf->dates[0]->start_date)),
+			        		'end_date_day' => $dateobj = date("j", strtotime($post->acf->dates[0]->end_date)),
+			        		'end_date_month' => $dateobj = date("M", strtotime($post->acf->dates[0]->end_date))
+	                    ]
+	                )
+	                @endevent_list_item
+	    		@endforeach
+	    		{{-- Events End --}}
+			</aside>
+		@endif
 	</div>
 </div>

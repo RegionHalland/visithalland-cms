@@ -24,7 +24,7 @@
                     ]
                 )
                 @enddate
-                <span class="text-xl font-rift block font-bold text-black">{{ $title }}</span>
+                <span class="text-xl font-rift block font-bold text-black">{!! $title !!}</span>
             </div>
         </div>
     </article>
