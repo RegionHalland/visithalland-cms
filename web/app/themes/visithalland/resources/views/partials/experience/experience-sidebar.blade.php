@@ -74,20 +74,22 @@
     </div>
     <div class="flex flex-wrap -mx-2 mb-3">
         @foreach($navigation_items as $key => $navigation_item)
-            <div class="w-full sm:w-6/12 lg:w-full px-2 mb-2">
-                @concept_thumbnail(
-                    [
-                        'title' => $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title,
-                        'url' => $navigation_item->url,
-                        'theme' => $navigation_item->meta_fields['class_name'] ? $navigation_item->meta_fields['class_name'] : 'visithalland',
-                        'img' => $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"],
-                        'img_alt' => $navigation_item->meta_fields["cover_image"]["alt"],
-                        'classes' => "absolute pin-l pin-t w-full",
-                        'aspect' => "aspect-1",
-                    ]
-                )
-                @endconcept_thumbnail
-            </div>
+            @if($navigation_item->type === 'taxonomy')
+                <div class="w-full sm:w-6/12 lg:w-full px-2 mb-2">
+                    @concept_thumbnail(
+                        [
+                            'title' => $navigation_item->post_title ? $navigation_item->post_title : $navigation_item->title,
+                            'url' => $navigation_item->url,
+                            'theme' => $navigation_item->meta_fields['class_name'] ? $navigation_item->meta_fields['class_name'] : 'visithalland',
+                            'img' => $navigation_item->meta_fields["cover_image"]["sizes"]["vh_medium_square"],
+                            'img_alt' => $navigation_item->meta_fields["cover_image"]["alt"],
+                            'classes' => "absolute pin-l pin-t w-full",
+                            'aspect' => "aspect-1",
+                        ]
+                    )
+                    @endconcept_thumbnail
+                </div>
+            @endif
         @endforeach
     </div>
 @endif
