@@ -26,6 +26,3 @@ web/.htaccess
 # Composer
 vendor/*
 !vendor/.gitkeep
-
-# phpintel
-.phpintel
