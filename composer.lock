@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c56406f09ec224a243f1e4d8ced6e15",
+    "content-hash": "2f40b7f8fc77119317f8b5b141ac93df",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -61,6 +61,17 @@
                 "wp-api"
             ],
             "time": "2017-10-18T22:04:53+00:00"
+        },
+        {
+            "name": "airesvsg/acf-to-rest-api-recursive",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/airesvsg/acf-to-rest-api-recursive/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
         },
         {
             "name": "composer/installers",

@@ -49,6 +49,18 @@
     {
       "type": "package",
       "package": {
+        "name": "airesvsg/acf-to-rest-api-recursive",
+        "version": "1.0.0",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/airesvsg/acf-to-rest-api-recursive/archive/master.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
         "name": "wpml/sitepress-multilingual-cms",
         "version": "4.2.3",
         "type": "wordpress-plugin",
@@ -118,7 +130,8 @@
     "regionhalland/visithalland-custom-taxonomies": "1.0.3",
     "guzzlehttp/guzzle": "^6.3",
     "wpackagist-plugin/wp-super-cache":"^1.6.1",
-    "airesvsg/acf-to-rest-api": "^3.1"
+    "airesvsg/acf-to-rest-api": "^3.1",
+    "airesvsg/acf-to-rest-api-recursive": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"
