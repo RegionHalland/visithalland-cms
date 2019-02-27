@@ -15,6 +15,13 @@ add_filter('wp', function () {
     wp_redirect( '/happenings', 301 );
 }, 10, 0);
 
+// Add a day in halland as recursive acf fields
+add_filter( 'acf/rest_api/recursive/types', function( $types ) {
+    array_push($types, "activity")
+
+    return $types;
+});
+
 /**
  * Add <body> classes
  */
