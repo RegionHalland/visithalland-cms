@@ -11,9 +11,9 @@ import i18next from 'i18next';
 import LngDetector from 'i18next-browser-languagedetector';
 import VueI18Next from '@panter/vue-i18next';
 
-import Progress from './Progress.vue';
+import App from './App.vue';
 import Home from './Home.vue';
-import Loc from './Location.vue';
+import Location from './Location.vue';
 import Time from './Time.vue';
 import Activities from './Activities.vue';
 import Results from './Results.vue';
@@ -45,17 +45,15 @@ const i18n = new VueI18Next(i18next);
 // either be an actual component constructor created via
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
+
 const routes = [
-    {
-        path: '/', component: Progress, props: true, children:
-            [
-                { path: '', component: Home, name: "home", meta: { order: 1, title: "Få inspiration" }, props: true },
-                { path: 'location', component: Loc, name: "location", meta: { order: 2, title: "location" }, props: true },
-                { path: 'time', component: Time, name: "time", meta: { order: 3, title: "time" }, props: true },
-                { path: 'activities', component: Activities, name: "activities", meta: { order: 4, title: "activities" }, props: true },
-                { path: 'results', component: Results, name: "results", meta: { order: 5, title: "results" }, props: true }
-            ]
-    },
+    { path: '/', component: App, children: [
+        { path: '/', component: Home, name: "home", meta: { order: 1, title: "Få inspiration" }, props: true },
+        { path: '/location', component: Location, name: "location", meta: { order: 2, title: "location" }, props: true },
+        { path: '/time', component: Time, name: "time", meta: { order: 3, title: "time" }, props: true },
+        { path: '/activities', component: Activities, name: "activities", meta: { order: 4, title: "activities" }, props: true },
+        { path: '/results', component: Results, name: "results", meta: { order: 5, title: "results" }, props: true }
+    ]}
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -87,6 +85,7 @@ Vue.use(VueAnalytics, {
 // Make sure to inject the router with the router option to make the
 // whole app router-aware.
 const app = new Vue({
+    render: h => h(App),
     router,
     i18n,
     data: {

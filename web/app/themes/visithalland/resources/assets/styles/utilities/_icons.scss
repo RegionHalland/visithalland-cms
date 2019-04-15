@@ -1,34 +1,15 @@
 .icon {
-	display: inline-block;
-	height: 14px;
-	width:  14px;
-	vertical-align: middle;
-}
-
-.icon-white {
-	fill:$white;
-}
-
-.icon-black {
-	fill:$black;
+	@apply inline-block align-middle h-3 w-3;
 }
 
 .icon--sm {
-	width:  10px;
-	height: 10px;
+	@apply h-2 w-2;
 }
 
 .icon--md {
-	width:  24px;
-	height: 24px;
+	@apply h-5 w-5;
 }
 
 .icon--lg {
-	width:  32px;
-	height: 32px;
-}
-
-.icon--xl {
-	width:  64px;
-	height: 64px;
+	@apply h-6 w-6;
 }

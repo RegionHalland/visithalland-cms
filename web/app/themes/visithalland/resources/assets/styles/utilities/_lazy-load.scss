@@ -1,16 +1,14 @@
-//Se över när vi har gjort om artikelstyles som inte är beroende av transform för placering
-
 .lazyload,
 .lazyloading {
 	opacity: 0;
-	will-change: opacity;
-	transition: opacity 500ms;
-	transform-origin: bottom center;
-	//transform: translateY(8px);
+	transform:scale(1.025);
+	will-change: opacity, transform;
+	transition: opacity 500ms, transform 1s;
+	transform-origin:center;
 }
 
 .lazyloaded {
 	opacity: 1;
-	transition: opacity 500ms;
-	//transform: translateY(0px);
+	transform:scale(1);
+	transition: opacity 500ms, transform 1s;
 }

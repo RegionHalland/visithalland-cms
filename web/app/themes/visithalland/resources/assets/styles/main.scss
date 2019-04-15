@@ -1,93 +1,48 @@
-// Project Settings
-// This is used for setting color variables, spacing, fonts and more.
-@import 'settings/settings';
+@tailwind preflight;
+
+
+/**
+ * This injects any component classes registered by Tailwind plugins.
+ */
+@tailwind components;
 
 // Mixins
-@import 'mixins/spacing';
-@import 'mixins/palette';
 @import 'mixins/scrim';
 @import 'mixins/fade-text';
 @import 'mixins/themes';
 
 // Base
-@import 'base/reset';
 @import 'base/base';
 
-// Config - Uses variables from settings.scss
-@import 'utilities/type-scale';
-@import 'utilities/typography';
-@import 'utilities/layout';
-@import 'utilities/align';
-@import 'utilities/margin';
-@import 'utilities/padding';
-@import 'utilities/grid';
-@import 'utilities/flexbox';
-@import 'utilities/position';
-@import 'utilities/sizing';
-@import 'utilities/background';
-@import 'utilities/border-radi';
+// Utilities
 @import 'utilities/accessibility';
-@import 'utilities/box-shadow';
-
 @import 'utilities/container';
 @import 'utilities/aspect-ratio';
+@import 'utilities/order';
 @import 'utilities/lazy-load';
 @import 'utilities/topographic-pattern';
 @import 'utilities/icons';
-@import 'utilities/theme-icon';
-@import 'utilities/opacity';
+@import 'utilities/center';
 @import 'utilities/scrim-gradient';
-@import 'utilities/hover';
+@import 'utilities/dynamic-grid';
 
 // Generic and Reusable Components
-@import 'components/button';
-@import 'components/section-header';
-@import 'components/image-credit';
-@import 'components/icon-button';
-@import 'components/article-tag';
-@import 'components/date-badge'; //Denna borde kunna tas bort, används på Skordetider
 @import 'components/read-more';
 @import 'components/breadcrumbs';
-@import 'components/preamble';
 @import 'components/scroll-indicator';
-@import 'components/search';
-@import 'components/google-place-details';
-@import 'components/author-horizontal';
-@import 'components/infinite-scroll'; //Borde kunna skrivas med utilities
 
-// Grid Layouts
-@import './layouts/content-grid';
-@import './layouts/masonry-grid';
-
-// Landing
-@import './front-page/campaign'; //Se över denna -- Jobbas med nu
-
-
-// Article Components and Styles
+// Pending Styles
 @import './article/article';
-@import './article/article-share'; //Se över denna
-@import './article/image-blurb'; // Se över denna
-
-// Header Styles
-@import './header/header';
-@import './header/navigation';
 @import './header/navigation-dropdown';
-@import './header/header-search';
-@import './header/external-header'; //Ta bort denna
 
 
-// Taxonomy/Concept Page Styles
-@import './concept/spotlight-carousel'; //Dela upp i två filer
-
-
-//One-offs
-@import './concept/featured-grid'; //Se över
-
-
-// Happening Article Format
-@import './happening/happening-page'; //Se över
-@import './happening/happening'; // Se om det finns något vi kan göra här (generell box med info i typ);
-
-
-// Typekit
+// Webfonts
 @import url('https://use.typekit.net/vzi2bvt.css');
+
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;

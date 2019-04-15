@@ -1,0 +1,36 @@
+//Spotlights depends on this //
+
+.dynamic-grid {
+    @apply -m-2;
+    &__item {
+        @apply p-2;
+        &--large {
+            height:400px;
+            @screen md {
+                height:500px;
+            }
+            @screen lg {
+                height:700px;
+            }
+        }
+        &--medium {
+            height:300px;
+            @screen md {
+                height:450px;
+            }
+            @screen lg {
+                height:525px;
+            }
+        }
+
+        &--small {
+            height:300px;
+            @screen md {
+                height:300px;
+            }
+            @screen lg {
+                height:350px;
+            }
+        }
+    }
+}

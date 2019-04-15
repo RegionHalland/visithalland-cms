@@ -26,6 +26,3 @@ web/.htaccess
 # Composer
 vendor/*
 !vendor/.gitkeep
-
-# Scannerwork/Sonarcube - used for code quality testing
-.scannerwork
