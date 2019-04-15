@@ -45,7 +45,7 @@
 					@event_list_item(
 	                    [
 	                        'title' => $post->title->rendered,
-			        		'url' => $post->link,
+			        		'url' => $post->acf->external_link,
 			        		//'theme' => get_field('class_name', $post->terms['terms_default_lang']),
 			        		'classes' => "mb-3",
 			        		'img' => $post->acf->image,
