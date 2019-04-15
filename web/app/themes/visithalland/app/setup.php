@@ -26,11 +26,6 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
     }
 
-    if(basename(get_page_template()) == "template-activities.blade.php") {
-        wp_enqueue_script('sage/vue.js', asset_path('scripts/vue.js'), null, null, true);
-        wp_enqueue_style('sage/vue.css', asset_path('styles/vue.css'), false, null);
-    }
-
     if (basename(get_page_template()) == "st-template-landing.blade.php" ||
         basename(get_page_template()) == "st-template-all-activities.blade.php" ||
         basename(get_page_template()) == "st-template-map.blade.php") {

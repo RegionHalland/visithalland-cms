@@ -45,16 +45,6 @@ let webpackConfig = {
         include: config.paths.assets,
         use: 'eslint',
       },*/
-      //Add Vue support
-      {
-        test: /\.vue$/,
-        loader: 'vue',
-        options: {
-            loaders: {
-                i18n: '@kazupon/vue-i18n-loader'
-            }
-        }
-      },
       {
         enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
@@ -136,9 +126,6 @@ let webpackConfig = {
       config.paths.assets,
       'node_modules',
     ],
-    alias: {
-        'vue$': 'vue/dist/vue.esm.js'
-    },
     enforceExtension: false,
   },
   resolveLoader: {

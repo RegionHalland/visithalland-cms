@@ -103,9 +103,6 @@
     "stylelint-webpack-plugin": "^0.10.1",
     "tailwindcss": "^0.7.2",
     "url-loader": "^0.6.2",
-    "vue-loader": "^14.2.2",
-    "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16",
     "webpack": "~3.10.0",
     "webpack-assets-manifest": "^1.0.0",
     "webpack-dev-middleware": "~2.0.4",
@@ -114,8 +111,6 @@
     "yargs": "~11.0.0"
   },
   "dependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@panter/vue-i18next": "^0.9.1",
     "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
     "date-fns": "^1.29.0",
@@ -133,11 +128,6 @@
     "objectassign": "^1.0.8",
     "packery": "^2.1.1",
     "purgecss-webpack-plugin": "^1.4.0",
-    "vue": "^2.5.16",
-    "vue-analytics": "^5.10.6",
-    "vue-browser-geolocation": "^1.0.3",
-    "vue-isoffline": "^1.0.2",
-    "vue-router": "^3.0.1",
     "webpack-svgstore-plugin": "^4.0.1"
   }
 }
