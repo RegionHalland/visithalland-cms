@@ -44,7 +44,7 @@
                     "key": "field_5add78d86e546",
                     "label": "L\u00e4nk",
                     "name": "link",
-                    "type": "post_object",
+                    "type": "relationship",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -107,4 +107,3 @@
     "active": 1,
     "description": "Anv\u00e4nds f\u00f6r att lista \"A Day in Halland\"-aktiviteter"
 }]
-
