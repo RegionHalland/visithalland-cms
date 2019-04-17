@@ -21,7 +21,7 @@
                 </div>
                 <div class="truncate">
                     <a title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">
-                        <span class="font-rift text-xl font-bold"">{{ $current_list_item->post_title }}</span>
+                        <span class="font-rift text-xl font-bold">{{ $current_list_item->post_title }}</span>
                     </a>
                     <a title="{{ $current_list_item->post_title }}" href="{{ the_permalink($current_list_item->ID) }}">
                         <div class="read-more mt-2">
