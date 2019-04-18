@@ -138,13 +138,13 @@ trait Posts
     public static function getNextPostLink()
     {
         global $post;
-        
-        //global $sitepress;
-        //wp_die(json_encode($sitepress->get_current_language()));
 
         // Get terms for post
         $terms = get_the_terms($post->ID, 'experience');
+
+        // If term expericen is empty we don't want infinite scroll
         if(!$terms) return [];
+
         // Loop over each item since it's an array
         if ($terms != null) {
             foreach ($terms as $term) {
