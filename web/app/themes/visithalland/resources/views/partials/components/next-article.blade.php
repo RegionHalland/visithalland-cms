@@ -1,3 +1,8 @@
+@php $nextPostLinks = App::getNextPostLink() @endphp
+
+@if(!$nextPostLinks)
+
+@else
 <div class="topographic-pattern bg-blue-light border-b border-px border-blue">
 	<div class="container w-11/12 lg:w-10/12 mx-auto">
 	    <div class="infinite-scroll-request py-4 relative">
@@ -17,3 +22,4 @@
 	    </div>
 	</div>
 </div>
+@endif

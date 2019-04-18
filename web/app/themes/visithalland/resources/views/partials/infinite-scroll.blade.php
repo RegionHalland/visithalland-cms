@@ -1,5 +1,10 @@
+@php $nextPostLinks = App::getNextPostLink() @endphp
+
+@if(!$nextPostLinks)
+
+@else
 <div class="next-post-link">
-    <div id="nextPages" data-all='{{ json_encode(App::getNextPostLink()) }}'></div>
+    <div id="nextPages" data-all='{{ json_encode($nextPostLinks) }}'></div>
 </div>
 
 <div class="page-load-status topographic-pattern">
@@ -15,3 +20,4 @@
 
     </div>
 </div>
+@endif
