@@ -4,14 +4,16 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c33e3e485ca510bf63d6f4d68d79f91",
+    "content-hash": "0991e00b0d884f0472a6b6dbd0b6174c",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
             "version": "5.7.13",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=5.7.13"
+                "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=5.7.13",
+                "reference": null,
+                "shasum": null
             },
             "type": "wordpress-plugin"
         },
@@ -65,7 +67,9 @@
             "version": "1.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/airesvsg/acf-to-rest-api-recursive/archive/master.zip"
+                "url": "https://github.com/airesvsg/acf-to-rest-api-recursive/archive/master.zip",
+                "reference": null,
+                "shasum": null
             },
             "type": "wordpress-plugin"
         },
@@ -967,7 +971,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/autodescription.3.2.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/autodescription.3.2.4.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -977,15 +983,17 @@
         },
         {
             "name": "wpackagist-plugin/autoptimize",
-            "version": "2.4.4",
+            "version": "2.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/autoptimize/",
-                "reference": "tags/2.4.4"
+                "reference": "tags/2.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/autoptimize.2.4.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/autoptimize.2.5.0.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1003,7 +1011,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/better-search-replace.zip?timestamp=1551210499"
+                "url": "https://downloads.wordpress.org/plugin/better-search-replace.zip?timestamp=1551210499",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1013,15 +1023,17 @@
         },
         {
             "name": "wpackagist-plugin/ewww-image-optimizer",
-            "version": "4.7.2",
+            "version": "4.7.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/ewww-image-optimizer/",
-                "reference": "tags/4.7.2"
+                "reference": "tags/4.7.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.7.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.4.7.3.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1039,7 +1051,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.zip?timestamp=1546642223"
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.zip?timestamp=1546642223",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1057,7 +1071,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/schema.zip?timestamp=1552307088"
+                "url": "https://downloads.wordpress.org/plugin/schema.zip?timestamp=1552307088",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1075,7 +1091,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1085,28 +1103,34 @@
         },
         {
             "name": "wpml/sitepress-multilingual-cms",
-            "version": "4.2.5",
+            "version": "4.2.6",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329557&version=4.2.5"
+                "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633593&version=4.2.6",
+                "reference": null,
+                "shasum": null
             },
             "type": "wordpress-plugin"
         },
         {
             "name": "wpml/wpml-media-translation",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1551257359&version=2.5.1"
+                "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633594&version=2.5.2",
+                "reference": null,
+                "shasum": null
             },
             "type": "wordpress-plugin"
         },
         {
             "name": "wpml/wpml-string-translation",
-            "version": "2.10.3",
+            "version": "2.10.4",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329557&version=2.10.3"
+                "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633593&version=2.10.4",
+                "reference": null,
+                "shasum": null
             },
             "type": "wordpress-plugin"
         }
