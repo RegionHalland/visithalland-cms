@@ -62,11 +62,11 @@
       "type": "package",
       "package": {
         "name": "wpml/sitepress-multilingual-cms",
-        "version": "4.2.5",
+        "version": "4.2.6",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329557&version=4.2.5"
+          "url": "https://wpml.org/?download=6088&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633593&version=4.2.6"
         }
       }
     },
@@ -74,11 +74,11 @@
       "type": "package",
       "package": {
         "name": "wpml/wpml-string-translation",
-        "version": "2.10.3",
+        "version": "2.10.4",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329557&version=2.10.3"
+          "url": "https://wpml.org/?download=6092&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633593&version=2.10.4"
         }
       }
     },
@@ -98,11 +98,11 @@
       "type": "package",
       "package": {
         "name": "wpml/wpml-media-translation",
-        "version": "2.5.1",
+        "version": "2.5.2",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329557&version=2.5.1"
+          "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633594&version=2.5.2"
         }
       }
     }
