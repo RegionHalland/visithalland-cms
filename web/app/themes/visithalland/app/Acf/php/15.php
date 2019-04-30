@@ -1,9 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5b8ed0f35a305',
-    'title' => 'Temainställningar',
+    'title' => __('Temainställningar', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5b8fab85fa8e3',
@@ -44,7 +44,7 @@ if (function_exists('acf_add_local_field_group')) {
             'key' => 'field_5b8fa562aeb6f',
             'label' => __('Banner Link', 'visithalland'),
             'name' => 'banner_link',
-            'type' => 'page_link',
+            'type' => 'link',
             'instructions' => '',
             'required' => 0,
             'conditional_logic' => 0,
@@ -53,13 +53,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'class' => '',
                 'id' => '',
             ),
-            'post_type' => array(
-            ),
-            'taxonomy' => array(
-            ),
-            'allow_null' => 0,
-            'allow_archives' => 1,
-            'multiple' => 0,
+            'return_format' => 'url',
         ),
         3 => array(
             'key' => 'field_5b8fa52daeb6e',
@@ -176,7 +170,7 @@ if (function_exists('acf_add_local_field_group')) {
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => '',
 ));
-}
+}
