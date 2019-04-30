@@ -1,100 +1,100 @@
-// Spacing Measurements
-$space-1: .25rem;
-$space-2: .5rem;
-$space-3: 1rem;
-$space-4: 2rem;
-$space-5: 4rem;
-$space-6: 8rem;
+// // Spacing Measurements
+// $space-1: .25rem;
+// $space-2: .5rem;
+// $space-3: 1rem;
+// $space-4: 2rem;
+// $space-5: 4rem;
+// $space-6: 8rem;
 
-// Type-scale
-$h1: 2.65rem;
-$h2: 1.75rem;
-$h3: 1.5rem;
-$h4: 1.4rem;
-$h5: .875rem;
-$h6: .75rem;
-
-
-// Sizing
-$size-1: 10px;
-$size-2: 20px;
-$size-3: 30px;
-$size-4: 40px;
-$size-5: 50px;
-
-// Typography
-$fira-font-family:   "fira-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$rift-font-family: "rift-soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-$line-height-1: 1;
-$line-height-2: 1.125;
-$line-height-3: 1.25;
-$line-height-4: 1.5;
-$letter-spacing: 1;
+// // Type-scale
+// $h1: 2.65rem;
+// $h2: 1.75rem;
+// $h3: 1.5rem;
+// $h4: 1.4rem;
+// $h5: .875rem;
+// $h6: .75rem;
 
 
-// Brand Styles
-$border-radius: 6px;
-$border-radius-pill: 100px;
-$border-radius-full: 100%;
+// // Sizing
+// $size-1: 10px;
+// $size-2: 20px;
+// $size-3: 30px;
+// $size-4: 40px;
+// $size-5: 50px;
 
-// Colors
-$brand-primary-color: #ee4340;
-$paragraph-color: palette(black, light);
+// // Typography
+// $fira-font-family:   "fira-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+// $rift-font-family: "rift-soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-//Colors
-$white    : #fff;
-$black    : #05242D;
-$grey     : #C0C8CA;
-$orange   : #F06E08;
+// $line-height-1: 1;
+// $line-height-2: 1.125;
+// $line-height-3: 1.25;
+// $line-height-4: 1.5;
+// $letter-spacing: 1;
 
-$palettes: (
-	grey: (
-		xx-light : lighten($grey, 20%),
-		x-light  : lighten($grey, 16%),
-		light    : lighten($grey, 10%),
-		base     : $grey,
-		dark     : darken($grey, 8%),
-		x-dark   : darken($grey, 30%),
-		xx-dark   : darken($grey, 45%)
-	),
 
-	black: (
-		xx-light  : lighten($black, 10%),
-		x-light  : lighten($black, 5%),
-		light    : lighten($black, 3%),
-		base     : $black,
-		dark     : darken($black, 2%),
-		x-dark     : darken($black, 5%)
-	)
-);
+// // Brand Styles
+// $border-radius: 6px;
+// $border-radius-pill: 100px;
+// $border-radius-full: 100%;
 
-// Darken
-$darken-1: rgba(0, 0, 0, .0625);
-$darken-2: rgba(0, 0, 0, .125);
-$darken-3: rgba(0, 0, 0, .25);
+// // Colors
+// $brand-primary-color: #ee4340;
+// $paragraph-color: palette(black, light);
 
-// Widths
-$width-1: 20%;
-$width-2: 40%;
-$width-3: 60%;
-$width-4: 80%;
+// //Colors
+// $white    : #fff;
+// $black    : #05242D;
+// $grey     : #C0C8CA;
+// $orange   : #F06E08;
 
-// Container
-$container-max-width: 1140px;
+// $palettes: (
+// 	grey: (
+// 		xx-light : lighten($grey, 20%),
+// 		x-light  : lighten($grey, 16%),
+// 		light    : lighten($grey, 10%),
+// 		base     : $grey,
+// 		dark     : darken($grey, 8%),
+// 		x-dark   : darken($grey, 30%),
+// 		xx-dark   : darken($grey, 45%)
+// 	),
 
-// Breakpoints
-//Small Tablets (portrait)
-$breakpoint-sm: 40em;
-//Tablet (Landscape)
-$breakpoint-md: 60em;
-//Laptop and up
-$breakpoint-lg: 80em;
+// 	black: (
+// 		xx-light  : lighten($black, 10%),
+// 		x-light  : lighten($black, 5%),
+// 		light    : lighten($black, 3%),
+// 		base     : $black,
+// 		dark     : darken($black, 2%),
+// 		x-dark     : darken($black, 5%)
+// 	)
+// );
 
-// Z-index
-$z1: 1;
-$z2: 2;
-$z3: 3;
-$z4: 4;
-$z5: 5;
+// // Darken
+// $darken-1: rgba(0, 0, 0, .0625);
+// $darken-2: rgba(0, 0, 0, .125);
+// $darken-3: rgba(0, 0, 0, .25);
+
+// // Widths
+// $width-1: 20%;
+// $width-2: 40%;
+// $width-3: 60%;
+// $width-4: 80%;
+
+// // Container
+// $container-max-width: 1140px;
+
+// // Breakpoints
+// //Small Tablets (portrait)
+// $breakpoint-sm: 40em;
+// //Tablet (Landscape)
+// $breakpoint-md: 60em;
+// //Laptop and up
+// $breakpoint-lg: 80em;
+
+// // Z-index
+// $z1: 1;
+// $z2: 2;
+// $z3: 3;
+// $z4: 4;
+// $z5: 5;
 

@@ -4,14 +4,6 @@
       "./scripts/main.js",
       "./styles/main.scss"
     ],
-    "vue": [
-        "./scripts/vue/vue.js",
-        "./styles/vue.scss"
-    ],
-    "skordetider": [
-        "./scripts/skordetider.js",
-        "./styles/skordetider.scss"
-    ],
     "editor": [
         "./styles/editor.scss"
     ],

@@ -1,7 +1,7 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5add78b8c9eda',
     'title' => 'A Day in Halland',
     'fields' => array(
@@ -47,7 +47,7 @@
                     'key' => 'field_5add78d86e546',
                     'label' => __('Länk', 'visithalland'),
                     'name' => 'link',
-                    'type' => 'post_object',
+                    'type' => 'relationship',
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
@@ -111,4 +111,4 @@
     'active' => 1,
     'description' => 'Används för att lista "A Day in Halland"-aktiviteter',
 ));
-}
+}

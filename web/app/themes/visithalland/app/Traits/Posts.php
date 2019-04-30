@@ -138,8 +138,13 @@ trait Posts
     public static function getNextPostLink()
     {
         global $post;
+
         // Get terms for post
         $terms = get_the_terms($post->ID, 'experience');
+
+        // If term expericen is empty we don't want infinite scroll
+        if(!$terms) return [];
+
         // Loop over each item since it's an array
         if ($terms != null) {
             foreach ($terms as $term) {
@@ -164,7 +169,7 @@ trait Posts
                 "happening",
                 "tips_guides"
             ),
-            'experience' => $termSlug // get slug of product category from above - change productcat for your taxonomy slug
+            'experience' => isset($termSlug) ? $termSlug : '' // get slug of product category from above - change productcat for your taxonomy slug
         );
         $postlist = get_posts($postlist_args);
 

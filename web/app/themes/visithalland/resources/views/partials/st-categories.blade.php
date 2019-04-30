@@ -1,12 +1,12 @@
-<section class="container pt5 col-11 md-col-10 lg-col-10 mx-auto relative">
+<section class="container pt-5 w-11/12  md:w-10/12  lg:w-10/12  mx-auto relative">
 	@php($fields = get_field('category'))
 	@foreach($fields as $key => $field)
 		@php($object = (object) $field)
-		<div id="{{sanitize_title( $object->name) }}" class="st-category mb5 clearfix mxn3">
-			<div class="col col-12 sm-col-5 md-col-5 px3 relative">
+		<div id="{{sanitize_title( $object->name) }}" class="st-category mb-5 clearfix  -mx-3">
+			<div class="col w-full sm:w-5/12 md:w-5/12 px-3 relative">
 				@if(!empty($object->gallery))
 				<div class="relative js-carousel-parent">
-					<div class="absolute bottom-0 mb4 right-0 mr4 z4">
+					<div class="absolute pin-b mb-4 pin-r mr-4 z-40">
 						<button class="icon-button js-carousel-previous">
 							<svg class="icon--sm icon-button__icon">
 								<use xlink:href="#arrow-left-icon"/>
@@ -35,14 +35,14 @@
 				</div>
 				@endif
 			</div>
-			<div class="col col-12 sm-col-7 md-col-7 px3">
-				<h2 class="st-category__title mb3">{{ $object->name }}</h2>
+			<div class="col w-full sm:w-7/12  md:w-7/12  px-3">
+				<h2 class="st-category__title mb-3">{{ $object->name }}</h2>
 				<p class="st-category__description">{{ $object->description }}</p>
 				<hr class="st-category__divider my3">
 				@if(!empty($object->links))
-				<ul class="st-category__list clearfix mxn2">			
+				<ul class="st-category__list clearfix  -mx-2">			
 					@foreach($object->links as $key => $link)
-						<li class="st-category__list-item col col-12 sm-col-6 md-col-6 px2">
+						<li class="st-category__list-item col w-full sm:w-6/12  md:w-6/12  px-2">
 							<a class="st-category__link" href="{{$link["link"]}}" target="_blank">{{ $link["name"] }}</a>
 							<div class="st-category__btn">
 								<svg class="icon--sm st-category__btn-icon">

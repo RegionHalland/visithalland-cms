@@ -37,6 +37,7 @@
 					<div class="st-timeline__line"></div>
 				</div>
 				<div class="col col-12 sm-col-10 lg-col-9 mb4 st-week-grid">
+					@if(isset($week['content']) && !empty($week['content']))
 					@foreach ($week['content'] as $content)
 						
 						{{-- POST --}}
@@ -328,6 +329,7 @@
 						{{-- CAROUSEL [END] --}}
 
 					@endforeach
+					@endif
 				</div>
 			</div>
 		</div>

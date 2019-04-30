@@ -1,3 +1,5 @@
+//Before adding new themes remember to whitelist the class in webpack.config.optimize.js
+
 $themes: (
   'visithalland': (
     'primary': #083644,
@@ -71,4 +73,32 @@ $icon: null;
       $icon: null !global;
     }
   }
+}
+
+.bg-theme {
+    @apply bg-blue-light;
+    @include themify {
+      background-color:$color-primary;
+    }
+}
+
+.theme-icon {
+    @apply inline-block align-middle relative overflow-hidden h-8 w-8 rounded-full;
+    transition: background-color 0.2s;
+    @include themify {
+      background-color:$color-primary;
+    }
+}
+
+.theme-icon__inner {
+    @apply absolute h-6 w-6;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include themify {
+        background-image: $icon;
+    }
 }

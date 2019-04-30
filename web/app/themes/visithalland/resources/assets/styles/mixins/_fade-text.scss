@@ -1,7 +1,11 @@
 .fade-text {
-	position:relative;
-	max-height:45px;
-	overflow:hidden;
+
+	//TODO: Fix max-height
+	@apply relative overflow-hidden;
+	max-height:50px;
+	@screen md {
+		max-height:55px;
+	}
 	&::after{
 		content:'';
 		width:100%;
@@ -10,9 +14,6 @@
 		left:0;
 		right:0;
 		bottom:0;
-		background:linear-gradient(rgba(255, 255, 255, 0), $white);
-	}
-	@media (min-width:$breakpoint-md){
-		max-height:50px;
+		background:linear-gradient(rgba(255, 255, 255, 0), #fff);
 	}
 }

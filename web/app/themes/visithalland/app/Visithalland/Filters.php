@@ -10,6 +10,7 @@ class Filters
 	{
 		//Adds filter for adding properties to acf post object
 		add_filter('acf/format_value/type=relationship', array($this, 'my_acf_load_value'), 11, 3);
+		add_filter('acf/format_value/type=post_object', array($this, 'filter_post_object'), 11, 3);
 
 		//Adds filter for adding properties to post object
 		add_filter('the_posts', array($this, 'filter_the_posts'), 10, 1 );
@@ -26,6 +27,18 @@ class Filters
 		}
 
 		return $posts;
+	}
+
+	public function filter_post_object($value, $post_id, $field)
+	{
+		if(!$value) return;
+		
+		if(has_post_thumbnail($value)) $value->featured_image = $this->getFeaturedImageObject($value);
+			// Get permalink and excerpt on every post
+			$value->excerpt = get_field('excerpt', $value->ID);
+	    	$value->url = get_the_permalink($value->ID);
+		
+		return $value;
 	}
 
 	public function my_acf_load_value($value, $post_id, $field)
