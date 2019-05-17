@@ -64,15 +64,15 @@ class Admin
 
 
 
-		add_menu_page('A Day in Halland', 'A Day in Halland', 'administrator', 'a_day_in_halland', '', 'dashicons-tide', 3);
-		acf_add_options_sub_page(array(
-	        'page_title'    => __('Listordning', 'visithalland'),
-	        'menu_title'    => __('Listordning', 'visithalland'),
-			'parent_slug'   => 'a_day_in_halland',
-			'post_id'    	=> 'a-day-in-halland',
-	        'capability'    => $themeOptionsCapability,
-	        'redirect'      => false
-		));
+		// add_menu_page('A Day in Halland', 'A Day in Halland', 'administrator', 'a_day_in_halland', '', 'dashicons-tide', 3);
+		// acf_add_options_sub_page(array(
+	    //     'page_title'    => __('Listordning', 'visithalland'),
+	    //     'menu_title'    => __('Listordning', 'visithalland'),
+		// 	'parent_slug'   => 'a_day_in_halland',
+		// 	'post_id'    	=> 'a-day-in-halland',
+	    //     'capability'    => $themeOptionsCapability,
+	    //     'redirect'      => false
+		// ));
 	}
 
 }
