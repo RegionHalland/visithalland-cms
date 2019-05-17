@@ -33,7 +33,7 @@ class Admin
 	public function addCreateContentMenuItem()
 	{
 	    // Adds menu group for Custom Post Types
-	    add_menu_page('Skapa innehåll','Skapa innehåll', 'administrator' , 'create_content', '', 'dashicons-welcome-write-blog' , 10);
+	    add_menu_page('Skapa innehåll', 'Skapa innehåll', 'publish_pages', 'create_content', '', 'dashicons-welcome-write-blog', 10);
 
 	    if (!function_exists('acf_add_options_page')) {
 	        return false;
@@ -59,7 +59,20 @@ class Admin
 	        'parent_slug'   => $themeOptionsParent,
 	        'capability'    => $themeOptionsCapability,
 	        'redirect'      => false
-	    ));
+		));
+		
+
+
+
+		// add_menu_page('A Day in Halland', 'A Day in Halland', 'administrator', 'a_day_in_halland', '', 'dashicons-tide', 3);
+		// acf_add_options_sub_page(array(
+	    //     'page_title'    => __('Listordning', 'visithalland'),
+	    //     'menu_title'    => __('Listordning', 'visithalland'),
+		// 	'parent_slug'   => 'a_day_in_halland',
+		// 	'post_id'    	=> 'a-day-in-halland',
+	    //     'capability'    => $themeOptionsCapability,
+	    //     'redirect'      => false
+		// ));
 	}
 
 }
