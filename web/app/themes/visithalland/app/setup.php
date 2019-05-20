@@ -163,3 +163,11 @@ add_action('after_setup_theme', function () {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
 });
+
+add_action('after_setup_theme', function () {
+    global $sitepress;
+    if($sitepress->get_default_language() === $sitepress->get_current_language()){
+        // Set locale to current language
+        setlocale(LC_ALL, 'sv_SE');
+    }
+});

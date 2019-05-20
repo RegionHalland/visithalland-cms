@@ -50,7 +50,7 @@
 	                                        @if (get_field("start_date", $content['post']->ID))
 		                                        <div class="date-badge absolute top-0 left-0 z4 mt2 ml2">
 					                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
-					                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+					                                <span class="date-badge__month">{{ $dateobj = strftime("%b", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
 					                            </div>
 				                            @else
 					                            <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
@@ -104,7 +104,7 @@
 		                                        @if (get_field("start_date", $content['post']->ID))
 			                                        <div class="date-badge absolute top-0 left-0 z4 mt2 ml2">
 						                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
-						                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
+						                                <span class="date-badge__month">{{ $dateobj = strftime("%b", strtotime(get_field("start_date", $content['post']->ID))) }}</span>
 						                            </div>
 					                            @else
 						                            <div class="article-tag mt2 ml2 absolute z3 left-0 top-0">
@@ -291,7 +291,7 @@
 													@if (get_field("start_date", $item->ID))
 				                                        <div class="date-badge visithalland absolute top-0 left-0 z4 mt2 ml2">
 							                                <span class="date-badge__day">{{ $dateobj = date("j", strtotime(get_field("start_date", $item->ID))) }}</span>
-							                                <span class="date-badge__month">{{ $dateobj = date("M", strtotime(get_field("start_date", $item->ID))) }}</span>
+							                                <span class="date-badge__month">{{ $dateobj = strftime("%b", strtotime(get_field("start_date", $item->ID))) }}</span>
 							                            </div>
 						                            @endif
 													<picture>

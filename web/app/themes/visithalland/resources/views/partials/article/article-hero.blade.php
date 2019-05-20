@@ -28,9 +28,9 @@
                     @date(
                         [
                             'start_date_day' => $dateobj = date("j", strtotime(get_field("start_date"))),
-                            'start_date_month' => $dateobj = date("M", strtotime(get_field("start_date"))),
+                            'start_date_month' => $dateobj = strftime("%b", strtotime(get_field("start_date"))),
                             'end_date_day' => $dateobj = date("j", strtotime(get_field("end_date"))),
-                            'end_date_month' => $dateobj = date("M", strtotime(get_field("end_date")))
+                            'end_date_month' => $dateobj = strftime("%b", strtotime(get_field("end_date")))
                         ]
                     )
                     @enddate
