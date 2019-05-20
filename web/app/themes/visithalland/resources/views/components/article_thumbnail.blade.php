@@ -33,7 +33,7 @@
                 ]
             )
         </div>
-        <h3 class="mt-3 text-2xl">{{ $title }}</h3>
+        <h3 class="mt-3 text-2xl">{!! $title !!}</h3>
         <p class="fade-text text-grey-darkest mt-2">{{ $excerpt }}</p>
         @read_more(
             [
