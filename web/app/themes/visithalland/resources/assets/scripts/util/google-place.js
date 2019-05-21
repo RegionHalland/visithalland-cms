@@ -41,6 +41,7 @@ class GooglePlace {
     detailCallback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             var opening_hours;
+            console.log(results.website, "results")
 
             //Add link to shown on map
             $('#js-map-link').attr('href', results.url)

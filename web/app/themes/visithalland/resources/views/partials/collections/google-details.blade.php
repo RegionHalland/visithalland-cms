@@ -24,7 +24,7 @@
                 @endbutton
             </div>
             <div class="w-full lg:w-4/12 px-3">
-                <ul class="js-open-hours" id="js-open-hours"></ul>
+                <ul class="js-open-hours list-reset" id="js-open-hours"></ul>
             </div>
         </section>
     @else
