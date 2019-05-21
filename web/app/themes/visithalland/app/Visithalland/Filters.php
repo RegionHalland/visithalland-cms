@@ -57,4 +57,7 @@ class Filters
 
 		return $value;
 	}
+	
+	
+
 }

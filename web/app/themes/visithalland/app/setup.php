@@ -8,9 +8,13 @@ use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
 /**
- * TODO: Import ACF-fields
+ * ACF
  */
 new \App\Acf\Import();
+
+/**
+ * Visit Halland
+ */
 new \App\Visithalland\Admin();
 new \App\Visithalland\Filters();
 new \App\Visithalland\RegisterComponents();

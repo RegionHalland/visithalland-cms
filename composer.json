@@ -38,7 +38,7 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.7.13",
+        "version": "5.8.0",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
@@ -86,11 +86,11 @@
       "type": "package",
       "package": {
         "name": "wpml/acfml",
-        "version": "1.2",
+        "version": "1.3",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1555329558&version=1.2"
+          "url": "https://wpml.org/?download=1097589&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1558346600&version=1.3"
         }
       }
     },
@@ -103,6 +103,18 @@
         "dist": {
           "type": "zip",
           "url": "https://wpml.org/?download=7474&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1556633594&version=2.5.2"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpml/wpml-translation-management",
+        "version": "2.8.5",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://wpml.org/?download=6094&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1558346599&version=2.8.5"
         }
       }
     }
@@ -125,7 +137,9 @@
     "wpml/sitepress-multilingual-cms": "*",
     "wpml/wpml-string-translation": "*",
     "wpml/wpml-media-translation": "*",
-    "regionhalland/visithalland-custom-post-types": "1.4.4",
+    "wpml/wpml-translation-management": "*",
+    "wpml/acfml": "*",
+    "regionhalland/visithalland-custom-post-types": "1.4.5",
     "regionhalland/visithalland-custom-taxonomies": "1.0.3",
     "guzzlehttp/guzzle": "^6.3",
     "wpackagist-plugin/wp-super-cache":"^1.6.1",
