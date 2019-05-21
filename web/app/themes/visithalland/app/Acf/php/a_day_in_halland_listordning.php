@@ -11,13 +11,14 @@
             'name' => 'lists',
             'type' => 'relationship',
             'instructions' => '',
-            'required' => 0,
+            'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
                 'width' => '',
                 'class' => '',
                 'id' => '',
             ),
+            'wpml_cf_preferences' => 2,
             'post_type' => array(
                 0 => 'activity',
             ),
@@ -28,10 +29,9 @@
             'elements' => array(
                 0 => 'featured_image',
             ),
-            'min' => '',
+            'min' => 1,
             'max' => '',
             'return_format' => 'object',
-            'wpml_cf_preferences' => 2,
         ),
     ),
     'location' => array(
