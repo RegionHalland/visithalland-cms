@@ -28,9 +28,9 @@
 		                'img' => $post->featured_image["sizes"]['vh_hero_wide'],
 		                'img_alt' => $post->featured_image["alt"],
 		                'start_date_day' => $dateobj = date("j", strtotime($post->meta_fields['start_date'])),
-	            		'start_date_month' => $dateobj = date("M", strtotime($post->meta_fields['start_date'])),
+	            		'start_date_month' => $dateobj = strftime("%b", strtotime($post->meta_fields['start_date'])),
 	            		'end_date_day' => $dateobj = date("j", strtotime($post->meta_fields['end_date'])),
-	            		'end_date_month' => $dateobj = date("M", strtotime($post->meta_fields['end_date']))
+	            		'end_date_month' => $dateobj = strftime("%b", strtotime($post->meta_fields['end_date']))
                     ]
                 )
                 @endarticle_image_thumbnail
@@ -51,10 +51,10 @@
 			        		'img' => $post->acf->image,
 			        		'img_sm' => $post->acf->image,
 			        		'img_sm_retina' => $post->acf->image,
-			        		'start_date_day' => $dateobj = date("j", strtotime($post->acf->dates[0]->start_date)),
-			        		'start_date_month' => $dateobj = date("M", strtotime($post->acf->dates[0]->start_date)),
-			        		'end_date_day' => $dateobj = date("j", strtotime($post->acf->dates[0]->end_date)),
-			        		'end_date_month' => $dateobj = date("M", strtotime($post->acf->dates[0]->end_date))
+			        		'start_date_day' => date("j", strtotime($post->acf->dates[0]->start_date)),
+			        		'start_date_month' => strftime("%b", strtotime($post->acf->dates[0]->start_date)),
+			        		'end_date_day' => date("j", strtotime($post->acf->dates[0]->end_date)),
+			        		'end_date_month' => strftime("%b", strtotime($post->acf->dates[0]->end_date))
 	                    ]
 	                )
 	                @endevent_list_item

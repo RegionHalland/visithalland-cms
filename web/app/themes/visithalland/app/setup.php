@@ -8,9 +8,13 @@ use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
 /**
- * TODO: Import ACF-fields
+ * ACF
  */
 new \App\Acf\Import();
+
+/**
+ * Visit Halland
+ */
 new \App\Visithalland\Admin();
 new \App\Visithalland\Filters();
 new \App\Visithalland\RegisterComponents();
@@ -162,4 +166,12 @@ add_action('after_setup_theme', function () {
     sage('blade')->compiler()->directive('asset', function ($asset) {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
+});
+
+add_action('after_setup_theme', function () {
+    global $sitepress;
+    if($sitepress->get_default_language() === $sitepress->get_current_language()){
+        // Set locale to current language
+        setlocale(LC_ALL, 'sv_SE');
+    }
 });

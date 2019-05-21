@@ -33,7 +33,8 @@ class Import
 				    'group_5b8ed0f35a305',
 				    'group_5b8cd59ba21a0',
 				    'group_5b8d243c8b8bf',
-				    'group_5b8d2920d729a'
+					'group_5b8d2920d729a',
+					'a_day_in_halland_listordning' => 'group_5ce3b78c5c8cf'
 				));
 				$acfExportManager->import();
 			}

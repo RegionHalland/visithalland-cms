@@ -59,10 +59,10 @@
 				                		'img' => $happening->featured_image["sizes"]['vh_thumbnail'],
 				                		'img_sm' => $happening->featured_image["sizes"]['vh_thumbnail'],
 				                		'img_sm_retina' => $happening->featured_image["sizes"]['vh_thumbnail@2x'],
-				                		'start_date_day' => $dateobj = date("j", strtotime($happening->meta_fields['start_date'])),
-				                		'start_date_month' => $dateobj = date("M", strtotime($happening->meta_fields['start_date'])),
-				                		'end_date_day' => $dateobj = date("j", strtotime($happening->meta_fields['end_date'])),
-				                		'end_date_month' => $dateobj = date("M", strtotime($happening->meta_fields['end_date'])),
+				                		'start_date_day' => date("j", strtotime($happening->meta_fields['start_date'])),
+				                		'start_date_month' => strftime("%b", strtotime($happening->meta_fields['start_date'])),
+				                		'end_date_day' => date("j", strtotime($happening->meta_fields['end_date'])),
+				                		'end_date_month' => strftime("%b", strtotime($happening->meta_fields['end_date'])),
 			                        ]
 			                    )
 			                    @endevent_list_item

@@ -15,8 +15,7 @@ class ArchiveHappening extends Controller
 
 		foreach ($happenings as $key => $happening) {
 			$unixTimeStamp = strtotime($happening->meta_fields['start_date']);
-			$date = getdate($unixTimeStamp);
-			$month = $date['month'];
+			$month = strftime("%b", $unixTimeStamp);
 
 			if (isset($months[$month])) {
 				array_push($months[$month], $happening);
