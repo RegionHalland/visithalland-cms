@@ -68,9 +68,23 @@ class Admin
 				'page_title'    => __('Listordning', 'visithalland'),
 				'menu_title'    => __('Listordning', 'visithalland'),
 				'parent_slug'   => 'a_day_in_halland',
+				'post_id'    => 'a_day_in_halland' . $this->getLangSuffix(),
 				'capability'    => 'edit_posts',
 				'redirect'      => false
 			));
 		}
+	}
+
+	// Get language suffix if not default language
+	function getLangSuffix()
+	{
+		if( function_exists('icl_get_languages')){
+			global $sitepress;
+			$default_lang = $sitepress->get_default_language();
+			$lang = ICL_LANGUAGE_CODE;
+			if($lang != $default_lang) return '_'.$lang;
+		}
+
+		return '';
 	}
 }
