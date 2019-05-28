@@ -5,6 +5,7 @@
                 @button(
                     [
                         'title' => 'Visa på karta', 
+                        'target' => '_blank',
                         'url' => '', 
                         'classes' => 'bg-blue text-white', 
                         'id' => 'js-map-link', 
@@ -17,6 +18,7 @@
                 @button(
                     [
                         'title' => 'Gå till webbplats', 
+                        'target' => '_blank',
                         'url' => '', 
                         'id' => 'js-website'
                     ]
@@ -33,6 +35,7 @@
                 @button(
                     [
                         'title' => 'Visa på karta', 
+                        'target' => '_blank',
                         'url' => 'http://www.google.com/maps/place/' . get_field("location")['lat'] . "," . get_field("location")['lng'], 
                         'classes' => 'bg-blue text-white', 
                         'icon' => "pin-icon"
@@ -45,6 +48,7 @@
                     @button(
                         [
                             'title' => 'Gå till webbplats', 
+                            'target' => '_blank',
                             'url' => get_field("external_link")
                         ]
                     )
