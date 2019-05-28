@@ -38,7 +38,7 @@
             @endif
             <div class="absolute pin-b pin-l pin-r mx-auto text-center pb-8 md:pb-12 w-11/12 sm:w-8/12 z-30">
                 @include('partials.components.breadcrumbs')
-                <h1 class="text-white text-3xl md:text-5xl mb-3 text-center mt-2">{{ $post->post_title }}</h1>
+                <h1 class="text-white text-3xl md:text-5xl mb-3 text-center mt-2" data-post-title="{{ $post->post_title }}">{{ $post->post_title }}</h1>
             </div>
         </div>
         <div class="absolute text-center mx-auto pin-b -mb-5 pin-l pin-r">

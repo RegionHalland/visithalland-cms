@@ -13,12 +13,17 @@ class GooglePlace {
 
     initMap(lat, lng) {
         var locationToSearch = { lat: Number(lat), lng: Number(lng) };
+        var keyword = $('[data-post-title]').data('postTitle');
+
+        if (!keyword) {
+            return false
+        }
 
         this.service = new google.maps.places.PlacesService(this.map);
         this.service.nearbySearch({
             location: locationToSearch,
             radius: 80,
-            keyword: $(".article-hero__title").text(),
+            keyword: keyword,
         }, this.callback.bind(this));
     }
 
@@ -41,7 +46,6 @@ class GooglePlace {
     detailCallback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             var opening_hours;
-            console.log(results.website, "results")
 
             //Add link to shown on map
             $('#js-map-link').attr('href', results.url)
