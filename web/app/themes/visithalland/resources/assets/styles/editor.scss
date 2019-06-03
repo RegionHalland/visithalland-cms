@@ -1,0 +1,100 @@
+@tailwind preflight;
+
+/**
+ * This injects any component classes registered by Tailwind plugins.
+ */
+@tailwind components;
+
+@import 'base/base';
+
+html, body {
+	@apply p-3 bg-white leading-snug;
+	max-width: 1140px;
+}
+
+.wp-caption, 
+.image-description, 
+.image-credit {
+	@apply h-auto;
+	max-width: 90%;
+}
+
+.image-credit {
+	@apply block mt-1 text-left text-grey-darker italic;
+	font-size: 0.9em;
+}
+
+.wp-caption-text, 
+.image-description {
+	@apply block text-left leading-normal italic text-grey-darker text-base;
+}
+
+figure {
+	@apply my-3;
+}
+
+img {
+	@apply w-full h-auto rounded my-2;
+}
+
+a { @apply underline; }
+
+blockquote {
+	@apply w-full py-3 my-4 mx-auto italic text-center ;
+	font-size: 1.4em;
+	width: 100%;
+	
+	@screen sm {
+		width: 80%;
+	}
+
+	&::after, &::before {
+		@apply block my-3 mx-auto rounded bg-grey-light;
+		content: '';
+		width: 20px;
+		height: 5px;
+	}
+}
+
+ul {
+	@apply pl-3;
+	list-style-type: disc;
+}
+
+li {
+	@apply mt-2 leading-relaxed;
+}
+
+p {
+	@apply my-2 mx-0 leading-relaxed text-black;
+	font-feature-settings: "kern" 1;
+	font-kerning: normal;
+}
+
+h2, h3, h4, h5 { @apply font-rift; }
+
+h2 {
+	@apply mt-4 mb-3 text-black;
+	font-size: 1.75rem;
+}
+
+h3 {
+	@apply mt-4 mb-3 text-black;
+	font-size: 1.5em;
+}
+
+h4 {
+	@apply mt-4 mb-2 text-black;
+	font-size: 1.4em;
+}
+
+h5 {
+	@apply mt-3 mb-2;
+	font-size: 1.25em;
+}
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
