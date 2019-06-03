@@ -43,7 +43,11 @@ export function initInfiniteScroll() {
     // Add history event listener for logging pageviews to Analytics.
     infScroll.on('append', function (title, path, items) {
         var item = items[0];
-        if(this.loadCount == nextPages.length) return item.querySelector('.next-article__container').remove();
+        
+        if (this.loadCount === nextPages.length) {
+            item.querySelector('.next-article__container').remove();
+            return
+        }
 
         var postType = $(item).data("posttype");
         var articleTitle = item.querySelector('.next-article__title');
