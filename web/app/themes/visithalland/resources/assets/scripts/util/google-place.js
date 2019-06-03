@@ -47,6 +47,15 @@ class GooglePlace {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             var opening_hours;
 
+            var ass = results.opening_hours.periods.map(item => {
+                console.log(item)
+                return ` <tr class="rounded">
+                    <td class="pl-2 pr-6 py-1"><span class="font-medium">${item}</span></td>
+                    <td class="px-2 py-1">12:00 – 16:00</td>
+                  </tr>
+                `
+            })
+
             //Add link to shown on map
             $('#js-map-link').attr('href', results.url)
 
@@ -54,14 +63,14 @@ class GooglePlace {
             $('#js-website').attr('href', results.website)
 
             if(results.opening_hours) {
-                $('.js-open-hours').show();
+                $('#js-open-hours').show();
 
-                opening_hours = results.opening_hours.weekday_text.map(function (val, key) {
-                    return '<li class="js-open-hours">' + val + '</li>';
-                });
+                opening_hours = results.opening_hours.weekday_text.map(item => 
+                    `<li class="js-open-hours">${item}</li>`
+                );
 
                 //Add opening hours list items to content
-                $('#js-open-hours').append(opening_hours);
+                $('#js-open-hours').append(ass);
             }
         }
     }

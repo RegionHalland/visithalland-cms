@@ -1,0 +1,5 @@
+.striped-table {
+	tr:nth-child(odd) {
+		@apply bg-grey-lighter;
+	}
+}
