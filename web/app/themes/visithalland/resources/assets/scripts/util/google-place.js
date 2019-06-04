@@ -1,3 +1,5 @@
+import formatGooglePlacePeriods from './formatGooglePlacePeriods'
+
 class GooglePlace {
     constructor() {
         this.map = document.createElement("div");
@@ -43,35 +45,37 @@ class GooglePlace {
         }
     }
 
+    
     detailCallback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            var opening_hours;
-
-            var ass = results.opening_hours.periods.map(item => {
-                console.log(item)
-                return ` <tr class="rounded">
-                    <td class="pl-2 pr-6 py-1"><span class="font-medium">${item}</span></td>
-                    <td class="px-2 py-1">12:00 – 16:00</td>
-                  </tr>
-                `
-            })
-
-            //Add link to shown on map
+            if (!results) {
+                return
+            }
+            
+            // Add link to visit website
             $('#js-map-link').attr('href', results.url)
-
-            //Add link to visit website
             $('#js-website').attr('href', results.website)
 
-            if(results.opening_hours) {
-                $('#js-open-hours').show();
-
-                opening_hours = results.opening_hours.weekday_text.map(item => 
-                    `<li class="js-open-hours">${item}</li>`
-                );
-
-                //Add opening hours list items to content
-                $('#js-open-hours').append(ass);
+            if (!results.opening_hours) {
+                return
             }
+            
+            const openingHours = formatGooglePlacePeriods(results.opening_hours.periods).map(item => {
+                if (item.closed) {
+                    return `<tr class="rounded">
+                        <td class="pl-2 pr-6 py-1"><span class="font-medium">${item.day}</span></td>
+                        <td class="px-2 py-1">Stängt</td>
+                    </tr>`
+                }
+
+                return `<tr class="rounded">
+                    <td class="pl-2 pr-6 py-1"><span class="font-medium">${item.day}</span></td>
+                    <td class="px-2 py-1">${item.open} - ${item.close}</td>
+                </tr>`
+            })
+
+            $('#js-open-hours').show();
+            $('#js-open-hours').append(openingHours);
         }
     }
 }
