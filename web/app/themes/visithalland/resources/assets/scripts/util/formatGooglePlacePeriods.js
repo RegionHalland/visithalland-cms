@@ -1,16 +1,16 @@
 const weekdays = [
 	'Söndag',
-	'Måndag', 
-	'Tisdag', 
-	'Onsdag', 
-	'Torsdag', 
-	'Fredag', 
+	'Måndag',
+	'Tisdag',
+	'Onsdag',
+	'Torsdag',
+	'Fredag',
 	'Lördag',
 ]
 
 const formatTime = str => `${str.substr(0, 2)}.${str.substr(2)}`
 
-export default periods => {
+export const formatPeriods = periods => {
 	const week = weekdays.map((weekday, index) => {
 		const period = periods.find(period => period.open.day === index)
 
@@ -35,3 +35,6 @@ export default periods => {
 
 	return week
 }
+
+
+export { formatPeriods as default, weekdays }
