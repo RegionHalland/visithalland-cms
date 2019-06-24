@@ -1,0 +1,688 @@
+[{
+    "key": "group_5b0ffb0a49efc",
+    "title": "Sk\u00f6rdetider - Landningssida",
+    "fields": [
+        {
+            "key": "field_5d075a2c86784",
+            "label": "Inneh\u00e5ll (ny)",
+            "name": "content_new",
+            "type": "flexible_content",
+            "instructions": "N\u00e4r du \u00e4nd\u00e5 \u00e4r i n\u00e4rheten, missa inte dessa fantastiska vyer",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "layouts": {
+                "5b0ffe0b06fa9": {
+                    "key": "5b0ffe0b06fa9",
+                    "name": "post",
+                    "label": "Post",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d075a2d86785",
+                            "label": "Post",
+                            "name": "post",
+                            "type": "post_object",
+                            "instructions": "Nu b\u00f6rjar det bli matdags, upplev flera hall\u00e4ndska favoriter p\u00e5 Ugglarps gr\u00f6nt",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "post_type": [
+                                "happening",
+                                "meet_local",
+                                "editor_tip",
+                                "places",
+                                "companies"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_5d075a2d86786",
+                            "label": "Fullbred",
+                            "name": "fullsize",
+                            "type": "true_false",
+                            "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "message": "Fullbred",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5b0fffae9abec": {
+                    "key": "5b0fffae9abec",
+                    "name": "link",
+                    "label": "L\u00e4nk",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d075a2d86787",
+                            "label": "Beskrivning",
+                            "name": "description",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_5d075a2d86788",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5d075a2d86789",
+                            "label": "Bild",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_5d075a2d8678a",
+                            "label": "L\u00e4nk",
+                            "name": "url",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5d075a2d8678b",
+                            "label": "Fullbred",
+                            "name": "fullsize",
+                            "type": "true_false",
+                            "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "message": "Fullbred",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5b21273c3fbf9": {
+                    "key": "5b21273c3fbf9",
+                    "name": "quote",
+                    "label": "Citat",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d075a2d8678c",
+                            "label": "Citerad",
+                            "name": "quoted",
+                            "type": "text",
+                            "instructions": "Uppge namn p\u00e5 den citerade personen",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5d075a2d8678d",
+                            "label": "Bild",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "L\u00e4gg till p\u00e5 den citerade personen",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_5d075a2d8678e",
+                            "label": "Citat",
+                            "name": "quote",
+                            "type": "textarea",
+                            "instructions": "Fyll i ett citat",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5b212612659ed": {
+                    "key": "5b212612659ed",
+                    "name": "carousel",
+                    "label": "Karusell",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d075a2d8678f",
+                            "label": "Inneh\u00e5ll",
+                            "name": "content",
+                            "type": "relationship",
+                            "instructions": "V\u00e4lj ut inneh\u00e5ll till karusellen",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "post_type": [
+                                "happening",
+                                "editor_tip",
+                                "places",
+                                "companies",
+                                "meet_local"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "post_type",
+                                "taxonomy"
+                            ],
+                            "elements": "",
+                            "min": "",
+                            "max": "",
+                            "return_format": "object"
+                        },
+                        {
+                            "key": "field_5d075a2d86790",
+                            "label": "Sammanfattning",
+                            "name": "description",
+                            "type": "text",
+                            "instructions": "Beskriv inneh\u00e5llet i karusellen",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "L\u00e4gg till inneh\u00e5ll",
+            "min": "",
+            "max": ""
+        },
+        {
+            "key": "field_5b0ffb9f0501c",
+            "label": "Veckor",
+            "name": "timeline",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "L\u00e4gg till vecka",
+            "sub_fields": [
+                {
+                    "key": "field_5b0ffe0355149",
+                    "label": "Inneh\u00e5ll",
+                    "name": "content",
+                    "type": "flexible_content",
+                    "instructions": "N\u00e4r du \u00e4nd\u00e5 \u00e4r i n\u00e4rheten, missa inte dessa fantastiska vyer",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layouts": {
+                        "5b0ffe0b06fa9": {
+                            "key": "5b0ffe0b06fa9",
+                            "name": "post",
+                            "label": "Post",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b0ffe5e41b92",
+                                    "label": "Post",
+                                    "name": "post",
+                                    "type": "post_object",
+                                    "instructions": "Nu b\u00f6rjar det bli matdags, upplev flera hall\u00e4ndska favoriter p\u00e5 Ugglarps gr\u00f6nt",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "companies",
+                                        "happening",
+                                        "meet_local",
+                                        "trip",
+                                        "editor_tip",
+                                        "places"
+                                    ],
+                                    "taxonomy": [],
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "return_format": "object",
+                                    "ui": 1
+                                },
+                                {
+                                    "key": "field_5b192f64bebdd",
+                                    "label": "Fullbred",
+                                    "name": "fullsize",
+                                    "type": "true_false",
+                                    "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Fullbred",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "5b0fffae9abec": {
+                            "key": "5b0fffae9abec",
+                            "name": "link",
+                            "label": "L\u00e4nk",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b1936c6a4607",
+                                    "label": "Beskrivning",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": 2,
+                                    "new_lines": ""
+                                },
+                                {
+                                    "key": "field_5b1936bea4606",
+                                    "label": "Titel",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5b1936d9a4608",
+                                    "label": "Bild",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                },
+                                {
+                                    "key": "field_5b1936e9a4609",
+                                    "label": "L\u00e4nk",
+                                    "name": "url",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_5b192fd0bebde",
+                                    "label": "Fullbred",
+                                    "name": "fullsize",
+                                    "type": "true_false",
+                                    "instructions": "Ska inl\u00e4gget str\u00e4cka sig \u00f6ver tv\u00e5 kolumner?",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Fullbred",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "5b21273c3fbf9": {
+                            "key": "5b21273c3fbf9",
+                            "name": "quote",
+                            "label": "Citat",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b2127633fbfb",
+                                    "label": "Citerad",
+                                    "name": "quoted",
+                                    "type": "text",
+                                    "instructions": "Uppge namn p\u00e5 den citerade personen",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5b2127ba3fbfc",
+                                    "label": "Bild",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "L\u00e4gg till p\u00e5 den citerade personen",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                },
+                                {
+                                    "key": "field_5b2127473fbfa",
+                                    "label": "Citat",
+                                    "name": "quote",
+                                    "type": "textarea",
+                                    "instructions": "Fyll i ett citat",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": "",
+                                    "new_lines": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "5b212612659ed": {
+                            "key": "5b212612659ed",
+                            "name": "carousel",
+                            "label": "Karusell",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b212648659ef",
+                                    "label": "Inneh\u00e5ll",
+                                    "name": "content",
+                                    "type": "relationship",
+                                    "instructions": "V\u00e4lj ut inneh\u00e5ll till karusellen",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "happening",
+                                        "editor_tip",
+                                        "companies",
+                                        "places",
+                                        "trip"
+                                    ],
+                                    "taxonomy": [],
+                                    "filters": [
+                                        "search",
+                                        "post_type",
+                                        "taxonomy"
+                                    ],
+                                    "elements": "",
+                                    "min": "",
+                                    "max": "",
+                                    "return_format": "object"
+                                },
+                                {
+                                    "key": "field_5b21262b659ee",
+                                    "label": "Sammanfattning",
+                                    "name": "description",
+                                    "type": "text",
+                                    "instructions": "Beskriv inneh\u00e5llet i karusellen",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        }
+                    },
+                    "button_label": "L\u00e4gg till inneh\u00e5ll",
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "views\/st-template-landing.blade.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "H\u00e4r finns all information kopplat till Sk\u00f6rdetider"
+}]
+
