@@ -19,6 +19,6 @@
 			</div>
 		</div>
 		<h3 class="st-partners__title mt3 mb4">Vill du veta mer om projektet?</h3>
-		<a href="https://www.regionhalland.se/utveckling-och-tillvaxt/omrade/naringsliv/styrkeomrade-gron-tillvaxt-/projekt-hallandska-skordetider/" class="btn inline-block mx-auto mb5">Läs mer om projektet</a>
+		<a href="https://www.regionhalland.se/utveckling-och-tillvaxt/naringslivsutveckling/gron-tillvaxt/hallandska-skordetider-nya-vagar-till-maltidsturism/" class="btn inline-block mx-auto mb5">Läs mer om projektet</a>
 	</div>
 </section>
