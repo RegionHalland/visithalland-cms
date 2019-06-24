@@ -50,9 +50,9 @@ $videoUrl = array(
 	
 @include('partials.st-carousel')
 
-@foreach (get_field('timeline') as $week)
-	@include('partials.st-week')
-@endforeach
+<div class="overflow-hidden">
+	@include('partials.st-content')
+</div>
 
 @include('partials.st-partners')
 
