@@ -31,11 +31,12 @@ class ArchiveHappening extends Controller
 	{
 		$api_url = getenv('VH_CALENDAR_API');
 		// Create a client with a base URI
-        $client = new Client();
+		$client = new Client();
+		$todays_date = Date('Y-m-d');
 
         // Send a request to
-        $response = $client->request('GET', "{$api_url}events?per_page=100&show_on=11");
-        $events = json_decode($response->getBody());
+		$response = $client->request('GET', "{$api_url}events?filter%5Bmeta_key%5D=".'dates_$_start_date'."&filter%5Bmeta_compare%5D=%3E&filter%5Bmeta_value%5D={$todays_date}&per_page=100&filter%5Borderby%5D=".'dates_$_start_date'."&order=asc&show_on=11");
+		$events = json_decode($response->getBody());
 
 		$events_months = [];
 		foreach ($events as $key => $event) {
