@@ -21,7 +21,7 @@ class Import
 				    'group_5a840e348cfe0',
 				    'group_5af958a559612',
 				    'group_58ac19b41643e',
-				    'group_5acb39a64e81f',
+				    'kampanj_group_5acb39a64e81f' => 'group_5acb39a64e81f',
 				    'group_58a6da2dafd35',
 				    'group_58aeb872c9fba',
 				    'group_5a9417dc4fd8a',

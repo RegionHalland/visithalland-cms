@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5acb39a64e81f',
-    'title' => 'Kampanj',
+    'title' => __('Kampanj', 'visithalland'),
     'fields' => array(
         0 => array(
             'key' => 'field_5acb39aadaa4f',
@@ -157,7 +157,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => 'Fält som används för att visa tillfälliga kampanjer',
 ));
 }
