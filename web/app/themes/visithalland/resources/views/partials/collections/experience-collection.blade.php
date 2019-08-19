@@ -34,7 +34,7 @@
             </div>
         </div>
     </article>
-@else 
+@else
     @if(is_array($navigation_items))
         @foreach($navigation_items as $key => $navigation_item)
             @if($loop->iteration === 1)
@@ -89,7 +89,7 @@
         @endheader
         <div class="flex flex-wrap -mx-2">
             @foreach($navigation_items as $key => $navigation_item)
-                @if($loop->iteration === 2 || $loop->iteration === 3)
+                @if($campaign_mode ? $loop->iteration === 1 || $loop->iteration === 2 : $loop->iteration === 2 || $loop->iteration === 3)
                     <div class="mb-3 w-full lg:w-6/12 px-2">
                         @concept_thumbnail(
                             [
@@ -111,7 +111,7 @@
                         @endconcept_thumbnail
                     </div>
                 @endif
-                @if($loop->iteration > 3)
+                @if($campaign_mode ? $loop->iteration > 2 : $loop->iteration > 3)
                     <div class="mb-3 w-full sm:w-6/12 lg:w-4/12 px-2">
                         @concept_thumbnail(
                             [
