@@ -110,11 +110,11 @@
       "type": "package",
       "package": {
         "name": "wpml/wpml-translation-management",
-        "version": "2.8.5",
+        "version": "2.8.6.2",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://wpml.org/?download=6094&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1558346599&version=2.8.5"
+          "url": "https://wpml.org/?download=6094&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1566302377&version=2.8.6.2"
         }
       }
     }
@@ -145,7 +145,7 @@
     "wpackagist-plugin/wp-super-cache": "^1.6.1",
     "airesvsg/acf-to-rest-api": "^3.1",
     "airesvsg/acf-to-rest-api-recursive": "*",
-    "sybrew/the-seo-framework-extension-manager": "^2.0",
+    "sybrew/the-seo-framework-extension-manager": "^2.0 ",
     "wpackagist-plugin/disable-gutenberg": "^1.8"
   },
   "require-dev": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57242231ace1b00460043e2abdd265c2",
+    "content-hash": "0a2a3a17095f9fbf877ac2f64ffe4ffe",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -1145,10 +1145,10 @@
         },
         {
             "name": "wpml/wpml-translation-management",
-            "version": "2.8.5",
+            "version": "2.8.6.2",
             "dist": {
                 "type": "zip",
-                "url": "https://wpml.org/?download=6094&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1558346599&version=2.8.5"
+                "url": "https://wpml.org/?download=6094&user_id=208567&subscription_key=af2acb39560bf3897e4f0ba665033da2&t=1566302377&version=2.8.6.2"
             },
             "type": "wordpress-plugin"
         }
